@@ -2,8 +2,113 @@ grammar edu.upb.lp.DearCode with org.eclipse.xtext.common.Terminals
 
 generate dearCode "http://www.upb.edu/lp/DearCode"
 
-Model:
-	greetings+=Greeting*;
-	
-Greeting:
-	'Hello' name=ID '!';
+Program:
+    name=ID ':'   
+    cartas+=Carta+          
+;
+
+Carta:
+    saludo=Saludo
+    cuerpo=Cuerpo
+    despedida=Despedida
+;
+
+Saludo:
+    'Querido compilador:' 
+    name=ID
+;
+
+Despedida:
+    'Con cariño,' 
+    'Tu programador ' name=ID '.'
+;
+
+Cuerpo:
+    instrucciones+=Instruccion*
+;
+
+Instruccion:
+    Asignacion | Funcion | FuncionCall | Operacion | Condicional | Bucle | Entrada | Salida
+;
+
+Asignacion:
+    verboAsignacion=VerboAsignacion 'que' variable=ID conectorAsignacion=ConectorAsignacion 'valer' valor=Expresion '.'
+;
+
+VerboAsignacion:
+    'Establecí' | 'Consideré' | 'Decidí' | 'Pensé' | 'Determiné'
+;
+
+ConectorAsignacion:
+    'debería' | 'debe' | 'tendría que' | 'ha de'
+;
+
+Operacion:
+    'Sumé' valor=Expresion 'a' variable=ID '.'
+    | 'Hice que' variable=ID 'fuera' variableBase=ID 'más' valor=Expresion '.'
+;
+
+Condicional:
+    'Si alguna vez' condicion=Condicion ',' accion=Instruccion
+    ('De lo contrario,' accionElse=Instruccion)?
+;
+
+Condicion:
+    neg=('no')?
+    comparacion=ExpresionComparacion
+    (conj=('y también' | 'o quizás') comparacion2=ExpresionComparacion)*
+;
+
+ExpresionComparacion:
+    variable=ID operador=OperadorComparacion valor=Expresion
+;
+
+OperadorComparacion:
+    'llegaba a' | 'no era' | 'era mayor que' | 'era menor que' | 'era al menos' | 'era como mucho'
+;
+
+Bucle:
+    'Mientras' condicion=Condicion ',' accion=Instruccion
+    ('Continué diciendo:' acciones+=Instruccion)*
+    ('Terminé de repetir.')?
+;
+
+Entrada:
+    'Le pedí al lector que me dijera' variable=ID '.'
+;
+
+Salida:
+    'Hoy le quise contar al mundo sobre: ' mensaje=(STRING | ID) '.'
+;
+
+Funcion:
+    'Como ya le había escrito antes sobre' nombre=ID ',' 'decidí que' parametros=Parametros 'numeros deberían sumarse' accion=Instruccion
+;
+
+Parametros:
+    (ID ('y' ID)*)?
+;
+
+FuncionCall:
+    'Volví a usar la idea de' nombre=ID 'con' valores=Expresiones '.'
+;
+
+Expresiones:
+    Expresion (',' Expresion)*
+;
+
+Expresion:
+    Numero | ID
+;
+
+Numero:
+    LiteralNumero | NumeroCompuesto
+;
+
+LiteralNumero:
+    'cero' | 'uno' | 'dos' | 'tres' | 'cuatro' | 'cinco' | 'seis' | 'siete' | 'ocho' | 'nueve'
+;
+
+NumeroCompuesto:
+    (LiteralNumero 'decenas') ('y' LiteralNumero)?
+;
