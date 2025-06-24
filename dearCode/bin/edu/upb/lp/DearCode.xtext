@@ -1,0 +1,9 @@
+grammar edu.upb.lp.DearCode with org.eclipse.xtext.common.Terminals
+
+generate dearCode "http://www.upb.edu/lp/DearCode"
+
+Model:
+	greetings+=Greeting*;
+	
+Greeting:
+	'Hello' name=ID '!';
