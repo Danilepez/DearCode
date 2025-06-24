@@ -82,16 +82,10 @@ Salida:
 ;
 
 Funcion:
-    'Como ya le había escrito antes sobre' nombre=ID ',' 'decidí que' parametros=Parametros 'numeros deberían sumarse' accion=Instruccion
-;
-
-Parametros:
-    (ID ('y' ID)*)?
-;
+    'Como ya le había escrito antes sobre:' nombre=ID ',' 'decidí que' n=INT 'numeros deberían sumarse' accion=Instruccion;
 
 FuncionCall:
-    'Volví a usar la idea de' nombre=ID 'con' valores=Expresiones '.'
-;
+    'Volví a usar la idea de' nombre=[Funcion|ID] 'con' valores+=Expresion (',' valores+=Expresion)* '.';
 
 Expresiones:
     Expresion (',' Expresion)*
