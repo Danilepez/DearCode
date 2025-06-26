@@ -96,6 +96,24 @@ public interface DearCodeFactory extends EFactory
   Reasignar createReasignar();
 
   /**
+   * Returns a new object of class '<em>Entrada</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Entrada</em>'.
+   * @generated
+   */
+  Entrada createEntrada();
+
+  /**
+   * Returns a new object of class '<em>Salida</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Salida</em>'.
+   * @generated
+   */
+  Salida createSalida();
+
+  /**
    * Returns a new object of class '<em>Valor</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -139,6 +157,159 @@ public interface DearCodeFactory extends EFactory
    * @generated
    */
   MI_ID createMI_ID();
+
+  /**
+   * Returns a new object of class '<em>Condicion</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Condicion</em>'.
+   * @generated
+   */
+  Condicion createCondicion();
+
+  /**
+   * Returns a new object of class '<em>Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Expression</em>'.
+   * @generated
+   */
+  Expression createExpression();
+
+  /**
+   * Returns a new object of class '<em>Int Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Int Literal</em>'.
+   * @generated
+   */
+  IntLiteral createIntLiteral();
+
+  /**
+   * Returns a new object of class '<em>String Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String Literal</em>'.
+   * @generated
+   */
+  StringLiteral createStringLiteral();
+
+  /**
+   * Returns a new object of class '<em>Boolean Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Boolean Literal</em>'.
+   * @generated
+   */
+  BooleanLiteral createBooleanLiteral();
+
+  /**
+   * Returns a new object of class '<em>Variable Ref</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Ref</em>'.
+   * @generated
+   */
+  VariableRef createVariableRef();
+
+  /**
+   * Returns a new object of class '<em>Condicional</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Condicional</em>'.
+   * @generated
+   */
+  Condicional createCondicional();
+
+  /**
+   * Returns a new object of class '<em>Bucle While</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Bucle While</em>'.
+   * @generated
+   */
+  BucleWhile createBucleWhile();
+
+  /**
+   * Returns a new object of class '<em>Bucle For</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Bucle For</em>'.
+   * @generated
+   */
+  BucleFor createBucleFor();
+
+  /**
+   * Returns a new object of class '<em>Funcion</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Funcion</em>'.
+   * @generated
+   */
+  Funcion createFuncion();
+
+  /**
+   * Returns a new object of class '<em>Or Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Or Expr</em>'.
+   * @generated
+   */
+  OrExpr createOrExpr();
+
+  /**
+   * Returns a new object of class '<em>And Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>And Expr</em>'.
+   * @generated
+   */
+  AndExpr createAndExpr();
+
+  /**
+   * Returns a new object of class '<em>Equality Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Equality Expr</em>'.
+   * @generated
+   */
+  EqualityExpr createEqualityExpr();
+
+  /**
+   * Returns a new object of class '<em>Binary Relation</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Binary Relation</em>'.
+   * @generated
+   */
+  BinaryRelation createBinaryRelation();
+
+  /**
+   * Returns a new object of class '<em>Additive Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Additive Expr</em>'.
+   * @generated
+   */
+  AdditiveExpr createAdditiveExpr();
+
+  /**
+   * Returns a new object of class '<em>Multiplicative Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Multiplicative Expr</em>'.
+   * @generated
+   */
+  MultiplicativeExpr createMultiplicativeExpr();
+
+  /**
+   * Returns a new object of class '<em>Not Expr</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Not Expr</em>'.
+   * @generated
+   */
+  NotExpr createNotExpr();
 
   /**
    * Returns the package supported by this factory.

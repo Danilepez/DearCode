@@ -21,12 +21,30 @@ import org.eclipse.xtext.serializer.sequencer.AbstractSyntacticSequencer;
 public class DearCodeSyntacticSequencer extends AbstractSyntacticSequencer {
 
 	protected DearCodeGrammarAccess grammarAccess;
+	protected AbstractElementAlias match_AdditiveExpr_FundidosEnLaLlamaDeKeyword_1_1_1_or_UnidosEnUnSoloSuspiroConKeyword_1_1_0;
+	protected AbstractElementAlias match_BucleFor_CadaDiaDesdeKeyword_0_0_or_PorCadaSuspiroDesdeKeyword_0_1;
+	protected AbstractElementAlias match_BucleWhile_MientrasANSueEsConEsteMomentoHazQueOcurraKeyword_0_1_or_MientrasAunMePiensesKeyword_0_0;
+	protected AbstractElementAlias match_EqualityExpr_CantaConUnMatizDistintoAKeyword_1_1_1_or_LateAlUnSonoConKeyword_1_1_0;
+	protected AbstractElementAlias match_Funcion_DejoEnEstasLNeasUnaPromesaLlamadaKeyword_0_0_0_or_EnLaBrisaEscondoUnDeseoLlamadoKeyword_0_0_2_or_EscriboEnEstasLNeasUnaIntenciNLlamadaKeyword_0_0_1;
+	protected AbstractElementAlias match_MultiplicativeExpr_FortalecidosPorElFuegoDeKeyword_1_1_0_or_ResuenaConElEcoDeKeyword_1_1_2_or_SeparadosEntreLosEcosDeKeyword_1_1_1;
+	protected AbstractElementAlias match_PrimaryExpr_LeftParenthesisKeyword_4_0_a;
+	protected AbstractElementAlias match_PrimaryExpr_LeftParenthesisKeyword_4_0_p;
 	protected AbstractElementAlias match_Saludo_QueridaKeyword_0_1_or_QueridoKeyword_0_0;
+	protected AbstractElementAlias match_SpecialBoolean_ANMePiensasKeyword_0_or_TuVozMeAlcanzaKeyword_1;
 	
 	@Inject
 	protected void init(IGrammarAccess access) {
 		grammarAccess = (DearCodeGrammarAccess) access;
+		match_AdditiveExpr_FundidosEnLaLlamaDeKeyword_1_1_1_or_UnidosEnUnSoloSuspiroConKeyword_1_1_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getAdditiveExprAccess().getFundidosEnLaLlamaDeKeyword_1_1_1()), new TokenAlias(false, false, grammarAccess.getAdditiveExprAccess().getUnidosEnUnSoloSuspiroConKeyword_1_1_0()));
+		match_BucleFor_CadaDiaDesdeKeyword_0_0_or_PorCadaSuspiroDesdeKeyword_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getBucleForAccess().getCadaDiaDesdeKeyword_0_0()), new TokenAlias(false, false, grammarAccess.getBucleForAccess().getPorCadaSuspiroDesdeKeyword_0_1()));
+		match_BucleWhile_MientrasANSueEsConEsteMomentoHazQueOcurraKeyword_0_1_or_MientrasAunMePiensesKeyword_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getBucleWhileAccess().getMientrasANSueEsConEsteMomentoHazQueOcurraKeyword_0_1()), new TokenAlias(false, false, grammarAccess.getBucleWhileAccess().getMientrasAunMePiensesKeyword_0_0()));
+		match_EqualityExpr_CantaConUnMatizDistintoAKeyword_1_1_1_or_LateAlUnSonoConKeyword_1_1_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getEqualityExprAccess().getCantaConUnMatizDistintoAKeyword_1_1_1()), new TokenAlias(false, false, grammarAccess.getEqualityExprAccess().getLateAlUnSonoConKeyword_1_1_0()));
+		match_Funcion_DejoEnEstasLNeasUnaPromesaLlamadaKeyword_0_0_0_or_EnLaBrisaEscondoUnDeseoLlamadoKeyword_0_0_2_or_EscriboEnEstasLNeasUnaIntenciNLlamadaKeyword_0_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getFuncionAccess().getDejoEnEstasLNeasUnaPromesaLlamadaKeyword_0_0_0()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getEnLaBrisaEscondoUnDeseoLlamadoKeyword_0_0_2()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getEscriboEnEstasLNeasUnaIntenciNLlamadaKeyword_0_0_1()));
+		match_MultiplicativeExpr_FortalecidosPorElFuegoDeKeyword_1_1_0_or_ResuenaConElEcoDeKeyword_1_1_2_or_SeparadosEntreLosEcosDeKeyword_1_1_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getMultiplicativeExprAccess().getFortalecidosPorElFuegoDeKeyword_1_1_0()), new TokenAlias(false, false, grammarAccess.getMultiplicativeExprAccess().getResuenaConElEcoDeKeyword_1_1_2()), new TokenAlias(false, false, grammarAccess.getMultiplicativeExprAccess().getSeparadosEntreLosEcosDeKeyword_1_1_1()));
+		match_PrimaryExpr_LeftParenthesisKeyword_4_0_a = new TokenAlias(true, true, grammarAccess.getPrimaryExprAccess().getLeftParenthesisKeyword_4_0());
+		match_PrimaryExpr_LeftParenthesisKeyword_4_0_p = new TokenAlias(true, false, grammarAccess.getPrimaryExprAccess().getLeftParenthesisKeyword_4_0());
 		match_Saludo_QueridaKeyword_0_1_or_QueridoKeyword_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getSaludoAccess().getQueridaKeyword_0_1()), new TokenAlias(false, false, grammarAccess.getSaludoAccess().getQueridoKeyword_0_0()));
+		match_SpecialBoolean_ANMePiensasKeyword_0_or_TuVozMeAlcanzaKeyword_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getSpecialBooleanAccess().getANMePiensasKeyword_0()), new TokenAlias(false, false, grammarAccess.getSpecialBooleanAccess().getTuVozMeAlcanzaKeyword_1()));
 	}
 	
 	@Override
@@ -41,12 +59,160 @@ public class DearCodeSyntacticSequencer extends AbstractSyntacticSequencer {
 		List<INode> transitionNodes = collectNodes(fromNode, toNode);
 		for (AbstractElementAlias syntax : transition.getAmbiguousSyntaxes()) {
 			List<INode> syntaxNodes = getNodesFor(transitionNodes, syntax);
-			if (match_Saludo_QueridaKeyword_0_1_or_QueridoKeyword_0_0.equals(syntax))
+			if (match_AdditiveExpr_FundidosEnLaLlamaDeKeyword_1_1_1_or_UnidosEnUnSoloSuspiroConKeyword_1_1_0.equals(syntax))
+				emit_AdditiveExpr_FundidosEnLaLlamaDeKeyword_1_1_1_or_UnidosEnUnSoloSuspiroConKeyword_1_1_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_BucleFor_CadaDiaDesdeKeyword_0_0_or_PorCadaSuspiroDesdeKeyword_0_1.equals(syntax))
+				emit_BucleFor_CadaDiaDesdeKeyword_0_0_or_PorCadaSuspiroDesdeKeyword_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_BucleWhile_MientrasANSueEsConEsteMomentoHazQueOcurraKeyword_0_1_or_MientrasAunMePiensesKeyword_0_0.equals(syntax))
+				emit_BucleWhile_MientrasANSueEsConEsteMomentoHazQueOcurraKeyword_0_1_or_MientrasAunMePiensesKeyword_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_EqualityExpr_CantaConUnMatizDistintoAKeyword_1_1_1_or_LateAlUnSonoConKeyword_1_1_0.equals(syntax))
+				emit_EqualityExpr_CantaConUnMatizDistintoAKeyword_1_1_1_or_LateAlUnSonoConKeyword_1_1_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Funcion_DejoEnEstasLNeasUnaPromesaLlamadaKeyword_0_0_0_or_EnLaBrisaEscondoUnDeseoLlamadoKeyword_0_0_2_or_EscriboEnEstasLNeasUnaIntenciNLlamadaKeyword_0_0_1.equals(syntax))
+				emit_Funcion_DejoEnEstasLNeasUnaPromesaLlamadaKeyword_0_0_0_or_EnLaBrisaEscondoUnDeseoLlamadoKeyword_0_0_2_or_EscriboEnEstasLNeasUnaIntenciNLlamadaKeyword_0_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_MultiplicativeExpr_FortalecidosPorElFuegoDeKeyword_1_1_0_or_ResuenaConElEcoDeKeyword_1_1_2_or_SeparadosEntreLosEcosDeKeyword_1_1_1.equals(syntax))
+				emit_MultiplicativeExpr_FortalecidosPorElFuegoDeKeyword_1_1_0_or_ResuenaConElEcoDeKeyword_1_1_2_or_SeparadosEntreLosEcosDeKeyword_1_1_1(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_PrimaryExpr_LeftParenthesisKeyword_4_0_a.equals(syntax))
+				emit_PrimaryExpr_LeftParenthesisKeyword_4_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_PrimaryExpr_LeftParenthesisKeyword_4_0_p.equals(syntax))
+				emit_PrimaryExpr_LeftParenthesisKeyword_4_0_p(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Saludo_QueridaKeyword_0_1_or_QueridoKeyword_0_0.equals(syntax))
 				emit_Saludo_QueridaKeyword_0_1_or_QueridoKeyword_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_SpecialBoolean_ANMePiensasKeyword_0_or_TuVozMeAlcanzaKeyword_1.equals(syntax))
+				emit_SpecialBoolean_ANMePiensasKeyword_0_or_TuVozMeAlcanzaKeyword_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else acceptNodes(getLastNavigableState(), syntaxNodes);
 		}
 	}
 
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'unidos en un solo suspiro con' | 'fundidos en la llama de'
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     {AdditiveExpr.left=} (ambiguity) right=MultiplicativeExpr
+	 
+	 * </pre>
+	 */
+	protected void emit_AdditiveExpr_FundidosEnLaLlamaDeKeyword_1_1_1_or_UnidosEnUnSoloSuspiroConKeyword_1_1_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'Cada dia, desde' | 'Por cada suspiro desde'
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) condicion=Condicion
+	 
+	 * </pre>
+	 */
+	protected void emit_BucleFor_CadaDiaDesdeKeyword_0_0_or_PorCadaSuspiroDesdeKeyword_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'Mientras aun me pienses' | 'Mientras aún sueñes con este momento, haz que ocurra'
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) condicion=Condicion
+	 
+	 * </pre>
+	 */
+	protected void emit_BucleWhile_MientrasANSueEsConEsteMomentoHazQueOcurraKeyword_0_1_or_MientrasAunMePiensesKeyword_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'late al unísono con' | 'canta con un matiz distinto a'
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     {EqualityExpr.left=} (ambiguity) right=RelationalExpr
+	 
+	 * </pre>
+	 */
+	protected void emit_EqualityExpr_CantaConUnMatizDistintoAKeyword_1_1_1_or_LateAlUnSonoConKeyword_1_1_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'Dejo en estas líneas una promesa llamada' | 'Escribo en estas líneas una intención llamada' | 'En la brisa escondo un deseo llamado'
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) name=MI_ID
+	 
+	 * </pre>
+	 */
+	protected void emit_Funcion_DejoEnEstasLNeasUnaPromesaLlamadaKeyword_0_0_0_or_EnLaBrisaEscondoUnDeseoLlamadoKeyword_0_0_2_or_EscriboEnEstasLNeasUnaIntenciNLlamadaKeyword_0_0_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'fortalecidos por el fuego de' | 'separados entre los ecos de' | 'resuena con el eco de'
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     {MultiplicativeExpr.left=} (ambiguity) right=UnaryExpr
+	 
+	 * </pre>
+	 */
+	protected void emit_MultiplicativeExpr_FortalecidosPorElFuegoDeKeyword_1_1_0_or_ResuenaConElEcoDeKeyword_1_1_2_or_SeparadosEntreLosEcosDeKeyword_1_1_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     '('*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) 'no creo que' expr=PrimaryExpr
+	 *     (rule start) (ambiguity) ('aún me piensas' | 'tu voz me alcanza') (rule start)
+	 *     (rule start) (ambiguity) name=MI_ID
+	 *     (rule start) (ambiguity) value='jamás'
+	 *     (rule start) (ambiguity) value='siempre'
+	 *     (rule start) (ambiguity) value=INT
+	 *     (rule start) (ambiguity) value=STRING
+	 *     (rule start) (ambiguity) {AdditiveExpr.left=}
+	 *     (rule start) (ambiguity) {AndExpr.left=}
+	 *     (rule start) (ambiguity) {BinaryRelation.left=}
+	 *     (rule start) (ambiguity) {EqualityExpr.left=}
+	 *     (rule start) (ambiguity) {MultiplicativeExpr.left=}
+	 *     (rule start) (ambiguity) {OrExpr.left=}
+	 
+	 * </pre>
+	 */
+	protected void emit_PrimaryExpr_LeftParenthesisKeyword_4_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     '('+
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) (ambiguity) 'no creo que' expr=PrimaryExpr
+	 *     (rule start) (ambiguity) {AdditiveExpr.left=}
+	 *     (rule start) (ambiguity) {AndExpr.left=}
+	 *     (rule start) (ambiguity) {BinaryRelation.left=}
+	 *     (rule start) (ambiguity) {EqualityExpr.left=}
+	 *     (rule start) (ambiguity) {MultiplicativeExpr.left=}
+	 *     (rule start) (ambiguity) {OrExpr.left=}
+	 
+	 * </pre>
+	 */
+	protected void emit_PrimaryExpr_LeftParenthesisKeyword_4_0_p(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
 	/**
 	 * <pre>
 	 * Ambiguous syntax:
@@ -58,6 +224,21 @@ public class DearCodeSyntacticSequencer extends AbstractSyntacticSequencer {
 	 * </pre>
 	 */
 	protected void emit_Saludo_QueridaKeyword_0_1_or_QueridoKeyword_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
+	 *     'aún me piensas' | 'tu voz me alcanza'
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     (rule start) '('* (ambiguity) (rule start)
+	 *     (rule start) (ambiguity) (rule start)
+	 
+	 * </pre>
+	 */
+	protected void emit_SpecialBoolean_ANMePiensasKeyword_0_or_TuVozMeAlcanzaKeyword_1(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	

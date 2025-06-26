@@ -4,17 +4,35 @@
 package edu.upb.lp.serializer;
 
 import com.google.inject.Inject;
+import edu.upb.lp.dearCode.AdditiveExpr;
+import edu.upb.lp.dearCode.AndExpr;
+import edu.upb.lp.dearCode.BinaryRelation;
+import edu.upb.lp.dearCode.BooleanLiteral;
+import edu.upb.lp.dearCode.BucleFor;
+import edu.upb.lp.dearCode.BucleWhile;
 import edu.upb.lp.dearCode.Carta;
 import edu.upb.lp.dearCode.Compuesto;
+import edu.upb.lp.dearCode.Condicional;
 import edu.upb.lp.dearCode.Cuerpo;
 import edu.upb.lp.dearCode.DearCodePackage;
 import edu.upb.lp.dearCode.Declarar;
 import edu.upb.lp.dearCode.Despedida;
+import edu.upb.lp.dearCode.Entrada;
+import edu.upb.lp.dearCode.EqualityExpr;
+import edu.upb.lp.dearCode.Expression;
+import edu.upb.lp.dearCode.Funcion;
+import edu.upb.lp.dearCode.IntLiteral;
 import edu.upb.lp.dearCode.MI_ID;
+import edu.upb.lp.dearCode.MultiplicativeExpr;
+import edu.upb.lp.dearCode.NotExpr;
+import edu.upb.lp.dearCode.OrExpr;
 import edu.upb.lp.dearCode.Program;
 import edu.upb.lp.dearCode.Reasignar;
+import edu.upb.lp.dearCode.Salida;
 import edu.upb.lp.dearCode.Saludo;
 import edu.upb.lp.dearCode.Simple;
+import edu.upb.lp.dearCode.StringLiteral;
+import edu.upb.lp.dearCode.VariableRef;
 import edu.upb.lp.services.DearCodeGrammarAccess;
 import java.util.Set;
 import org.eclipse.emf.ecore.EObject;
@@ -41,11 +59,32 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		Set<Parameter> parameters = context.getEnabledBooleanParameters();
 		if (epackage == DearCodePackage.eINSTANCE)
 			switch (semanticObject.eClass().getClassifierID()) {
+			case DearCodePackage.ADDITIVE_EXPR:
+				sequence_AdditiveExpr(context, (AdditiveExpr) semanticObject); 
+				return; 
+			case DearCodePackage.AND_EXPR:
+				sequence_AndExpr(context, (AndExpr) semanticObject); 
+				return; 
+			case DearCodePackage.BINARY_RELATION:
+				sequence_RelationalExpr(context, (BinaryRelation) semanticObject); 
+				return; 
+			case DearCodePackage.BOOLEAN_LITERAL:
+				sequence_BooleanLiteral(context, (BooleanLiteral) semanticObject); 
+				return; 
+			case DearCodePackage.BUCLE_FOR:
+				sequence_BucleFor(context, (BucleFor) semanticObject); 
+				return; 
+			case DearCodePackage.BUCLE_WHILE:
+				sequence_BucleWhile(context, (BucleWhile) semanticObject); 
+				return; 
 			case DearCodePackage.CARTA:
 				sequence_Carta(context, (Carta) semanticObject); 
 				return; 
 			case DearCodePackage.COMPUESTO:
 				sequence_Compuesto(context, (Compuesto) semanticObject); 
+				return; 
+			case DearCodePackage.CONDICIONAL:
+				sequence_Condicional(context, (Condicional) semanticObject); 
 				return; 
 			case DearCodePackage.CUERPO:
 				sequence_Cuerpo(context, (Cuerpo) semanticObject); 
@@ -56,8 +95,32 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case DearCodePackage.DESPEDIDA:
 				sequence_Despedida(context, (Despedida) semanticObject); 
 				return; 
+			case DearCodePackage.ENTRADA:
+				sequence_Entrada(context, (Entrada) semanticObject); 
+				return; 
+			case DearCodePackage.EQUALITY_EXPR:
+				sequence_EqualityExpr(context, (EqualityExpr) semanticObject); 
+				return; 
+			case DearCodePackage.EXPRESSION:
+				sequence_FunctionCall(context, (Expression) semanticObject); 
+				return; 
+			case DearCodePackage.FUNCION:
+				sequence_Funcion(context, (Funcion) semanticObject); 
+				return; 
+			case DearCodePackage.INT_LITERAL:
+				sequence_IntLiteral(context, (IntLiteral) semanticObject); 
+				return; 
 			case DearCodePackage.MI_ID:
 				sequence_MI_ID(context, (MI_ID) semanticObject); 
+				return; 
+			case DearCodePackage.MULTIPLICATIVE_EXPR:
+				sequence_MultiplicativeExpr(context, (MultiplicativeExpr) semanticObject); 
+				return; 
+			case DearCodePackage.NOT_EXPR:
+				sequence_UnaryExpr(context, (NotExpr) semanticObject); 
+				return; 
+			case DearCodePackage.OR_EXPR:
+				sequence_OrExpr(context, (OrExpr) semanticObject); 
 				return; 
 			case DearCodePackage.PROGRAM:
 				sequence_Program(context, (Program) semanticObject); 
@@ -65,16 +128,165 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case DearCodePackage.REASIGNAR:
 				sequence_Reasignar(context, (Reasignar) semanticObject); 
 				return; 
+			case DearCodePackage.SALIDA:
+				sequence_Salida(context, (Salida) semanticObject); 
+				return; 
 			case DearCodePackage.SALUDO:
 				sequence_Saludo(context, (Saludo) semanticObject); 
 				return; 
 			case DearCodePackage.SIMPLE:
 				sequence_Simple(context, (Simple) semanticObject); 
 				return; 
+			case DearCodePackage.STRING_LITERAL:
+				sequence_StringLiteral(context, (StringLiteral) semanticObject); 
+				return; 
+			case DearCodePackage.VARIABLE_REF:
+				sequence_VariableRef(context, (VariableRef) semanticObject); 
+				return; 
 			}
 		if (errorAcceptor != null)
 			errorAcceptor.accept(diagnosticProvider.createInvalidContextOrTypeDiagnostic(semanticObject, context));
 	}
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Valor returns AdditiveExpr
+	 *     Condicion returns AdditiveExpr
+	 *     Expression returns AdditiveExpr
+	 *     OrExpr returns AdditiveExpr
+	 *     OrExpr.OrExpr_1_0 returns AdditiveExpr
+	 *     AndExpr returns AdditiveExpr
+	 *     AndExpr.AndExpr_1_0 returns AdditiveExpr
+	 *     EqualityExpr returns AdditiveExpr
+	 *     EqualityExpr.EqualityExpr_1_0 returns AdditiveExpr
+	 *     RelationalExpr returns AdditiveExpr
+	 *     RelationalExpr.BinaryRelation_1_0 returns AdditiveExpr
+	 *     AdditiveExpr returns AdditiveExpr
+	 *     AdditiveExpr.AdditiveExpr_1_0 returns AdditiveExpr
+	 *     MultiplicativeExpr returns AdditiveExpr
+	 *     MultiplicativeExpr.MultiplicativeExpr_1_0 returns AdditiveExpr
+	 *     UnaryExpr returns AdditiveExpr
+	 *     PrimaryExpr returns AdditiveExpr
+	 *
+	 * Constraint:
+	 *     (left=AdditiveExpr_AdditiveExpr_1_0 right=MultiplicativeExpr)
+	 * </pre>
+	 */
+	protected void sequence_AdditiveExpr(ISerializationContext context, AdditiveExpr semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.ADDITIVE_EXPR__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.ADDITIVE_EXPR__LEFT));
+			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.ADDITIVE_EXPR__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.ADDITIVE_EXPR__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAdditiveExprAccess().getAdditiveExprLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getAdditiveExprAccess().getRightMultiplicativeExprParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Valor returns AndExpr
+	 *     Condicion returns AndExpr
+	 *     Expression returns AndExpr
+	 *     OrExpr returns AndExpr
+	 *     OrExpr.OrExpr_1_0 returns AndExpr
+	 *     AndExpr returns AndExpr
+	 *     AndExpr.AndExpr_1_0 returns AndExpr
+	 *     EqualityExpr returns AndExpr
+	 *     EqualityExpr.EqualityExpr_1_0 returns AndExpr
+	 *     RelationalExpr returns AndExpr
+	 *     RelationalExpr.BinaryRelation_1_0 returns AndExpr
+	 *     AdditiveExpr returns AndExpr
+	 *     AdditiveExpr.AdditiveExpr_1_0 returns AndExpr
+	 *     MultiplicativeExpr returns AndExpr
+	 *     MultiplicativeExpr.MultiplicativeExpr_1_0 returns AndExpr
+	 *     UnaryExpr returns AndExpr
+	 *     PrimaryExpr returns AndExpr
+	 *
+	 * Constraint:
+	 *     (left=AndExpr_AndExpr_1_0 right=EqualityExpr)
+	 * </pre>
+	 */
+	protected void sequence_AndExpr(ISerializationContext context, AndExpr semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.AND_EXPR__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.AND_EXPR__LEFT));
+			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.AND_EXPR__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.AND_EXPR__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getAndExprAccess().getAndExprLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getAndExprAccess().getRightEqualityExprParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Valor returns BooleanLiteral
+	 *     Condicion returns BooleanLiteral
+	 *     Expression returns BooleanLiteral
+	 *     OrExpr returns BooleanLiteral
+	 *     OrExpr.OrExpr_1_0 returns BooleanLiteral
+	 *     AndExpr returns BooleanLiteral
+	 *     AndExpr.AndExpr_1_0 returns BooleanLiteral
+	 *     EqualityExpr returns BooleanLiteral
+	 *     EqualityExpr.EqualityExpr_1_0 returns BooleanLiteral
+	 *     RelationalExpr returns BooleanLiteral
+	 *     RelationalExpr.BinaryRelation_1_0 returns BooleanLiteral
+	 *     AdditiveExpr returns BooleanLiteral
+	 *     AdditiveExpr.AdditiveExpr_1_0 returns BooleanLiteral
+	 *     MultiplicativeExpr returns BooleanLiteral
+	 *     MultiplicativeExpr.MultiplicativeExpr_1_0 returns BooleanLiteral
+	 *     UnaryExpr returns BooleanLiteral
+	 *     PrimaryExpr returns BooleanLiteral
+	 *     Literal returns BooleanLiteral
+	 *     BooleanLiteral returns BooleanLiteral
+	 *
+	 * Constraint:
+	 *     (value='siempre' | value='jamás')
+	 * </pre>
+	 */
+	protected void sequence_BooleanLiteral(ISerializationContext context, BooleanLiteral semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Instruccion returns BucleFor
+	 *     BucleFor returns BucleFor
+	 *
+	 * Constraint:
+	 *     (condicion=Condicion accionStop=Instruccion instrucciones+=Instruccion+)
+	 * </pre>
+	 */
+	protected void sequence_BucleFor(ISerializationContext context, BucleFor semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Instruccion returns BucleWhile
+	 *     BucleWhile returns BucleWhile
+	 *
+	 * Constraint:
+	 *     (condicion=Condicion instrucciones+=Instruccion+)
+	 * </pre>
+	 */
+	protected void sequence_BucleWhile(ISerializationContext context, BucleWhile semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
 	
 	/**
 	 * <pre>
@@ -121,6 +333,21 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	/**
 	 * <pre>
 	 * Contexts:
+	 *     Instruccion returns Condicional
+	 *     Condicional returns Condicional
+	 *
+	 * Constraint:
+	 *     (condicion=Condicion instruccionesThen+=Instruccion+ instruccionesElse+=Instruccion*)
+	 * </pre>
+	 */
+	protected void sequence_Condicional(ISerializationContext context, Condicional semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     Cuerpo returns Cuerpo
 	 *
 	 * Constraint:
@@ -139,7 +366,14 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Declarar returns Declarar
 	 *
 	 * Constraint:
-	 *     (verboDecl=VerboDeclaracion articulo=Articulo valor=Valor sustantivo=MI_ID (comentario=ANYTEXT | comentario=STRING)?)
+	 *     (
+	 *         verboDecl=VerboDeclaracion 
+	 *         articulo=Articulo 
+	 *         sustantivo=MI_ID 
+	 *         conector=ANYTEXT 
+	 *         valor=Valor 
+	 *         (comentario=ANYTEXT | comentario=STRING)?
+	 *     )
 	 * </pre>
 	 */
 	protected void sequence_Declarar(ISerializationContext context, Declarar semanticObject) {
@@ -170,7 +404,150 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	/**
 	 * <pre>
 	 * Contexts:
-	 *     Valor returns MI_ID
+	 *     Instruccion returns Entrada
+	 *     Entrada returns Entrada
+	 *
+	 * Constraint:
+	 *     variable=MI_ID
+	 * </pre>
+	 */
+	protected void sequence_Entrada(ISerializationContext context, Entrada semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.ENTRADA__VARIABLE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.ENTRADA__VARIABLE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getEntradaAccess().getVariableMI_IDParserRuleCall_1_0(), semanticObject.getVariable());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Valor returns EqualityExpr
+	 *     Condicion returns EqualityExpr
+	 *     Expression returns EqualityExpr
+	 *     OrExpr returns EqualityExpr
+	 *     OrExpr.OrExpr_1_0 returns EqualityExpr
+	 *     AndExpr returns EqualityExpr
+	 *     AndExpr.AndExpr_1_0 returns EqualityExpr
+	 *     EqualityExpr returns EqualityExpr
+	 *     EqualityExpr.EqualityExpr_1_0 returns EqualityExpr
+	 *     RelationalExpr returns EqualityExpr
+	 *     RelationalExpr.BinaryRelation_1_0 returns EqualityExpr
+	 *     AdditiveExpr returns EqualityExpr
+	 *     AdditiveExpr.AdditiveExpr_1_0 returns EqualityExpr
+	 *     MultiplicativeExpr returns EqualityExpr
+	 *     MultiplicativeExpr.MultiplicativeExpr_1_0 returns EqualityExpr
+	 *     UnaryExpr returns EqualityExpr
+	 *     PrimaryExpr returns EqualityExpr
+	 *
+	 * Constraint:
+	 *     (left=EqualityExpr_EqualityExpr_1_0 right=RelationalExpr)
+	 * </pre>
+	 */
+	protected void sequence_EqualityExpr(ISerializationContext context, EqualityExpr semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.EQUALITY_EXPR__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.EQUALITY_EXPR__LEFT));
+			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.EQUALITY_EXPR__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.EQUALITY_EXPR__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getEqualityExprAccess().getEqualityExprLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getEqualityExprAccess().getRightRelationalExprParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Instruccion returns Funcion
+	 *     Funcion returns Funcion
+	 *
+	 * Constraint:
+	 *     (name=MI_ID (parametros+=MI_ID parametros+=MI_ID*)? instrucciones+=Instruccion+ retorno=MI_ID?)
+	 * </pre>
+	 */
+	protected void sequence_Funcion(ISerializationContext context, Funcion semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Valor returns Expression
+	 *     Condicion returns Expression
+	 *     Expression returns Expression
+	 *     OrExpr returns Expression
+	 *     OrExpr.OrExpr_1_0 returns Expression
+	 *     AndExpr returns Expression
+	 *     AndExpr.AndExpr_1_0 returns Expression
+	 *     EqualityExpr returns Expression
+	 *     EqualityExpr.EqualityExpr_1_0 returns Expression
+	 *     RelationalExpr returns Expression
+	 *     RelationalExpr.BinaryRelation_1_0 returns Expression
+	 *     AdditiveExpr returns Expression
+	 *     AdditiveExpr.AdditiveExpr_1_0 returns Expression
+	 *     MultiplicativeExpr returns Expression
+	 *     MultiplicativeExpr.MultiplicativeExpr_1_0 returns Expression
+	 *     UnaryExpr returns Expression
+	 *     FunctionCall returns Expression
+	 *     PrimaryExpr returns Expression
+	 *
+	 * Constraint:
+	 *     (name=MI_ID (args+=Expression args+=Expression*)?)
+	 * </pre>
+	 */
+	protected void sequence_FunctionCall(ISerializationContext context, Expression semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Valor returns IntLiteral
+	 *     Condicion returns IntLiteral
+	 *     Expression returns IntLiteral
+	 *     OrExpr returns IntLiteral
+	 *     OrExpr.OrExpr_1_0 returns IntLiteral
+	 *     AndExpr returns IntLiteral
+	 *     AndExpr.AndExpr_1_0 returns IntLiteral
+	 *     EqualityExpr returns IntLiteral
+	 *     EqualityExpr.EqualityExpr_1_0 returns IntLiteral
+	 *     RelationalExpr returns IntLiteral
+	 *     RelationalExpr.BinaryRelation_1_0 returns IntLiteral
+	 *     AdditiveExpr returns IntLiteral
+	 *     AdditiveExpr.AdditiveExpr_1_0 returns IntLiteral
+	 *     MultiplicativeExpr returns IntLiteral
+	 *     MultiplicativeExpr.MultiplicativeExpr_1_0 returns IntLiteral
+	 *     UnaryExpr returns IntLiteral
+	 *     PrimaryExpr returns IntLiteral
+	 *     Literal returns IntLiteral
+	 *     IntLiteral returns IntLiteral
+	 *
+	 * Constraint:
+	 *     value=INT
+	 * </pre>
+	 */
+	protected void sequence_IntLiteral(ISerializationContext context, IntLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.INT_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.INT_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getIntLiteralAccess().getValueINTTerminalRuleCall_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
 	 *     MI_ID returns MI_ID
 	 *
 	 * Constraint:
@@ -183,7 +560,85 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.MI_ID__NAME));
 		}
 		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getMI_IDAccess().getNameIDTerminalRuleCall_1_0(), semanticObject.getName());
+		feeder.accept(grammarAccess.getMI_IDAccess().getNameIDTerminalRuleCall_0(), semanticObject.getName());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Valor returns MultiplicativeExpr
+	 *     Condicion returns MultiplicativeExpr
+	 *     Expression returns MultiplicativeExpr
+	 *     OrExpr returns MultiplicativeExpr
+	 *     OrExpr.OrExpr_1_0 returns MultiplicativeExpr
+	 *     AndExpr returns MultiplicativeExpr
+	 *     AndExpr.AndExpr_1_0 returns MultiplicativeExpr
+	 *     EqualityExpr returns MultiplicativeExpr
+	 *     EqualityExpr.EqualityExpr_1_0 returns MultiplicativeExpr
+	 *     RelationalExpr returns MultiplicativeExpr
+	 *     RelationalExpr.BinaryRelation_1_0 returns MultiplicativeExpr
+	 *     AdditiveExpr returns MultiplicativeExpr
+	 *     AdditiveExpr.AdditiveExpr_1_0 returns MultiplicativeExpr
+	 *     MultiplicativeExpr returns MultiplicativeExpr
+	 *     MultiplicativeExpr.MultiplicativeExpr_1_0 returns MultiplicativeExpr
+	 *     UnaryExpr returns MultiplicativeExpr
+	 *     PrimaryExpr returns MultiplicativeExpr
+	 *
+	 * Constraint:
+	 *     (left=MultiplicativeExpr_MultiplicativeExpr_1_0 right=UnaryExpr)
+	 * </pre>
+	 */
+	protected void sequence_MultiplicativeExpr(ISerializationContext context, MultiplicativeExpr semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.MULTIPLICATIVE_EXPR__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.MULTIPLICATIVE_EXPR__LEFT));
+			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.MULTIPLICATIVE_EXPR__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.MULTIPLICATIVE_EXPR__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getMultiplicativeExprAccess().getMultiplicativeExprLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getMultiplicativeExprAccess().getRightUnaryExprParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Valor returns OrExpr
+	 *     Condicion returns OrExpr
+	 *     Expression returns OrExpr
+	 *     OrExpr returns OrExpr
+	 *     OrExpr.OrExpr_1_0 returns OrExpr
+	 *     AndExpr returns OrExpr
+	 *     AndExpr.AndExpr_1_0 returns OrExpr
+	 *     EqualityExpr returns OrExpr
+	 *     EqualityExpr.EqualityExpr_1_0 returns OrExpr
+	 *     RelationalExpr returns OrExpr
+	 *     RelationalExpr.BinaryRelation_1_0 returns OrExpr
+	 *     AdditiveExpr returns OrExpr
+	 *     AdditiveExpr.AdditiveExpr_1_0 returns OrExpr
+	 *     MultiplicativeExpr returns OrExpr
+	 *     MultiplicativeExpr.MultiplicativeExpr_1_0 returns OrExpr
+	 *     UnaryExpr returns OrExpr
+	 *     PrimaryExpr returns OrExpr
+	 *
+	 * Constraint:
+	 *     (left=OrExpr_OrExpr_1_0 right=AndExpr)
+	 * </pre>
+	 */
+	protected void sequence_OrExpr(ISerializationContext context, OrExpr semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.OR_EXPR__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.OR_EXPR__LEFT));
+			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.OR_EXPR__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.OR_EXPR__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getOrExprAccess().getOrExprLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getOrExprAccess().getRightAndExprParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
 	}
 	
@@ -209,11 +664,74 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Reasignar returns Reasignar
 	 *
 	 * Constraint:
-	 *     (verboReas=VerboReasignacion sustantivo=MI_ID valor=Valor (comentario=ANYTEXT | comentario=STRING)?)
+	 *     (verboReas=VerboReasignacion conector=ANYTEXT sustantivo=MI_ID valor=Valor (comentario=ANYTEXT | comentario=STRING)?)
 	 * </pre>
 	 */
 	protected void sequence_Reasignar(ISerializationContext context, Reasignar semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Valor returns BinaryRelation
+	 *     Condicion returns BinaryRelation
+	 *     Expression returns BinaryRelation
+	 *     OrExpr returns BinaryRelation
+	 *     OrExpr.OrExpr_1_0 returns BinaryRelation
+	 *     AndExpr returns BinaryRelation
+	 *     AndExpr.AndExpr_1_0 returns BinaryRelation
+	 *     EqualityExpr returns BinaryRelation
+	 *     EqualityExpr.EqualityExpr_1_0 returns BinaryRelation
+	 *     RelationalExpr returns BinaryRelation
+	 *     RelationalExpr.BinaryRelation_1_0 returns BinaryRelation
+	 *     AdditiveExpr returns BinaryRelation
+	 *     AdditiveExpr.AdditiveExpr_1_0 returns BinaryRelation
+	 *     MultiplicativeExpr returns BinaryRelation
+	 *     MultiplicativeExpr.MultiplicativeExpr_1_0 returns BinaryRelation
+	 *     UnaryExpr returns BinaryRelation
+	 *     PrimaryExpr returns BinaryRelation
+	 *
+	 * Constraint:
+	 *     (left=RelationalExpr_BinaryRelation_1_0 op=RelationalOp right=AdditiveExpr)
+	 * </pre>
+	 */
+	protected void sequence_RelationalExpr(ISerializationContext context, BinaryRelation semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.BINARY_RELATION__LEFT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.BINARY_RELATION__LEFT));
+			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.BINARY_RELATION__OP) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.BINARY_RELATION__OP));
+			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.BINARY_RELATION__RIGHT) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.BINARY_RELATION__RIGHT));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getRelationalExprAccess().getBinaryRelationLeftAction_1_0(), semanticObject.getLeft());
+		feeder.accept(grammarAccess.getRelationalExprAccess().getOpRelationalOpParserRuleCall_1_1_0(), semanticObject.getOp());
+		feeder.accept(grammarAccess.getRelationalExprAccess().getRightAdditiveExprParserRuleCall_1_2_0(), semanticObject.getRight());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Instruccion returns Salida
+	 *     Salida returns Salida
+	 *
+	 * Constraint:
+	 *     expresion=Expression
+	 * </pre>
+	 */
+	protected void sequence_Salida(ISerializationContext context, Salida semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.SALIDA__EXPRESION) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.SALIDA__EXPRESION));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getSalidaAccess().getExpresionExpressionParserRuleCall_1_0(), semanticObject.getExpresion());
+		feeder.finish();
 	}
 	
 	
@@ -261,6 +779,117 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 */
 	protected void sequence_Simple(ISerializationContext context, Simple semanticObject) {
 		genericSequencer.createSequence(context, semanticObject);
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Valor returns StringLiteral
+	 *     Condicion returns StringLiteral
+	 *     Expression returns StringLiteral
+	 *     OrExpr returns StringLiteral
+	 *     OrExpr.OrExpr_1_0 returns StringLiteral
+	 *     AndExpr returns StringLiteral
+	 *     AndExpr.AndExpr_1_0 returns StringLiteral
+	 *     EqualityExpr returns StringLiteral
+	 *     EqualityExpr.EqualityExpr_1_0 returns StringLiteral
+	 *     RelationalExpr returns StringLiteral
+	 *     RelationalExpr.BinaryRelation_1_0 returns StringLiteral
+	 *     AdditiveExpr returns StringLiteral
+	 *     AdditiveExpr.AdditiveExpr_1_0 returns StringLiteral
+	 *     MultiplicativeExpr returns StringLiteral
+	 *     MultiplicativeExpr.MultiplicativeExpr_1_0 returns StringLiteral
+	 *     UnaryExpr returns StringLiteral
+	 *     PrimaryExpr returns StringLiteral
+	 *     Literal returns StringLiteral
+	 *     StringLiteral returns StringLiteral
+	 *
+	 * Constraint:
+	 *     value=STRING
+	 * </pre>
+	 */
+	protected void sequence_StringLiteral(ISerializationContext context, StringLiteral semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.STRING_LITERAL__VALUE) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.STRING_LITERAL__VALUE));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getStringLiteralAccess().getValueSTRINGTerminalRuleCall_1_0(), semanticObject.getValue());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Valor returns NotExpr
+	 *     Condicion returns NotExpr
+	 *     Expression returns NotExpr
+	 *     OrExpr returns NotExpr
+	 *     OrExpr.OrExpr_1_0 returns NotExpr
+	 *     AndExpr returns NotExpr
+	 *     AndExpr.AndExpr_1_0 returns NotExpr
+	 *     EqualityExpr returns NotExpr
+	 *     EqualityExpr.EqualityExpr_1_0 returns NotExpr
+	 *     RelationalExpr returns NotExpr
+	 *     RelationalExpr.BinaryRelation_1_0 returns NotExpr
+	 *     AdditiveExpr returns NotExpr
+	 *     AdditiveExpr.AdditiveExpr_1_0 returns NotExpr
+	 *     MultiplicativeExpr returns NotExpr
+	 *     MultiplicativeExpr.MultiplicativeExpr_1_0 returns NotExpr
+	 *     UnaryExpr returns NotExpr
+	 *     PrimaryExpr returns NotExpr
+	 *
+	 * Constraint:
+	 *     expr=PrimaryExpr
+	 * </pre>
+	 */
+	protected void sequence_UnaryExpr(ISerializationContext context, NotExpr semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.NOT_EXPR__EXPR) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.NOT_EXPR__EXPR));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getUnaryExprAccess().getExprPrimaryExprParserRuleCall_0_2_0(), semanticObject.getExpr());
+		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     Valor returns VariableRef
+	 *     Condicion returns VariableRef
+	 *     Expression returns VariableRef
+	 *     OrExpr returns VariableRef
+	 *     OrExpr.OrExpr_1_0 returns VariableRef
+	 *     AndExpr returns VariableRef
+	 *     AndExpr.AndExpr_1_0 returns VariableRef
+	 *     EqualityExpr returns VariableRef
+	 *     EqualityExpr.EqualityExpr_1_0 returns VariableRef
+	 *     RelationalExpr returns VariableRef
+	 *     RelationalExpr.BinaryRelation_1_0 returns VariableRef
+	 *     AdditiveExpr returns VariableRef
+	 *     AdditiveExpr.AdditiveExpr_1_0 returns VariableRef
+	 *     MultiplicativeExpr returns VariableRef
+	 *     MultiplicativeExpr.MultiplicativeExpr_1_0 returns VariableRef
+	 *     UnaryExpr returns VariableRef
+	 *     PrimaryExpr returns VariableRef
+	 *     VariableRef returns VariableRef
+	 *
+	 * Constraint:
+	 *     name=MI_ID
+	 * </pre>
+	 */
+	protected void sequence_VariableRef(ISerializationContext context, VariableRef semanticObject) {
+		if (errorAcceptor != null) {
+			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.EXPRESSION__NAME) == ValueTransient.YES)
+				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.EXPRESSION__NAME));
+		}
+		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
+		feeder.accept(grammarAccess.getVariableRefAccess().getNameMI_IDParserRuleCall_0(), semanticObject.getName());
+		feeder.finish();
 	}
 	
 	

@@ -4,6 +4,12 @@
 package edu.upb.lp.validation;
 
 
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.validation.Check;
+
+import edu.upb.lp.dearCode.Cuerpo;
+import edu.upb.lp.dearCode.Declarar;
+
 /**
  * This class contains custom validation rules. 
  *
@@ -22,4 +28,19 @@ public class DearCodeValidator extends AbstractDearCodeValidator {
 //		}
 //	}
 	
+	@Check
+	public void checkUniqueName(Declarar d) {
+		EObject e = d.eContainer();
+		while (!(e instanceof Cuerpo)) {
+			e = e.eContainer();
+		}
+		Cuerpo c = (Cuerpo) e;
+//		c.getInstrucciones()
+	}
+	
+	
+	@Check
+	public void checkRecursivityOfFunctions() {
+		
+	}
 }

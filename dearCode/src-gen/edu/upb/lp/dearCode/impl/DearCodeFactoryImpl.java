@@ -73,11 +73,30 @@ public class DearCodeFactoryImpl extends EFactoryImpl implements DearCodeFactory
       case DearCodePackage.INSTRUCCION: return createInstruccion();
       case DearCodePackage.DECLARAR: return createDeclarar();
       case DearCodePackage.REASIGNAR: return createReasignar();
+      case DearCodePackage.ENTRADA: return createEntrada();
+      case DearCodePackage.SALIDA: return createSalida();
       case DearCodePackage.VALOR: return createValor();
       case DearCodePackage.NUMERO_LITERAL: return createNumeroLiteral();
       case DearCodePackage.SIMPLE: return createSimple();
       case DearCodePackage.COMPUESTO: return createCompuesto();
       case DearCodePackage.MI_ID: return createMI_ID();
+      case DearCodePackage.CONDICION: return createCondicion();
+      case DearCodePackage.EXPRESSION: return createExpression();
+      case DearCodePackage.INT_LITERAL: return createIntLiteral();
+      case DearCodePackage.STRING_LITERAL: return createStringLiteral();
+      case DearCodePackage.BOOLEAN_LITERAL: return createBooleanLiteral();
+      case DearCodePackage.VARIABLE_REF: return createVariableRef();
+      case DearCodePackage.CONDICIONAL: return createCondicional();
+      case DearCodePackage.BUCLE_WHILE: return createBucleWhile();
+      case DearCodePackage.BUCLE_FOR: return createBucleFor();
+      case DearCodePackage.FUNCION: return createFuncion();
+      case DearCodePackage.OR_EXPR: return createOrExpr();
+      case DearCodePackage.AND_EXPR: return createAndExpr();
+      case DearCodePackage.EQUALITY_EXPR: return createEqualityExpr();
+      case DearCodePackage.BINARY_RELATION: return createBinaryRelation();
+      case DearCodePackage.ADDITIVE_EXPR: return createAdditiveExpr();
+      case DearCodePackage.MULTIPLICATIVE_EXPR: return createMultiplicativeExpr();
+      case DearCodePackage.NOT_EXPR: return createNotExpr();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -185,6 +204,30 @@ public class DearCodeFactoryImpl extends EFactoryImpl implements DearCodeFactory
    * @generated
    */
   @Override
+  public Entrada createEntrada()
+  {
+    EntradaImpl entrada = new EntradaImpl();
+    return entrada;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Salida createSalida()
+  {
+    SalidaImpl salida = new SalidaImpl();
+    return salida;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Valor createValor()
   {
     ValorImpl valor = new ValorImpl();
@@ -237,6 +280,210 @@ public class DearCodeFactoryImpl extends EFactoryImpl implements DearCodeFactory
   {
     MI_IDImpl mI_ID = new MI_IDImpl();
     return mI_ID;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Condicion createCondicion()
+  {
+    CondicionImpl condicion = new CondicionImpl();
+    return condicion;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Expression createExpression()
+  {
+    ExpressionImpl expression = new ExpressionImpl();
+    return expression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public IntLiteral createIntLiteral()
+  {
+    IntLiteralImpl intLiteral = new IntLiteralImpl();
+    return intLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public StringLiteral createStringLiteral()
+  {
+    StringLiteralImpl stringLiteral = new StringLiteralImpl();
+    return stringLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public BooleanLiteral createBooleanLiteral()
+  {
+    BooleanLiteralImpl booleanLiteral = new BooleanLiteralImpl();
+    return booleanLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public VariableRef createVariableRef()
+  {
+    VariableRefImpl variableRef = new VariableRefImpl();
+    return variableRef;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Condicional createCondicional()
+  {
+    CondicionalImpl condicional = new CondicionalImpl();
+    return condicional;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public BucleWhile createBucleWhile()
+  {
+    BucleWhileImpl bucleWhile = new BucleWhileImpl();
+    return bucleWhile;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public BucleFor createBucleFor()
+  {
+    BucleForImpl bucleFor = new BucleForImpl();
+    return bucleFor;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Funcion createFuncion()
+  {
+    FuncionImpl funcion = new FuncionImpl();
+    return funcion;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public OrExpr createOrExpr()
+  {
+    OrExprImpl orExpr = new OrExprImpl();
+    return orExpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public AndExpr createAndExpr()
+  {
+    AndExprImpl andExpr = new AndExprImpl();
+    return andExpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EqualityExpr createEqualityExpr()
+  {
+    EqualityExprImpl equalityExpr = new EqualityExprImpl();
+    return equalityExpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public BinaryRelation createBinaryRelation()
+  {
+    BinaryRelationImpl binaryRelation = new BinaryRelationImpl();
+    return binaryRelation;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public AdditiveExpr createAdditiveExpr()
+  {
+    AdditiveExprImpl additiveExpr = new AdditiveExprImpl();
+    return additiveExpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MultiplicativeExpr createMultiplicativeExpr()
+  {
+    MultiplicativeExprImpl multiplicativeExpr = new MultiplicativeExprImpl();
+    return multiplicativeExpr;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotExpr createNotExpr()
+  {
+    NotExprImpl notExpr = new NotExprImpl();
+    return notExpr;
   }
 
   /**

@@ -3,6 +3,7 @@
  */
 package edu.upb.lp.dearCode;
 
+import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -20,7 +21,7 @@ package edu.upb.lp.dearCode;
  * @model
  * @generated
  */
-public interface MI_ID extends Valor
+public interface MI_ID extends EObject
 {
   /**
    * Returns the value of the '<em><b>Name</b></em>' attribute.
