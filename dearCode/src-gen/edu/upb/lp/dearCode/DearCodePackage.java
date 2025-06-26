@@ -226,40 +226,13 @@ public interface DearCodePackage extends EPackage
   int INSTRUCCION = 5;
 
   /**
-   * The feature id for the '<em><b>Valor</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INSTRUCCION__VALOR = 0;
-
-  /**
-   * The feature id for the '<em><b>Sustantivo</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INSTRUCCION__SUSTANTIVO = 1;
-
-  /**
-   * The feature id for the '<em><b>Comentario</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int INSTRUCCION__COMENTARIO = 2;
-
-  /**
    * The number of structural features of the '<em>Instruccion</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int INSTRUCCION_FEATURE_COUNT = 3;
+  int INSTRUCCION_FEATURE_COUNT = 0;
 
   /**
    * The meta object id for the '{@link edu.upb.lp.dearCode.impl.DeclararImpl <em>Declarar</em>}' class.
@@ -270,33 +243,6 @@ public interface DearCodePackage extends EPackage
    * @generated
    */
   int DECLARAR = 6;
-
-  /**
-   * The feature id for the '<em><b>Valor</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DECLARAR__VALOR = INSTRUCCION__VALOR;
-
-  /**
-   * The feature id for the '<em><b>Sustantivo</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DECLARAR__SUSTANTIVO = INSTRUCCION__SUSTANTIVO;
-
-  /**
-   * The feature id for the '<em><b>Comentario</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int DECLARAR__COMENTARIO = INSTRUCCION__COMENTARIO;
 
   /**
    * The feature id for the '<em><b>Verbo Decl</b></em>' attribute.
@@ -317,13 +263,49 @@ public interface DearCodePackage extends EPackage
   int DECLARAR__ARTICULO = INSTRUCCION_FEATURE_COUNT + 1;
 
   /**
+   * The feature id for the '<em><b>Sustantivo</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DECLARAR__SUSTANTIVO = INSTRUCCION_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Conector</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DECLARAR__CONECTOR = INSTRUCCION_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Valor</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DECLARAR__VALOR = INSTRUCCION_FEATURE_COUNT + 4;
+
+  /**
+   * The feature id for the '<em><b>Comentario</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DECLARAR__COMENTARIO = INSTRUCCION_FEATURE_COUNT + 5;
+
+  /**
    * The number of structural features of the '<em>Declarar</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DECLARAR_FEATURE_COUNT = INSTRUCCION_FEATURE_COUNT + 2;
+  int DECLARAR_FEATURE_COUNT = INSTRUCCION_FEATURE_COUNT + 6;
 
   /**
    * The meta object id for the '{@link edu.upb.lp.dearCode.impl.ReasignarImpl <em>Reasignar</em>}' class.
@@ -336,33 +318,6 @@ public interface DearCodePackage extends EPackage
   int REASIGNAR = 7;
 
   /**
-   * The feature id for the '<em><b>Valor</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REASIGNAR__VALOR = INSTRUCCION__VALOR;
-
-  /**
-   * The feature id for the '<em><b>Sustantivo</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REASIGNAR__SUSTANTIVO = INSTRUCCION__SUSTANTIVO;
-
-  /**
-   * The feature id for the '<em><b>Comentario</b></em>' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int REASIGNAR__COMENTARIO = INSTRUCCION__COMENTARIO;
-
-  /**
    * The feature id for the '<em><b>Verbo Reas</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -372,13 +327,105 @@ public interface DearCodePackage extends EPackage
   int REASIGNAR__VERBO_REAS = INSTRUCCION_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Conector</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REASIGNAR__CONECTOR = INSTRUCCION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Sustantivo</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REASIGNAR__SUSTANTIVO = INSTRUCCION_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Valor</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REASIGNAR__VALOR = INSTRUCCION_FEATURE_COUNT + 3;
+
+  /**
+   * The feature id for the '<em><b>Comentario</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int REASIGNAR__COMENTARIO = INSTRUCCION_FEATURE_COUNT + 4;
+
+  /**
    * The number of structural features of the '<em>Reasignar</em>' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int REASIGNAR_FEATURE_COUNT = INSTRUCCION_FEATURE_COUNT + 1;
+  int REASIGNAR_FEATURE_COUNT = INSTRUCCION_FEATURE_COUNT + 5;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.dearCode.impl.EntradaImpl <em>Entrada</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.dearCode.impl.EntradaImpl
+   * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getEntrada()
+   * @generated
+   */
+  int ENTRADA = 8;
+
+  /**
+   * The feature id for the '<em><b>Variable</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTRADA__VARIABLE = INSTRUCCION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Entrada</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ENTRADA_FEATURE_COUNT = INSTRUCCION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.dearCode.impl.SalidaImpl <em>Salida</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.dearCode.impl.SalidaImpl
+   * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getSalida()
+   * @generated
+   */
+  int SALIDA = 9;
+
+  /**
+   * The feature id for the '<em><b>Expresion</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SALIDA__EXPRESION = INSTRUCCION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Salida</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int SALIDA_FEATURE_COUNT = INSTRUCCION_FEATURE_COUNT + 1;
 
   /**
    * The meta object id for the '{@link edu.upb.lp.dearCode.impl.ValorImpl <em>Valor</em>}' class.
@@ -388,7 +435,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getValor()
    * @generated
    */
-  int VALOR = 8;
+  int VALOR = 10;
 
   /**
    * The number of structural features of the '<em>Valor</em>' class.
@@ -407,7 +454,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getNumeroLiteral()
    * @generated
    */
-  int NUMERO_LITERAL = 9;
+  int NUMERO_LITERAL = 11;
 
   /**
    * The number of structural features of the '<em>Numero Literal</em>' class.
@@ -426,7 +473,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getSimple()
    * @generated
    */
-  int SIMPLE = 10;
+  int SIMPLE = 12;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -454,7 +501,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getCompuesto()
    * @generated
    */
-  int COMPUESTO = 11;
+  int COMPUESTO = 13;
 
   /**
    * The feature id for the '<em><b>Cantidad</b></em>' containment reference.
@@ -500,7 +547,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getMI_ID()
    * @generated
    */
-  int MI_ID = 12;
+  int MI_ID = 14;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -509,7 +556,7 @@ public interface DearCodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MI_ID__NAME = VALOR_FEATURE_COUNT + 0;
+  int MI_ID__NAME = 0;
 
   /**
    * The number of structural features of the '<em>MI ID</em>' class.
@@ -518,7 +565,807 @@ public interface DearCodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int MI_ID_FEATURE_COUNT = VALOR_FEATURE_COUNT + 1;
+  int MI_ID_FEATURE_COUNT = 1;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.dearCode.impl.CondicionImpl <em>Condicion</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.dearCode.impl.CondicionImpl
+   * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getCondicion()
+   * @generated
+   */
+  int CONDICION = 15;
+
+  /**
+   * The number of structural features of the '<em>Condicion</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDICION_FEATURE_COUNT = 0;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.dearCode.impl.ExpressionImpl <em>Expression</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.dearCode.impl.ExpressionImpl
+   * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getExpression()
+   * @generated
+   */
+  int EXPRESSION = 16;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION__NAME = VALOR_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Args</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION__ARGS = VALOR_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Expression</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EXPRESSION_FEATURE_COUNT = VALOR_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.dearCode.impl.IntLiteralImpl <em>Int Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.dearCode.impl.IntLiteralImpl
+   * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getIntLiteral()
+   * @generated
+   */
+  int INT_LITERAL = 17;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INT_LITERAL__NAME = EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Args</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INT_LITERAL__ARGS = EXPRESSION__ARGS;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INT_LITERAL__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Int Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int INT_LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.dearCode.impl.StringLiteralImpl <em>String Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.dearCode.impl.StringLiteralImpl
+   * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getStringLiteral()
+   * @generated
+   */
+  int STRING_LITERAL = 18;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__NAME = EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Args</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__ARGS = EXPRESSION__ARGS;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>String Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int STRING_LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.dearCode.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.dearCode.impl.BooleanLiteralImpl
+   * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getBooleanLiteral()
+   * @generated
+   */
+  int BOOLEAN_LITERAL = 19;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__NAME = EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Args</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__ARGS = EXPRESSION__ARGS;
+
+  /**
+   * The feature id for the '<em><b>Value</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL__VALUE = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Boolean Literal</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BOOLEAN_LITERAL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.dearCode.impl.VariableRefImpl <em>Variable Ref</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.dearCode.impl.VariableRefImpl
+   * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getVariableRef()
+   * @generated
+   */
+  int VARIABLE_REF = 20;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_REF__NAME = EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Args</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_REF__ARGS = EXPRESSION__ARGS;
+
+  /**
+   * The number of structural features of the '<em>Variable Ref</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int VARIABLE_REF_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.dearCode.impl.CondicionalImpl <em>Condicional</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.dearCode.impl.CondicionalImpl
+   * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getCondicional()
+   * @generated
+   */
+  int CONDICIONAL = 21;
+
+  /**
+   * The feature id for the '<em><b>Condicion</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDICIONAL__CONDICION = INSTRUCCION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Instrucciones Then</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDICIONAL__INSTRUCCIONES_THEN = INSTRUCCION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Instrucciones Else</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDICIONAL__INSTRUCCIONES_ELSE = INSTRUCCION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Condicional</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDICIONAL_FEATURE_COUNT = INSTRUCCION_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.dearCode.impl.BucleWhileImpl <em>Bucle While</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.dearCode.impl.BucleWhileImpl
+   * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getBucleWhile()
+   * @generated
+   */
+  int BUCLE_WHILE = 22;
+
+  /**
+   * The feature id for the '<em><b>Condicion</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUCLE_WHILE__CONDICION = INSTRUCCION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Instrucciones</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUCLE_WHILE__INSTRUCCIONES = INSTRUCCION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Bucle While</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUCLE_WHILE_FEATURE_COUNT = INSTRUCCION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.dearCode.impl.BucleForImpl <em>Bucle For</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.dearCode.impl.BucleForImpl
+   * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getBucleFor()
+   * @generated
+   */
+  int BUCLE_FOR = 23;
+
+  /**
+   * The feature id for the '<em><b>Condicion</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUCLE_FOR__CONDICION = INSTRUCCION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Accion Stop</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUCLE_FOR__ACCION_STOP = INSTRUCCION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Instrucciones</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUCLE_FOR__INSTRUCCIONES = INSTRUCCION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Bucle For</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BUCLE_FOR_FEATURE_COUNT = INSTRUCCION_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.dearCode.impl.FuncionImpl <em>Funcion</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.dearCode.impl.FuncionImpl
+   * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getFuncion()
+   * @generated
+   */
+  int FUNCION = 24;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCION__NAME = INSTRUCCION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Parametros</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCION__PARAMETROS = INSTRUCCION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Instrucciones</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCION__INSTRUCCIONES = INSTRUCCION_FEATURE_COUNT + 2;
+
+  /**
+   * The feature id for the '<em><b>Retorno</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCION__RETORNO = INSTRUCCION_FEATURE_COUNT + 3;
+
+  /**
+   * The number of structural features of the '<em>Funcion</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int FUNCION_FEATURE_COUNT = INSTRUCCION_FEATURE_COUNT + 4;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.dearCode.impl.OrExprImpl <em>Or Expr</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.dearCode.impl.OrExprImpl
+   * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getOrExpr()
+   * @generated
+   */
+  int OR_EXPR = 25;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR_EXPR__NAME = EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Args</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR_EXPR__ARGS = EXPRESSION__ARGS;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR_EXPR__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR_EXPR__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Or Expr</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int OR_EXPR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.dearCode.impl.AndExprImpl <em>And Expr</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.dearCode.impl.AndExprImpl
+   * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getAndExpr()
+   * @generated
+   */
+  int AND_EXPR = 26;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPR__NAME = EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Args</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPR__ARGS = EXPRESSION__ARGS;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPR__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPR__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>And Expr</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int AND_EXPR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.dearCode.impl.EqualityExprImpl <em>Equality Expr</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.dearCode.impl.EqualityExprImpl
+   * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getEqualityExpr()
+   * @generated
+   */
+  int EQUALITY_EXPR = 27;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQUALITY_EXPR__NAME = EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Args</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQUALITY_EXPR__ARGS = EXPRESSION__ARGS;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQUALITY_EXPR__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQUALITY_EXPR__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Equality Expr</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int EQUALITY_EXPR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.dearCode.impl.BinaryRelationImpl <em>Binary Relation</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.dearCode.impl.BinaryRelationImpl
+   * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getBinaryRelation()
+   * @generated
+   */
+  int BINARY_RELATION = 28;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BINARY_RELATION__NAME = EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Args</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BINARY_RELATION__ARGS = EXPRESSION__ARGS;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BINARY_RELATION__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Op</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BINARY_RELATION__OP = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BINARY_RELATION__RIGHT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The number of structural features of the '<em>Binary Relation</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int BINARY_RELATION_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.dearCode.impl.AdditiveExprImpl <em>Additive Expr</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.dearCode.impl.AdditiveExprImpl
+   * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getAdditiveExpr()
+   * @generated
+   */
+  int ADDITIVE_EXPR = 29;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITIVE_EXPR__NAME = EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Args</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITIVE_EXPR__ARGS = EXPRESSION__ARGS;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITIVE_EXPR__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITIVE_EXPR__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Additive Expr</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int ADDITIVE_EXPR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.dearCode.impl.MultiplicativeExprImpl <em>Multiplicative Expr</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.dearCode.impl.MultiplicativeExprImpl
+   * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getMultiplicativeExpr()
+   * @generated
+   */
+  int MULTIPLICATIVE_EXPR = 30;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATIVE_EXPR__NAME = EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Args</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATIVE_EXPR__ARGS = EXPRESSION__ARGS;
+
+  /**
+   * The feature id for the '<em><b>Left</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATIVE_EXPR__LEFT = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The feature id for the '<em><b>Right</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATIVE_EXPR__RIGHT = EXPRESSION_FEATURE_COUNT + 1;
+
+  /**
+   * The number of structural features of the '<em>Multiplicative Expr</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int MULTIPLICATIVE_EXPR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
+
+  /**
+   * The meta object id for the '{@link edu.upb.lp.dearCode.impl.NotExprImpl <em>Not Expr</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.dearCode.impl.NotExprImpl
+   * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getNotExpr()
+   * @generated
+   */
+  int NOT_EXPR = 31;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NOT_EXPR__NAME = EXPRESSION__NAME;
+
+  /**
+   * The feature id for the '<em><b>Args</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NOT_EXPR__ARGS = EXPRESSION__ARGS;
+
+  /**
+   * The feature id for the '<em><b>Expr</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NOT_EXPR__EXPR = EXPRESSION_FEATURE_COUNT + 0;
+
+  /**
+   * The number of structural features of the '<em>Not Expr</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int NOT_EXPR_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 1;
 
 
   /**
@@ -659,39 +1506,6 @@ public interface DearCodePackage extends EPackage
   EClass getInstruccion();
 
   /**
-   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.Instruccion#getValor <em>Valor</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Valor</em>'.
-   * @see edu.upb.lp.dearCode.Instruccion#getValor()
-   * @see #getInstruccion()
-   * @generated
-   */
-  EReference getInstruccion_Valor();
-
-  /**
-   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.Instruccion#getSustantivo <em>Sustantivo</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Sustantivo</em>'.
-   * @see edu.upb.lp.dearCode.Instruccion#getSustantivo()
-   * @see #getInstruccion()
-   * @generated
-   */
-  EReference getInstruccion_Sustantivo();
-
-  /**
-   * Returns the meta object for the attribute '{@link edu.upb.lp.dearCode.Instruccion#getComentario <em>Comentario</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the attribute '<em>Comentario</em>'.
-   * @see edu.upb.lp.dearCode.Instruccion#getComentario()
-   * @see #getInstruccion()
-   * @generated
-   */
-  EAttribute getInstruccion_Comentario();
-
-  /**
    * Returns the meta object for class '{@link edu.upb.lp.dearCode.Declarar <em>Declarar</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -724,6 +1538,50 @@ public interface DearCodePackage extends EPackage
   EAttribute getDeclarar_Articulo();
 
   /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.Declarar#getSustantivo <em>Sustantivo</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Sustantivo</em>'.
+   * @see edu.upb.lp.dearCode.Declarar#getSustantivo()
+   * @see #getDeclarar()
+   * @generated
+   */
+  EReference getDeclarar_Sustantivo();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.dearCode.Declarar#getConector <em>Conector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Conector</em>'.
+   * @see edu.upb.lp.dearCode.Declarar#getConector()
+   * @see #getDeclarar()
+   * @generated
+   */
+  EAttribute getDeclarar_Conector();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.Declarar#getValor <em>Valor</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Valor</em>'.
+   * @see edu.upb.lp.dearCode.Declarar#getValor()
+   * @see #getDeclarar()
+   * @generated
+   */
+  EReference getDeclarar_Valor();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.dearCode.Declarar#getComentario <em>Comentario</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Comentario</em>'.
+   * @see edu.upb.lp.dearCode.Declarar#getComentario()
+   * @see #getDeclarar()
+   * @generated
+   */
+  EAttribute getDeclarar_Comentario();
+
+  /**
    * Returns the meta object for class '{@link edu.upb.lp.dearCode.Reasignar <em>Reasignar</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -743,6 +1601,92 @@ public interface DearCodePackage extends EPackage
    * @generated
    */
   EAttribute getReasignar_VerboReas();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.dearCode.Reasignar#getConector <em>Conector</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Conector</em>'.
+   * @see edu.upb.lp.dearCode.Reasignar#getConector()
+   * @see #getReasignar()
+   * @generated
+   */
+  EAttribute getReasignar_Conector();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.Reasignar#getSustantivo <em>Sustantivo</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Sustantivo</em>'.
+   * @see edu.upb.lp.dearCode.Reasignar#getSustantivo()
+   * @see #getReasignar()
+   * @generated
+   */
+  EReference getReasignar_Sustantivo();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.Reasignar#getValor <em>Valor</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Valor</em>'.
+   * @see edu.upb.lp.dearCode.Reasignar#getValor()
+   * @see #getReasignar()
+   * @generated
+   */
+  EReference getReasignar_Valor();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.dearCode.Reasignar#getComentario <em>Comentario</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Comentario</em>'.
+   * @see edu.upb.lp.dearCode.Reasignar#getComentario()
+   * @see #getReasignar()
+   * @generated
+   */
+  EAttribute getReasignar_Comentario();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.dearCode.Entrada <em>Entrada</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Entrada</em>'.
+   * @see edu.upb.lp.dearCode.Entrada
+   * @generated
+   */
+  EClass getEntrada();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.Entrada#getVariable <em>Variable</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Variable</em>'.
+   * @see edu.upb.lp.dearCode.Entrada#getVariable()
+   * @see #getEntrada()
+   * @generated
+   */
+  EReference getEntrada_Variable();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.dearCode.Salida <em>Salida</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Salida</em>'.
+   * @see edu.upb.lp.dearCode.Salida
+   * @generated
+   */
+  EClass getSalida();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.Salida#getExpresion <em>Expresion</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expresion</em>'.
+   * @see edu.upb.lp.dearCode.Salida#getExpresion()
+   * @see #getSalida()
+   * @generated
+   */
+  EReference getSalida_Expresion();
 
   /**
    * Returns the meta object for class '{@link edu.upb.lp.dearCode.Valor <em>Valor</em>}'.
@@ -848,6 +1792,517 @@ public interface DearCodePackage extends EPackage
    * @generated
    */
   EAttribute getMI_ID_Name();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.dearCode.Condicion <em>Condicion</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Condicion</em>'.
+   * @see edu.upb.lp.dearCode.Condicion
+   * @generated
+   */
+  EClass getCondicion();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.dearCode.Expression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Expression</em>'.
+   * @see edu.upb.lp.dearCode.Expression
+   * @generated
+   */
+  EClass getExpression();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.Expression#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Name</em>'.
+   * @see edu.upb.lp.dearCode.Expression#getName()
+   * @see #getExpression()
+   * @generated
+   */
+  EReference getExpression_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link edu.upb.lp.dearCode.Expression#getArgs <em>Args</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Args</em>'.
+   * @see edu.upb.lp.dearCode.Expression#getArgs()
+   * @see #getExpression()
+   * @generated
+   */
+  EReference getExpression_Args();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.dearCode.IntLiteral <em>Int Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Int Literal</em>'.
+   * @see edu.upb.lp.dearCode.IntLiteral
+   * @generated
+   */
+  EClass getIntLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.dearCode.IntLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see edu.upb.lp.dearCode.IntLiteral#getValue()
+   * @see #getIntLiteral()
+   * @generated
+   */
+  EAttribute getIntLiteral_Value();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.dearCode.StringLiteral <em>String Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>String Literal</em>'.
+   * @see edu.upb.lp.dearCode.StringLiteral
+   * @generated
+   */
+  EClass getStringLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.dearCode.StringLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see edu.upb.lp.dearCode.StringLiteral#getValue()
+   * @see #getStringLiteral()
+   * @generated
+   */
+  EAttribute getStringLiteral_Value();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.dearCode.BooleanLiteral <em>Boolean Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Boolean Literal</em>'.
+   * @see edu.upb.lp.dearCode.BooleanLiteral
+   * @generated
+   */
+  EClass getBooleanLiteral();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.dearCode.BooleanLiteral#getValue <em>Value</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Value</em>'.
+   * @see edu.upb.lp.dearCode.BooleanLiteral#getValue()
+   * @see #getBooleanLiteral()
+   * @generated
+   */
+  EAttribute getBooleanLiteral_Value();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.dearCode.VariableRef <em>Variable Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Variable Ref</em>'.
+   * @see edu.upb.lp.dearCode.VariableRef
+   * @generated
+   */
+  EClass getVariableRef();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.dearCode.Condicional <em>Condicional</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Condicional</em>'.
+   * @see edu.upb.lp.dearCode.Condicional
+   * @generated
+   */
+  EClass getCondicional();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.Condicional#getCondicion <em>Condicion</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Condicion</em>'.
+   * @see edu.upb.lp.dearCode.Condicional#getCondicion()
+   * @see #getCondicional()
+   * @generated
+   */
+  EReference getCondicional_Condicion();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link edu.upb.lp.dearCode.Condicional#getInstruccionesThen <em>Instrucciones Then</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Instrucciones Then</em>'.
+   * @see edu.upb.lp.dearCode.Condicional#getInstruccionesThen()
+   * @see #getCondicional()
+   * @generated
+   */
+  EReference getCondicional_InstruccionesThen();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link edu.upb.lp.dearCode.Condicional#getInstruccionesElse <em>Instrucciones Else</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Instrucciones Else</em>'.
+   * @see edu.upb.lp.dearCode.Condicional#getInstruccionesElse()
+   * @see #getCondicional()
+   * @generated
+   */
+  EReference getCondicional_InstruccionesElse();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.dearCode.BucleWhile <em>Bucle While</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Bucle While</em>'.
+   * @see edu.upb.lp.dearCode.BucleWhile
+   * @generated
+   */
+  EClass getBucleWhile();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.BucleWhile#getCondicion <em>Condicion</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Condicion</em>'.
+   * @see edu.upb.lp.dearCode.BucleWhile#getCondicion()
+   * @see #getBucleWhile()
+   * @generated
+   */
+  EReference getBucleWhile_Condicion();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link edu.upb.lp.dearCode.BucleWhile#getInstrucciones <em>Instrucciones</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Instrucciones</em>'.
+   * @see edu.upb.lp.dearCode.BucleWhile#getInstrucciones()
+   * @see #getBucleWhile()
+   * @generated
+   */
+  EReference getBucleWhile_Instrucciones();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.dearCode.BucleFor <em>Bucle For</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Bucle For</em>'.
+   * @see edu.upb.lp.dearCode.BucleFor
+   * @generated
+   */
+  EClass getBucleFor();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.BucleFor#getCondicion <em>Condicion</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Condicion</em>'.
+   * @see edu.upb.lp.dearCode.BucleFor#getCondicion()
+   * @see #getBucleFor()
+   * @generated
+   */
+  EReference getBucleFor_Condicion();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.BucleFor#getAccionStop <em>Accion Stop</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Accion Stop</em>'.
+   * @see edu.upb.lp.dearCode.BucleFor#getAccionStop()
+   * @see #getBucleFor()
+   * @generated
+   */
+  EReference getBucleFor_AccionStop();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link edu.upb.lp.dearCode.BucleFor#getInstrucciones <em>Instrucciones</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Instrucciones</em>'.
+   * @see edu.upb.lp.dearCode.BucleFor#getInstrucciones()
+   * @see #getBucleFor()
+   * @generated
+   */
+  EReference getBucleFor_Instrucciones();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.dearCode.Funcion <em>Funcion</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Funcion</em>'.
+   * @see edu.upb.lp.dearCode.Funcion
+   * @generated
+   */
+  EClass getFuncion();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.Funcion#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Name</em>'.
+   * @see edu.upb.lp.dearCode.Funcion#getName()
+   * @see #getFuncion()
+   * @generated
+   */
+  EReference getFuncion_Name();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link edu.upb.lp.dearCode.Funcion#getParametros <em>Parametros</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Parametros</em>'.
+   * @see edu.upb.lp.dearCode.Funcion#getParametros()
+   * @see #getFuncion()
+   * @generated
+   */
+  EReference getFuncion_Parametros();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link edu.upb.lp.dearCode.Funcion#getInstrucciones <em>Instrucciones</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Instrucciones</em>'.
+   * @see edu.upb.lp.dearCode.Funcion#getInstrucciones()
+   * @see #getFuncion()
+   * @generated
+   */
+  EReference getFuncion_Instrucciones();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.Funcion#getRetorno <em>Retorno</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Retorno</em>'.
+   * @see edu.upb.lp.dearCode.Funcion#getRetorno()
+   * @see #getFuncion()
+   * @generated
+   */
+  EReference getFuncion_Retorno();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.dearCode.OrExpr <em>Or Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Or Expr</em>'.
+   * @see edu.upb.lp.dearCode.OrExpr
+   * @generated
+   */
+  EClass getOrExpr();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.OrExpr#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see edu.upb.lp.dearCode.OrExpr#getLeft()
+   * @see #getOrExpr()
+   * @generated
+   */
+  EReference getOrExpr_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.OrExpr#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see edu.upb.lp.dearCode.OrExpr#getRight()
+   * @see #getOrExpr()
+   * @generated
+   */
+  EReference getOrExpr_Right();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.dearCode.AndExpr <em>And Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>And Expr</em>'.
+   * @see edu.upb.lp.dearCode.AndExpr
+   * @generated
+   */
+  EClass getAndExpr();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.AndExpr#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see edu.upb.lp.dearCode.AndExpr#getLeft()
+   * @see #getAndExpr()
+   * @generated
+   */
+  EReference getAndExpr_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.AndExpr#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see edu.upb.lp.dearCode.AndExpr#getRight()
+   * @see #getAndExpr()
+   * @generated
+   */
+  EReference getAndExpr_Right();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.dearCode.EqualityExpr <em>Equality Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Equality Expr</em>'.
+   * @see edu.upb.lp.dearCode.EqualityExpr
+   * @generated
+   */
+  EClass getEqualityExpr();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.EqualityExpr#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see edu.upb.lp.dearCode.EqualityExpr#getLeft()
+   * @see #getEqualityExpr()
+   * @generated
+   */
+  EReference getEqualityExpr_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.EqualityExpr#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see edu.upb.lp.dearCode.EqualityExpr#getRight()
+   * @see #getEqualityExpr()
+   * @generated
+   */
+  EReference getEqualityExpr_Right();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.dearCode.BinaryRelation <em>Binary Relation</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Binary Relation</em>'.
+   * @see edu.upb.lp.dearCode.BinaryRelation
+   * @generated
+   */
+  EClass getBinaryRelation();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.BinaryRelation#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see edu.upb.lp.dearCode.BinaryRelation#getLeft()
+   * @see #getBinaryRelation()
+   * @generated
+   */
+  EReference getBinaryRelation_Left();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.dearCode.BinaryRelation#getOp <em>Op</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Op</em>'.
+   * @see edu.upb.lp.dearCode.BinaryRelation#getOp()
+   * @see #getBinaryRelation()
+   * @generated
+   */
+  EAttribute getBinaryRelation_Op();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.BinaryRelation#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see edu.upb.lp.dearCode.BinaryRelation#getRight()
+   * @see #getBinaryRelation()
+   * @generated
+   */
+  EReference getBinaryRelation_Right();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.dearCode.AdditiveExpr <em>Additive Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Additive Expr</em>'.
+   * @see edu.upb.lp.dearCode.AdditiveExpr
+   * @generated
+   */
+  EClass getAdditiveExpr();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.AdditiveExpr#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see edu.upb.lp.dearCode.AdditiveExpr#getLeft()
+   * @see #getAdditiveExpr()
+   * @generated
+   */
+  EReference getAdditiveExpr_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.AdditiveExpr#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see edu.upb.lp.dearCode.AdditiveExpr#getRight()
+   * @see #getAdditiveExpr()
+   * @generated
+   */
+  EReference getAdditiveExpr_Right();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.dearCode.MultiplicativeExpr <em>Multiplicative Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Multiplicative Expr</em>'.
+   * @see edu.upb.lp.dearCode.MultiplicativeExpr
+   * @generated
+   */
+  EClass getMultiplicativeExpr();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.MultiplicativeExpr#getLeft <em>Left</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Left</em>'.
+   * @see edu.upb.lp.dearCode.MultiplicativeExpr#getLeft()
+   * @see #getMultiplicativeExpr()
+   * @generated
+   */
+  EReference getMultiplicativeExpr_Left();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.MultiplicativeExpr#getRight <em>Right</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Right</em>'.
+   * @see edu.upb.lp.dearCode.MultiplicativeExpr#getRight()
+   * @see #getMultiplicativeExpr()
+   * @generated
+   */
+  EReference getMultiplicativeExpr_Right();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.dearCode.NotExpr <em>Not Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Not Expr</em>'.
+   * @see edu.upb.lp.dearCode.NotExpr
+   * @generated
+   */
+  EClass getNotExpr();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.NotExpr#getExpr <em>Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Expr</em>'.
+   * @see edu.upb.lp.dearCode.NotExpr#getExpr()
+   * @see #getNotExpr()
+   * @generated
+   */
+  EReference getNotExpr_Expr();
 
   /**
    * Returns the factory that creates the instances of the model.
@@ -989,30 +2444,6 @@ public interface DearCodePackage extends EPackage
     EClass INSTRUCCION = eINSTANCE.getInstruccion();
 
     /**
-     * The meta object literal for the '<em><b>Valor</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference INSTRUCCION__VALOR = eINSTANCE.getInstruccion_Valor();
-
-    /**
-     * The meta object literal for the '<em><b>Sustantivo</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference INSTRUCCION__SUSTANTIVO = eINSTANCE.getInstruccion_Sustantivo();
-
-    /**
-     * The meta object literal for the '<em><b>Comentario</b></em>' attribute feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EAttribute INSTRUCCION__COMENTARIO = eINSTANCE.getInstruccion_Comentario();
-
-    /**
      * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.DeclararImpl <em>Declarar</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1039,6 +2470,38 @@ public interface DearCodePackage extends EPackage
     EAttribute DECLARAR__ARTICULO = eINSTANCE.getDeclarar_Articulo();
 
     /**
+     * The meta object literal for the '<em><b>Sustantivo</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DECLARAR__SUSTANTIVO = eINSTANCE.getDeclarar_Sustantivo();
+
+    /**
+     * The meta object literal for the '<em><b>Conector</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DECLARAR__CONECTOR = eINSTANCE.getDeclarar_Conector();
+
+    /**
+     * The meta object literal for the '<em><b>Valor</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference DECLARAR__VALOR = eINSTANCE.getDeclarar_Valor();
+
+    /**
+     * The meta object literal for the '<em><b>Comentario</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DECLARAR__COMENTARIO = eINSTANCE.getDeclarar_Comentario();
+
+    /**
      * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.ReasignarImpl <em>Reasignar</em>}' class.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -1055,6 +2518,74 @@ public interface DearCodePackage extends EPackage
      * @generated
      */
     EAttribute REASIGNAR__VERBO_REAS = eINSTANCE.getReasignar_VerboReas();
+
+    /**
+     * The meta object literal for the '<em><b>Conector</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REASIGNAR__CONECTOR = eINSTANCE.getReasignar_Conector();
+
+    /**
+     * The meta object literal for the '<em><b>Sustantivo</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REASIGNAR__SUSTANTIVO = eINSTANCE.getReasignar_Sustantivo();
+
+    /**
+     * The meta object literal for the '<em><b>Valor</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference REASIGNAR__VALOR = eINSTANCE.getReasignar_Valor();
+
+    /**
+     * The meta object literal for the '<em><b>Comentario</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute REASIGNAR__COMENTARIO = eINSTANCE.getReasignar_Comentario();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.EntradaImpl <em>Entrada</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.dearCode.impl.EntradaImpl
+     * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getEntrada()
+     * @generated
+     */
+    EClass ENTRADA = eINSTANCE.getEntrada();
+
+    /**
+     * The meta object literal for the '<em><b>Variable</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ENTRADA__VARIABLE = eINSTANCE.getEntrada_Variable();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.SalidaImpl <em>Salida</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.dearCode.impl.SalidaImpl
+     * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getSalida()
+     * @generated
+     */
+    EClass SALIDA = eINSTANCE.getSalida();
+
+    /**
+     * The meta object literal for the '<em><b>Expresion</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference SALIDA__EXPRESION = eINSTANCE.getSalida_Expresion();
 
     /**
      * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.ValorImpl <em>Valor</em>}' class.
@@ -1145,6 +2676,424 @@ public interface DearCodePackage extends EPackage
      * @generated
      */
     EAttribute MI_ID__NAME = eINSTANCE.getMI_ID_Name();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.CondicionImpl <em>Condicion</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.dearCode.impl.CondicionImpl
+     * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getCondicion()
+     * @generated
+     */
+    EClass CONDICION = eINSTANCE.getCondicion();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.ExpressionImpl <em>Expression</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.dearCode.impl.ExpressionImpl
+     * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getExpression()
+     * @generated
+     */
+    EClass EXPRESSION = eINSTANCE.getExpression();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPRESSION__NAME = eINSTANCE.getExpression_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Args</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EXPRESSION__ARGS = eINSTANCE.getExpression_Args();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.IntLiteralImpl <em>Int Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.dearCode.impl.IntLiteralImpl
+     * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getIntLiteral()
+     * @generated
+     */
+    EClass INT_LITERAL = eINSTANCE.getIntLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute INT_LITERAL__VALUE = eINSTANCE.getIntLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.StringLiteralImpl <em>String Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.dearCode.impl.StringLiteralImpl
+     * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getStringLiteral()
+     * @generated
+     */
+    EClass STRING_LITERAL = eINSTANCE.getStringLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute STRING_LITERAL__VALUE = eINSTANCE.getStringLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.BooleanLiteralImpl <em>Boolean Literal</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.dearCode.impl.BooleanLiteralImpl
+     * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getBooleanLiteral()
+     * @generated
+     */
+    EClass BOOLEAN_LITERAL = eINSTANCE.getBooleanLiteral();
+
+    /**
+     * The meta object literal for the '<em><b>Value</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BOOLEAN_LITERAL__VALUE = eINSTANCE.getBooleanLiteral_Value();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.VariableRefImpl <em>Variable Ref</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.dearCode.impl.VariableRefImpl
+     * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getVariableRef()
+     * @generated
+     */
+    EClass VARIABLE_REF = eINSTANCE.getVariableRef();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.CondicionalImpl <em>Condicional</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.dearCode.impl.CondicionalImpl
+     * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getCondicional()
+     * @generated
+     */
+    EClass CONDICIONAL = eINSTANCE.getCondicional();
+
+    /**
+     * The meta object literal for the '<em><b>Condicion</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONDICIONAL__CONDICION = eINSTANCE.getCondicional_Condicion();
+
+    /**
+     * The meta object literal for the '<em><b>Instrucciones Then</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONDICIONAL__INSTRUCCIONES_THEN = eINSTANCE.getCondicional_InstruccionesThen();
+
+    /**
+     * The meta object literal for the '<em><b>Instrucciones Else</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONDICIONAL__INSTRUCCIONES_ELSE = eINSTANCE.getCondicional_InstruccionesElse();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.BucleWhileImpl <em>Bucle While</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.dearCode.impl.BucleWhileImpl
+     * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getBucleWhile()
+     * @generated
+     */
+    EClass BUCLE_WHILE = eINSTANCE.getBucleWhile();
+
+    /**
+     * The meta object literal for the '<em><b>Condicion</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BUCLE_WHILE__CONDICION = eINSTANCE.getBucleWhile_Condicion();
+
+    /**
+     * The meta object literal for the '<em><b>Instrucciones</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BUCLE_WHILE__INSTRUCCIONES = eINSTANCE.getBucleWhile_Instrucciones();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.BucleForImpl <em>Bucle For</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.dearCode.impl.BucleForImpl
+     * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getBucleFor()
+     * @generated
+     */
+    EClass BUCLE_FOR = eINSTANCE.getBucleFor();
+
+    /**
+     * The meta object literal for the '<em><b>Condicion</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BUCLE_FOR__CONDICION = eINSTANCE.getBucleFor_Condicion();
+
+    /**
+     * The meta object literal for the '<em><b>Accion Stop</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BUCLE_FOR__ACCION_STOP = eINSTANCE.getBucleFor_AccionStop();
+
+    /**
+     * The meta object literal for the '<em><b>Instrucciones</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BUCLE_FOR__INSTRUCCIONES = eINSTANCE.getBucleFor_Instrucciones();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.FuncionImpl <em>Funcion</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.dearCode.impl.FuncionImpl
+     * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getFuncion()
+     * @generated
+     */
+    EClass FUNCION = eINSTANCE.getFuncion();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNCION__NAME = eINSTANCE.getFuncion_Name();
+
+    /**
+     * The meta object literal for the '<em><b>Parametros</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNCION__PARAMETROS = eINSTANCE.getFuncion_Parametros();
+
+    /**
+     * The meta object literal for the '<em><b>Instrucciones</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNCION__INSTRUCCIONES = eINSTANCE.getFuncion_Instrucciones();
+
+    /**
+     * The meta object literal for the '<em><b>Retorno</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference FUNCION__RETORNO = eINSTANCE.getFuncion_Retorno();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.OrExprImpl <em>Or Expr</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.dearCode.impl.OrExprImpl
+     * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getOrExpr()
+     * @generated
+     */
+    EClass OR_EXPR = eINSTANCE.getOrExpr();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OR_EXPR__LEFT = eINSTANCE.getOrExpr_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference OR_EXPR__RIGHT = eINSTANCE.getOrExpr_Right();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.AndExprImpl <em>And Expr</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.dearCode.impl.AndExprImpl
+     * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getAndExpr()
+     * @generated
+     */
+    EClass AND_EXPR = eINSTANCE.getAndExpr();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference AND_EXPR__LEFT = eINSTANCE.getAndExpr_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference AND_EXPR__RIGHT = eINSTANCE.getAndExpr_Right();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.EqualityExprImpl <em>Equality Expr</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.dearCode.impl.EqualityExprImpl
+     * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getEqualityExpr()
+     * @generated
+     */
+    EClass EQUALITY_EXPR = eINSTANCE.getEqualityExpr();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EQUALITY_EXPR__LEFT = eINSTANCE.getEqualityExpr_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference EQUALITY_EXPR__RIGHT = eINSTANCE.getEqualityExpr_Right();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.BinaryRelationImpl <em>Binary Relation</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.dearCode.impl.BinaryRelationImpl
+     * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getBinaryRelation()
+     * @generated
+     */
+    EClass BINARY_RELATION = eINSTANCE.getBinaryRelation();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BINARY_RELATION__LEFT = eINSTANCE.getBinaryRelation_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Op</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute BINARY_RELATION__OP = eINSTANCE.getBinaryRelation_Op();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference BINARY_RELATION__RIGHT = eINSTANCE.getBinaryRelation_Right();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.AdditiveExprImpl <em>Additive Expr</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.dearCode.impl.AdditiveExprImpl
+     * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getAdditiveExpr()
+     * @generated
+     */
+    EClass ADDITIVE_EXPR = eINSTANCE.getAdditiveExpr();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ADDITIVE_EXPR__LEFT = eINSTANCE.getAdditiveExpr_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference ADDITIVE_EXPR__RIGHT = eINSTANCE.getAdditiveExpr_Right();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.MultiplicativeExprImpl <em>Multiplicative Expr</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.dearCode.impl.MultiplicativeExprImpl
+     * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getMultiplicativeExpr()
+     * @generated
+     */
+    EClass MULTIPLICATIVE_EXPR = eINSTANCE.getMultiplicativeExpr();
+
+    /**
+     * The meta object literal for the '<em><b>Left</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MULTIPLICATIVE_EXPR__LEFT = eINSTANCE.getMultiplicativeExpr_Left();
+
+    /**
+     * The meta object literal for the '<em><b>Right</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference MULTIPLICATIVE_EXPR__RIGHT = eINSTANCE.getMultiplicativeExpr_Right();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.NotExprImpl <em>Not Expr</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.dearCode.impl.NotExprImpl
+     * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getNotExpr()
+     * @generated
+     */
+    EClass NOT_EXPR = eINSTANCE.getNotExpr();
+
+    /**
+     * The meta object literal for the '<em><b>Expr</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference NOT_EXPR__EXPR = eINSTANCE.getNotExpr_Expr();
 
   }
 

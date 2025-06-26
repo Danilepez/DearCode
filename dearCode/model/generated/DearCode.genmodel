@@ -23,17 +23,27 @@
     <genClasses ecoreClass="DearCode.ecore#//Cuerpo">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Cuerpo/instrucciones"/>
     </genClasses>
-    <genClasses ecoreClass="DearCode.ecore#//Instruccion">
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Instruccion/valor"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Instruccion/sustantivo"/>
-      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DearCode.ecore#//Instruccion/comentario"/>
-    </genClasses>
+    <genClasses ecoreClass="DearCode.ecore#//Instruccion"/>
     <genClasses ecoreClass="DearCode.ecore#//Declarar">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DearCode.ecore#//Declarar/verboDecl"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DearCode.ecore#//Declarar/articulo"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Declarar/sustantivo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DearCode.ecore#//Declarar/conector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Declarar/valor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DearCode.ecore#//Declarar/comentario"/>
     </genClasses>
     <genClasses ecoreClass="DearCode.ecore#//Reasignar">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DearCode.ecore#//Reasignar/verboReas"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DearCode.ecore#//Reasignar/conector"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Reasignar/sustantivo"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Reasignar/valor"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DearCode.ecore#//Reasignar/comentario"/>
+    </genClasses>
+    <genClasses ecoreClass="DearCode.ecore#//Entrada">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Entrada/variable"/>
+    </genClasses>
+    <genClasses ecoreClass="DearCode.ecore#//Salida">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Salida/expresion"/>
     </genClasses>
     <genClasses ecoreClass="DearCode.ecore#//Valor"/>
     <genClasses ecoreClass="DearCode.ecore#//NumeroLiteral"/>
@@ -47,6 +57,69 @@
     </genClasses>
     <genClasses ecoreClass="DearCode.ecore#//MI_ID">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DearCode.ecore#//MI_ID/name"/>
+    </genClasses>
+    <genClasses ecoreClass="DearCode.ecore#//Condicion"/>
+    <genClasses ecoreClass="DearCode.ecore#//Expression">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Expression/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Expression/args"/>
+    </genClasses>
+    <genClasses ecoreClass="DearCode.ecore#//IntLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DearCode.ecore#//IntLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="DearCode.ecore#//StringLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DearCode.ecore#//StringLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="DearCode.ecore#//BooleanLiteral">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DearCode.ecore#//BooleanLiteral/value"/>
+    </genClasses>
+    <genClasses ecoreClass="DearCode.ecore#//VariableRef"/>
+    <genClasses ecoreClass="DearCode.ecore#//Condicional">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Condicional/condicion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Condicional/instruccionesThen"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Condicional/instruccionesElse"/>
+    </genClasses>
+    <genClasses ecoreClass="DearCode.ecore#//BucleWhile">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//BucleWhile/condicion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//BucleWhile/instrucciones"/>
+    </genClasses>
+    <genClasses ecoreClass="DearCode.ecore#//BucleFor">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//BucleFor/condicion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//BucleFor/accionStop"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//BucleFor/instrucciones"/>
+    </genClasses>
+    <genClasses ecoreClass="DearCode.ecore#//Funcion">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Funcion/name"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Funcion/parametros"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Funcion/instrucciones"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Funcion/retorno"/>
+    </genClasses>
+    <genClasses ecoreClass="DearCode.ecore#//OrExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//OrExpr/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//OrExpr/right"/>
+    </genClasses>
+    <genClasses ecoreClass="DearCode.ecore#//AndExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//AndExpr/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//AndExpr/right"/>
+    </genClasses>
+    <genClasses ecoreClass="DearCode.ecore#//EqualityExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//EqualityExpr/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//EqualityExpr/right"/>
+    </genClasses>
+    <genClasses ecoreClass="DearCode.ecore#//BinaryRelation">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//BinaryRelation/left"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DearCode.ecore#//BinaryRelation/op"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//BinaryRelation/right"/>
+    </genClasses>
+    <genClasses ecoreClass="DearCode.ecore#//AdditiveExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//AdditiveExpr/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//AdditiveExpr/right"/>
+    </genClasses>
+    <genClasses ecoreClass="DearCode.ecore#//MultiplicativeExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//MultiplicativeExpr/left"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//MultiplicativeExpr/right"/>
+    </genClasses>
+    <genClasses ecoreClass="DearCode.ecore#//NotExpr">
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//NotExpr/expr"/>
     </genClasses>
   </genPackages>
 </genmodel:GenModel>

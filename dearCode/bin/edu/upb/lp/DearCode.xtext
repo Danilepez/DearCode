@@ -13,11 +13,11 @@ Carta:
 ;
 
 Saludo:
-	('Querido'|'Querida') name=ANYTEXT
+	('Querido'|'Querida') name=ANYTEXT '.'
 ;
 
 Despedida:
-	'Con cariño, Tu programador' name=ANYTEXT
+	'Con cariño, Tu programador' name=ANYTEXT '.'
 ;
 
 Cuerpo:
@@ -25,7 +25,7 @@ Cuerpo:
 ;
 
 Instruccion:
-	Declarar | Reasignar | Condicional | BucleWhile | BucleFor
+	Declarar | Reasignar | Condicional | BucleWhile | BucleFor | Entrada | Salida | Funcion
 ;
 
 Declarar:
@@ -48,9 +48,17 @@ Reasignar:
 	'.'
 ;
 
+Entrada:
+	'Le pedí al lector que me dijera' variable=MI_ID '.'
+;
+
+Salida:
+	'Hoy le quise contar al mundo sobre:' expresion=Expression '.'
+;
+
 
 Valor:
-	MI_ID | NumeroLiteral    
+	NumeroLiteral | Expression    
 ;
 
 
@@ -80,22 +88,22 @@ VerboDeclaracion:
 ;
 
 VerboReasignacion:
-	'Permíteme' 'alimentar' | 'Permíteme' 'regar' | 'Permíteme' 'ajustar'
+	'Permíteme alimentar' | 'Permíteme regar' | 'Permíteme ajustar'
 ;
 
 MI_ID:
-     '@' name=ID
+      name=ID
 ;
 
 terminal ANYTEXT:
-	'_'
+	'~'
     ( 'a'..'z' | 'A'..'Z' | '0'..'9' 
     | '-' | '.' | '(' | ')' 
     | '¿' | '?' | '¡' | '!' 
     | '\'' | '’'
     | ' '
     )+ 
-    ('...' | '.' | ':')
+    '_'
 ;
 
 
@@ -119,27 +127,31 @@ EqualityExpr returns Expression:
     RelationalExpr ({EqualityExpr.left=current} ('late al unísono con' | 'canta con un matiz distinto a') right=RelationalExpr)*;
 
 RelationalExpr returns Expression:
-    AdditiveExpr
-    ({RelationalExpr.left=current}
-        'susurra con menos fuerza que' right=AdditiveExpr
-      | 'casi suspira al mismo nivel que' right=AdditiveExpr
-      | 'arde con más pasión que' right=AdditiveExpr
-      | 'rodea con tanta fuerza como' right=AdditiveExpr
-    )*
+    AdditiveExpr ({BinaryRelation.left=current} op=RelationalOp right=AdditiveExpr)?;
+
+RelationalOp:
+    'susurra con menos fuerza que' 
+  | 'casi suspira al mismo nivel que' 
+  | 'arde con más pasión que' 
+  | 'rodea con tanta fuerza como'
 ;
 
 AdditiveExpr returns Expression:
     MultiplicativeExpr ({AdditiveExpr.left=current} ('unidos en un solo suspiro con'  | 'fundidos en la llama de') right=MultiplicativeExpr)*;
 
 MultiplicativeExpr returns Expression:
-    UnaryExpr ({MultiplicativeExpr.left=current} ('fortalecidos por el fuego de' | 'separados entre los ecos de') right=UnaryExpr)*;
+    UnaryExpr ({MultiplicativeExpr.left=current} ('fortalecidos por el fuego de' | 'separados entre los ecos de' | 'resuena con el eco de') right=UnaryExpr)*;
 
 UnaryExpr returns Expression:
-    {NotExpr} 'no lo creo' expr=PrimaryExpr
+    {NotExpr} 'no creo que' expr=PrimaryExpr
   | PrimaryExpr;
 
+FunctionCall returns Expression:
+    name=MI_ID '(' (args+=Expression (',' args+=Expression)*)? ')'
+;
+
 PrimaryExpr returns Expression:
-    Literal| VariableRef | SpecialBoolean | '(' Expression ')';
+    Literal| VariableRef | SpecialBoolean | FunctionCall | '(' Expression ')';
 
 Literal returns Expression:
     IntLiteral | StringLiteral | BooleanLiteral
@@ -152,7 +164,7 @@ StringLiteral:
 ;
 
 BooleanLiteral:
-    {BooleanLiteral} value=('siempre' | 'jamás')
+     value?='siempre' | {BooleanLiteral} 'jamás'
 ;
 
   
@@ -160,17 +172,43 @@ VariableRef:
     name=MI_ID;              
 
 SpecialBoolean returns Expression:
-    'aún me piensas' | 'tu voz me alcanza';
+    {Expression} 'aún me piensas' | {Expression} 'tu voz me alcanza';
 
 
 Condicional:
-    ('Si en tu corazon sientes que'| 'Si en tu alma nace el deseo de que'  ) condicion=Condicion ',' accion=Instruccion
-    ('Y si el destino dijera lo contrario,' accionElse=Instruccion)?;
+    'Si en tu corazon sientes que' condicion=Condicion ','
+        'entonces deja que estas palabras florezcan:'
+        instruccionesThen+=Instruccion+
+    ( 'Pero si el destino dijera lo contrario,'
+        'que broten estas verdades:'
+        instruccionesElse+=Instruccion+ )?
+    'Y así el universo sigue su curso.';
 
 BucleWhile:
-    ( 'Mientras aun me pienses'| 'Mientras aún sueñes con este momento, haz que ocurra' )
-    condicion=Condicion ',' accion=Instruccion;
+    ( 'Mientras aun me pienses' 
+    | 'Mientras aún sueñes con este momento, haz que ocurra' )
+      condicion=Condicion ','
+    'haz que suceda:' 
+    instrucciones+=Instruccion+ 
+    'Y así el susurro descansa.'  
+;
 
 BucleFor:
-    ( 'Cada dia, desde'| 'Por cada suspiro desde' )
-    condicion=Condicion 'hasta' accionStop=Instruccion ',' accion=Instruccion;
+    ( 'Cada dia, desde' 
+    | 'Por cada suspiro desde' )
+      condicion=Condicion  
+    'hasta' accionStop=Instruccion ','
+    'y que gire el verso:'  
+    instrucciones+=Instruccion+
+    'Cuando el eco se apague.'  
+;
+
+Funcion:
+    (('Dejo en estas líneas una promesa llamada' |
+      'Escribo en estas líneas una intención llamada' |
+      'En la brisa escondo un deseo llamado') name=MI_ID)
+    ('que guarda en su esencia' parametros+=MI_ID (',' parametros+=MI_ID)*)?  // ? hace todo opcional
+    'Cuando la promesa se cumple:'
+        instrucciones+=Instruccion+
+    ('Y al final, dejo volar' retorno=MI_ID 'en un suspiro.')?
+    'Así se sella la promesa.';

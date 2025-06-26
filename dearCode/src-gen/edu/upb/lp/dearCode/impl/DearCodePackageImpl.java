@@ -3,20 +3,39 @@
  */
 package edu.upb.lp.dearCode.impl;
 
+import edu.upb.lp.dearCode.AdditiveExpr;
+import edu.upb.lp.dearCode.AndExpr;
+import edu.upb.lp.dearCode.BinaryRelation;
+import edu.upb.lp.dearCode.BooleanLiteral;
+import edu.upb.lp.dearCode.BucleFor;
+import edu.upb.lp.dearCode.BucleWhile;
 import edu.upb.lp.dearCode.Carta;
 import edu.upb.lp.dearCode.Compuesto;
+import edu.upb.lp.dearCode.Condicion;
+import edu.upb.lp.dearCode.Condicional;
 import edu.upb.lp.dearCode.Cuerpo;
 import edu.upb.lp.dearCode.DearCodeFactory;
 import edu.upb.lp.dearCode.DearCodePackage;
 import edu.upb.lp.dearCode.Declarar;
 import edu.upb.lp.dearCode.Despedida;
+import edu.upb.lp.dearCode.Entrada;
+import edu.upb.lp.dearCode.EqualityExpr;
+import edu.upb.lp.dearCode.Expression;
+import edu.upb.lp.dearCode.Funcion;
 import edu.upb.lp.dearCode.Instruccion;
+import edu.upb.lp.dearCode.IntLiteral;
+import edu.upb.lp.dearCode.MultiplicativeExpr;
+import edu.upb.lp.dearCode.NotExpr;
 import edu.upb.lp.dearCode.NumeroLiteral;
+import edu.upb.lp.dearCode.OrExpr;
 import edu.upb.lp.dearCode.Program;
 import edu.upb.lp.dearCode.Reasignar;
+import edu.upb.lp.dearCode.Salida;
 import edu.upb.lp.dearCode.Saludo;
 import edu.upb.lp.dearCode.Simple;
+import edu.upb.lp.dearCode.StringLiteral;
 import edu.upb.lp.dearCode.Valor;
+import edu.upb.lp.dearCode.VariableRef;
 
 import org.eclipse.emf.ecore.EAttribute;
 import org.eclipse.emf.ecore.EClass;
@@ -94,6 +113,20 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
    * <!-- end-user-doc -->
    * @generated
    */
+  private EClass entradaEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass salidaEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
   private EClass valorEClass = null;
 
   /**
@@ -123,6 +156,125 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
    * @generated
    */
   private EClass mI_IDEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass condicionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass expressionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass intLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass stringLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass booleanLiteralEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass variableRefEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass condicionalEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass bucleWhileEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass bucleForEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass funcionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass orExprEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass andExprEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass equalityExprEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass binaryRelationEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass additiveExprEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass multiplicativeExprEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass notExprEClass = null;
 
   /**
    * Creates an instance of the model <b>Package</b>, registered with
@@ -335,39 +487,6 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
    * @generated
    */
   @Override
-  public EReference getInstruccion_Valor()
-  {
-    return (EReference)instruccionEClass.getEStructuralFeatures().get(0);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EReference getInstruccion_Sustantivo()
-  {
-    return (EReference)instruccionEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EAttribute getInstruccion_Comentario()
-  {
-    return (EAttribute)instruccionEClass.getEStructuralFeatures().get(2);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EClass getDeclarar()
   {
     return declararEClass;
@@ -401,6 +520,50 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
    * @generated
    */
   @Override
+  public EReference getDeclarar_Sustantivo()
+  {
+    return (EReference)declararEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDeclarar_Conector()
+  {
+    return (EAttribute)declararEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDeclarar_Valor()
+  {
+    return (EReference)declararEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getDeclarar_Comentario()
+  {
+    return (EAttribute)declararEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EClass getReasignar()
   {
     return reasignarEClass;
@@ -415,6 +578,94 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
   public EAttribute getReasignar_VerboReas()
   {
     return (EAttribute)reasignarEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getReasignar_Conector()
+  {
+    return (EAttribute)reasignarEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getReasignar_Sustantivo()
+  {
+    return (EReference)reasignarEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getReasignar_Valor()
+  {
+    return (EReference)reasignarEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getReasignar_Comentario()
+  {
+    return (EAttribute)reasignarEClass.getEStructuralFeatures().get(4);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getEntrada()
+  {
+    return entradaEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEntrada_Variable()
+  {
+    return (EReference)entradaEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getSalida()
+  {
+    return salidaEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getSalida_Expresion()
+  {
+    return (EReference)salidaEClass.getEStructuralFeatures().get(0);
   }
 
   /**
@@ -533,6 +784,534 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
    * @generated
    */
   @Override
+  public EClass getCondicion()
+  {
+    return condicionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getExpression()
+  {
+    return expressionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExpression_Name()
+  {
+    return (EReference)expressionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getExpression_Args()
+  {
+    return (EReference)expressionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getIntLiteral()
+  {
+    return intLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getIntLiteral_Value()
+  {
+    return (EAttribute)intLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getStringLiteral()
+  {
+    return stringLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getStringLiteral_Value()
+  {
+    return (EAttribute)stringLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getBooleanLiteral()
+  {
+    return booleanLiteralEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getBooleanLiteral_Value()
+  {
+    return (EAttribute)booleanLiteralEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getVariableRef()
+  {
+    return variableRefEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getCondicional()
+  {
+    return condicionalEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCondicional_Condicion()
+  {
+    return (EReference)condicionalEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCondicional_InstruccionesThen()
+  {
+    return (EReference)condicionalEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCondicional_InstruccionesElse()
+  {
+    return (EReference)condicionalEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getBucleWhile()
+  {
+    return bucleWhileEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBucleWhile_Condicion()
+  {
+    return (EReference)bucleWhileEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBucleWhile_Instrucciones()
+  {
+    return (EReference)bucleWhileEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getBucleFor()
+  {
+    return bucleForEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBucleFor_Condicion()
+  {
+    return (EReference)bucleForEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBucleFor_AccionStop()
+  {
+    return (EReference)bucleForEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBucleFor_Instrucciones()
+  {
+    return (EReference)bucleForEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getFuncion()
+  {
+    return funcionEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFuncion_Name()
+  {
+    return (EReference)funcionEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFuncion_Parametros()
+  {
+    return (EReference)funcionEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFuncion_Instrucciones()
+  {
+    return (EReference)funcionEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getFuncion_Retorno()
+  {
+    return (EReference)funcionEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getOrExpr()
+  {
+    return orExprEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getOrExpr_Left()
+  {
+    return (EReference)orExprEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getOrExpr_Right()
+  {
+    return (EReference)orExprEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getAndExpr()
+  {
+    return andExprEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAndExpr_Left()
+  {
+    return (EReference)andExprEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAndExpr_Right()
+  {
+    return (EReference)andExprEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getEqualityExpr()
+  {
+    return equalityExprEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEqualityExpr_Left()
+  {
+    return (EReference)equalityExprEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getEqualityExpr_Right()
+  {
+    return (EReference)equalityExprEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getBinaryRelation()
+  {
+    return binaryRelationEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBinaryRelation_Left()
+  {
+    return (EReference)binaryRelationEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getBinaryRelation_Op()
+  {
+    return (EAttribute)binaryRelationEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getBinaryRelation_Right()
+  {
+    return (EReference)binaryRelationEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getAdditiveExpr()
+  {
+    return additiveExprEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAdditiveExpr_Left()
+  {
+    return (EReference)additiveExprEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getAdditiveExpr_Right()
+  {
+    return (EReference)additiveExprEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getMultiplicativeExpr()
+  {
+    return multiplicativeExprEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMultiplicativeExpr_Left()
+  {
+    return (EReference)multiplicativeExprEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getMultiplicativeExpr_Right()
+  {
+    return (EReference)multiplicativeExprEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getNotExpr()
+  {
+    return notExprEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getNotExpr_Expr()
+  {
+    return (EReference)notExprEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public DearCodeFactory getDearCodeFactory()
   {
     return (DearCodeFactory)getEFactoryInstance();
@@ -576,16 +1355,27 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
     createEReference(cuerpoEClass, CUERPO__INSTRUCCIONES);
 
     instruccionEClass = createEClass(INSTRUCCION);
-    createEReference(instruccionEClass, INSTRUCCION__VALOR);
-    createEReference(instruccionEClass, INSTRUCCION__SUSTANTIVO);
-    createEAttribute(instruccionEClass, INSTRUCCION__COMENTARIO);
 
     declararEClass = createEClass(DECLARAR);
     createEAttribute(declararEClass, DECLARAR__VERBO_DECL);
     createEAttribute(declararEClass, DECLARAR__ARTICULO);
+    createEReference(declararEClass, DECLARAR__SUSTANTIVO);
+    createEAttribute(declararEClass, DECLARAR__CONECTOR);
+    createEReference(declararEClass, DECLARAR__VALOR);
+    createEAttribute(declararEClass, DECLARAR__COMENTARIO);
 
     reasignarEClass = createEClass(REASIGNAR);
     createEAttribute(reasignarEClass, REASIGNAR__VERBO_REAS);
+    createEAttribute(reasignarEClass, REASIGNAR__CONECTOR);
+    createEReference(reasignarEClass, REASIGNAR__SUSTANTIVO);
+    createEReference(reasignarEClass, REASIGNAR__VALOR);
+    createEAttribute(reasignarEClass, REASIGNAR__COMENTARIO);
+
+    entradaEClass = createEClass(ENTRADA);
+    createEReference(entradaEClass, ENTRADA__VARIABLE);
+
+    salidaEClass = createEClass(SALIDA);
+    createEReference(salidaEClass, SALIDA__EXPRESION);
 
     valorEClass = createEClass(VALOR);
 
@@ -601,6 +1391,71 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
 
     mI_IDEClass = createEClass(MI_ID);
     createEAttribute(mI_IDEClass, MI_ID__NAME);
+
+    condicionEClass = createEClass(CONDICION);
+
+    expressionEClass = createEClass(EXPRESSION);
+    createEReference(expressionEClass, EXPRESSION__NAME);
+    createEReference(expressionEClass, EXPRESSION__ARGS);
+
+    intLiteralEClass = createEClass(INT_LITERAL);
+    createEAttribute(intLiteralEClass, INT_LITERAL__VALUE);
+
+    stringLiteralEClass = createEClass(STRING_LITERAL);
+    createEAttribute(stringLiteralEClass, STRING_LITERAL__VALUE);
+
+    booleanLiteralEClass = createEClass(BOOLEAN_LITERAL);
+    createEAttribute(booleanLiteralEClass, BOOLEAN_LITERAL__VALUE);
+
+    variableRefEClass = createEClass(VARIABLE_REF);
+
+    condicionalEClass = createEClass(CONDICIONAL);
+    createEReference(condicionalEClass, CONDICIONAL__CONDICION);
+    createEReference(condicionalEClass, CONDICIONAL__INSTRUCCIONES_THEN);
+    createEReference(condicionalEClass, CONDICIONAL__INSTRUCCIONES_ELSE);
+
+    bucleWhileEClass = createEClass(BUCLE_WHILE);
+    createEReference(bucleWhileEClass, BUCLE_WHILE__CONDICION);
+    createEReference(bucleWhileEClass, BUCLE_WHILE__INSTRUCCIONES);
+
+    bucleForEClass = createEClass(BUCLE_FOR);
+    createEReference(bucleForEClass, BUCLE_FOR__CONDICION);
+    createEReference(bucleForEClass, BUCLE_FOR__ACCION_STOP);
+    createEReference(bucleForEClass, BUCLE_FOR__INSTRUCCIONES);
+
+    funcionEClass = createEClass(FUNCION);
+    createEReference(funcionEClass, FUNCION__NAME);
+    createEReference(funcionEClass, FUNCION__PARAMETROS);
+    createEReference(funcionEClass, FUNCION__INSTRUCCIONES);
+    createEReference(funcionEClass, FUNCION__RETORNO);
+
+    orExprEClass = createEClass(OR_EXPR);
+    createEReference(orExprEClass, OR_EXPR__LEFT);
+    createEReference(orExprEClass, OR_EXPR__RIGHT);
+
+    andExprEClass = createEClass(AND_EXPR);
+    createEReference(andExprEClass, AND_EXPR__LEFT);
+    createEReference(andExprEClass, AND_EXPR__RIGHT);
+
+    equalityExprEClass = createEClass(EQUALITY_EXPR);
+    createEReference(equalityExprEClass, EQUALITY_EXPR__LEFT);
+    createEReference(equalityExprEClass, EQUALITY_EXPR__RIGHT);
+
+    binaryRelationEClass = createEClass(BINARY_RELATION);
+    createEReference(binaryRelationEClass, BINARY_RELATION__LEFT);
+    createEAttribute(binaryRelationEClass, BINARY_RELATION__OP);
+    createEReference(binaryRelationEClass, BINARY_RELATION__RIGHT);
+
+    additiveExprEClass = createEClass(ADDITIVE_EXPR);
+    createEReference(additiveExprEClass, ADDITIVE_EXPR__LEFT);
+    createEReference(additiveExprEClass, ADDITIVE_EXPR__RIGHT);
+
+    multiplicativeExprEClass = createEClass(MULTIPLICATIVE_EXPR);
+    createEReference(multiplicativeExprEClass, MULTIPLICATIVE_EXPR__LEFT);
+    createEReference(multiplicativeExprEClass, MULTIPLICATIVE_EXPR__RIGHT);
+
+    notExprEClass = createEClass(NOT_EXPR);
+    createEReference(notExprEClass, NOT_EXPR__EXPR);
   }
 
   /**
@@ -634,10 +1489,28 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
     // Add supertypes to classes
     declararEClass.getESuperTypes().add(this.getInstruccion());
     reasignarEClass.getESuperTypes().add(this.getInstruccion());
+    entradaEClass.getESuperTypes().add(this.getInstruccion());
+    salidaEClass.getESuperTypes().add(this.getInstruccion());
     numeroLiteralEClass.getESuperTypes().add(this.getValor());
     simpleEClass.getESuperTypes().add(this.getNumeroLiteral());
     compuestoEClass.getESuperTypes().add(this.getNumeroLiteral());
-    mI_IDEClass.getESuperTypes().add(this.getValor());
+    expressionEClass.getESuperTypes().add(this.getValor());
+    expressionEClass.getESuperTypes().add(this.getCondicion());
+    intLiteralEClass.getESuperTypes().add(this.getExpression());
+    stringLiteralEClass.getESuperTypes().add(this.getExpression());
+    booleanLiteralEClass.getESuperTypes().add(this.getExpression());
+    variableRefEClass.getESuperTypes().add(this.getExpression());
+    condicionalEClass.getESuperTypes().add(this.getInstruccion());
+    bucleWhileEClass.getESuperTypes().add(this.getInstruccion());
+    bucleForEClass.getESuperTypes().add(this.getInstruccion());
+    funcionEClass.getESuperTypes().add(this.getInstruccion());
+    orExprEClass.getESuperTypes().add(this.getExpression());
+    andExprEClass.getESuperTypes().add(this.getExpression());
+    equalityExprEClass.getESuperTypes().add(this.getExpression());
+    binaryRelationEClass.getESuperTypes().add(this.getExpression());
+    additiveExprEClass.getESuperTypes().add(this.getExpression());
+    multiplicativeExprEClass.getESuperTypes().add(this.getExpression());
+    notExprEClass.getESuperTypes().add(this.getExpression());
 
     // Initialize classes and features; add operations and parameters
     initEClass(programEClass, Program.class, "Program", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
@@ -658,16 +1531,27 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
     initEReference(getCuerpo_Instrucciones(), this.getInstruccion(), null, "instrucciones", null, 0, -1, Cuerpo.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(instruccionEClass, Instruccion.class, "Instruccion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
-    initEReference(getInstruccion_Valor(), this.getValor(), null, "valor", null, 0, 1, Instruccion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getInstruccion_Sustantivo(), this.getMI_ID(), null, "sustantivo", null, 0, 1, Instruccion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEAttribute(getInstruccion_Comentario(), ecorePackage.getEString(), "comentario", null, 0, 1, Instruccion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(declararEClass, Declarar.class, "Declarar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDeclarar_VerboDecl(), ecorePackage.getEString(), "verboDecl", null, 0, 1, Declarar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDeclarar_Articulo(), ecorePackage.getEString(), "articulo", null, 0, 1, Declarar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDeclarar_Sustantivo(), this.getMI_ID(), null, "sustantivo", null, 0, 1, Declarar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDeclarar_Conector(), ecorePackage.getEString(), "conector", null, 0, 1, Declarar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getDeclarar_Valor(), this.getValor(), null, "valor", null, 0, 1, Declarar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDeclarar_Comentario(), ecorePackage.getEString(), "comentario", null, 0, 1, Declarar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(reasignarEClass, Reasignar.class, "Reasignar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getReasignar_VerboReas(), ecorePackage.getEString(), "verboReas", null, 0, 1, Reasignar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getReasignar_Conector(), ecorePackage.getEString(), "conector", null, 0, 1, Reasignar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getReasignar_Sustantivo(), this.getMI_ID(), null, "sustantivo", null, 0, 1, Reasignar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getReasignar_Valor(), this.getValor(), null, "valor", null, 0, 1, Reasignar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getReasignar_Comentario(), ecorePackage.getEString(), "comentario", null, 0, 1, Reasignar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(entradaEClass, Entrada.class, "Entrada", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEntrada_Variable(), this.getMI_ID(), null, "variable", null, 0, 1, Entrada.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(salidaEClass, Salida.class, "Salida", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getSalida_Expresion(), this.getExpression(), null, "expresion", null, 0, 1, Salida.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(valorEClass, Valor.class, "Valor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
 
@@ -683,6 +1567,71 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
 
     initEClass(mI_IDEClass, edu.upb.lp.dearCode.MI_ID.class, "MI_ID", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getMI_ID_Name(), ecorePackage.getEString(), "name", null, 0, 1, edu.upb.lp.dearCode.MI_ID.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(condicionEClass, Condicion.class, "Condicion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(expressionEClass, Expression.class, "Expression", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getExpression_Name(), this.getMI_ID(), null, "name", null, 0, 1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getExpression_Args(), this.getExpression(), null, "args", null, 0, -1, Expression.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(intLiteralEClass, IntLiteral.class, "IntLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getIntLiteral_Value(), ecorePackage.getEInt(), "value", null, 0, 1, IntLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(stringLiteralEClass, StringLiteral.class, "StringLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getStringLiteral_Value(), ecorePackage.getEString(), "value", null, 0, 1, StringLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(booleanLiteralEClass, BooleanLiteral.class, "BooleanLiteral", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getBooleanLiteral_Value(), ecorePackage.getEString(), "value", null, 0, 1, BooleanLiteral.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(variableRefEClass, VariableRef.class, "VariableRef", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+
+    initEClass(condicionalEClass, Condicional.class, "Condicional", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getCondicional_Condicion(), this.getCondicion(), null, "condicion", null, 0, 1, Condicional.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCondicional_InstruccionesThen(), this.getInstruccion(), null, "instruccionesThen", null, 0, -1, Condicional.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCondicional_InstruccionesElse(), this.getInstruccion(), null, "instruccionesElse", null, 0, -1, Condicional.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(bucleWhileEClass, BucleWhile.class, "BucleWhile", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getBucleWhile_Condicion(), this.getCondicion(), null, "condicion", null, 0, 1, BucleWhile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBucleWhile_Instrucciones(), this.getInstruccion(), null, "instrucciones", null, 0, -1, BucleWhile.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(bucleForEClass, BucleFor.class, "BucleFor", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getBucleFor_Condicion(), this.getCondicion(), null, "condicion", null, 0, 1, BucleFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBucleFor_AccionStop(), this.getInstruccion(), null, "accionStop", null, 0, 1, BucleFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBucleFor_Instrucciones(), this.getInstruccion(), null, "instrucciones", null, 0, -1, BucleFor.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(funcionEClass, Funcion.class, "Funcion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getFuncion_Name(), this.getMI_ID(), null, "name", null, 0, 1, Funcion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFuncion_Parametros(), this.getMI_ID(), null, "parametros", null, 0, -1, Funcion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFuncion_Instrucciones(), this.getInstruccion(), null, "instrucciones", null, 0, -1, Funcion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFuncion_Retorno(), this.getMI_ID(), null, "retorno", null, 0, 1, Funcion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(orExprEClass, OrExpr.class, "OrExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getOrExpr_Left(), this.getExpression(), null, "left", null, 0, 1, OrExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getOrExpr_Right(), this.getExpression(), null, "right", null, 0, 1, OrExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(andExprEClass, AndExpr.class, "AndExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAndExpr_Left(), this.getExpression(), null, "left", null, 0, 1, AndExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAndExpr_Right(), this.getExpression(), null, "right", null, 0, 1, AndExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(equalityExprEClass, EqualityExpr.class, "EqualityExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getEqualityExpr_Left(), this.getExpression(), null, "left", null, 0, 1, EqualityExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getEqualityExpr_Right(), this.getExpression(), null, "right", null, 0, 1, EqualityExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(binaryRelationEClass, BinaryRelation.class, "BinaryRelation", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getBinaryRelation_Left(), this.getExpression(), null, "left", null, 0, 1, BinaryRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getBinaryRelation_Op(), ecorePackage.getEString(), "op", null, 0, 1, BinaryRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getBinaryRelation_Right(), this.getExpression(), null, "right", null, 0, 1, BinaryRelation.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(additiveExprEClass, AdditiveExpr.class, "AdditiveExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getAdditiveExpr_Left(), this.getExpression(), null, "left", null, 0, 1, AdditiveExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getAdditiveExpr_Right(), this.getExpression(), null, "right", null, 0, 1, AdditiveExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(multiplicativeExprEClass, MultiplicativeExpr.class, "MultiplicativeExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getMultiplicativeExpr_Left(), this.getExpression(), null, "left", null, 0, 1, MultiplicativeExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getMultiplicativeExpr_Right(), this.getExpression(), null, "right", null, 0, 1, MultiplicativeExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(notExprEClass, NotExpr.class, "NotExpr", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEReference(getNotExpr_Expr(), this.getExpression(), null, "expr", null, 0, 1, NotExpr.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource
     createResource(eNS_URI);

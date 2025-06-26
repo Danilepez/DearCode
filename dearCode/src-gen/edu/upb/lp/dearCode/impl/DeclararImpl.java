@@ -5,10 +5,14 @@ package edu.upb.lp.dearCode.impl;
 
 import edu.upb.lp.dearCode.DearCodePackage;
 import edu.upb.lp.dearCode.Declarar;
+import edu.upb.lp.dearCode.MI_ID;
+import edu.upb.lp.dearCode.Valor;
 
 import org.eclipse.emf.common.notify.Notification;
+import org.eclipse.emf.common.notify.NotificationChain;
 
 import org.eclipse.emf.ecore.EClass;
+import org.eclipse.emf.ecore.InternalEObject;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
@@ -22,6 +26,10 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link edu.upb.lp.dearCode.impl.DeclararImpl#getVerboDecl <em>Verbo Decl</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.impl.DeclararImpl#getArticulo <em>Articulo</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.impl.DeclararImpl#getSustantivo <em>Sustantivo</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.impl.DeclararImpl#getConector <em>Conector</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.impl.DeclararImpl#getValor <em>Valor</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.impl.DeclararImpl#getComentario <em>Comentario</em>}</li>
  * </ul>
  *
  * @generated
@@ -67,6 +75,66 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
    * @ordered
    */
   protected String articulo = ARTICULO_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getSustantivo() <em>Sustantivo</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getSustantivo()
+   * @generated
+   * @ordered
+   */
+  protected MI_ID sustantivo;
+
+  /**
+   * The default value of the '{@link #getConector() <em>Conector</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConector()
+   * @generated
+   * @ordered
+   */
+  protected static final String CONECTOR_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getConector() <em>Conector</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getConector()
+   * @generated
+   * @ordered
+   */
+  protected String conector = CONECTOR_EDEFAULT;
+
+  /**
+   * The cached value of the '{@link #getValor() <em>Valor</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getValor()
+   * @generated
+   * @ordered
+   */
+  protected Valor valor;
+
+  /**
+   * The default value of the '{@link #getComentario() <em>Comentario</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getComentario()
+   * @generated
+   * @ordered
+   */
+  protected static final String COMENTARIO_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getComentario() <em>Comentario</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getComentario()
+   * @generated
+   * @ordered
+   */
+  protected String comentario = COMENTARIO_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -145,6 +213,174 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
    * @generated
    */
   @Override
+  public MI_ID getSustantivo()
+  {
+    return sustantivo;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetSustantivo(MI_ID newSustantivo, NotificationChain msgs)
+  {
+    MI_ID oldSustantivo = sustantivo;
+    sustantivo = newSustantivo;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DearCodePackage.DECLARAR__SUSTANTIVO, oldSustantivo, newSustantivo);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setSustantivo(MI_ID newSustantivo)
+  {
+    if (newSustantivo != sustantivo)
+    {
+      NotificationChain msgs = null;
+      if (sustantivo != null)
+        msgs = ((InternalEObject)sustantivo).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.DECLARAR__SUSTANTIVO, null, msgs);
+      if (newSustantivo != null)
+        msgs = ((InternalEObject)newSustantivo).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.DECLARAR__SUSTANTIVO, null, msgs);
+      msgs = basicSetSustantivo(newSustantivo, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.DECLARAR__SUSTANTIVO, newSustantivo, newSustantivo));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getConector()
+  {
+    return conector;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setConector(String newConector)
+  {
+    String oldConector = conector;
+    conector = newConector;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.DECLARAR__CONECTOR, oldConector, conector));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Valor getValor()
+  {
+    return valor;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetValor(Valor newValor, NotificationChain msgs)
+  {
+    Valor oldValor = valor;
+    valor = newValor;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DearCodePackage.DECLARAR__VALOR, oldValor, newValor);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setValor(Valor newValor)
+  {
+    if (newValor != valor)
+    {
+      NotificationChain msgs = null;
+      if (valor != null)
+        msgs = ((InternalEObject)valor).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.DECLARAR__VALOR, null, msgs);
+      if (newValor != null)
+        msgs = ((InternalEObject)newValor).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.DECLARAR__VALOR, null, msgs);
+      msgs = basicSetValor(newValor, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.DECLARAR__VALOR, newValor, newValor));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getComentario()
+  {
+    return comentario;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setComentario(String newComentario)
+  {
+    String oldComentario = comentario;
+    comentario = newComentario;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.DECLARAR__COMENTARIO, oldComentario, comentario));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
+  {
+    switch (featureID)
+    {
+      case DearCodePackage.DECLARAR__SUSTANTIVO:
+        return basicSetSustantivo(null, msgs);
+      case DearCodePackage.DECLARAR__VALOR:
+        return basicSetValor(null, msgs);
+    }
+    return super.eInverseRemove(otherEnd, featureID, msgs);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public Object eGet(int featureID, boolean resolve, boolean coreType)
   {
     switch (featureID)
@@ -153,6 +389,14 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
         return getVerboDecl();
       case DearCodePackage.DECLARAR__ARTICULO:
         return getArticulo();
+      case DearCodePackage.DECLARAR__SUSTANTIVO:
+        return getSustantivo();
+      case DearCodePackage.DECLARAR__CONECTOR:
+        return getConector();
+      case DearCodePackage.DECLARAR__VALOR:
+        return getValor();
+      case DearCodePackage.DECLARAR__COMENTARIO:
+        return getComentario();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -172,6 +416,18 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
         return;
       case DearCodePackage.DECLARAR__ARTICULO:
         setArticulo((String)newValue);
+        return;
+      case DearCodePackage.DECLARAR__SUSTANTIVO:
+        setSustantivo((MI_ID)newValue);
+        return;
+      case DearCodePackage.DECLARAR__CONECTOR:
+        setConector((String)newValue);
+        return;
+      case DearCodePackage.DECLARAR__VALOR:
+        setValor((Valor)newValue);
+        return;
+      case DearCodePackage.DECLARAR__COMENTARIO:
+        setComentario((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -193,6 +449,18 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
       case DearCodePackage.DECLARAR__ARTICULO:
         setArticulo(ARTICULO_EDEFAULT);
         return;
+      case DearCodePackage.DECLARAR__SUSTANTIVO:
+        setSustantivo((MI_ID)null);
+        return;
+      case DearCodePackage.DECLARAR__CONECTOR:
+        setConector(CONECTOR_EDEFAULT);
+        return;
+      case DearCodePackage.DECLARAR__VALOR:
+        setValor((Valor)null);
+        return;
+      case DearCodePackage.DECLARAR__COMENTARIO:
+        setComentario(COMENTARIO_EDEFAULT);
+        return;
     }
     super.eUnset(featureID);
   }
@@ -211,6 +479,14 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
         return VERBO_DECL_EDEFAULT == null ? verboDecl != null : !VERBO_DECL_EDEFAULT.equals(verboDecl);
       case DearCodePackage.DECLARAR__ARTICULO:
         return ARTICULO_EDEFAULT == null ? articulo != null : !ARTICULO_EDEFAULT.equals(articulo);
+      case DearCodePackage.DECLARAR__SUSTANTIVO:
+        return sustantivo != null;
+      case DearCodePackage.DECLARAR__CONECTOR:
+        return CONECTOR_EDEFAULT == null ? conector != null : !CONECTOR_EDEFAULT.equals(conector);
+      case DearCodePackage.DECLARAR__VALOR:
+        return valor != null;
+      case DearCodePackage.DECLARAR__COMENTARIO:
+        return COMENTARIO_EDEFAULT == null ? comentario != null : !COMENTARIO_EDEFAULT.equals(comentario);
     }
     return super.eIsSet(featureID);
   }
@@ -230,6 +506,10 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
     result.append(verboDecl);
     result.append(", articulo: ");
     result.append(articulo);
+    result.append(", conector: ");
+    result.append(conector);
+    result.append(", comentario: ");
+    result.append(comentario);
     result.append(')');
     return result.toString();
   }

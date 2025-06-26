@@ -116,6 +116,16 @@ public class DearCodeAdapterFactory extends AdapterFactoryImpl
         return createReasignarAdapter();
       }
       @Override
+      public Adapter caseEntrada(Entrada object)
+      {
+        return createEntradaAdapter();
+      }
+      @Override
+      public Adapter caseSalida(Salida object)
+      {
+        return createSalidaAdapter();
+      }
+      @Override
       public Adapter caseValor(Valor object)
       {
         return createValorAdapter();
@@ -139,6 +149,91 @@ public class DearCodeAdapterFactory extends AdapterFactoryImpl
       public Adapter caseMI_ID(MI_ID object)
       {
         return createMI_IDAdapter();
+      }
+      @Override
+      public Adapter caseCondicion(Condicion object)
+      {
+        return createCondicionAdapter();
+      }
+      @Override
+      public Adapter caseExpression(Expression object)
+      {
+        return createExpressionAdapter();
+      }
+      @Override
+      public Adapter caseIntLiteral(IntLiteral object)
+      {
+        return createIntLiteralAdapter();
+      }
+      @Override
+      public Adapter caseStringLiteral(StringLiteral object)
+      {
+        return createStringLiteralAdapter();
+      }
+      @Override
+      public Adapter caseBooleanLiteral(BooleanLiteral object)
+      {
+        return createBooleanLiteralAdapter();
+      }
+      @Override
+      public Adapter caseVariableRef(VariableRef object)
+      {
+        return createVariableRefAdapter();
+      }
+      @Override
+      public Adapter caseCondicional(Condicional object)
+      {
+        return createCondicionalAdapter();
+      }
+      @Override
+      public Adapter caseBucleWhile(BucleWhile object)
+      {
+        return createBucleWhileAdapter();
+      }
+      @Override
+      public Adapter caseBucleFor(BucleFor object)
+      {
+        return createBucleForAdapter();
+      }
+      @Override
+      public Adapter caseFuncion(Funcion object)
+      {
+        return createFuncionAdapter();
+      }
+      @Override
+      public Adapter caseOrExpr(OrExpr object)
+      {
+        return createOrExprAdapter();
+      }
+      @Override
+      public Adapter caseAndExpr(AndExpr object)
+      {
+        return createAndExprAdapter();
+      }
+      @Override
+      public Adapter caseEqualityExpr(EqualityExpr object)
+      {
+        return createEqualityExprAdapter();
+      }
+      @Override
+      public Adapter caseBinaryRelation(BinaryRelation object)
+      {
+        return createBinaryRelationAdapter();
+      }
+      @Override
+      public Adapter caseAdditiveExpr(AdditiveExpr object)
+      {
+        return createAdditiveExprAdapter();
+      }
+      @Override
+      public Adapter caseMultiplicativeExpr(MultiplicativeExpr object)
+      {
+        return createMultiplicativeExprAdapter();
+      }
+      @Override
+      public Adapter caseNotExpr(NotExpr object)
+      {
+        return createNotExprAdapter();
       }
       @Override
       public Adapter defaultCase(EObject object)
@@ -283,6 +378,36 @@ public class DearCodeAdapterFactory extends AdapterFactoryImpl
   }
 
   /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.Entrada <em>Entrada</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.dearCode.Entrada
+   * @generated
+   */
+  public Adapter createEntradaAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.Salida <em>Salida</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.dearCode.Salida
+   * @generated
+   */
+  public Adapter createSalidaAdapter()
+  {
+    return null;
+  }
+
+  /**
    * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.Valor <em>Valor</em>}'.
    * <!-- begin-user-doc -->
    * This default implementation returns null so that we can easily ignore cases;
@@ -353,6 +478,261 @@ public class DearCodeAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createMI_IDAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.Condicion <em>Condicion</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.dearCode.Condicion
+   * @generated
+   */
+  public Adapter createCondicionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.Expression <em>Expression</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.dearCode.Expression
+   * @generated
+   */
+  public Adapter createExpressionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.IntLiteral <em>Int Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.dearCode.IntLiteral
+   * @generated
+   */
+  public Adapter createIntLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.StringLiteral <em>String Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.dearCode.StringLiteral
+   * @generated
+   */
+  public Adapter createStringLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.BooleanLiteral <em>Boolean Literal</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.dearCode.BooleanLiteral
+   * @generated
+   */
+  public Adapter createBooleanLiteralAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.VariableRef <em>Variable Ref</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.dearCode.VariableRef
+   * @generated
+   */
+  public Adapter createVariableRefAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.Condicional <em>Condicional</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.dearCode.Condicional
+   * @generated
+   */
+  public Adapter createCondicionalAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.BucleWhile <em>Bucle While</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.dearCode.BucleWhile
+   * @generated
+   */
+  public Adapter createBucleWhileAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.BucleFor <em>Bucle For</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.dearCode.BucleFor
+   * @generated
+   */
+  public Adapter createBucleForAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.Funcion <em>Funcion</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.dearCode.Funcion
+   * @generated
+   */
+  public Adapter createFuncionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.OrExpr <em>Or Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.dearCode.OrExpr
+   * @generated
+   */
+  public Adapter createOrExprAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.AndExpr <em>And Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.dearCode.AndExpr
+   * @generated
+   */
+  public Adapter createAndExprAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.EqualityExpr <em>Equality Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.dearCode.EqualityExpr
+   * @generated
+   */
+  public Adapter createEqualityExprAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.BinaryRelation <em>Binary Relation</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.dearCode.BinaryRelation
+   * @generated
+   */
+  public Adapter createBinaryRelationAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.AdditiveExpr <em>Additive Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.dearCode.AdditiveExpr
+   * @generated
+   */
+  public Adapter createAdditiveExprAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.MultiplicativeExpr <em>Multiplicative Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.dearCode.MultiplicativeExpr
+   * @generated
+   */
+  public Adapter createMultiplicativeExprAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.NotExpr <em>Not Expr</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.dearCode.NotExpr
+   * @generated
+   */
+  public Adapter createNotExprAdapter()
   {
     return null;
   }

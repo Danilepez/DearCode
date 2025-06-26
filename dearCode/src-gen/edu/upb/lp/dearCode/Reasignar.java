@@ -14,6 +14,10 @@ package edu.upb.lp.dearCode;
  * </p>
  * <ul>
  *   <li>{@link edu.upb.lp.dearCode.Reasignar#getVerboReas <em>Verbo Reas</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.Reasignar#getConector <em>Conector</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.Reasignar#getSustantivo <em>Sustantivo</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.Reasignar#getValor <em>Valor</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.Reasignar#getComentario <em>Comentario</em>}</li>
  * </ul>
  *
  * @see edu.upb.lp.dearCode.DearCodePackage#getReasignar()
@@ -43,5 +47,93 @@ public interface Reasignar extends Instruccion
    * @generated
    */
   void setVerboReas(String value);
+
+  /**
+   * Returns the value of the '<em><b>Conector</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Conector</em>' attribute.
+   * @see #setConector(String)
+   * @see edu.upb.lp.dearCode.DearCodePackage#getReasignar_Conector()
+   * @model
+   * @generated
+   */
+  String getConector();
+
+  /**
+   * Sets the value of the '{@link edu.upb.lp.dearCode.Reasignar#getConector <em>Conector</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Conector</em>' attribute.
+   * @see #getConector()
+   * @generated
+   */
+  void setConector(String value);
+
+  /**
+   * Returns the value of the '<em><b>Sustantivo</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Sustantivo</em>' containment reference.
+   * @see #setSustantivo(MI_ID)
+   * @see edu.upb.lp.dearCode.DearCodePackage#getReasignar_Sustantivo()
+   * @model containment="true"
+   * @generated
+   */
+  MI_ID getSustantivo();
+
+  /**
+   * Sets the value of the '{@link edu.upb.lp.dearCode.Reasignar#getSustantivo <em>Sustantivo</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Sustantivo</em>' containment reference.
+   * @see #getSustantivo()
+   * @generated
+   */
+  void setSustantivo(MI_ID value);
+
+  /**
+   * Returns the value of the '<em><b>Valor</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Valor</em>' containment reference.
+   * @see #setValor(Valor)
+   * @see edu.upb.lp.dearCode.DearCodePackage#getReasignar_Valor()
+   * @model containment="true"
+   * @generated
+   */
+  Valor getValor();
+
+  /**
+   * Sets the value of the '{@link edu.upb.lp.dearCode.Reasignar#getValor <em>Valor</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Valor</em>' containment reference.
+   * @see #getValor()
+   * @generated
+   */
+  void setValor(Valor value);
+
+  /**
+   * Returns the value of the '<em><b>Comentario</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Comentario</em>' attribute.
+   * @see #setComentario(String)
+   * @see edu.upb.lp.dearCode.DearCodePackage#getReasignar_Comentario()
+   * @model
+   * @generated
+   */
+  String getComentario();
+
+  /**
+   * Sets the value of the '{@link edu.upb.lp.dearCode.Reasignar#getComentario <em>Comentario</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Comentario</em>' attribute.
+   * @see #getComentario()
+   * @generated
+   */
+  void setComentario(String value);
 
 } // Reasignar

@@ -22,4 +22,6 @@ class DearCodeGenerator extends AbstractGenerator {
 //				.map[name]
 //				.join(', '))
 	}
+	
+	
 }
