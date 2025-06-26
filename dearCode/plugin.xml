@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.0"?>
+<plugin>
+	<extension point="org.eclipse.emf.ecore.generated_package">
+		<package
+			uri = "http://www.upb.edu/lp/DearCode"
+			class = "edu.upb.lp.dearCode.DearCodePackage"
+			genModel = "model/generated/DearCode.genmodel" />
+	</extension>
+</plugin>

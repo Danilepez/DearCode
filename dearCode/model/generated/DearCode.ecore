@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="dearCode" nsURI="http://www.upb.edu/lp/DearCode" nsPrefix="dearCode">
+  <eClassifiers xsi:type="ecore:EClass" name="Program">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cartas" upperBound="-1"
+        eType="#//Carta" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Carta">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="saludo" eType="#//Saludo"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cuerpo" eType="#//Cuerpo"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="despedida" eType="#//Despedida"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Saludo">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Despedida">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Cuerpo">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="instrucciones" upperBound="-1"
+        eType="#//Instruccion" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Instruccion">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="valor" eType="#//Valor"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="sustantivo" eType="#//MI_ID"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="comentario" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Declarar" eSuperTypes="#//Instruccion">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="verboDecl" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="articulo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Reasignar" eSuperTypes="#//Instruccion">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="verboReas" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Valor"/>
+  <eClassifiers xsi:type="ecore:EClass" name="NumeroLiteral" eSuperTypes="#//Valor"/>
+  <eClassifiers xsi:type="ecore:EClass" name="Simple" eSuperTypes="#//NumeroLiteral">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="value" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="Compuesto" eSuperTypes="#//NumeroLiteral">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="cantidad" eType="#//Simple"
+        containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="multiplicador" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="resto" eType="#//Simple"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="MI_ID" eSuperTypes="#//Valor">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="name" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+  </eClassifiers>
+</ecore:EPackage>
