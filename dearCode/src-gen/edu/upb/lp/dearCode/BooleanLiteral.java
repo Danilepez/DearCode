@@ -13,7 +13,7 @@ package edu.upb.lp.dearCode;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.dearCode.BooleanLiteral#getValue <em>Value</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.BooleanLiteral#getValueBoolean <em>Value Boolean</em>}</li>
  * </ul>
  *
  * @see edu.upb.lp.dearCode.DearCodePackage#getBooleanLiteral()
@@ -23,25 +23,25 @@ package edu.upb.lp.dearCode;
 public interface BooleanLiteral extends Expression
 {
   /**
-   * Returns the value of the '<em><b>Value</b></em>' attribute.
+   * Returns the value of the '<em><b>Value Boolean</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' attribute.
-   * @see #setValue(String)
-   * @see edu.upb.lp.dearCode.DearCodePackage#getBooleanLiteral_Value()
+   * @return the value of the '<em>Value Boolean</em>' attribute.
+   * @see #setValueBoolean(String)
+   * @see edu.upb.lp.dearCode.DearCodePackage#getBooleanLiteral_ValueBoolean()
    * @model
    * @generated
    */
-  String getValue();
+  String getValueBoolean();
 
   /**
-   * Sets the value of the '{@link edu.upb.lp.dearCode.BooleanLiteral#getValue <em>Value</em>}' attribute.
+   * Sets the value of the '{@link edu.upb.lp.dearCode.BooleanLiteral#getValueBoolean <em>Value Boolean</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' attribute.
-   * @see #getValue()
+   * @param value the new value of the '<em>Value Boolean</em>' attribute.
+   * @see #getValueBoolean()
    * @generated
    */
-  void setValue(String value);
+  void setValueBoolean(String value);
 
 } // BooleanLiteral

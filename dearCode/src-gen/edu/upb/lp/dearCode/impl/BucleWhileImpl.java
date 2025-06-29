@@ -4,9 +4,9 @@
 package edu.upb.lp.dearCode.impl;
 
 import edu.upb.lp.dearCode.BucleWhile;
-import edu.upb.lp.dearCode.Condicion;
 import edu.upb.lp.dearCode.DearCodePackage;
-import edu.upb.lp.dearCode.Instruccion;
+import edu.upb.lp.dearCode.ElementoBloque;
+import edu.upb.lp.dearCode.Expression;
 
 import java.util.Collection;
 
@@ -32,7 +32,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link edu.upb.lp.dearCode.impl.BucleWhileImpl#getCondicion <em>Condicion</em>}</li>
- *   <li>{@link edu.upb.lp.dearCode.impl.BucleWhileImpl#getInstrucciones <em>Instrucciones</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.impl.BucleWhileImpl#getLoopBody <em>Loop Body</em>}</li>
  * </ul>
  *
  * @generated
@@ -47,17 +47,17 @@ public class BucleWhileImpl extends InstruccionImpl implements BucleWhile
    * @generated
    * @ordered
    */
-  protected Condicion condicion;
+  protected Expression condicion;
 
   /**
-   * The cached value of the '{@link #getInstrucciones() <em>Instrucciones</em>}' containment reference list.
+   * The cached value of the '{@link #getLoopBody() <em>Loop Body</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInstrucciones()
+   * @see #getLoopBody()
    * @generated
    * @ordered
    */
-  protected EList<Instruccion> instrucciones;
+  protected EList<ElementoBloque> loopBody;
 
   /**
    * <!-- begin-user-doc -->
@@ -86,7 +86,7 @@ public class BucleWhileImpl extends InstruccionImpl implements BucleWhile
    * @generated
    */
   @Override
-  public Condicion getCondicion()
+  public Expression getCondicion()
   {
     return condicion;
   }
@@ -96,9 +96,9 @@ public class BucleWhileImpl extends InstruccionImpl implements BucleWhile
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetCondicion(Condicion newCondicion, NotificationChain msgs)
+  public NotificationChain basicSetCondicion(Expression newCondicion, NotificationChain msgs)
   {
-    Condicion oldCondicion = condicion;
+    Expression oldCondicion = condicion;
     condicion = newCondicion;
     if (eNotificationRequired())
     {
@@ -114,7 +114,7 @@ public class BucleWhileImpl extends InstruccionImpl implements BucleWhile
    * @generated
    */
   @Override
-  public void setCondicion(Condicion newCondicion)
+  public void setCondicion(Expression newCondicion)
   {
     if (newCondicion != condicion)
     {
@@ -136,13 +136,13 @@ public class BucleWhileImpl extends InstruccionImpl implements BucleWhile
    * @generated
    */
   @Override
-  public EList<Instruccion> getInstrucciones()
+  public EList<ElementoBloque> getLoopBody()
   {
-    if (instrucciones == null)
+    if (loopBody == null)
     {
-      instrucciones = new EObjectContainmentEList<Instruccion>(Instruccion.class, this, DearCodePackage.BUCLE_WHILE__INSTRUCCIONES);
+      loopBody = new EObjectContainmentEList<ElementoBloque>(ElementoBloque.class, this, DearCodePackage.BUCLE_WHILE__LOOP_BODY);
     }
-    return instrucciones;
+    return loopBody;
   }
 
   /**
@@ -157,8 +157,8 @@ public class BucleWhileImpl extends InstruccionImpl implements BucleWhile
     {
       case DearCodePackage.BUCLE_WHILE__CONDICION:
         return basicSetCondicion(null, msgs);
-      case DearCodePackage.BUCLE_WHILE__INSTRUCCIONES:
-        return ((InternalEList<?>)getInstrucciones()).basicRemove(otherEnd, msgs);
+      case DearCodePackage.BUCLE_WHILE__LOOP_BODY:
+        return ((InternalEList<?>)getLoopBody()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -175,8 +175,8 @@ public class BucleWhileImpl extends InstruccionImpl implements BucleWhile
     {
       case DearCodePackage.BUCLE_WHILE__CONDICION:
         return getCondicion();
-      case DearCodePackage.BUCLE_WHILE__INSTRUCCIONES:
-        return getInstrucciones();
+      case DearCodePackage.BUCLE_WHILE__LOOP_BODY:
+        return getLoopBody();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -193,11 +193,11 @@ public class BucleWhileImpl extends InstruccionImpl implements BucleWhile
     switch (featureID)
     {
       case DearCodePackage.BUCLE_WHILE__CONDICION:
-        setCondicion((Condicion)newValue);
+        setCondicion((Expression)newValue);
         return;
-      case DearCodePackage.BUCLE_WHILE__INSTRUCCIONES:
-        getInstrucciones().clear();
-        getInstrucciones().addAll((Collection<? extends Instruccion>)newValue);
+      case DearCodePackage.BUCLE_WHILE__LOOP_BODY:
+        getLoopBody().clear();
+        getLoopBody().addAll((Collection<? extends ElementoBloque>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -214,10 +214,10 @@ public class BucleWhileImpl extends InstruccionImpl implements BucleWhile
     switch (featureID)
     {
       case DearCodePackage.BUCLE_WHILE__CONDICION:
-        setCondicion((Condicion)null);
+        setCondicion((Expression)null);
         return;
-      case DearCodePackage.BUCLE_WHILE__INSTRUCCIONES:
-        getInstrucciones().clear();
+      case DearCodePackage.BUCLE_WHILE__LOOP_BODY:
+        getLoopBody().clear();
         return;
     }
     super.eUnset(featureID);
@@ -235,8 +235,8 @@ public class BucleWhileImpl extends InstruccionImpl implements BucleWhile
     {
       case DearCodePackage.BUCLE_WHILE__CONDICION:
         return condicion != null;
-      case DearCodePackage.BUCLE_WHILE__INSTRUCCIONES:
-        return instrucciones != null && !instrucciones.isEmpty();
+      case DearCodePackage.BUCLE_WHILE__LOOP_BODY:
+        return loopBody != null && !loopBody.isEmpty();
     }
     return super.eIsSet(featureID);
   }

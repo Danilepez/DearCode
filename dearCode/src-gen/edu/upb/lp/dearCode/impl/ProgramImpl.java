@@ -7,19 +7,14 @@ import edu.upb.lp.dearCode.Carta;
 import edu.upb.lp.dearCode.DearCodePackage;
 import edu.upb.lp.dearCode.Program;
 
-import java.util.Collection;
-
+import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.emf.ecore.InternalEObject;
 
+import org.eclipse.emf.ecore.impl.ENotificationImpl;
 import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
@@ -29,7 +24,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.dearCode.impl.ProgramImpl#getCartas <em>Cartas</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.impl.ProgramImpl#getCarta <em>Carta</em>}</li>
  * </ul>
  *
  * @generated
@@ -37,14 +32,14 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
 {
   /**
-   * The cached value of the '{@link #getCartas() <em>Cartas</em>}' containment reference list.
+   * The cached value of the '{@link #getCarta() <em>Carta</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCartas()
+   * @see #getCarta()
    * @generated
    * @ordered
    */
-  protected EList<Carta> cartas;
+  protected Carta carta;
 
   /**
    * <!-- begin-user-doc -->
@@ -73,13 +68,48 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * @generated
    */
   @Override
-  public EList<Carta> getCartas()
+  public Carta getCarta()
   {
-    if (cartas == null)
+    return carta;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetCarta(Carta newCarta, NotificationChain msgs)
+  {
+    Carta oldCarta = carta;
+    carta = newCarta;
+    if (eNotificationRequired())
     {
-      cartas = new EObjectContainmentEList<Carta>(Carta.class, this, DearCodePackage.PROGRAM__CARTAS);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DearCodePackage.PROGRAM__CARTA, oldCarta, newCarta);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return cartas;
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setCarta(Carta newCarta)
+  {
+    if (newCarta != carta)
+    {
+      NotificationChain msgs = null;
+      if (carta != null)
+        msgs = ((InternalEObject)carta).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.PROGRAM__CARTA, null, msgs);
+      if (newCarta != null)
+        msgs = ((InternalEObject)newCarta).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.PROGRAM__CARTA, null, msgs);
+      msgs = basicSetCarta(newCarta, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.PROGRAM__CARTA, newCarta, newCarta));
   }
 
   /**
@@ -92,8 +122,8 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case DearCodePackage.PROGRAM__CARTAS:
-        return ((InternalEList<?>)getCartas()).basicRemove(otherEnd, msgs);
+      case DearCodePackage.PROGRAM__CARTA:
+        return basicSetCarta(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -108,8 +138,8 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case DearCodePackage.PROGRAM__CARTAS:
-        return getCartas();
+      case DearCodePackage.PROGRAM__CARTA:
+        return getCarta();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -119,15 +149,13 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
    * <!-- end-user-doc -->
    * @generated
    */
-  @SuppressWarnings("unchecked")
   @Override
   public void eSet(int featureID, Object newValue)
   {
     switch (featureID)
     {
-      case DearCodePackage.PROGRAM__CARTAS:
-        getCartas().clear();
-        getCartas().addAll((Collection<? extends Carta>)newValue);
+      case DearCodePackage.PROGRAM__CARTA:
+        setCarta((Carta)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -143,8 +171,8 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case DearCodePackage.PROGRAM__CARTAS:
-        getCartas().clear();
+      case DearCodePackage.PROGRAM__CARTA:
+        setCarta((Carta)null);
         return;
     }
     super.eUnset(featureID);
@@ -160,8 +188,8 @@ public class ProgramImpl extends MinimalEObjectImpl.Container implements Program
   {
     switch (featureID)
     {
-      case DearCodePackage.PROGRAM__CARTAS:
-        return cartas != null && !cartas.isEmpty();
+      case DearCodePackage.PROGRAM__CARTA:
+        return carta != null;
     }
     return super.eIsSet(featureID);
   }

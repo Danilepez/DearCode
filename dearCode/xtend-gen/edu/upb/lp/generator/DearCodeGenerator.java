@@ -3,10 +3,40 @@
  */
 package edu.upb.lp.generator;
 
+import edu.upb.lp.dearCode.AdditiveExpression;
+import edu.upb.lp.dearCode.AndExpression;
+import edu.upb.lp.dearCode.BooleanLiteral;
+import edu.upb.lp.dearCode.Comment;
+import edu.upb.lp.dearCode.Declarar;
+import edu.upb.lp.dearCode.EqualityExpression;
+import edu.upb.lp.dearCode.Expression;
+import edu.upb.lp.dearCode.Funcion;
+import edu.upb.lp.dearCode.FunctionCall;
+import edu.upb.lp.dearCode.Instruccion;
+import edu.upb.lp.dearCode.MI_ID;
+import edu.upb.lp.dearCode.MultiplicativeExpression;
+import edu.upb.lp.dearCode.NumberLiteral;
+import edu.upb.lp.dearCode.OrExpression;
+import edu.upb.lp.dearCode.Program;
+import edu.upb.lp.dearCode.Reasignar;
+import edu.upb.lp.dearCode.RelationalExpression;
+import edu.upb.lp.dearCode.Salida;
+import edu.upb.lp.dearCode.StringLiteral;
+import edu.upb.lp.dearCode.UnaryExpression;
+import edu.upb.lp.dearCode.VariableReference;
+import java.util.Arrays;
+import java.util.Objects;
+import org.eclipse.emf.common.util.EList;
+import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.ecore.resource.Resource;
+import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Functions.Function1;
+import org.eclipse.xtext.xbase.lib.IterableExtensions;
+import org.eclipse.xtext.xbase.lib.ListExtensions;
+import org.eclipse.xtext.xbase.lib.XbaseGenerated;
 
 /**
  * Generates code from your model files on save.
@@ -17,5 +47,441 @@ import org.eclipse.xtext.generator.IGeneratorContext;
 public class DearCodeGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    EObject _head = IterableExtensions.<EObject>head(resource.getContents());
+    final Program program = ((Program) _head);
+    final CharSequence code = this.generateProgram(program);
+    String _name = program.getCarta().getSaludo().getName();
+    String _plus = (_name + ".py");
+    fsa.generateFile(_plus, code);
+  }
+
+  public CharSequence generateProgram(final Program p) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("# -*- coding: utf-8 -*-");
+    _builder.newLine();
+    _builder.append("# Carta para ");
+    String _name = p.getCarta().getSaludo().getName();
+    _builder.append(_name);
+    _builder.newLineIfNotEmpty();
+    {
+      EList<Instruccion> _instrucciones = p.getCarta().getCuerpo().getInstrucciones();
+      for(final Instruccion instr : _instrucciones) {
+        CharSequence _generateInstruccion = this.generateInstruccion(instr);
+        _builder.append(_generateInstruccion);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    _builder.append("# Con cariño, Tu programador ");
+    String _name_1 = p.getCarta().getDespedida().getName();
+    _builder.append(_name_1);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateInstruccion(final Declarar d) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      Comment _preComentario = d.getPreComentario();
+      boolean _tripleNotEquals = (_preComentario != null);
+      if (_tripleNotEquals) {
+        _builder.append("# ");
+        String _value = d.getPreComentario().getValue();
+        _builder.append(_value);
+      }
+    }
+    _builder.newLineIfNotEmpty();
+    String _name = d.getSustantivo().getName();
+    _builder.append(_name);
+    _builder.append(" = ");
+    {
+      Expression _valor = d.getValor();
+      boolean _tripleNotEquals_1 = (_valor != null);
+      if (_tripleNotEquals_1) {
+        CharSequence _generateExpression = this.generateExpression(d.getValor());
+        _builder.append(_generateExpression);
+      } else {
+        _builder.append("None");
+      }
+    }
+    {
+      Comment _postComentario = d.getPostComentario();
+      boolean _tripleNotEquals_2 = (_postComentario != null);
+      if (_tripleNotEquals_2) {
+        _builder.append("  # ");
+        String _value_1 = d.getPostComentario().getValue();
+        _builder.append(_value_1);
+      }
+    }
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateInstruccion(final Reasignar r) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      Comment _preComentario = r.getPreComentario();
+      boolean _tripleNotEquals = (_preComentario != null);
+      if (_tripleNotEquals) {
+        _builder.append("# ");
+        String _value = r.getPreComentario().getValue();
+        _builder.append(_value);
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    String _name = r.getSustantivo().getName();
+    _builder.append(_name);
+    _builder.append(" = ");
+    {
+      Expression _valor = r.getValor();
+      boolean _tripleNotEquals_1 = (_valor != null);
+      if (_tripleNotEquals_1) {
+        CharSequence _generateExpression = this.generateExpression(r.getValor());
+        _builder.append(_generateExpression);
+      } else {
+        _builder.append("None");
+      }
+    }
+    {
+      Comment _comentario = r.getComentario();
+      boolean _tripleNotEquals_2 = (_comentario != null);
+      if (_tripleNotEquals_2) {
+        _builder.append("  # ");
+        String _value_1 = r.getComentario().getValue();
+        _builder.append(_value_1);
+      }
+    }
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateInstruccion(final Salida s) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("print(");
+    CharSequence _generateExpression = this.generateExpression(s.getExpresion());
+    _builder.append(_generateExpression);
+    _builder.append(")");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateInstruccion(final Instruccion i) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("# instrucción no soportada: ");
+    String _string = i.toString();
+    _builder.append(_string);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  public CharSequence generateExpression(final Expression expr) {
+    CharSequence _xblockexpression = null;
+    {
+      if ((expr == null)) {
+        return "None";
+      }
+      CharSequence _switchResult = null;
+      String _name = expr.eClass().getName();
+      if (_name != null) {
+        switch (_name) {
+          case "OrExpression":
+            _switchResult = this.generateOrExpression(((OrExpression) expr));
+            break;
+          case "AndExpression":
+            _switchResult = this.generateAndExpression(((AndExpression) expr));
+            break;
+          case "EqualityExpression":
+            _switchResult = this.generateEqualityExpression(((EqualityExpression) expr));
+            break;
+          case "RelationalExpression":
+            _switchResult = this.generateRelationalExpression(((RelationalExpression) expr));
+            break;
+          case "AdditiveExpression":
+            _switchResult = this.generateAdditiveExpression(((AdditiveExpression) expr));
+            break;
+          case "MultiplicativeExpression":
+            _switchResult = this.generateMultiplicativeExpression(((MultiplicativeExpression) expr));
+            break;
+          case "UnaryExpression":
+            _switchResult = this.generateUnaryExpression(((UnaryExpression) expr));
+            break;
+          case "NumberLiteral":
+            StringConcatenation _builder = new StringConcatenation();
+            int _valueInt = ((NumberLiteral) expr).getValueInt();
+            _builder.append(_valueInt);
+            _switchResult = _builder;
+            break;
+          case "StringLiteral":
+            StringConcatenation _builder_1 = new StringConcatenation();
+            String _valueString = ((StringLiteral) expr).getValueString();
+            _builder_1.append(_valueString);
+            _switchResult = _builder_1;
+            break;
+          case "BooleanLiteral":
+            _switchResult = this.generateBooleanLiteral(((BooleanLiteral) expr));
+            break;
+          case "VariableReference":
+            StringConcatenation _builder_2 = new StringConcatenation();
+            String _name_1 = ((VariableReference) expr).getName();
+            _builder_2.append(_name_1);
+            _switchResult = _builder_2;
+            break;
+          case "FunctionCall":
+            _switchResult = this.generateFunctionCall(((FunctionCall) expr));
+            break;
+          default:
+            StringConcatenation _builder_3 = new StringConcatenation();
+            _builder_3.append("#EXPRESION:");
+            String _name_2 = expr.eClass().getName();
+            _builder_3.append(_name_2);
+            _builder_3.append("#");
+            _switchResult = _builder_3;
+            break;
+        }
+      } else {
+        StringConcatenation _builder_3 = new StringConcatenation();
+        _builder_3.append("#EXPRESION:");
+        String _name_2 = expr.eClass().getName();
+        _builder_3.append(_name_2);
+        _builder_3.append("#");
+        _switchResult = _builder_3;
+      }
+      _xblockexpression = _switchResult;
+    }
+    return _xblockexpression;
+  }
+
+  public CharSequence generateOrExpression(final OrExpression expr) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(");
+    CharSequence _generateExpression = this.generateExpression(expr.getLeft());
+    _builder.append(_generateExpression);
+    _builder.append(" or ");
+    CharSequence _generateExpression_1 = this.generateExpression(expr.getRight());
+    _builder.append(_generateExpression_1);
+    _builder.append(")");
+    return _builder;
+  }
+
+  public CharSequence generateAndExpression(final AndExpression expr) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(");
+    CharSequence _generateExpression = this.generateExpression(expr.getLeft());
+    _builder.append(_generateExpression);
+    _builder.append(" and ");
+    CharSequence _generateExpression_1 = this.generateExpression(expr.getRight());
+    _builder.append(_generateExpression_1);
+    _builder.append(")");
+    return _builder;
+  }
+
+  public CharSequence generateEqualityExpression(final EqualityExpression expr) {
+    CharSequence _xblockexpression = null;
+    {
+      String _xifexpression = null;
+      boolean _contains = expr.getOp().contains("unísono");
+      if (_contains) {
+        _xifexpression = "==";
+      } else {
+        _xifexpression = "!=";
+      }
+      final String op = _xifexpression;
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("(");
+      CharSequence _generateExpression = this.generateExpression(expr.getLeft());
+      _builder.append(_generateExpression);
+      _builder.append(" ");
+      _builder.append(op);
+      _builder.append(" ");
+      CharSequence _generateExpression_1 = this.generateExpression(expr.getRight());
+      _builder.append(_generateExpression_1);
+      _builder.append(")");
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
+  }
+
+  public CharSequence generateRelationalExpression(final RelationalExpression expr) {
+    CharSequence _xblockexpression = null;
+    {
+      String _switchResult = null;
+      String _op = expr.getOp();
+      boolean _matched = false;
+      boolean _contains = expr.getOp().contains("menos fuerza");
+      if (_contains) {
+        _matched=true;
+        _switchResult = "<";
+      }
+      if (!_matched) {
+        boolean _contains_1 = expr.getOp().contains("mismo nivel");
+        if (_contains_1) {
+          _matched=true;
+          _switchResult = "<=";
+        }
+      }
+      if (!_matched) {
+        boolean _contains_2 = expr.getOp().contains("más pasión");
+        if (_contains_2) {
+          _matched=true;
+          _switchResult = ">";
+        }
+      }
+      if (!_matched) {
+        boolean _contains_3 = expr.getOp().contains("tanta fuerza");
+        if (_contains_3) {
+          _matched=true;
+          _switchResult = ">=";
+        }
+      }
+      if (!_matched) {
+        _switchResult = "??";
+      }
+      final String op = _switchResult;
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("(");
+      CharSequence _generateExpression = this.generateExpression(expr.getLeft());
+      _builder.append(_generateExpression);
+      _builder.append(" ");
+      _builder.append(op);
+      _builder.append(" ");
+      CharSequence _generateExpression_1 = this.generateExpression(expr.getRight());
+      _builder.append(_generateExpression_1);
+      _builder.append(")");
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
+  }
+
+  public CharSequence generateAdditiveExpression(final AdditiveExpression expr) {
+    CharSequence _xblockexpression = null;
+    {
+      String _xifexpression = null;
+      boolean _contains = expr.getOp().contains("suspiro");
+      if (_contains) {
+        _xifexpression = "+";
+      } else {
+        _xifexpression = "-";
+      }
+      final String op = _xifexpression;
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("(");
+      CharSequence _generateExpression = this.generateExpression(expr.getLeft());
+      _builder.append(_generateExpression);
+      _builder.append(" ");
+      _builder.append(op);
+      _builder.append(" ");
+      CharSequence _generateExpression_1 = this.generateExpression(expr.getRight());
+      _builder.append(_generateExpression_1);
+      _builder.append(")");
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
+  }
+
+  public CharSequence generateMultiplicativeExpression(final MultiplicativeExpression expr) {
+    CharSequence _xblockexpression = null;
+    {
+      String _switchResult = null;
+      String _op = expr.getOp();
+      boolean _matched = false;
+      boolean _contains = expr.getOp().contains("fuego");
+      if (_contains) {
+        _matched=true;
+        _switchResult = "*";
+      }
+      if (!_matched) {
+        boolean _contains_1 = expr.getOp().contains("ecos");
+        if (_contains_1) {
+          _matched=true;
+          _switchResult = "/";
+        }
+      }
+      if (!_matched) {
+        boolean _contains_2 = expr.getOp().contains("resuena");
+        if (_contains_2) {
+          _matched=true;
+          _switchResult = "%";
+        }
+      }
+      if (!_matched) {
+        _switchResult = "??";
+      }
+      final String op = _switchResult;
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("(");
+      CharSequence _generateExpression = this.generateExpression(expr.getLeft());
+      _builder.append(_generateExpression);
+      _builder.append(" ");
+      _builder.append(op);
+      _builder.append(" ");
+      CharSequence _generateExpression_1 = this.generateExpression(expr.getRight());
+      _builder.append(_generateExpression_1);
+      _builder.append(")");
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
+  }
+
+  public CharSequence generateUnaryExpression(final UnaryExpression expr) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("(not ");
+    CharSequence _generateExpression = this.generateExpression(expr.getExpression());
+    _builder.append(_generateExpression);
+    _builder.append(")");
+    return _builder;
+  }
+
+  public CharSequence generateBooleanLiteral(final BooleanLiteral b) {
+    String _xifexpression = null;
+    String _valueBoolean = b.getValueBoolean();
+    boolean _equals = Objects.equals(_valueBoolean, "siempre");
+    if (_equals) {
+      _xifexpression = "True";
+    } else {
+      _xifexpression = "False";
+    }
+    return _xifexpression;
+  }
+
+  public CharSequence generateFunctionCall(final FunctionCall call) {
+    CharSequence _xblockexpression = null;
+    {
+      Object _xifexpression = null;
+      MI_ID _nameFuncion = call.getNameFuncion();
+      if ((_nameFuncion instanceof Funcion)) {
+        MI_ID _nameFuncion_1 = call.getNameFuncion();
+        _xifexpression = ((Funcion) _nameFuncion_1).getName();
+      } else {
+        MI_ID _nameFuncion_2 = call.getNameFuncion();
+        _xifexpression = ((MI_ID) _nameFuncion_2).getName();
+      }
+      final Object name = _xifexpression;
+      final Function1<Expression, CharSequence> _function = (Expression it) -> {
+        return this.generateExpression(it);
+      };
+      final String args = IterableExtensions.join(ListExtensions.<Expression, CharSequence>map(call.getArgs(), _function), ", ");
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append(name);
+      _builder.append("(");
+      _builder.append(args);
+      _builder.append(")");
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
+  }
+
+  @XbaseGenerated
+  public CharSequence generateInstruccion(final Instruccion d) {
+    if (d instanceof Declarar) {
+      return _generateInstruccion((Declarar)d);
+    } else if (d instanceof Reasignar) {
+      return _generateInstruccion((Reasignar)d);
+    } else if (d instanceof Salida) {
+      return _generateInstruccion((Salida)d);
+    } else if (d != null) {
+      return _generateInstruccion(d);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(d).toString());
+    }
   }
 }

@@ -4,8 +4,8 @@
 package edu.upb.lp.dearCode.impl;
 
 import edu.upb.lp.dearCode.DearCodePackage;
+import edu.upb.lp.dearCode.ElementoBloque;
 import edu.upb.lp.dearCode.Funcion;
-import edu.upb.lp.dearCode.Instruccion;
 import edu.upb.lp.dearCode.MI_ID;
 
 import java.util.Collection;
@@ -33,8 +33,8 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * <ul>
  *   <li>{@link edu.upb.lp.dearCode.impl.FuncionImpl#getName <em>Name</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.impl.FuncionImpl#getParametros <em>Parametros</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.impl.FuncionImpl#getTipo <em>Tipo</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.impl.FuncionImpl#getInstrucciones <em>Instrucciones</em>}</li>
- *   <li>{@link edu.upb.lp.dearCode.impl.FuncionImpl#getRetorno <em>Retorno</em>}</li>
  * </ul>
  *
  * @generated
@@ -62,6 +62,26 @@ public class FuncionImpl extends InstruccionImpl implements Funcion
   protected EList<MI_ID> parametros;
 
   /**
+   * The default value of the '{@link #getTipo() <em>Tipo</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTipo()
+   * @generated
+   * @ordered
+   */
+  protected static final String TIPO_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getTipo() <em>Tipo</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTipo()
+   * @generated
+   * @ordered
+   */
+  protected String tipo = TIPO_EDEFAULT;
+
+  /**
    * The cached value of the '{@link #getInstrucciones() <em>Instrucciones</em>}' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -69,17 +89,7 @@ public class FuncionImpl extends InstruccionImpl implements Funcion
    * @generated
    * @ordered
    */
-  protected EList<Instruccion> instrucciones;
-
-  /**
-   * The cached value of the '{@link #getRetorno() <em>Retorno</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getRetorno()
-   * @generated
-   * @ordered
-   */
-  protected MI_ID retorno;
+  protected EList<ElementoBloque> instrucciones;
 
   /**
    * <!-- begin-user-doc -->
@@ -173,63 +183,38 @@ public class FuncionImpl extends InstruccionImpl implements Funcion
    * @generated
    */
   @Override
-  public EList<Instruccion> getInstrucciones()
+  public String getTipo()
+  {
+    return tipo;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setTipo(String newTipo)
+  {
+    String oldTipo = tipo;
+    tipo = newTipo;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.FUNCION__TIPO, oldTipo, tipo));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<ElementoBloque> getInstrucciones()
   {
     if (instrucciones == null)
     {
-      instrucciones = new EObjectContainmentEList<Instruccion>(Instruccion.class, this, DearCodePackage.FUNCION__INSTRUCCIONES);
+      instrucciones = new EObjectContainmentEList<ElementoBloque>(ElementoBloque.class, this, DearCodePackage.FUNCION__INSTRUCCIONES);
     }
     return instrucciones;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public MI_ID getRetorno()
-  {
-    return retorno;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetRetorno(MI_ID newRetorno, NotificationChain msgs)
-  {
-    MI_ID oldRetorno = retorno;
-    retorno = newRetorno;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DearCodePackage.FUNCION__RETORNO, oldRetorno, newRetorno);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setRetorno(MI_ID newRetorno)
-  {
-    if (newRetorno != retorno)
-    {
-      NotificationChain msgs = null;
-      if (retorno != null)
-        msgs = ((InternalEObject)retorno).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.FUNCION__RETORNO, null, msgs);
-      if (newRetorno != null)
-        msgs = ((InternalEObject)newRetorno).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.FUNCION__RETORNO, null, msgs);
-      msgs = basicSetRetorno(newRetorno, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.FUNCION__RETORNO, newRetorno, newRetorno));
   }
 
   /**
@@ -248,8 +233,6 @@ public class FuncionImpl extends InstruccionImpl implements Funcion
         return ((InternalEList<?>)getParametros()).basicRemove(otherEnd, msgs);
       case DearCodePackage.FUNCION__INSTRUCCIONES:
         return ((InternalEList<?>)getInstrucciones()).basicRemove(otherEnd, msgs);
-      case DearCodePackage.FUNCION__RETORNO:
-        return basicSetRetorno(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -268,10 +251,10 @@ public class FuncionImpl extends InstruccionImpl implements Funcion
         return getName();
       case DearCodePackage.FUNCION__PARAMETROS:
         return getParametros();
+      case DearCodePackage.FUNCION__TIPO:
+        return getTipo();
       case DearCodePackage.FUNCION__INSTRUCCIONES:
         return getInstrucciones();
-      case DearCodePackage.FUNCION__RETORNO:
-        return getRetorno();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -294,12 +277,12 @@ public class FuncionImpl extends InstruccionImpl implements Funcion
         getParametros().clear();
         getParametros().addAll((Collection<? extends MI_ID>)newValue);
         return;
+      case DearCodePackage.FUNCION__TIPO:
+        setTipo((String)newValue);
+        return;
       case DearCodePackage.FUNCION__INSTRUCCIONES:
         getInstrucciones().clear();
-        getInstrucciones().addAll((Collection<? extends Instruccion>)newValue);
-        return;
-      case DearCodePackage.FUNCION__RETORNO:
-        setRetorno((MI_ID)newValue);
+        getInstrucciones().addAll((Collection<? extends ElementoBloque>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -321,11 +304,11 @@ public class FuncionImpl extends InstruccionImpl implements Funcion
       case DearCodePackage.FUNCION__PARAMETROS:
         getParametros().clear();
         return;
+      case DearCodePackage.FUNCION__TIPO:
+        setTipo(TIPO_EDEFAULT);
+        return;
       case DearCodePackage.FUNCION__INSTRUCCIONES:
         getInstrucciones().clear();
-        return;
-      case DearCodePackage.FUNCION__RETORNO:
-        setRetorno((MI_ID)null);
         return;
     }
     super.eUnset(featureID);
@@ -345,12 +328,29 @@ public class FuncionImpl extends InstruccionImpl implements Funcion
         return name != null;
       case DearCodePackage.FUNCION__PARAMETROS:
         return parametros != null && !parametros.isEmpty();
+      case DearCodePackage.FUNCION__TIPO:
+        return TIPO_EDEFAULT == null ? tipo != null : !TIPO_EDEFAULT.equals(tipo);
       case DearCodePackage.FUNCION__INSTRUCCIONES:
         return instrucciones != null && !instrucciones.isEmpty();
-      case DearCodePackage.FUNCION__RETORNO:
-        return retorno != null;
     }
     return super.eIsSet(featureID);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String toString()
+  {
+    if (eIsProxy()) return super.toString();
+
+    StringBuilder result = new StringBuilder(super.toString());
+    result.append(" (tipo: ");
+    result.append(tipo);
+    result.append(')');
+    return result.toString();
   }
 
 } //FuncionImpl

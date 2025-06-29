@@ -16,8 +16,8 @@ import org.eclipse.emf.common.util.EList;
  * <ul>
  *   <li>{@link edu.upb.lp.dearCode.Funcion#getName <em>Name</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.Funcion#getParametros <em>Parametros</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.Funcion#getTipo <em>Tipo</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.Funcion#getInstrucciones <em>Instrucciones</em>}</li>
- *   <li>{@link edu.upb.lp.dearCode.Funcion#getRetorno <em>Retorno</em>}</li>
  * </ul>
  *
  * @see edu.upb.lp.dearCode.DearCodePackage#getFuncion()
@@ -61,8 +61,30 @@ public interface Funcion extends Instruccion
   EList<MI_ID> getParametros();
 
   /**
+   * Returns the value of the '<em><b>Tipo</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Tipo</em>' attribute.
+   * @see #setTipo(String)
+   * @see edu.upb.lp.dearCode.DearCodePackage#getFuncion_Tipo()
+   * @model
+   * @generated
+   */
+  String getTipo();
+
+  /**
+   * Sets the value of the '{@link edu.upb.lp.dearCode.Funcion#getTipo <em>Tipo</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Tipo</em>' attribute.
+   * @see #getTipo()
+   * @generated
+   */
+  void setTipo(String value);
+
+  /**
    * Returns the value of the '<em><b>Instrucciones</b></em>' containment reference list.
-   * The list contents are of type {@link edu.upb.lp.dearCode.Instruccion}.
+   * The list contents are of type {@link edu.upb.lp.dearCode.ElementoBloque}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Instrucciones</em>' containment reference list.
@@ -70,28 +92,6 @@ public interface Funcion extends Instruccion
    * @model containment="true"
    * @generated
    */
-  EList<Instruccion> getInstrucciones();
-
-  /**
-   * Returns the value of the '<em><b>Retorno</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Retorno</em>' containment reference.
-   * @see #setRetorno(MI_ID)
-   * @see edu.upb.lp.dearCode.DearCodePackage#getFuncion_Retorno()
-   * @model containment="true"
-   * @generated
-   */
-  MI_ID getRetorno();
-
-  /**
-   * Sets the value of the '{@link edu.upb.lp.dearCode.Funcion#getRetorno <em>Retorno</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Retorno</em>' containment reference.
-   * @see #getRetorno()
-   * @generated
-   */
-  void setRetorno(MI_ID value);
+  EList<ElementoBloque> getInstrucciones();
 
 } // Funcion

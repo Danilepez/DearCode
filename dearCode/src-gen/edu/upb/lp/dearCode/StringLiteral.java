@@ -13,7 +13,7 @@ package edu.upb.lp.dearCode;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.dearCode.StringLiteral#getValue <em>Value</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.StringLiteral#getValueString <em>Value String</em>}</li>
  * </ul>
  *
  * @see edu.upb.lp.dearCode.DearCodePackage#getStringLiteral()
@@ -23,25 +23,25 @@ package edu.upb.lp.dearCode;
 public interface StringLiteral extends Expression
 {
   /**
-   * Returns the value of the '<em><b>Value</b></em>' attribute.
+   * Returns the value of the '<em><b>Value String</b></em>' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Value</em>' attribute.
-   * @see #setValue(String)
-   * @see edu.upb.lp.dearCode.DearCodePackage#getStringLiteral_Value()
+   * @return the value of the '<em>Value String</em>' attribute.
+   * @see #setValueString(String)
+   * @see edu.upb.lp.dearCode.DearCodePackage#getStringLiteral_ValueString()
    * @model
    * @generated
    */
-  String getValue();
+  String getValueString();
 
   /**
-   * Sets the value of the '{@link edu.upb.lp.dearCode.StringLiteral#getValue <em>Value</em>}' attribute.
+   * Sets the value of the '{@link edu.upb.lp.dearCode.StringLiteral#getValueString <em>Value String</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Value</em>' attribute.
-   * @see #getValue()
+   * @param value the new value of the '<em>Value String</em>' attribute.
+   * @see #getValueString()
    * @generated
    */
-  void setValue(String value);
+  void setValueString(String value);
 
 } // StringLiteral

@@ -114,103 +114,13 @@ public interface DearCodeFactory extends EFactory
   Salida createSalida();
 
   /**
-   * Returns a new object of class '<em>Valor</em>'.
+   * Returns a new object of class '<em>Elemento Bloque</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Valor</em>'.
+   * @return a new object of class '<em>Elemento Bloque</em>'.
    * @generated
    */
-  Valor createValor();
-
-  /**
-   * Returns a new object of class '<em>Numero Literal</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Numero Literal</em>'.
-   * @generated
-   */
-  NumeroLiteral createNumeroLiteral();
-
-  /**
-   * Returns a new object of class '<em>Simple</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Simple</em>'.
-   * @generated
-   */
-  Simple createSimple();
-
-  /**
-   * Returns a new object of class '<em>Compuesto</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Compuesto</em>'.
-   * @generated
-   */
-  Compuesto createCompuesto();
-
-  /**
-   * Returns a new object of class '<em>MI ID</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>MI ID</em>'.
-   * @generated
-   */
-  MI_ID createMI_ID();
-
-  /**
-   * Returns a new object of class '<em>Condicion</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Condicion</em>'.
-   * @generated
-   */
-  Condicion createCondicion();
-
-  /**
-   * Returns a new object of class '<em>Expression</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Expression</em>'.
-   * @generated
-   */
-  Expression createExpression();
-
-  /**
-   * Returns a new object of class '<em>Int Literal</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Int Literal</em>'.
-   * @generated
-   */
-  IntLiteral createIntLiteral();
-
-  /**
-   * Returns a new object of class '<em>String Literal</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>String Literal</em>'.
-   * @generated
-   */
-  StringLiteral createStringLiteral();
-
-  /**
-   * Returns a new object of class '<em>Boolean Literal</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Boolean Literal</em>'.
-   * @generated
-   */
-  BooleanLiteral createBooleanLiteral();
-
-  /**
-   * Returns a new object of class '<em>Variable Ref</em>'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return a new object of class '<em>Variable Ref</em>'.
-   * @generated
-   */
-  VariableRef createVariableRef();
+  ElementoBloque createElementoBloque();
 
   /**
    * Returns a new object of class '<em>Condicional</em>'.
@@ -249,67 +159,148 @@ public interface DearCodeFactory extends EFactory
   Funcion createFuncion();
 
   /**
-   * Returns a new object of class '<em>Or Expr</em>'.
+   * Returns a new object of class '<em>Return</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Or Expr</em>'.
+   * @return a new object of class '<em>Return</em>'.
    * @generated
    */
-  OrExpr createOrExpr();
+  Return createReturn();
 
   /**
-   * Returns a new object of class '<em>And Expr</em>'.
+   * Returns a new object of class '<em>Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>And Expr</em>'.
+   * @return a new object of class '<em>Expression</em>'.
    * @generated
    */
-  AndExpr createAndExpr();
+  Expression createExpression();
 
   /**
-   * Returns a new object of class '<em>Equality Expr</em>'.
+   * Returns a new object of class '<em>Comment</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Equality Expr</em>'.
+   * @return a new object of class '<em>Comment</em>'.
    * @generated
    */
-  EqualityExpr createEqualityExpr();
+  Comment createComment();
 
   /**
-   * Returns a new object of class '<em>Binary Relation</em>'.
+   * Returns a new object of class '<em>MI ID</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Binary Relation</em>'.
+   * @return a new object of class '<em>MI ID</em>'.
    * @generated
    */
-  BinaryRelation createBinaryRelation();
+  MI_ID createMI_ID();
 
   /**
-   * Returns a new object of class '<em>Additive Expr</em>'.
+   * Returns a new object of class '<em>Or Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Additive Expr</em>'.
+   * @return a new object of class '<em>Or Expression</em>'.
    * @generated
    */
-  AdditiveExpr createAdditiveExpr();
+  OrExpression createOrExpression();
 
   /**
-   * Returns a new object of class '<em>Multiplicative Expr</em>'.
+   * Returns a new object of class '<em>And Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Multiplicative Expr</em>'.
+   * @return a new object of class '<em>And Expression</em>'.
    * @generated
    */
-  MultiplicativeExpr createMultiplicativeExpr();
+  AndExpression createAndExpression();
 
   /**
-   * Returns a new object of class '<em>Not Expr</em>'.
+   * Returns a new object of class '<em>Equality Expression</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return a new object of class '<em>Not Expr</em>'.
+   * @return a new object of class '<em>Equality Expression</em>'.
    * @generated
    */
-  NotExpr createNotExpr();
+  EqualityExpression createEqualityExpression();
+
+  /**
+   * Returns a new object of class '<em>Relational Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Relational Expression</em>'.
+   * @generated
+   */
+  RelationalExpression createRelationalExpression();
+
+  /**
+   * Returns a new object of class '<em>Additive Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Additive Expression</em>'.
+   * @generated
+   */
+  AdditiveExpression createAdditiveExpression();
+
+  /**
+   * Returns a new object of class '<em>Multiplicative Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Multiplicative Expression</em>'.
+   * @generated
+   */
+  MultiplicativeExpression createMultiplicativeExpression();
+
+  /**
+   * Returns a new object of class '<em>Unary Expression</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Unary Expression</em>'.
+   * @generated
+   */
+  UnaryExpression createUnaryExpression();
+
+  /**
+   * Returns a new object of class '<em>Number Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Number Literal</em>'.
+   * @generated
+   */
+  NumberLiteral createNumberLiteral();
+
+  /**
+   * Returns a new object of class '<em>String Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>String Literal</em>'.
+   * @generated
+   */
+  StringLiteral createStringLiteral();
+
+  /**
+   * Returns a new object of class '<em>Boolean Literal</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Boolean Literal</em>'.
+   * @generated
+   */
+  BooleanLiteral createBooleanLiteral();
+
+  /**
+   * Returns a new object of class '<em>Variable Reference</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Variable Reference</em>'.
+   * @generated
+   */
+  VariableReference createVariableReference();
+
+  /**
+   * Returns a new object of class '<em>Function Call</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Function Call</em>'.
+   * @generated
+   */
+  FunctionCall createFunctionCall();
 
   /**
    * Returns the package supported by this factory.

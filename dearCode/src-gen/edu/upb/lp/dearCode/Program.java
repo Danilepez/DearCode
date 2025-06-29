@@ -3,8 +3,6 @@
  */
 package edu.upb.lp.dearCode;
 
-import org.eclipse.emf.common.util.EList;
-
 import org.eclipse.emf.ecore.EObject;
 
 /**
@@ -16,7 +14,7 @@ import org.eclipse.emf.ecore.EObject;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.dearCode.Program#getCartas <em>Cartas</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.Program#getCarta <em>Carta</em>}</li>
  * </ul>
  *
  * @see edu.upb.lp.dearCode.DearCodePackage#getProgram()
@@ -26,15 +24,25 @@ import org.eclipse.emf.ecore.EObject;
 public interface Program extends EObject
 {
   /**
-   * Returns the value of the '<em><b>Cartas</b></em>' containment reference list.
-   * The list contents are of type {@link edu.upb.lp.dearCode.Carta}.
+   * Returns the value of the '<em><b>Carta</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Cartas</em>' containment reference list.
-   * @see edu.upb.lp.dearCode.DearCodePackage#getProgram_Cartas()
+   * @return the value of the '<em>Carta</em>' containment reference.
+   * @see #setCarta(Carta)
+   * @see edu.upb.lp.dearCode.DearCodePackage#getProgram_Carta()
    * @model containment="true"
    * @generated
    */
-  EList<Carta> getCartas();
+  Carta getCarta();
+
+  /**
+   * Sets the value of the '{@link edu.upb.lp.dearCode.Program#getCarta <em>Carta</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Carta</em>' containment reference.
+   * @see #getCarta()
+   * @generated
+   */
+  void setCarta(Carta value);
 
 } // Program

@@ -112,6 +112,7 @@ public class DearCodeSwitch<T> extends Switch<T>
       {
         Instruccion instruccion = (Instruccion)theEObject;
         T result = caseInstruccion(instruccion);
+        if (result == null) result = caseElementoBloque(instruccion);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -120,6 +121,7 @@ public class DearCodeSwitch<T> extends Switch<T>
         Declarar declarar = (Declarar)theEObject;
         T result = caseDeclarar(declarar);
         if (result == null) result = caseInstruccion(declarar);
+        if (result == null) result = caseElementoBloque(declarar);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -128,6 +130,7 @@ public class DearCodeSwitch<T> extends Switch<T>
         Reasignar reasignar = (Reasignar)theEObject;
         T result = caseReasignar(reasignar);
         if (result == null) result = caseInstruccion(reasignar);
+        if (result == null) result = caseElementoBloque(reasignar);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -136,6 +139,7 @@ public class DearCodeSwitch<T> extends Switch<T>
         Entrada entrada = (Entrada)theEObject;
         T result = caseEntrada(entrada);
         if (result == null) result = caseInstruccion(entrada);
+        if (result == null) result = caseElementoBloque(entrada);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -144,39 +148,74 @@ public class DearCodeSwitch<T> extends Switch<T>
         Salida salida = (Salida)theEObject;
         T result = caseSalida(salida);
         if (result == null) result = caseInstruccion(salida);
+        if (result == null) result = caseElementoBloque(salida);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DearCodePackage.VALOR:
+      case DearCodePackage.ELEMENTO_BLOQUE:
       {
-        Valor valor = (Valor)theEObject;
-        T result = caseValor(valor);
+        ElementoBloque elementoBloque = (ElementoBloque)theEObject;
+        T result = caseElementoBloque(elementoBloque);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DearCodePackage.NUMERO_LITERAL:
+      case DearCodePackage.CONDICIONAL:
       {
-        NumeroLiteral numeroLiteral = (NumeroLiteral)theEObject;
-        T result = caseNumeroLiteral(numeroLiteral);
-        if (result == null) result = caseValor(numeroLiteral);
+        Condicional condicional = (Condicional)theEObject;
+        T result = caseCondicional(condicional);
+        if (result == null) result = caseInstruccion(condicional);
+        if (result == null) result = caseElementoBloque(condicional);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DearCodePackage.SIMPLE:
+      case DearCodePackage.BUCLE_WHILE:
       {
-        Simple simple = (Simple)theEObject;
-        T result = caseSimple(simple);
-        if (result == null) result = caseNumeroLiteral(simple);
-        if (result == null) result = caseValor(simple);
+        BucleWhile bucleWhile = (BucleWhile)theEObject;
+        T result = caseBucleWhile(bucleWhile);
+        if (result == null) result = caseInstruccion(bucleWhile);
+        if (result == null) result = caseElementoBloque(bucleWhile);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DearCodePackage.COMPUESTO:
+      case DearCodePackage.BUCLE_FOR:
       {
-        Compuesto compuesto = (Compuesto)theEObject;
-        T result = caseCompuesto(compuesto);
-        if (result == null) result = caseNumeroLiteral(compuesto);
-        if (result == null) result = caseValor(compuesto);
+        BucleFor bucleFor = (BucleFor)theEObject;
+        T result = caseBucleFor(bucleFor);
+        if (result == null) result = caseInstruccion(bucleFor);
+        if (result == null) result = caseElementoBloque(bucleFor);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DearCodePackage.FUNCION:
+      {
+        Funcion funcion = (Funcion)theEObject;
+        T result = caseFuncion(funcion);
+        if (result == null) result = caseInstruccion(funcion);
+        if (result == null) result = caseElementoBloque(funcion);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DearCodePackage.RETURN:
+      {
+        Return return_ = (Return)theEObject;
+        T result = caseReturn(return_);
+        if (result == null) result = caseElementoBloque(return_);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DearCodePackage.EXPRESSION:
+      {
+        Expression expression = (Expression)theEObject;
+        T result = caseExpression(expression);
+        if (result == null) result = caseInstruccion(expression);
+        if (result == null) result = caseElementoBloque(expression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DearCodePackage.COMMENT:
+      {
+        Comment comment = (Comment)theEObject;
+        T result = caseComment(comment);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -187,29 +226,83 @@ public class DearCodeSwitch<T> extends Switch<T>
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DearCodePackage.CONDICION:
+      case DearCodePackage.OR_EXPRESSION:
       {
-        Condicion condicion = (Condicion)theEObject;
-        T result = caseCondicion(condicion);
+        OrExpression orExpression = (OrExpression)theEObject;
+        T result = caseOrExpression(orExpression);
+        if (result == null) result = caseExpression(orExpression);
+        if (result == null) result = caseInstruccion(orExpression);
+        if (result == null) result = caseElementoBloque(orExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DearCodePackage.EXPRESSION:
+      case DearCodePackage.AND_EXPRESSION:
       {
-        Expression expression = (Expression)theEObject;
-        T result = caseExpression(expression);
-        if (result == null) result = caseValor(expression);
-        if (result == null) result = caseCondicion(expression);
+        AndExpression andExpression = (AndExpression)theEObject;
+        T result = caseAndExpression(andExpression);
+        if (result == null) result = caseExpression(andExpression);
+        if (result == null) result = caseInstruccion(andExpression);
+        if (result == null) result = caseElementoBloque(andExpression);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DearCodePackage.INT_LITERAL:
+      case DearCodePackage.EQUALITY_EXPRESSION:
       {
-        IntLiteral intLiteral = (IntLiteral)theEObject;
-        T result = caseIntLiteral(intLiteral);
-        if (result == null) result = caseExpression(intLiteral);
-        if (result == null) result = caseValor(intLiteral);
-        if (result == null) result = caseCondicion(intLiteral);
+        EqualityExpression equalityExpression = (EqualityExpression)theEObject;
+        T result = caseEqualityExpression(equalityExpression);
+        if (result == null) result = caseExpression(equalityExpression);
+        if (result == null) result = caseInstruccion(equalityExpression);
+        if (result == null) result = caseElementoBloque(equalityExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DearCodePackage.RELATIONAL_EXPRESSION:
+      {
+        RelationalExpression relationalExpression = (RelationalExpression)theEObject;
+        T result = caseRelationalExpression(relationalExpression);
+        if (result == null) result = caseExpression(relationalExpression);
+        if (result == null) result = caseInstruccion(relationalExpression);
+        if (result == null) result = caseElementoBloque(relationalExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DearCodePackage.ADDITIVE_EXPRESSION:
+      {
+        AdditiveExpression additiveExpression = (AdditiveExpression)theEObject;
+        T result = caseAdditiveExpression(additiveExpression);
+        if (result == null) result = caseExpression(additiveExpression);
+        if (result == null) result = caseInstruccion(additiveExpression);
+        if (result == null) result = caseElementoBloque(additiveExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DearCodePackage.MULTIPLICATIVE_EXPRESSION:
+      {
+        MultiplicativeExpression multiplicativeExpression = (MultiplicativeExpression)theEObject;
+        T result = caseMultiplicativeExpression(multiplicativeExpression);
+        if (result == null) result = caseExpression(multiplicativeExpression);
+        if (result == null) result = caseInstruccion(multiplicativeExpression);
+        if (result == null) result = caseElementoBloque(multiplicativeExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DearCodePackage.UNARY_EXPRESSION:
+      {
+        UnaryExpression unaryExpression = (UnaryExpression)theEObject;
+        T result = caseUnaryExpression(unaryExpression);
+        if (result == null) result = caseExpression(unaryExpression);
+        if (result == null) result = caseInstruccion(unaryExpression);
+        if (result == null) result = caseElementoBloque(unaryExpression);
+        if (result == null) result = defaultCase(theEObject);
+        return result;
+      }
+      case DearCodePackage.NUMBER_LITERAL:
+      {
+        NumberLiteral numberLiteral = (NumberLiteral)theEObject;
+        T result = caseNumberLiteral(numberLiteral);
+        if (result == null) result = caseExpression(numberLiteral);
+        if (result == null) result = caseInstruccion(numberLiteral);
+        if (result == null) result = caseElementoBloque(numberLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -218,8 +311,8 @@ public class DearCodeSwitch<T> extends Switch<T>
         StringLiteral stringLiteral = (StringLiteral)theEObject;
         T result = caseStringLiteral(stringLiteral);
         if (result == null) result = caseExpression(stringLiteral);
-        if (result == null) result = caseValor(stringLiteral);
-        if (result == null) result = caseCondicion(stringLiteral);
+        if (result == null) result = caseInstruccion(stringLiteral);
+        if (result == null) result = caseElementoBloque(stringLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -228,120 +321,28 @@ public class DearCodeSwitch<T> extends Switch<T>
         BooleanLiteral booleanLiteral = (BooleanLiteral)theEObject;
         T result = caseBooleanLiteral(booleanLiteral);
         if (result == null) result = caseExpression(booleanLiteral);
-        if (result == null) result = caseValor(booleanLiteral);
-        if (result == null) result = caseCondicion(booleanLiteral);
+        if (result == null) result = caseInstruccion(booleanLiteral);
+        if (result == null) result = caseElementoBloque(booleanLiteral);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DearCodePackage.VARIABLE_REF:
+      case DearCodePackage.VARIABLE_REFERENCE:
       {
-        VariableRef variableRef = (VariableRef)theEObject;
-        T result = caseVariableRef(variableRef);
-        if (result == null) result = caseExpression(variableRef);
-        if (result == null) result = caseValor(variableRef);
-        if (result == null) result = caseCondicion(variableRef);
+        VariableReference variableReference = (VariableReference)theEObject;
+        T result = caseVariableReference(variableReference);
+        if (result == null) result = caseExpression(variableReference);
+        if (result == null) result = caseInstruccion(variableReference);
+        if (result == null) result = caseElementoBloque(variableReference);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
-      case DearCodePackage.CONDICIONAL:
+      case DearCodePackage.FUNCTION_CALL:
       {
-        Condicional condicional = (Condicional)theEObject;
-        T result = caseCondicional(condicional);
-        if (result == null) result = caseInstruccion(condicional);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DearCodePackage.BUCLE_WHILE:
-      {
-        BucleWhile bucleWhile = (BucleWhile)theEObject;
-        T result = caseBucleWhile(bucleWhile);
-        if (result == null) result = caseInstruccion(bucleWhile);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DearCodePackage.BUCLE_FOR:
-      {
-        BucleFor bucleFor = (BucleFor)theEObject;
-        T result = caseBucleFor(bucleFor);
-        if (result == null) result = caseInstruccion(bucleFor);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DearCodePackage.FUNCION:
-      {
-        Funcion funcion = (Funcion)theEObject;
-        T result = caseFuncion(funcion);
-        if (result == null) result = caseInstruccion(funcion);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DearCodePackage.OR_EXPR:
-      {
-        OrExpr orExpr = (OrExpr)theEObject;
-        T result = caseOrExpr(orExpr);
-        if (result == null) result = caseExpression(orExpr);
-        if (result == null) result = caseValor(orExpr);
-        if (result == null) result = caseCondicion(orExpr);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DearCodePackage.AND_EXPR:
-      {
-        AndExpr andExpr = (AndExpr)theEObject;
-        T result = caseAndExpr(andExpr);
-        if (result == null) result = caseExpression(andExpr);
-        if (result == null) result = caseValor(andExpr);
-        if (result == null) result = caseCondicion(andExpr);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DearCodePackage.EQUALITY_EXPR:
-      {
-        EqualityExpr equalityExpr = (EqualityExpr)theEObject;
-        T result = caseEqualityExpr(equalityExpr);
-        if (result == null) result = caseExpression(equalityExpr);
-        if (result == null) result = caseValor(equalityExpr);
-        if (result == null) result = caseCondicion(equalityExpr);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DearCodePackage.BINARY_RELATION:
-      {
-        BinaryRelation binaryRelation = (BinaryRelation)theEObject;
-        T result = caseBinaryRelation(binaryRelation);
-        if (result == null) result = caseExpression(binaryRelation);
-        if (result == null) result = caseValor(binaryRelation);
-        if (result == null) result = caseCondicion(binaryRelation);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DearCodePackage.ADDITIVE_EXPR:
-      {
-        AdditiveExpr additiveExpr = (AdditiveExpr)theEObject;
-        T result = caseAdditiveExpr(additiveExpr);
-        if (result == null) result = caseExpression(additiveExpr);
-        if (result == null) result = caseValor(additiveExpr);
-        if (result == null) result = caseCondicion(additiveExpr);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DearCodePackage.MULTIPLICATIVE_EXPR:
-      {
-        MultiplicativeExpr multiplicativeExpr = (MultiplicativeExpr)theEObject;
-        T result = caseMultiplicativeExpr(multiplicativeExpr);
-        if (result == null) result = caseExpression(multiplicativeExpr);
-        if (result == null) result = caseValor(multiplicativeExpr);
-        if (result == null) result = caseCondicion(multiplicativeExpr);
-        if (result == null) result = defaultCase(theEObject);
-        return result;
-      }
-      case DearCodePackage.NOT_EXPR:
-      {
-        NotExpr notExpr = (NotExpr)theEObject;
-        T result = caseNotExpr(notExpr);
-        if (result == null) result = caseExpression(notExpr);
-        if (result == null) result = caseValor(notExpr);
-        if (result == null) result = caseCondicion(notExpr);
+        FunctionCall functionCall = (FunctionCall)theEObject;
+        T result = caseFunctionCall(functionCall);
+        if (result == null) result = caseExpression(functionCall);
+        if (result == null) result = caseInstruccion(functionCall);
+        if (result == null) result = caseElementoBloque(functionCall);
         if (result == null) result = defaultCase(theEObject);
         return result;
       }
@@ -510,177 +511,17 @@ public class DearCodeSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Valor</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Elemento Bloque</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Valor</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Elemento Bloque</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseValor(Valor object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Numero Literal</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Numero Literal</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseNumeroLiteral(NumeroLiteral object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Simple</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Simple</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseSimple(Simple object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Compuesto</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Compuesto</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCompuesto(Compuesto object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>MI ID</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>MI ID</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseMI_ID(MI_ID object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Condicion</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Condicion</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseCondicion(Condicion object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseExpression(Expression object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Int Literal</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Int Literal</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseIntLiteral(IntLiteral object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>String Literal</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>String Literal</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseStringLiteral(StringLiteral object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Boolean Literal</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Boolean Literal</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseBooleanLiteral(BooleanLiteral object)
-  {
-    return null;
-  }
-
-  /**
-   * Returns the result of interpreting the object as an instance of '<em>Variable Ref</em>'.
-   * <!-- begin-user-doc -->
-   * This implementation returns null;
-   * returning a non-null result will terminate the switch.
-   * <!-- end-user-doc -->
-   * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Variable Ref</em>'.
-   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
-   * @generated
-   */
-  public T caseVariableRef(VariableRef object)
+  public T caseElementoBloque(ElementoBloque object)
   {
     return null;
   }
@@ -750,113 +591,257 @@ public class DearCodeSwitch<T> extends Switch<T>
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Or Expr</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Return</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Or Expr</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Return</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseOrExpr(OrExpr object)
+  public T caseReturn(Return object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>And Expr</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>And Expr</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Expression</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAndExpr(AndExpr object)
+  public T caseExpression(Expression object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Equality Expr</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Comment</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Equality Expr</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Comment</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseEqualityExpr(EqualityExpr object)
+  public T caseComment(Comment object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Binary Relation</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>MI ID</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Binary Relation</em>'.
+   * @return the result of interpreting the object as an instance of '<em>MI ID</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseBinaryRelation(BinaryRelation object)
+  public T caseMI_ID(MI_ID object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Additive Expr</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Or Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Additive Expr</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Or Expression</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseAdditiveExpr(AdditiveExpr object)
+  public T caseOrExpression(OrExpression object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Multiplicative Expr</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>And Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Multiplicative Expr</em>'.
+   * @return the result of interpreting the object as an instance of '<em>And Expression</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseMultiplicativeExpr(MultiplicativeExpr object)
+  public T caseAndExpression(AndExpression object)
   {
     return null;
   }
 
   /**
-   * Returns the result of interpreting the object as an instance of '<em>Not Expr</em>'.
+   * Returns the result of interpreting the object as an instance of '<em>Equality Expression</em>'.
    * <!-- begin-user-doc -->
    * This implementation returns null;
    * returning a non-null result will terminate the switch.
    * <!-- end-user-doc -->
    * @param object the target of the switch.
-   * @return the result of interpreting the object as an instance of '<em>Not Expr</em>'.
+   * @return the result of interpreting the object as an instance of '<em>Equality Expression</em>'.
    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
    * @generated
    */
-  public T caseNotExpr(NotExpr object)
+  public T caseEqualityExpression(EqualityExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Relational Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Relational Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseRelationalExpression(RelationalExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Additive Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Additive Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseAdditiveExpression(AdditiveExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Multiplicative Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Multiplicative Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseMultiplicativeExpression(MultiplicativeExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Unary Expression</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Unary Expression</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseUnaryExpression(UnaryExpression object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Number Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Number Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseNumberLiteral(NumberLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>String Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>String Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseStringLiteral(StringLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Boolean Literal</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Boolean Literal</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseBooleanLiteral(BooleanLiteral object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Variable Reference</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Variable Reference</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseVariableReference(VariableReference object)
+  {
+    return null;
+  }
+
+  /**
+   * Returns the result of interpreting the object as an instance of '<em>Function Call</em>'.
+   * <!-- begin-user-doc -->
+   * This implementation returns null;
+   * returning a non-null result will terminate the switch.
+   * <!-- end-user-doc -->
+   * @param object the target of the switch.
+   * @return the result of interpreting the object as an instance of '<em>Function Call</em>'.
+   * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+   * @generated
+   */
+  public T caseFunctionCall(FunctionCall object)
   {
     return null;
   }

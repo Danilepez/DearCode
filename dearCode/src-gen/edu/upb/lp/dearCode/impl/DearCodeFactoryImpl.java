@@ -75,28 +75,27 @@ public class DearCodeFactoryImpl extends EFactoryImpl implements DearCodeFactory
       case DearCodePackage.REASIGNAR: return createReasignar();
       case DearCodePackage.ENTRADA: return createEntrada();
       case DearCodePackage.SALIDA: return createSalida();
-      case DearCodePackage.VALOR: return createValor();
-      case DearCodePackage.NUMERO_LITERAL: return createNumeroLiteral();
-      case DearCodePackage.SIMPLE: return createSimple();
-      case DearCodePackage.COMPUESTO: return createCompuesto();
-      case DearCodePackage.MI_ID: return createMI_ID();
-      case DearCodePackage.CONDICION: return createCondicion();
-      case DearCodePackage.EXPRESSION: return createExpression();
-      case DearCodePackage.INT_LITERAL: return createIntLiteral();
-      case DearCodePackage.STRING_LITERAL: return createStringLiteral();
-      case DearCodePackage.BOOLEAN_LITERAL: return createBooleanLiteral();
-      case DearCodePackage.VARIABLE_REF: return createVariableRef();
+      case DearCodePackage.ELEMENTO_BLOQUE: return createElementoBloque();
       case DearCodePackage.CONDICIONAL: return createCondicional();
       case DearCodePackage.BUCLE_WHILE: return createBucleWhile();
       case DearCodePackage.BUCLE_FOR: return createBucleFor();
       case DearCodePackage.FUNCION: return createFuncion();
-      case DearCodePackage.OR_EXPR: return createOrExpr();
-      case DearCodePackage.AND_EXPR: return createAndExpr();
-      case DearCodePackage.EQUALITY_EXPR: return createEqualityExpr();
-      case DearCodePackage.BINARY_RELATION: return createBinaryRelation();
-      case DearCodePackage.ADDITIVE_EXPR: return createAdditiveExpr();
-      case DearCodePackage.MULTIPLICATIVE_EXPR: return createMultiplicativeExpr();
-      case DearCodePackage.NOT_EXPR: return createNotExpr();
+      case DearCodePackage.RETURN: return createReturn();
+      case DearCodePackage.EXPRESSION: return createExpression();
+      case DearCodePackage.COMMENT: return createComment();
+      case DearCodePackage.MI_ID: return createMI_ID();
+      case DearCodePackage.OR_EXPRESSION: return createOrExpression();
+      case DearCodePackage.AND_EXPRESSION: return createAndExpression();
+      case DearCodePackage.EQUALITY_EXPRESSION: return createEqualityExpression();
+      case DearCodePackage.RELATIONAL_EXPRESSION: return createRelationalExpression();
+      case DearCodePackage.ADDITIVE_EXPRESSION: return createAdditiveExpression();
+      case DearCodePackage.MULTIPLICATIVE_EXPRESSION: return createMultiplicativeExpression();
+      case DearCodePackage.UNARY_EXPRESSION: return createUnaryExpression();
+      case DearCodePackage.NUMBER_LITERAL: return createNumberLiteral();
+      case DearCodePackage.STRING_LITERAL: return createStringLiteral();
+      case DearCodePackage.BOOLEAN_LITERAL: return createBooleanLiteral();
+      case DearCodePackage.VARIABLE_REFERENCE: return createVariableReference();
+      case DearCodePackage.FUNCTION_CALL: return createFunctionCall();
       default:
         throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
     }
@@ -228,130 +227,10 @@ public class DearCodeFactoryImpl extends EFactoryImpl implements DearCodeFactory
    * @generated
    */
   @Override
-  public Valor createValor()
+  public ElementoBloque createElementoBloque()
   {
-    ValorImpl valor = new ValorImpl();
-    return valor;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NumeroLiteral createNumeroLiteral()
-  {
-    NumeroLiteralImpl numeroLiteral = new NumeroLiteralImpl();
-    return numeroLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Simple createSimple()
-  {
-    SimpleImpl simple = new SimpleImpl();
-    return simple;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Compuesto createCompuesto()
-  {
-    CompuestoImpl compuesto = new CompuestoImpl();
-    return compuesto;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public MI_ID createMI_ID()
-  {
-    MI_IDImpl mI_ID = new MI_IDImpl();
-    return mI_ID;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Condicion createCondicion()
-  {
-    CondicionImpl condicion = new CondicionImpl();
-    return condicion;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Expression createExpression()
-  {
-    ExpressionImpl expression = new ExpressionImpl();
-    return expression;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public IntLiteral createIntLiteral()
-  {
-    IntLiteralImpl intLiteral = new IntLiteralImpl();
-    return intLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public StringLiteral createStringLiteral()
-  {
-    StringLiteralImpl stringLiteral = new StringLiteralImpl();
-    return stringLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public BooleanLiteral createBooleanLiteral()
-  {
-    BooleanLiteralImpl booleanLiteral = new BooleanLiteralImpl();
-    return booleanLiteral;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public VariableRef createVariableRef()
-  {
-    VariableRefImpl variableRef = new VariableRefImpl();
-    return variableRef;
+    ElementoBloqueImpl elementoBloque = new ElementoBloqueImpl();
+    return elementoBloque;
   }
 
   /**
@@ -408,10 +287,10 @@ public class DearCodeFactoryImpl extends EFactoryImpl implements DearCodeFactory
    * @generated
    */
   @Override
-  public OrExpr createOrExpr()
+  public Return createReturn()
   {
-    OrExprImpl orExpr = new OrExprImpl();
-    return orExpr;
+    ReturnImpl return_ = new ReturnImpl();
+    return return_;
   }
 
   /**
@@ -420,10 +299,10 @@ public class DearCodeFactoryImpl extends EFactoryImpl implements DearCodeFactory
    * @generated
    */
   @Override
-  public AndExpr createAndExpr()
+  public Expression createExpression()
   {
-    AndExprImpl andExpr = new AndExprImpl();
-    return andExpr;
+    ExpressionImpl expression = new ExpressionImpl();
+    return expression;
   }
 
   /**
@@ -432,10 +311,10 @@ public class DearCodeFactoryImpl extends EFactoryImpl implements DearCodeFactory
    * @generated
    */
   @Override
-  public EqualityExpr createEqualityExpr()
+  public Comment createComment()
   {
-    EqualityExprImpl equalityExpr = new EqualityExprImpl();
-    return equalityExpr;
+    CommentImpl comment = new CommentImpl();
+    return comment;
   }
 
   /**
@@ -444,10 +323,10 @@ public class DearCodeFactoryImpl extends EFactoryImpl implements DearCodeFactory
    * @generated
    */
   @Override
-  public BinaryRelation createBinaryRelation()
+  public MI_ID createMI_ID()
   {
-    BinaryRelationImpl binaryRelation = new BinaryRelationImpl();
-    return binaryRelation;
+    MI_IDImpl mI_ID = new MI_IDImpl();
+    return mI_ID;
   }
 
   /**
@@ -456,10 +335,10 @@ public class DearCodeFactoryImpl extends EFactoryImpl implements DearCodeFactory
    * @generated
    */
   @Override
-  public AdditiveExpr createAdditiveExpr()
+  public OrExpression createOrExpression()
   {
-    AdditiveExprImpl additiveExpr = new AdditiveExprImpl();
-    return additiveExpr;
+    OrExpressionImpl orExpression = new OrExpressionImpl();
+    return orExpression;
   }
 
   /**
@@ -468,10 +347,10 @@ public class DearCodeFactoryImpl extends EFactoryImpl implements DearCodeFactory
    * @generated
    */
   @Override
-  public MultiplicativeExpr createMultiplicativeExpr()
+  public AndExpression createAndExpression()
   {
-    MultiplicativeExprImpl multiplicativeExpr = new MultiplicativeExprImpl();
-    return multiplicativeExpr;
+    AndExpressionImpl andExpression = new AndExpressionImpl();
+    return andExpression;
   }
 
   /**
@@ -480,10 +359,118 @@ public class DearCodeFactoryImpl extends EFactoryImpl implements DearCodeFactory
    * @generated
    */
   @Override
-  public NotExpr createNotExpr()
+  public EqualityExpression createEqualityExpression()
   {
-    NotExprImpl notExpr = new NotExprImpl();
-    return notExpr;
+    EqualityExpressionImpl equalityExpression = new EqualityExpressionImpl();
+    return equalityExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public RelationalExpression createRelationalExpression()
+  {
+    RelationalExpressionImpl relationalExpression = new RelationalExpressionImpl();
+    return relationalExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public AdditiveExpression createAdditiveExpression()
+  {
+    AdditiveExpressionImpl additiveExpression = new AdditiveExpressionImpl();
+    return additiveExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public MultiplicativeExpression createMultiplicativeExpression()
+  {
+    MultiplicativeExpressionImpl multiplicativeExpression = new MultiplicativeExpressionImpl();
+    return multiplicativeExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public UnaryExpression createUnaryExpression()
+  {
+    UnaryExpressionImpl unaryExpression = new UnaryExpressionImpl();
+    return unaryExpression;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public NumberLiteral createNumberLiteral()
+  {
+    NumberLiteralImpl numberLiteral = new NumberLiteralImpl();
+    return numberLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public StringLiteral createStringLiteral()
+  {
+    StringLiteralImpl stringLiteral = new StringLiteralImpl();
+    return stringLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public BooleanLiteral createBooleanLiteral()
+  {
+    BooleanLiteralImpl booleanLiteral = new BooleanLiteralImpl();
+    return booleanLiteral;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public VariableReference createVariableReference()
+  {
+    VariableReferenceImpl variableReference = new VariableReferenceImpl();
+    return variableReference;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public FunctionCall createFunctionCall()
+  {
+    FunctionCallImpl functionCall = new FunctionCallImpl();
+    return functionCall;
   }
 
   /**

@@ -7,21 +7,128 @@ import org.eclipse.emf.ecore.resource.Resource
 import org.eclipse.xtext.generator.AbstractGenerator
 import org.eclipse.xtext.generator.IFileSystemAccess2
 import org.eclipse.xtext.generator.IGeneratorContext
+import org.eclipse.xtext.nodemodel.util.NodeModelUtils
+import edu.upb.lp.dearCode.*
+import org.eclipse.emf.ecore.EObject
 
 /**
  * Generates code from your model files on save.
  * 
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#code-generation
  */
+
 class DearCodeGenerator extends AbstractGenerator {
 
-	override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
-//		fsa.generateFile('greetings.txt', 'People to greet: ' + 
-//			resource.allContents
-//				.filter(Greeting)
-//				.map[name]
-//				.join(', '))
-	}
+    override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+        val program = resource.contents.head as Program
+        val code = generateProgram(program)
+        fsa.generateFile(program.carta.saludo.name +'.py', code)
+    }
+    
+     def generateProgram(Program p) '''
+		# -*- coding: utf-8 -*-
+		# Carta para «p.carta.saludo.name»
+		«FOR instr : p.carta.cuerpo.instrucciones»
+		«generateInstruccion(instr)»
+		«ENDFOR»
+		# Con cariño, Tu programador «p.carta.despedida.name»
+		'''
+		
+    def dispatch CharSequence generateInstruccion(Declarar d) '''
+	    «IF d.preComentario !== null»# «d.preComentario.value»«ENDIF»
+	    «d.sustantivo.name» = «IF d.valor !== null»«generateExpression(d.valor)»«ELSE»None«ENDIF»«IF d.postComentario !== null»  # «d.postComentario.value»«ENDIF»
+	'''
+
 	
+	def dispatch CharSequence generateInstruccion(Reasignar r) '''
+	    «IF r.preComentario !== null»# «r.preComentario.value»
+	    «ENDIF»
+	    «r.sustantivo.name» = «IF r.valor !== null»«generateExpression(r.valor)»«ELSE»None«ENDIF»«IF r.comentario !== null»  # «r.comentario.value»«ENDIF»
+	'''
+	def dispatch CharSequence generateInstruccion(Salida s) '''
+        print(«generateExpression(s.expresion)»)
+    '''
+	
+	def dispatch CharSequence generateInstruccion(Instruccion i) '''
+		# instrucción no soportada: «i.toString»
+		'''
+	
+	// Generación de expresiones
+    def CharSequence generateExpression(Expression expr) {
+        if (expr === null) return "None"
+        
+        // Manejar diferentes tipos de expresiones usando reflection
+        switch expr.eClass.name {
+            case "OrExpression": generateOrExpression(expr as OrExpression)
+            case "AndExpression": generateAndExpression(expr as AndExpression)
+            case "EqualityExpression": generateEqualityExpression(expr as EqualityExpression)
+            case "RelationalExpression": generateRelationalExpression(expr as RelationalExpression)
+            case "AdditiveExpression": generateAdditiveExpression(expr as AdditiveExpression)
+            case "MultiplicativeExpression": generateMultiplicativeExpression(expr as MultiplicativeExpression)
+            case "UnaryExpression": generateUnaryExpression(expr as UnaryExpression)
+            case "NumberLiteral": '''«(expr as NumberLiteral).valueInt»'''
+            case "StringLiteral": '''«(expr as StringLiteral).valueString»'''
+            case "BooleanLiteral": generateBooleanLiteral(expr as BooleanLiteral)
+            case "VariableReference": '''«(expr as VariableReference).name»'''
+            case "FunctionCall": generateFunctionCall(expr as FunctionCall)
+            default: '''#EXPRESION:«expr.eClass.name»#'''
+        }
+    }
+    
+    // Implementaciones específicas para cada tipo de expresión
+    def CharSequence generateOrExpression(OrExpression expr) {
+        '''(«generateExpression(expr.left)» or «generateExpression(expr.right)»)'''
+    }
+    
+    def CharSequence generateAndExpression(AndExpression expr) {
+        '''(«generateExpression(expr.left)» and «generateExpression(expr.right)»)'''
+    }
+    
+    def CharSequence generateEqualityExpression(EqualityExpression expr) {
+        val op = if(expr.op.contains("unísono")) "==" else "!="
+        '''(«generateExpression(expr.left)» «op» «generateExpression(expr.right)»)'''
+    }
+    
+    def CharSequence generateRelationalExpression(RelationalExpression expr) {
+        val op = switch expr.op {
+            case expr.op.contains("menos fuerza"): "<"
+            case expr.op.contains("mismo nivel"): "<="
+            case expr.op.contains("más pasión"): ">"
+            case expr.op.contains("tanta fuerza"): ">="
+            default: "??"
+        }
+        '''(«generateExpression(expr.left)» «op» «generateExpression(expr.right)»)'''
+    }
+    
+    def CharSequence generateAdditiveExpression(AdditiveExpression expr) {
+        val op = if(expr.op.contains("suspiro")) "+" else "-"
+        '''(«generateExpression(expr.left)» «op» «generateExpression(expr.right)»)'''
+    }
+    
+    def CharSequence generateMultiplicativeExpression(MultiplicativeExpression expr) {
+        val op = switch expr.op {
+            case expr.op.contains("fuego"): "*"
+            case expr.op.contains("ecos"): "/"
+            case expr.op.contains("resuena"): "%"
+            default: "??"
+        }
+        '''(«generateExpression(expr.left)» «op» «generateExpression(expr.right)»)'''
+    }
+    
+    def CharSequence generateUnaryExpression(UnaryExpression expr) {
+        '''(not «generateExpression(expr.expression)»)'''
+    }
+    
+    def CharSequence generateBooleanLiteral(BooleanLiteral b) {
+        if (b.valueBoolean == 'siempre') 'True' else 'False'
+    }
+    
+    def CharSequence generateFunctionCall(FunctionCall call) {
+        val name = if(call.nameFuncion instanceof Funcion) 
+                   (call.nameFuncion as Funcion).name 
+                   else (call.nameFuncion as MI_ID).name
+        val args = call.args.map[generateExpression(it)].join(", ")
+        '''«name»(«args»)'''
+    }
 	
 }

@@ -5,59 +5,18 @@ package edu.upb.lp.dearCode.impl;
 
 import edu.upb.lp.dearCode.DearCodePackage;
 import edu.upb.lp.dearCode.Expression;
-import edu.upb.lp.dearCode.MI_ID;
-
-import java.util.Collection;
-
-import org.eclipse.emf.common.notify.Notification;
-import org.eclipse.emf.common.notify.NotificationChain;
-
-import org.eclipse.emf.common.util.EList;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.emf.ecore.InternalEObject;
-
-import org.eclipse.emf.ecore.impl.ENotificationImpl;
-
-import org.eclipse.emf.ecore.util.EObjectContainmentEList;
-import org.eclipse.emf.ecore.util.InternalEList;
 
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Expression</b></em>'.
  * <!-- end-user-doc -->
- * <p>
- * The following features are implemented:
- * </p>
- * <ul>
- *   <li>{@link edu.upb.lp.dearCode.impl.ExpressionImpl#getName <em>Name</em>}</li>
- *   <li>{@link edu.upb.lp.dearCode.impl.ExpressionImpl#getArgs <em>Args</em>}</li>
- * </ul>
  *
  * @generated
  */
-public class ExpressionImpl extends ValorImpl implements Expression
+public class ExpressionImpl extends InstruccionImpl implements Expression
 {
-  /**
-   * The cached value of the '{@link #getName() <em>Name</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getName()
-   * @generated
-   * @ordered
-   */
-  protected MI_ID name;
-
-  /**
-   * The cached value of the '{@link #getArgs() <em>Args</em>}' containment reference list.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getArgs()
-   * @generated
-   * @ordered
-   */
-  protected EList<Expression> args;
-
   /**
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -77,167 +36,6 @@ public class ExpressionImpl extends ValorImpl implements Expression
   protected EClass eStaticClass()
   {
     return DearCodePackage.Literals.EXPRESSION;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public MI_ID getName()
-  {
-    return name;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetName(MI_ID newName, NotificationChain msgs)
-  {
-    MI_ID oldName = name;
-    name = newName;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DearCodePackage.EXPRESSION__NAME, oldName, newName);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setName(MI_ID newName)
-  {
-    if (newName != name)
-    {
-      NotificationChain msgs = null;
-      if (name != null)
-        msgs = ((InternalEObject)name).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.EXPRESSION__NAME, null, msgs);
-      if (newName != null)
-        msgs = ((InternalEObject)newName).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.EXPRESSION__NAME, null, msgs);
-      msgs = basicSetName(newName, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.EXPRESSION__NAME, newName, newName));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public EList<Expression> getArgs()
-  {
-    if (args == null)
-    {
-      args = new EObjectContainmentEList<Expression>(Expression.class, this, DearCodePackage.EXPRESSION__ARGS);
-    }
-    return args;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public NotificationChain eInverseRemove(InternalEObject otherEnd, int featureID, NotificationChain msgs)
-  {
-    switch (featureID)
-    {
-      case DearCodePackage.EXPRESSION__NAME:
-        return basicSetName(null, msgs);
-      case DearCodePackage.EXPRESSION__ARGS:
-        return ((InternalEList<?>)getArgs()).basicRemove(otherEnd, msgs);
-    }
-    return super.eInverseRemove(otherEnd, featureID, msgs);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public Object eGet(int featureID, boolean resolve, boolean coreType)
-  {
-    switch (featureID)
-    {
-      case DearCodePackage.EXPRESSION__NAME:
-        return getName();
-      case DearCodePackage.EXPRESSION__ARGS:
-        return getArgs();
-    }
-    return super.eGet(featureID, resolve, coreType);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @SuppressWarnings("unchecked")
-  @Override
-  public void eSet(int featureID, Object newValue)
-  {
-    switch (featureID)
-    {
-      case DearCodePackage.EXPRESSION__NAME:
-        setName((MI_ID)newValue);
-        return;
-      case DearCodePackage.EXPRESSION__ARGS:
-        getArgs().clear();
-        getArgs().addAll((Collection<? extends Expression>)newValue);
-        return;
-    }
-    super.eSet(featureID, newValue);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void eUnset(int featureID)
-  {
-    switch (featureID)
-    {
-      case DearCodePackage.EXPRESSION__NAME:
-        setName((MI_ID)null);
-        return;
-      case DearCodePackage.EXPRESSION__ARGS:
-        getArgs().clear();
-        return;
-    }
-    super.eUnset(featureID);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public boolean eIsSet(int featureID)
-  {
-    switch (featureID)
-    {
-      case DearCodePackage.EXPRESSION__NAME:
-        return name != null;
-      case DearCodePackage.EXPRESSION__ARGS:
-        return args != null && !args.isEmpty();
-    }
-    return super.eIsSet(featureID);
   }
 
 } //ExpressionImpl

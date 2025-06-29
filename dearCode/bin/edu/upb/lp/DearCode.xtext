@@ -3,212 +3,181 @@ grammar edu.upb.lp.DearCode with org.eclipse.xtext.common.Terminals
 generate dearCode "http://www.upb.edu/lp/DearCode"
 
 Program:
-	cartas+=Carta+               
+    carta=Carta
 ;
 
 Carta:
-	saludo=Saludo
-	cuerpo=Cuerpo
-	despedida=Despedida
+    saludo=Saludo
+    cuerpo=Cuerpo
+    despedida=Despedida
 ;
 
-Saludo:
-	('Querido'|'Querida') name=ANYTEXT '.'
-;
-
-Despedida:
-	'Con cariño, Tu programador' name=ANYTEXT '.'
-;
-
-Cuerpo:
-	instrucciones+=Instruccion+
-;
+Saludo: ('Querido'|'Querida') name=ID '.';
+Despedida: 'Con cariño, Tu programador' name=ID '.';
+Cuerpo: instrucciones+=Instruccion+;
 
 Instruccion:
-	Declarar | Reasignar | Condicional | BucleWhile | BucleFor | Entrada | Salida | Funcion
+    Declarar | Reasignar | Condicional 
+    | BucleWhile | BucleFor | Entrada | Salida | Funcion | FunctionCall
 ;
 
 Declarar:
-	verboDecl=VerboDeclaracion
-	articulo=Articulo
-	sustantivo=MI_ID
-	conector=ANYTEXT
-	valor=Valor
-	comentario=(ANYTEXT | STRING)?       
-	'.'
+    verboDecl=VerboDeclaracion
+    articulo=Articulo
+    sustantivo=MI_ID
+    preComentario=Comment?
+    valor=Expression
+    postComentario=Comment?
+    '.'
 ;
 
 Reasignar:
-	verboReas=VerboReasignacion
-	conector=ANYTEXT
-	sustantivo=MI_ID
-	'con'
-	valor=Valor
-	comentario=(ANYTEXT| STRING)?
-	'.'
+    verboReas=VerboReasignacion
+    preComentario=Comment?
+    sustantivo=MI_ID
+    postComentario=Comment?
+    valor=Expression
+    comentario=Comment?
+    '.'
 ;
 
 Entrada:
-	'Le pedí al lector que me dijera' variable=MI_ID '.'
+    'Le pedí al lector que me dijera' variable=MI_ID
+    ("en un susurro numérico" | "con palabras de terciopelo")?
+    '.'
 ;
 
 Salida:
-	'Hoy le quise contar al mundo sobre:' expresion=Expression '.'
+    'Hoy le quise contar al mundo sobre:' expresion=Expression '.'
 ;
 
-
-Valor:
-	NumeroLiteral | Expression    
+ElementoBloque:
+    Instruccion | Return
 ;
-
-
-NumeroLiteral:
-	Simple | Compuesto     
-;
-
-Simple:
-	value=('cero' | 'uno' | 'dos' | 'tres' | 'cuatro' | 'cinco' | 'seis' | 'siete' | 'ocho' | 'nueve')
-;
-
-
-Compuesto:
-	cantidad=Simple multiplicador=Multiplicador ('y' resto=Simple)?
-;
-
-Multiplicador:
-	'decena' ('s')? | 'centena' ('s')? | 'millar' ('es')?   
-;
-
-Articulo:
-	'un' | 'una'
-;
-
-VerboDeclaracion:
-	'Te regalo' | 'Ofrezco' | 'Obsequio' | 'Deposito en tu jardín'
-;
-
-VerboReasignacion:
-	'Permíteme alimentar' | 'Permíteme regar' | 'Permíteme ajustar'
-;
-
-MI_ID:
-      name=ID
-;
-
-terminal ANYTEXT:
-	'~'
-    ( 'a'..'z' | 'A'..'Z' | '0'..'9' 
-    | '-' | '.' | '(' | ')' 
-    | '¿' | '?' | '¡' | '!' 
-    | '\'' | '’'
-    | ' '
-    )+ 
-    '_'
-;
-
-
-
-//Expresiones, condicionales y bucles
-Condicion:
-    Expression
-;
-
-
-Expression:
-    OrExpr;
-
-OrExpr returns Expression:
-    AndExpr ({OrExpr.left=current} 'o quizás' right=AndExpr)*;
-
-AndExpr returns Expression:
-    EqualityExpr ({AndExpr.left=current} 'y también' right=EqualityExpr)*;
-
-EqualityExpr returns Expression:
-    RelationalExpr ({EqualityExpr.left=current} ('late al unísono con' | 'canta con un matiz distinto a') right=RelationalExpr)*;
-
-RelationalExpr returns Expression:
-    AdditiveExpr ({BinaryRelation.left=current} op=RelationalOp right=AdditiveExpr)?;
-
-RelationalOp:
-    'susurra con menos fuerza que' 
-  | 'casi suspira al mismo nivel que' 
-  | 'arde con más pasión que' 
-  | 'rodea con tanta fuerza como'
-;
-
-AdditiveExpr returns Expression:
-    MultiplicativeExpr ({AdditiveExpr.left=current} ('unidos en un solo suspiro con'  | 'fundidos en la llama de') right=MultiplicativeExpr)*;
-
-MultiplicativeExpr returns Expression:
-    UnaryExpr ({MultiplicativeExpr.left=current} ('fortalecidos por el fuego de' | 'separados entre los ecos de' | 'resuena con el eco de') right=UnaryExpr)*;
-
-UnaryExpr returns Expression:
-    {NotExpr} 'no creo que' expr=PrimaryExpr
-  | PrimaryExpr;
-
-FunctionCall returns Expression:
-    name=MI_ID '(' (args+=Expression (',' args+=Expression)*)? ')'
-;
-
-PrimaryExpr returns Expression:
-    Literal| VariableRef | SpecialBoolean | FunctionCall | '(' Expression ')';
-
-Literal returns Expression:
-    IntLiteral | StringLiteral | BooleanLiteral
-;
-IntLiteral:
-    {IntLiteral} value=INT
-;	
-StringLiteral:
-    {StringLiteral} value=STRING
-;
-
-BooleanLiteral:
-     value?='siempre' | {BooleanLiteral} 'jamás'
-;
-
-  
-VariableRef:
-    name=MI_ID;              
-
-SpecialBoolean returns Expression:
-    {Expression} 'aún me piensas' | {Expression} 'tu voz me alcanza';
-
 
 Condicional:
-    'Si en tu corazon sientes que' condicion=Condicion ','
+    'Si en tu corazon sientes que' condicion=Expression ','
         'entonces deja que estas palabras florezcan:'
-        instruccionesThen+=Instruccion+
+        instruccionesThen+=ElementoBloque+
     ( 'Pero si el destino dijera lo contrario,'
         'que broten estas verdades:'
-        instruccionesElse+=Instruccion+ )?
-    'Y así el universo sigue su curso.';
+        instruccionesElse+=ElementoBloque+ )?
+    'Y así el universo sigue su curso.'
+;
 
 BucleWhile:
-    ( 'Mientras aun me pienses' 
-    | 'Mientras aún sueñes con este momento, haz que ocurra' )
-      condicion=Condicion ','
+    ('Mientras aun me piensas' | 'Mientras aún sueñes con este momento')
+    condicion=Expression ','
     'haz que suceda:' 
-    instrucciones+=Instruccion+ 
+    loopBody+=ElementoBloque+ 
     'Y así el susurro descansa.'  
 ;
 
 BucleFor:
-    ( 'Cada dia, desde' 
-    | 'Por cada suspiro desde' )
-      condicion=Condicion  
-    'hasta' accionStop=Instruccion ','
-    'y que gire el verso:'  
-    instrucciones+=Instruccion+
-    'Cuando el eco se apague.'  
+    'En cada suspiro' variable=MI_ID 'desde' inicio=Expression 
+    'hasta' fin=Expression 
+    ('con paso' paso=Expression)?  
+    'deja que el universo cante:'
+    loopBody+=ElementoBloque+ 
+    'Cuando el último eco se calle.'  
 ;
 
 Funcion:
-    (('Dejo en estas líneas una promesa llamada' |
-      'Escribo en estas líneas una intención llamada' |
-      'En la brisa escondo un deseo llamado') name=MI_ID)
-    ('que guarda en su esencia' parametros+=MI_ID (',' parametros+=MI_ID)*)?  // ? hace todo opcional
+    ('Dejo en estas líneas una promesa llamada' |
+     'Escribo en estas líneas una intención llamada' |
+     'En la brisa escondo un deseo llamado') name=MI_ID
+    ('que guarda en su esencia' parametros+=MI_ID ('y' parametros+=MI_ID)*)? 
+    ('prometiendo devolver' tipo=Type)? 
     'Cuando la promesa se cumple:'
-        instrucciones+=Instruccion+
-    ('Y al final, dejo volar' retorno=MI_ID 'en un suspiro.')?
-    'Así se sella la promesa.';
+        instrucciones+=ElementoBloque+ 
+    'Así se sella la promesa.'
+;
+
+Return:
+    'Y entrego al viento' expresion=Expression 'como promesa cumplida.'
+;
+
+// Sistema de expresiones
+Expression:
+    OrExpression
+;
+
+OrExpression returns Expression:
+    AndExpression ({OrExpression.left=current} 
+        (' o quizás ' | ' o quizás') right=AndExpression)*
+;
+
+AndExpression returns Expression:
+    EqualityExpression ({AndExpression.left=current} 
+        (' y también ' | ' y también') right=EqualityExpression)*
+;
+
+EqualityExpression returns Expression:
+    RelationalExpression ({EqualityExpression.left=current} 
+        op=('late al unísono con' | 'canta con un matiz distinto a') 
+        right=RelationalExpression)*
+;
+
+RelationalExpression returns Expression:
+    AdditiveExpression ({RelationalExpression.left=current} 
+        op=('susurra con menos fuerza que' | 'casi suspira al mismo nivel que' |
+            'arde con más pasión que' | 'rodea con tanta fuerza como') 
+        right=AdditiveExpression)*
+;
+
+AdditiveExpression returns Expression:
+    MultiplicativeExpression ({AdditiveExpression.left=current} 
+        op=('unidos en un solo suspiro con' | 'fundidos en la llama de') 
+        right=MultiplicativeExpression)*
+;
+
+MultiplicativeExpression returns Expression:
+    UnaryExpression ({MultiplicativeExpression.left=current} 
+        op=('fortalecidos por el fuego de' | 'separados entre los ecos de' | 'resuena con el eco de') 
+        right=UnaryExpression)*
+;
+
+UnaryExpression returns Expression:
+    {UnaryExpression} op=('no creo que') expression=UnaryExpression
+    | PrimaryExpression
+;
+
+PrimaryExpression returns Expression:
+    '(' Expression ')'
+    | {NumberLiteral} valueInt=INT
+    | {StringLiteral} valueString=STRING
+    | {BooleanLiteral} valueBoolean=('siempre' | 'jamás')
+    | {VariableReference} name=ID
+    | FunctionCall
+;
+
+FunctionCall returns Expression:
+    {FunctionCall}  // Esto fuerza a crear una clase concreta
+    'invoco a' (nameFuncion=[MI_ID]) 
+    comentario=Comment? 
+    ('con los regalos' (args+=Expression ('y' args+=Expression)*)? 
+    'en mi corazón')
+;
+
+// Sistema de tipos
+Type: 'número' | 'texto' | 'booleano' | 'nada'; 
+
+// Comentarios ultra-flexibles
+Comment: 
+    value=ANYTEXT
+;
+
+// Terminales
+MI_ID: name=ID;
+VerboDeclaracion: 'Te regalo' | 'Ofrezco' | 'Obsequio' | 'Deposito en tu jardín';
+VerboReasignacion: 'Permíteme alimentar' | 'Permíteme regar' | 'Permíteme ajustar';
+Articulo: 'un' | 'una';
+
+terminal ANYTEXT:
+    '~' 
+    ( 
+      // Cualquier caracter Unicode excepto ~ y salto de línea
+      !('~' | '\n' | '\r') 
+    )* 
+    '~'
+;

@@ -3,7 +3,6 @@
  */
 package edu.upb.lp.dearCode;
 
-import org.eclipse.emf.ecore.EObject;
 
 /**
  * <!-- begin-user-doc -->
@@ -15,6 +14,6 @@ import org.eclipse.emf.ecore.EObject;
  * @model
  * @generated
  */
-public interface Instruccion extends EObject
+public interface Instruccion extends ElementoBloque
 {
 } // Instruccion

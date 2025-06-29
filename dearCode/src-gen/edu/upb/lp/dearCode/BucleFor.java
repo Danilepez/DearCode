@@ -14,9 +14,11 @@ import org.eclipse.emf.common.util.EList;
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.dearCode.BucleFor#getCondicion <em>Condicion</em>}</li>
- *   <li>{@link edu.upb.lp.dearCode.BucleFor#getAccionStop <em>Accion Stop</em>}</li>
- *   <li>{@link edu.upb.lp.dearCode.BucleFor#getInstrucciones <em>Instrucciones</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.BucleFor#getVariable <em>Variable</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.BucleFor#getInicio <em>Inicio</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.BucleFor#getFin <em>Fin</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.BucleFor#getPaso <em>Paso</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.BucleFor#getLoopBody <em>Loop Body</em>}</li>
  * </ul>
  *
  * @see edu.upb.lp.dearCode.DearCodePackage#getBucleFor()
@@ -26,59 +28,103 @@ import org.eclipse.emf.common.util.EList;
 public interface BucleFor extends Instruccion
 {
   /**
-   * Returns the value of the '<em><b>Condicion</b></em>' containment reference.
+   * Returns the value of the '<em><b>Variable</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Condicion</em>' containment reference.
-   * @see #setCondicion(Condicion)
-   * @see edu.upb.lp.dearCode.DearCodePackage#getBucleFor_Condicion()
+   * @return the value of the '<em>Variable</em>' containment reference.
+   * @see #setVariable(MI_ID)
+   * @see edu.upb.lp.dearCode.DearCodePackage#getBucleFor_Variable()
    * @model containment="true"
    * @generated
    */
-  Condicion getCondicion();
+  MI_ID getVariable();
 
   /**
-   * Sets the value of the '{@link edu.upb.lp.dearCode.BucleFor#getCondicion <em>Condicion</em>}' containment reference.
+   * Sets the value of the '{@link edu.upb.lp.dearCode.BucleFor#getVariable <em>Variable</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Condicion</em>' containment reference.
-   * @see #getCondicion()
+   * @param value the new value of the '<em>Variable</em>' containment reference.
+   * @see #getVariable()
    * @generated
    */
-  void setCondicion(Condicion value);
+  void setVariable(MI_ID value);
 
   /**
-   * Returns the value of the '<em><b>Accion Stop</b></em>' containment reference.
+   * Returns the value of the '<em><b>Inicio</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Accion Stop</em>' containment reference.
-   * @see #setAccionStop(Instruccion)
-   * @see edu.upb.lp.dearCode.DearCodePackage#getBucleFor_AccionStop()
+   * @return the value of the '<em>Inicio</em>' containment reference.
+   * @see #setInicio(Expression)
+   * @see edu.upb.lp.dearCode.DearCodePackage#getBucleFor_Inicio()
    * @model containment="true"
    * @generated
    */
-  Instruccion getAccionStop();
+  Expression getInicio();
 
   /**
-   * Sets the value of the '{@link edu.upb.lp.dearCode.BucleFor#getAccionStop <em>Accion Stop</em>}' containment reference.
+   * Sets the value of the '{@link edu.upb.lp.dearCode.BucleFor#getInicio <em>Inicio</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Accion Stop</em>' containment reference.
-   * @see #getAccionStop()
+   * @param value the new value of the '<em>Inicio</em>' containment reference.
+   * @see #getInicio()
    * @generated
    */
-  void setAccionStop(Instruccion value);
+  void setInicio(Expression value);
 
   /**
-   * Returns the value of the '<em><b>Instrucciones</b></em>' containment reference list.
-   * The list contents are of type {@link edu.upb.lp.dearCode.Instruccion}.
+   * Returns the value of the '<em><b>Fin</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Instrucciones</em>' containment reference list.
-   * @see edu.upb.lp.dearCode.DearCodePackage#getBucleFor_Instrucciones()
+   * @return the value of the '<em>Fin</em>' containment reference.
+   * @see #setFin(Expression)
+   * @see edu.upb.lp.dearCode.DearCodePackage#getBucleFor_Fin()
    * @model containment="true"
    * @generated
    */
-  EList<Instruccion> getInstrucciones();
+  Expression getFin();
+
+  /**
+   * Sets the value of the '{@link edu.upb.lp.dearCode.BucleFor#getFin <em>Fin</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Fin</em>' containment reference.
+   * @see #getFin()
+   * @generated
+   */
+  void setFin(Expression value);
+
+  /**
+   * Returns the value of the '<em><b>Paso</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Paso</em>' containment reference.
+   * @see #setPaso(Expression)
+   * @see edu.upb.lp.dearCode.DearCodePackage#getBucleFor_Paso()
+   * @model containment="true"
+   * @generated
+   */
+  Expression getPaso();
+
+  /**
+   * Sets the value of the '{@link edu.upb.lp.dearCode.BucleFor#getPaso <em>Paso</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Paso</em>' containment reference.
+   * @see #getPaso()
+   * @generated
+   */
+  void setPaso(Expression value);
+
+  /**
+   * Returns the value of the '<em><b>Loop Body</b></em>' containment reference list.
+   * The list contents are of type {@link edu.upb.lp.dearCode.ElementoBloque}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Loop Body</em>' containment reference list.
+   * @see edu.upb.lp.dearCode.DearCodePackage#getBucleFor_LoopBody()
+   * @model containment="true"
+   * @generated
+   */
+  EList<ElementoBloque> getLoopBody();
 
 } // BucleFor

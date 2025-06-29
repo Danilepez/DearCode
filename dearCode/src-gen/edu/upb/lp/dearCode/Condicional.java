@@ -30,12 +30,12 @@ public interface Condicional extends Instruccion
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Condicion</em>' containment reference.
-   * @see #setCondicion(Condicion)
+   * @see #setCondicion(Expression)
    * @see edu.upb.lp.dearCode.DearCodePackage#getCondicional_Condicion()
    * @model containment="true"
    * @generated
    */
-  Condicion getCondicion();
+  Expression getCondicion();
 
   /**
    * Sets the value of the '{@link edu.upb.lp.dearCode.Condicional#getCondicion <em>Condicion</em>}' containment reference.
@@ -45,11 +45,11 @@ public interface Condicional extends Instruccion
    * @see #getCondicion()
    * @generated
    */
-  void setCondicion(Condicion value);
+  void setCondicion(Expression value);
 
   /**
    * Returns the value of the '<em><b>Instrucciones Then</b></em>' containment reference list.
-   * The list contents are of type {@link edu.upb.lp.dearCode.Instruccion}.
+   * The list contents are of type {@link edu.upb.lp.dearCode.ElementoBloque}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Instrucciones Then</em>' containment reference list.
@@ -57,11 +57,11 @@ public interface Condicional extends Instruccion
    * @model containment="true"
    * @generated
    */
-  EList<Instruccion> getInstruccionesThen();
+  EList<ElementoBloque> getInstruccionesThen();
 
   /**
    * Returns the value of the '<em><b>Instrucciones Else</b></em>' containment reference list.
-   * The list contents are of type {@link edu.upb.lp.dearCode.Instruccion}.
+   * The list contents are of type {@link edu.upb.lp.dearCode.ElementoBloque}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Instrucciones Else</em>' containment reference list.
@@ -69,6 +69,6 @@ public interface Condicional extends Instruccion
    * @model containment="true"
    * @generated
    */
-  EList<Instruccion> getInstruccionesElse();
+  EList<ElementoBloque> getInstruccionesElse();
 
 } // Condicional

@@ -4,9 +4,10 @@
 package edu.upb.lp.dearCode.impl;
 
 import edu.upb.lp.dearCode.BucleFor;
-import edu.upb.lp.dearCode.Condicion;
 import edu.upb.lp.dearCode.DearCodePackage;
-import edu.upb.lp.dearCode.Instruccion;
+import edu.upb.lp.dearCode.ElementoBloque;
+import edu.upb.lp.dearCode.Expression;
+import edu.upb.lp.dearCode.MI_ID;
 
 import java.util.Collection;
 
@@ -31,9 +32,11 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.dearCode.impl.BucleForImpl#getCondicion <em>Condicion</em>}</li>
- *   <li>{@link edu.upb.lp.dearCode.impl.BucleForImpl#getAccionStop <em>Accion Stop</em>}</li>
- *   <li>{@link edu.upb.lp.dearCode.impl.BucleForImpl#getInstrucciones <em>Instrucciones</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.impl.BucleForImpl#getVariable <em>Variable</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.impl.BucleForImpl#getInicio <em>Inicio</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.impl.BucleForImpl#getFin <em>Fin</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.impl.BucleForImpl#getPaso <em>Paso</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.impl.BucleForImpl#getLoopBody <em>Loop Body</em>}</li>
  * </ul>
  *
  * @generated
@@ -41,34 +44,54 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class BucleForImpl extends InstruccionImpl implements BucleFor
 {
   /**
-   * The cached value of the '{@link #getCondicion() <em>Condicion</em>}' containment reference.
+   * The cached value of the '{@link #getVariable() <em>Variable</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getCondicion()
+   * @see #getVariable()
    * @generated
    * @ordered
    */
-  protected Condicion condicion;
+  protected MI_ID variable;
 
   /**
-   * The cached value of the '{@link #getAccionStop() <em>Accion Stop</em>}' containment reference.
+   * The cached value of the '{@link #getInicio() <em>Inicio</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getAccionStop()
+   * @see #getInicio()
    * @generated
    * @ordered
    */
-  protected Instruccion accionStop;
+  protected Expression inicio;
 
   /**
-   * The cached value of the '{@link #getInstrucciones() <em>Instrucciones</em>}' containment reference list.
+   * The cached value of the '{@link #getFin() <em>Fin</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getInstrucciones()
+   * @see #getFin()
    * @generated
    * @ordered
    */
-  protected EList<Instruccion> instrucciones;
+  protected Expression fin;
+
+  /**
+   * The cached value of the '{@link #getPaso() <em>Paso</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPaso()
+   * @generated
+   * @ordered
+   */
+  protected Expression paso;
+
+  /**
+   * The cached value of the '{@link #getLoopBody() <em>Loop Body</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getLoopBody()
+   * @generated
+   * @ordered
+   */
+  protected EList<ElementoBloque> loopBody;
 
   /**
    * <!-- begin-user-doc -->
@@ -97,9 +120,9 @@ public class BucleForImpl extends InstruccionImpl implements BucleFor
    * @generated
    */
   @Override
-  public Condicion getCondicion()
+  public MI_ID getVariable()
   {
-    return condicion;
+    return variable;
   }
 
   /**
@@ -107,13 +130,13 @@ public class BucleForImpl extends InstruccionImpl implements BucleFor
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetCondicion(Condicion newCondicion, NotificationChain msgs)
+  public NotificationChain basicSetVariable(MI_ID newVariable, NotificationChain msgs)
   {
-    Condicion oldCondicion = condicion;
-    condicion = newCondicion;
+    MI_ID oldVariable = variable;
+    variable = newVariable;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DearCodePackage.BUCLE_FOR__CONDICION, oldCondicion, newCondicion);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DearCodePackage.BUCLE_FOR__VARIABLE, oldVariable, newVariable);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -125,20 +148,20 @@ public class BucleForImpl extends InstruccionImpl implements BucleFor
    * @generated
    */
   @Override
-  public void setCondicion(Condicion newCondicion)
+  public void setVariable(MI_ID newVariable)
   {
-    if (newCondicion != condicion)
+    if (newVariable != variable)
     {
       NotificationChain msgs = null;
-      if (condicion != null)
-        msgs = ((InternalEObject)condicion).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.BUCLE_FOR__CONDICION, null, msgs);
-      if (newCondicion != null)
-        msgs = ((InternalEObject)newCondicion).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.BUCLE_FOR__CONDICION, null, msgs);
-      msgs = basicSetCondicion(newCondicion, msgs);
+      if (variable != null)
+        msgs = ((InternalEObject)variable).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.BUCLE_FOR__VARIABLE, null, msgs);
+      if (newVariable != null)
+        msgs = ((InternalEObject)newVariable).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.BUCLE_FOR__VARIABLE, null, msgs);
+      msgs = basicSetVariable(newVariable, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.BUCLE_FOR__CONDICION, newCondicion, newCondicion));
+      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.BUCLE_FOR__VARIABLE, newVariable, newVariable));
   }
 
   /**
@@ -147,9 +170,9 @@ public class BucleForImpl extends InstruccionImpl implements BucleFor
    * @generated
    */
   @Override
-  public Instruccion getAccionStop()
+  public Expression getInicio()
   {
-    return accionStop;
+    return inicio;
   }
 
   /**
@@ -157,13 +180,13 @@ public class BucleForImpl extends InstruccionImpl implements BucleFor
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetAccionStop(Instruccion newAccionStop, NotificationChain msgs)
+  public NotificationChain basicSetInicio(Expression newInicio, NotificationChain msgs)
   {
-    Instruccion oldAccionStop = accionStop;
-    accionStop = newAccionStop;
+    Expression oldInicio = inicio;
+    inicio = newInicio;
     if (eNotificationRequired())
     {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DearCodePackage.BUCLE_FOR__ACCION_STOP, oldAccionStop, newAccionStop);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DearCodePackage.BUCLE_FOR__INICIO, oldInicio, newInicio);
       if (msgs == null) msgs = notification; else msgs.add(notification);
     }
     return msgs;
@@ -175,20 +198,20 @@ public class BucleForImpl extends InstruccionImpl implements BucleFor
    * @generated
    */
   @Override
-  public void setAccionStop(Instruccion newAccionStop)
+  public void setInicio(Expression newInicio)
   {
-    if (newAccionStop != accionStop)
+    if (newInicio != inicio)
     {
       NotificationChain msgs = null;
-      if (accionStop != null)
-        msgs = ((InternalEObject)accionStop).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.BUCLE_FOR__ACCION_STOP, null, msgs);
-      if (newAccionStop != null)
-        msgs = ((InternalEObject)newAccionStop).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.BUCLE_FOR__ACCION_STOP, null, msgs);
-      msgs = basicSetAccionStop(newAccionStop, msgs);
+      if (inicio != null)
+        msgs = ((InternalEObject)inicio).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.BUCLE_FOR__INICIO, null, msgs);
+      if (newInicio != null)
+        msgs = ((InternalEObject)newInicio).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.BUCLE_FOR__INICIO, null, msgs);
+      msgs = basicSetInicio(newInicio, msgs);
       if (msgs != null) msgs.dispatch();
     }
     else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.BUCLE_FOR__ACCION_STOP, newAccionStop, newAccionStop));
+      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.BUCLE_FOR__INICIO, newInicio, newInicio));
   }
 
   /**
@@ -197,13 +220,113 @@ public class BucleForImpl extends InstruccionImpl implements BucleFor
    * @generated
    */
   @Override
-  public EList<Instruccion> getInstrucciones()
+  public Expression getFin()
   {
-    if (instrucciones == null)
+    return fin;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetFin(Expression newFin, NotificationChain msgs)
+  {
+    Expression oldFin = fin;
+    fin = newFin;
+    if (eNotificationRequired())
     {
-      instrucciones = new EObjectContainmentEList<Instruccion>(Instruccion.class, this, DearCodePackage.BUCLE_FOR__INSTRUCCIONES);
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DearCodePackage.BUCLE_FOR__FIN, oldFin, newFin);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
     }
-    return instrucciones;
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setFin(Expression newFin)
+  {
+    if (newFin != fin)
+    {
+      NotificationChain msgs = null;
+      if (fin != null)
+        msgs = ((InternalEObject)fin).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.BUCLE_FOR__FIN, null, msgs);
+      if (newFin != null)
+        msgs = ((InternalEObject)newFin).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.BUCLE_FOR__FIN, null, msgs);
+      msgs = basicSetFin(newFin, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.BUCLE_FOR__FIN, newFin, newFin));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Expression getPaso()
+  {
+    return paso;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetPaso(Expression newPaso, NotificationChain msgs)
+  {
+    Expression oldPaso = paso;
+    paso = newPaso;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DearCodePackage.BUCLE_FOR__PASO, oldPaso, newPaso);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setPaso(Expression newPaso)
+  {
+    if (newPaso != paso)
+    {
+      NotificationChain msgs = null;
+      if (paso != null)
+        msgs = ((InternalEObject)paso).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.BUCLE_FOR__PASO, null, msgs);
+      if (newPaso != null)
+        msgs = ((InternalEObject)newPaso).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.BUCLE_FOR__PASO, null, msgs);
+      msgs = basicSetPaso(newPaso, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.BUCLE_FOR__PASO, newPaso, newPaso));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EList<ElementoBloque> getLoopBody()
+  {
+    if (loopBody == null)
+    {
+      loopBody = new EObjectContainmentEList<ElementoBloque>(ElementoBloque.class, this, DearCodePackage.BUCLE_FOR__LOOP_BODY);
+    }
+    return loopBody;
   }
 
   /**
@@ -216,12 +339,16 @@ public class BucleForImpl extends InstruccionImpl implements BucleFor
   {
     switch (featureID)
     {
-      case DearCodePackage.BUCLE_FOR__CONDICION:
-        return basicSetCondicion(null, msgs);
-      case DearCodePackage.BUCLE_FOR__ACCION_STOP:
-        return basicSetAccionStop(null, msgs);
-      case DearCodePackage.BUCLE_FOR__INSTRUCCIONES:
-        return ((InternalEList<?>)getInstrucciones()).basicRemove(otherEnd, msgs);
+      case DearCodePackage.BUCLE_FOR__VARIABLE:
+        return basicSetVariable(null, msgs);
+      case DearCodePackage.BUCLE_FOR__INICIO:
+        return basicSetInicio(null, msgs);
+      case DearCodePackage.BUCLE_FOR__FIN:
+        return basicSetFin(null, msgs);
+      case DearCodePackage.BUCLE_FOR__PASO:
+        return basicSetPaso(null, msgs);
+      case DearCodePackage.BUCLE_FOR__LOOP_BODY:
+        return ((InternalEList<?>)getLoopBody()).basicRemove(otherEnd, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -236,12 +363,16 @@ public class BucleForImpl extends InstruccionImpl implements BucleFor
   {
     switch (featureID)
     {
-      case DearCodePackage.BUCLE_FOR__CONDICION:
-        return getCondicion();
-      case DearCodePackage.BUCLE_FOR__ACCION_STOP:
-        return getAccionStop();
-      case DearCodePackage.BUCLE_FOR__INSTRUCCIONES:
-        return getInstrucciones();
+      case DearCodePackage.BUCLE_FOR__VARIABLE:
+        return getVariable();
+      case DearCodePackage.BUCLE_FOR__INICIO:
+        return getInicio();
+      case DearCodePackage.BUCLE_FOR__FIN:
+        return getFin();
+      case DearCodePackage.BUCLE_FOR__PASO:
+        return getPaso();
+      case DearCodePackage.BUCLE_FOR__LOOP_BODY:
+        return getLoopBody();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -257,15 +388,21 @@ public class BucleForImpl extends InstruccionImpl implements BucleFor
   {
     switch (featureID)
     {
-      case DearCodePackage.BUCLE_FOR__CONDICION:
-        setCondicion((Condicion)newValue);
+      case DearCodePackage.BUCLE_FOR__VARIABLE:
+        setVariable((MI_ID)newValue);
         return;
-      case DearCodePackage.BUCLE_FOR__ACCION_STOP:
-        setAccionStop((Instruccion)newValue);
+      case DearCodePackage.BUCLE_FOR__INICIO:
+        setInicio((Expression)newValue);
         return;
-      case DearCodePackage.BUCLE_FOR__INSTRUCCIONES:
-        getInstrucciones().clear();
-        getInstrucciones().addAll((Collection<? extends Instruccion>)newValue);
+      case DearCodePackage.BUCLE_FOR__FIN:
+        setFin((Expression)newValue);
+        return;
+      case DearCodePackage.BUCLE_FOR__PASO:
+        setPaso((Expression)newValue);
+        return;
+      case DearCodePackage.BUCLE_FOR__LOOP_BODY:
+        getLoopBody().clear();
+        getLoopBody().addAll((Collection<? extends ElementoBloque>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -281,14 +418,20 @@ public class BucleForImpl extends InstruccionImpl implements BucleFor
   {
     switch (featureID)
     {
-      case DearCodePackage.BUCLE_FOR__CONDICION:
-        setCondicion((Condicion)null);
+      case DearCodePackage.BUCLE_FOR__VARIABLE:
+        setVariable((MI_ID)null);
         return;
-      case DearCodePackage.BUCLE_FOR__ACCION_STOP:
-        setAccionStop((Instruccion)null);
+      case DearCodePackage.BUCLE_FOR__INICIO:
+        setInicio((Expression)null);
         return;
-      case DearCodePackage.BUCLE_FOR__INSTRUCCIONES:
-        getInstrucciones().clear();
+      case DearCodePackage.BUCLE_FOR__FIN:
+        setFin((Expression)null);
+        return;
+      case DearCodePackage.BUCLE_FOR__PASO:
+        setPaso((Expression)null);
+        return;
+      case DearCodePackage.BUCLE_FOR__LOOP_BODY:
+        getLoopBody().clear();
         return;
     }
     super.eUnset(featureID);
@@ -304,12 +447,16 @@ public class BucleForImpl extends InstruccionImpl implements BucleFor
   {
     switch (featureID)
     {
-      case DearCodePackage.BUCLE_FOR__CONDICION:
-        return condicion != null;
-      case DearCodePackage.BUCLE_FOR__ACCION_STOP:
-        return accionStop != null;
-      case DearCodePackage.BUCLE_FOR__INSTRUCCIONES:
-        return instrucciones != null && !instrucciones.isEmpty();
+      case DearCodePackage.BUCLE_FOR__VARIABLE:
+        return variable != null;
+      case DearCodePackage.BUCLE_FOR__INICIO:
+        return inicio != null;
+      case DearCodePackage.BUCLE_FOR__FIN:
+        return fin != null;
+      case DearCodePackage.BUCLE_FOR__PASO:
+        return paso != null;
+      case DearCodePackage.BUCLE_FOR__LOOP_BODY:
+        return loopBody != null && !loopBody.isEmpty();
     }
     return super.eIsSet(featureID);
   }

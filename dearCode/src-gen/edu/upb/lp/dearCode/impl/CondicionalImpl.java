@@ -3,10 +3,10 @@
  */
 package edu.upb.lp.dearCode.impl;
 
-import edu.upb.lp.dearCode.Condicion;
 import edu.upb.lp.dearCode.Condicional;
 import edu.upb.lp.dearCode.DearCodePackage;
-import edu.upb.lp.dearCode.Instruccion;
+import edu.upb.lp.dearCode.ElementoBloque;
+import edu.upb.lp.dearCode.Expression;
 
 import java.util.Collection;
 
@@ -48,7 +48,7 @@ public class CondicionalImpl extends InstruccionImpl implements Condicional
    * @generated
    * @ordered
    */
-  protected Condicion condicion;
+  protected Expression condicion;
 
   /**
    * The cached value of the '{@link #getInstruccionesThen() <em>Instrucciones Then</em>}' containment reference list.
@@ -58,7 +58,7 @@ public class CondicionalImpl extends InstruccionImpl implements Condicional
    * @generated
    * @ordered
    */
-  protected EList<Instruccion> instruccionesThen;
+  protected EList<ElementoBloque> instruccionesThen;
 
   /**
    * The cached value of the '{@link #getInstruccionesElse() <em>Instrucciones Else</em>}' containment reference list.
@@ -68,7 +68,7 @@ public class CondicionalImpl extends InstruccionImpl implements Condicional
    * @generated
    * @ordered
    */
-  protected EList<Instruccion> instruccionesElse;
+  protected EList<ElementoBloque> instruccionesElse;
 
   /**
    * <!-- begin-user-doc -->
@@ -97,7 +97,7 @@ public class CondicionalImpl extends InstruccionImpl implements Condicional
    * @generated
    */
   @Override
-  public Condicion getCondicion()
+  public Expression getCondicion()
   {
     return condicion;
   }
@@ -107,9 +107,9 @@ public class CondicionalImpl extends InstruccionImpl implements Condicional
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetCondicion(Condicion newCondicion, NotificationChain msgs)
+  public NotificationChain basicSetCondicion(Expression newCondicion, NotificationChain msgs)
   {
-    Condicion oldCondicion = condicion;
+    Expression oldCondicion = condicion;
     condicion = newCondicion;
     if (eNotificationRequired())
     {
@@ -125,7 +125,7 @@ public class CondicionalImpl extends InstruccionImpl implements Condicional
    * @generated
    */
   @Override
-  public void setCondicion(Condicion newCondicion)
+  public void setCondicion(Expression newCondicion)
   {
     if (newCondicion != condicion)
     {
@@ -147,11 +147,11 @@ public class CondicionalImpl extends InstruccionImpl implements Condicional
    * @generated
    */
   @Override
-  public EList<Instruccion> getInstruccionesThen()
+  public EList<ElementoBloque> getInstruccionesThen()
   {
     if (instruccionesThen == null)
     {
-      instruccionesThen = new EObjectContainmentEList<Instruccion>(Instruccion.class, this, DearCodePackage.CONDICIONAL__INSTRUCCIONES_THEN);
+      instruccionesThen = new EObjectContainmentEList<ElementoBloque>(ElementoBloque.class, this, DearCodePackage.CONDICIONAL__INSTRUCCIONES_THEN);
     }
     return instruccionesThen;
   }
@@ -162,11 +162,11 @@ public class CondicionalImpl extends InstruccionImpl implements Condicional
    * @generated
    */
   @Override
-  public EList<Instruccion> getInstruccionesElse()
+  public EList<ElementoBloque> getInstruccionesElse()
   {
     if (instruccionesElse == null)
     {
-      instruccionesElse = new EObjectContainmentEList<Instruccion>(Instruccion.class, this, DearCodePackage.CONDICIONAL__INSTRUCCIONES_ELSE);
+      instruccionesElse = new EObjectContainmentEList<ElementoBloque>(ElementoBloque.class, this, DearCodePackage.CONDICIONAL__INSTRUCCIONES_ELSE);
     }
     return instruccionesElse;
   }
@@ -223,15 +223,15 @@ public class CondicionalImpl extends InstruccionImpl implements Condicional
     switch (featureID)
     {
       case DearCodePackage.CONDICIONAL__CONDICION:
-        setCondicion((Condicion)newValue);
+        setCondicion((Expression)newValue);
         return;
       case DearCodePackage.CONDICIONAL__INSTRUCCIONES_THEN:
         getInstruccionesThen().clear();
-        getInstruccionesThen().addAll((Collection<? extends Instruccion>)newValue);
+        getInstruccionesThen().addAll((Collection<? extends ElementoBloque>)newValue);
         return;
       case DearCodePackage.CONDICIONAL__INSTRUCCIONES_ELSE:
         getInstruccionesElse().clear();
-        getInstruccionesElse().addAll((Collection<? extends Instruccion>)newValue);
+        getInstruccionesElse().addAll((Collection<? extends ElementoBloque>)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -248,7 +248,7 @@ public class CondicionalImpl extends InstruccionImpl implements Condicional
     switch (featureID)
     {
       case DearCodePackage.CONDICIONAL__CONDICION:
-        setCondicion((Condicion)null);
+        setCondicion((Expression)null);
         return;
       case DearCodePackage.CONDICIONAL__INSTRUCCIONES_THEN:
         getInstruccionesThen().clear();

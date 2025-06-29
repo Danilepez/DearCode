@@ -20,7 +20,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link edu.upb.lp.dearCode.impl.BooleanLiteralImpl#getValue <em>Value</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.impl.BooleanLiteralImpl#getValueBoolean <em>Value Boolean</em>}</li>
  * </ul>
  *
  * @generated
@@ -28,24 +28,24 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
 public class BooleanLiteralImpl extends ExpressionImpl implements BooleanLiteral
 {
   /**
-   * The default value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The default value of the '{@link #getValueBoolean() <em>Value Boolean</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getValueBoolean()
    * @generated
    * @ordered
    */
-  protected static final String VALUE_EDEFAULT = null;
+  protected static final String VALUE_BOOLEAN_EDEFAULT = null;
 
   /**
-   * The cached value of the '{@link #getValue() <em>Value</em>}' attribute.
+   * The cached value of the '{@link #getValueBoolean() <em>Value Boolean</em>}' attribute.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getValue()
+   * @see #getValueBoolean()
    * @generated
    * @ordered
    */
-  protected String value = VALUE_EDEFAULT;
+  protected String valueBoolean = VALUE_BOOLEAN_EDEFAULT;
 
   /**
    * <!-- begin-user-doc -->
@@ -74,9 +74,9 @@ public class BooleanLiteralImpl extends ExpressionImpl implements BooleanLiteral
    * @generated
    */
   @Override
-  public String getValue()
+  public String getValueBoolean()
   {
-    return value;
+    return valueBoolean;
   }
 
   /**
@@ -85,12 +85,12 @@ public class BooleanLiteralImpl extends ExpressionImpl implements BooleanLiteral
    * @generated
    */
   @Override
-  public void setValue(String newValue)
+  public void setValueBoolean(String newValueBoolean)
   {
-    String oldValue = value;
-    value = newValue;
+    String oldValueBoolean = valueBoolean;
+    valueBoolean = newValueBoolean;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.BOOLEAN_LITERAL__VALUE, oldValue, value));
+      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.BOOLEAN_LITERAL__VALUE_BOOLEAN, oldValueBoolean, valueBoolean));
   }
 
   /**
@@ -103,8 +103,8 @@ public class BooleanLiteralImpl extends ExpressionImpl implements BooleanLiteral
   {
     switch (featureID)
     {
-      case DearCodePackage.BOOLEAN_LITERAL__VALUE:
-        return getValue();
+      case DearCodePackage.BOOLEAN_LITERAL__VALUE_BOOLEAN:
+        return getValueBoolean();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -119,8 +119,8 @@ public class BooleanLiteralImpl extends ExpressionImpl implements BooleanLiteral
   {
     switch (featureID)
     {
-      case DearCodePackage.BOOLEAN_LITERAL__VALUE:
-        setValue((String)newValue);
+      case DearCodePackage.BOOLEAN_LITERAL__VALUE_BOOLEAN:
+        setValueBoolean((String)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -136,8 +136,8 @@ public class BooleanLiteralImpl extends ExpressionImpl implements BooleanLiteral
   {
     switch (featureID)
     {
-      case DearCodePackage.BOOLEAN_LITERAL__VALUE:
-        setValue(VALUE_EDEFAULT);
+      case DearCodePackage.BOOLEAN_LITERAL__VALUE_BOOLEAN:
+        setValueBoolean(VALUE_BOOLEAN_EDEFAULT);
         return;
     }
     super.eUnset(featureID);
@@ -153,8 +153,8 @@ public class BooleanLiteralImpl extends ExpressionImpl implements BooleanLiteral
   {
     switch (featureID)
     {
-      case DearCodePackage.BOOLEAN_LITERAL__VALUE:
-        return VALUE_EDEFAULT == null ? value != null : !VALUE_EDEFAULT.equals(value);
+      case DearCodePackage.BOOLEAN_LITERAL__VALUE_BOOLEAN:
+        return VALUE_BOOLEAN_EDEFAULT == null ? valueBoolean != null : !VALUE_BOOLEAN_EDEFAULT.equals(valueBoolean);
     }
     return super.eIsSet(featureID);
   }
@@ -170,8 +170,8 @@ public class BooleanLiteralImpl extends ExpressionImpl implements BooleanLiteral
     if (eIsProxy()) return super.toString();
 
     StringBuilder result = new StringBuilder(super.toString());
-    result.append(" (value: ");
-    result.append(value);
+    result.append(" (valueBoolean: ");
+    result.append(valueBoolean);
     result.append(')');
     return result.toString();
   }

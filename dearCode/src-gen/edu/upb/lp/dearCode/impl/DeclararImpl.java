@@ -3,10 +3,11 @@
  */
 package edu.upb.lp.dearCode.impl;
 
+import edu.upb.lp.dearCode.Comment;
 import edu.upb.lp.dearCode.DearCodePackage;
 import edu.upb.lp.dearCode.Declarar;
+import edu.upb.lp.dearCode.Expression;
 import edu.upb.lp.dearCode.MI_ID;
-import edu.upb.lp.dearCode.Valor;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -27,9 +28,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  *   <li>{@link edu.upb.lp.dearCode.impl.DeclararImpl#getVerboDecl <em>Verbo Decl</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.impl.DeclararImpl#getArticulo <em>Articulo</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.impl.DeclararImpl#getSustantivo <em>Sustantivo</em>}</li>
- *   <li>{@link edu.upb.lp.dearCode.impl.DeclararImpl#getConector <em>Conector</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.impl.DeclararImpl#getPreComentario <em>Pre Comentario</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.impl.DeclararImpl#getValor <em>Valor</em>}</li>
- *   <li>{@link edu.upb.lp.dearCode.impl.DeclararImpl#getComentario <em>Comentario</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.impl.DeclararImpl#getPostComentario <em>Post Comentario</em>}</li>
  * </ul>
  *
  * @generated
@@ -87,24 +88,14 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
   protected MI_ID sustantivo;
 
   /**
-   * The default value of the '{@link #getConector() <em>Conector</em>}' attribute.
+   * The cached value of the '{@link #getPreComentario() <em>Pre Comentario</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getConector()
+   * @see #getPreComentario()
    * @generated
    * @ordered
    */
-  protected static final String CONECTOR_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getConector() <em>Conector</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getConector()
-   * @generated
-   * @ordered
-   */
-  protected String conector = CONECTOR_EDEFAULT;
+  protected Comment preComentario;
 
   /**
    * The cached value of the '{@link #getValor() <em>Valor</em>}' containment reference.
@@ -114,27 +105,17 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
    * @generated
    * @ordered
    */
-  protected Valor valor;
+  protected Expression valor;
 
   /**
-   * The default value of the '{@link #getComentario() <em>Comentario</em>}' attribute.
+   * The cached value of the '{@link #getPostComentario() <em>Post Comentario</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getComentario()
+   * @see #getPostComentario()
    * @generated
    * @ordered
    */
-  protected static final String COMENTARIO_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getComentario() <em>Comentario</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getComentario()
-   * @generated
-   * @ordered
-   */
-  protected String comentario = COMENTARIO_EDEFAULT;
+  protected Comment postComentario;
 
   /**
    * <!-- begin-user-doc -->
@@ -263,9 +244,9 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
    * @generated
    */
   @Override
-  public String getConector()
+  public Comment getPreComentario()
   {
-    return conector;
+    return preComentario;
   }
 
   /**
@@ -273,13 +254,16 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public void setConector(String newConector)
+  public NotificationChain basicSetPreComentario(Comment newPreComentario, NotificationChain msgs)
   {
-    String oldConector = conector;
-    conector = newConector;
+    Comment oldPreComentario = preComentario;
+    preComentario = newPreComentario;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.DECLARAR__CONECTOR, oldConector, conector));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DearCodePackage.DECLARAR__PRE_COMENTARIO, oldPreComentario, newPreComentario);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -288,7 +272,29 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
    * @generated
    */
   @Override
-  public Valor getValor()
+  public void setPreComentario(Comment newPreComentario)
+  {
+    if (newPreComentario != preComentario)
+    {
+      NotificationChain msgs = null;
+      if (preComentario != null)
+        msgs = ((InternalEObject)preComentario).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.DECLARAR__PRE_COMENTARIO, null, msgs);
+      if (newPreComentario != null)
+        msgs = ((InternalEObject)newPreComentario).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.DECLARAR__PRE_COMENTARIO, null, msgs);
+      msgs = basicSetPreComentario(newPreComentario, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.DECLARAR__PRE_COMENTARIO, newPreComentario, newPreComentario));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Expression getValor()
   {
     return valor;
   }
@@ -298,9 +304,9 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetValor(Valor newValor, NotificationChain msgs)
+  public NotificationChain basicSetValor(Expression newValor, NotificationChain msgs)
   {
-    Valor oldValor = valor;
+    Expression oldValor = valor;
     valor = newValor;
     if (eNotificationRequired())
     {
@@ -316,7 +322,7 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
    * @generated
    */
   @Override
-  public void setValor(Valor newValor)
+  public void setValor(Expression newValor)
   {
     if (newValor != valor)
     {
@@ -338,9 +344,26 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
    * @generated
    */
   @Override
-  public String getComentario()
+  public Comment getPostComentario()
   {
-    return comentario;
+    return postComentario;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetPostComentario(Comment newPostComentario, NotificationChain msgs)
+  {
+    Comment oldPostComentario = postComentario;
+    postComentario = newPostComentario;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DearCodePackage.DECLARAR__POST_COMENTARIO, oldPostComentario, newPostComentario);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -349,12 +372,20 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
    * @generated
    */
   @Override
-  public void setComentario(String newComentario)
+  public void setPostComentario(Comment newPostComentario)
   {
-    String oldComentario = comentario;
-    comentario = newComentario;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.DECLARAR__COMENTARIO, oldComentario, comentario));
+    if (newPostComentario != postComentario)
+    {
+      NotificationChain msgs = null;
+      if (postComentario != null)
+        msgs = ((InternalEObject)postComentario).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.DECLARAR__POST_COMENTARIO, null, msgs);
+      if (newPostComentario != null)
+        msgs = ((InternalEObject)newPostComentario).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.DECLARAR__POST_COMENTARIO, null, msgs);
+      msgs = basicSetPostComentario(newPostComentario, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.DECLARAR__POST_COMENTARIO, newPostComentario, newPostComentario));
   }
 
   /**
@@ -369,8 +400,12 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
     {
       case DearCodePackage.DECLARAR__SUSTANTIVO:
         return basicSetSustantivo(null, msgs);
+      case DearCodePackage.DECLARAR__PRE_COMENTARIO:
+        return basicSetPreComentario(null, msgs);
       case DearCodePackage.DECLARAR__VALOR:
         return basicSetValor(null, msgs);
+      case DearCodePackage.DECLARAR__POST_COMENTARIO:
+        return basicSetPostComentario(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -391,12 +426,12 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
         return getArticulo();
       case DearCodePackage.DECLARAR__SUSTANTIVO:
         return getSustantivo();
-      case DearCodePackage.DECLARAR__CONECTOR:
-        return getConector();
+      case DearCodePackage.DECLARAR__PRE_COMENTARIO:
+        return getPreComentario();
       case DearCodePackage.DECLARAR__VALOR:
         return getValor();
-      case DearCodePackage.DECLARAR__COMENTARIO:
-        return getComentario();
+      case DearCodePackage.DECLARAR__POST_COMENTARIO:
+        return getPostComentario();
     }
     return super.eGet(featureID, resolve, coreType);
   }
@@ -420,14 +455,14 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
       case DearCodePackage.DECLARAR__SUSTANTIVO:
         setSustantivo((MI_ID)newValue);
         return;
-      case DearCodePackage.DECLARAR__CONECTOR:
-        setConector((String)newValue);
+      case DearCodePackage.DECLARAR__PRE_COMENTARIO:
+        setPreComentario((Comment)newValue);
         return;
       case DearCodePackage.DECLARAR__VALOR:
-        setValor((Valor)newValue);
+        setValor((Expression)newValue);
         return;
-      case DearCodePackage.DECLARAR__COMENTARIO:
-        setComentario((String)newValue);
+      case DearCodePackage.DECLARAR__POST_COMENTARIO:
+        setPostComentario((Comment)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -452,14 +487,14 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
       case DearCodePackage.DECLARAR__SUSTANTIVO:
         setSustantivo((MI_ID)null);
         return;
-      case DearCodePackage.DECLARAR__CONECTOR:
-        setConector(CONECTOR_EDEFAULT);
+      case DearCodePackage.DECLARAR__PRE_COMENTARIO:
+        setPreComentario((Comment)null);
         return;
       case DearCodePackage.DECLARAR__VALOR:
-        setValor((Valor)null);
+        setValor((Expression)null);
         return;
-      case DearCodePackage.DECLARAR__COMENTARIO:
-        setComentario(COMENTARIO_EDEFAULT);
+      case DearCodePackage.DECLARAR__POST_COMENTARIO:
+        setPostComentario((Comment)null);
         return;
     }
     super.eUnset(featureID);
@@ -481,12 +516,12 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
         return ARTICULO_EDEFAULT == null ? articulo != null : !ARTICULO_EDEFAULT.equals(articulo);
       case DearCodePackage.DECLARAR__SUSTANTIVO:
         return sustantivo != null;
-      case DearCodePackage.DECLARAR__CONECTOR:
-        return CONECTOR_EDEFAULT == null ? conector != null : !CONECTOR_EDEFAULT.equals(conector);
+      case DearCodePackage.DECLARAR__PRE_COMENTARIO:
+        return preComentario != null;
       case DearCodePackage.DECLARAR__VALOR:
         return valor != null;
-      case DearCodePackage.DECLARAR__COMENTARIO:
-        return COMENTARIO_EDEFAULT == null ? comentario != null : !COMENTARIO_EDEFAULT.equals(comentario);
+      case DearCodePackage.DECLARAR__POST_COMENTARIO:
+        return postComentario != null;
     }
     return super.eIsSet(featureID);
   }
@@ -506,10 +541,6 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
     result.append(verboDecl);
     result.append(", articulo: ");
     result.append(articulo);
-    result.append(", conector: ");
-    result.append(conector);
-    result.append(", comentario: ");
-    result.append(comentario);
     result.append(')');
     return result.toString();
   }

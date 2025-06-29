@@ -16,9 +16,9 @@ package edu.upb.lp.dearCode;
  *   <li>{@link edu.upb.lp.dearCode.Declarar#getVerboDecl <em>Verbo Decl</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.Declarar#getArticulo <em>Articulo</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.Declarar#getSustantivo <em>Sustantivo</em>}</li>
- *   <li>{@link edu.upb.lp.dearCode.Declarar#getConector <em>Conector</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.Declarar#getPreComentario <em>Pre Comentario</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.Declarar#getValor <em>Valor</em>}</li>
- *   <li>{@link edu.upb.lp.dearCode.Declarar#getComentario <em>Comentario</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.Declarar#getPostComentario <em>Post Comentario</em>}</li>
  * </ul>
  *
  * @see edu.upb.lp.dearCode.DearCodePackage#getDeclarar()
@@ -94,38 +94,38 @@ public interface Declarar extends Instruccion
   void setSustantivo(MI_ID value);
 
   /**
-   * Returns the value of the '<em><b>Conector</b></em>' attribute.
+   * Returns the value of the '<em><b>Pre Comentario</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Conector</em>' attribute.
-   * @see #setConector(String)
-   * @see edu.upb.lp.dearCode.DearCodePackage#getDeclarar_Conector()
-   * @model
+   * @return the value of the '<em>Pre Comentario</em>' containment reference.
+   * @see #setPreComentario(Comment)
+   * @see edu.upb.lp.dearCode.DearCodePackage#getDeclarar_PreComentario()
+   * @model containment="true"
    * @generated
    */
-  String getConector();
+  Comment getPreComentario();
 
   /**
-   * Sets the value of the '{@link edu.upb.lp.dearCode.Declarar#getConector <em>Conector</em>}' attribute.
+   * Sets the value of the '{@link edu.upb.lp.dearCode.Declarar#getPreComentario <em>Pre Comentario</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Conector</em>' attribute.
-   * @see #getConector()
+   * @param value the new value of the '<em>Pre Comentario</em>' containment reference.
+   * @see #getPreComentario()
    * @generated
    */
-  void setConector(String value);
+  void setPreComentario(Comment value);
 
   /**
    * Returns the value of the '<em><b>Valor</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Valor</em>' containment reference.
-   * @see #setValor(Valor)
+   * @see #setValor(Expression)
    * @see edu.upb.lp.dearCode.DearCodePackage#getDeclarar_Valor()
    * @model containment="true"
    * @generated
    */
-  Valor getValor();
+  Expression getValor();
 
   /**
    * Sets the value of the '{@link edu.upb.lp.dearCode.Declarar#getValor <em>Valor</em>}' containment reference.
@@ -135,28 +135,28 @@ public interface Declarar extends Instruccion
    * @see #getValor()
    * @generated
    */
-  void setValor(Valor value);
+  void setValor(Expression value);
 
   /**
-   * Returns the value of the '<em><b>Comentario</b></em>' attribute.
+   * Returns the value of the '<em><b>Post Comentario</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Comentario</em>' attribute.
-   * @see #setComentario(String)
-   * @see edu.upb.lp.dearCode.DearCodePackage#getDeclarar_Comentario()
-   * @model
+   * @return the value of the '<em>Post Comentario</em>' containment reference.
+   * @see #setPostComentario(Comment)
+   * @see edu.upb.lp.dearCode.DearCodePackage#getDeclarar_PostComentario()
+   * @model containment="true"
    * @generated
    */
-  String getComentario();
+  Comment getPostComentario();
 
   /**
-   * Sets the value of the '{@link edu.upb.lp.dearCode.Declarar#getComentario <em>Comentario</em>}' attribute.
+   * Sets the value of the '{@link edu.upb.lp.dearCode.Declarar#getPostComentario <em>Post Comentario</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Comentario</em>' attribute.
-   * @see #getComentario()
+   * @param value the new value of the '<em>Post Comentario</em>' containment reference.
+   * @see #getPostComentario()
    * @generated
    */
-  void setComentario(String value);
+  void setPostComentario(Comment value);
 
 } // Declarar

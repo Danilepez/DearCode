@@ -15,7 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link edu.upb.lp.dearCode.BucleWhile#getCondicion <em>Condicion</em>}</li>
- *   <li>{@link edu.upb.lp.dearCode.BucleWhile#getInstrucciones <em>Instrucciones</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.BucleWhile#getLoopBody <em>Loop Body</em>}</li>
  * </ul>
  *
  * @see edu.upb.lp.dearCode.DearCodePackage#getBucleWhile()
@@ -29,12 +29,12 @@ public interface BucleWhile extends Instruccion
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Condicion</em>' containment reference.
-   * @see #setCondicion(Condicion)
+   * @see #setCondicion(Expression)
    * @see edu.upb.lp.dearCode.DearCodePackage#getBucleWhile_Condicion()
    * @model containment="true"
    * @generated
    */
-  Condicion getCondicion();
+  Expression getCondicion();
 
   /**
    * Sets the value of the '{@link edu.upb.lp.dearCode.BucleWhile#getCondicion <em>Condicion</em>}' containment reference.
@@ -44,18 +44,18 @@ public interface BucleWhile extends Instruccion
    * @see #getCondicion()
    * @generated
    */
-  void setCondicion(Condicion value);
+  void setCondicion(Expression value);
 
   /**
-   * Returns the value of the '<em><b>Instrucciones</b></em>' containment reference list.
-   * The list contents are of type {@link edu.upb.lp.dearCode.Instruccion}.
+   * Returns the value of the '<em><b>Loop Body</b></em>' containment reference list.
+   * The list contents are of type {@link edu.upb.lp.dearCode.ElementoBloque}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Instrucciones</em>' containment reference list.
-   * @see edu.upb.lp.dearCode.DearCodePackage#getBucleWhile_Instrucciones()
+   * @return the value of the '<em>Loop Body</em>' containment reference list.
+   * @see edu.upb.lp.dearCode.DearCodePackage#getBucleWhile_LoopBody()
    * @model containment="true"
    * @generated
    */
-  EList<Instruccion> getInstrucciones();
+  EList<ElementoBloque> getLoopBody();
 
 } // BucleWhile

@@ -8,8 +8,6 @@ import edu.upb.lp.dearCode.Instruccion;
 
 import org.eclipse.emf.ecore.EClass;
 
-import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
-
 /**
  * <!-- begin-user-doc -->
  * An implementation of the model object '<em><b>Instruccion</b></em>'.
@@ -17,7 +15,7 @@ import org.eclipse.emf.ecore.impl.MinimalEObjectImpl;
  *
  * @generated
  */
-public class InstruccionImpl extends MinimalEObjectImpl.Container implements Instruccion
+public class InstruccionImpl extends ElementoBloqueImpl implements Instruccion
 {
   /**
    * <!-- begin-user-doc -->

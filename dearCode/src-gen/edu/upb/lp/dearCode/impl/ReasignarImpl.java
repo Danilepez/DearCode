@@ -3,10 +3,11 @@
  */
 package edu.upb.lp.dearCode.impl;
 
+import edu.upb.lp.dearCode.Comment;
 import edu.upb.lp.dearCode.DearCodePackage;
+import edu.upb.lp.dearCode.Expression;
 import edu.upb.lp.dearCode.MI_ID;
 import edu.upb.lp.dearCode.Reasignar;
-import edu.upb.lp.dearCode.Valor;
 
 import org.eclipse.emf.common.notify.Notification;
 import org.eclipse.emf.common.notify.NotificationChain;
@@ -25,8 +26,9 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * </p>
  * <ul>
  *   <li>{@link edu.upb.lp.dearCode.impl.ReasignarImpl#getVerboReas <em>Verbo Reas</em>}</li>
- *   <li>{@link edu.upb.lp.dearCode.impl.ReasignarImpl#getConector <em>Conector</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.impl.ReasignarImpl#getPreComentario <em>Pre Comentario</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.impl.ReasignarImpl#getSustantivo <em>Sustantivo</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.impl.ReasignarImpl#getPostComentario <em>Post Comentario</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.impl.ReasignarImpl#getValor <em>Valor</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.impl.ReasignarImpl#getComentario <em>Comentario</em>}</li>
  * </ul>
@@ -56,24 +58,14 @@ public class ReasignarImpl extends InstruccionImpl implements Reasignar
   protected String verboReas = VERBO_REAS_EDEFAULT;
 
   /**
-   * The default value of the '{@link #getConector() <em>Conector</em>}' attribute.
+   * The cached value of the '{@link #getPreComentario() <em>Pre Comentario</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @see #getConector()
+   * @see #getPreComentario()
    * @generated
    * @ordered
    */
-  protected static final String CONECTOR_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getConector() <em>Conector</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getConector()
-   * @generated
-   * @ordered
-   */
-  protected String conector = CONECTOR_EDEFAULT;
+  protected Comment preComentario;
 
   /**
    * The cached value of the '{@link #getSustantivo() <em>Sustantivo</em>}' containment reference.
@@ -86,6 +78,16 @@ public class ReasignarImpl extends InstruccionImpl implements Reasignar
   protected MI_ID sustantivo;
 
   /**
+   * The cached value of the '{@link #getPostComentario() <em>Post Comentario</em>}' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getPostComentario()
+   * @generated
+   * @ordered
+   */
+  protected Comment postComentario;
+
+  /**
    * The cached value of the '{@link #getValor() <em>Valor</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -93,27 +95,17 @@ public class ReasignarImpl extends InstruccionImpl implements Reasignar
    * @generated
    * @ordered
    */
-  protected Valor valor;
+  protected Expression valor;
 
   /**
-   * The default value of the '{@link #getComentario() <em>Comentario</em>}' attribute.
+   * The cached value of the '{@link #getComentario() <em>Comentario</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getComentario()
    * @generated
    * @ordered
    */
-  protected static final String COMENTARIO_EDEFAULT = null;
-
-  /**
-   * The cached value of the '{@link #getComentario() <em>Comentario</em>}' attribute.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getComentario()
-   * @generated
-   * @ordered
-   */
-  protected String comentario = COMENTARIO_EDEFAULT;
+  protected Comment comentario;
 
   /**
    * <!-- begin-user-doc -->
@@ -167,9 +159,26 @@ public class ReasignarImpl extends InstruccionImpl implements Reasignar
    * @generated
    */
   @Override
-  public String getConector()
+  public Comment getPreComentario()
   {
-    return conector;
+    return preComentario;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetPreComentario(Comment newPreComentario, NotificationChain msgs)
+  {
+    Comment oldPreComentario = preComentario;
+    preComentario = newPreComentario;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DearCodePackage.REASIGNAR__PRE_COMENTARIO, oldPreComentario, newPreComentario);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -178,12 +187,20 @@ public class ReasignarImpl extends InstruccionImpl implements Reasignar
    * @generated
    */
   @Override
-  public void setConector(String newConector)
+  public void setPreComentario(Comment newPreComentario)
   {
-    String oldConector = conector;
-    conector = newConector;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.REASIGNAR__CONECTOR, oldConector, conector));
+    if (newPreComentario != preComentario)
+    {
+      NotificationChain msgs = null;
+      if (preComentario != null)
+        msgs = ((InternalEObject)preComentario).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.REASIGNAR__PRE_COMENTARIO, null, msgs);
+      if (newPreComentario != null)
+        msgs = ((InternalEObject)newPreComentario).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.REASIGNAR__PRE_COMENTARIO, null, msgs);
+      msgs = basicSetPreComentario(newPreComentario, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.REASIGNAR__PRE_COMENTARIO, newPreComentario, newPreComentario));
   }
 
   /**
@@ -242,7 +259,57 @@ public class ReasignarImpl extends InstruccionImpl implements Reasignar
    * @generated
    */
   @Override
-  public Valor getValor()
+  public Comment getPostComentario()
+  {
+    return postComentario;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  public NotificationChain basicSetPostComentario(Comment newPostComentario, NotificationChain msgs)
+  {
+    Comment oldPostComentario = postComentario;
+    postComentario = newPostComentario;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DearCodePackage.REASIGNAR__POST_COMENTARIO, oldPostComentario, newPostComentario);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setPostComentario(Comment newPostComentario)
+  {
+    if (newPostComentario != postComentario)
+    {
+      NotificationChain msgs = null;
+      if (postComentario != null)
+        msgs = ((InternalEObject)postComentario).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.REASIGNAR__POST_COMENTARIO, null, msgs);
+      if (newPostComentario != null)
+        msgs = ((InternalEObject)newPostComentario).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.REASIGNAR__POST_COMENTARIO, null, msgs);
+      msgs = basicSetPostComentario(newPostComentario, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.REASIGNAR__POST_COMENTARIO, newPostComentario, newPostComentario));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public Expression getValor()
   {
     return valor;
   }
@@ -252,9 +319,9 @@ public class ReasignarImpl extends InstruccionImpl implements Reasignar
    * <!-- end-user-doc -->
    * @generated
    */
-  public NotificationChain basicSetValor(Valor newValor, NotificationChain msgs)
+  public NotificationChain basicSetValor(Expression newValor, NotificationChain msgs)
   {
-    Valor oldValor = valor;
+    Expression oldValor = valor;
     valor = newValor;
     if (eNotificationRequired())
     {
@@ -270,7 +337,7 @@ public class ReasignarImpl extends InstruccionImpl implements Reasignar
    * @generated
    */
   @Override
-  public void setValor(Valor newValor)
+  public void setValor(Expression newValor)
   {
     if (newValor != valor)
     {
@@ -292,7 +359,7 @@ public class ReasignarImpl extends InstruccionImpl implements Reasignar
    * @generated
    */
   @Override
-  public String getComentario()
+  public Comment getComentario()
   {
     return comentario;
   }
@@ -302,13 +369,38 @@ public class ReasignarImpl extends InstruccionImpl implements Reasignar
    * <!-- end-user-doc -->
    * @generated
    */
-  @Override
-  public void setComentario(String newComentario)
+  public NotificationChain basicSetComentario(Comment newComentario, NotificationChain msgs)
   {
-    String oldComentario = comentario;
+    Comment oldComentario = comentario;
     comentario = newComentario;
     if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.REASIGNAR__COMENTARIO, oldComentario, comentario));
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DearCodePackage.REASIGNAR__COMENTARIO, oldComentario, newComentario);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setComentario(Comment newComentario)
+  {
+    if (newComentario != comentario)
+    {
+      NotificationChain msgs = null;
+      if (comentario != null)
+        msgs = ((InternalEObject)comentario).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.REASIGNAR__COMENTARIO, null, msgs);
+      if (newComentario != null)
+        msgs = ((InternalEObject)newComentario).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.REASIGNAR__COMENTARIO, null, msgs);
+      msgs = basicSetComentario(newComentario, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.REASIGNAR__COMENTARIO, newComentario, newComentario));
   }
 
   /**
@@ -321,10 +413,16 @@ public class ReasignarImpl extends InstruccionImpl implements Reasignar
   {
     switch (featureID)
     {
+      case DearCodePackage.REASIGNAR__PRE_COMENTARIO:
+        return basicSetPreComentario(null, msgs);
       case DearCodePackage.REASIGNAR__SUSTANTIVO:
         return basicSetSustantivo(null, msgs);
+      case DearCodePackage.REASIGNAR__POST_COMENTARIO:
+        return basicSetPostComentario(null, msgs);
       case DearCodePackage.REASIGNAR__VALOR:
         return basicSetValor(null, msgs);
+      case DearCodePackage.REASIGNAR__COMENTARIO:
+        return basicSetComentario(null, msgs);
     }
     return super.eInverseRemove(otherEnd, featureID, msgs);
   }
@@ -341,10 +439,12 @@ public class ReasignarImpl extends InstruccionImpl implements Reasignar
     {
       case DearCodePackage.REASIGNAR__VERBO_REAS:
         return getVerboReas();
-      case DearCodePackage.REASIGNAR__CONECTOR:
-        return getConector();
+      case DearCodePackage.REASIGNAR__PRE_COMENTARIO:
+        return getPreComentario();
       case DearCodePackage.REASIGNAR__SUSTANTIVO:
         return getSustantivo();
+      case DearCodePackage.REASIGNAR__POST_COMENTARIO:
+        return getPostComentario();
       case DearCodePackage.REASIGNAR__VALOR:
         return getValor();
       case DearCodePackage.REASIGNAR__COMENTARIO:
@@ -366,17 +466,20 @@ public class ReasignarImpl extends InstruccionImpl implements Reasignar
       case DearCodePackage.REASIGNAR__VERBO_REAS:
         setVerboReas((String)newValue);
         return;
-      case DearCodePackage.REASIGNAR__CONECTOR:
-        setConector((String)newValue);
+      case DearCodePackage.REASIGNAR__PRE_COMENTARIO:
+        setPreComentario((Comment)newValue);
         return;
       case DearCodePackage.REASIGNAR__SUSTANTIVO:
         setSustantivo((MI_ID)newValue);
         return;
+      case DearCodePackage.REASIGNAR__POST_COMENTARIO:
+        setPostComentario((Comment)newValue);
+        return;
       case DearCodePackage.REASIGNAR__VALOR:
-        setValor((Valor)newValue);
+        setValor((Expression)newValue);
         return;
       case DearCodePackage.REASIGNAR__COMENTARIO:
-        setComentario((String)newValue);
+        setComentario((Comment)newValue);
         return;
     }
     super.eSet(featureID, newValue);
@@ -395,17 +498,20 @@ public class ReasignarImpl extends InstruccionImpl implements Reasignar
       case DearCodePackage.REASIGNAR__VERBO_REAS:
         setVerboReas(VERBO_REAS_EDEFAULT);
         return;
-      case DearCodePackage.REASIGNAR__CONECTOR:
-        setConector(CONECTOR_EDEFAULT);
+      case DearCodePackage.REASIGNAR__PRE_COMENTARIO:
+        setPreComentario((Comment)null);
         return;
       case DearCodePackage.REASIGNAR__SUSTANTIVO:
         setSustantivo((MI_ID)null);
         return;
+      case DearCodePackage.REASIGNAR__POST_COMENTARIO:
+        setPostComentario((Comment)null);
+        return;
       case DearCodePackage.REASIGNAR__VALOR:
-        setValor((Valor)null);
+        setValor((Expression)null);
         return;
       case DearCodePackage.REASIGNAR__COMENTARIO:
-        setComentario(COMENTARIO_EDEFAULT);
+        setComentario((Comment)null);
         return;
     }
     super.eUnset(featureID);
@@ -423,14 +529,16 @@ public class ReasignarImpl extends InstruccionImpl implements Reasignar
     {
       case DearCodePackage.REASIGNAR__VERBO_REAS:
         return VERBO_REAS_EDEFAULT == null ? verboReas != null : !VERBO_REAS_EDEFAULT.equals(verboReas);
-      case DearCodePackage.REASIGNAR__CONECTOR:
-        return CONECTOR_EDEFAULT == null ? conector != null : !CONECTOR_EDEFAULT.equals(conector);
+      case DearCodePackage.REASIGNAR__PRE_COMENTARIO:
+        return preComentario != null;
       case DearCodePackage.REASIGNAR__SUSTANTIVO:
         return sustantivo != null;
+      case DearCodePackage.REASIGNAR__POST_COMENTARIO:
+        return postComentario != null;
       case DearCodePackage.REASIGNAR__VALOR:
         return valor != null;
       case DearCodePackage.REASIGNAR__COMENTARIO:
-        return COMENTARIO_EDEFAULT == null ? comentario != null : !COMENTARIO_EDEFAULT.equals(comentario);
+        return comentario != null;
     }
     return super.eIsSet(featureID);
   }
@@ -448,10 +556,6 @@ public class ReasignarImpl extends InstruccionImpl implements Reasignar
     StringBuilder result = new StringBuilder(super.toString());
     result.append(" (verboReas: ");
     result.append(verboReas);
-    result.append(", conector: ");
-    result.append(conector);
-    result.append(", comentario: ");
-    result.append(comentario);
     result.append(')');
     return result.toString();
   }
