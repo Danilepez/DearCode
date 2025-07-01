@@ -131,7 +131,7 @@
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DearCode.ecore#//VariableReference/name"/>
     </genClasses>
     <genClasses ecoreClass="DearCode.ecore#//FunctionCall">
-      <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DearCode.ecore#//FunctionCall/nameFuncion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//FunctionCall/nameFuncion"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//FunctionCall/args"/>
     </genClasses>
   </genPackages>

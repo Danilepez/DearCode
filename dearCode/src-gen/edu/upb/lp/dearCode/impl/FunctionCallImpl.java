@@ -40,7 +40,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
 public class FunctionCallImpl extends ExpressionImpl implements FunctionCall
 {
   /**
-   * The cached value of the '{@link #getNameFuncion() <em>Name Funcion</em>}' reference.
+   * The cached value of the '{@link #getNameFuncion() <em>Name Funcion</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @see #getNameFuncion()
@@ -88,16 +88,6 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall
   @Override
   public MI_ID getNameFuncion()
   {
-    if (nameFuncion != null && nameFuncion.eIsProxy())
-    {
-      InternalEObject oldNameFuncion = (InternalEObject)nameFuncion;
-      nameFuncion = (MI_ID)eResolveProxy(oldNameFuncion);
-      if (nameFuncion != oldNameFuncion)
-      {
-        if (eNotificationRequired())
-          eNotify(new ENotificationImpl(this, Notification.RESOLVE, DearCodePackage.FUNCTION_CALL__NAME_FUNCION, oldNameFuncion, nameFuncion));
-      }
-    }
     return nameFuncion;
   }
 
@@ -106,9 +96,16 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall
    * <!-- end-user-doc -->
    * @generated
    */
-  public MI_ID basicGetNameFuncion()
+  public NotificationChain basicSetNameFuncion(MI_ID newNameFuncion, NotificationChain msgs)
   {
-    return nameFuncion;
+    MI_ID oldNameFuncion = nameFuncion;
+    nameFuncion = newNameFuncion;
+    if (eNotificationRequired())
+    {
+      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DearCodePackage.FUNCTION_CALL__NAME_FUNCION, oldNameFuncion, newNameFuncion);
+      if (msgs == null) msgs = notification; else msgs.add(notification);
+    }
+    return msgs;
   }
 
   /**
@@ -119,10 +116,18 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall
   @Override
   public void setNameFuncion(MI_ID newNameFuncion)
   {
-    MI_ID oldNameFuncion = nameFuncion;
-    nameFuncion = newNameFuncion;
-    if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.FUNCTION_CALL__NAME_FUNCION, oldNameFuncion, nameFuncion));
+    if (newNameFuncion != nameFuncion)
+    {
+      NotificationChain msgs = null;
+      if (nameFuncion != null)
+        msgs = ((InternalEObject)nameFuncion).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.FUNCTION_CALL__NAME_FUNCION, null, msgs);
+      if (newNameFuncion != null)
+        msgs = ((InternalEObject)newNameFuncion).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.FUNCTION_CALL__NAME_FUNCION, null, msgs);
+      msgs = basicSetNameFuncion(newNameFuncion, msgs);
+      if (msgs != null) msgs.dispatch();
+    }
+    else if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.FUNCTION_CALL__NAME_FUNCION, newNameFuncion, newNameFuncion));
   }
 
   /**
@@ -150,6 +155,8 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall
   {
     switch (featureID)
     {
+      case DearCodePackage.FUNCTION_CALL__NAME_FUNCION:
+        return basicSetNameFuncion(null, msgs);
       case DearCodePackage.FUNCTION_CALL__ARGS:
         return ((InternalEList<?>)getArgs()).basicRemove(otherEnd, msgs);
     }
@@ -167,8 +174,7 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall
     switch (featureID)
     {
       case DearCodePackage.FUNCTION_CALL__NAME_FUNCION:
-        if (resolve) return getNameFuncion();
-        return basicGetNameFuncion();
+        return getNameFuncion();
       case DearCodePackage.FUNCTION_CALL__ARGS:
         return getArgs();
     }

@@ -1242,7 +1242,7 @@ public interface DearCodePackage extends EPackage
   int FUNCTION_CALL = 31;
 
   /**
-   * The feature id for the '<em><b>Name Funcion</b></em>' reference.
+   * The feature id for the '<em><b>Name Funcion</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
@@ -2305,10 +2305,10 @@ public interface DearCodePackage extends EPackage
   EClass getFunctionCall();
 
   /**
-   * Returns the meta object for the reference '{@link edu.upb.lp.dearCode.FunctionCall#getNameFuncion <em>Name Funcion</em>}'.
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.FunctionCall#getNameFuncion <em>Name Funcion</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the meta object for the reference '<em>Name Funcion</em>'.
+   * @return the meta object for the containment reference '<em>Name Funcion</em>'.
    * @see edu.upb.lp.dearCode.FunctionCall#getNameFuncion()
    * @see #getFunctionCall()
    * @generated
@@ -3190,7 +3190,7 @@ public interface DearCodePackage extends EPackage
     EClass FUNCTION_CALL = eINSTANCE.getFunctionCall();
 
     /**
-     * The meta object literal for the '<em><b>Name Funcion</b></em>' reference feature.
+     * The meta object literal for the '<em><b>Name Funcion</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
      * @generated

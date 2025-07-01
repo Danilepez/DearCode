@@ -25,22 +25,22 @@ import org.eclipse.emf.common.util.EList;
 public interface FunctionCall extends Expression
 {
   /**
-   * Returns the value of the '<em><b>Name Funcion</b></em>' reference.
+   * Returns the value of the '<em><b>Name Funcion</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @return the value of the '<em>Name Funcion</em>' reference.
+   * @return the value of the '<em>Name Funcion</em>' containment reference.
    * @see #setNameFuncion(MI_ID)
    * @see edu.upb.lp.dearCode.DearCodePackage#getFunctionCall_NameFuncion()
-   * @model
+   * @model containment="true"
    * @generated
    */
   MI_ID getNameFuncion();
 
   /**
-   * Sets the value of the '{@link edu.upb.lp.dearCode.FunctionCall#getNameFuncion <em>Name Funcion</em>}' reference.
+   * Sets the value of the '{@link edu.upb.lp.dearCode.FunctionCall#getNameFuncion <em>Name Funcion</em>}' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Name Funcion</em>' reference.
+   * @param value the new value of the '<em>Name Funcion</em>' containment reference.
    * @see #getNameFuncion()
    * @generated
    */

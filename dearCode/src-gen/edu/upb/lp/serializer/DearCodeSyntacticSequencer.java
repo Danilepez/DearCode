@@ -39,9 +39,10 @@ public class DearCodeSyntacticSequencer extends AbstractSyntacticSequencer {
 	protected AbstractElementAlias match_Funcion_AsSeEternizaKeyword_7_1_or_AsSeSellaLaPromesaKeyword_7_0_or_YAsNuestroAmorSeInmortalizaKeyword_7_2_or_YElUniversoGuardaNuestroSecretoKeyword_7_3_or_YLaEternidadNosAbrazaKeyword_7_4;
 	protected AbstractElementAlias match_Funcion_CuandoElAmorSeCumplaKeyword_5_1_or_CuandoLaPromesaSeCumpleKeyword_5_0;
 	protected AbstractElementAlias match_Funcion_DejoEnEstasLNeasUnaPromesaLlamadaKeyword_0_0_or_EnLaBrisaEscondoUnDeseoLlamadoKeyword_0_2_or_EscriboEnEstasLNeasUnaIntenciNLlamadaKeyword_0_1_or_EsculpoEnElTiempoUnAnheloLlamadoKeyword_0_6_or_GraboEnLasEstrellasUnaPromesaLlamadaKeyword_0_3_or_SusurroALaEternidadUnSueOLlamadoKeyword_0_7_or_SusurroAlUniversoUnDeseoLlamadoKeyword_0_4_or_TejoEnElDestinoUnJuramentoLlamadoKeyword_0_5;
-	protected AbstractElementAlias match_Funcion_JuntoAKeyword_2_2_0_1_or_LlevandoConsigoKeyword_2_2_0_3_or_TambienKeyword_2_2_0_2_or_YKeyword_2_2_0_0;
+	protected AbstractElementAlias match_Funcion_LlevandoConsigoKeyword_2_2_0_1_or_TambienKeyword_2_2_0_0;
 	protected AbstractElementAlias match_Funcion_QueAbrazaEnSuSerKeyword_2_0_2_or_QueGuardaEnSuEsenciaKeyword_2_0_0_or_QueLlevaEnSuAlmaKeyword_2_0_3_or_QueSusurraEnSuCorazNKeyword_2_0_4_or_TejiendoKeyword_2_0_1;
 	protected AbstractElementAlias match_Funcion___JurandoDevolverKeyword_3_1_or_PrometiendoDevolverKeyword_3_0__q;
+	protected AbstractElementAlias match_FunctionCall_AsimismoKeyword_3_1_1_0_a;
 	protected AbstractElementAlias match_FunctionCall_ConLosDonesKeyword_3_0_2_or_ConLosRegalosKeyword_3_0_0_or_OfreciendoKeyword_3_0_1_or_OfreciendoMisTesorosKeyword_3_0_4_or_PresentandoKeyword_3_0_3;
 	protected AbstractElementAlias match_FunctionCall_ConjuroAKeyword_1_3_or_InvocoAKeyword_1_0_or_MurmuroAKeyword_1_2_or_SusurroAKeyword_1_1;
 	protected AbstractElementAlias match_FunctionCall_EnMiAlmaKeyword_3_2_1_or_EnMiCorazNKeyword_3_2_0;
@@ -74,9 +75,10 @@ public class DearCodeSyntacticSequencer extends AbstractSyntacticSequencer {
 		match_Funcion_AsSeEternizaKeyword_7_1_or_AsSeSellaLaPromesaKeyword_7_0_or_YAsNuestroAmorSeInmortalizaKeyword_7_2_or_YElUniversoGuardaNuestroSecretoKeyword_7_3_or_YLaEternidadNosAbrazaKeyword_7_4 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getFuncionAccess().getAsSeEternizaKeyword_7_1()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getAsSeSellaLaPromesaKeyword_7_0()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getYAsNuestroAmorSeInmortalizaKeyword_7_2()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getYElUniversoGuardaNuestroSecretoKeyword_7_3()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getYLaEternidadNosAbrazaKeyword_7_4()));
 		match_Funcion_CuandoElAmorSeCumplaKeyword_5_1_or_CuandoLaPromesaSeCumpleKeyword_5_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getFuncionAccess().getCuandoElAmorSeCumplaKeyword_5_1()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getCuandoLaPromesaSeCumpleKeyword_5_0()));
 		match_Funcion_DejoEnEstasLNeasUnaPromesaLlamadaKeyword_0_0_or_EnLaBrisaEscondoUnDeseoLlamadoKeyword_0_2_or_EscriboEnEstasLNeasUnaIntenciNLlamadaKeyword_0_1_or_EsculpoEnElTiempoUnAnheloLlamadoKeyword_0_6_or_GraboEnLasEstrellasUnaPromesaLlamadaKeyword_0_3_or_SusurroALaEternidadUnSueOLlamadoKeyword_0_7_or_SusurroAlUniversoUnDeseoLlamadoKeyword_0_4_or_TejoEnElDestinoUnJuramentoLlamadoKeyword_0_5 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getFuncionAccess().getDejoEnEstasLNeasUnaPromesaLlamadaKeyword_0_0()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getEnLaBrisaEscondoUnDeseoLlamadoKeyword_0_2()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getEscriboEnEstasLNeasUnaIntenciNLlamadaKeyword_0_1()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getEsculpoEnElTiempoUnAnheloLlamadoKeyword_0_6()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getGraboEnLasEstrellasUnaPromesaLlamadaKeyword_0_3()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getSusurroALaEternidadUnSueOLlamadoKeyword_0_7()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getSusurroAlUniversoUnDeseoLlamadoKeyword_0_4()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getTejoEnElDestinoUnJuramentoLlamadoKeyword_0_5()));
-		match_Funcion_JuntoAKeyword_2_2_0_1_or_LlevandoConsigoKeyword_2_2_0_3_or_TambienKeyword_2_2_0_2_or_YKeyword_2_2_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getFuncionAccess().getJuntoAKeyword_2_2_0_1()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getLlevandoConsigoKeyword_2_2_0_3()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getTambienKeyword_2_2_0_2()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getYKeyword_2_2_0_0()));
+		match_Funcion_LlevandoConsigoKeyword_2_2_0_1_or_TambienKeyword_2_2_0_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getFuncionAccess().getLlevandoConsigoKeyword_2_2_0_1()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getTambienKeyword_2_2_0_0()));
 		match_Funcion_QueAbrazaEnSuSerKeyword_2_0_2_or_QueGuardaEnSuEsenciaKeyword_2_0_0_or_QueLlevaEnSuAlmaKeyword_2_0_3_or_QueSusurraEnSuCorazNKeyword_2_0_4_or_TejiendoKeyword_2_0_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getFuncionAccess().getQueAbrazaEnSuSerKeyword_2_0_2()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getQueGuardaEnSuEsenciaKeyword_2_0_0()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getQueLlevaEnSuAlmaKeyword_2_0_3()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getQueSusurraEnSuCorazNKeyword_2_0_4()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getTejiendoKeyword_2_0_1()));
 		match_Funcion___JurandoDevolverKeyword_3_1_or_PrometiendoDevolverKeyword_3_0__q = new AlternativeAlias(false, true, new TokenAlias(false, false, grammarAccess.getFuncionAccess().getJurandoDevolverKeyword_3_1()), new TokenAlias(false, false, grammarAccess.getFuncionAccess().getPrometiendoDevolverKeyword_3_0()));
+		match_FunctionCall_AsimismoKeyword_3_1_1_0_a = new TokenAlias(true, true, grammarAccess.getFunctionCallAccess().getAsimismoKeyword_3_1_1_0());
 		match_FunctionCall_ConLosDonesKeyword_3_0_2_or_ConLosRegalosKeyword_3_0_0_or_OfreciendoKeyword_3_0_1_or_OfreciendoMisTesorosKeyword_3_0_4_or_PresentandoKeyword_3_0_3 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getFunctionCallAccess().getConLosDonesKeyword_3_0_2()), new TokenAlias(false, false, grammarAccess.getFunctionCallAccess().getConLosRegalosKeyword_3_0_0()), new TokenAlias(false, false, grammarAccess.getFunctionCallAccess().getOfreciendoKeyword_3_0_1()), new TokenAlias(false, false, grammarAccess.getFunctionCallAccess().getOfreciendoMisTesorosKeyword_3_0_4()), new TokenAlias(false, false, grammarAccess.getFunctionCallAccess().getPresentandoKeyword_3_0_3()));
 		match_FunctionCall_ConjuroAKeyword_1_3_or_InvocoAKeyword_1_0_or_MurmuroAKeyword_1_2_or_SusurroAKeyword_1_1 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getFunctionCallAccess().getConjuroAKeyword_1_3()), new TokenAlias(false, false, grammarAccess.getFunctionCallAccess().getInvocoAKeyword_1_0()), new TokenAlias(false, false, grammarAccess.getFunctionCallAccess().getMurmuroAKeyword_1_2()), new TokenAlias(false, false, grammarAccess.getFunctionCallAccess().getSusurroAKeyword_1_1()));
 		match_FunctionCall_EnMiAlmaKeyword_3_2_1_or_EnMiCorazNKeyword_3_2_0 = new AlternativeAlias(false, false, new TokenAlias(false, false, grammarAccess.getFunctionCallAccess().getEnMiAlmaKeyword_3_2_1()), new TokenAlias(false, false, grammarAccess.getFunctionCallAccess().getEnMiCorazNKeyword_3_2_0()));
@@ -136,12 +138,14 @@ public class DearCodeSyntacticSequencer extends AbstractSyntacticSequencer {
 				emit_Funcion_CuandoElAmorSeCumplaKeyword_5_1_or_CuandoLaPromesaSeCumpleKeyword_5_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Funcion_DejoEnEstasLNeasUnaPromesaLlamadaKeyword_0_0_or_EnLaBrisaEscondoUnDeseoLlamadoKeyword_0_2_or_EscriboEnEstasLNeasUnaIntenciNLlamadaKeyword_0_1_or_EsculpoEnElTiempoUnAnheloLlamadoKeyword_0_6_or_GraboEnLasEstrellasUnaPromesaLlamadaKeyword_0_3_or_SusurroALaEternidadUnSueOLlamadoKeyword_0_7_or_SusurroAlUniversoUnDeseoLlamadoKeyword_0_4_or_TejoEnElDestinoUnJuramentoLlamadoKeyword_0_5.equals(syntax))
 				emit_Funcion_DejoEnEstasLNeasUnaPromesaLlamadaKeyword_0_0_or_EnLaBrisaEscondoUnDeseoLlamadoKeyword_0_2_or_EscriboEnEstasLNeasUnaIntenciNLlamadaKeyword_0_1_or_EsculpoEnElTiempoUnAnheloLlamadoKeyword_0_6_or_GraboEnLasEstrellasUnaPromesaLlamadaKeyword_0_3_or_SusurroALaEternidadUnSueOLlamadoKeyword_0_7_or_SusurroAlUniversoUnDeseoLlamadoKeyword_0_4_or_TejoEnElDestinoUnJuramentoLlamadoKeyword_0_5(semanticObject, getLastNavigableState(), syntaxNodes);
-			else if (match_Funcion_JuntoAKeyword_2_2_0_1_or_LlevandoConsigoKeyword_2_2_0_3_or_TambienKeyword_2_2_0_2_or_YKeyword_2_2_0_0.equals(syntax))
-				emit_Funcion_JuntoAKeyword_2_2_0_1_or_LlevandoConsigoKeyword_2_2_0_3_or_TambienKeyword_2_2_0_2_or_YKeyword_2_2_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_Funcion_LlevandoConsigoKeyword_2_2_0_1_or_TambienKeyword_2_2_0_0.equals(syntax))
+				emit_Funcion_LlevandoConsigoKeyword_2_2_0_1_or_TambienKeyword_2_2_0_0(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Funcion_QueAbrazaEnSuSerKeyword_2_0_2_or_QueGuardaEnSuEsenciaKeyword_2_0_0_or_QueLlevaEnSuAlmaKeyword_2_0_3_or_QueSusurraEnSuCorazNKeyword_2_0_4_or_TejiendoKeyword_2_0_1.equals(syntax))
 				emit_Funcion_QueAbrazaEnSuSerKeyword_2_0_2_or_QueGuardaEnSuEsenciaKeyword_2_0_0_or_QueLlevaEnSuAlmaKeyword_2_0_3_or_QueSusurraEnSuCorazNKeyword_2_0_4_or_TejiendoKeyword_2_0_1(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_Funcion___JurandoDevolverKeyword_3_1_or_PrometiendoDevolverKeyword_3_0__q.equals(syntax))
 				emit_Funcion___JurandoDevolverKeyword_3_1_or_PrometiendoDevolverKeyword_3_0__q(semanticObject, getLastNavigableState(), syntaxNodes);
+			else if (match_FunctionCall_AsimismoKeyword_3_1_1_0_a.equals(syntax))
+				emit_FunctionCall_AsimismoKeyword_3_1_1_0_a(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_FunctionCall_ConLosDonesKeyword_3_0_2_or_ConLosRegalosKeyword_3_0_0_or_OfreciendoKeyword_3_0_1_or_OfreciendoMisTesorosKeyword_3_0_4_or_PresentandoKeyword_3_0_3.equals(syntax))
 				emit_FunctionCall_ConLosDonesKeyword_3_0_2_or_ConLosRegalosKeyword_3_0_0_or_OfreciendoKeyword_3_0_1_or_OfreciendoMisTesorosKeyword_3_0_4_or_PresentandoKeyword_3_0_3(semanticObject, getLastNavigableState(), syntaxNodes);
 			else if (match_FunctionCall_ConjuroAKeyword_1_3_or_InvocoAKeyword_1_0_or_MurmuroAKeyword_1_2_or_SusurroAKeyword_1_1.equals(syntax))
@@ -504,14 +508,14 @@ public class DearCodeSyntacticSequencer extends AbstractSyntacticSequencer {
 	/**
 	 * <pre>
 	 * Ambiguous syntax:
-	 *     'y' | 'junto a' | 'tambien' | 'llevando consigo'
+	 *     'tambien' | 'llevando consigo'
 	 *
 	 * This ambiguous syntax occurs at:
 	 *     parametros+=ParametroDecl (ambiguity) parametros+=ParametroDecl
 	 
 	 * </pre>
 	 */
-	protected void emit_Funcion_JuntoAKeyword_2_2_0_1_or_LlevandoConsigoKeyword_2_2_0_3_or_TambienKeyword_2_2_0_2_or_YKeyword_2_2_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+	protected void emit_Funcion_LlevandoConsigoKeyword_2_2_0_1_or_TambienKeyword_2_2_0_0(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
 		acceptNodes(transition, nodes);
 	}
 	
@@ -549,10 +553,25 @@ public class DearCodeSyntacticSequencer extends AbstractSyntacticSequencer {
 	/**
 	 * <pre>
 	 * Ambiguous syntax:
+	 *     'asimismo'*
+	 *
+	 * This ambiguous syntax occurs at:
+	 *     args+=Expression (ambiguity) 'adicionalmente' args+=Expression
+	 *     args+=Expression (ambiguity) ('en mi corazón' | 'en mi alma') (rule end)
+	 
+	 * </pre>
+	 */
+	protected void emit_FunctionCall_AsimismoKeyword_3_1_1_0_a(EObject semanticObject, ISynNavigable transition, List<INode> nodes) {
+		acceptNodes(transition, nodes);
+	}
+	
+	/**
+	 * <pre>
+	 * Ambiguous syntax:
 	 *     'con los regalos' | 'ofreciendo' | 'con los dones' | 'presentando' | 'ofreciendo mis tesoros'
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     nameFuncion=[MI_ID|ID] (ambiguity) args+=Expression
+	 *     nameFuncion=MI_ID (ambiguity) args+=Expression
 	 
 	 * </pre>
 	 */
@@ -566,8 +585,8 @@ public class DearCodeSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     'invoco a' | 'susurro a' | 'murmuro a' | 'conjuro a'
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) '('* (ambiguity) nameFuncion=[MI_ID|ID]
-	 *     (rule start) (ambiguity) nameFuncion=[MI_ID|ID]
+	 *     (rule start) '('* (ambiguity) nameFuncion=MI_ID
+	 *     (rule start) (ambiguity) nameFuncion=MI_ID
 	 
 	 * </pre>
 	 */
@@ -581,7 +600,7 @@ public class DearCodeSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     'en mi corazón' | 'en mi alma'
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     args+=Expression (ambiguity) (rule end)
+	 *     args+=Expression 'asimismo'* (ambiguity) (rule end)
 	 
 	 * </pre>
 	 */
@@ -595,7 +614,7 @@ public class DearCodeSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     (('con los regalos' | 'ofreciendo' | 'con los dones' | 'presentando' | 'ofreciendo mis tesoros') ('en mi corazón' | 'en mi alma'))?
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     nameFuncion=[MI_ID|ID] (ambiguity) (rule end)
+	 *     nameFuncion=MI_ID (ambiguity) (rule end)
 	 
 	 * </pre>
 	 */
@@ -623,7 +642,7 @@ public class DearCodeSyntacticSequencer extends AbstractSyntacticSequencer {
 	 *     '('*
 	 *
 	 * This ambiguous syntax occurs at:
-	 *     (rule start) (ambiguity) ('invoco a' | 'susurro a' | 'murmuro a' | 'conjuro a') nameFuncion=[MI_ID|ID]
+	 *     (rule start) (ambiguity) ('invoco a' | 'susurro a' | 'murmuro a' | 'conjuro a') nameFuncion=MI_ID
 	 *     (rule start) (ambiguity) name=ID
 	 *     (rule start) (ambiguity) op='dudo que'
 	 *     (rule start) (ambiguity) op='no creo que'

@@ -621,10 +621,6 @@ ruleDeclarar returns [EObject current=null]
 				}
 			)
 		)?
-		otherlv_7='.'
-		{
-			newLeafNode(otherlv_7, grammarAccess.getDeclararAccess().getFullStopKeyword_7());
-		}
 	)
 ;
 
@@ -758,10 +754,6 @@ ruleReasignar returns [EObject current=null]
 				}
 			)
 		)?
-		otherlv_6='.'
-		{
-			newLeafNode(otherlv_6, grammarAccess.getReasignarAccess().getFullStopKeyword_6());
-		}
 	)
 ;
 
@@ -970,10 +962,6 @@ ruleSalida returns [EObject current=null]
 				}
 			)
 		)
-		otherlv_8='.'
-		{
-			newLeafNode(otherlv_8, grammarAccess.getSalidaAccess().getFullStopKeyword_2());
-		}
 	)
 ;
 
@@ -1705,24 +1693,14 @@ ruleFuncion returns [EObject current=null]
 			)
 			(
 				(
-					otherlv_15='y'
+					otherlv_15='tambien'
 					{
-						newLeafNode(otherlv_15, grammarAccess.getFuncionAccess().getYKeyword_2_2_0_0());
+						newLeafNode(otherlv_15, grammarAccess.getFuncionAccess().getTambienKeyword_2_2_0_0());
 					}
 					    |
-					otherlv_16='junto a'
+					otherlv_16='llevando consigo'
 					{
-						newLeafNode(otherlv_16, grammarAccess.getFuncionAccess().getJuntoAKeyword_2_2_0_1());
-					}
-					    |
-					otherlv_17='tambien'
-					{
-						newLeafNode(otherlv_17, grammarAccess.getFuncionAccess().getTambienKeyword_2_2_0_2());
-					}
-					    |
-					otherlv_18='llevando consigo'
-					{
-						newLeafNode(otherlv_18, grammarAccess.getFuncionAccess().getLlevandoConsigoKeyword_2_2_0_3());
+						newLeafNode(otherlv_16, grammarAccess.getFuncionAccess().getLlevandoConsigoKeyword_2_2_0_1());
 					}
 				)
 				(
@@ -1730,7 +1708,7 @@ ruleFuncion returns [EObject current=null]
 						{
 							newCompositeNode(grammarAccess.getFuncionAccess().getParametrosParametroDeclParserRuleCall_2_2_1_0());
 						}
-						lv_parametros_19_0=ruleParametroDecl
+						lv_parametros_17_0=ruleParametroDecl
 						{
 							if ($current==null) {
 								$current = createModelElementForParent(grammarAccess.getFuncionRule());
@@ -1738,7 +1716,7 @@ ruleFuncion returns [EObject current=null]
 							add(
 								$current,
 								"parametros",
-								lv_parametros_19_0,
+								lv_parametros_17_0,
 								"edu.upb.lp.DearCode.ParametroDecl");
 							afterParserOrEnumRuleCall();
 						}
@@ -1747,14 +1725,14 @@ ruleFuncion returns [EObject current=null]
 			)*
 		)?
 		(
-			otherlv_20='prometiendo devolver'
+			otherlv_18='prometiendo devolver'
 			{
-				newLeafNode(otherlv_20, grammarAccess.getFuncionAccess().getPrometiendoDevolverKeyword_3_0());
+				newLeafNode(otherlv_18, grammarAccess.getFuncionAccess().getPrometiendoDevolverKeyword_3_0());
 			}
 			    |
-			otherlv_21='jurando devolver'
+			otherlv_19='jurando devolver'
 			{
-				newLeafNode(otherlv_21, grammarAccess.getFuncionAccess().getJurandoDevolverKeyword_3_1());
+				newLeafNode(otherlv_19, grammarAccess.getFuncionAccess().getJurandoDevolverKeyword_3_1());
 			}
 		)?
 		(
@@ -1762,7 +1740,7 @@ ruleFuncion returns [EObject current=null]
 				{
 					newCompositeNode(grammarAccess.getFuncionAccess().getTipoTypeParserRuleCall_4_0());
 				}
-				lv_tipo_22_0=ruleType
+				lv_tipo_20_0=ruleType
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getFuncionRule());
@@ -1770,21 +1748,21 @@ ruleFuncion returns [EObject current=null]
 					set(
 						$current,
 						"tipo",
-						lv_tipo_22_0,
+						lv_tipo_20_0,
 						"edu.upb.lp.DearCode.Type");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)?
 		(
-			otherlv_23='Cuando la promesa se cumple:'
+			otherlv_21='Cuando la promesa se cumple:'
 			{
-				newLeafNode(otherlv_23, grammarAccess.getFuncionAccess().getCuandoLaPromesaSeCumpleKeyword_5_0());
+				newLeafNode(otherlv_21, grammarAccess.getFuncionAccess().getCuandoLaPromesaSeCumpleKeyword_5_0());
 			}
 			    |
-			otherlv_24='Cuando el amor se cumpla'
+			otherlv_22='Cuando el amor se cumpla'
 			{
-				newLeafNode(otherlv_24, grammarAccess.getFuncionAccess().getCuandoElAmorSeCumplaKeyword_5_1());
+				newLeafNode(otherlv_22, grammarAccess.getFuncionAccess().getCuandoElAmorSeCumplaKeyword_5_1());
 			}
 		)
 		(
@@ -1792,7 +1770,7 @@ ruleFuncion returns [EObject current=null]
 				{
 					newCompositeNode(grammarAccess.getFuncionAccess().getInstruccionesElementoBloqueParserRuleCall_6_0());
 				}
-				lv_instrucciones_25_0=ruleElementoBloque
+				lv_instrucciones_23_0=ruleElementoBloque
 				{
 					if ($current==null) {
 						$current = createModelElementForParent(grammarAccess.getFuncionRule());
@@ -1800,36 +1778,36 @@ ruleFuncion returns [EObject current=null]
 					add(
 						$current,
 						"instrucciones",
-						lv_instrucciones_25_0,
+						lv_instrucciones_23_0,
 						"edu.upb.lp.DearCode.ElementoBloque");
 					afterParserOrEnumRuleCall();
 				}
 			)
 		)+
 		(
-			otherlv_26='As\u00ED se sella la promesa.'
+			otherlv_24='As\u00ED se sella la promesa.'
 			{
-				newLeafNode(otherlv_26, grammarAccess.getFuncionAccess().getAsSeSellaLaPromesaKeyword_7_0());
+				newLeafNode(otherlv_24, grammarAccess.getFuncionAccess().getAsSeSellaLaPromesaKeyword_7_0());
 			}
 			    |
-			otherlv_27='As\u00ED se eterniza.'
+			otherlv_25='As\u00ED se eterniza.'
 			{
-				newLeafNode(otherlv_27, grammarAccess.getFuncionAccess().getAsSeEternizaKeyword_7_1());
+				newLeafNode(otherlv_25, grammarAccess.getFuncionAccess().getAsSeEternizaKeyword_7_1());
 			}
 			    |
-			otherlv_28='Y as\u00ED nuestro amor se inmortaliza.'
+			otherlv_26='Y as\u00ED nuestro amor se inmortaliza.'
 			{
-				newLeafNode(otherlv_28, grammarAccess.getFuncionAccess().getYAsNuestroAmorSeInmortalizaKeyword_7_2());
+				newLeafNode(otherlv_26, grammarAccess.getFuncionAccess().getYAsNuestroAmorSeInmortalizaKeyword_7_2());
 			}
 			    |
-			otherlv_29='Y el universo guarda nuestro secreto.'
+			otherlv_27='Y el universo guarda nuestro secreto.'
 			{
-				newLeafNode(otherlv_29, grammarAccess.getFuncionAccess().getYElUniversoGuardaNuestroSecretoKeyword_7_3());
+				newLeafNode(otherlv_27, grammarAccess.getFuncionAccess().getYElUniversoGuardaNuestroSecretoKeyword_7_3());
 			}
 			    |
-			otherlv_30='Y la eternidad nos abraza.'
+			otherlv_28='Y la eternidad nos abraza.'
 			{
-				newLeafNode(otherlv_30, grammarAccess.getFuncionAccess().getYLaEternidadNosAbrazaKeyword_7_4());
+				newLeafNode(otherlv_28, grammarAccess.getFuncionAccess().getYLaEternidadNosAbrazaKeyword_7_4());
 			}
 		)
 	)
@@ -3198,13 +3176,19 @@ ruleFunctionCall returns [EObject current=null]
 		(
 			(
 				{
-					if ($current==null) {
-						$current = createModelElement(grammarAccess.getFunctionCallRule());
-					}
+					newCompositeNode(grammarAccess.getFunctionCallAccess().getNameFuncionMI_IDParserRuleCall_2_0());
 				}
-				otherlv_5=RULE_ID
+				lv_nameFuncion_5_0=ruleMI_ID
 				{
-					newLeafNode(otherlv_5, grammarAccess.getFunctionCallAccess().getNameFuncionMI_IDCrossReference_2_0());
+					if ($current==null) {
+						$current = createModelElementForParent(grammarAccess.getFunctionCallRule());
+					}
+					set(
+						$current,
+						"nameFuncion",
+						lv_nameFuncion_5_0,
+						"edu.upb.lp.DearCode.MI_ID");
+					afterParserOrEnumRuleCall();
 				}
 			)
 		)
@@ -3256,40 +3240,47 @@ ruleFunctionCall returns [EObject current=null]
 					)
 				)
 				(
-					otherlv_12='y'
+					otherlv_12='asimismo'
 					{
-						newLeafNode(otherlv_12, grammarAccess.getFunctionCallAccess().getYKeyword_3_1_1_0());
+						newLeafNode(otherlv_12, grammarAccess.getFunctionCallAccess().getAsimismoKeyword_3_1_1_0());
 					}
+					    |
 					(
+						otherlv_13='adicionalmente'
+						{
+							newLeafNode(otherlv_13, grammarAccess.getFunctionCallAccess().getAdicionalmenteKeyword_3_1_1_1_0());
+						}
 						(
-							{
-								newCompositeNode(grammarAccess.getFunctionCallAccess().getArgsExpressionParserRuleCall_3_1_1_1_0());
-							}
-							lv_args_13_0=ruleExpression
-							{
-								if ($current==null) {
-									$current = createModelElementForParent(grammarAccess.getFunctionCallRule());
+							(
+								{
+									newCompositeNode(grammarAccess.getFunctionCallAccess().getArgsExpressionParserRuleCall_3_1_1_1_1_0());
 								}
-								add(
-									$current,
-									"args",
-									lv_args_13_0,
-									"edu.upb.lp.DearCode.Expression");
-								afterParserOrEnumRuleCall();
-							}
+								lv_args_14_0=ruleExpression
+								{
+									if ($current==null) {
+										$current = createModelElementForParent(grammarAccess.getFunctionCallRule());
+									}
+									add(
+										$current,
+										"args",
+										lv_args_14_0,
+										"edu.upb.lp.DearCode.Expression");
+									afterParserOrEnumRuleCall();
+								}
+							)
 						)
 					)
 				)*
 			)?
 			(
-				otherlv_14='en mi coraz\u00F3n'
+				otherlv_15='en mi coraz\u00F3n'
 				{
-					newLeafNode(otherlv_14, grammarAccess.getFunctionCallAccess().getEnMiCorazNKeyword_3_2_0());
+					newLeafNode(otherlv_15, grammarAccess.getFunctionCallAccess().getEnMiCorazNKeyword_3_2_0());
 				}
 				    |
-				otherlv_15='en mi alma'
+				otherlv_16='en mi alma'
 				{
-					newLeafNode(otherlv_15, grammarAccess.getFunctionCallAccess().getEnMiAlmaKeyword_3_2_1());
+					newLeafNode(otherlv_16, grammarAccess.getFunctionCallAccess().getEnMiAlmaKeyword_3_2_1());
 				}
 			)
 		)?
@@ -3424,22 +3415,16 @@ ruleVerboDeclaracion returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRu
 			newLeafNode(kw, grammarAccess.getVerboDeclaracionAccess().getTeConfOKeyword_6());
 		}
 		    |
-		kw='Te entrego'
-		{
-			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getVerboDeclaracionAccess().getTeEntregoKeyword_7());
-		}
-		    |
 		kw='Te dedico'
 		{
 			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getVerboDeclaracionAccess().getTeDedicoKeyword_8());
+			newLeafNode(kw, grammarAccess.getVerboDeclaracionAccess().getTeDedicoKeyword_7());
 		}
 		    |
 		kw='Te brindo'
 		{
 			$current.merge(kw);
-			newLeafNode(kw, grammarAccess.getVerboDeclaracionAccess().getTeBrindoKeyword_9());
+			newLeafNode(kw, grammarAccess.getVerboDeclaracionAccess().getTeBrindoKeyword_8());
 		}
 	)
 ;

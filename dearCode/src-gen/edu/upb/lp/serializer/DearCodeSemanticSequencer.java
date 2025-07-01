@@ -486,7 +486,7 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     FunctionCall returns FunctionCall
 	 *
 	 * Constraint:
-	 *     (nameFuncion=[MI_ID|ID] (args+=Expression args+=Expression*)?)
+	 *     (nameFuncion=MI_ID (args+=Expression args+=Expression*)?)
 	 * </pre>
 	 */
 	protected void sequence_FunctionCall(ISerializationContext context, FunctionCall semanticObject) {

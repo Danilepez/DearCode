@@ -7,8 +7,37 @@ package edu.upb.lp.validation;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.xtext.validation.Check;
 
+import edu.upb.lp.dearCode.AdditiveExpression;
+import edu.upb.lp.dearCode.AndExpression;
+import edu.upb.lp.dearCode.BooleanLiteral;
+import edu.upb.lp.dearCode.BucleFor;
+import edu.upb.lp.dearCode.BucleWhile;
+import edu.upb.lp.dearCode.Condicional;
 import edu.upb.lp.dearCode.Cuerpo;
 import edu.upb.lp.dearCode.Declarar;
+import edu.upb.lp.dearCode.Expression;
+import org.eclipse.emf.ecore.EObject;
+import org.eclipse.xtext.validation.Check;
+import edu.upb.lp.dearCode.EqualityExpression;
+import edu.upb.lp.dearCode.Funcion;
+import edu.upb.lp.dearCode.FunctionCall;
+import edu.upb.lp.dearCode.Instruccion;
+import edu.upb.lp.dearCode.MI_ID;
+import edu.upb.lp.dearCode.MultiplicativeExpression;
+import edu.upb.lp.dearCode.OrExpression;
+import edu.upb.lp.dearCode.ParametroDecl;
+import edu.upb.lp.dearCode.Program;
+import edu.upb.lp.dearCode.RelationalExpression;
+import edu.upb.lp.dearCode.StringLiteral;
+import edu.upb.lp.dearCode.VariableReference;
+import edu.upb.lp.dearCode.DearCodePackage;
+import org.eclipse.xtext.validation.EValidatorRegistrar;
+import org.eclipse.xtext.xtext.generator.parser.antlr.splitting.simpleExpressions.NumberLiteral;
+
+import java.util.HashSet;
+import java.util.Set;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * This class contains custom validation rules. 
@@ -16,31 +45,314 @@ import edu.upb.lp.dearCode.Declarar;
  * See https://www.eclipse.org/Xtext/documentation/303_runtime_concepts.html#validation
  */
 public class DearCodeValidator extends AbstractDearCodeValidator {
-	
-//	public static final String INVALID_NAME = "invalidName";
-//
-//	@Check
-//	public void checkGreetingStartsWithCapital(Greeting greeting) {
-//		if (!Character.isUpperCase(greeting.getName().charAt(0))) {
-//			warning("Name should start with a capital",
-//					DearCodePackage.Literals.GREETING__NAME,
-//					INVALID_NAME);
-//		}
-//	}
-	
+public static final String DUPLICATE_VARIABLE_NAME = "duplicateVariableName";
+public static final String INVALID_TYPE_OPERATION = "invalidTypeOperation";
+public static final String INFINITE_WHILE_LOOP = "infiniteWhileLoop";
+public static final String MULTIPLE_RETURNS = "multipleReturns";
+public static final String INVALID_NESTED_FUNCTION_CALL = "invalidNestedFunctionCall";
+public static final String UNDEFINED_FUNCTION = "undefinedFunction";
+public static final String TYPE_MISMATCH_FUNCTION_CALL = "typeMismatchFunctionCall";
+public static final String DUPLICATE_FUNCTION = "duplicateFunction";
+public static final String EMPTY_BODY = "emptybody";
+
 	@Check
-	public void checkUniqueName(Declarar d) {
-		EObject e = d.eContainer();
-		while (!(e instanceof Cuerpo)) {
-			e = e.eContainer();
-		}
-		Cuerpo c = (Cuerpo) e;
-//		c.getInstrucciones()
+	public void checkNestedFunctionCall(FunctionCall call) {
+	    MI_ID functionName = call.getNameFuncion();
+	    if (functionName == null) return;
+	    Funcion calledFunction = findFunctionDeclaration(functionName.getName(), call);
+	    if (calledFunction == null) {
+	        error("La función '" + functionName.getName() + "' no está definida :(",
+	              DearCodePackage.Literals.FUNCTION_CALL__NAME_FUNCION,
+	              UNDEFINED_FUNCTION);
+	        return;
+	    }
+	    List<Expression> args = call.getArgs();
+	    List<ParametroDecl> params = calledFunction.getParametros();
+	    if (args.size() != params.size()) {
+	        error("La función '" + functionName.getName() + "' espera " + params.size() + " parámetros, pero se proporcionaron " + args.size() + " :(",
+	              DearCodePackage.Literals.FUNCTION_CALL__ARGS,
+	              INVALID_NESTED_FUNCTION_CALL);
+	        return;
+	    }
+	    for (int i = 0; i < args.size(); i++) {
+	        Expression arg = args.get(i);
+	        ParametroDecl param = params.get(i);
+	        if (arg instanceof FunctionCall) {
+	            FunctionCall nestedCall = (FunctionCall) arg;
+	            MI_ID nestedFunctionName = nestedCall.getNameFuncion();
+	            if (nestedFunctionName == null) continue;
+	            Funcion nestedFunction = findFunctionDeclaration(nestedFunctionName.getName(), nestedCall);
+	            if (nestedFunction == null) {
+	                error("La función anidada '" + nestedFunctionName.getName() + "' no está definida :(",
+	                      DearCodePackage.Literals.FUNCTION_CALL__ARGS,
+	                      UNDEFINED_FUNCTION);
+	                continue;
+	            }
+	            String nestedReturnType = nestedFunction.getTipo() != null ? nestedFunction.getTipo() : null;
+	            if (nestedReturnType == null) {
+	                error("La función anidada '" + nestedFunctionName.getName() + "' no tiene un tipo de retorno definido. No se permite en llamadas anidadas :(",
+	                      DearCodePackage.Literals.FUNCTION_CALL__ARGS,
+	                      INVALID_NESTED_FUNCTION_CALL);
+	                continue;
+	            }
+	        }
+	    }
 	}
 	
-	
-	@Check
-	public void checkRecursivityOfFunctions() {
-		
+	private Funcion findFunctionDeclaration(String functionName, EObject context) {
+	    EObject container = context.eContainer();
+	    while (container != null) {
+	        if (container instanceof Program) {
+	            Program program = (Program) container;
+	            for (Instruccion instr : program.getCarta().getCuerpo().getInstrucciones()) {
+	                if (instr instanceof Funcion) {
+	                    Funcion func = (Funcion) instr;
+	                    if (func.getName().getName().equals(functionName)) {
+	                        return func;
+	                    }
+	                }
+	            }
+	            break; 
+	        }
+	        container = container.eContainer();
+	    }
+	    return null;
 	}
+
+    
+
+    private boolean isValidAdditiveType(String leftType, String rightType) {
+        return (leftType.equals("int") && rightType.equals("int")) ||
+               (leftType.equals("string") && rightType.equals("string")) ||
+               (leftType.equals("int") && rightType.equals("string")) ||
+               (leftType.equals("string") && rightType.equals("int"));
+    }
+
+    private boolean isValidMultiplicativeType(String leftType, String rightType) {
+        return leftType.equals("int") && rightType.equals("int");
+    }
+
+    private boolean isValidRelationalType(String leftType, String rightType) {
+        return leftType.equals("int") && rightType.equals("int");
+    }
+
+    private boolean isValidEqualityType(String leftType, String rightType) {
+        return (leftType.equals("int") && rightType.equals("int")) ||
+               (leftType.equals("string") && rightType.equals("string")) ||
+               (leftType.equals("boolean") && rightType.equals("boolean"));
+    }
+
+    private boolean isValidLogicalType(String leftType, String rightType) {
+        return leftType.equals("boolean") && rightType.equals("boolean");
+    }
+
+    private String inferType(Expression expr) {
+        if (expr instanceof NumberLiteral) {
+            return "int";
+        } else if (expr instanceof StringLiteral) {
+            return "string";
+        } else if (expr instanceof BooleanLiteral) {
+            return "boolean";
+        } else if (expr instanceof VariableReference) {
+            return "unknown";
+        } else if (expr instanceof FunctionCall) {
+            return "unknown";
+        }
+        return "unknown";
+    }
+
+    @Check
+    public void checkSingleReturnPerFunction(Funcion funcion) {
+        List<EObject> returnStatements = new ArrayList<>();
+        collectReturnStatements(funcion.getInstrucciones(), returnStatements);
+        if (returnStatements.size() > 1) {
+            for (EObject ret : returnStatements) {
+                error("Una función solo puede tener un único 'return'. Se encontraron " + returnStatements.size() + " :(",
+                      ret,
+                      null,
+                      MULTIPLE_RETURNS);
+            }
+        }
+    }
+
+    @Check
+    public void checkInfiniteWhileLoop(BucleWhile whileLoop) {
+        Expression condition = whileLoop.getCondicion();
+        if (condition instanceof BooleanLiteral) {
+            BooleanLiteral boolLit = (BooleanLiteral) condition;
+            if ("siempre".equals(boolLit.getValueBoolean())) {
+                error("El bucle while con condición 'siempre' creará un ciclo infinito :(",
+                      DearCodePackage.Literals.BUCLE_WHILE__CONDICION,
+                      INFINITE_WHILE_LOOP);
+            }
+        }
+    }
+
+    private void collectReturnStatements(List<? extends EObject> elementos, List<EObject> returnStatements) {
+        for (EObject elemento : elementos) {
+            if ("Return".equals(elemento.eClass().getName())) {
+                returnStatements.add(elemento);
+            } else if (elemento instanceof Instruccion) {
+                Instruccion instruccion = (Instruccion) elemento;
+                if (instruccion instanceof Condicional) {
+                    Condicional cond = (Condicional) instruccion;
+                    collectReturnStatements(cond.getInstruccionesThen(), returnStatements);
+                    if (cond.getInstruccionesElse() != null) {
+                        collectReturnStatements(cond.getInstruccionesElse(), returnStatements);
+                    }
+                } else if (instruccion instanceof BucleWhile) {
+                    collectReturnStatements(((BucleWhile) instruccion).getLoopBody(), returnStatements);
+                } else if (instruccion instanceof BucleFor) {
+                    collectReturnStatements(((BucleFor) instruccion).getLoopBody(), returnStatements);
+                }
+            }
+        }
+    }
+    @Check
+    public void checkTypeCompatibility(Expression expr) {
+        if (expr instanceof AdditiveExpression) {
+        	AdditiveExpression addExpr = (AdditiveExpression) expr;
+            if (addExpr.getOp() != null) {
+                String leftType = inferType(addExpr.getLeft());
+                String rightType = inferType(addExpr.getRight());
+                if (!isValidAdditiveType(leftType, rightType)) {
+                    error("Operación inválida: No se puede combinar '" + leftType + "' con '" + rightType + "' usando '" + addExpr.getOp() + "' :(",
+                          DearCodePackage.Literals.ADDITIVE_EXPRESSION__RIGHT,
+                          INVALID_TYPE_OPERATION);
+                }
+            }
+        }
+        else if (expr instanceof MultiplicativeExpression) {
+            MultiplicativeExpression mulExpr = (MultiplicativeExpression) expr;
+            if (mulExpr.getOp() != null) {
+                String leftType = inferType(mulExpr.getLeft());
+                String rightType = inferType(mulExpr.getRight());
+                if (!isValidMultiplicativeType(leftType, rightType)) {
+                    error("Operación inválida: No se puede combinar '" + leftType + "' con '" + rightType + "' usando '" + mulExpr.getOp() + "' :(",
+                          DearCodePackage.Literals.MULTIPLICATIVE_EXPRESSION__RIGHT,
+                          INVALID_TYPE_OPERATION);
+                }
+            }
+        }
+        else if (expr instanceof RelationalExpression) {
+            RelationalExpression relExpr = (RelationalExpression) expr;
+            if (relExpr.getOp() != null) {
+                String leftType = inferType(relExpr.getLeft());
+                String rightType = inferType(relExpr.getRight());
+                if (!isValidRelationalType(leftType, rightType)) {
+                    error("Operación inválida: No se puede comparar '" + leftType + "' con '" + rightType + "' usando '" + relExpr.getOp() + "' :(",
+                          DearCodePackage.Literals.RELATIONAL_EXPRESSION__RIGHT,
+                          INVALID_TYPE_OPERATION);
+                }
+            }
+        }
+        else if (expr instanceof EqualityExpression) {
+            EqualityExpression eqExpr = (EqualityExpression) expr;
+            if (eqExpr.getOp() != null) {
+                String leftType = inferType(eqExpr.getLeft());
+                String rightType = inferType(eqExpr.getRight());
+                if (!isValidEqualityType(leftType, rightType)) {
+                    error("Operación inválida: No se puede comparar '" + leftType + "' con '" + rightType + "' usando '" + eqExpr.getOp() + "' :(",
+                          DearCodePackage.Literals.EQUALITY_EXPRESSION__RIGHT,
+                          INVALID_TYPE_OPERATION);
+                }
+            }
+        }
+        else if (expr instanceof AndExpression) {
+            AndExpression andExpr = (AndExpression) expr;
+            String leftType = inferType(andExpr.getLeft());
+            String rightType = inferType(andExpr.getRight());
+            if (!isValidLogicalType(leftType, rightType)) {
+                error("Operación inválida: No se puede combinar '" + leftType + "' con '" + rightType + "' en una expresión lógica 'y también' :(",
+                      DearCodePackage.Literals.AND_EXPRESSION__RIGHT,
+                      INVALID_TYPE_OPERATION);
+            }
+        } else if (expr instanceof OrExpression) {
+            OrExpression orExpr = (OrExpression) expr;
+            String leftType = inferType(orExpr.getLeft());
+            String rightType = inferType(orExpr.getRight());
+            if (!isValidLogicalType(leftType, rightType)) {
+                error("Operación inválida: No se puede combinar '" + leftType + "' con '" + rightType + "' en una expresión lógica 'o tal vez' :(",
+                      DearCodePackage.Literals.OR_EXPRESSION__RIGHT,
+                      INVALID_TYPE_OPERATION);
+            }
+        }
+    }
+    
+    @Check
+    public void checkDuplicateFunctionNames(Program program) {
+        Set<String> seen = new HashSet<>();
+        for (Instruccion instr : program.getCarta().getCuerpo().getInstrucciones()) {
+            if (instr instanceof Funcion) {
+                Funcion fn = (Funcion) instr;
+                String name = fn.getName().getName();
+                if (!seen.add(name)) {
+                    error(
+                        "Ya existe otra función llamada '" + name + "'. Los nombres de función deben ser únicos.",
+                        fn,
+                        DearCodePackage.Literals.FUNCION__NAME,
+                        DUPLICATE_FUNCTION
+                    );
+                }
+            }
+        }
+    }
+    
+    @Check
+    public void checkEmptyBodies(Instruccion instr) {
+        if (instr instanceof Funcion) {
+            Funcion fn = (Funcion) instr;
+            if (fn.getInstrucciones().isEmpty()) {
+                error(
+                    "La función '" + fn.getName().getName() + "' no puede estar vacía; debe contener al menos una instrucción o un return.",
+                    fn,
+                    DearCodePackage.Literals.FUNCION__INSTRUCCIONES,
+                    EMPTY_BODY
+                );
+            }
+        }
+        // If
+        else if (instr instanceof Condicional) {
+            Condicional c = (Condicional) instr;
+            if (c.getInstruccionesThen().isEmpty()) {
+                error(
+                    "El bloque THEN de este condicional está vacío; debe contener al menos una instrucción.",
+                    c,
+                    DearCodePackage.Literals.CONDICIONAL__INSTRUCCIONES_THEN,
+                    EMPTY_BODY
+                );
+            }
+            if (c.getInstruccionesElse() != null && c.getInstruccionesElse().isEmpty()) {
+                error(
+                    "El bloque ELSE de este condicional está vacío; si lo incluyes, debe contener al menos una instrucción.",
+                    c,
+                    DearCodePackage.Literals.CONDICIONAL__INSTRUCCIONES_ELSE,
+                    EMPTY_BODY
+                );
+            }
+        }
+        // While
+        else if (instr instanceof BucleWhile) {
+            BucleWhile w = (BucleWhile) instr;
+            if (w.getLoopBody().isEmpty()) {
+                error(
+                    "El cuerpo de este bucle WHILE está vacío; debe contener al menos una instrucción.",
+                    w,
+                    DearCodePackage.Literals.BUCLE_WHILE__LOOP_BODY,
+                    EMPTY_BODY
+                );
+            }
+        }
+        // For
+        else if (instr instanceof BucleFor) {
+            BucleFor f = (BucleFor) instr;
+            if (f.getLoopBody().isEmpty()) {
+                error(
+                    "El cuerpo de este bucle FOR está vacío; debe contener al menos una instrucción.",
+                    f,
+                    DearCodePackage.Literals.BUCLE_FOR__LOOP_BODY, EMPTY_BODY
+                );
+            }
+        }
+    }
 }
