@@ -3,7 +3,6 @@
  */
 package edu.upb.lp.dearCode.impl;
 
-import edu.upb.lp.dearCode.Comment;
 import edu.upb.lp.dearCode.DearCodePackage;
 import edu.upb.lp.dearCode.Expression;
 import edu.upb.lp.dearCode.FunctionCall;
@@ -33,7 +32,6 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link edu.upb.lp.dearCode.impl.FunctionCallImpl#getNameFuncion <em>Name Funcion</em>}</li>
- *   <li>{@link edu.upb.lp.dearCode.impl.FunctionCallImpl#getComentario <em>Comentario</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.impl.FunctionCallImpl#getArgs <em>Args</em>}</li>
  * </ul>
  *
@@ -50,16 +48,6 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall
    * @ordered
    */
   protected MI_ID nameFuncion;
-
-  /**
-   * The cached value of the '{@link #getComentario() <em>Comentario</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @see #getComentario()
-   * @generated
-   * @ordered
-   */
-  protected Comment comentario;
 
   /**
    * The cached value of the '{@link #getArgs() <em>Args</em>}' containment reference list.
@@ -143,56 +131,6 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall
    * @generated
    */
   @Override
-  public Comment getComentario()
-  {
-    return comentario;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  public NotificationChain basicSetComentario(Comment newComentario, NotificationChain msgs)
-  {
-    Comment oldComentario = comentario;
-    comentario = newComentario;
-    if (eNotificationRequired())
-    {
-      ENotificationImpl notification = new ENotificationImpl(this, Notification.SET, DearCodePackage.FUNCTION_CALL__COMENTARIO, oldComentario, newComentario);
-      if (msgs == null) msgs = notification; else msgs.add(notification);
-    }
-    return msgs;
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
-  public void setComentario(Comment newComentario)
-  {
-    if (newComentario != comentario)
-    {
-      NotificationChain msgs = null;
-      if (comentario != null)
-        msgs = ((InternalEObject)comentario).eInverseRemove(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.FUNCTION_CALL__COMENTARIO, null, msgs);
-      if (newComentario != null)
-        msgs = ((InternalEObject)newComentario).eInverseAdd(this, EOPPOSITE_FEATURE_BASE - DearCodePackage.FUNCTION_CALL__COMENTARIO, null, msgs);
-      msgs = basicSetComentario(newComentario, msgs);
-      if (msgs != null) msgs.dispatch();
-    }
-    else if (eNotificationRequired())
-      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.FUNCTION_CALL__COMENTARIO, newComentario, newComentario));
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EList<Expression> getArgs()
   {
     if (args == null)
@@ -212,8 +150,6 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall
   {
     switch (featureID)
     {
-      case DearCodePackage.FUNCTION_CALL__COMENTARIO:
-        return basicSetComentario(null, msgs);
       case DearCodePackage.FUNCTION_CALL__ARGS:
         return ((InternalEList<?>)getArgs()).basicRemove(otherEnd, msgs);
     }
@@ -233,8 +169,6 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall
       case DearCodePackage.FUNCTION_CALL__NAME_FUNCION:
         if (resolve) return getNameFuncion();
         return basicGetNameFuncion();
-      case DearCodePackage.FUNCTION_CALL__COMENTARIO:
-        return getComentario();
       case DearCodePackage.FUNCTION_CALL__ARGS:
         return getArgs();
     }
@@ -254,9 +188,6 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall
     {
       case DearCodePackage.FUNCTION_CALL__NAME_FUNCION:
         setNameFuncion((MI_ID)newValue);
-        return;
-      case DearCodePackage.FUNCTION_CALL__COMENTARIO:
-        setComentario((Comment)newValue);
         return;
       case DearCodePackage.FUNCTION_CALL__ARGS:
         getArgs().clear();
@@ -279,9 +210,6 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall
       case DearCodePackage.FUNCTION_CALL__NAME_FUNCION:
         setNameFuncion((MI_ID)null);
         return;
-      case DearCodePackage.FUNCTION_CALL__COMENTARIO:
-        setComentario((Comment)null);
-        return;
       case DearCodePackage.FUNCTION_CALL__ARGS:
         getArgs().clear();
         return;
@@ -301,8 +229,6 @@ public class FunctionCallImpl extends ExpressionImpl implements FunctionCall
     {
       case DearCodePackage.FUNCTION_CALL__NAME_FUNCION:
         return nameFuncion != null;
-      case DearCodePackage.FUNCTION_CALL__COMENTARIO:
-        return comentario != null;
       case DearCodePackage.FUNCTION_CALL__ARGS:
         return args != null && !args.isEmpty();
     }

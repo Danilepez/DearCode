@@ -6,25 +6,33 @@ package edu.upb.lp.generator;
 import edu.upb.lp.dearCode.AdditiveExpression;
 import edu.upb.lp.dearCode.AndExpression;
 import edu.upb.lp.dearCode.BooleanLiteral;
+import edu.upb.lp.dearCode.BucleFor;
+import edu.upb.lp.dearCode.BucleWhile;
 import edu.upb.lp.dearCode.Comment;
+import edu.upb.lp.dearCode.Condicional;
 import edu.upb.lp.dearCode.Declarar;
+import edu.upb.lp.dearCode.ElementoBloque;
+import edu.upb.lp.dearCode.Entrada;
 import edu.upb.lp.dearCode.EqualityExpression;
 import edu.upb.lp.dearCode.Expression;
 import edu.upb.lp.dearCode.Funcion;
 import edu.upb.lp.dearCode.FunctionCall;
 import edu.upb.lp.dearCode.Instruccion;
-import edu.upb.lp.dearCode.MI_ID;
 import edu.upb.lp.dearCode.MultiplicativeExpression;
 import edu.upb.lp.dearCode.NumberLiteral;
 import edu.upb.lp.dearCode.OrExpression;
+import edu.upb.lp.dearCode.ParametroDecl;
 import edu.upb.lp.dearCode.Program;
 import edu.upb.lp.dearCode.Reasignar;
 import edu.upb.lp.dearCode.RelationalExpression;
+import edu.upb.lp.dearCode.Return;
 import edu.upb.lp.dearCode.Salida;
 import edu.upb.lp.dearCode.StringLiteral;
 import edu.upb.lp.dearCode.UnaryExpression;
 import edu.upb.lp.dearCode.VariableReference;
 import java.util.Arrays;
+import java.util.HashMap;
+import java.util.List;
 import java.util.Objects;
 import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
@@ -33,6 +41,7 @@ import org.eclipse.xtend2.lib.StringConcatenation;
 import org.eclipse.xtext.generator.AbstractGenerator;
 import org.eclipse.xtext.generator.IFileSystemAccess2;
 import org.eclipse.xtext.generator.IGeneratorContext;
+import org.eclipse.xtext.xbase.lib.Conversions;
 import org.eclipse.xtext.xbase.lib.Functions.Function1;
 import org.eclipse.xtext.xbase.lib.IterableExtensions;
 import org.eclipse.xtext.xbase.lib.ListExtensions;
@@ -47,6 +56,7 @@ import org.eclipse.xtext.xbase.lib.XbaseGenerated;
 public class DearCodeGenerator extends AbstractGenerator {
   @Override
   public void doGenerate(final Resource resource, final IFileSystemAccess2 fsa, final IGeneratorContext context) {
+    this.variableTypes.clear();
     EObject _head = IterableExtensions.<EObject>head(resource.getContents());
     final Program program = ((Program) _head);
     final CharSequence code = this.generateProgram(program);
@@ -55,10 +65,10 @@ public class DearCodeGenerator extends AbstractGenerator {
     fsa.generateFile(_plus, code);
   }
 
+  private final HashMap<String, String> variableTypes = new HashMap<String, String>();
+
   public CharSequence generateProgram(final Program p) {
     StringConcatenation _builder = new StringConcatenation();
-    _builder.append("# -*- coding: utf-8 -*-");
-    _builder.newLine();
     _builder.append("# Carta para ");
     String _name = p.getCarta().getSaludo().getName();
     _builder.append(_name);
@@ -78,42 +88,66 @@ public class DearCodeGenerator extends AbstractGenerator {
     return _builder;
   }
 
+  public String mapType(final String type) {
+    String _switchResult = null;
+    if (type != null) {
+      switch (type) {
+        case "número":
+          _switchResult = "int";
+          break;
+        case "texto":
+          _switchResult = "str";
+          break;
+        case "booleano":
+          _switchResult = "bool";
+          break;
+        default:
+          _switchResult = "";
+          break;
+      }
+    } else {
+      _switchResult = "";
+    }
+    return _switchResult;
+  }
+
   protected CharSequence _generateInstruccion(final Declarar d) {
-    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _xblockexpression = null;
     {
-      Comment _preComentario = d.getPreComentario();
-      boolean _tripleNotEquals = (_preComentario != null);
+      String _tipo = d.getTipo();
+      boolean _tripleNotEquals = (_tipo != null);
       if (_tripleNotEquals) {
-        _builder.append("# ");
-        String _value = d.getPreComentario().getValue();
-        _builder.append(_value);
+        this.variableTypes.put(d.getSustantivo().getName(), d.getTipo());
       }
-    }
-    _builder.newLineIfNotEmpty();
-    String _name = d.getSustantivo().getName();
-    _builder.append(_name);
-    _builder.append(" = ");
-    {
-      Expression _valor = d.getValor();
-      boolean _tripleNotEquals_1 = (_valor != null);
-      if (_tripleNotEquals_1) {
-        CharSequence _generateExpression = this.generateExpression(d.getValor());
-        _builder.append(_generateExpression);
-      } else {
-        _builder.append("None");
+      StringConcatenation _builder = new StringConcatenation();
+      {
+        Comment _preComentario = d.getPreComentario();
+        boolean _tripleNotEquals_1 = (_preComentario != null);
+        if (_tripleNotEquals_1) {
+          _builder.append("# ");
+          String _value = d.getPreComentario().getValue();
+          _builder.append(_value);
+        }
       }
-    }
-    {
-      Comment _postComentario = d.getPostComentario();
-      boolean _tripleNotEquals_2 = (_postComentario != null);
-      if (_tripleNotEquals_2) {
-        _builder.append("  # ");
-        String _value_1 = d.getPostComentario().getValue();
-        _builder.append(_value_1);
+      _builder.newLineIfNotEmpty();
+      String _name = d.getSustantivo().getName();
+      _builder.append(_name);
+      _builder.append(" = ");
+      CharSequence _generateExpression = this.generateExpression(d.getValor());
+      _builder.append(_generateExpression);
+      {
+        Comment _postComentario = d.getPostComentario();
+        boolean _tripleNotEquals_2 = (_postComentario != null);
+        if (_tripleNotEquals_2) {
+          _builder.append("  # ");
+          String _value_1 = d.getPostComentario().getValue();
+          _builder.append(_value_1);
+        }
       }
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = _builder;
     }
-    _builder.newLineIfNotEmpty();
-    return _builder;
+    return _xblockexpression;
   }
 
   protected CharSequence _generateInstruccion(final Reasignar r) {
@@ -154,12 +188,276 @@ public class DearCodeGenerator extends AbstractGenerator {
     return _builder;
   }
 
+  protected CharSequence _generateInstruccion(final Funcion func) {
+    CharSequence _xblockexpression = null;
+    {
+      EList<ParametroDecl> _parametros = func.getParametros();
+      for (final ParametroDecl param : _parametros) {
+        String _tipo = param.getTipo();
+        boolean _tripleNotEquals = (_tipo != null);
+        if (_tripleNotEquals) {
+          this.variableTypes.put(param.getName().getName(), param.getTipo());
+        }
+      }
+      StringConcatenation _builder = new StringConcatenation();
+      _builder.append("def ");
+      String _name = func.getName().getName();
+      _builder.append(_name);
+      _builder.append("(");
+      {
+        EList<ParametroDecl> _parametros_1 = func.getParametros();
+        boolean _hasElements = false;
+        for(final ParametroDecl param_1 : _parametros_1) {
+          if (!_hasElements) {
+            _hasElements = true;
+          } else {
+            _builder.appendImmediate(", ", "");
+          }
+          String _name_1 = param_1.getName().getName();
+          _builder.append(_name_1);
+        }
+      }
+      _builder.append("):");
+      _builder.newLineIfNotEmpty();
+      _builder.append("    ");
+      String _generateFuncionBody = this.generateFuncionBody(func);
+      _builder.append(_generateFuncionBody, "    ");
+      _builder.newLineIfNotEmpty();
+      _xblockexpression = _builder;
+    }
+    return _xblockexpression;
+  }
+
+  public String generateFuncionBody(final Funcion func) {
+    String _xblockexpression = null;
+    {
+      final Function1<ElementoBloque, CharSequence> _function = (ElementoBloque it) -> {
+        return this.generateElementoBloque(it);
+      };
+      final String bodyContent = IterableExtensions.join(ListExtensions.<ElementoBloque, CharSequence>map(func.getInstrucciones(), _function), "\n");
+      final Function1<String, String> _function_1 = (String it) -> {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("    ");
+        _builder.append(it, "    ");
+        return _builder.toString();
+      };
+      _xblockexpression = IterableExtensions.join(ListExtensions.<String, String>map(((List<String>)Conversions.doWrapArray(bodyContent.split("\n"))), _function_1), "\n");
+    }
+    return _xblockexpression;
+  }
+
+  protected CharSequence _generateElementoBloque(final Return ret) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("return ");
+    CharSequence _generateExpression = this.generateExpression(ret.getExpresion());
+    _builder.append(_generateExpression);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateElementoBloque(final Condicional cond) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("if ");
+    CharSequence _generateExpression = this.generateExpression(cond.getCondicion());
+    _builder.append(_generateExpression);
+    _builder.append(":");
+    _builder.newLineIfNotEmpty();
+    {
+      EList<ElementoBloque> _instruccionesThen = cond.getInstruccionesThen();
+      for(final ElementoBloque instr : _instruccionesThen) {
+        _builder.append("    ");
+        CharSequence _generateElementoBloque = this.generateElementoBloque(instr);
+        _builder.append(_generateElementoBloque, "    ");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    {
+      if (((cond.getInstruccionesElse() != null) && (!cond.getInstruccionesElse().isEmpty()))) {
+        _builder.append("else:");
+        _builder.newLine();
+        {
+          EList<ElementoBloque> _instruccionesElse = cond.getInstruccionesElse();
+          for(final ElementoBloque instr_1 : _instruccionesElse) {
+            _builder.append("    ");
+            CharSequence _generateElementoBloque_1 = this.generateElementoBloque(instr_1);
+            _builder.append(_generateElementoBloque_1, "    ");
+            _builder.newLineIfNotEmpty();
+          }
+        }
+      }
+    }
+    return _builder;
+  }
+
+  protected CharSequence _generateElementoBloque(final BucleFor forLoop) {
+    StringConcatenation _builder = new StringConcatenation();
+    {
+      if (((forLoop.getInicio() != null) && (forLoop.getPaso() != null))) {
+        _builder.append("// Caso 3 parámetros: rango con inicio, fin y paso");
+        _builder.newLine();
+        _builder.append("for ");
+        String _name = forLoop.getVariable().getName();
+        _builder.append(_name);
+        _builder.append(" in range(");
+        _builder.newLineIfNotEmpty();
+        _builder.append("    ");
+        CharSequence _generateExpression = this.generateExpression(forLoop.getInicio());
+        _builder.append(_generateExpression, "    ");
+        _builder.append(",");
+        _builder.newLineIfNotEmpty();
+        _builder.append("    ");
+        CharSequence _generateExpression_1 = this.generateExpression(forLoop.getFin());
+        _builder.append(_generateExpression_1, "    ");
+        _builder.append(" + 1,");
+        _builder.newLineIfNotEmpty();
+        _builder.append("    ");
+        CharSequence _generateExpression_2 = this.generateExpression(forLoop.getPaso());
+        _builder.append(_generateExpression_2, "    ");
+        _builder.newLineIfNotEmpty();
+        _builder.append("):");
+        _builder.newLine();
+      } else {
+        Expression _inicio = forLoop.getInicio();
+        boolean _tripleNotEquals = (_inicio != null);
+        if (_tripleNotEquals) {
+          _builder.append("// Caso 2 parámetros: rango con inicio y fin");
+          _builder.newLine();
+          _builder.append("for ");
+          String _name_1 = forLoop.getVariable().getName();
+          _builder.append(_name_1);
+          _builder.append(" in range(");
+          _builder.newLineIfNotEmpty();
+          _builder.append("    ");
+          CharSequence _generateExpression_3 = this.generateExpression(forLoop.getInicio());
+          _builder.append(_generateExpression_3, "    ");
+          _builder.append(",");
+          _builder.newLineIfNotEmpty();
+          _builder.append("    ");
+          CharSequence _generateExpression_4 = this.generateExpression(forLoop.getFin());
+          _builder.append(_generateExpression_4, "    ");
+          _builder.append(" + 1");
+          _builder.newLineIfNotEmpty();
+          _builder.append("):");
+          _builder.newLine();
+        } else {
+          _builder.append("// Caso 1 parámetro: solo fin");
+          _builder.newLine();
+          _builder.append("for ");
+          String _name_2 = forLoop.getVariable().getName();
+          _builder.append(_name_2);
+          _builder.append(" in range(");
+          _builder.newLineIfNotEmpty();
+          _builder.append("    ");
+          CharSequence _generateExpression_5 = this.generateExpression(forLoop.getFin());
+          _builder.append(_generateExpression_5, "    ");
+          _builder.append(" + 1");
+          _builder.newLineIfNotEmpty();
+          _builder.append("):");
+          _builder.newLine();
+        }
+      }
+    }
+    {
+      EList<ElementoBloque> _loopBody = forLoop.getLoopBody();
+      for(final ElementoBloque instr : _loopBody) {
+        _builder.append("    ");
+        CharSequence _generateElementoBloque = this.generateElementoBloque(instr);
+        _builder.append(_generateElementoBloque, "    ");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+
+  protected CharSequence _generateElementoBloque(final BucleWhile whileLoop) {
+    StringConcatenation _builder = new StringConcatenation();
+    _builder.append("while ");
+    CharSequence _generateExpression = this.generateExpression(whileLoop.getCondicion());
+    _builder.append(_generateExpression);
+    _builder.append(":");
+    _builder.newLineIfNotEmpty();
+    {
+      EList<ElementoBloque> _loopBody = whileLoop.getLoopBody();
+      for(final ElementoBloque instr : _loopBody) {
+        _builder.append("    ");
+        CharSequence _generateElementoBloque = this.generateElementoBloque(instr);
+        _builder.append(_generateElementoBloque, "    ");
+        _builder.newLineIfNotEmpty();
+      }
+    }
+    return _builder;
+  }
+
+  protected CharSequence _generateElementoBloque(final Instruccion instr) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateInstruccion = this.generateInstruccion(instr);
+    _builder.append(_generateInstruccion);
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateInstruccion(final Condicional cond) {
+    return this.generateElementoBloque(cond);
+  }
+
+  protected CharSequence _generateInstruccion(final BucleFor forLoop) {
+    return this.generateElementoBloque(forLoop);
+  }
+
+  protected CharSequence _generateInstruccion(final BucleWhile whileLoop) {
+    return this.generateElementoBloque(whileLoop);
+  }
+
   protected CharSequence _generateInstruccion(final Salida s) {
     StringConcatenation _builder = new StringConcatenation();
     _builder.append("print(");
     CharSequence _generateExpression = this.generateExpression(s.getExpresion());
     _builder.append(_generateExpression);
     _builder.append(")");
+    _builder.newLineIfNotEmpty();
+    return _builder;
+  }
+
+  protected CharSequence _generateInstruccion(final Entrada e) {
+    StringConcatenation _builder = new StringConcatenation();
+    final String varName = e.getVariable().getName();
+    _builder.newLineIfNotEmpty();
+    final String tipo = this.variableTypes.getOrDefault(varName, "str");
+    _builder.newLineIfNotEmpty();
+    _builder.append("# Entrada para variable: ");
+    _builder.append(varName);
+    _builder.append(", tipo detectado: ");
+    _builder.append(tipo);
+    _builder.newLineIfNotEmpty();
+    {
+      boolean _equals = Objects.equals(tipo, "int");
+      if (_equals) {
+        _builder.append("\t    ");
+        _builder.append(varName, "\t    ");
+        _builder.append(" = int(input())");
+        _builder.newLineIfNotEmpty();
+      } else {
+        boolean _equals_1 = Objects.equals(tipo, "bool");
+        if (_equals_1) {
+          _builder.append("\t    ");
+          _builder.append(varName, "\t    ");
+          _builder.append(" = input().lower() in [\"true\", \"1\", \"sí\", \"si\"]");
+          _builder.newLineIfNotEmpty();
+        } else {
+          _builder.append("\t    ");
+          _builder.append(varName, "\t    ");
+          _builder.append(" = input()");
+          _builder.newLineIfNotEmpty();
+        }
+      }
+    }
+    return _builder;
+  }
+
+  protected CharSequence _generateInstruccion(final FunctionCall call) {
+    StringConcatenation _builder = new StringConcatenation();
+    CharSequence _generateExpression = this.generateExpression(call);
+    _builder.append(_generateExpression);
     _builder.newLineIfNotEmpty();
     return _builder;
   }
@@ -212,38 +510,37 @@ public class DearCodeGenerator extends AbstractGenerator {
             break;
           case "StringLiteral":
             StringConcatenation _builder_1 = new StringConcatenation();
+            _builder_1.append("\"");
             String _valueString = ((StringLiteral) expr).getValueString();
             _builder_1.append(_valueString);
+            _builder_1.append("\"");
             _switchResult = _builder_1;
             break;
           case "BooleanLiteral":
             _switchResult = this.generateBooleanLiteral(((BooleanLiteral) expr));
             break;
           case "VariableReference":
-            StringConcatenation _builder_2 = new StringConcatenation();
-            String _name_1 = ((VariableReference) expr).getName();
-            _builder_2.append(_name_1);
-            _switchResult = _builder_2;
+            _switchResult = this.generateVariableRef(((VariableReference) expr));
             break;
           case "FunctionCall":
             _switchResult = this.generateFunctionCall(((FunctionCall) expr));
             break;
           default:
-            StringConcatenation _builder_3 = new StringConcatenation();
-            _builder_3.append("#EXPRESION:");
-            String _name_2 = expr.eClass().getName();
-            _builder_3.append(_name_2);
-            _builder_3.append("#");
-            _switchResult = _builder_3;
+            StringConcatenation _builder_2 = new StringConcatenation();
+            _builder_2.append("#EXPRESION:");
+            String _name_1 = expr.eClass().getName();
+            _builder_2.append(_name_1);
+            _builder_2.append("#");
+            _switchResult = _builder_2;
             break;
         }
       } else {
-        StringConcatenation _builder_3 = new StringConcatenation();
-        _builder_3.append("#EXPRESION:");
-        String _name_2 = expr.eClass().getName();
-        _builder_3.append(_name_2);
-        _builder_3.append("#");
-        _switchResult = _builder_3;
+        StringConcatenation _builder_2 = new StringConcatenation();
+        _builder_2.append("#EXPRESION:");
+        String _name_1 = expr.eClass().getName();
+        _builder_2.append(_name_1);
+        _builder_2.append("#");
+        _switchResult = _builder_2;
       }
       _xblockexpression = _switchResult;
     }
@@ -278,7 +575,7 @@ public class DearCodeGenerator extends AbstractGenerator {
     CharSequence _xblockexpression = null;
     {
       String _xifexpression = null;
-      boolean _contains = expr.getOp().contains("unísono");
+      boolean _contains = expr.getOp().contains("late al unísono con");
       if (_contains) {
         _xifexpression = "==";
       } else {
@@ -306,27 +603,27 @@ public class DearCodeGenerator extends AbstractGenerator {
       String _switchResult = null;
       String _op = expr.getOp();
       boolean _matched = false;
-      boolean _contains = expr.getOp().contains("menos fuerza");
+      boolean _contains = expr.getOp().contains("susurra con menos fuerza que");
       if (_contains) {
         _matched=true;
         _switchResult = "<";
       }
       if (!_matched) {
-        boolean _contains_1 = expr.getOp().contains("mismo nivel");
+        boolean _contains_1 = expr.getOp().contains("casi suspira al mismo nivel que");
         if (_contains_1) {
           _matched=true;
           _switchResult = "<=";
         }
       }
       if (!_matched) {
-        boolean _contains_2 = expr.getOp().contains("más pasión");
+        boolean _contains_2 = expr.getOp().contains("arde con más pasión que");
         if (_contains_2) {
           _matched=true;
           _switchResult = ">";
         }
       }
       if (!_matched) {
-        boolean _contains_3 = expr.getOp().contains("tanta fuerza");
+        boolean _contains_3 = expr.getOp().contains("rodea con tanta fuerza como");
         if (_contains_3) {
           _matched=true;
           _switchResult = ">=";
@@ -355,7 +652,7 @@ public class DearCodeGenerator extends AbstractGenerator {
     CharSequence _xblockexpression = null;
     {
       String _xifexpression = null;
-      boolean _contains = expr.getOp().contains("suspiro");
+      boolean _contains = expr.getOp().contains("unidos en un solo suspiro con");
       if (_contains) {
         _xifexpression = "+";
       } else {
@@ -383,20 +680,20 @@ public class DearCodeGenerator extends AbstractGenerator {
       String _switchResult = null;
       String _op = expr.getOp();
       boolean _matched = false;
-      boolean _contains = expr.getOp().contains("fuego");
+      boolean _contains = expr.getOp().contains("fortalecidos por el fuego de");
       if (_contains) {
         _matched=true;
         _switchResult = "*";
       }
       if (!_matched) {
-        boolean _contains_1 = expr.getOp().contains("ecos");
+        boolean _contains_1 = expr.getOp().contains("separados entre los ecos de");
         if (_contains_1) {
           _matched=true;
           _switchResult = "/";
         }
       }
       if (!_matched) {
-        boolean _contains_2 = expr.getOp().contains("resuena");
+        boolean _contains_2 = expr.getOp().contains("resuena con el eco de");
         if (_contains_2) {
           _matched=true;
           _switchResult = "%";
@@ -430,6 +727,27 @@ public class DearCodeGenerator extends AbstractGenerator {
     return _builder;
   }
 
+  public CharSequence generateVariableRef(final VariableReference expr) {
+    CharSequence _xblockexpression = null;
+    {
+      final String varName = expr.getName();
+      CharSequence _xifexpression = null;
+      if ((this.variableTypes.containsKey(varName) && Objects.equals(this.variableTypes.get(varName), "texto"))) {
+        StringConcatenation _builder = new StringConcatenation();
+        _builder.append("\"");
+        _builder.append(varName);
+        _builder.append("\"");
+        _xifexpression = _builder;
+      } else {
+        StringConcatenation _builder_1 = new StringConcatenation();
+        _builder_1.append(varName);
+        _xifexpression = _builder_1;
+      }
+      _xblockexpression = _xifexpression;
+    }
+    return _xblockexpression;
+  }
+
   public CharSequence generateBooleanLiteral(final BooleanLiteral b) {
     String _xifexpression = null;
     String _valueBoolean = b.getValueBoolean();
@@ -445,16 +763,7 @@ public class DearCodeGenerator extends AbstractGenerator {
   public CharSequence generateFunctionCall(final FunctionCall call) {
     CharSequence _xblockexpression = null;
     {
-      Object _xifexpression = null;
-      MI_ID _nameFuncion = call.getNameFuncion();
-      if ((_nameFuncion instanceof Funcion)) {
-        MI_ID _nameFuncion_1 = call.getNameFuncion();
-        _xifexpression = ((Funcion) _nameFuncion_1).getName();
-      } else {
-        MI_ID _nameFuncion_2 = call.getNameFuncion();
-        _xifexpression = ((MI_ID) _nameFuncion_2).getName();
-      }
-      final Object name = _xifexpression;
+      final String name = call.getNameFuncion().getName();
       final Function1<Expression, CharSequence> _function = (Expression it) -> {
         return this.generateExpression(it);
       };
@@ -470,18 +779,48 @@ public class DearCodeGenerator extends AbstractGenerator {
   }
 
   @XbaseGenerated
-  public CharSequence generateInstruccion(final Instruccion d) {
-    if (d instanceof Declarar) {
-      return _generateInstruccion((Declarar)d);
-    } else if (d instanceof Reasignar) {
-      return _generateInstruccion((Reasignar)d);
-    } else if (d instanceof Salida) {
-      return _generateInstruccion((Salida)d);
-    } else if (d != null) {
-      return _generateInstruccion(d);
+  public CharSequence generateInstruccion(final Instruccion call) {
+    if (call instanceof FunctionCall) {
+      return _generateInstruccion((FunctionCall)call);
+    } else if (call instanceof BucleFor) {
+      return _generateInstruccion((BucleFor)call);
+    } else if (call instanceof BucleWhile) {
+      return _generateInstruccion((BucleWhile)call);
+    } else if (call instanceof Condicional) {
+      return _generateInstruccion((Condicional)call);
+    } else if (call instanceof Declarar) {
+      return _generateInstruccion((Declarar)call);
+    } else if (call instanceof Entrada) {
+      return _generateInstruccion((Entrada)call);
+    } else if (call instanceof Funcion) {
+      return _generateInstruccion((Funcion)call);
+    } else if (call instanceof Reasignar) {
+      return _generateInstruccion((Reasignar)call);
+    } else if (call instanceof Salida) {
+      return _generateInstruccion((Salida)call);
+    } else if (call != null) {
+      return _generateInstruccion(call);
     } else {
       throw new IllegalArgumentException("Unhandled parameter types: " +
-        Arrays.<Object>asList(d).toString());
+        Arrays.<Object>asList(call).toString());
+    }
+  }
+
+  @XbaseGenerated
+  public CharSequence generateElementoBloque(final ElementoBloque forLoop) {
+    if (forLoop instanceof BucleFor) {
+      return _generateElementoBloque((BucleFor)forLoop);
+    } else if (forLoop instanceof BucleWhile) {
+      return _generateElementoBloque((BucleWhile)forLoop);
+    } else if (forLoop instanceof Condicional) {
+      return _generateElementoBloque((Condicional)forLoop);
+    } else if (forLoop instanceof Instruccion) {
+      return _generateElementoBloque((Instruccion)forLoop);
+    } else if (forLoop instanceof Return) {
+      return _generateElementoBloque((Return)forLoop);
+    } else {
+      throw new IllegalArgumentException("Unhandled parameter types: " +
+        Arrays.<Object>asList(forLoop).toString());
     }
   }
 }

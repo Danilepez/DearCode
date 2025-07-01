@@ -159,6 +159,15 @@ public interface DearCodeFactory extends EFactory
   Funcion createFuncion();
 
   /**
+   * Returns a new object of class '<em>Parametro Decl</em>'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return a new object of class '<em>Parametro Decl</em>'.
+   * @generated
+   */
+  ParametroDecl createParametroDecl();
+
+  /**
    * Returns a new object of class '<em>Return</em>'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->

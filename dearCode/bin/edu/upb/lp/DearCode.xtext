@@ -3,175 +3,138 @@ grammar edu.upb.lp.DearCode with org.eclipse.xtext.common.Terminals
 generate dearCode "http://www.upb.edu/lp/DearCode"
 
 Program:
-    carta=Carta
-;
+    carta=Carta;
 
 Carta:
     saludo=Saludo
     cuerpo=Cuerpo
-    despedida=Despedida
-;
+    despedida=Despedida;
 
-Saludo: ('Querido'|'Querida') name=ID '.';
-Despedida: 'Con cariño, Tu programador' name=ID '.';
-Cuerpo: instrucciones+=Instruccion+;
+Saludo:
+    ('Querido' | 'Querida' | 'Inspiras un amor dentro de mí' | 'Eres la chispa de mi alma' | 'Tu luz despierta mi ser') name=ID '.';
+
+Despedida:
+    ('Con cariño, Tu programador' | 'Espero la noche para tenerte conmigo' | 'Tengo la suerte de tenerte siempre' | 'Haces que mi corazón se acelere') name=ID '.';
+
+Cuerpo:
+    instrucciones+=Instruccion+;
 
 Instruccion:
-    Declarar | Reasignar | Condicional 
-    | BucleWhile | BucleFor | Entrada | Salida | Funcion | FunctionCall
-;
+    Declarar | Reasignar | Condicional | BucleWhile | BucleFor | Entrada | Salida | Funcion | FunctionCall;
+
+// Tipos básicos
+Type: 'número' | 'texto' | 'booleano';
 
 Declarar:
-    verboDecl=VerboDeclaracion
-    articulo=Articulo
-    sustantivo=MI_ID
-    preComentario=Comment?
-    valor=Expression
-    postComentario=Comment?
-    '.'
-;
+    verboDecl=VerboDeclaracion articulo=Articulo (tipo=Type)? sustantivo=MI_ID preComentario=Comment? valor=Expression postComentario=Comment? '.';
 
 Reasignar:
-    verboReas=VerboReasignacion
-    preComentario=Comment?
-    sustantivo=MI_ID
-    postComentario=Comment?
-    valor=Expression
-    comentario=Comment?
-    '.'
-;
+    verboReas=VerboReasignacion preComentario=Comment? sustantivo=MI_ID postComentario=Comment? valor=Expression comentario=Comment? '.';
 
 Entrada:
-    'Le pedí al lector que me dijera' variable=MI_ID
-    ("en un susurro numérico" | "con palabras de terciopelo")?
-    '.'
-;
+    ('Le pedí al lector que me dijera' | 'Le' | 'Escucho tu voz en el viento' | 'Atrapo un suspiro tuyo' | 'Recojo tus palabras como pétalos al alba' |
+     'Tu aliento me habla en silencio' | 'Acaricio el eco de tu voz' | 'Guardo tus secretos en mi pecho' | 'Espero tu susurro como un amanecer')
+    variable=MI_ID
+    ("en un susurro numérico" | "con palabras de terciopelo" | 'con un eco numérico' | 'en un latido suave' | 'como un verso escrito en el cielo' |
+     'envuelto en la luz de tus ojos' | 'con el perfume de tu esencia' | 'danzando en el compás de mi corazón' | 'tejiendo sueños con tus letras')?
+    '.';
 
 Salida:
-    'Hoy le quise contar al mundo sobre:' expresion=Expression '.'
-;
+    ('Hoy le quise contar al mundo sobre:' | 'Dejo que el mundo sienta sobre:' | 'Susurro al universo el secreto sobre:' |
+     'Grabo en el firmamento mi verdad acerca de:' | 'Canto al viento mi anhelo de:' | 'Envío al horizonte mi pasión sobre:' |
+     'Dejo que las nubes abracen mi voz en:') expresion=Expression '.';
 
 ElementoBloque:
-    Instruccion | Return
-;
+    Instruccion | Return;
 
 Condicional:
-    'Si en tu corazon sientes que' condicion=Expression ','
-        'entonces deja que estas palabras florezcan:'
-        instruccionesThen+=ElementoBloque+
-    ( 'Pero si el destino dijera lo contrario,'
-        'que broten estas verdades:'
-        instruccionesElse+=ElementoBloque+ )?
-    'Y así el universo sigue su curso.'
-;
+    ('Si en tu corazon sientes que' | 'Si tu alma susurra que' | 'Si el latido de mi alma dice que' | 'Si el destino nos susurra que' | 'Si la luna refleja que')
+    condicion=Expression ','
+    comment+=Comment?
+    ('entonces deja que estas palabras florezcan:' | 'entonces que brote este amor:' | 'entonces que nazca este sueño:' | 'entonces que el universo conspire:' | 'entonces que mi voz te abrace:')
+    instruccionesThen+=ElementoBloque+
+    (('Pero si la noche calla otra verdad,' 'que surja este suspiro:' | 'Pero si el viento trae otro mensaje,' 'que despierte esta pasión:' | 'Pero si el corazón duda,' 'que renazca esta esperanza:') instruccionesElse+=ElementoBloque+)?
+    ('Y así el universo sigue su curso.' | 'Así sigue el canto del corazón.' | 'Y así la melodía continúa.' | 'Y el eco de nuestro amor perdura.' | 'Y la danza de las estrellas sigue.');
 
 BucleWhile:
-    ('Mientras aun me piensas' | 'Mientras aún sueñes con este momento')
+    ('Mientras aun me piensas' | 'Mientras aún sueñes con este momento' | 'Mientras mi corazón te anhele' | 'Mientras tu luz me guíe' | 'Mientras el fuego de mi amor arda' | 'Mientras la luna nos ilumine' | 'Mientras tus ojos me miren')
     condicion=Expression ','
-    'haz que suceda:' 
-    loopBody+=ElementoBloque+ 
-    'Y así el susurro descansa.'  
-;
+    ('haz que suceda:' | 'tejiendo este amor:' | 'deja que el tiempo se detenga:' | 'haz que el universo conspire:' | 'permite que el destino nos una:')
+    loopBody+=ElementoBloque+
+    ('Y así el susurro descansa.' | 'hasta que el anhelo repose' | 'Y el silencio envuelve nuestro amor.' | 'Hasta que la eternidad nos encuentre.' | 'Y la pasión se convierte en recuerdo.');
 
 BucleFor:
-    'En cada suspiro' variable=MI_ID 'desde' inicio=Expression 
-    'hasta' fin=Expression 
-    ('con paso' paso=Expression)?  
-    'deja que el universo cante:'
-    loopBody+=ElementoBloque+ 
-    'Cuando el último eco se calle.'  
-;
+    ('En cada suspiro' | 'Por cada latido' | 'Por cada estrella que nos mira' | 'En cada pétalo de rosa' | 'Por cada ola que besa la orilla')
+    variable=MI_ID 'desde' inicio=Expression
+    'hasta' fin=Expression
+    ('con paso' paso=Expression)?
+    ('deja que el universo cante:' | 'resuena este amor' | 'que el viento susurre nuestro nombre:' | 'que el cielo pinte nuestro amor:' | 'que la tierra tiemble con nuestra pasión:')
+    loopBody+=ElementoBloque+
+    ('Cuando el último eco se calle.' | 'Y el eco se desvanece.' | 'Y la última estrella se apague.' | 'Hasta que el último pétalo caiga.' | 'Cuando el mar se quede en silencio.');
 
 Funcion:
-    ('Dejo en estas líneas una promesa llamada' |
-     'Escribo en estas líneas una intención llamada' |
-     'En la brisa escondo un deseo llamado') name=MI_ID
-    ('que guarda en su esencia' parametros+=MI_ID ('y' parametros+=MI_ID)*)? 
-    ('prometiendo devolver' tipo=Type)? 
-    'Cuando la promesa se cumple:'
-        instrucciones+=ElementoBloque+ 
-    'Así se sella la promesa.'
-;
+    ('Dejo en estas líneas una promesa llamada' | 'Escribo en estas líneas una intención llamada' | 'En la brisa escondo un deseo llamado' | 'Grabo en las estrellas una promesa llamada' |
+     'Susurro al universo un deseo llamado' | 'Tejo en el destino un juramento llamado' | 'Esculpo en el tiempo un anhelo llamado' | 'Susurro a la eternidad un sueño llamado')
+    name=MI_ID
+    (('que guarda en su esencia' | 'tejiendo' | 'que abraza en su ser' | 'que lleva en su alma' | 'que susurra en su corazón') parametros+=ParametroDecl (('y' | 'junto a' | 'tambien' | 'llevando consigo') parametros+=ParametroDecl)*)?
+    ('prometiendo devolver' | 'jurando devolver')? tipo=Type?
+    ('Cuando la promesa se cumple:' | 'Cuando el amor se cumpla') instrucciones+=ElementoBloque+
+    ('Así se sella la promesa.' | 'Así se eterniza.' | 'Y así nuestro amor se inmortaliza.' | 'Y el universo guarda nuestro secreto.' | 'Y la eternidad nos abraza.');
+
+ParametroDecl:
+    (tipo=Type)? comment+=Comment? name=MI_ID;
 
 Return:
-    'Y entrego al viento' expresion=Expression 'como promesa cumplida.'
-;
+    ('Y entrego al viento' | 'Te entrego' | 'Te ofrezco con el alma' | 'Dejo en tus manos' | 'Susurro a tu corazón')
+    expresion=Expression ('como promesa cumplida.' | 'con un suspiro.' | 'como un regalo eterno.' | 'envuelto en mi amor.' | 'con la esperanza de tu sonrisa.');
 
 // Sistema de expresiones
 Expression:
-    OrExpression
-;
+    OrExpression;
 
 OrExpression returns Expression:
-    AndExpression ({OrExpression.left=current} 
-        (' o quizás ' | ' o quizás') right=AndExpression)*
-;
+    AndExpression ({OrExpression.left=current} ('o tal vez' | 'o quizás' | 'o acaso el amor permita' | 'o si la luna lo desea') right=AndExpression)*;
 
 AndExpression returns Expression:
-    EqualityExpression ({AndExpression.left=current} 
-        (' y también ' | ' y también') right=EqualityExpression)*
-;
+    EqualityExpression ({AndExpression.left=current} ('y también' | 'junto a' | 'y además' | 'y al mismo tiempo que' | 'y junto con' | 'y en unión con') right=EqualityExpression)*;
 
 EqualityExpression returns Expression:
-    RelationalExpression ({EqualityExpression.left=current} 
-        op=('late al unísono con' | 'canta con un matiz distinto a') 
-        right=RelationalExpression)*
-;
+    RelationalExpression ({EqualityExpression.left=current} op=('late al unísono con' | 'canta con un matiz distinto a' | 'late igual que' | 'se distingue de' | 'resuena igual que' | 'vibra al mismo ritmo que' | 'es idéntico a' | 'se diferencia de' | 'no coincide con' | 'es distinto a') right=RelationalExpression)*;
 
 RelationalExpression returns Expression:
-    AdditiveExpression ({RelationalExpression.left=current} 
-        op=('susurra con menos fuerza que' | 'casi suspira al mismo nivel que' |
-            'arde con más pasión que' | 'rodea con tanta fuerza como') 
-        right=AdditiveExpression)*
-;
+    AdditiveExpression ({RelationalExpression.left=current} op=('susurra con menos fuerza que' | 'casi suspira al mismo nivel que' | 'arde con más pasión que' | 'rodea con tanta fuerza como' | 'susurra menos que' | 'casi igual que' | 'arde mas que' | 'abraza como' | 'susurra más suavemente que' | 'tiene menos latidos que' | 'susurra tan suavemente como' | 'no supera a' | 'susurra con más fuerza que' | 'tiene más latidos que' | 'susurra al menos con la misma fuerza que' | 'al menos iguala a') right=AdditiveExpression)*;
 
 AdditiveExpression returns Expression:
-    MultiplicativeExpression ({AdditiveExpression.left=current} 
-        op=('unidos en un solo suspiro con' | 'fundidos en la llama de') 
-        right=MultiplicativeExpression)*
-;
+    MultiplicativeExpression ({AdditiveExpression.left=current} op=('unidos en un solo suspiro con' | 'fundidos en la llama de' | 'se une a' | 'se funde con' | 'sumado al latido de' | 'combinado con la pasión de' | 'entrelazado con' | 'añadido al suspiro de') right=MultiplicativeExpression)*;
 
 MultiplicativeExpression returns Expression:
-    UnaryExpression ({MultiplicativeExpression.left=current} 
-        op=('fortalecidos por el fuego de' | 'separados entre los ecos de' | 'resuena con el eco de') 
-        right=UnaryExpression)*
-;
+    UnaryExpression ({MultiplicativeExpression.left=current} op=('fortalecidos por el fuego de' | 'separados entre los ecos de' | 'resuena con el eco de' | 'crece con' | 'resuena en' | 'se divide entre') right=UnaryExpression)*;
 
 UnaryExpression returns Expression:
-    {UnaryExpression} op=('no creo que') expression=UnaryExpression
-    | PrimaryExpression
-;
+    {UnaryExpression} op=('no creo que' | 'no siento que' | 'no me parece que' | 'no percibo que' | 'dudo que') expression=UnaryExpression |
+    PrimaryExpression;
 
 PrimaryExpression returns Expression:
-    '(' Expression ')'
-    | {NumberLiteral} valueInt=INT
-    | {StringLiteral} valueString=STRING
-    | {BooleanLiteral} valueBoolean=('siempre' | 'jamás')
-    | {VariableReference} name=ID
-    | FunctionCall
-;
+    '(' Expression ')' |
+    {NumberLiteral} valueInt=INT |
+    {StringLiteral} valueString=STRING |
+    {BooleanLiteral} valueBoolean=('siempre' | 'jamás') |
+    {VariableReference} name=ID |
+    FunctionCall;
 
 FunctionCall returns Expression:
-    {FunctionCall}  // Esto fuerza a crear una clase concreta
-    'invoco a' (nameFuncion=[MI_ID]) 
-    comentario=Comment? 
-    ('con los regalos' (args+=Expression ('y' args+=Expression)*)? 
-    'en mi corazón')
-;
-
-// Sistema de tipos
-Type: 'número' | 'texto' | 'booleano' | 'nada'; 
+    {FunctionCall} ('invoco a' | 'susurro a' | 'murmuro a' | 'conjuro a') (nameFuncion=[MI_ID])
+    (('con los regalos' | 'ofreciendo' | 'con los dones' | 'presentando' | 'ofreciendo mis tesoros') (args+=Expression ('y' args+=Expression)*)? ('en mi corazón' | 'en mi alma'))?;
 
 // Comentarios ultra-flexibles
-Comment: 
-    value=ANYTEXT
-;
+Comment:
+    value=ANYTEXT;
 
 // Terminales
 MI_ID: name=ID;
-VerboDeclaracion: 'Te regalo' | 'Ofrezco' | 'Obsequio' | 'Deposito en tu jardín';
-VerboReasignacion: 'Permíteme alimentar' | 'Permíteme regar' | 'Permíteme ajustar';
-Articulo: 'un' | 'una';
+VerboDeclaracion: 'Te regalo' | 'Te Ofrezco' | 'Obsequio' | 'Deposito en tu jardín' | 'Te revelo' | 'Te susurro' | 'Te confío' | 'Te entrego' | 'Te dedico' | 'Te brindo';
+VerboReasignacion: 'Permíteme alimentar' | 'Permíteme regar' | 'Permíteme ajustar' | 'Reavivo' | 'Renuevo' | 'Reafirmo' | 'Permíteme transformar' | 'Renuevo con pasión' | 'Modifico con amor';
+Articulo: 'un'|'una'|'unos'|'unas';
 
 terminal ANYTEXT:
     '~' 

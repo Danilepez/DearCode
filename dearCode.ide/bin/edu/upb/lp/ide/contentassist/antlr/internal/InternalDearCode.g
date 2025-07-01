@@ -206,6 +206,31 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+// Entry rule entryRuleType
+entryRuleType
+:
+{ before(grammarAccess.getTypeRule()); }
+	 ruleType
+{ after(grammarAccess.getTypeRule()); } 
+	 EOF 
+;
+
+// Rule Type
+ruleType 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getTypeAccess().getAlternatives()); }
+		(rule__Type__Alternatives)
+		{ after(grammarAccess.getTypeAccess().getAlternatives()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 // Entry rule entryRuleDeclarar
 entryRuleDeclarar
 :
@@ -425,6 +450,31 @@ ruleFuncion
 		{ before(grammarAccess.getFuncionAccess().getGroup()); }
 		(rule__Funcion__Group__0)
 		{ after(grammarAccess.getFuncionAccess().getGroup()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+// Entry rule entryRuleParametroDecl
+entryRuleParametroDecl
+:
+{ before(grammarAccess.getParametroDeclRule()); }
+	 ruleParametroDecl
+{ after(grammarAccess.getParametroDeclRule()); } 
+	 EOF 
+;
+
+// Rule ParametroDecl
+ruleParametroDecl 
+	@init {
+		int stackSize = keepStackSize();
+	}
+	:
+	(
+		{ before(grammarAccess.getParametroDeclAccess().getGroup()); }
+		(rule__ParametroDecl__Group__0)
+		{ after(grammarAccess.getParametroDeclAccess().getGroup()); }
 	)
 ;
 finally {
@@ -706,31 +756,6 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-// Entry rule entryRuleType
-entryRuleType
-:
-{ before(grammarAccess.getTypeRule()); }
-	 ruleType
-{ after(grammarAccess.getTypeRule()); } 
-	 EOF 
-;
-
-// Rule Type
-ruleType 
-	@init {
-		int stackSize = keepStackSize();
-	}
-	:
-	(
-		{ before(grammarAccess.getTypeAccess().getAlternatives()); }
-		(rule__Type__Alternatives)
-		{ after(grammarAccess.getTypeAccess().getAlternatives()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
 // Entry rule entryRuleComment
 entryRuleComment
 :
@@ -872,6 +897,57 @@ rule__Saludo__Alternatives_0
 		'Querida'
 		{ after(grammarAccess.getSaludoAccess().getQueridaKeyword_0_1()); }
 	)
+	|
+	(
+		{ before(grammarAccess.getSaludoAccess().getInspirasUnAmorDentroDeMKeyword_0_2()); }
+		'Inspiras un amor dentro de m\u00ED'
+		{ after(grammarAccess.getSaludoAccess().getInspirasUnAmorDentroDeMKeyword_0_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getSaludoAccess().getEresLaChispaDeMiAlmaKeyword_0_3()); }
+		'Eres la chispa de mi alma'
+		{ after(grammarAccess.getSaludoAccess().getEresLaChispaDeMiAlmaKeyword_0_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getSaludoAccess().getTuLuzDespiertaMiSerKeyword_0_4()); }
+		'Tu luz despierta mi ser'
+		{ after(grammarAccess.getSaludoAccess().getTuLuzDespiertaMiSerKeyword_0_4()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Despedida__Alternatives_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getDespedidaAccess().getConCariOTuProgramadorKeyword_0_0()); }
+		'Con cari\u00F1o, Tu programador'
+		{ after(grammarAccess.getDespedidaAccess().getConCariOTuProgramadorKeyword_0_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getDespedidaAccess().getEsperoLaNocheParaTenerteConmigoKeyword_0_1()); }
+		'Espero la noche para tenerte conmigo'
+		{ after(grammarAccess.getDespedidaAccess().getEsperoLaNocheParaTenerteConmigoKeyword_0_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getDespedidaAccess().getTengoLaSuerteDeTenerteSiempreKeyword_0_2()); }
+		'Tengo la suerte de tenerte siempre'
+		{ after(grammarAccess.getDespedidaAccess().getTengoLaSuerteDeTenerteSiempreKeyword_0_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getDespedidaAccess().getHacesQueMiCorazNSeAcelereKeyword_0_3()); }
+		'Haces que mi coraz\u00F3n se acelere'
+		{ after(grammarAccess.getDespedidaAccess().getHacesQueMiCorazNSeAcelereKeyword_0_3()); }
+	)
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -940,6 +1016,96 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__Type__Alternatives
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getTypeAccess().getNMeroKeyword_0()); }
+		'n\u00FAmero'
+		{ after(grammarAccess.getTypeAccess().getNMeroKeyword_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getTypeAccess().getTextoKeyword_1()); }
+		'texto'
+		{ after(grammarAccess.getTypeAccess().getTextoKeyword_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getTypeAccess().getBooleanoKeyword_2()); }
+		'booleano'
+		{ after(grammarAccess.getTypeAccess().getBooleanoKeyword_2()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Entrada__Alternatives_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getEntradaAccess().getLePedAlLectorQueMeDijeraKeyword_0_0()); }
+		'Le ped\u00ED al lector que me dijera'
+		{ after(grammarAccess.getEntradaAccess().getLePedAlLectorQueMeDijeraKeyword_0_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEntradaAccess().getLeKeyword_0_1()); }
+		'Le'
+		{ after(grammarAccess.getEntradaAccess().getLeKeyword_0_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEntradaAccess().getEscuchoTuVozEnElVientoKeyword_0_2()); }
+		'Escucho tu voz en el viento'
+		{ after(grammarAccess.getEntradaAccess().getEscuchoTuVozEnElVientoKeyword_0_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEntradaAccess().getAtrapoUnSuspiroTuyoKeyword_0_3()); }
+		'Atrapo un suspiro tuyo'
+		{ after(grammarAccess.getEntradaAccess().getAtrapoUnSuspiroTuyoKeyword_0_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEntradaAccess().getRecojoTusPalabrasComoPTalosAlAlbaKeyword_0_4()); }
+		'Recojo tus palabras como p\u00E9talos al alba'
+		{ after(grammarAccess.getEntradaAccess().getRecojoTusPalabrasComoPTalosAlAlbaKeyword_0_4()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEntradaAccess().getTuAlientoMeHablaEnSilencioKeyword_0_5()); }
+		'Tu aliento me habla en silencio'
+		{ after(grammarAccess.getEntradaAccess().getTuAlientoMeHablaEnSilencioKeyword_0_5()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEntradaAccess().getAcaricioElEcoDeTuVozKeyword_0_6()); }
+		'Acaricio el eco de tu voz'
+		{ after(grammarAccess.getEntradaAccess().getAcaricioElEcoDeTuVozKeyword_0_6()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEntradaAccess().getGuardoTusSecretosEnMiPechoKeyword_0_7()); }
+		'Guardo tus secretos en mi pecho'
+		{ after(grammarAccess.getEntradaAccess().getGuardoTusSecretosEnMiPechoKeyword_0_7()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEntradaAccess().getEsperoTuSusurroComoUnAmanecerKeyword_0_8()); }
+		'Espero tu susurro como un amanecer'
+		{ after(grammarAccess.getEntradaAccess().getEsperoTuSusurroComoUnAmanecerKeyword_0_8()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__Entrada__Alternatives_2
 	@init {
 		int stackSize = keepStackSize();
@@ -955,6 +1121,99 @@ rule__Entrada__Alternatives_2
 		{ before(grammarAccess.getEntradaAccess().getConPalabrasDeTerciopeloKeyword_2_1()); }
 		'con palabras de terciopelo'
 		{ after(grammarAccess.getEntradaAccess().getConPalabrasDeTerciopeloKeyword_2_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEntradaAccess().getConUnEcoNumRicoKeyword_2_2()); }
+		'con un eco num\u00E9rico'
+		{ after(grammarAccess.getEntradaAccess().getConUnEcoNumRicoKeyword_2_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEntradaAccess().getEnUnLatidoSuaveKeyword_2_3()); }
+		'en un latido suave'
+		{ after(grammarAccess.getEntradaAccess().getEnUnLatidoSuaveKeyword_2_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEntradaAccess().getComoUnVersoEscritoEnElCieloKeyword_2_4()); }
+		'como un verso escrito en el cielo'
+		{ after(grammarAccess.getEntradaAccess().getComoUnVersoEscritoEnElCieloKeyword_2_4()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEntradaAccess().getEnvueltoEnLaLuzDeTusOjosKeyword_2_5()); }
+		'envuelto en la luz de tus ojos'
+		{ after(grammarAccess.getEntradaAccess().getEnvueltoEnLaLuzDeTusOjosKeyword_2_5()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEntradaAccess().getConElPerfumeDeTuEsenciaKeyword_2_6()); }
+		'con el perfume de tu esencia'
+		{ after(grammarAccess.getEntradaAccess().getConElPerfumeDeTuEsenciaKeyword_2_6()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEntradaAccess().getDanzandoEnElCompSDeMiCorazNKeyword_2_7()); }
+		'danzando en el comp\u00E1s de mi coraz\u00F3n'
+		{ after(grammarAccess.getEntradaAccess().getDanzandoEnElCompSDeMiCorazNKeyword_2_7()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEntradaAccess().getTejiendoSueOsConTusLetrasKeyword_2_8()); }
+		'tejiendo sue\u00F1os con tus letras'
+		{ after(grammarAccess.getEntradaAccess().getTejiendoSueOsConTusLetrasKeyword_2_8()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Salida__Alternatives_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getSalidaAccess().getHoyLeQuiseContarAlMundoSobreKeyword_0_0()); }
+		'Hoy le quise contar al mundo sobre:'
+		{ after(grammarAccess.getSalidaAccess().getHoyLeQuiseContarAlMundoSobreKeyword_0_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getSalidaAccess().getDejoQueElMundoSientaSobreKeyword_0_1()); }
+		'Dejo que el mundo sienta sobre:'
+		{ after(grammarAccess.getSalidaAccess().getDejoQueElMundoSientaSobreKeyword_0_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getSalidaAccess().getSusurroAlUniversoElSecretoSobreKeyword_0_2()); }
+		'Susurro al universo el secreto sobre:'
+		{ after(grammarAccess.getSalidaAccess().getSusurroAlUniversoElSecretoSobreKeyword_0_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getSalidaAccess().getGraboEnElFirmamentoMiVerdadAcercaDeKeyword_0_3()); }
+		'Grabo en el firmamento mi verdad acerca de:'
+		{ after(grammarAccess.getSalidaAccess().getGraboEnElFirmamentoMiVerdadAcercaDeKeyword_0_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getSalidaAccess().getCantoAlVientoMiAnheloDeKeyword_0_4()); }
+		'Canto al viento mi anhelo de:'
+		{ after(grammarAccess.getSalidaAccess().getCantoAlVientoMiAnheloDeKeyword_0_4()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getSalidaAccess().getEnvOAlHorizonteMiPasiNSobreKeyword_0_5()); }
+		'Env\u00EDo al horizonte mi pasi\u00F3n sobre:'
+		{ after(grammarAccess.getSalidaAccess().getEnvOAlHorizonteMiPasiNSobreKeyword_0_5()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getSalidaAccess().getDejoQueLasNubesAbracenMiVozEnKeyword_0_6()); }
+		'Dejo que las nubes abracen mi voz en:'
+		{ after(grammarAccess.getSalidaAccess().getDejoQueLasNubesAbracenMiVozEnKeyword_0_6()); }
 	)
 ;
 finally {
@@ -982,6 +1241,150 @@ finally {
 	restoreStackSize(stackSize);
 }
 
+rule__Condicional__Alternatives_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getCondicionalAccess().getSiEnTuCorazonSientesQueKeyword_0_0()); }
+		'Si en tu corazon sientes que'
+		{ after(grammarAccess.getCondicionalAccess().getSiEnTuCorazonSientesQueKeyword_0_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getCondicionalAccess().getSiTuAlmaSusurraQueKeyword_0_1()); }
+		'Si tu alma susurra que'
+		{ after(grammarAccess.getCondicionalAccess().getSiTuAlmaSusurraQueKeyword_0_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getCondicionalAccess().getSiElLatidoDeMiAlmaDiceQueKeyword_0_2()); }
+		'Si el latido de mi alma dice que'
+		{ after(grammarAccess.getCondicionalAccess().getSiElLatidoDeMiAlmaDiceQueKeyword_0_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getCondicionalAccess().getSiElDestinoNosSusurraQueKeyword_0_3()); }
+		'Si el destino nos susurra que'
+		{ after(grammarAccess.getCondicionalAccess().getSiElDestinoNosSusurraQueKeyword_0_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getCondicionalAccess().getSiLaLunaReflejaQueKeyword_0_4()); }
+		'Si la luna refleja que'
+		{ after(grammarAccess.getCondicionalAccess().getSiLaLunaReflejaQueKeyword_0_4()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Condicional__Alternatives_4
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getCondicionalAccess().getEntoncesDejaQueEstasPalabrasFlorezcanKeyword_4_0()); }
+		'entonces deja que estas palabras florezcan:'
+		{ after(grammarAccess.getCondicionalAccess().getEntoncesDejaQueEstasPalabrasFlorezcanKeyword_4_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getCondicionalAccess().getEntoncesQueBroteEsteAmorKeyword_4_1()); }
+		'entonces que brote este amor:'
+		{ after(grammarAccess.getCondicionalAccess().getEntoncesQueBroteEsteAmorKeyword_4_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getCondicionalAccess().getEntoncesQueNazcaEsteSueOKeyword_4_2()); }
+		'entonces que nazca este sue\u00F1o:'
+		{ after(grammarAccess.getCondicionalAccess().getEntoncesQueNazcaEsteSueOKeyword_4_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getCondicionalAccess().getEntoncesQueElUniversoConspireKeyword_4_3()); }
+		'entonces que el universo conspire:'
+		{ after(grammarAccess.getCondicionalAccess().getEntoncesQueElUniversoConspireKeyword_4_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getCondicionalAccess().getEntoncesQueMiVozTeAbraceKeyword_4_4()); }
+		'entonces que mi voz te abrace:'
+		{ after(grammarAccess.getCondicionalAccess().getEntoncesQueMiVozTeAbraceKeyword_4_4()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Condicional__Alternatives_6_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getCondicionalAccess().getGroup_6_0_0()); }
+		(rule__Condicional__Group_6_0_0__0)
+		{ after(grammarAccess.getCondicionalAccess().getGroup_6_0_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getCondicionalAccess().getGroup_6_0_1()); }
+		(rule__Condicional__Group_6_0_1__0)
+		{ after(grammarAccess.getCondicionalAccess().getGroup_6_0_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getCondicionalAccess().getGroup_6_0_2()); }
+		(rule__Condicional__Group_6_0_2__0)
+		{ after(grammarAccess.getCondicionalAccess().getGroup_6_0_2()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Condicional__Alternatives_7
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getCondicionalAccess().getYAsElUniversoSigueSuCursoKeyword_7_0()); }
+		'Y as\u00ED el universo sigue su curso.'
+		{ after(grammarAccess.getCondicionalAccess().getYAsElUniversoSigueSuCursoKeyword_7_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getCondicionalAccess().getAsSigueElCantoDelCorazNKeyword_7_1()); }
+		'As\u00ED sigue el canto del coraz\u00F3n.'
+		{ after(grammarAccess.getCondicionalAccess().getAsSigueElCantoDelCorazNKeyword_7_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getCondicionalAccess().getYAsLaMelodAContinAKeyword_7_2()); }
+		'Y as\u00ED la melod\u00EDa contin\u00FAa.'
+		{ after(grammarAccess.getCondicionalAccess().getYAsLaMelodAContinAKeyword_7_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getCondicionalAccess().getYElEcoDeNuestroAmorPerduraKeyword_7_3()); }
+		'Y el eco de nuestro amor perdura.'
+		{ after(grammarAccess.getCondicionalAccess().getYElEcoDeNuestroAmorPerduraKeyword_7_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getCondicionalAccess().getYLaDanzaDeLasEstrellasSigueKeyword_7_4()); }
+		'Y la danza de las estrellas sigue.'
+		{ after(grammarAccess.getCondicionalAccess().getYLaDanzaDeLasEstrellasSigueKeyword_7_4()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
 rule__BucleWhile__Alternatives_0
 	@init {
 		int stackSize = keepStackSize();
@@ -997,6 +1400,231 @@ rule__BucleWhile__Alternatives_0
 		{ before(grammarAccess.getBucleWhileAccess().getMientrasANSueEsConEsteMomentoKeyword_0_1()); }
 		'Mientras a\u00FAn sue\u00F1es con este momento'
 		{ after(grammarAccess.getBucleWhileAccess().getMientrasANSueEsConEsteMomentoKeyword_0_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleWhileAccess().getMientrasMiCorazNTeAnheleKeyword_0_2()); }
+		'Mientras mi coraz\u00F3n te anhele'
+		{ after(grammarAccess.getBucleWhileAccess().getMientrasMiCorazNTeAnheleKeyword_0_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleWhileAccess().getMientrasTuLuzMeGuEKeyword_0_3()); }
+		'Mientras tu luz me gu\u00EDe'
+		{ after(grammarAccess.getBucleWhileAccess().getMientrasTuLuzMeGuEKeyword_0_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleWhileAccess().getMientrasElFuegoDeMiAmorArdaKeyword_0_4()); }
+		'Mientras el fuego de mi amor arda'
+		{ after(grammarAccess.getBucleWhileAccess().getMientrasElFuegoDeMiAmorArdaKeyword_0_4()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleWhileAccess().getMientrasLaLunaNosIlumineKeyword_0_5()); }
+		'Mientras la luna nos ilumine'
+		{ after(grammarAccess.getBucleWhileAccess().getMientrasLaLunaNosIlumineKeyword_0_5()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleWhileAccess().getMientrasTusOjosMeMirenKeyword_0_6()); }
+		'Mientras tus ojos me miren'
+		{ after(grammarAccess.getBucleWhileAccess().getMientrasTusOjosMeMirenKeyword_0_6()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BucleWhile__Alternatives_3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getBucleWhileAccess().getHazQueSucedaKeyword_3_0()); }
+		'haz que suceda:'
+		{ after(grammarAccess.getBucleWhileAccess().getHazQueSucedaKeyword_3_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleWhileAccess().getTejiendoEsteAmorKeyword_3_1()); }
+		'tejiendo este amor:'
+		{ after(grammarAccess.getBucleWhileAccess().getTejiendoEsteAmorKeyword_3_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleWhileAccess().getDejaQueElTiempoSeDetengaKeyword_3_2()); }
+		'deja que el tiempo se detenga:'
+		{ after(grammarAccess.getBucleWhileAccess().getDejaQueElTiempoSeDetengaKeyword_3_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleWhileAccess().getHazQueElUniversoConspireKeyword_3_3()); }
+		'haz que el universo conspire:'
+		{ after(grammarAccess.getBucleWhileAccess().getHazQueElUniversoConspireKeyword_3_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleWhileAccess().getPermiteQueElDestinoNosUnaKeyword_3_4()); }
+		'permite que el destino nos una:'
+		{ after(grammarAccess.getBucleWhileAccess().getPermiteQueElDestinoNosUnaKeyword_3_4()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BucleWhile__Alternatives_5
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getBucleWhileAccess().getYAsElSusurroDescansaKeyword_5_0()); }
+		'Y as\u00ED el susurro descansa.'
+		{ after(grammarAccess.getBucleWhileAccess().getYAsElSusurroDescansaKeyword_5_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleWhileAccess().getHastaQueElAnheloReposeKeyword_5_1()); }
+		'hasta que el anhelo repose'
+		{ after(grammarAccess.getBucleWhileAccess().getHastaQueElAnheloReposeKeyword_5_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleWhileAccess().getYElSilencioEnvuelveNuestroAmorKeyword_5_2()); }
+		'Y el silencio envuelve nuestro amor.'
+		{ after(grammarAccess.getBucleWhileAccess().getYElSilencioEnvuelveNuestroAmorKeyword_5_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleWhileAccess().getHastaQueLaEternidadNosEncuentreKeyword_5_3()); }
+		'Hasta que la eternidad nos encuentre.'
+		{ after(grammarAccess.getBucleWhileAccess().getHastaQueLaEternidadNosEncuentreKeyword_5_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleWhileAccess().getYLaPasiNSeConvierteEnRecuerdoKeyword_5_4()); }
+		'Y la pasi\u00F3n se convierte en recuerdo.'
+		{ after(grammarAccess.getBucleWhileAccess().getYLaPasiNSeConvierteEnRecuerdoKeyword_5_4()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BucleFor__Alternatives_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getBucleForAccess().getEnCadaSuspiroKeyword_0_0()); }
+		'En cada suspiro'
+		{ after(grammarAccess.getBucleForAccess().getEnCadaSuspiroKeyword_0_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleForAccess().getPorCadaLatidoKeyword_0_1()); }
+		'Por cada latido'
+		{ after(grammarAccess.getBucleForAccess().getPorCadaLatidoKeyword_0_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleForAccess().getPorCadaEstrellaQueNosMiraKeyword_0_2()); }
+		'Por cada estrella que nos mira'
+		{ after(grammarAccess.getBucleForAccess().getPorCadaEstrellaQueNosMiraKeyword_0_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleForAccess().getEnCadaPTaloDeRosaKeyword_0_3()); }
+		'En cada p\u00E9talo de rosa'
+		{ after(grammarAccess.getBucleForAccess().getEnCadaPTaloDeRosaKeyword_0_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleForAccess().getPorCadaOlaQueBesaLaOrillaKeyword_0_4()); }
+		'Por cada ola que besa la orilla'
+		{ after(grammarAccess.getBucleForAccess().getPorCadaOlaQueBesaLaOrillaKeyword_0_4()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BucleFor__Alternatives_7
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getBucleForAccess().getDejaQueElUniversoCanteKeyword_7_0()); }
+		'deja que el universo cante:'
+		{ after(grammarAccess.getBucleForAccess().getDejaQueElUniversoCanteKeyword_7_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleForAccess().getResuenaEsteAmorKeyword_7_1()); }
+		'resuena este amor'
+		{ after(grammarAccess.getBucleForAccess().getResuenaEsteAmorKeyword_7_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleForAccess().getQueElVientoSusurreNuestroNombreKeyword_7_2()); }
+		'que el viento susurre nuestro nombre:'
+		{ after(grammarAccess.getBucleForAccess().getQueElVientoSusurreNuestroNombreKeyword_7_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleForAccess().getQueElCieloPinteNuestroAmorKeyword_7_3()); }
+		'que el cielo pinte nuestro amor:'
+		{ after(grammarAccess.getBucleForAccess().getQueElCieloPinteNuestroAmorKeyword_7_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleForAccess().getQueLaTierraTiembleConNuestraPasiNKeyword_7_4()); }
+		'que la tierra tiemble con nuestra pasi\u00F3n:'
+		{ after(grammarAccess.getBucleForAccess().getQueLaTierraTiembleConNuestraPasiNKeyword_7_4()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__BucleFor__Alternatives_9
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getBucleForAccess().getCuandoElLtimoEcoSeCalleKeyword_9_0()); }
+		'Cuando el \u00FAltimo eco se calle.'
+		{ after(grammarAccess.getBucleForAccess().getCuandoElLtimoEcoSeCalleKeyword_9_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleForAccess().getYElEcoSeDesvaneceKeyword_9_1()); }
+		'Y el eco se desvanece.'
+		{ after(grammarAccess.getBucleForAccess().getYElEcoSeDesvaneceKeyword_9_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleForAccess().getYLaLtimaEstrellaSeApagueKeyword_9_2()); }
+		'Y la \u00FAltima estrella se apague.'
+		{ after(grammarAccess.getBucleForAccess().getYLaLtimaEstrellaSeApagueKeyword_9_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleForAccess().getHastaQueElLtimoPTaloCaigaKeyword_9_3()); }
+		'Hasta que el \u00FAltimo p\u00E9talo caiga.'
+		{ after(grammarAccess.getBucleForAccess().getHastaQueElLtimoPTaloCaigaKeyword_9_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getBucleForAccess().getCuandoElMarSeQuedeEnSilencioKeyword_9_4()); }
+		'Cuando el mar se quede en silencio.'
+		{ after(grammarAccess.getBucleForAccess().getCuandoElMarSeQuedeEnSilencioKeyword_9_4()); }
 	)
 ;
 finally {
@@ -1025,6 +1653,267 @@ rule__Funcion__Alternatives_0
 		'En la brisa escondo un deseo llamado'
 		{ after(grammarAccess.getFuncionAccess().getEnLaBrisaEscondoUnDeseoLlamadoKeyword_0_2()); }
 	)
+	|
+	(
+		{ before(grammarAccess.getFuncionAccess().getGraboEnLasEstrellasUnaPromesaLlamadaKeyword_0_3()); }
+		'Grabo en las estrellas una promesa llamada'
+		{ after(grammarAccess.getFuncionAccess().getGraboEnLasEstrellasUnaPromesaLlamadaKeyword_0_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFuncionAccess().getSusurroAlUniversoUnDeseoLlamadoKeyword_0_4()); }
+		'Susurro al universo un deseo llamado'
+		{ after(grammarAccess.getFuncionAccess().getSusurroAlUniversoUnDeseoLlamadoKeyword_0_4()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFuncionAccess().getTejoEnElDestinoUnJuramentoLlamadoKeyword_0_5()); }
+		'Tejo en el destino un juramento llamado'
+		{ after(grammarAccess.getFuncionAccess().getTejoEnElDestinoUnJuramentoLlamadoKeyword_0_5()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFuncionAccess().getEsculpoEnElTiempoUnAnheloLlamadoKeyword_0_6()); }
+		'Esculpo en el tiempo un anhelo llamado'
+		{ after(grammarAccess.getFuncionAccess().getEsculpoEnElTiempoUnAnheloLlamadoKeyword_0_6()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFuncionAccess().getSusurroALaEternidadUnSueOLlamadoKeyword_0_7()); }
+		'Susurro a la eternidad un sue\u00F1o llamado'
+		{ after(grammarAccess.getFuncionAccess().getSusurroALaEternidadUnSueOLlamadoKeyword_0_7()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Funcion__Alternatives_2_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getFuncionAccess().getQueGuardaEnSuEsenciaKeyword_2_0_0()); }
+		'que guarda en su esencia'
+		{ after(grammarAccess.getFuncionAccess().getQueGuardaEnSuEsenciaKeyword_2_0_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFuncionAccess().getTejiendoKeyword_2_0_1()); }
+		'tejiendo'
+		{ after(grammarAccess.getFuncionAccess().getTejiendoKeyword_2_0_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFuncionAccess().getQueAbrazaEnSuSerKeyword_2_0_2()); }
+		'que abraza en su ser'
+		{ after(grammarAccess.getFuncionAccess().getQueAbrazaEnSuSerKeyword_2_0_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFuncionAccess().getQueLlevaEnSuAlmaKeyword_2_0_3()); }
+		'que lleva en su alma'
+		{ after(grammarAccess.getFuncionAccess().getQueLlevaEnSuAlmaKeyword_2_0_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFuncionAccess().getQueSusurraEnSuCorazNKeyword_2_0_4()); }
+		'que susurra en su coraz\u00F3n'
+		{ after(grammarAccess.getFuncionAccess().getQueSusurraEnSuCorazNKeyword_2_0_4()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Funcion__Alternatives_2_2_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getFuncionAccess().getYKeyword_2_2_0_0()); }
+		'y'
+		{ after(grammarAccess.getFuncionAccess().getYKeyword_2_2_0_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFuncionAccess().getJuntoAKeyword_2_2_0_1()); }
+		'junto a'
+		{ after(grammarAccess.getFuncionAccess().getJuntoAKeyword_2_2_0_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFuncionAccess().getTambienKeyword_2_2_0_2()); }
+		'tambien'
+		{ after(grammarAccess.getFuncionAccess().getTambienKeyword_2_2_0_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFuncionAccess().getLlevandoConsigoKeyword_2_2_0_3()); }
+		'llevando consigo'
+		{ after(grammarAccess.getFuncionAccess().getLlevandoConsigoKeyword_2_2_0_3()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Funcion__Alternatives_3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getFuncionAccess().getPrometiendoDevolverKeyword_3_0()); }
+		'prometiendo devolver'
+		{ after(grammarAccess.getFuncionAccess().getPrometiendoDevolverKeyword_3_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFuncionAccess().getJurandoDevolverKeyword_3_1()); }
+		'jurando devolver'
+		{ after(grammarAccess.getFuncionAccess().getJurandoDevolverKeyword_3_1()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Funcion__Alternatives_5
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getFuncionAccess().getCuandoLaPromesaSeCumpleKeyword_5_0()); }
+		'Cuando la promesa se cumple:'
+		{ after(grammarAccess.getFuncionAccess().getCuandoLaPromesaSeCumpleKeyword_5_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFuncionAccess().getCuandoElAmorSeCumplaKeyword_5_1()); }
+		'Cuando el amor se cumpla'
+		{ after(grammarAccess.getFuncionAccess().getCuandoElAmorSeCumplaKeyword_5_1()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Funcion__Alternatives_7
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getFuncionAccess().getAsSeSellaLaPromesaKeyword_7_0()); }
+		'As\u00ED se sella la promesa.'
+		{ after(grammarAccess.getFuncionAccess().getAsSeSellaLaPromesaKeyword_7_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFuncionAccess().getAsSeEternizaKeyword_7_1()); }
+		'As\u00ED se eterniza.'
+		{ after(grammarAccess.getFuncionAccess().getAsSeEternizaKeyword_7_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFuncionAccess().getYAsNuestroAmorSeInmortalizaKeyword_7_2()); }
+		'Y as\u00ED nuestro amor se inmortaliza.'
+		{ after(grammarAccess.getFuncionAccess().getYAsNuestroAmorSeInmortalizaKeyword_7_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFuncionAccess().getYElUniversoGuardaNuestroSecretoKeyword_7_3()); }
+		'Y el universo guarda nuestro secreto.'
+		{ after(grammarAccess.getFuncionAccess().getYElUniversoGuardaNuestroSecretoKeyword_7_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFuncionAccess().getYLaEternidadNosAbrazaKeyword_7_4()); }
+		'Y la eternidad nos abraza.'
+		{ after(grammarAccess.getFuncionAccess().getYLaEternidadNosAbrazaKeyword_7_4()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Return__Alternatives_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getReturnAccess().getYEntregoAlVientoKeyword_0_0()); }
+		'Y entrego al viento'
+		{ after(grammarAccess.getReturnAccess().getYEntregoAlVientoKeyword_0_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getReturnAccess().getTeEntregoKeyword_0_1()); }
+		'Te entrego'
+		{ after(grammarAccess.getReturnAccess().getTeEntregoKeyword_0_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getReturnAccess().getTeOfrezcoConElAlmaKeyword_0_2()); }
+		'Te ofrezco con el alma'
+		{ after(grammarAccess.getReturnAccess().getTeOfrezcoConElAlmaKeyword_0_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getReturnAccess().getDejoEnTusManosKeyword_0_3()); }
+		'Dejo en tus manos'
+		{ after(grammarAccess.getReturnAccess().getDejoEnTusManosKeyword_0_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getReturnAccess().getSusurroATuCorazNKeyword_0_4()); }
+		'Susurro a tu coraz\u00F3n'
+		{ after(grammarAccess.getReturnAccess().getSusurroATuCorazNKeyword_0_4()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Return__Alternatives_2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getReturnAccess().getComoPromesaCumplidaKeyword_2_0()); }
+		'como promesa cumplida.'
+		{ after(grammarAccess.getReturnAccess().getComoPromesaCumplidaKeyword_2_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getReturnAccess().getConUnSuspiroKeyword_2_1()); }
+		'con un suspiro.'
+		{ after(grammarAccess.getReturnAccess().getConUnSuspiroKeyword_2_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getReturnAccess().getComoUnRegaloEternoKeyword_2_2()); }
+		'como un regalo eterno.'
+		{ after(grammarAccess.getReturnAccess().getComoUnRegaloEternoKeyword_2_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getReturnAccess().getEnvueltoEnMiAmorKeyword_2_3()); }
+		'envuelto en mi amor.'
+		{ after(grammarAccess.getReturnAccess().getEnvueltoEnMiAmorKeyword_2_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getReturnAccess().getConLaEsperanzaDeTuSonrisaKeyword_2_4()); }
+		'con la esperanza de tu sonrisa.'
+		{ after(grammarAccess.getReturnAccess().getConLaEsperanzaDeTuSonrisaKeyword_2_4()); }
+	)
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -1036,15 +1925,27 @@ rule__OrExpression__Alternatives_1_1
 	}
 :
 	(
-		{ before(grammarAccess.getOrExpressionAccess().getOQuizSKeyword_1_1_0()); }
-		' o quiz\u00E1s '
-		{ after(grammarAccess.getOrExpressionAccess().getOQuizSKeyword_1_1_0()); }
+		{ before(grammarAccess.getOrExpressionAccess().getOTalVezKeyword_1_1_0()); }
+		'o tal vez'
+		{ after(grammarAccess.getOrExpressionAccess().getOTalVezKeyword_1_1_0()); }
 	)
 	|
 	(
 		{ before(grammarAccess.getOrExpressionAccess().getOQuizSKeyword_1_1_1()); }
-		' o quiz\u00E1s'
+		'o quiz\u00E1s'
 		{ after(grammarAccess.getOrExpressionAccess().getOQuizSKeyword_1_1_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getOrExpressionAccess().getOAcasoElAmorPermitaKeyword_1_1_2()); }
+		'o acaso el amor permita'
+		{ after(grammarAccess.getOrExpressionAccess().getOAcasoElAmorPermitaKeyword_1_1_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getOrExpressionAccess().getOSiLaLunaLoDeseaKeyword_1_1_3()); }
+		'o si la luna lo desea'
+		{ after(grammarAccess.getOrExpressionAccess().getOSiLaLunaLoDeseaKeyword_1_1_3()); }
 	)
 ;
 finally {
@@ -1058,14 +1959,38 @@ rule__AndExpression__Alternatives_1_1
 :
 	(
 		{ before(grammarAccess.getAndExpressionAccess().getYTambiNKeyword_1_1_0()); }
-		' y tambi\u00E9n '
+		'y tambi\u00E9n'
 		{ after(grammarAccess.getAndExpressionAccess().getYTambiNKeyword_1_1_0()); }
 	)
 	|
 	(
-		{ before(grammarAccess.getAndExpressionAccess().getYTambiNKeyword_1_1_1()); }
-		' y tambi\u00E9n'
-		{ after(grammarAccess.getAndExpressionAccess().getYTambiNKeyword_1_1_1()); }
+		{ before(grammarAccess.getAndExpressionAccess().getJuntoAKeyword_1_1_1()); }
+		'junto a'
+		{ after(grammarAccess.getAndExpressionAccess().getJuntoAKeyword_1_1_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getAndExpressionAccess().getYAdemSKeyword_1_1_2()); }
+		'y adem\u00E1s'
+		{ after(grammarAccess.getAndExpressionAccess().getYAdemSKeyword_1_1_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getAndExpressionAccess().getYAlMismoTiempoQueKeyword_1_1_3()); }
+		'y al mismo tiempo que'
+		{ after(grammarAccess.getAndExpressionAccess().getYAlMismoTiempoQueKeyword_1_1_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getAndExpressionAccess().getYJuntoConKeyword_1_1_4()); }
+		'y junto con'
+		{ after(grammarAccess.getAndExpressionAccess().getYJuntoConKeyword_1_1_4()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getAndExpressionAccess().getYEnUniNConKeyword_1_1_5()); }
+		'y en uni\u00F3n con'
+		{ after(grammarAccess.getAndExpressionAccess().getYEnUniNConKeyword_1_1_5()); }
 	)
 ;
 finally {
@@ -1087,6 +2012,54 @@ rule__EqualityExpression__OpAlternatives_1_1_0
 		{ before(grammarAccess.getEqualityExpressionAccess().getOpCantaConUnMatizDistintoAKeyword_1_1_0_1()); }
 		'canta con un matiz distinto a'
 		{ after(grammarAccess.getEqualityExpressionAccess().getOpCantaConUnMatizDistintoAKeyword_1_1_0_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEqualityExpressionAccess().getOpLateIgualQueKeyword_1_1_0_2()); }
+		'late igual que'
+		{ after(grammarAccess.getEqualityExpressionAccess().getOpLateIgualQueKeyword_1_1_0_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEqualityExpressionAccess().getOpSeDistingueDeKeyword_1_1_0_3()); }
+		'se distingue de'
+		{ after(grammarAccess.getEqualityExpressionAccess().getOpSeDistingueDeKeyword_1_1_0_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEqualityExpressionAccess().getOpResuenaIgualQueKeyword_1_1_0_4()); }
+		'resuena igual que'
+		{ after(grammarAccess.getEqualityExpressionAccess().getOpResuenaIgualQueKeyword_1_1_0_4()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEqualityExpressionAccess().getOpVibraAlMismoRitmoQueKeyword_1_1_0_5()); }
+		'vibra al mismo ritmo que'
+		{ after(grammarAccess.getEqualityExpressionAccess().getOpVibraAlMismoRitmoQueKeyword_1_1_0_5()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEqualityExpressionAccess().getOpEsIdNticoAKeyword_1_1_0_6()); }
+		'es id\u00E9ntico a'
+		{ after(grammarAccess.getEqualityExpressionAccess().getOpEsIdNticoAKeyword_1_1_0_6()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEqualityExpressionAccess().getOpSeDiferenciaDeKeyword_1_1_0_7()); }
+		'se diferencia de'
+		{ after(grammarAccess.getEqualityExpressionAccess().getOpSeDiferenciaDeKeyword_1_1_0_7()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEqualityExpressionAccess().getOpNoCoincideConKeyword_1_1_0_8()); }
+		'no coincide con'
+		{ after(grammarAccess.getEqualityExpressionAccess().getOpNoCoincideConKeyword_1_1_0_8()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getEqualityExpressionAccess().getOpEsDistintoAKeyword_1_1_0_9()); }
+		'es distinto a'
+		{ after(grammarAccess.getEqualityExpressionAccess().getOpEsDistintoAKeyword_1_1_0_9()); }
 	)
 ;
 finally {
@@ -1121,6 +2094,78 @@ rule__RelationalExpression__OpAlternatives_1_1_0
 		'rodea con tanta fuerza como'
 		{ after(grammarAccess.getRelationalExpressionAccess().getOpRodeaConTantaFuerzaComoKeyword_1_1_0_3()); }
 	)
+	|
+	(
+		{ before(grammarAccess.getRelationalExpressionAccess().getOpSusurraMenosQueKeyword_1_1_0_4()); }
+		'susurra menos que'
+		{ after(grammarAccess.getRelationalExpressionAccess().getOpSusurraMenosQueKeyword_1_1_0_4()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getRelationalExpressionAccess().getOpCasiIgualQueKeyword_1_1_0_5()); }
+		'casi igual que'
+		{ after(grammarAccess.getRelationalExpressionAccess().getOpCasiIgualQueKeyword_1_1_0_5()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getRelationalExpressionAccess().getOpArdeMasQueKeyword_1_1_0_6()); }
+		'arde mas que'
+		{ after(grammarAccess.getRelationalExpressionAccess().getOpArdeMasQueKeyword_1_1_0_6()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getRelationalExpressionAccess().getOpAbrazaComoKeyword_1_1_0_7()); }
+		'abraza como'
+		{ after(grammarAccess.getRelationalExpressionAccess().getOpAbrazaComoKeyword_1_1_0_7()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getRelationalExpressionAccess().getOpSusurraMSSuavementeQueKeyword_1_1_0_8()); }
+		'susurra m\u00E1s suavemente que'
+		{ after(grammarAccess.getRelationalExpressionAccess().getOpSusurraMSSuavementeQueKeyword_1_1_0_8()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getRelationalExpressionAccess().getOpTieneMenosLatidosQueKeyword_1_1_0_9()); }
+		'tiene menos latidos que'
+		{ after(grammarAccess.getRelationalExpressionAccess().getOpTieneMenosLatidosQueKeyword_1_1_0_9()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getRelationalExpressionAccess().getOpSusurraTanSuavementeComoKeyword_1_1_0_10()); }
+		'susurra tan suavemente como'
+		{ after(grammarAccess.getRelationalExpressionAccess().getOpSusurraTanSuavementeComoKeyword_1_1_0_10()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getRelationalExpressionAccess().getOpNoSuperaAKeyword_1_1_0_11()); }
+		'no supera a'
+		{ after(grammarAccess.getRelationalExpressionAccess().getOpNoSuperaAKeyword_1_1_0_11()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getRelationalExpressionAccess().getOpSusurraConMSFuerzaQueKeyword_1_1_0_12()); }
+		'susurra con m\u00E1s fuerza que'
+		{ after(grammarAccess.getRelationalExpressionAccess().getOpSusurraConMSFuerzaQueKeyword_1_1_0_12()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getRelationalExpressionAccess().getOpTieneMSLatidosQueKeyword_1_1_0_13()); }
+		'tiene m\u00E1s latidos que'
+		{ after(grammarAccess.getRelationalExpressionAccess().getOpTieneMSLatidosQueKeyword_1_1_0_13()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getRelationalExpressionAccess().getOpSusurraAlMenosConLaMismaFuerzaQueKeyword_1_1_0_14()); }
+		'susurra al menos con la misma fuerza que'
+		{ after(grammarAccess.getRelationalExpressionAccess().getOpSusurraAlMenosConLaMismaFuerzaQueKeyword_1_1_0_14()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getRelationalExpressionAccess().getOpAlMenosIgualaAKeyword_1_1_0_15()); }
+		'al menos iguala a'
+		{ after(grammarAccess.getRelationalExpressionAccess().getOpAlMenosIgualaAKeyword_1_1_0_15()); }
+	)
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -1141,6 +2186,42 @@ rule__AdditiveExpression__OpAlternatives_1_1_0
 		{ before(grammarAccess.getAdditiveExpressionAccess().getOpFundidosEnLaLlamaDeKeyword_1_1_0_1()); }
 		'fundidos en la llama de'
 		{ after(grammarAccess.getAdditiveExpressionAccess().getOpFundidosEnLaLlamaDeKeyword_1_1_0_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getAdditiveExpressionAccess().getOpSeUneAKeyword_1_1_0_2()); }
+		'se une a'
+		{ after(grammarAccess.getAdditiveExpressionAccess().getOpSeUneAKeyword_1_1_0_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getAdditiveExpressionAccess().getOpSeFundeConKeyword_1_1_0_3()); }
+		'se funde con'
+		{ after(grammarAccess.getAdditiveExpressionAccess().getOpSeFundeConKeyword_1_1_0_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getAdditiveExpressionAccess().getOpSumadoAlLatidoDeKeyword_1_1_0_4()); }
+		'sumado al latido de'
+		{ after(grammarAccess.getAdditiveExpressionAccess().getOpSumadoAlLatidoDeKeyword_1_1_0_4()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getAdditiveExpressionAccess().getOpCombinadoConLaPasiNDeKeyword_1_1_0_5()); }
+		'combinado con la pasi\u00F3n de'
+		{ after(grammarAccess.getAdditiveExpressionAccess().getOpCombinadoConLaPasiNDeKeyword_1_1_0_5()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getAdditiveExpressionAccess().getOpEntrelazadoConKeyword_1_1_0_6()); }
+		'entrelazado con'
+		{ after(grammarAccess.getAdditiveExpressionAccess().getOpEntrelazadoConKeyword_1_1_0_6()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getAdditiveExpressionAccess().getOpAAdidoAlSuspiroDeKeyword_1_1_0_7()); }
+		'a\u00F1adido al suspiro de'
+		{ after(grammarAccess.getAdditiveExpressionAccess().getOpAAdidoAlSuspiroDeKeyword_1_1_0_7()); }
 	)
 ;
 finally {
@@ -1169,6 +2250,24 @@ rule__MultiplicativeExpression__OpAlternatives_1_1_0
 		'resuena con el eco de'
 		{ after(grammarAccess.getMultiplicativeExpressionAccess().getOpResuenaConElEcoDeKeyword_1_1_0_2()); }
 	)
+	|
+	(
+		{ before(grammarAccess.getMultiplicativeExpressionAccess().getOpCreceConKeyword_1_1_0_3()); }
+		'crece con'
+		{ after(grammarAccess.getMultiplicativeExpressionAccess().getOpCreceConKeyword_1_1_0_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getMultiplicativeExpressionAccess().getOpResuenaEnKeyword_1_1_0_4()); }
+		'resuena en'
+		{ after(grammarAccess.getMultiplicativeExpressionAccess().getOpResuenaEnKeyword_1_1_0_4()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getMultiplicativeExpressionAccess().getOpSeDivideEntreKeyword_1_1_0_5()); }
+		'se divide entre'
+		{ after(grammarAccess.getMultiplicativeExpressionAccess().getOpSeDivideEntreKeyword_1_1_0_5()); }
+	)
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -1189,6 +2288,45 @@ rule__UnaryExpression__Alternatives
 		{ before(grammarAccess.getUnaryExpressionAccess().getPrimaryExpressionParserRuleCall_1()); }
 		rulePrimaryExpression
 		{ after(grammarAccess.getUnaryExpressionAccess().getPrimaryExpressionParserRuleCall_1()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__UnaryExpression__OpAlternatives_0_1_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getUnaryExpressionAccess().getOpNoCreoQueKeyword_0_1_0_0()); }
+		'no creo que'
+		{ after(grammarAccess.getUnaryExpressionAccess().getOpNoCreoQueKeyword_0_1_0_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getUnaryExpressionAccess().getOpNoSientoQueKeyword_0_1_0_1()); }
+		'no siento que'
+		{ after(grammarAccess.getUnaryExpressionAccess().getOpNoSientoQueKeyword_0_1_0_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getUnaryExpressionAccess().getOpNoMePareceQueKeyword_0_1_0_2()); }
+		'no me parece que'
+		{ after(grammarAccess.getUnaryExpressionAccess().getOpNoMePareceQueKeyword_0_1_0_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getUnaryExpressionAccess().getOpNoPerciboQueKeyword_0_1_0_3()); }
+		'no percibo que'
+		{ after(grammarAccess.getUnaryExpressionAccess().getOpNoPerciboQueKeyword_0_1_0_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getUnaryExpressionAccess().getOpDudoQueKeyword_0_1_0_4()); }
+		'dudo que'
+		{ after(grammarAccess.getUnaryExpressionAccess().getOpDudoQueKeyword_0_1_0_4()); }
 	)
 ;
 finally {
@@ -1261,33 +2399,93 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Type__Alternatives
+rule__FunctionCall__Alternatives_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getTypeAccess().getNMeroKeyword_0()); }
-		'n\u00FAmero'
-		{ after(grammarAccess.getTypeAccess().getNMeroKeyword_0()); }
+		{ before(grammarAccess.getFunctionCallAccess().getInvocoAKeyword_1_0()); }
+		'invoco a'
+		{ after(grammarAccess.getFunctionCallAccess().getInvocoAKeyword_1_0()); }
 	)
 	|
 	(
-		{ before(grammarAccess.getTypeAccess().getTextoKeyword_1()); }
-		'texto'
-		{ after(grammarAccess.getTypeAccess().getTextoKeyword_1()); }
+		{ before(grammarAccess.getFunctionCallAccess().getSusurroAKeyword_1_1()); }
+		'susurro a'
+		{ after(grammarAccess.getFunctionCallAccess().getSusurroAKeyword_1_1()); }
 	)
 	|
 	(
-		{ before(grammarAccess.getTypeAccess().getBooleanoKeyword_2()); }
-		'booleano'
-		{ after(grammarAccess.getTypeAccess().getBooleanoKeyword_2()); }
+		{ before(grammarAccess.getFunctionCallAccess().getMurmuroAKeyword_1_2()); }
+		'murmuro a'
+		{ after(grammarAccess.getFunctionCallAccess().getMurmuroAKeyword_1_2()); }
 	)
 	|
 	(
-		{ before(grammarAccess.getTypeAccess().getNadaKeyword_3()); }
-		'nada'
-		{ after(grammarAccess.getTypeAccess().getNadaKeyword_3()); }
+		{ before(grammarAccess.getFunctionCallAccess().getConjuroAKeyword_1_3()); }
+		'conjuro a'
+		{ after(grammarAccess.getFunctionCallAccess().getConjuroAKeyword_1_3()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__FunctionCall__Alternatives_3_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getFunctionCallAccess().getConLosRegalosKeyword_3_0_0()); }
+		'con los regalos'
+		{ after(grammarAccess.getFunctionCallAccess().getConLosRegalosKeyword_3_0_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFunctionCallAccess().getOfreciendoKeyword_3_0_1()); }
+		'ofreciendo'
+		{ after(grammarAccess.getFunctionCallAccess().getOfreciendoKeyword_3_0_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFunctionCallAccess().getConLosDonesKeyword_3_0_2()); }
+		'con los dones'
+		{ after(grammarAccess.getFunctionCallAccess().getConLosDonesKeyword_3_0_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFunctionCallAccess().getPresentandoKeyword_3_0_3()); }
+		'presentando'
+		{ after(grammarAccess.getFunctionCallAccess().getPresentandoKeyword_3_0_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFunctionCallAccess().getOfreciendoMisTesorosKeyword_3_0_4()); }
+		'ofreciendo mis tesoros'
+		{ after(grammarAccess.getFunctionCallAccess().getOfreciendoMisTesorosKeyword_3_0_4()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__FunctionCall__Alternatives_3_2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getFunctionCallAccess().getEnMiCorazNKeyword_3_2_0()); }
+		'en mi coraz\u00F3n'
+		{ after(grammarAccess.getFunctionCallAccess().getEnMiCorazNKeyword_3_2_0()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getFunctionCallAccess().getEnMiAlmaKeyword_3_2_1()); }
+		'en mi alma'
+		{ after(grammarAccess.getFunctionCallAccess().getEnMiAlmaKeyword_3_2_1()); }
 	)
 ;
 finally {
@@ -1306,9 +2504,9 @@ rule__VerboDeclaracion__Alternatives
 	)
 	|
 	(
-		{ before(grammarAccess.getVerboDeclaracionAccess().getOfrezcoKeyword_1()); }
-		'Ofrezco'
-		{ after(grammarAccess.getVerboDeclaracionAccess().getOfrezcoKeyword_1()); }
+		{ before(grammarAccess.getVerboDeclaracionAccess().getTeOfrezcoKeyword_1()); }
+		'Te Ofrezco'
+		{ after(grammarAccess.getVerboDeclaracionAccess().getTeOfrezcoKeyword_1()); }
 	)
 	|
 	(
@@ -1321,6 +2519,42 @@ rule__VerboDeclaracion__Alternatives
 		{ before(grammarAccess.getVerboDeclaracionAccess().getDepositoEnTuJardNKeyword_3()); }
 		'Deposito en tu jard\u00EDn'
 		{ after(grammarAccess.getVerboDeclaracionAccess().getDepositoEnTuJardNKeyword_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getVerboDeclaracionAccess().getTeReveloKeyword_4()); }
+		'Te revelo'
+		{ after(grammarAccess.getVerboDeclaracionAccess().getTeReveloKeyword_4()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getVerboDeclaracionAccess().getTeSusurroKeyword_5()); }
+		'Te susurro'
+		{ after(grammarAccess.getVerboDeclaracionAccess().getTeSusurroKeyword_5()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getVerboDeclaracionAccess().getTeConfOKeyword_6()); }
+		'Te conf\u00EDo'
+		{ after(grammarAccess.getVerboDeclaracionAccess().getTeConfOKeyword_6()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getVerboDeclaracionAccess().getTeEntregoKeyword_7()); }
+		'Te entrego'
+		{ after(grammarAccess.getVerboDeclaracionAccess().getTeEntregoKeyword_7()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getVerboDeclaracionAccess().getTeDedicoKeyword_8()); }
+		'Te dedico'
+		{ after(grammarAccess.getVerboDeclaracionAccess().getTeDedicoKeyword_8()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getVerboDeclaracionAccess().getTeBrindoKeyword_9()); }
+		'Te brindo'
+		{ after(grammarAccess.getVerboDeclaracionAccess().getTeBrindoKeyword_9()); }
 	)
 ;
 finally {
@@ -1349,6 +2583,42 @@ rule__VerboReasignacion__Alternatives
 		'Perm\u00EDteme ajustar'
 		{ after(grammarAccess.getVerboReasignacionAccess().getPermTemeAjustarKeyword_2()); }
 	)
+	|
+	(
+		{ before(grammarAccess.getVerboReasignacionAccess().getReavivoKeyword_3()); }
+		'Reavivo'
+		{ after(grammarAccess.getVerboReasignacionAccess().getReavivoKeyword_3()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getVerboReasignacionAccess().getRenuevoKeyword_4()); }
+		'Renuevo'
+		{ after(grammarAccess.getVerboReasignacionAccess().getRenuevoKeyword_4()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getVerboReasignacionAccess().getReafirmoKeyword_5()); }
+		'Reafirmo'
+		{ after(grammarAccess.getVerboReasignacionAccess().getReafirmoKeyword_5()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getVerboReasignacionAccess().getPermTemeTransformarKeyword_6()); }
+		'Perm\u00EDteme transformar'
+		{ after(grammarAccess.getVerboReasignacionAccess().getPermTemeTransformarKeyword_6()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getVerboReasignacionAccess().getRenuevoConPasiNKeyword_7()); }
+		'Renuevo con pasi\u00F3n'
+		{ after(grammarAccess.getVerboReasignacionAccess().getRenuevoConPasiNKeyword_7()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getVerboReasignacionAccess().getModificoConAmorKeyword_8()); }
+		'Modifico con amor'
+		{ after(grammarAccess.getVerboReasignacionAccess().getModificoConAmorKeyword_8()); }
+	)
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -1369,6 +2639,18 @@ rule__Articulo__Alternatives
 		{ before(grammarAccess.getArticuloAccess().getUnaKeyword_1()); }
 		'una'
 		{ after(grammarAccess.getArticuloAccess().getUnaKeyword_1()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getArticuloAccess().getUnosKeyword_2()); }
+		'unos'
+		{ after(grammarAccess.getArticuloAccess().getUnosKeyword_2()); }
+	)
+	|
+	(
+		{ before(grammarAccess.getArticuloAccess().getUnasKeyword_3()); }
+		'unas'
+		{ after(grammarAccess.getArticuloAccess().getUnasKeyword_3()); }
 	)
 ;
 finally {
@@ -1555,9 +2837,9 @@ rule__Despedida__Group__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getDespedidaAccess().getConCariOTuProgramadorKeyword_0()); }
-	'Con cari\u00F1o, Tu programador'
-	{ after(grammarAccess.getDespedidaAccess().getConCariOTuProgramadorKeyword_0()); }
+	{ before(grammarAccess.getDespedidaAccess().getAlternatives_0()); }
+	(rule__Despedida__Alternatives_0)
+	{ after(grammarAccess.getDespedidaAccess().getAlternatives_0()); }
 )
 ;
 finally {
@@ -1690,9 +2972,9 @@ rule__Declarar__Group__2__Impl
 	}
 :
 (
-	{ before(grammarAccess.getDeclararAccess().getSustantivoAssignment_2()); }
-	(rule__Declarar__SustantivoAssignment_2)
-	{ after(grammarAccess.getDeclararAccess().getSustantivoAssignment_2()); }
+	{ before(grammarAccess.getDeclararAccess().getTipoAssignment_2()); }
+	(rule__Declarar__TipoAssignment_2)?
+	{ after(grammarAccess.getDeclararAccess().getTipoAssignment_2()); }
 )
 ;
 finally {
@@ -1717,9 +2999,9 @@ rule__Declarar__Group__3__Impl
 	}
 :
 (
-	{ before(grammarAccess.getDeclararAccess().getPreComentarioAssignment_3()); }
-	(rule__Declarar__PreComentarioAssignment_3)?
-	{ after(grammarAccess.getDeclararAccess().getPreComentarioAssignment_3()); }
+	{ before(grammarAccess.getDeclararAccess().getSustantivoAssignment_3()); }
+	(rule__Declarar__SustantivoAssignment_3)
+	{ after(grammarAccess.getDeclararAccess().getSustantivoAssignment_3()); }
 )
 ;
 finally {
@@ -1744,9 +3026,9 @@ rule__Declarar__Group__4__Impl
 	}
 :
 (
-	{ before(grammarAccess.getDeclararAccess().getValorAssignment_4()); }
-	(rule__Declarar__ValorAssignment_4)
-	{ after(grammarAccess.getDeclararAccess().getValorAssignment_4()); }
+	{ before(grammarAccess.getDeclararAccess().getPreComentarioAssignment_4()); }
+	(rule__Declarar__PreComentarioAssignment_4)?
+	{ after(grammarAccess.getDeclararAccess().getPreComentarioAssignment_4()); }
 )
 ;
 finally {
@@ -1771,9 +3053,9 @@ rule__Declarar__Group__5__Impl
 	}
 :
 (
-	{ before(grammarAccess.getDeclararAccess().getPostComentarioAssignment_5()); }
-	(rule__Declarar__PostComentarioAssignment_5)?
-	{ after(grammarAccess.getDeclararAccess().getPostComentarioAssignment_5()); }
+	{ before(grammarAccess.getDeclararAccess().getValorAssignment_5()); }
+	(rule__Declarar__ValorAssignment_5)
+	{ after(grammarAccess.getDeclararAccess().getValorAssignment_5()); }
 )
 ;
 finally {
@@ -1786,6 +3068,7 @@ rule__Declarar__Group__6
 	}
 :
 	rule__Declarar__Group__6__Impl
+	rule__Declarar__Group__7
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -1797,9 +3080,35 @@ rule__Declarar__Group__6__Impl
 	}
 :
 (
-	{ before(grammarAccess.getDeclararAccess().getFullStopKeyword_6()); }
+	{ before(grammarAccess.getDeclararAccess().getPostComentarioAssignment_6()); }
+	(rule__Declarar__PostComentarioAssignment_6)?
+	{ after(grammarAccess.getDeclararAccess().getPostComentarioAssignment_6()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Declarar__Group__7
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Declarar__Group__7__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Declarar__Group__7__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getDeclararAccess().getFullStopKeyword_7()); }
 	'.'
-	{ after(grammarAccess.getDeclararAccess().getFullStopKeyword_6()); }
+	{ after(grammarAccess.getDeclararAccess().getFullStopKeyword_7()); }
 )
 ;
 finally {
@@ -2014,9 +3323,9 @@ rule__Entrada__Group__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getEntradaAccess().getLePedAlLectorQueMeDijeraKeyword_0()); }
-	'Le ped\u00ED al lector que me dijera'
-	{ after(grammarAccess.getEntradaAccess().getLePedAlLectorQueMeDijeraKeyword_0()); }
+	{ before(grammarAccess.getEntradaAccess().getAlternatives_0()); }
+	(rule__Entrada__Alternatives_0)
+	{ after(grammarAccess.getEntradaAccess().getAlternatives_0()); }
 )
 ;
 finally {
@@ -2122,9 +3431,9 @@ rule__Salida__Group__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getSalidaAccess().getHoyLeQuiseContarAlMundoSobreKeyword_0()); }
-	'Hoy le quise contar al mundo sobre:'
-	{ after(grammarAccess.getSalidaAccess().getHoyLeQuiseContarAlMundoSobreKeyword_0()); }
+	{ before(grammarAccess.getSalidaAccess().getAlternatives_0()); }
+	(rule__Salida__Alternatives_0)
+	{ after(grammarAccess.getSalidaAccess().getAlternatives_0()); }
 )
 ;
 finally {
@@ -2203,9 +3512,9 @@ rule__Condicional__Group__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getCondicionalAccess().getSiEnTuCorazonSientesQueKeyword_0()); }
-	'Si en tu corazon sientes que'
-	{ after(grammarAccess.getCondicionalAccess().getSiEnTuCorazonSientesQueKeyword_0()); }
+	{ before(grammarAccess.getCondicionalAccess().getAlternatives_0()); }
+	(rule__Condicional__Alternatives_0)
+	{ after(grammarAccess.getCondicionalAccess().getAlternatives_0()); }
 )
 ;
 finally {
@@ -2284,9 +3593,9 @@ rule__Condicional__Group__3__Impl
 	}
 :
 (
-	{ before(grammarAccess.getCondicionalAccess().getEntoncesDejaQueEstasPalabrasFlorezcanKeyword_3()); }
-	'entonces deja que estas palabras florezcan:'
-	{ after(grammarAccess.getCondicionalAccess().getEntoncesDejaQueEstasPalabrasFlorezcanKeyword_3()); }
+	{ before(grammarAccess.getCondicionalAccess().getCommentAssignment_3()); }
+	(rule__Condicional__CommentAssignment_3)?
+	{ after(grammarAccess.getCondicionalAccess().getCommentAssignment_3()); }
 )
 ;
 finally {
@@ -2311,16 +3620,9 @@ rule__Condicional__Group__4__Impl
 	}
 :
 (
-	(
-		{ before(grammarAccess.getCondicionalAccess().getInstruccionesThenAssignment_4()); }
-		(rule__Condicional__InstruccionesThenAssignment_4)
-		{ after(grammarAccess.getCondicionalAccess().getInstruccionesThenAssignment_4()); }
-	)
-	(
-		{ before(grammarAccess.getCondicionalAccess().getInstruccionesThenAssignment_4()); }
-		(rule__Condicional__InstruccionesThenAssignment_4)*
-		{ after(grammarAccess.getCondicionalAccess().getInstruccionesThenAssignment_4()); }
-	)
+	{ before(grammarAccess.getCondicionalAccess().getAlternatives_4()); }
+	(rule__Condicional__Alternatives_4)
+	{ after(grammarAccess.getCondicionalAccess().getAlternatives_4()); }
 )
 ;
 finally {
@@ -2345,9 +3647,16 @@ rule__Condicional__Group__5__Impl
 	}
 :
 (
-	{ before(grammarAccess.getCondicionalAccess().getGroup_5()); }
-	(rule__Condicional__Group_5__0)?
-	{ after(grammarAccess.getCondicionalAccess().getGroup_5()); }
+	(
+		{ before(grammarAccess.getCondicionalAccess().getInstruccionesThenAssignment_5()); }
+		(rule__Condicional__InstruccionesThenAssignment_5)
+		{ after(grammarAccess.getCondicionalAccess().getInstruccionesThenAssignment_5()); }
+	)
+	(
+		{ before(grammarAccess.getCondicionalAccess().getInstruccionesThenAssignment_5()); }
+		(rule__Condicional__InstruccionesThenAssignment_5)*
+		{ after(grammarAccess.getCondicionalAccess().getInstruccionesThenAssignment_5()); }
+	)
 )
 ;
 finally {
@@ -2360,6 +3669,7 @@ rule__Condicional__Group__6
 	}
 :
 	rule__Condicional__Group__6__Impl
+	rule__Condicional__Group__7
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -2371,97 +3681,258 @@ rule__Condicional__Group__6__Impl
 	}
 :
 (
-	{ before(grammarAccess.getCondicionalAccess().getYAsElUniversoSigueSuCursoKeyword_6()); }
-	'Y as\u00ED el universo sigue su curso.'
-	{ after(grammarAccess.getCondicionalAccess().getYAsElUniversoSigueSuCursoKeyword_6()); }
+	{ before(grammarAccess.getCondicionalAccess().getGroup_6()); }
+	(rule__Condicional__Group_6__0)?
+	{ after(grammarAccess.getCondicionalAccess().getGroup_6()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-
-rule__Condicional__Group_5__0
+rule__Condicional__Group__7
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Condicional__Group_5__0__Impl
-	rule__Condicional__Group_5__1
+	rule__Condicional__Group__7__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Condicional__Group_5__0__Impl
+rule__Condicional__Group__7__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getCondicionalAccess().getPeroSiElDestinoDijeraLoContrarioKeyword_5_0()); }
-	'Pero si el destino dijera lo contrario,'
-	{ after(grammarAccess.getCondicionalAccess().getPeroSiElDestinoDijeraLoContrarioKeyword_5_0()); }
+	{ before(grammarAccess.getCondicionalAccess().getAlternatives_7()); }
+	(rule__Condicional__Alternatives_7)
+	{ after(grammarAccess.getCondicionalAccess().getAlternatives_7()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Condicional__Group_5__1
+
+rule__Condicional__Group_6__0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Condicional__Group_5__1__Impl
-	rule__Condicional__Group_5__2
+	rule__Condicional__Group_6__0__Impl
+	rule__Condicional__Group_6__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Condicional__Group_5__1__Impl
+rule__Condicional__Group_6__0__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getCondicionalAccess().getQueBrotenEstasVerdadesKeyword_5_1()); }
-	'que broten estas verdades:'
-	{ after(grammarAccess.getCondicionalAccess().getQueBrotenEstasVerdadesKeyword_5_1()); }
+	{ before(grammarAccess.getCondicionalAccess().getAlternatives_6_0()); }
+	(rule__Condicional__Alternatives_6_0)
+	{ after(grammarAccess.getCondicionalAccess().getAlternatives_6_0()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Condicional__Group_5__2
+rule__Condicional__Group_6__1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Condicional__Group_5__2__Impl
+	rule__Condicional__Group_6__1__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Condicional__Group_5__2__Impl
+rule__Condicional__Group_6__1__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
 	(
-		{ before(grammarAccess.getCondicionalAccess().getInstruccionesElseAssignment_5_2()); }
-		(rule__Condicional__InstruccionesElseAssignment_5_2)
-		{ after(grammarAccess.getCondicionalAccess().getInstruccionesElseAssignment_5_2()); }
+		{ before(grammarAccess.getCondicionalAccess().getInstruccionesElseAssignment_6_1()); }
+		(rule__Condicional__InstruccionesElseAssignment_6_1)
+		{ after(grammarAccess.getCondicionalAccess().getInstruccionesElseAssignment_6_1()); }
 	)
 	(
-		{ before(grammarAccess.getCondicionalAccess().getInstruccionesElseAssignment_5_2()); }
-		(rule__Condicional__InstruccionesElseAssignment_5_2)*
-		{ after(grammarAccess.getCondicionalAccess().getInstruccionesElseAssignment_5_2()); }
+		{ before(grammarAccess.getCondicionalAccess().getInstruccionesElseAssignment_6_1()); }
+		(rule__Condicional__InstruccionesElseAssignment_6_1)*
+		{ after(grammarAccess.getCondicionalAccess().getInstruccionesElseAssignment_6_1()); }
 	)
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Condicional__Group_6_0_0__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Condicional__Group_6_0_0__0__Impl
+	rule__Condicional__Group_6_0_0__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Condicional__Group_6_0_0__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getCondicionalAccess().getPeroSiLaNocheCallaOtraVerdadKeyword_6_0_0_0()); }
+	'Pero si la noche calla otra verdad,'
+	{ after(grammarAccess.getCondicionalAccess().getPeroSiLaNocheCallaOtraVerdadKeyword_6_0_0_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Condicional__Group_6_0_0__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Condicional__Group_6_0_0__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Condicional__Group_6_0_0__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getCondicionalAccess().getQueSurjaEsteSuspiroKeyword_6_0_0_1()); }
+	'que surja este suspiro:'
+	{ after(grammarAccess.getCondicionalAccess().getQueSurjaEsteSuspiroKeyword_6_0_0_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Condicional__Group_6_0_1__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Condicional__Group_6_0_1__0__Impl
+	rule__Condicional__Group_6_0_1__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Condicional__Group_6_0_1__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getCondicionalAccess().getPeroSiElVientoTraeOtroMensajeKeyword_6_0_1_0()); }
+	'Pero si el viento trae otro mensaje,'
+	{ after(grammarAccess.getCondicionalAccess().getPeroSiElVientoTraeOtroMensajeKeyword_6_0_1_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Condicional__Group_6_0_1__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Condicional__Group_6_0_1__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Condicional__Group_6_0_1__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getCondicionalAccess().getQueDespierteEstaPasiNKeyword_6_0_1_1()); }
+	'que despierte esta pasi\u00F3n:'
+	{ after(grammarAccess.getCondicionalAccess().getQueDespierteEstaPasiNKeyword_6_0_1_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__Condicional__Group_6_0_2__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Condicional__Group_6_0_2__0__Impl
+	rule__Condicional__Group_6_0_2__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Condicional__Group_6_0_2__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getCondicionalAccess().getPeroSiElCorazNDudaKeyword_6_0_2_0()); }
+	'Pero si el coraz\u00F3n duda,'
+	{ after(grammarAccess.getCondicionalAccess().getPeroSiElCorazNDudaKeyword_6_0_2_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Condicional__Group_6_0_2__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Condicional__Group_6_0_2__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Condicional__Group_6_0_2__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getCondicionalAccess().getQueRenazcaEstaEsperanzaKeyword_6_0_2_1()); }
+	'que renazca esta esperanza:'
+	{ after(grammarAccess.getCondicionalAccess().getQueRenazcaEstaEsperanzaKeyword_6_0_2_1()); }
 )
 ;
 finally {
@@ -2568,9 +4039,9 @@ rule__BucleWhile__Group__3__Impl
 	}
 :
 (
-	{ before(grammarAccess.getBucleWhileAccess().getHazQueSucedaKeyword_3()); }
-	'haz que suceda:'
-	{ after(grammarAccess.getBucleWhileAccess().getHazQueSucedaKeyword_3()); }
+	{ before(grammarAccess.getBucleWhileAccess().getAlternatives_3()); }
+	(rule__BucleWhile__Alternatives_3)
+	{ after(grammarAccess.getBucleWhileAccess().getAlternatives_3()); }
 )
 ;
 finally {
@@ -2628,9 +4099,9 @@ rule__BucleWhile__Group__5__Impl
 	}
 :
 (
-	{ before(grammarAccess.getBucleWhileAccess().getYAsElSusurroDescansaKeyword_5()); }
-	'Y as\u00ED el susurro descansa.'
-	{ after(grammarAccess.getBucleWhileAccess().getYAsElSusurroDescansaKeyword_5()); }
+	{ before(grammarAccess.getBucleWhileAccess().getAlternatives_5()); }
+	(rule__BucleWhile__Alternatives_5)
+	{ after(grammarAccess.getBucleWhileAccess().getAlternatives_5()); }
 )
 ;
 finally {
@@ -2656,9 +4127,9 @@ rule__BucleFor__Group__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getBucleForAccess().getEnCadaSuspiroKeyword_0()); }
-	'En cada suspiro'
-	{ after(grammarAccess.getBucleForAccess().getEnCadaSuspiroKeyword_0()); }
+	{ before(grammarAccess.getBucleForAccess().getAlternatives_0()); }
+	(rule__BucleFor__Alternatives_0)
+	{ after(grammarAccess.getBucleForAccess().getAlternatives_0()); }
 )
 ;
 finally {
@@ -2845,9 +4316,9 @@ rule__BucleFor__Group__7__Impl
 	}
 :
 (
-	{ before(grammarAccess.getBucleForAccess().getDejaQueElUniversoCanteKeyword_7()); }
-	'deja que el universo cante:'
-	{ after(grammarAccess.getBucleForAccess().getDejaQueElUniversoCanteKeyword_7()); }
+	{ before(grammarAccess.getBucleForAccess().getAlternatives_7()); }
+	(rule__BucleFor__Alternatives_7)
+	{ after(grammarAccess.getBucleForAccess().getAlternatives_7()); }
 )
 ;
 finally {
@@ -2905,9 +4376,9 @@ rule__BucleFor__Group__9__Impl
 	}
 :
 (
-	{ before(grammarAccess.getBucleForAccess().getCuandoElLtimoEcoSeCalleKeyword_9()); }
-	'Cuando el \u00FAltimo eco se calle.'
-	{ after(grammarAccess.getBucleForAccess().getCuandoElLtimoEcoSeCalleKeyword_9()); }
+	{ before(grammarAccess.getBucleForAccess().getAlternatives_9()); }
+	(rule__BucleFor__Alternatives_9)
+	{ after(grammarAccess.getBucleForAccess().getAlternatives_9()); }
 )
 ;
 finally {
@@ -3068,9 +4539,9 @@ rule__Funcion__Group__3__Impl
 	}
 :
 (
-	{ before(grammarAccess.getFuncionAccess().getGroup_3()); }
-	(rule__Funcion__Group_3__0)?
-	{ after(grammarAccess.getFuncionAccess().getGroup_3()); }
+	{ before(grammarAccess.getFuncionAccess().getAlternatives_3()); }
+	(rule__Funcion__Alternatives_3)?
+	{ after(grammarAccess.getFuncionAccess().getAlternatives_3()); }
 )
 ;
 finally {
@@ -3095,9 +4566,9 @@ rule__Funcion__Group__4__Impl
 	}
 :
 (
-	{ before(grammarAccess.getFuncionAccess().getCuandoLaPromesaSeCumpleKeyword_4()); }
-	'Cuando la promesa se cumple:'
-	{ after(grammarAccess.getFuncionAccess().getCuandoLaPromesaSeCumpleKeyword_4()); }
+	{ before(grammarAccess.getFuncionAccess().getTipoAssignment_4()); }
+	(rule__Funcion__TipoAssignment_4)?
+	{ after(grammarAccess.getFuncionAccess().getTipoAssignment_4()); }
 )
 ;
 finally {
@@ -3122,16 +4593,9 @@ rule__Funcion__Group__5__Impl
 	}
 :
 (
-	(
-		{ before(grammarAccess.getFuncionAccess().getInstruccionesAssignment_5()); }
-		(rule__Funcion__InstruccionesAssignment_5)
-		{ after(grammarAccess.getFuncionAccess().getInstruccionesAssignment_5()); }
-	)
-	(
-		{ before(grammarAccess.getFuncionAccess().getInstruccionesAssignment_5()); }
-		(rule__Funcion__InstruccionesAssignment_5)*
-		{ after(grammarAccess.getFuncionAccess().getInstruccionesAssignment_5()); }
-	)
+	{ before(grammarAccess.getFuncionAccess().getAlternatives_5()); }
+	(rule__Funcion__Alternatives_5)
+	{ after(grammarAccess.getFuncionAccess().getAlternatives_5()); }
 )
 ;
 finally {
@@ -3144,6 +4608,7 @@ rule__Funcion__Group__6
 	}
 :
 	rule__Funcion__Group__6__Impl
+	rule__Funcion__Group__7
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -3155,9 +4620,42 @@ rule__Funcion__Group__6__Impl
 	}
 :
 (
-	{ before(grammarAccess.getFuncionAccess().getAsSeSellaLaPromesaKeyword_6()); }
-	'As\u00ED se sella la promesa.'
-	{ after(grammarAccess.getFuncionAccess().getAsSeSellaLaPromesaKeyword_6()); }
+	(
+		{ before(grammarAccess.getFuncionAccess().getInstruccionesAssignment_6()); }
+		(rule__Funcion__InstruccionesAssignment_6)
+		{ after(grammarAccess.getFuncionAccess().getInstruccionesAssignment_6()); }
+	)
+	(
+		{ before(grammarAccess.getFuncionAccess().getInstruccionesAssignment_6()); }
+		(rule__Funcion__InstruccionesAssignment_6)*
+		{ after(grammarAccess.getFuncionAccess().getInstruccionesAssignment_6()); }
+	)
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Funcion__Group__7
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__Funcion__Group__7__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Funcion__Group__7__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getFuncionAccess().getAlternatives_7()); }
+	(rule__Funcion__Alternatives_7)
+	{ after(grammarAccess.getFuncionAccess().getAlternatives_7()); }
 )
 ;
 finally {
@@ -3183,9 +4681,9 @@ rule__Funcion__Group_2__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getFuncionAccess().getQueGuardaEnSuEsenciaKeyword_2_0()); }
-	'que guarda en su esencia'
-	{ after(grammarAccess.getFuncionAccess().getQueGuardaEnSuEsenciaKeyword_2_0()); }
+	{ before(grammarAccess.getFuncionAccess().getAlternatives_2_0()); }
+	(rule__Funcion__Alternatives_2_0)
+	{ after(grammarAccess.getFuncionAccess().getAlternatives_2_0()); }
 )
 ;
 finally {
@@ -3264,9 +4762,9 @@ rule__Funcion__Group_2_2__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getFuncionAccess().getCommaKeyword_2_2_0()); }
-	','
-	{ after(grammarAccess.getFuncionAccess().getCommaKeyword_2_2_0()); }
+	{ before(grammarAccess.getFuncionAccess().getAlternatives_2_2_0()); }
+	(rule__Funcion__Alternatives_2_2_0)
+	{ after(grammarAccess.getFuncionAccess().getAlternatives_2_2_0()); }
 )
 ;
 finally {
@@ -3300,53 +4798,80 @@ finally {
 }
 
 
-rule__Funcion__Group_3__0
+rule__ParametroDecl__Group__0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Funcion__Group_3__0__Impl
-	rule__Funcion__Group_3__1
+	rule__ParametroDecl__Group__0__Impl
+	rule__ParametroDecl__Group__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Funcion__Group_3__0__Impl
+rule__ParametroDecl__Group__0__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getFuncionAccess().getPrometiendoDevolverKeyword_3_0()); }
-	'prometiendo devolver'
-	{ after(grammarAccess.getFuncionAccess().getPrometiendoDevolverKeyword_3_0()); }
+	{ before(grammarAccess.getParametroDeclAccess().getTipoAssignment_0()); }
+	(rule__ParametroDecl__TipoAssignment_0)?
+	{ after(grammarAccess.getParametroDeclAccess().getTipoAssignment_0()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Funcion__Group_3__1
+rule__ParametroDecl__Group__1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__Funcion__Group_3__1__Impl
+	rule__ParametroDecl__Group__1__Impl
+	rule__ParametroDecl__Group__2
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Funcion__Group_3__1__Impl
+rule__ParametroDecl__Group__1__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getFuncionAccess().getTipoAssignment_3_1()); }
-	(rule__Funcion__TipoAssignment_3_1)
-	{ after(grammarAccess.getFuncionAccess().getTipoAssignment_3_1()); }
+	{ before(grammarAccess.getParametroDeclAccess().getCommentAssignment_1()); }
+	(rule__ParametroDecl__CommentAssignment_1)?
+	{ after(grammarAccess.getParametroDeclAccess().getCommentAssignment_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ParametroDecl__Group__2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__ParametroDecl__Group__2__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ParametroDecl__Group__2__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getParametroDeclAccess().getNameAssignment_2()); }
+	(rule__ParametroDecl__NameAssignment_2)
+	{ after(grammarAccess.getParametroDeclAccess().getNameAssignment_2()); }
 )
 ;
 finally {
@@ -3372,9 +4897,9 @@ rule__Return__Group__0__Impl
 	}
 :
 (
-	{ before(grammarAccess.getReturnAccess().getYEntregoAlVientoKeyword_0()); }
-	'Y entrego al viento'
-	{ after(grammarAccess.getReturnAccess().getYEntregoAlVientoKeyword_0()); }
+	{ before(grammarAccess.getReturnAccess().getAlternatives_0()); }
+	(rule__Return__Alternatives_0)
+	{ after(grammarAccess.getReturnAccess().getAlternatives_0()); }
 )
 ;
 finally {
@@ -3425,9 +4950,9 @@ rule__Return__Group__2__Impl
 	}
 :
 (
-	{ before(grammarAccess.getReturnAccess().getComoPromesaCumplidaKeyword_2()); }
-	'como promesa cumplida.'
-	{ after(grammarAccess.getReturnAccess().getComoPromesaCumplidaKeyword_2()); }
+	{ before(grammarAccess.getReturnAccess().getAlternatives_2()); }
+	(rule__Return__Alternatives_2)
+	{ after(grammarAccess.getReturnAccess().getAlternatives_2()); }
 )
 ;
 finally {
@@ -4668,9 +6193,9 @@ rule__FunctionCall__Group__1__Impl
 	}
 :
 (
-	{ before(grammarAccess.getFunctionCallAccess().getInvocoAKeyword_1()); }
-	'invoco a'
-	{ after(grammarAccess.getFunctionCallAccess().getInvocoAKeyword_1()); }
+	{ before(grammarAccess.getFunctionCallAccess().getAlternatives_1()); }
+	(rule__FunctionCall__Alternatives_1)
+	{ after(grammarAccess.getFunctionCallAccess().getAlternatives_1()); }
 )
 ;
 finally {
@@ -4710,7 +6235,6 @@ rule__FunctionCall__Group__3
 	}
 :
 	rule__FunctionCall__Group__3__Impl
-	rule__FunctionCall__Group__4
 ;
 finally {
 	restoreStackSize(stackSize);
@@ -4722,35 +6246,9 @@ rule__FunctionCall__Group__3__Impl
 	}
 :
 (
-	{ before(grammarAccess.getFunctionCallAccess().getComentarioAssignment_3()); }
-	(rule__FunctionCall__ComentarioAssignment_3)?
-	{ after(grammarAccess.getFunctionCallAccess().getComentarioAssignment_3()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__FunctionCall__Group__4
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__FunctionCall__Group__4__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__FunctionCall__Group__4__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getFunctionCallAccess().getGroup_4()); }
-	(rule__FunctionCall__Group_4__0)
-	{ after(grammarAccess.getFunctionCallAccess().getGroup_4()); }
+	{ before(grammarAccess.getFunctionCallAccess().getGroup_3()); }
+	(rule__FunctionCall__Group_3__0)?
+	{ after(grammarAccess.getFunctionCallAccess().getGroup_3()); }
 )
 ;
 finally {
@@ -4758,134 +6256,80 @@ finally {
 }
 
 
-rule__FunctionCall__Group_4__0
+rule__FunctionCall__Group_3__0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__FunctionCall__Group_4__0__Impl
-	rule__FunctionCall__Group_4__1
+	rule__FunctionCall__Group_3__0__Impl
+	rule__FunctionCall__Group_3__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionCall__Group_4__0__Impl
+rule__FunctionCall__Group_3__0__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getFunctionCallAccess().getConLosRegalosKeyword_4_0()); }
-	'con los regalos'
-	{ after(grammarAccess.getFunctionCallAccess().getConLosRegalosKeyword_4_0()); }
+	{ before(grammarAccess.getFunctionCallAccess().getAlternatives_3_0()); }
+	(rule__FunctionCall__Alternatives_3_0)
+	{ after(grammarAccess.getFunctionCallAccess().getAlternatives_3_0()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionCall__Group_4__1
+rule__FunctionCall__Group_3__1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__FunctionCall__Group_4__1__Impl
-	rule__FunctionCall__Group_4__2
+	rule__FunctionCall__Group_3__1__Impl
+	rule__FunctionCall__Group_3__2
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionCall__Group_4__1__Impl
+rule__FunctionCall__Group_3__1__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getFunctionCallAccess().getGroup_4_1()); }
-	(rule__FunctionCall__Group_4_1__0)?
-	{ after(grammarAccess.getFunctionCallAccess().getGroup_4_1()); }
+	{ before(grammarAccess.getFunctionCallAccess().getGroup_3_1()); }
+	(rule__FunctionCall__Group_3_1__0)?
+	{ after(grammarAccess.getFunctionCallAccess().getGroup_3_1()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionCall__Group_4__2
+rule__FunctionCall__Group_3__2
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__FunctionCall__Group_4__2__Impl
+	rule__FunctionCall__Group_3__2__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionCall__Group_4__2__Impl
+rule__FunctionCall__Group_3__2__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getFunctionCallAccess().getEnMiCorazNKeyword_4_2()); }
-	'en mi coraz\u00F3n'
-	{ after(grammarAccess.getFunctionCallAccess().getEnMiCorazNKeyword_4_2()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-
-rule__FunctionCall__Group_4_1__0
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__FunctionCall__Group_4_1__0__Impl
-	rule__FunctionCall__Group_4_1__1
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__FunctionCall__Group_4_1__0__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getFunctionCallAccess().getArgsAssignment_4_1_0()); }
-	(rule__FunctionCall__ArgsAssignment_4_1_0)
-	{ after(grammarAccess.getFunctionCallAccess().getArgsAssignment_4_1_0()); }
-)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__FunctionCall__Group_4_1__1
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	rule__FunctionCall__Group_4_1__1__Impl
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__FunctionCall__Group_4_1__1__Impl
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-(
-	{ before(grammarAccess.getFunctionCallAccess().getGroup_4_1_1()); }
-	(rule__FunctionCall__Group_4_1_1__0)*
-	{ after(grammarAccess.getFunctionCallAccess().getGroup_4_1_1()); }
+	{ before(grammarAccess.getFunctionCallAccess().getAlternatives_3_2()); }
+	(rule__FunctionCall__Alternatives_3_2)
+	{ after(grammarAccess.getFunctionCallAccess().getAlternatives_3_2()); }
 )
 ;
 finally {
@@ -4893,53 +6337,107 @@ finally {
 }
 
 
-rule__FunctionCall__Group_4_1_1__0
+rule__FunctionCall__Group_3_1__0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__FunctionCall__Group_4_1_1__0__Impl
-	rule__FunctionCall__Group_4_1_1__1
+	rule__FunctionCall__Group_3_1__0__Impl
+	rule__FunctionCall__Group_3_1__1
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionCall__Group_4_1_1__0__Impl
+rule__FunctionCall__Group_3_1__0__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getFunctionCallAccess().getYKeyword_4_1_1_0()); }
+	{ before(grammarAccess.getFunctionCallAccess().getArgsAssignment_3_1_0()); }
+	(rule__FunctionCall__ArgsAssignment_3_1_0)
+	{ after(grammarAccess.getFunctionCallAccess().getArgsAssignment_3_1_0()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__FunctionCall__Group_3_1__1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__FunctionCall__Group_3_1__1__Impl
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__FunctionCall__Group_3_1__1__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getFunctionCallAccess().getGroup_3_1_1()); }
+	(rule__FunctionCall__Group_3_1_1__0)*
+	{ after(grammarAccess.getFunctionCallAccess().getGroup_3_1_1()); }
+)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+
+rule__FunctionCall__Group_3_1_1__0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	rule__FunctionCall__Group_3_1_1__0__Impl
+	rule__FunctionCall__Group_3_1_1__1
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__FunctionCall__Group_3_1_1__0__Impl
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+(
+	{ before(grammarAccess.getFunctionCallAccess().getYKeyword_3_1_1_0()); }
 	'y'
-	{ after(grammarAccess.getFunctionCallAccess().getYKeyword_4_1_1_0()); }
+	{ after(grammarAccess.getFunctionCallAccess().getYKeyword_3_1_1_0()); }
 )
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionCall__Group_4_1_1__1
+rule__FunctionCall__Group_3_1_1__1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
-	rule__FunctionCall__Group_4_1_1__1__Impl
+	rule__FunctionCall__Group_3_1_1__1__Impl
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionCall__Group_4_1_1__1__Impl
+rule__FunctionCall__Group_3_1_1__1__Impl
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 (
-	{ before(grammarAccess.getFunctionCallAccess().getArgsAssignment_4_1_1_1()); }
-	(rule__FunctionCall__ArgsAssignment_4_1_1_1)
-	{ after(grammarAccess.getFunctionCallAccess().getArgsAssignment_4_1_1_1()); }
+	{ before(grammarAccess.getFunctionCallAccess().getArgsAssignment_3_1_1_1()); }
+	(rule__FunctionCall__ArgsAssignment_3_1_1_1)
+	{ after(grammarAccess.getFunctionCallAccess().getArgsAssignment_3_1_1_1()); }
 )
 ;
 finally {
@@ -5082,60 +6580,75 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Declarar__SustantivoAssignment_2
+rule__Declarar__TipoAssignment_2
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getDeclararAccess().getSustantivoMI_IDParserRuleCall_2_0()); }
+		{ before(grammarAccess.getDeclararAccess().getTipoTypeParserRuleCall_2_0()); }
+		ruleType
+		{ after(grammarAccess.getDeclararAccess().getTipoTypeParserRuleCall_2_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Declarar__SustantivoAssignment_3
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getDeclararAccess().getSustantivoMI_IDParserRuleCall_3_0()); }
 		ruleMI_ID
-		{ after(grammarAccess.getDeclararAccess().getSustantivoMI_IDParserRuleCall_2_0()); }
+		{ after(grammarAccess.getDeclararAccess().getSustantivoMI_IDParserRuleCall_3_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Declarar__PreComentarioAssignment_3
+rule__Declarar__PreComentarioAssignment_4
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getDeclararAccess().getPreComentarioCommentParserRuleCall_3_0()); }
+		{ before(grammarAccess.getDeclararAccess().getPreComentarioCommentParserRuleCall_4_0()); }
 		ruleComment
-		{ after(grammarAccess.getDeclararAccess().getPreComentarioCommentParserRuleCall_3_0()); }
+		{ after(grammarAccess.getDeclararAccess().getPreComentarioCommentParserRuleCall_4_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Declarar__ValorAssignment_4
+rule__Declarar__ValorAssignment_5
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getDeclararAccess().getValorExpressionParserRuleCall_4_0()); }
+		{ before(grammarAccess.getDeclararAccess().getValorExpressionParserRuleCall_5_0()); }
 		ruleExpression
-		{ after(grammarAccess.getDeclararAccess().getValorExpressionParserRuleCall_4_0()); }
+		{ after(grammarAccess.getDeclararAccess().getValorExpressionParserRuleCall_5_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Declarar__PostComentarioAssignment_5
+rule__Declarar__PostComentarioAssignment_6
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getDeclararAccess().getPostComentarioCommentParserRuleCall_5_0()); }
+		{ before(grammarAccess.getDeclararAccess().getPostComentarioCommentParserRuleCall_6_0()); }
 		ruleComment
-		{ after(grammarAccess.getDeclararAccess().getPostComentarioCommentParserRuleCall_5_0()); }
+		{ after(grammarAccess.getDeclararAccess().getPostComentarioCommentParserRuleCall_6_0()); }
 	)
 ;
 finally {
@@ -5277,30 +6790,45 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Condicional__InstruccionesThenAssignment_4
+rule__Condicional__CommentAssignment_3
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getCondicionalAccess().getInstruccionesThenElementoBloqueParserRuleCall_4_0()); }
-		ruleElementoBloque
-		{ after(grammarAccess.getCondicionalAccess().getInstruccionesThenElementoBloqueParserRuleCall_4_0()); }
+		{ before(grammarAccess.getCondicionalAccess().getCommentCommentParserRuleCall_3_0()); }
+		ruleComment
+		{ after(grammarAccess.getCondicionalAccess().getCommentCommentParserRuleCall_3_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Condicional__InstruccionesElseAssignment_5_2
+rule__Condicional__InstruccionesThenAssignment_5
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getCondicionalAccess().getInstruccionesElseElementoBloqueParserRuleCall_5_2_0()); }
+		{ before(grammarAccess.getCondicionalAccess().getInstruccionesThenElementoBloqueParserRuleCall_5_0()); }
 		ruleElementoBloque
-		{ after(grammarAccess.getCondicionalAccess().getInstruccionesElseElementoBloqueParserRuleCall_5_2_0()); }
+		{ after(grammarAccess.getCondicionalAccess().getInstruccionesThenElementoBloqueParserRuleCall_5_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__Condicional__InstruccionesElseAssignment_6_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getCondicionalAccess().getInstruccionesElseElementoBloqueParserRuleCall_6_1_0()); }
+		ruleElementoBloque
+		{ after(grammarAccess.getCondicionalAccess().getInstruccionesElseElementoBloqueParserRuleCall_6_1_0()); }
 	)
 ;
 finally {
@@ -5433,9 +6961,9 @@ rule__Funcion__ParametrosAssignment_2_1
 	}
 :
 	(
-		{ before(grammarAccess.getFuncionAccess().getParametrosMI_IDParserRuleCall_2_1_0()); }
-		ruleMI_ID
-		{ after(grammarAccess.getFuncionAccess().getParametrosMI_IDParserRuleCall_2_1_0()); }
+		{ before(grammarAccess.getFuncionAccess().getParametrosParametroDeclParserRuleCall_2_1_0()); }
+		ruleParametroDecl
+		{ after(grammarAccess.getFuncionAccess().getParametrosParametroDeclParserRuleCall_2_1_0()); }
 	)
 ;
 finally {
@@ -5448,39 +6976,84 @@ rule__Funcion__ParametrosAssignment_2_2_1
 	}
 :
 	(
-		{ before(grammarAccess.getFuncionAccess().getParametrosMI_IDParserRuleCall_2_2_1_0()); }
-		ruleMI_ID
-		{ after(grammarAccess.getFuncionAccess().getParametrosMI_IDParserRuleCall_2_2_1_0()); }
+		{ before(grammarAccess.getFuncionAccess().getParametrosParametroDeclParserRuleCall_2_2_1_0()); }
+		ruleParametroDecl
+		{ after(grammarAccess.getFuncionAccess().getParametrosParametroDeclParserRuleCall_2_2_1_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Funcion__TipoAssignment_3_1
+rule__Funcion__TipoAssignment_4
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getFuncionAccess().getTipoTypeParserRuleCall_3_1_0()); }
+		{ before(grammarAccess.getFuncionAccess().getTipoTypeParserRuleCall_4_0()); }
 		ruleType
-		{ after(grammarAccess.getFuncionAccess().getTipoTypeParserRuleCall_3_1_0()); }
+		{ after(grammarAccess.getFuncionAccess().getTipoTypeParserRuleCall_4_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__Funcion__InstruccionesAssignment_5
+rule__Funcion__InstruccionesAssignment_6
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getFuncionAccess().getInstruccionesElementoBloqueParserRuleCall_5_0()); }
+		{ before(grammarAccess.getFuncionAccess().getInstruccionesElementoBloqueParserRuleCall_6_0()); }
 		ruleElementoBloque
-		{ after(grammarAccess.getFuncionAccess().getInstruccionesElementoBloqueParserRuleCall_5_0()); }
+		{ after(grammarAccess.getFuncionAccess().getInstruccionesElementoBloqueParserRuleCall_6_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ParametroDecl__TipoAssignment_0
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getParametroDeclAccess().getTipoTypeParserRuleCall_0_0()); }
+		ruleType
+		{ after(grammarAccess.getParametroDeclAccess().getTipoTypeParserRuleCall_0_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ParametroDecl__CommentAssignment_1
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getParametroDeclAccess().getCommentCommentParserRuleCall_1_0()); }
+		ruleComment
+		{ after(grammarAccess.getParametroDeclAccess().getCommentCommentParserRuleCall_1_0()); }
+	)
+;
+finally {
+	restoreStackSize(stackSize);
+}
+
+rule__ParametroDecl__NameAssignment_2
+	@init {
+		int stackSize = keepStackSize();
+	}
+:
+	(
+		{ before(grammarAccess.getParametroDeclAccess().getNameMI_IDParserRuleCall_2_0()); }
+		ruleMI_ID
+		{ after(grammarAccess.getParametroDeclAccess().getNameMI_IDParserRuleCall_2_0()); }
 	)
 ;
 finally {
@@ -5658,13 +7231,9 @@ rule__UnaryExpression__OpAssignment_0_1
 	}
 :
 	(
-		{ before(grammarAccess.getUnaryExpressionAccess().getOpNoCreoQueKeyword_0_1_0()); }
-		(
-			{ before(grammarAccess.getUnaryExpressionAccess().getOpNoCreoQueKeyword_0_1_0()); }
-			'no creo que'
-			{ after(grammarAccess.getUnaryExpressionAccess().getOpNoCreoQueKeyword_0_1_0()); }
-		)
-		{ after(grammarAccess.getUnaryExpressionAccess().getOpNoCreoQueKeyword_0_1_0()); }
+		{ before(grammarAccess.getUnaryExpressionAccess().getOpAlternatives_0_1_0()); }
+		(rule__UnaryExpression__OpAlternatives_0_1_0)
+		{ after(grammarAccess.getUnaryExpressionAccess().getOpAlternatives_0_1_0()); }
 	)
 ;
 finally {
@@ -5765,45 +7334,30 @@ finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionCall__ComentarioAssignment_3
+rule__FunctionCall__ArgsAssignment_3_1_0
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getFunctionCallAccess().getComentarioCommentParserRuleCall_3_0()); }
-		ruleComment
-		{ after(grammarAccess.getFunctionCallAccess().getComentarioCommentParserRuleCall_3_0()); }
+		{ before(grammarAccess.getFunctionCallAccess().getArgsExpressionParserRuleCall_3_1_0_0()); }
+		ruleExpression
+		{ after(grammarAccess.getFunctionCallAccess().getArgsExpressionParserRuleCall_3_1_0_0()); }
 	)
 ;
 finally {
 	restoreStackSize(stackSize);
 }
 
-rule__FunctionCall__ArgsAssignment_4_1_0
+rule__FunctionCall__ArgsAssignment_3_1_1_1
 	@init {
 		int stackSize = keepStackSize();
 	}
 :
 	(
-		{ before(grammarAccess.getFunctionCallAccess().getArgsExpressionParserRuleCall_4_1_0_0()); }
+		{ before(grammarAccess.getFunctionCallAccess().getArgsExpressionParserRuleCall_3_1_1_1_0()); }
 		ruleExpression
-		{ after(grammarAccess.getFunctionCallAccess().getArgsExpressionParserRuleCall_4_1_0_0()); }
-	)
-;
-finally {
-	restoreStackSize(stackSize);
-}
-
-rule__FunctionCall__ArgsAssignment_4_1_1_1
-	@init {
-		int stackSize = keepStackSize();
-	}
-:
-	(
-		{ before(grammarAccess.getFunctionCallAccess().getArgsExpressionParserRuleCall_4_1_1_1_0()); }
-		ruleExpression
-		{ after(grammarAccess.getFunctionCallAccess().getArgsExpressionParserRuleCall_4_1_1_1_0()); }
+		{ after(grammarAccess.getFunctionCallAccess().getArgsExpressionParserRuleCall_3_1_1_1_0()); }
 	)
 ;
 finally {

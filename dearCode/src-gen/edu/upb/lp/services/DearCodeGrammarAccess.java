@@ -30,8 +30,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final RuleCall cCartaCartaParserRuleCall_0 = (RuleCall)cCartaAssignment.eContents().get(0);
 		
 		//Program:
-		//    carta=Carta
-		//;
+		//    carta=Carta;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//carta=Carta
@@ -53,8 +52,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//Carta:
 		//    saludo=Saludo
 		//    cuerpo=Cuerpo
-		//    despedida=Despedida
-		//;
+		//    despedida=Despedida;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//saludo=Saludo
@@ -86,17 +84,21 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
 		private final Keyword cQueridoKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
 		private final Keyword cQueridaKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Keyword cInspirasUnAmorDentroDeMKeyword_0_2 = (Keyword)cAlternatives_0.eContents().get(2);
+		private final Keyword cEresLaChispaDeMiAlmaKeyword_0_3 = (Keyword)cAlternatives_0.eContents().get(3);
+		private final Keyword cTuLuzDespiertaMiSerKeyword_0_4 = (Keyword)cAlternatives_0.eContents().get(4);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cFullStopKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
-		//Saludo: ('Querido'|'Querida') name=ID '.';
+		//Saludo:
+		//    ('Querido' | 'Querida' | 'Inspiras un amor dentro de mí' | 'Eres la chispa de mi alma' | 'Tu luz despierta mi ser') name=ID '.';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('Querido'|'Querida') name=ID '.'
+		//('Querido' | 'Querida' | 'Inspiras un amor dentro de mí' | 'Eres la chispa de mi alma' | 'Tu luz despierta mi ser') name=ID '.'
 		public Group getGroup() { return cGroup; }
 		
-		//('Querido'|'Querida')
+		//('Querido' | 'Querida' | 'Inspiras un amor dentro de mí' | 'Eres la chispa de mi alma' | 'Tu luz despierta mi ser')
 		public Alternatives getAlternatives_0() { return cAlternatives_0; }
 		
 		//'Querido'
@@ -104,6 +106,15 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		
 		//'Querida'
 		public Keyword getQueridaKeyword_0_1() { return cQueridaKeyword_0_1; }
+		
+		//'Inspiras un amor dentro de mí'
+		public Keyword getInspirasUnAmorDentroDeMKeyword_0_2() { return cInspirasUnAmorDentroDeMKeyword_0_2; }
+		
+		//'Eres la chispa de mi alma'
+		public Keyword getEresLaChispaDeMiAlmaKeyword_0_3() { return cEresLaChispaDeMiAlmaKeyword_0_3; }
+		
+		//'Tu luz despierta mi ser'
+		public Keyword getTuLuzDespiertaMiSerKeyword_0_4() { return cTuLuzDespiertaMiSerKeyword_0_4; }
 		
 		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -117,19 +128,36 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	public class DespedidaElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.DearCode.Despedida");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cConCariOTuProgramadorKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Keyword cConCariOTuProgramadorKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
+		private final Keyword cEsperoLaNocheParaTenerteConmigoKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Keyword cTengoLaSuerteDeTenerteSiempreKeyword_0_2 = (Keyword)cAlternatives_0.eContents().get(2);
+		private final Keyword cHacesQueMiCorazNSeAcelereKeyword_0_3 = (Keyword)cAlternatives_0.eContents().get(3);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameIDTerminalRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Keyword cFullStopKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
-		//Despedida: 'Con cariño, Tu programador' name=ID '.';
+		//Despedida:
+		//    ('Con cariño, Tu programador' | 'Espero la noche para tenerte conmigo' | 'Tengo la suerte de tenerte siempre' | 'Haces que mi corazón se acelere') name=ID '.';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Con cariño, Tu programador' name=ID '.'
+		//('Con cariño, Tu programador' | 'Espero la noche para tenerte conmigo' | 'Tengo la suerte de tenerte siempre' | 'Haces que mi corazón se acelere') name=ID '.'
 		public Group getGroup() { return cGroup; }
 		
+		//('Con cariño, Tu programador' | 'Espero la noche para tenerte conmigo' | 'Tengo la suerte de tenerte siempre' | 'Haces que mi corazón se acelere')
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+		
 		//'Con cariño, Tu programador'
-		public Keyword getConCariOTuProgramadorKeyword_0() { return cConCariOTuProgramadorKeyword_0; }
+		public Keyword getConCariOTuProgramadorKeyword_0_0() { return cConCariOTuProgramadorKeyword_0_0; }
+		
+		//'Espero la noche para tenerte conmigo'
+		public Keyword getEsperoLaNocheParaTenerteConmigoKeyword_0_1() { return cEsperoLaNocheParaTenerteConmigoKeyword_0_1; }
+		
+		//'Tengo la suerte de tenerte siempre'
+		public Keyword getTengoLaSuerteDeTenerteSiempreKeyword_0_2() { return cTengoLaSuerteDeTenerteSiempreKeyword_0_2; }
+		
+		//'Haces que mi corazón se acelere'
+		public Keyword getHacesQueMiCorazNSeAcelereKeyword_0_3() { return cHacesQueMiCorazNSeAcelereKeyword_0_3; }
 		
 		//name=ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
@@ -145,7 +173,8 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Assignment cInstruccionesAssignment = (Assignment)rule.eContents().get(1);
 		private final RuleCall cInstruccionesInstruccionParserRuleCall_0 = (RuleCall)cInstruccionesAssignment.eContents().get(0);
 		
-		//Cuerpo: instrucciones+=Instruccion+;
+		//Cuerpo:
+		//    instrucciones+=Instruccion+;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//instrucciones+=Instruccion+
@@ -168,13 +197,10 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final RuleCall cFunctionCallParserRuleCall_8 = (RuleCall)cAlternatives.eContents().get(8);
 		
 		//Instruccion:
-		//    Declarar | Reasignar | Condicional
-		//    | BucleWhile | BucleFor | Entrada | Salida | Funcion | FunctionCall
-		//;
+		//    Declarar | Reasignar | Condicional | BucleWhile | BucleFor | Entrada | Salida | Funcion | FunctionCall;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//Declarar | Reasignar | Condicional
-		//| BucleWhile | BucleFor | Entrada | Salida | Funcion | FunctionCall
+		//Declarar | Reasignar | Condicional | BucleWhile | BucleFor | Entrada | Salida | Funcion | FunctionCall
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//Declarar
@@ -204,6 +230,29 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//FunctionCall
 		public RuleCall getFunctionCallParserRuleCall_8() { return cFunctionCallParserRuleCall_8; }
 	}
+	public class TypeElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.DearCode.Type");
+		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
+		private final Keyword cNMeroKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
+		private final Keyword cTextoKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cBooleanoKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		
+		//// Tipos básicos
+		//Type: 'número' | 'texto' | 'booleano';
+		@Override public ParserRule getRule() { return rule; }
+		
+		//'número' | 'texto' | 'booleano'
+		public Alternatives getAlternatives() { return cAlternatives; }
+		
+		//'número'
+		public Keyword getNMeroKeyword_0() { return cNMeroKeyword_0; }
+		
+		//'texto'
+		public Keyword getTextoKeyword_1() { return cTextoKeyword_1; }
+		
+		//'booleano'
+		public Keyword getBooleanoKeyword_2() { return cBooleanoKeyword_2; }
+	}
 	public class DeclararElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.DearCode.Declarar");
 		private final Group cGroup = (Group)rule.eContents().get(1);
@@ -211,34 +260,23 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final RuleCall cVerboDeclVerboDeclaracionParserRuleCall_0_0 = (RuleCall)cVerboDeclAssignment_0.eContents().get(0);
 		private final Assignment cArticuloAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cArticuloArticuloParserRuleCall_1_0 = (RuleCall)cArticuloAssignment_1.eContents().get(0);
-		private final Assignment cSustantivoAssignment_2 = (Assignment)cGroup.eContents().get(2);
-		private final RuleCall cSustantivoMI_IDParserRuleCall_2_0 = (RuleCall)cSustantivoAssignment_2.eContents().get(0);
-		private final Assignment cPreComentarioAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cPreComentarioCommentParserRuleCall_3_0 = (RuleCall)cPreComentarioAssignment_3.eContents().get(0);
-		private final Assignment cValorAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cValorExpressionParserRuleCall_4_0 = (RuleCall)cValorAssignment_4.eContents().get(0);
-		private final Assignment cPostComentarioAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cPostComentarioCommentParserRuleCall_5_0 = (RuleCall)cPostComentarioAssignment_5.eContents().get(0);
-		private final Keyword cFullStopKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cTipoAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cTipoTypeParserRuleCall_2_0 = (RuleCall)cTipoAssignment_2.eContents().get(0);
+		private final Assignment cSustantivoAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cSustantivoMI_IDParserRuleCall_3_0 = (RuleCall)cSustantivoAssignment_3.eContents().get(0);
+		private final Assignment cPreComentarioAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cPreComentarioCommentParserRuleCall_4_0 = (RuleCall)cPreComentarioAssignment_4.eContents().get(0);
+		private final Assignment cValorAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cValorExpressionParserRuleCall_5_0 = (RuleCall)cValorAssignment_5.eContents().get(0);
+		private final Assignment cPostComentarioAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cPostComentarioCommentParserRuleCall_6_0 = (RuleCall)cPostComentarioAssignment_6.eContents().get(0);
+		private final Keyword cFullStopKeyword_7 = (Keyword)cGroup.eContents().get(7);
 		
 		//Declarar:
-		//    verboDecl=VerboDeclaracion
-		//    articulo=Articulo
-		//    sustantivo=MI_ID
-		//    preComentario=Comment?
-		//    valor=Expression
-		//    postComentario=Comment?
-		//    '.'
-		//;
+		//    verboDecl=VerboDeclaracion articulo=Articulo (tipo=Type)? sustantivo=MI_ID preComentario=Comment? valor=Expression postComentario=Comment? '.';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//verboDecl=VerboDeclaracion
-		//articulo=Articulo
-		//sustantivo=MI_ID
-		//preComentario=Comment?
-		//valor=Expression
-		//postComentario=Comment?
-		//'.'
+		//verboDecl=VerboDeclaracion articulo=Articulo (tipo=Type)? sustantivo=MI_ID preComentario=Comment? valor=Expression postComentario=Comment? '.'
 		public Group getGroup() { return cGroup; }
 		
 		//verboDecl=VerboDeclaracion
@@ -253,32 +291,38 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//Articulo
 		public RuleCall getArticuloArticuloParserRuleCall_1_0() { return cArticuloArticuloParserRuleCall_1_0; }
 		
+		//(tipo=Type)?
+		public Assignment getTipoAssignment_2() { return cTipoAssignment_2; }
+		
+		//Type
+		public RuleCall getTipoTypeParserRuleCall_2_0() { return cTipoTypeParserRuleCall_2_0; }
+		
 		//sustantivo=MI_ID
-		public Assignment getSustantivoAssignment_2() { return cSustantivoAssignment_2; }
+		public Assignment getSustantivoAssignment_3() { return cSustantivoAssignment_3; }
 		
 		//MI_ID
-		public RuleCall getSustantivoMI_IDParserRuleCall_2_0() { return cSustantivoMI_IDParserRuleCall_2_0; }
+		public RuleCall getSustantivoMI_IDParserRuleCall_3_0() { return cSustantivoMI_IDParserRuleCall_3_0; }
 		
 		//preComentario=Comment?
-		public Assignment getPreComentarioAssignment_3() { return cPreComentarioAssignment_3; }
+		public Assignment getPreComentarioAssignment_4() { return cPreComentarioAssignment_4; }
 		
 		//Comment
-		public RuleCall getPreComentarioCommentParserRuleCall_3_0() { return cPreComentarioCommentParserRuleCall_3_0; }
+		public RuleCall getPreComentarioCommentParserRuleCall_4_0() { return cPreComentarioCommentParserRuleCall_4_0; }
 		
 		//valor=Expression
-		public Assignment getValorAssignment_4() { return cValorAssignment_4; }
+		public Assignment getValorAssignment_5() { return cValorAssignment_5; }
 		
 		//Expression
-		public RuleCall getValorExpressionParserRuleCall_4_0() { return cValorExpressionParserRuleCall_4_0; }
+		public RuleCall getValorExpressionParserRuleCall_5_0() { return cValorExpressionParserRuleCall_5_0; }
 		
 		//postComentario=Comment?
-		public Assignment getPostComentarioAssignment_5() { return cPostComentarioAssignment_5; }
+		public Assignment getPostComentarioAssignment_6() { return cPostComentarioAssignment_6; }
 		
 		//Comment
-		public RuleCall getPostComentarioCommentParserRuleCall_5_0() { return cPostComentarioCommentParserRuleCall_5_0; }
+		public RuleCall getPostComentarioCommentParserRuleCall_6_0() { return cPostComentarioCommentParserRuleCall_6_0; }
 		
 		//'.'
-		public Keyword getFullStopKeyword_6() { return cFullStopKeyword_6; }
+		public Keyword getFullStopKeyword_7() { return cFullStopKeyword_7; }
 	}
 	public class ReasignarElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.DearCode.Reasignar");
@@ -298,23 +342,10 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Keyword cFullStopKeyword_6 = (Keyword)cGroup.eContents().get(6);
 		
 		//Reasignar:
-		//    verboReas=VerboReasignacion
-		//    preComentario=Comment?
-		//    sustantivo=MI_ID
-		//    postComentario=Comment?
-		//    valor=Expression
-		//    comentario=Comment?
-		//    '.'
-		//;
+		//    verboReas=VerboReasignacion preComentario=Comment? sustantivo=MI_ID postComentario=Comment? valor=Expression comentario=Comment? '.';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//verboReas=VerboReasignacion
-		//preComentario=Comment?
-		//sustantivo=MI_ID
-		//postComentario=Comment?
-		//valor=Expression
-		//comentario=Comment?
-		//'.'
+		//verboReas=VerboReasignacion preComentario=Comment? sustantivo=MI_ID postComentario=Comment? valor=Expression comentario=Comment? '.'
 		public Group getGroup() { return cGroup; }
 		
 		//verboReas=VerboReasignacion
@@ -359,28 +390,77 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	public class EntradaElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.DearCode.Entrada");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cLePedAlLectorQueMeDijeraKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Keyword cLePedAlLectorQueMeDijeraKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
+		private final Keyword cLeKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Keyword cEscuchoTuVozEnElVientoKeyword_0_2 = (Keyword)cAlternatives_0.eContents().get(2);
+		private final Keyword cAtrapoUnSuspiroTuyoKeyword_0_3 = (Keyword)cAlternatives_0.eContents().get(3);
+		private final Keyword cRecojoTusPalabrasComoPTalosAlAlbaKeyword_0_4 = (Keyword)cAlternatives_0.eContents().get(4);
+		private final Keyword cTuAlientoMeHablaEnSilencioKeyword_0_5 = (Keyword)cAlternatives_0.eContents().get(5);
+		private final Keyword cAcaricioElEcoDeTuVozKeyword_0_6 = (Keyword)cAlternatives_0.eContents().get(6);
+		private final Keyword cGuardoTusSecretosEnMiPechoKeyword_0_7 = (Keyword)cAlternatives_0.eContents().get(7);
+		private final Keyword cEsperoTuSusurroComoUnAmanecerKeyword_0_8 = (Keyword)cAlternatives_0.eContents().get(8);
 		private final Assignment cVariableAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cVariableMI_IDParserRuleCall_1_0 = (RuleCall)cVariableAssignment_1.eContents().get(0);
 		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
 		private final Keyword cEnUnSusurroNumRicoKeyword_2_0 = (Keyword)cAlternatives_2.eContents().get(0);
 		private final Keyword cConPalabrasDeTerciopeloKeyword_2_1 = (Keyword)cAlternatives_2.eContents().get(1);
+		private final Keyword cConUnEcoNumRicoKeyword_2_2 = (Keyword)cAlternatives_2.eContents().get(2);
+		private final Keyword cEnUnLatidoSuaveKeyword_2_3 = (Keyword)cAlternatives_2.eContents().get(3);
+		private final Keyword cComoUnVersoEscritoEnElCieloKeyword_2_4 = (Keyword)cAlternatives_2.eContents().get(4);
+		private final Keyword cEnvueltoEnLaLuzDeTusOjosKeyword_2_5 = (Keyword)cAlternatives_2.eContents().get(5);
+		private final Keyword cConElPerfumeDeTuEsenciaKeyword_2_6 = (Keyword)cAlternatives_2.eContents().get(6);
+		private final Keyword cDanzandoEnElCompSDeMiCorazNKeyword_2_7 = (Keyword)cAlternatives_2.eContents().get(7);
+		private final Keyword cTejiendoSueOsConTusLetrasKeyword_2_8 = (Keyword)cAlternatives_2.eContents().get(8);
 		private final Keyword cFullStopKeyword_3 = (Keyword)cGroup.eContents().get(3);
 		
 		//Entrada:
-		//    'Le pedí al lector que me dijera' variable=MI_ID
-		//    ("en un susurro numérico" | "con palabras de terciopelo")?
-		//    '.'
-		//;
+		//    ('Le pedí al lector que me dijera' | 'Le' | 'Escucho tu voz en el viento' | 'Atrapo un suspiro tuyo' | 'Recojo tus palabras como pétalos al alba' |
+		//     'Tu aliento me habla en silencio' | 'Acaricio el eco de tu voz' | 'Guardo tus secretos en mi pecho' | 'Espero tu susurro como un amanecer')
+		//    variable=MI_ID
+		//    ("en un susurro numérico" | "con palabras de terciopelo" | 'con un eco numérico' | 'en un latido suave' | 'como un verso escrito en el cielo' |
+		//     'envuelto en la luz de tus ojos' | 'con el perfume de tu esencia' | 'danzando en el compás de mi corazón' | 'tejiendo sueños con tus letras')?
+		//    '.';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Le pedí al lector que me dijera' variable=MI_ID
-		//("en un susurro numérico" | "con palabras de terciopelo")?
+		//('Le pedí al lector que me dijera' | 'Le' | 'Escucho tu voz en el viento' | 'Atrapo un suspiro tuyo' | 'Recojo tus palabras como pétalos al alba' |
+		// 'Tu aliento me habla en silencio' | 'Acaricio el eco de tu voz' | 'Guardo tus secretos en mi pecho' | 'Espero tu susurro como un amanecer')
+		//variable=MI_ID
+		//("en un susurro numérico" | "con palabras de terciopelo" | 'con un eco numérico' | 'en un latido suave' | 'como un verso escrito en el cielo' |
+		// 'envuelto en la luz de tus ojos' | 'con el perfume de tu esencia' | 'danzando en el compás de mi corazón' | 'tejiendo sueños con tus letras')?
 		//'.'
 		public Group getGroup() { return cGroup; }
 		
+		//('Le pedí al lector que me dijera' | 'Le' | 'Escucho tu voz en el viento' | 'Atrapo un suspiro tuyo' | 'Recojo tus palabras como pétalos al alba' |
+		// 'Tu aliento me habla en silencio' | 'Acaricio el eco de tu voz' | 'Guardo tus secretos en mi pecho' | 'Espero tu susurro como un amanecer')
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+		
 		//'Le pedí al lector que me dijera'
-		public Keyword getLePedAlLectorQueMeDijeraKeyword_0() { return cLePedAlLectorQueMeDijeraKeyword_0; }
+		public Keyword getLePedAlLectorQueMeDijeraKeyword_0_0() { return cLePedAlLectorQueMeDijeraKeyword_0_0; }
+		
+		//'Le'
+		public Keyword getLeKeyword_0_1() { return cLeKeyword_0_1; }
+		
+		//'Escucho tu voz en el viento'
+		public Keyword getEscuchoTuVozEnElVientoKeyword_0_2() { return cEscuchoTuVozEnElVientoKeyword_0_2; }
+		
+		//'Atrapo un suspiro tuyo'
+		public Keyword getAtrapoUnSuspiroTuyoKeyword_0_3() { return cAtrapoUnSuspiroTuyoKeyword_0_3; }
+		
+		//'Recojo tus palabras como pétalos al alba'
+		public Keyword getRecojoTusPalabrasComoPTalosAlAlbaKeyword_0_4() { return cRecojoTusPalabrasComoPTalosAlAlbaKeyword_0_4; }
+		
+		//'Tu aliento me habla en silencio'
+		public Keyword getTuAlientoMeHablaEnSilencioKeyword_0_5() { return cTuAlientoMeHablaEnSilencioKeyword_0_5; }
+		
+		//'Acaricio el eco de tu voz'
+		public Keyword getAcaricioElEcoDeTuVozKeyword_0_6() { return cAcaricioElEcoDeTuVozKeyword_0_6; }
+		
+		//'Guardo tus secretos en mi pecho'
+		public Keyword getGuardoTusSecretosEnMiPechoKeyword_0_7() { return cGuardoTusSecretosEnMiPechoKeyword_0_7; }
+		
+		//'Espero tu susurro como un amanecer'
+		public Keyword getEsperoTuSusurroComoUnAmanecerKeyword_0_8() { return cEsperoTuSusurroComoUnAmanecerKeyword_0_8; }
 		
 		//variable=MI_ID
 		public Assignment getVariableAssignment_1() { return cVariableAssignment_1; }
@@ -388,7 +468,8 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//MI_ID
 		public RuleCall getVariableMI_IDParserRuleCall_1_0() { return cVariableMI_IDParserRuleCall_1_0; }
 		
-		//("en un susurro numérico" | "con palabras de terciopelo")?
+		//("en un susurro numérico" | "con palabras de terciopelo" | 'con un eco numérico' | 'en un latido suave' | 'como un verso escrito en el cielo' |
+		// 'envuelto en la luz de tus ojos' | 'con el perfume de tu esencia' | 'danzando en el compás de mi corazón' | 'tejiendo sueños con tus letras')?
 		public Alternatives getAlternatives_2() { return cAlternatives_2; }
 		
 		//"en un susurro numérico"
@@ -397,27 +478,81 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//"con palabras de terciopelo"
 		public Keyword getConPalabrasDeTerciopeloKeyword_2_1() { return cConPalabrasDeTerciopeloKeyword_2_1; }
 		
+		//'con un eco numérico'
+		public Keyword getConUnEcoNumRicoKeyword_2_2() { return cConUnEcoNumRicoKeyword_2_2; }
+		
+		//'en un latido suave'
+		public Keyword getEnUnLatidoSuaveKeyword_2_3() { return cEnUnLatidoSuaveKeyword_2_3; }
+		
+		//'como un verso escrito en el cielo'
+		public Keyword getComoUnVersoEscritoEnElCieloKeyword_2_4() { return cComoUnVersoEscritoEnElCieloKeyword_2_4; }
+		
+		//'envuelto en la luz de tus ojos'
+		public Keyword getEnvueltoEnLaLuzDeTusOjosKeyword_2_5() { return cEnvueltoEnLaLuzDeTusOjosKeyword_2_5; }
+		
+		//'con el perfume de tu esencia'
+		public Keyword getConElPerfumeDeTuEsenciaKeyword_2_6() { return cConElPerfumeDeTuEsenciaKeyword_2_6; }
+		
+		//'danzando en el compás de mi corazón'
+		public Keyword getDanzandoEnElCompSDeMiCorazNKeyword_2_7() { return cDanzandoEnElCompSDeMiCorazNKeyword_2_7; }
+		
+		//'tejiendo sueños con tus letras'
+		public Keyword getTejiendoSueOsConTusLetrasKeyword_2_8() { return cTejiendoSueOsConTusLetrasKeyword_2_8; }
+		
 		//'.'
 		public Keyword getFullStopKeyword_3() { return cFullStopKeyword_3; }
 	}
 	public class SalidaElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.DearCode.Salida");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cHoyLeQuiseContarAlMundoSobreKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Keyword cHoyLeQuiseContarAlMundoSobreKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
+		private final Keyword cDejoQueElMundoSientaSobreKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Keyword cSusurroAlUniversoElSecretoSobreKeyword_0_2 = (Keyword)cAlternatives_0.eContents().get(2);
+		private final Keyword cGraboEnElFirmamentoMiVerdadAcercaDeKeyword_0_3 = (Keyword)cAlternatives_0.eContents().get(3);
+		private final Keyword cCantoAlVientoMiAnheloDeKeyword_0_4 = (Keyword)cAlternatives_0.eContents().get(4);
+		private final Keyword cEnvOAlHorizonteMiPasiNSobreKeyword_0_5 = (Keyword)cAlternatives_0.eContents().get(5);
+		private final Keyword cDejoQueLasNubesAbracenMiVozEnKeyword_0_6 = (Keyword)cAlternatives_0.eContents().get(6);
 		private final Assignment cExpresionAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cExpresionExpressionParserRuleCall_1_0 = (RuleCall)cExpresionAssignment_1.eContents().get(0);
 		private final Keyword cFullStopKeyword_2 = (Keyword)cGroup.eContents().get(2);
 		
 		//Salida:
-		//    'Hoy le quise contar al mundo sobre:' expresion=Expression '.'
-		//;
+		//    ('Hoy le quise contar al mundo sobre:' | 'Dejo que el mundo sienta sobre:' | 'Susurro al universo el secreto sobre:' |
+		//     'Grabo en el firmamento mi verdad acerca de:' | 'Canto al viento mi anhelo de:' | 'Envío al horizonte mi pasión sobre:' |
+		//     'Dejo que las nubes abracen mi voz en:') expresion=Expression '.';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Hoy le quise contar al mundo sobre:' expresion=Expression '.'
+		//('Hoy le quise contar al mundo sobre:' | 'Dejo que el mundo sienta sobre:' | 'Susurro al universo el secreto sobre:' |
+		// 'Grabo en el firmamento mi verdad acerca de:' | 'Canto al viento mi anhelo de:' | 'Envío al horizonte mi pasión sobre:' |
+		// 'Dejo que las nubes abracen mi voz en:') expresion=Expression '.'
 		public Group getGroup() { return cGroup; }
 		
+		//('Hoy le quise contar al mundo sobre:' | 'Dejo que el mundo sienta sobre:' | 'Susurro al universo el secreto sobre:' |
+		// 'Grabo en el firmamento mi verdad acerca de:' | 'Canto al viento mi anhelo de:' | 'Envío al horizonte mi pasión sobre:' |
+		// 'Dejo que las nubes abracen mi voz en:')
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+		
 		//'Hoy le quise contar al mundo sobre:'
-		public Keyword getHoyLeQuiseContarAlMundoSobreKeyword_0() { return cHoyLeQuiseContarAlMundoSobreKeyword_0; }
+		public Keyword getHoyLeQuiseContarAlMundoSobreKeyword_0_0() { return cHoyLeQuiseContarAlMundoSobreKeyword_0_0; }
+		
+		//'Dejo que el mundo sienta sobre:'
+		public Keyword getDejoQueElMundoSientaSobreKeyword_0_1() { return cDejoQueElMundoSientaSobreKeyword_0_1; }
+		
+		//'Susurro al universo el secreto sobre:'
+		public Keyword getSusurroAlUniversoElSecretoSobreKeyword_0_2() { return cSusurroAlUniversoElSecretoSobreKeyword_0_2; }
+		
+		//'Grabo en el firmamento mi verdad acerca de:'
+		public Keyword getGraboEnElFirmamentoMiVerdadAcercaDeKeyword_0_3() { return cGraboEnElFirmamentoMiVerdadAcercaDeKeyword_0_3; }
+		
+		//'Canto al viento mi anhelo de:'
+		public Keyword getCantoAlVientoMiAnheloDeKeyword_0_4() { return cCantoAlVientoMiAnheloDeKeyword_0_4; }
+		
+		//'Envío al horizonte mi pasión sobre:'
+		public Keyword getEnvOAlHorizonteMiPasiNSobreKeyword_0_5() { return cEnvOAlHorizonteMiPasiNSobreKeyword_0_5; }
+		
+		//'Dejo que las nubes abracen mi voz en:'
+		public Keyword getDejoQueLasNubesAbracenMiVozEnKeyword_0_6() { return cDejoQueLasNubesAbracenMiVozEnKeyword_0_6; }
 		
 		//expresion=Expression
 		public Assignment getExpresionAssignment_1() { return cExpresionAssignment_1; }
@@ -435,8 +570,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final RuleCall cReturnParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//ElementoBloque:
-		//    Instruccion | Return
-		//;
+		//    Instruccion | Return;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//Instruccion | Return
@@ -451,42 +585,81 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	public class CondicionalElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.DearCode.Condicional");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cSiEnTuCorazonSientesQueKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Keyword cSiEnTuCorazonSientesQueKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
+		private final Keyword cSiTuAlmaSusurraQueKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Keyword cSiElLatidoDeMiAlmaDiceQueKeyword_0_2 = (Keyword)cAlternatives_0.eContents().get(2);
+		private final Keyword cSiElDestinoNosSusurraQueKeyword_0_3 = (Keyword)cAlternatives_0.eContents().get(3);
+		private final Keyword cSiLaLunaReflejaQueKeyword_0_4 = (Keyword)cAlternatives_0.eContents().get(4);
 		private final Assignment cCondicionAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cCondicionExpressionParserRuleCall_1_0 = (RuleCall)cCondicionAssignment_1.eContents().get(0);
 		private final Keyword cCommaKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cEntoncesDejaQueEstasPalabrasFlorezcanKeyword_3 = (Keyword)cGroup.eContents().get(3);
-		private final Assignment cInstruccionesThenAssignment_4 = (Assignment)cGroup.eContents().get(4);
-		private final RuleCall cInstruccionesThenElementoBloqueParserRuleCall_4_0 = (RuleCall)cInstruccionesThenAssignment_4.eContents().get(0);
-		private final Group cGroup_5 = (Group)cGroup.eContents().get(5);
-		private final Keyword cPeroSiElDestinoDijeraLoContrarioKeyword_5_0 = (Keyword)cGroup_5.eContents().get(0);
-		private final Keyword cQueBrotenEstasVerdadesKeyword_5_1 = (Keyword)cGroup_5.eContents().get(1);
-		private final Assignment cInstruccionesElseAssignment_5_2 = (Assignment)cGroup_5.eContents().get(2);
-		private final RuleCall cInstruccionesElseElementoBloqueParserRuleCall_5_2_0 = (RuleCall)cInstruccionesElseAssignment_5_2.eContents().get(0);
-		private final Keyword cYAsElUniversoSigueSuCursoKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final Assignment cCommentAssignment_3 = (Assignment)cGroup.eContents().get(3);
+		private final RuleCall cCommentCommentParserRuleCall_3_0 = (RuleCall)cCommentAssignment_3.eContents().get(0);
+		private final Alternatives cAlternatives_4 = (Alternatives)cGroup.eContents().get(4);
+		private final Keyword cEntoncesDejaQueEstasPalabrasFlorezcanKeyword_4_0 = (Keyword)cAlternatives_4.eContents().get(0);
+		private final Keyword cEntoncesQueBroteEsteAmorKeyword_4_1 = (Keyword)cAlternatives_4.eContents().get(1);
+		private final Keyword cEntoncesQueNazcaEsteSueOKeyword_4_2 = (Keyword)cAlternatives_4.eContents().get(2);
+		private final Keyword cEntoncesQueElUniversoConspireKeyword_4_3 = (Keyword)cAlternatives_4.eContents().get(3);
+		private final Keyword cEntoncesQueMiVozTeAbraceKeyword_4_4 = (Keyword)cAlternatives_4.eContents().get(4);
+		private final Assignment cInstruccionesThenAssignment_5 = (Assignment)cGroup.eContents().get(5);
+		private final RuleCall cInstruccionesThenElementoBloqueParserRuleCall_5_0 = (RuleCall)cInstruccionesThenAssignment_5.eContents().get(0);
+		private final Group cGroup_6 = (Group)cGroup.eContents().get(6);
+		private final Alternatives cAlternatives_6_0 = (Alternatives)cGroup_6.eContents().get(0);
+		private final Group cGroup_6_0_0 = (Group)cAlternatives_6_0.eContents().get(0);
+		private final Keyword cPeroSiLaNocheCallaOtraVerdadKeyword_6_0_0_0 = (Keyword)cGroup_6_0_0.eContents().get(0);
+		private final Keyword cQueSurjaEsteSuspiroKeyword_6_0_0_1 = (Keyword)cGroup_6_0_0.eContents().get(1);
+		private final Group cGroup_6_0_1 = (Group)cAlternatives_6_0.eContents().get(1);
+		private final Keyword cPeroSiElVientoTraeOtroMensajeKeyword_6_0_1_0 = (Keyword)cGroup_6_0_1.eContents().get(0);
+		private final Keyword cQueDespierteEstaPasiNKeyword_6_0_1_1 = (Keyword)cGroup_6_0_1.eContents().get(1);
+		private final Group cGroup_6_0_2 = (Group)cAlternatives_6_0.eContents().get(2);
+		private final Keyword cPeroSiElCorazNDudaKeyword_6_0_2_0 = (Keyword)cGroup_6_0_2.eContents().get(0);
+		private final Keyword cQueRenazcaEstaEsperanzaKeyword_6_0_2_1 = (Keyword)cGroup_6_0_2.eContents().get(1);
+		private final Assignment cInstruccionesElseAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
+		private final RuleCall cInstruccionesElseElementoBloqueParserRuleCall_6_1_0 = (RuleCall)cInstruccionesElseAssignment_6_1.eContents().get(0);
+		private final Alternatives cAlternatives_7 = (Alternatives)cGroup.eContents().get(7);
+		private final Keyword cYAsElUniversoSigueSuCursoKeyword_7_0 = (Keyword)cAlternatives_7.eContents().get(0);
+		private final Keyword cAsSigueElCantoDelCorazNKeyword_7_1 = (Keyword)cAlternatives_7.eContents().get(1);
+		private final Keyword cYAsLaMelodAContinAKeyword_7_2 = (Keyword)cAlternatives_7.eContents().get(2);
+		private final Keyword cYElEcoDeNuestroAmorPerduraKeyword_7_3 = (Keyword)cAlternatives_7.eContents().get(3);
+		private final Keyword cYLaDanzaDeLasEstrellasSigueKeyword_7_4 = (Keyword)cAlternatives_7.eContents().get(4);
 		
 		//Condicional:
-		//    'Si en tu corazon sientes que' condicion=Expression ','
-		//        'entonces deja que estas palabras florezcan:'
-		//        instruccionesThen+=ElementoBloque+
-		//    ( 'Pero si el destino dijera lo contrario,'
-		//        'que broten estas verdades:'
-		//        instruccionesElse+=ElementoBloque+ )?
-		//    'Y así el universo sigue su curso.'
-		//;
+		//    ('Si en tu corazon sientes que' | 'Si tu alma susurra que' | 'Si el latido de mi alma dice que' | 'Si el destino nos susurra que' | 'Si la luna refleja que')
+		//    condicion=Expression ','
+		//    comment+=Comment?
+		//    ('entonces deja que estas palabras florezcan:' | 'entonces que brote este amor:' | 'entonces que nazca este sueño:' | 'entonces que el universo conspire:' | 'entonces que mi voz te abrace:')
+		//    instruccionesThen+=ElementoBloque+
+		//    (('Pero si la noche calla otra verdad,' 'que surja este suspiro:' | 'Pero si el viento trae otro mensaje,' 'que despierte esta pasión:' | 'Pero si el corazón duda,' 'que renazca esta esperanza:') instruccionesElse+=ElementoBloque+)?
+		//    ('Y así el universo sigue su curso.' | 'Así sigue el canto del corazón.' | 'Y así la melodía continúa.' | 'Y el eco de nuestro amor perdura.' | 'Y la danza de las estrellas sigue.');
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Si en tu corazon sientes que' condicion=Expression ','
-		//    'entonces deja que estas palabras florezcan:'
-		//    instruccionesThen+=ElementoBloque+
-		//( 'Pero si el destino dijera lo contrario,'
-		//    'que broten estas verdades:'
-		//    instruccionesElse+=ElementoBloque+ )?
-		//'Y así el universo sigue su curso.'
+		//('Si en tu corazon sientes que' | 'Si tu alma susurra que' | 'Si el latido de mi alma dice que' | 'Si el destino nos susurra que' | 'Si la luna refleja que')
+		//condicion=Expression ','
+		//comment+=Comment?
+		//('entonces deja que estas palabras florezcan:' | 'entonces que brote este amor:' | 'entonces que nazca este sueño:' | 'entonces que el universo conspire:' | 'entonces que mi voz te abrace:')
+		//instruccionesThen+=ElementoBloque+
+		//(('Pero si la noche calla otra verdad,' 'que surja este suspiro:' | 'Pero si el viento trae otro mensaje,' 'que despierte esta pasión:' | 'Pero si el corazón duda,' 'que renazca esta esperanza:') instruccionesElse+=ElementoBloque+)?
+		//('Y así el universo sigue su curso.' | 'Así sigue el canto del corazón.' | 'Y así la melodía continúa.' | 'Y el eco de nuestro amor perdura.' | 'Y la danza de las estrellas sigue.')
 		public Group getGroup() { return cGroup; }
 		
+		//('Si en tu corazon sientes que' | 'Si tu alma susurra que' | 'Si el latido de mi alma dice que' | 'Si el destino nos susurra que' | 'Si la luna refleja que')
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+		
 		//'Si en tu corazon sientes que'
-		public Keyword getSiEnTuCorazonSientesQueKeyword_0() { return cSiEnTuCorazonSientesQueKeyword_0; }
+		public Keyword getSiEnTuCorazonSientesQueKeyword_0_0() { return cSiEnTuCorazonSientesQueKeyword_0_0; }
+		
+		//'Si tu alma susurra que'
+		public Keyword getSiTuAlmaSusurraQueKeyword_0_1() { return cSiTuAlmaSusurraQueKeyword_0_1; }
+		
+		//'Si el latido de mi alma dice que'
+		public Keyword getSiElLatidoDeMiAlmaDiceQueKeyword_0_2() { return cSiElLatidoDeMiAlmaDiceQueKeyword_0_2; }
+		
+		//'Si el destino nos susurra que'
+		public Keyword getSiElDestinoNosSusurraQueKeyword_0_3() { return cSiElDestinoNosSusurraQueKeyword_0_3; }
+		
+		//'Si la luna refleja que'
+		public Keyword getSiLaLunaReflejaQueKeyword_0_4() { return cSiLaLunaReflejaQueKeyword_0_4; }
 		
 		//condicion=Expression
 		public Assignment getCondicionAssignment_1() { return cCondicionAssignment_1; }
@@ -497,34 +670,92 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//','
 		public Keyword getCommaKeyword_2() { return cCommaKeyword_2; }
 		
+		//comment+=Comment?
+		public Assignment getCommentAssignment_3() { return cCommentAssignment_3; }
+		
+		//Comment
+		public RuleCall getCommentCommentParserRuleCall_3_0() { return cCommentCommentParserRuleCall_3_0; }
+		
+		//('entonces deja que estas palabras florezcan:' | 'entonces que brote este amor:' | 'entonces que nazca este sueño:' | 'entonces que el universo conspire:' | 'entonces que mi voz te abrace:')
+		public Alternatives getAlternatives_4() { return cAlternatives_4; }
+		
 		//'entonces deja que estas palabras florezcan:'
-		public Keyword getEntoncesDejaQueEstasPalabrasFlorezcanKeyword_3() { return cEntoncesDejaQueEstasPalabrasFlorezcanKeyword_3; }
+		public Keyword getEntoncesDejaQueEstasPalabrasFlorezcanKeyword_4_0() { return cEntoncesDejaQueEstasPalabrasFlorezcanKeyword_4_0; }
+		
+		//'entonces que brote este amor:'
+		public Keyword getEntoncesQueBroteEsteAmorKeyword_4_1() { return cEntoncesQueBroteEsteAmorKeyword_4_1; }
+		
+		//'entonces que nazca este sueño:'
+		public Keyword getEntoncesQueNazcaEsteSueOKeyword_4_2() { return cEntoncesQueNazcaEsteSueOKeyword_4_2; }
+		
+		//'entonces que el universo conspire:'
+		public Keyword getEntoncesQueElUniversoConspireKeyword_4_3() { return cEntoncesQueElUniversoConspireKeyword_4_3; }
+		
+		//'entonces que mi voz te abrace:'
+		public Keyword getEntoncesQueMiVozTeAbraceKeyword_4_4() { return cEntoncesQueMiVozTeAbraceKeyword_4_4; }
 		
 		//instruccionesThen+=ElementoBloque+
-		public Assignment getInstruccionesThenAssignment_4() { return cInstruccionesThenAssignment_4; }
+		public Assignment getInstruccionesThenAssignment_5() { return cInstruccionesThenAssignment_5; }
 		
 		//ElementoBloque
-		public RuleCall getInstruccionesThenElementoBloqueParserRuleCall_4_0() { return cInstruccionesThenElementoBloqueParserRuleCall_4_0; }
+		public RuleCall getInstruccionesThenElementoBloqueParserRuleCall_5_0() { return cInstruccionesThenElementoBloqueParserRuleCall_5_0; }
 		
-		//( 'Pero si el destino dijera lo contrario,'
-		//    'que broten estas verdades:'
-		//    instruccionesElse+=ElementoBloque+ )?
-		public Group getGroup_5() { return cGroup_5; }
+		//(('Pero si la noche calla otra verdad,' 'que surja este suspiro:' | 'Pero si el viento trae otro mensaje,' 'que despierte esta pasión:' | 'Pero si el corazón duda,' 'que renazca esta esperanza:') instruccionesElse+=ElementoBloque+)?
+		public Group getGroup_6() { return cGroup_6; }
 		
-		//'Pero si el destino dijera lo contrario,'
-		public Keyword getPeroSiElDestinoDijeraLoContrarioKeyword_5_0() { return cPeroSiElDestinoDijeraLoContrarioKeyword_5_0; }
+		//('Pero si la noche calla otra verdad,' 'que surja este suspiro:' | 'Pero si el viento trae otro mensaje,' 'que despierte esta pasión:' | 'Pero si el corazón duda,' 'que renazca esta esperanza:')
+		public Alternatives getAlternatives_6_0() { return cAlternatives_6_0; }
 		
-		//'que broten estas verdades:'
-		public Keyword getQueBrotenEstasVerdadesKeyword_5_1() { return cQueBrotenEstasVerdadesKeyword_5_1; }
+		//'Pero si la noche calla otra verdad,' 'que surja este suspiro:'
+		public Group getGroup_6_0_0() { return cGroup_6_0_0; }
+		
+		//'Pero si la noche calla otra verdad,'
+		public Keyword getPeroSiLaNocheCallaOtraVerdadKeyword_6_0_0_0() { return cPeroSiLaNocheCallaOtraVerdadKeyword_6_0_0_0; }
+		
+		//'que surja este suspiro:'
+		public Keyword getQueSurjaEsteSuspiroKeyword_6_0_0_1() { return cQueSurjaEsteSuspiroKeyword_6_0_0_1; }
+		
+		//'Pero si el viento trae otro mensaje,' 'que despierte esta pasión:'
+		public Group getGroup_6_0_1() { return cGroup_6_0_1; }
+		
+		//'Pero si el viento trae otro mensaje,'
+		public Keyword getPeroSiElVientoTraeOtroMensajeKeyword_6_0_1_0() { return cPeroSiElVientoTraeOtroMensajeKeyword_6_0_1_0; }
+		
+		//'que despierte esta pasión:'
+		public Keyword getQueDespierteEstaPasiNKeyword_6_0_1_1() { return cQueDespierteEstaPasiNKeyword_6_0_1_1; }
+		
+		//'Pero si el corazón duda,' 'que renazca esta esperanza:'
+		public Group getGroup_6_0_2() { return cGroup_6_0_2; }
+		
+		//'Pero si el corazón duda,'
+		public Keyword getPeroSiElCorazNDudaKeyword_6_0_2_0() { return cPeroSiElCorazNDudaKeyword_6_0_2_0; }
+		
+		//'que renazca esta esperanza:'
+		public Keyword getQueRenazcaEstaEsperanzaKeyword_6_0_2_1() { return cQueRenazcaEstaEsperanzaKeyword_6_0_2_1; }
 		
 		//instruccionesElse+=ElementoBloque+
-		public Assignment getInstruccionesElseAssignment_5_2() { return cInstruccionesElseAssignment_5_2; }
+		public Assignment getInstruccionesElseAssignment_6_1() { return cInstruccionesElseAssignment_6_1; }
 		
 		//ElementoBloque
-		public RuleCall getInstruccionesElseElementoBloqueParserRuleCall_5_2_0() { return cInstruccionesElseElementoBloqueParserRuleCall_5_2_0; }
+		public RuleCall getInstruccionesElseElementoBloqueParserRuleCall_6_1_0() { return cInstruccionesElseElementoBloqueParserRuleCall_6_1_0; }
+		
+		//('Y así el universo sigue su curso.' | 'Así sigue el canto del corazón.' | 'Y así la melodía continúa.' | 'Y el eco de nuestro amor perdura.' | 'Y la danza de las estrellas sigue.')
+		public Alternatives getAlternatives_7() { return cAlternatives_7; }
 		
 		//'Y así el universo sigue su curso.'
-		public Keyword getYAsElUniversoSigueSuCursoKeyword_6() { return cYAsElUniversoSigueSuCursoKeyword_6; }
+		public Keyword getYAsElUniversoSigueSuCursoKeyword_7_0() { return cYAsElUniversoSigueSuCursoKeyword_7_0; }
+		
+		//'Así sigue el canto del corazón.'
+		public Keyword getAsSigueElCantoDelCorazNKeyword_7_1() { return cAsSigueElCantoDelCorazNKeyword_7_1; }
+		
+		//'Y así la melodía continúa.'
+		public Keyword getYAsLaMelodAContinAKeyword_7_2() { return cYAsLaMelodAContinAKeyword_7_2; }
+		
+		//'Y el eco de nuestro amor perdura.'
+		public Keyword getYElEcoDeNuestroAmorPerduraKeyword_7_3() { return cYElEcoDeNuestroAmorPerduraKeyword_7_3; }
+		
+		//'Y la danza de las estrellas sigue.'
+		public Keyword getYLaDanzaDeLasEstrellasSigueKeyword_7_4() { return cYLaDanzaDeLasEstrellasSigueKeyword_7_4; }
 	}
 	public class BucleWhileElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.DearCode.BucleWhile");
@@ -532,31 +763,45 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
 		private final Keyword cMientrasAunMePiensasKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
 		private final Keyword cMientrasANSueEsConEsteMomentoKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Keyword cMientrasMiCorazNTeAnheleKeyword_0_2 = (Keyword)cAlternatives_0.eContents().get(2);
+		private final Keyword cMientrasTuLuzMeGuEKeyword_0_3 = (Keyword)cAlternatives_0.eContents().get(3);
+		private final Keyword cMientrasElFuegoDeMiAmorArdaKeyword_0_4 = (Keyword)cAlternatives_0.eContents().get(4);
+		private final Keyword cMientrasLaLunaNosIlumineKeyword_0_5 = (Keyword)cAlternatives_0.eContents().get(5);
+		private final Keyword cMientrasTusOjosMeMirenKeyword_0_6 = (Keyword)cAlternatives_0.eContents().get(6);
 		private final Assignment cCondicionAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cCondicionExpressionParserRuleCall_1_0 = (RuleCall)cCondicionAssignment_1.eContents().get(0);
 		private final Keyword cCommaKeyword_2 = (Keyword)cGroup.eContents().get(2);
-		private final Keyword cHazQueSucedaKeyword_3 = (Keyword)cGroup.eContents().get(3);
+		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
+		private final Keyword cHazQueSucedaKeyword_3_0 = (Keyword)cAlternatives_3.eContents().get(0);
+		private final Keyword cTejiendoEsteAmorKeyword_3_1 = (Keyword)cAlternatives_3.eContents().get(1);
+		private final Keyword cDejaQueElTiempoSeDetengaKeyword_3_2 = (Keyword)cAlternatives_3.eContents().get(2);
+		private final Keyword cHazQueElUniversoConspireKeyword_3_3 = (Keyword)cAlternatives_3.eContents().get(3);
+		private final Keyword cPermiteQueElDestinoNosUnaKeyword_3_4 = (Keyword)cAlternatives_3.eContents().get(4);
 		private final Assignment cLoopBodyAssignment_4 = (Assignment)cGroup.eContents().get(4);
 		private final RuleCall cLoopBodyElementoBloqueParserRuleCall_4_0 = (RuleCall)cLoopBodyAssignment_4.eContents().get(0);
-		private final Keyword cYAsElSusurroDescansaKeyword_5 = (Keyword)cGroup.eContents().get(5);
+		private final Alternatives cAlternatives_5 = (Alternatives)cGroup.eContents().get(5);
+		private final Keyword cYAsElSusurroDescansaKeyword_5_0 = (Keyword)cAlternatives_5.eContents().get(0);
+		private final Keyword cHastaQueElAnheloReposeKeyword_5_1 = (Keyword)cAlternatives_5.eContents().get(1);
+		private final Keyword cYElSilencioEnvuelveNuestroAmorKeyword_5_2 = (Keyword)cAlternatives_5.eContents().get(2);
+		private final Keyword cHastaQueLaEternidadNosEncuentreKeyword_5_3 = (Keyword)cAlternatives_5.eContents().get(3);
+		private final Keyword cYLaPasiNSeConvierteEnRecuerdoKeyword_5_4 = (Keyword)cAlternatives_5.eContents().get(4);
 		
 		//BucleWhile:
-		//    ('Mientras aun me piensas' | 'Mientras aún sueñes con este momento')
+		//    ('Mientras aun me piensas' | 'Mientras aún sueñes con este momento' | 'Mientras mi corazón te anhele' | 'Mientras tu luz me guíe' | 'Mientras el fuego de mi amor arda' | 'Mientras la luna nos ilumine' | 'Mientras tus ojos me miren')
 		//    condicion=Expression ','
-		//    'haz que suceda:'
+		//    ('haz que suceda:' | 'tejiendo este amor:' | 'deja que el tiempo se detenga:' | 'haz que el universo conspire:' | 'permite que el destino nos una:')
 		//    loopBody+=ElementoBloque+
-		//    'Y así el susurro descansa.'
-		//;
+		//    ('Y así el susurro descansa.' | 'hasta que el anhelo repose' | 'Y el silencio envuelve nuestro amor.' | 'Hasta que la eternidad nos encuentre.' | 'Y la pasión se convierte en recuerdo.');
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('Mientras aun me piensas' | 'Mientras aún sueñes con este momento')
+		//('Mientras aun me piensas' | 'Mientras aún sueñes con este momento' | 'Mientras mi corazón te anhele' | 'Mientras tu luz me guíe' | 'Mientras el fuego de mi amor arda' | 'Mientras la luna nos ilumine' | 'Mientras tus ojos me miren')
 		//condicion=Expression ','
-		//'haz que suceda:'
+		//('haz que suceda:' | 'tejiendo este amor:' | 'deja que el tiempo se detenga:' | 'haz que el universo conspire:' | 'permite que el destino nos una:')
 		//loopBody+=ElementoBloque+
-		//'Y así el susurro descansa.'
+		//('Y así el susurro descansa.' | 'hasta que el anhelo repose' | 'Y el silencio envuelve nuestro amor.' | 'Hasta que la eternidad nos encuentre.' | 'Y la pasión se convierte en recuerdo.')
 		public Group getGroup() { return cGroup; }
 		
-		//('Mientras aun me piensas' | 'Mientras aún sueñes con este momento')
+		//('Mientras aun me piensas' | 'Mientras aún sueñes con este momento' | 'Mientras mi corazón te anhele' | 'Mientras tu luz me guíe' | 'Mientras el fuego de mi amor arda' | 'Mientras la luna nos ilumine' | 'Mientras tus ojos me miren')
 		public Alternatives getAlternatives_0() { return cAlternatives_0; }
 		
 		//'Mientras aun me piensas'
@@ -565,6 +810,21 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//'Mientras aún sueñes con este momento'
 		public Keyword getMientrasANSueEsConEsteMomentoKeyword_0_1() { return cMientrasANSueEsConEsteMomentoKeyword_0_1; }
 		
+		//'Mientras mi corazón te anhele'
+		public Keyword getMientrasMiCorazNTeAnheleKeyword_0_2() { return cMientrasMiCorazNTeAnheleKeyword_0_2; }
+		
+		//'Mientras tu luz me guíe'
+		public Keyword getMientrasTuLuzMeGuEKeyword_0_3() { return cMientrasTuLuzMeGuEKeyword_0_3; }
+		
+		//'Mientras el fuego de mi amor arda'
+		public Keyword getMientrasElFuegoDeMiAmorArdaKeyword_0_4() { return cMientrasElFuegoDeMiAmorArdaKeyword_0_4; }
+		
+		//'Mientras la luna nos ilumine'
+		public Keyword getMientrasLaLunaNosIlumineKeyword_0_5() { return cMientrasLaLunaNosIlumineKeyword_0_5; }
+		
+		//'Mientras tus ojos me miren'
+		public Keyword getMientrasTusOjosMeMirenKeyword_0_6() { return cMientrasTusOjosMeMirenKeyword_0_6; }
+		
 		//condicion=Expression
 		public Assignment getCondicionAssignment_1() { return cCondicionAssignment_1; }
 		
@@ -574,8 +834,23 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//','
 		public Keyword getCommaKeyword_2() { return cCommaKeyword_2; }
 		
+		//('haz que suceda:' | 'tejiendo este amor:' | 'deja que el tiempo se detenga:' | 'haz que el universo conspire:' | 'permite que el destino nos una:')
+		public Alternatives getAlternatives_3() { return cAlternatives_3; }
+		
 		//'haz que suceda:'
-		public Keyword getHazQueSucedaKeyword_3() { return cHazQueSucedaKeyword_3; }
+		public Keyword getHazQueSucedaKeyword_3_0() { return cHazQueSucedaKeyword_3_0; }
+		
+		//'tejiendo este amor:'
+		public Keyword getTejiendoEsteAmorKeyword_3_1() { return cTejiendoEsteAmorKeyword_3_1; }
+		
+		//'deja que el tiempo se detenga:'
+		public Keyword getDejaQueElTiempoSeDetengaKeyword_3_2() { return cDejaQueElTiempoSeDetengaKeyword_3_2; }
+		
+		//'haz que el universo conspire:'
+		public Keyword getHazQueElUniversoConspireKeyword_3_3() { return cHazQueElUniversoConspireKeyword_3_3; }
+		
+		//'permite que el destino nos una:'
+		public Keyword getPermiteQueElDestinoNosUnaKeyword_3_4() { return cPermiteQueElDestinoNosUnaKeyword_3_4; }
 		
 		//loopBody+=ElementoBloque+
 		public Assignment getLoopBodyAssignment_4() { return cLoopBodyAssignment_4; }
@@ -583,13 +858,33 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//ElementoBloque
 		public RuleCall getLoopBodyElementoBloqueParserRuleCall_4_0() { return cLoopBodyElementoBloqueParserRuleCall_4_0; }
 		
+		//('Y así el susurro descansa.' | 'hasta que el anhelo repose' | 'Y el silencio envuelve nuestro amor.' | 'Hasta que la eternidad nos encuentre.' | 'Y la pasión se convierte en recuerdo.')
+		public Alternatives getAlternatives_5() { return cAlternatives_5; }
+		
 		//'Y así el susurro descansa.'
-		public Keyword getYAsElSusurroDescansaKeyword_5() { return cYAsElSusurroDescansaKeyword_5; }
+		public Keyword getYAsElSusurroDescansaKeyword_5_0() { return cYAsElSusurroDescansaKeyword_5_0; }
+		
+		//'hasta que el anhelo repose'
+		public Keyword getHastaQueElAnheloReposeKeyword_5_1() { return cHastaQueElAnheloReposeKeyword_5_1; }
+		
+		//'Y el silencio envuelve nuestro amor.'
+		public Keyword getYElSilencioEnvuelveNuestroAmorKeyword_5_2() { return cYElSilencioEnvuelveNuestroAmorKeyword_5_2; }
+		
+		//'Hasta que la eternidad nos encuentre.'
+		public Keyword getHastaQueLaEternidadNosEncuentreKeyword_5_3() { return cHastaQueLaEternidadNosEncuentreKeyword_5_3; }
+		
+		//'Y la pasión se convierte en recuerdo.'
+		public Keyword getYLaPasiNSeConvierteEnRecuerdoKeyword_5_4() { return cYLaPasiNSeConvierteEnRecuerdoKeyword_5_4; }
 	}
 	public class BucleForElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.DearCode.BucleFor");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cEnCadaSuspiroKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Keyword cEnCadaSuspiroKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
+		private final Keyword cPorCadaLatidoKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Keyword cPorCadaEstrellaQueNosMiraKeyword_0_2 = (Keyword)cAlternatives_0.eContents().get(2);
+		private final Keyword cEnCadaPTaloDeRosaKeyword_0_3 = (Keyword)cAlternatives_0.eContents().get(3);
+		private final Keyword cPorCadaOlaQueBesaLaOrillaKeyword_0_4 = (Keyword)cAlternatives_0.eContents().get(4);
 		private final Assignment cVariableAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cVariableMI_IDParserRuleCall_1_0 = (RuleCall)cVariableAssignment_1.eContents().get(0);
 		private final Keyword cDesdeKeyword_2 = (Keyword)cGroup.eContents().get(2);
@@ -602,31 +897,57 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Keyword cConPasoKeyword_6_0 = (Keyword)cGroup_6.eContents().get(0);
 		private final Assignment cPasoAssignment_6_1 = (Assignment)cGroup_6.eContents().get(1);
 		private final RuleCall cPasoExpressionParserRuleCall_6_1_0 = (RuleCall)cPasoAssignment_6_1.eContents().get(0);
-		private final Keyword cDejaQueElUniversoCanteKeyword_7 = (Keyword)cGroup.eContents().get(7);
+		private final Alternatives cAlternatives_7 = (Alternatives)cGroup.eContents().get(7);
+		private final Keyword cDejaQueElUniversoCanteKeyword_7_0 = (Keyword)cAlternatives_7.eContents().get(0);
+		private final Keyword cResuenaEsteAmorKeyword_7_1 = (Keyword)cAlternatives_7.eContents().get(1);
+		private final Keyword cQueElVientoSusurreNuestroNombreKeyword_7_2 = (Keyword)cAlternatives_7.eContents().get(2);
+		private final Keyword cQueElCieloPinteNuestroAmorKeyword_7_3 = (Keyword)cAlternatives_7.eContents().get(3);
+		private final Keyword cQueLaTierraTiembleConNuestraPasiNKeyword_7_4 = (Keyword)cAlternatives_7.eContents().get(4);
 		private final Assignment cLoopBodyAssignment_8 = (Assignment)cGroup.eContents().get(8);
 		private final RuleCall cLoopBodyElementoBloqueParserRuleCall_8_0 = (RuleCall)cLoopBodyAssignment_8.eContents().get(0);
-		private final Keyword cCuandoElLtimoEcoSeCalleKeyword_9 = (Keyword)cGroup.eContents().get(9);
+		private final Alternatives cAlternatives_9 = (Alternatives)cGroup.eContents().get(9);
+		private final Keyword cCuandoElLtimoEcoSeCalleKeyword_9_0 = (Keyword)cAlternatives_9.eContents().get(0);
+		private final Keyword cYElEcoSeDesvaneceKeyword_9_1 = (Keyword)cAlternatives_9.eContents().get(1);
+		private final Keyword cYLaLtimaEstrellaSeApagueKeyword_9_2 = (Keyword)cAlternatives_9.eContents().get(2);
+		private final Keyword cHastaQueElLtimoPTaloCaigaKeyword_9_3 = (Keyword)cAlternatives_9.eContents().get(3);
+		private final Keyword cCuandoElMarSeQuedeEnSilencioKeyword_9_4 = (Keyword)cAlternatives_9.eContents().get(4);
 		
 		//BucleFor:
-		//    'En cada suspiro' variable=MI_ID 'desde' inicio=Expression
+		//    ('En cada suspiro' | 'Por cada latido' | 'Por cada estrella que nos mira' | 'En cada pétalo de rosa' | 'Por cada ola que besa la orilla')
+		//    variable=MI_ID 'desde' inicio=Expression
 		//    'hasta' fin=Expression
 		//    ('con paso' paso=Expression)?
-		//    'deja que el universo cante:'
+		//    ('deja que el universo cante:' | 'resuena este amor' | 'que el viento susurre nuestro nombre:' | 'que el cielo pinte nuestro amor:' | 'que la tierra tiemble con nuestra pasión:')
 		//    loopBody+=ElementoBloque+
-		//    'Cuando el último eco se calle.'
-		//;
+		//    ('Cuando el último eco se calle.' | 'Y el eco se desvanece.' | 'Y la última estrella se apague.' | 'Hasta que el último pétalo caiga.' | 'Cuando el mar se quede en silencio.');
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'En cada suspiro' variable=MI_ID 'desde' inicio=Expression
+		//('En cada suspiro' | 'Por cada latido' | 'Por cada estrella que nos mira' | 'En cada pétalo de rosa' | 'Por cada ola que besa la orilla')
+		//variable=MI_ID 'desde' inicio=Expression
 		//'hasta' fin=Expression
 		//('con paso' paso=Expression)?
-		//'deja que el universo cante:'
+		//('deja que el universo cante:' | 'resuena este amor' | 'que el viento susurre nuestro nombre:' | 'que el cielo pinte nuestro amor:' | 'que la tierra tiemble con nuestra pasión:')
 		//loopBody+=ElementoBloque+
-		//'Cuando el último eco se calle.'
+		//('Cuando el último eco se calle.' | 'Y el eco se desvanece.' | 'Y la última estrella se apague.' | 'Hasta que el último pétalo caiga.' | 'Cuando el mar se quede en silencio.')
 		public Group getGroup() { return cGroup; }
 		
+		//('En cada suspiro' | 'Por cada latido' | 'Por cada estrella que nos mira' | 'En cada pétalo de rosa' | 'Por cada ola que besa la orilla')
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+		
 		//'En cada suspiro'
-		public Keyword getEnCadaSuspiroKeyword_0() { return cEnCadaSuspiroKeyword_0; }
+		public Keyword getEnCadaSuspiroKeyword_0_0() { return cEnCadaSuspiroKeyword_0_0; }
+		
+		//'Por cada latido'
+		public Keyword getPorCadaLatidoKeyword_0_1() { return cPorCadaLatidoKeyword_0_1; }
+		
+		//'Por cada estrella que nos mira'
+		public Keyword getPorCadaEstrellaQueNosMiraKeyword_0_2() { return cPorCadaEstrellaQueNosMiraKeyword_0_2; }
+		
+		//'En cada pétalo de rosa'
+		public Keyword getEnCadaPTaloDeRosaKeyword_0_3() { return cEnCadaPTaloDeRosaKeyword_0_3; }
+		
+		//'Por cada ola que besa la orilla'
+		public Keyword getPorCadaOlaQueBesaLaOrillaKeyword_0_4() { return cPorCadaOlaQueBesaLaOrillaKeyword_0_4; }
 		
 		//variable=MI_ID
 		public Assignment getVariableAssignment_1() { return cVariableAssignment_1; }
@@ -664,8 +985,23 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//Expression
 		public RuleCall getPasoExpressionParserRuleCall_6_1_0() { return cPasoExpressionParserRuleCall_6_1_0; }
 		
+		//('deja que el universo cante:' | 'resuena este amor' | 'que el viento susurre nuestro nombre:' | 'que el cielo pinte nuestro amor:' | 'que la tierra tiemble con nuestra pasión:')
+		public Alternatives getAlternatives_7() { return cAlternatives_7; }
+		
 		//'deja que el universo cante:'
-		public Keyword getDejaQueElUniversoCanteKeyword_7() { return cDejaQueElUniversoCanteKeyword_7; }
+		public Keyword getDejaQueElUniversoCanteKeyword_7_0() { return cDejaQueElUniversoCanteKeyword_7_0; }
+		
+		//'resuena este amor'
+		public Keyword getResuenaEsteAmorKeyword_7_1() { return cResuenaEsteAmorKeyword_7_1; }
+		
+		//'que el viento susurre nuestro nombre:'
+		public Keyword getQueElVientoSusurreNuestroNombreKeyword_7_2() { return cQueElVientoSusurreNuestroNombreKeyword_7_2; }
+		
+		//'que el cielo pinte nuestro amor:'
+		public Keyword getQueElCieloPinteNuestroAmorKeyword_7_3() { return cQueElCieloPinteNuestroAmorKeyword_7_3; }
+		
+		//'que la tierra tiemble con nuestra pasión:'
+		public Keyword getQueLaTierraTiembleConNuestraPasiNKeyword_7_4() { return cQueLaTierraTiembleConNuestraPasiNKeyword_7_4; }
 		
 		//loopBody+=ElementoBloque+
 		public Assignment getLoopBodyAssignment_8() { return cLoopBodyAssignment_8; }
@@ -673,8 +1009,23 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//ElementoBloque
 		public RuleCall getLoopBodyElementoBloqueParserRuleCall_8_0() { return cLoopBodyElementoBloqueParserRuleCall_8_0; }
 		
+		//('Cuando el último eco se calle.' | 'Y el eco se desvanece.' | 'Y la última estrella se apague.' | 'Hasta que el último pétalo caiga.' | 'Cuando el mar se quede en silencio.')
+		public Alternatives getAlternatives_9() { return cAlternatives_9; }
+		
 		//'Cuando el último eco se calle.'
-		public Keyword getCuandoElLtimoEcoSeCalleKeyword_9() { return cCuandoElLtimoEcoSeCalleKeyword_9; }
+		public Keyword getCuandoElLtimoEcoSeCalleKeyword_9_0() { return cCuandoElLtimoEcoSeCalleKeyword_9_0; }
+		
+		//'Y el eco se desvanece.'
+		public Keyword getYElEcoSeDesvaneceKeyword_9_1() { return cYElEcoSeDesvaneceKeyword_9_1; }
+		
+		//'Y la última estrella se apague.'
+		public Keyword getYLaLtimaEstrellaSeApagueKeyword_9_2() { return cYLaLtimaEstrellaSeApagueKeyword_9_2; }
+		
+		//'Hasta que el último pétalo caiga.'
+		public Keyword getHastaQueElLtimoPTaloCaigaKeyword_9_3() { return cHastaQueElLtimoPTaloCaigaKeyword_9_3; }
+		
+		//'Cuando el mar se quede en silencio.'
+		public Keyword getCuandoElMarSeQuedeEnSilencioKeyword_9_4() { return cCuandoElMarSeQuedeEnSilencioKeyword_9_4; }
 	}
 	public class FuncionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.DearCode.Funcion");
@@ -683,50 +1034,68 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Keyword cDejoEnEstasLNeasUnaPromesaLlamadaKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
 		private final Keyword cEscriboEnEstasLNeasUnaIntenciNLlamadaKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
 		private final Keyword cEnLaBrisaEscondoUnDeseoLlamadoKeyword_0_2 = (Keyword)cAlternatives_0.eContents().get(2);
+		private final Keyword cGraboEnLasEstrellasUnaPromesaLlamadaKeyword_0_3 = (Keyword)cAlternatives_0.eContents().get(3);
+		private final Keyword cSusurroAlUniversoUnDeseoLlamadoKeyword_0_4 = (Keyword)cAlternatives_0.eContents().get(4);
+		private final Keyword cTejoEnElDestinoUnJuramentoLlamadoKeyword_0_5 = (Keyword)cAlternatives_0.eContents().get(5);
+		private final Keyword cEsculpoEnElTiempoUnAnheloLlamadoKeyword_0_6 = (Keyword)cAlternatives_0.eContents().get(6);
+		private final Keyword cSusurroALaEternidadUnSueOLlamadoKeyword_0_7 = (Keyword)cAlternatives_0.eContents().get(7);
 		private final Assignment cNameAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cNameMI_IDParserRuleCall_1_0 = (RuleCall)cNameAssignment_1.eContents().get(0);
 		private final Group cGroup_2 = (Group)cGroup.eContents().get(2);
-		private final Keyword cQueGuardaEnSuEsenciaKeyword_2_0 = (Keyword)cGroup_2.eContents().get(0);
+		private final Alternatives cAlternatives_2_0 = (Alternatives)cGroup_2.eContents().get(0);
+		private final Keyword cQueGuardaEnSuEsenciaKeyword_2_0_0 = (Keyword)cAlternatives_2_0.eContents().get(0);
+		private final Keyword cTejiendoKeyword_2_0_1 = (Keyword)cAlternatives_2_0.eContents().get(1);
+		private final Keyword cQueAbrazaEnSuSerKeyword_2_0_2 = (Keyword)cAlternatives_2_0.eContents().get(2);
+		private final Keyword cQueLlevaEnSuAlmaKeyword_2_0_3 = (Keyword)cAlternatives_2_0.eContents().get(3);
+		private final Keyword cQueSusurraEnSuCorazNKeyword_2_0_4 = (Keyword)cAlternatives_2_0.eContents().get(4);
 		private final Assignment cParametrosAssignment_2_1 = (Assignment)cGroup_2.eContents().get(1);
-		private final RuleCall cParametrosMI_IDParserRuleCall_2_1_0 = (RuleCall)cParametrosAssignment_2_1.eContents().get(0);
+		private final RuleCall cParametrosParametroDeclParserRuleCall_2_1_0 = (RuleCall)cParametrosAssignment_2_1.eContents().get(0);
 		private final Group cGroup_2_2 = (Group)cGroup_2.eContents().get(2);
-		private final Keyword cCommaKeyword_2_2_0 = (Keyword)cGroup_2_2.eContents().get(0);
+		private final Alternatives cAlternatives_2_2_0 = (Alternatives)cGroup_2_2.eContents().get(0);
+		private final Keyword cYKeyword_2_2_0_0 = (Keyword)cAlternatives_2_2_0.eContents().get(0);
+		private final Keyword cJuntoAKeyword_2_2_0_1 = (Keyword)cAlternatives_2_2_0.eContents().get(1);
+		private final Keyword cTambienKeyword_2_2_0_2 = (Keyword)cAlternatives_2_2_0.eContents().get(2);
+		private final Keyword cLlevandoConsigoKeyword_2_2_0_3 = (Keyword)cAlternatives_2_2_0.eContents().get(3);
 		private final Assignment cParametrosAssignment_2_2_1 = (Assignment)cGroup_2_2.eContents().get(1);
-		private final RuleCall cParametrosMI_IDParserRuleCall_2_2_1_0 = (RuleCall)cParametrosAssignment_2_2_1.eContents().get(0);
-		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
-		private final Keyword cPrometiendoDevolverKeyword_3_0 = (Keyword)cGroup_3.eContents().get(0);
-		private final Assignment cTipoAssignment_3_1 = (Assignment)cGroup_3.eContents().get(1);
-		private final RuleCall cTipoTypeParserRuleCall_3_1_0 = (RuleCall)cTipoAssignment_3_1.eContents().get(0);
-		private final Keyword cCuandoLaPromesaSeCumpleKeyword_4 = (Keyword)cGroup.eContents().get(4);
-		private final Assignment cInstruccionesAssignment_5 = (Assignment)cGroup.eContents().get(5);
-		private final RuleCall cInstruccionesElementoBloqueParserRuleCall_5_0 = (RuleCall)cInstruccionesAssignment_5.eContents().get(0);
-		private final Keyword cAsSeSellaLaPromesaKeyword_6 = (Keyword)cGroup.eContents().get(6);
+		private final RuleCall cParametrosParametroDeclParserRuleCall_2_2_1_0 = (RuleCall)cParametrosAssignment_2_2_1.eContents().get(0);
+		private final Alternatives cAlternatives_3 = (Alternatives)cGroup.eContents().get(3);
+		private final Keyword cPrometiendoDevolverKeyword_3_0 = (Keyword)cAlternatives_3.eContents().get(0);
+		private final Keyword cJurandoDevolverKeyword_3_1 = (Keyword)cAlternatives_3.eContents().get(1);
+		private final Assignment cTipoAssignment_4 = (Assignment)cGroup.eContents().get(4);
+		private final RuleCall cTipoTypeParserRuleCall_4_0 = (RuleCall)cTipoAssignment_4.eContents().get(0);
+		private final Alternatives cAlternatives_5 = (Alternatives)cGroup.eContents().get(5);
+		private final Keyword cCuandoLaPromesaSeCumpleKeyword_5_0 = (Keyword)cAlternatives_5.eContents().get(0);
+		private final Keyword cCuandoElAmorSeCumplaKeyword_5_1 = (Keyword)cAlternatives_5.eContents().get(1);
+		private final Assignment cInstruccionesAssignment_6 = (Assignment)cGroup.eContents().get(6);
+		private final RuleCall cInstruccionesElementoBloqueParserRuleCall_6_0 = (RuleCall)cInstruccionesAssignment_6.eContents().get(0);
+		private final Alternatives cAlternatives_7 = (Alternatives)cGroup.eContents().get(7);
+		private final Keyword cAsSeSellaLaPromesaKeyword_7_0 = (Keyword)cAlternatives_7.eContents().get(0);
+		private final Keyword cAsSeEternizaKeyword_7_1 = (Keyword)cAlternatives_7.eContents().get(1);
+		private final Keyword cYAsNuestroAmorSeInmortalizaKeyword_7_2 = (Keyword)cAlternatives_7.eContents().get(2);
+		private final Keyword cYElUniversoGuardaNuestroSecretoKeyword_7_3 = (Keyword)cAlternatives_7.eContents().get(3);
+		private final Keyword cYLaEternidadNosAbrazaKeyword_7_4 = (Keyword)cAlternatives_7.eContents().get(4);
 		
 		//Funcion:
-		//    ('Dejo en estas líneas una promesa llamada' |
-		//     'Escribo en estas líneas una intención llamada' |
-		//     'En la brisa escondo un deseo llamado') name=MI_ID
-		//    ('que guarda en su esencia' parametros+=MI_ID (',' parametros+=MI_ID)*)?
-		//    ('prometiendo devolver' tipo=Type)?
-		//    'Cuando la promesa se cumple:'
-		//        instrucciones+=ElementoBloque+
-		//    'Así se sella la promesa.'
-		//;
+		//    ('Dejo en estas líneas una promesa llamada' | 'Escribo en estas líneas una intención llamada' | 'En la brisa escondo un deseo llamado' | 'Grabo en las estrellas una promesa llamada' |
+		//     'Susurro al universo un deseo llamado' | 'Tejo en el destino un juramento llamado' | 'Esculpo en el tiempo un anhelo llamado' | 'Susurro a la eternidad un sueño llamado')
+		//    name=MI_ID
+		//    (('que guarda en su esencia' | 'tejiendo' | 'que abraza en su ser' | 'que lleva en su alma' | 'que susurra en su corazón') parametros+=ParametroDecl (('y' | 'junto a' | 'tambien' | 'llevando consigo') parametros+=ParametroDecl)*)?
+		//    ('prometiendo devolver' | 'jurando devolver')? tipo=Type?
+		//    ('Cuando la promesa se cumple:' | 'Cuando el amor se cumpla') instrucciones+=ElementoBloque+
+		//    ('Así se sella la promesa.' | 'Así se eterniza.' | 'Y así nuestro amor se inmortaliza.' | 'Y el universo guarda nuestro secreto.' | 'Y la eternidad nos abraza.');
 		@Override public ParserRule getRule() { return rule; }
 		
-		//('Dejo en estas líneas una promesa llamada' |
-		// 'Escribo en estas líneas una intención llamada' |
-		// 'En la brisa escondo un deseo llamado') name=MI_ID
-		//('que guarda en su esencia' parametros+=MI_ID (',' parametros+=MI_ID)*)?
-		//('prometiendo devolver' tipo=Type)?
-		//'Cuando la promesa se cumple:'
-		//    instrucciones+=ElementoBloque+
-		//'Así se sella la promesa.'
+		//('Dejo en estas líneas una promesa llamada' | 'Escribo en estas líneas una intención llamada' | 'En la brisa escondo un deseo llamado' | 'Grabo en las estrellas una promesa llamada' |
+		// 'Susurro al universo un deseo llamado' | 'Tejo en el destino un juramento llamado' | 'Esculpo en el tiempo un anhelo llamado' | 'Susurro a la eternidad un sueño llamado')
+		//name=MI_ID
+		//(('que guarda en su esencia' | 'tejiendo' | 'que abraza en su ser' | 'que lleva en su alma' | 'que susurra en su corazón') parametros+=ParametroDecl (('y' | 'junto a' | 'tambien' | 'llevando consigo') parametros+=ParametroDecl)*)?
+		//('prometiendo devolver' | 'jurando devolver')? tipo=Type?
+		//('Cuando la promesa se cumple:' | 'Cuando el amor se cumpla') instrucciones+=ElementoBloque+
+		//('Así se sella la promesa.' | 'Así se eterniza.' | 'Y así nuestro amor se inmortaliza.' | 'Y el universo guarda nuestro secreto.' | 'Y la eternidad nos abraza.')
 		public Group getGroup() { return cGroup; }
 		
-		//('Dejo en estas líneas una promesa llamada' |
-		// 'Escribo en estas líneas una intención llamada' |
-		// 'En la brisa escondo un deseo llamado')
+		//('Dejo en estas líneas una promesa llamada' | 'Escribo en estas líneas una intención llamada' | 'En la brisa escondo un deseo llamado' | 'Grabo en las estrellas una promesa llamada' |
+		// 'Susurro al universo un deseo llamado' | 'Tejo en el destino un juramento llamado' | 'Esculpo en el tiempo un anhelo llamado' | 'Susurro a la eternidad un sueño llamado')
 		public Alternatives getAlternatives_0() { return cAlternatives_0; }
 		
 		//'Dejo en estas líneas una promesa llamada'
@@ -738,78 +1107,205 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//'En la brisa escondo un deseo llamado'
 		public Keyword getEnLaBrisaEscondoUnDeseoLlamadoKeyword_0_2() { return cEnLaBrisaEscondoUnDeseoLlamadoKeyword_0_2; }
 		
+		//'Grabo en las estrellas una promesa llamada'
+		public Keyword getGraboEnLasEstrellasUnaPromesaLlamadaKeyword_0_3() { return cGraboEnLasEstrellasUnaPromesaLlamadaKeyword_0_3; }
+		
+		//'Susurro al universo un deseo llamado'
+		public Keyword getSusurroAlUniversoUnDeseoLlamadoKeyword_0_4() { return cSusurroAlUniversoUnDeseoLlamadoKeyword_0_4; }
+		
+		//'Tejo en el destino un juramento llamado'
+		public Keyword getTejoEnElDestinoUnJuramentoLlamadoKeyword_0_5() { return cTejoEnElDestinoUnJuramentoLlamadoKeyword_0_5; }
+		
+		//'Esculpo en el tiempo un anhelo llamado'
+		public Keyword getEsculpoEnElTiempoUnAnheloLlamadoKeyword_0_6() { return cEsculpoEnElTiempoUnAnheloLlamadoKeyword_0_6; }
+		
+		//'Susurro a la eternidad un sueño llamado'
+		public Keyword getSusurroALaEternidadUnSueOLlamadoKeyword_0_7() { return cSusurroALaEternidadUnSueOLlamadoKeyword_0_7; }
+		
 		//name=MI_ID
 		public Assignment getNameAssignment_1() { return cNameAssignment_1; }
 		
 		//MI_ID
 		public RuleCall getNameMI_IDParserRuleCall_1_0() { return cNameMI_IDParserRuleCall_1_0; }
 		
-		//('que guarda en su esencia' parametros+=MI_ID (',' parametros+=MI_ID)*)?
+		//(('que guarda en su esencia' | 'tejiendo' | 'que abraza en su ser' | 'que lleva en su alma' | 'que susurra en su corazón') parametros+=ParametroDecl (('y' | 'junto a' | 'tambien' | 'llevando consigo') parametros+=ParametroDecl)*)?
 		public Group getGroup_2() { return cGroup_2; }
 		
-		//'que guarda en su esencia'
-		public Keyword getQueGuardaEnSuEsenciaKeyword_2_0() { return cQueGuardaEnSuEsenciaKeyword_2_0; }
+		//('que guarda en su esencia' | 'tejiendo' | 'que abraza en su ser' | 'que lleva en su alma' | 'que susurra en su corazón')
+		public Alternatives getAlternatives_2_0() { return cAlternatives_2_0; }
 		
-		//parametros+=MI_ID
+		//'que guarda en su esencia'
+		public Keyword getQueGuardaEnSuEsenciaKeyword_2_0_0() { return cQueGuardaEnSuEsenciaKeyword_2_0_0; }
+		
+		//'tejiendo'
+		public Keyword getTejiendoKeyword_2_0_1() { return cTejiendoKeyword_2_0_1; }
+		
+		//'que abraza en su ser'
+		public Keyword getQueAbrazaEnSuSerKeyword_2_0_2() { return cQueAbrazaEnSuSerKeyword_2_0_2; }
+		
+		//'que lleva en su alma'
+		public Keyword getQueLlevaEnSuAlmaKeyword_2_0_3() { return cQueLlevaEnSuAlmaKeyword_2_0_3; }
+		
+		//'que susurra en su corazón'
+		public Keyword getQueSusurraEnSuCorazNKeyword_2_0_4() { return cQueSusurraEnSuCorazNKeyword_2_0_4; }
+		
+		//parametros+=ParametroDecl
 		public Assignment getParametrosAssignment_2_1() { return cParametrosAssignment_2_1; }
 		
-		//MI_ID
-		public RuleCall getParametrosMI_IDParserRuleCall_2_1_0() { return cParametrosMI_IDParserRuleCall_2_1_0; }
+		//ParametroDecl
+		public RuleCall getParametrosParametroDeclParserRuleCall_2_1_0() { return cParametrosParametroDeclParserRuleCall_2_1_0; }
 		
-		//(',' parametros+=MI_ID)*
+		//(('y' | 'junto a' | 'tambien' | 'llevando consigo') parametros+=ParametroDecl)*
 		public Group getGroup_2_2() { return cGroup_2_2; }
 		
-		//','
-		public Keyword getCommaKeyword_2_2_0() { return cCommaKeyword_2_2_0; }
+		//('y' | 'junto a' | 'tambien' | 'llevando consigo')
+		public Alternatives getAlternatives_2_2_0() { return cAlternatives_2_2_0; }
 		
-		//parametros+=MI_ID
+		//'y'
+		public Keyword getYKeyword_2_2_0_0() { return cYKeyword_2_2_0_0; }
+		
+		//'junto a'
+		public Keyword getJuntoAKeyword_2_2_0_1() { return cJuntoAKeyword_2_2_0_1; }
+		
+		//'tambien'
+		public Keyword getTambienKeyword_2_2_0_2() { return cTambienKeyword_2_2_0_2; }
+		
+		//'llevando consigo'
+		public Keyword getLlevandoConsigoKeyword_2_2_0_3() { return cLlevandoConsigoKeyword_2_2_0_3; }
+		
+		//parametros+=ParametroDecl
 		public Assignment getParametrosAssignment_2_2_1() { return cParametrosAssignment_2_2_1; }
 		
-		//MI_ID
-		public RuleCall getParametrosMI_IDParserRuleCall_2_2_1_0() { return cParametrosMI_IDParserRuleCall_2_2_1_0; }
+		//ParametroDecl
+		public RuleCall getParametrosParametroDeclParserRuleCall_2_2_1_0() { return cParametrosParametroDeclParserRuleCall_2_2_1_0; }
 		
-		//('prometiendo devolver' tipo=Type)?
-		public Group getGroup_3() { return cGroup_3; }
+		//('prometiendo devolver' | 'jurando devolver')?
+		public Alternatives getAlternatives_3() { return cAlternatives_3; }
 		
 		//'prometiendo devolver'
 		public Keyword getPrometiendoDevolverKeyword_3_0() { return cPrometiendoDevolverKeyword_3_0; }
 		
-		//tipo=Type
-		public Assignment getTipoAssignment_3_1() { return cTipoAssignment_3_1; }
+		//'jurando devolver'
+		public Keyword getJurandoDevolverKeyword_3_1() { return cJurandoDevolverKeyword_3_1; }
+		
+		//tipo=Type?
+		public Assignment getTipoAssignment_4() { return cTipoAssignment_4; }
 		
 		//Type
-		public RuleCall getTipoTypeParserRuleCall_3_1_0() { return cTipoTypeParserRuleCall_3_1_0; }
+		public RuleCall getTipoTypeParserRuleCall_4_0() { return cTipoTypeParserRuleCall_4_0; }
+		
+		//('Cuando la promesa se cumple:' | 'Cuando el amor se cumpla')
+		public Alternatives getAlternatives_5() { return cAlternatives_5; }
 		
 		//'Cuando la promesa se cumple:'
-		public Keyword getCuandoLaPromesaSeCumpleKeyword_4() { return cCuandoLaPromesaSeCumpleKeyword_4; }
+		public Keyword getCuandoLaPromesaSeCumpleKeyword_5_0() { return cCuandoLaPromesaSeCumpleKeyword_5_0; }
+		
+		//'Cuando el amor se cumpla'
+		public Keyword getCuandoElAmorSeCumplaKeyword_5_1() { return cCuandoElAmorSeCumplaKeyword_5_1; }
 		
 		//instrucciones+=ElementoBloque+
-		public Assignment getInstruccionesAssignment_5() { return cInstruccionesAssignment_5; }
+		public Assignment getInstruccionesAssignment_6() { return cInstruccionesAssignment_6; }
 		
 		//ElementoBloque
-		public RuleCall getInstruccionesElementoBloqueParserRuleCall_5_0() { return cInstruccionesElementoBloqueParserRuleCall_5_0; }
+		public RuleCall getInstruccionesElementoBloqueParserRuleCall_6_0() { return cInstruccionesElementoBloqueParserRuleCall_6_0; }
+		
+		//('Así se sella la promesa.' | 'Así se eterniza.' | 'Y así nuestro amor se inmortaliza.' | 'Y el universo guarda nuestro secreto.' | 'Y la eternidad nos abraza.')
+		public Alternatives getAlternatives_7() { return cAlternatives_7; }
 		
 		//'Así se sella la promesa.'
-		public Keyword getAsSeSellaLaPromesaKeyword_6() { return cAsSeSellaLaPromesaKeyword_6; }
+		public Keyword getAsSeSellaLaPromesaKeyword_7_0() { return cAsSeSellaLaPromesaKeyword_7_0; }
+		
+		//'Así se eterniza.'
+		public Keyword getAsSeEternizaKeyword_7_1() { return cAsSeEternizaKeyword_7_1; }
+		
+		//'Y así nuestro amor se inmortaliza.'
+		public Keyword getYAsNuestroAmorSeInmortalizaKeyword_7_2() { return cYAsNuestroAmorSeInmortalizaKeyword_7_2; }
+		
+		//'Y el universo guarda nuestro secreto.'
+		public Keyword getYElUniversoGuardaNuestroSecretoKeyword_7_3() { return cYElUniversoGuardaNuestroSecretoKeyword_7_3; }
+		
+		//'Y la eternidad nos abraza.'
+		public Keyword getYLaEternidadNosAbrazaKeyword_7_4() { return cYLaEternidadNosAbrazaKeyword_7_4; }
+	}
+	public class ParametroDeclElements extends AbstractParserRuleElementFinder {
+		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.DearCode.ParametroDecl");
+		private final Group cGroup = (Group)rule.eContents().get(1);
+		private final Assignment cTipoAssignment_0 = (Assignment)cGroup.eContents().get(0);
+		private final RuleCall cTipoTypeParserRuleCall_0_0 = (RuleCall)cTipoAssignment_0.eContents().get(0);
+		private final Assignment cCommentAssignment_1 = (Assignment)cGroup.eContents().get(1);
+		private final RuleCall cCommentCommentParserRuleCall_1_0 = (RuleCall)cCommentAssignment_1.eContents().get(0);
+		private final Assignment cNameAssignment_2 = (Assignment)cGroup.eContents().get(2);
+		private final RuleCall cNameMI_IDParserRuleCall_2_0 = (RuleCall)cNameAssignment_2.eContents().get(0);
+		
+		//ParametroDecl:
+		//    (tipo=Type)? comment+=Comment? name=MI_ID;
+		@Override public ParserRule getRule() { return rule; }
+		
+		//(tipo=Type)? comment+=Comment? name=MI_ID
+		public Group getGroup() { return cGroup; }
+		
+		//(tipo=Type)?
+		public Assignment getTipoAssignment_0() { return cTipoAssignment_0; }
+		
+		//Type
+		public RuleCall getTipoTypeParserRuleCall_0_0() { return cTipoTypeParserRuleCall_0_0; }
+		
+		//comment+=Comment?
+		public Assignment getCommentAssignment_1() { return cCommentAssignment_1; }
+		
+		//Comment
+		public RuleCall getCommentCommentParserRuleCall_1_0() { return cCommentCommentParserRuleCall_1_0; }
+		
+		//name=MI_ID
+		public Assignment getNameAssignment_2() { return cNameAssignment_2; }
+		
+		//MI_ID
+		public RuleCall getNameMI_IDParserRuleCall_2_0() { return cNameMI_IDParserRuleCall_2_0; }
 	}
 	public class ReturnElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.DearCode.Return");
 		private final Group cGroup = (Group)rule.eContents().get(1);
-		private final Keyword cYEntregoAlVientoKeyword_0 = (Keyword)cGroup.eContents().get(0);
+		private final Alternatives cAlternatives_0 = (Alternatives)cGroup.eContents().get(0);
+		private final Keyword cYEntregoAlVientoKeyword_0_0 = (Keyword)cAlternatives_0.eContents().get(0);
+		private final Keyword cTeEntregoKeyword_0_1 = (Keyword)cAlternatives_0.eContents().get(1);
+		private final Keyword cTeOfrezcoConElAlmaKeyword_0_2 = (Keyword)cAlternatives_0.eContents().get(2);
+		private final Keyword cDejoEnTusManosKeyword_0_3 = (Keyword)cAlternatives_0.eContents().get(3);
+		private final Keyword cSusurroATuCorazNKeyword_0_4 = (Keyword)cAlternatives_0.eContents().get(4);
 		private final Assignment cExpresionAssignment_1 = (Assignment)cGroup.eContents().get(1);
 		private final RuleCall cExpresionExpressionParserRuleCall_1_0 = (RuleCall)cExpresionAssignment_1.eContents().get(0);
-		private final Keyword cComoPromesaCumplidaKeyword_2 = (Keyword)cGroup.eContents().get(2);
+		private final Alternatives cAlternatives_2 = (Alternatives)cGroup.eContents().get(2);
+		private final Keyword cComoPromesaCumplidaKeyword_2_0 = (Keyword)cAlternatives_2.eContents().get(0);
+		private final Keyword cConUnSuspiroKeyword_2_1 = (Keyword)cAlternatives_2.eContents().get(1);
+		private final Keyword cComoUnRegaloEternoKeyword_2_2 = (Keyword)cAlternatives_2.eContents().get(2);
+		private final Keyword cEnvueltoEnMiAmorKeyword_2_3 = (Keyword)cAlternatives_2.eContents().get(3);
+		private final Keyword cConLaEsperanzaDeTuSonrisaKeyword_2_4 = (Keyword)cAlternatives_2.eContents().get(4);
 		
 		//Return:
-		//    'Y entrego al viento' expresion=Expression 'como promesa cumplida.'
-		//;
+		//    ('Y entrego al viento' | 'Te entrego' | 'Te ofrezco con el alma' | 'Dejo en tus manos' | 'Susurro a tu corazón')
+		//    expresion=Expression ('como promesa cumplida.' | 'con un suspiro.' | 'como un regalo eterno.' | 'envuelto en mi amor.' | 'con la esperanza de tu sonrisa.');
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Y entrego al viento' expresion=Expression 'como promesa cumplida.'
+		//('Y entrego al viento' | 'Te entrego' | 'Te ofrezco con el alma' | 'Dejo en tus manos' | 'Susurro a tu corazón')
+		//expresion=Expression ('como promesa cumplida.' | 'con un suspiro.' | 'como un regalo eterno.' | 'envuelto en mi amor.' | 'con la esperanza de tu sonrisa.')
 		public Group getGroup() { return cGroup; }
 		
+		//('Y entrego al viento' | 'Te entrego' | 'Te ofrezco con el alma' | 'Dejo en tus manos' | 'Susurro a tu corazón')
+		public Alternatives getAlternatives_0() { return cAlternatives_0; }
+		
 		//'Y entrego al viento'
-		public Keyword getYEntregoAlVientoKeyword_0() { return cYEntregoAlVientoKeyword_0; }
+		public Keyword getYEntregoAlVientoKeyword_0_0() { return cYEntregoAlVientoKeyword_0_0; }
+		
+		//'Te entrego'
+		public Keyword getTeEntregoKeyword_0_1() { return cTeEntregoKeyword_0_1; }
+		
+		//'Te ofrezco con el alma'
+		public Keyword getTeOfrezcoConElAlmaKeyword_0_2() { return cTeOfrezcoConElAlmaKeyword_0_2; }
+		
+		//'Dejo en tus manos'
+		public Keyword getDejoEnTusManosKeyword_0_3() { return cDejoEnTusManosKeyword_0_3; }
+		
+		//'Susurro a tu corazón'
+		public Keyword getSusurroATuCorazNKeyword_0_4() { return cSusurroATuCorazNKeyword_0_4; }
 		
 		//expresion=Expression
 		public Assignment getExpresionAssignment_1() { return cExpresionAssignment_1; }
@@ -817,8 +1313,23 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//Expression
 		public RuleCall getExpresionExpressionParserRuleCall_1_0() { return cExpresionExpressionParserRuleCall_1_0; }
 		
+		//('como promesa cumplida.' | 'con un suspiro.' | 'como un regalo eterno.' | 'envuelto en mi amor.' | 'con la esperanza de tu sonrisa.')
+		public Alternatives getAlternatives_2() { return cAlternatives_2; }
+		
 		//'como promesa cumplida.'
-		public Keyword getComoPromesaCumplidaKeyword_2() { return cComoPromesaCumplidaKeyword_2; }
+		public Keyword getComoPromesaCumplidaKeyword_2_0() { return cComoPromesaCumplidaKeyword_2_0; }
+		
+		//'con un suspiro.'
+		public Keyword getConUnSuspiroKeyword_2_1() { return cConUnSuspiroKeyword_2_1; }
+		
+		//'como un regalo eterno.'
+		public Keyword getComoUnRegaloEternoKeyword_2_2() { return cComoUnRegaloEternoKeyword_2_2; }
+		
+		//'envuelto en mi amor.'
+		public Keyword getEnvueltoEnMiAmorKeyword_2_3() { return cEnvueltoEnMiAmorKeyword_2_3; }
+		
+		//'con la esperanza de tu sonrisa.'
+		public Keyword getConLaEsperanzaDeTuSonrisaKeyword_2_4() { return cConLaEsperanzaDeTuSonrisaKeyword_2_4; }
 	}
 	public class ExpressionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.DearCode.Expression");
@@ -826,8 +1337,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		
 		//// Sistema de expresiones
 		//Expression:
-		//    OrExpression
-		//;
+		//    OrExpression;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//OrExpression
@@ -840,39 +1350,43 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Group cGroup_1 = (Group)cGroup.eContents().get(1);
 		private final Action cOrExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
-		private final Keyword cOQuizSKeyword_1_1_0 = (Keyword)cAlternatives_1_1.eContents().get(0);
+		private final Keyword cOTalVezKeyword_1_1_0 = (Keyword)cAlternatives_1_1.eContents().get(0);
 		private final Keyword cOQuizSKeyword_1_1_1 = (Keyword)cAlternatives_1_1.eContents().get(1);
+		private final Keyword cOAcasoElAmorPermitaKeyword_1_1_2 = (Keyword)cAlternatives_1_1.eContents().get(2);
+		private final Keyword cOSiLaLunaLoDeseaKeyword_1_1_3 = (Keyword)cAlternatives_1_1.eContents().get(3);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightAndExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//OrExpression returns Expression:
-		//    AndExpression ({OrExpression.left=current}
-		//        (' o quizás ' | ' o quizás') right=AndExpression)*
-		//;
+		//    AndExpression ({OrExpression.left=current} ('o tal vez' | 'o quizás' | 'o acaso el amor permita' | 'o si la luna lo desea') right=AndExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//AndExpression ({OrExpression.left=current}
-		//    (' o quizás ' | ' o quizás') right=AndExpression)*
+		//AndExpression ({OrExpression.left=current} ('o tal vez' | 'o quizás' | 'o acaso el amor permita' | 'o si la luna lo desea') right=AndExpression)*
 		public Group getGroup() { return cGroup; }
 		
 		//AndExpression
 		public RuleCall getAndExpressionParserRuleCall_0() { return cAndExpressionParserRuleCall_0; }
 		
-		//({OrExpression.left=current}
-		//       (' o quizás ' | ' o quizás') right=AndExpression)*
+		//({OrExpression.left=current} ('o tal vez' | 'o quizás' | 'o acaso el amor permita' | 'o si la luna lo desea') right=AndExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//{OrExpression.left=current}
 		public Action getOrExpressionLeftAction_1_0() { return cOrExpressionLeftAction_1_0; }
 		
-		//(' o quizás ' | ' o quizás')
+		//('o tal vez' | 'o quizás' | 'o acaso el amor permita' | 'o si la luna lo desea')
 		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
 		
-		//' o quizás '
-		public Keyword getOQuizSKeyword_1_1_0() { return cOQuizSKeyword_1_1_0; }
+		//'o tal vez'
+		public Keyword getOTalVezKeyword_1_1_0() { return cOTalVezKeyword_1_1_0; }
 		
-		//' o quizás'
+		//'o quizás'
 		public Keyword getOQuizSKeyword_1_1_1() { return cOQuizSKeyword_1_1_1; }
+		
+		//'o acaso el amor permita'
+		public Keyword getOAcasoElAmorPermitaKeyword_1_1_2() { return cOAcasoElAmorPermitaKeyword_1_1_2; }
+		
+		//'o si la luna lo desea'
+		public Keyword getOSiLaLunaLoDeseaKeyword_1_1_3() { return cOSiLaLunaLoDeseaKeyword_1_1_3; }
 		
 		//right=AndExpression
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
@@ -888,38 +1402,50 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Action cAndExpressionLeftAction_1_0 = (Action)cGroup_1.eContents().get(0);
 		private final Alternatives cAlternatives_1_1 = (Alternatives)cGroup_1.eContents().get(1);
 		private final Keyword cYTambiNKeyword_1_1_0 = (Keyword)cAlternatives_1_1.eContents().get(0);
-		private final Keyword cYTambiNKeyword_1_1_1 = (Keyword)cAlternatives_1_1.eContents().get(1);
+		private final Keyword cJuntoAKeyword_1_1_1 = (Keyword)cAlternatives_1_1.eContents().get(1);
+		private final Keyword cYAdemSKeyword_1_1_2 = (Keyword)cAlternatives_1_1.eContents().get(2);
+		private final Keyword cYAlMismoTiempoQueKeyword_1_1_3 = (Keyword)cAlternatives_1_1.eContents().get(3);
+		private final Keyword cYJuntoConKeyword_1_1_4 = (Keyword)cAlternatives_1_1.eContents().get(4);
+		private final Keyword cYEnUniNConKeyword_1_1_5 = (Keyword)cAlternatives_1_1.eContents().get(5);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightEqualityExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//AndExpression returns Expression:
-		//    EqualityExpression ({AndExpression.left=current}
-		//        (' y también ' | ' y también') right=EqualityExpression)*
-		//;
+		//    EqualityExpression ({AndExpression.left=current} ('y también' | 'junto a' | 'y además' | 'y al mismo tiempo que' | 'y junto con' | 'y en unión con') right=EqualityExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//EqualityExpression ({AndExpression.left=current}
-		//    (' y también ' | ' y también') right=EqualityExpression)*
+		//EqualityExpression ({AndExpression.left=current} ('y también' | 'junto a' | 'y además' | 'y al mismo tiempo que' | 'y junto con' | 'y en unión con') right=EqualityExpression)*
 		public Group getGroup() { return cGroup; }
 		
 		//EqualityExpression
 		public RuleCall getEqualityExpressionParserRuleCall_0() { return cEqualityExpressionParserRuleCall_0; }
 		
-		//({AndExpression.left=current}
-		//       (' y también ' | ' y también') right=EqualityExpression)*
+		//({AndExpression.left=current} ('y también' | 'junto a' | 'y además' | 'y al mismo tiempo que' | 'y junto con' | 'y en unión con') right=EqualityExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//{AndExpression.left=current}
 		public Action getAndExpressionLeftAction_1_0() { return cAndExpressionLeftAction_1_0; }
 		
-		//(' y también ' | ' y también')
+		//('y también' | 'junto a' | 'y además' | 'y al mismo tiempo que' | 'y junto con' | 'y en unión con')
 		public Alternatives getAlternatives_1_1() { return cAlternatives_1_1; }
 		
-		//' y también '
+		//'y también'
 		public Keyword getYTambiNKeyword_1_1_0() { return cYTambiNKeyword_1_1_0; }
 		
-		//' y también'
-		public Keyword getYTambiNKeyword_1_1_1() { return cYTambiNKeyword_1_1_1; }
+		//'junto a'
+		public Keyword getJuntoAKeyword_1_1_1() { return cJuntoAKeyword_1_1_1; }
+		
+		//'y además'
+		public Keyword getYAdemSKeyword_1_1_2() { return cYAdemSKeyword_1_1_2; }
+		
+		//'y al mismo tiempo que'
+		public Keyword getYAlMismoTiempoQueKeyword_1_1_3() { return cYAlMismoTiempoQueKeyword_1_1_3; }
+		
+		//'y junto con'
+		public Keyword getYJuntoConKeyword_1_1_4() { return cYJuntoConKeyword_1_1_4; }
+		
+		//'y en unión con'
+		public Keyword getYEnUniNConKeyword_1_1_5() { return cYEnUniNConKeyword_1_1_5; }
 		
 		//right=EqualityExpression
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
@@ -937,36 +1463,37 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Alternatives cOpAlternatives_1_1_0 = (Alternatives)cOpAssignment_1_1.eContents().get(0);
 		private final Keyword cOpLateAlUnSonoConKeyword_1_1_0_0 = (Keyword)cOpAlternatives_1_1_0.eContents().get(0);
 		private final Keyword cOpCantaConUnMatizDistintoAKeyword_1_1_0_1 = (Keyword)cOpAlternatives_1_1_0.eContents().get(1);
+		private final Keyword cOpLateIgualQueKeyword_1_1_0_2 = (Keyword)cOpAlternatives_1_1_0.eContents().get(2);
+		private final Keyword cOpSeDistingueDeKeyword_1_1_0_3 = (Keyword)cOpAlternatives_1_1_0.eContents().get(3);
+		private final Keyword cOpResuenaIgualQueKeyword_1_1_0_4 = (Keyword)cOpAlternatives_1_1_0.eContents().get(4);
+		private final Keyword cOpVibraAlMismoRitmoQueKeyword_1_1_0_5 = (Keyword)cOpAlternatives_1_1_0.eContents().get(5);
+		private final Keyword cOpEsIdNticoAKeyword_1_1_0_6 = (Keyword)cOpAlternatives_1_1_0.eContents().get(6);
+		private final Keyword cOpSeDiferenciaDeKeyword_1_1_0_7 = (Keyword)cOpAlternatives_1_1_0.eContents().get(7);
+		private final Keyword cOpNoCoincideConKeyword_1_1_0_8 = (Keyword)cOpAlternatives_1_1_0.eContents().get(8);
+		private final Keyword cOpEsDistintoAKeyword_1_1_0_9 = (Keyword)cOpAlternatives_1_1_0.eContents().get(9);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightRelationalExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//EqualityExpression returns Expression:
-		//    RelationalExpression ({EqualityExpression.left=current}
-		//        op=('late al unísono con' | 'canta con un matiz distinto a')
-		//        right=RelationalExpression)*
-		//;
+		//    RelationalExpression ({EqualityExpression.left=current} op=('late al unísono con' | 'canta con un matiz distinto a' | 'late igual que' | 'se distingue de' | 'resuena igual que' | 'vibra al mismo ritmo que' | 'es idéntico a' | 'se diferencia de' | 'no coincide con' | 'es distinto a') right=RelationalExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//RelationalExpression ({EqualityExpression.left=current}
-		//    op=('late al unísono con' | 'canta con un matiz distinto a')
-		//    right=RelationalExpression)*
+		//RelationalExpression ({EqualityExpression.left=current} op=('late al unísono con' | 'canta con un matiz distinto a' | 'late igual que' | 'se distingue de' | 'resuena igual que' | 'vibra al mismo ritmo que' | 'es idéntico a' | 'se diferencia de' | 'no coincide con' | 'es distinto a') right=RelationalExpression)*
 		public Group getGroup() { return cGroup; }
 		
 		//RelationalExpression
 		public RuleCall getRelationalExpressionParserRuleCall_0() { return cRelationalExpressionParserRuleCall_0; }
 		
-		//({EqualityExpression.left=current}
-		//       op=('late al unísono con' | 'canta con un matiz distinto a')
-		//       right=RelationalExpression)*
+		//({EqualityExpression.left=current} op=('late al unísono con' | 'canta con un matiz distinto a' | 'late igual que' | 'se distingue de' | 'resuena igual que' | 'vibra al mismo ritmo que' | 'es idéntico a' | 'se diferencia de' | 'no coincide con' | 'es distinto a') right=RelationalExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//{EqualityExpression.left=current}
 		public Action getEqualityExpressionLeftAction_1_0() { return cEqualityExpressionLeftAction_1_0; }
 		
-		//op=('late al unísono con' | 'canta con un matiz distinto a')
+		//op=('late al unísono con' | 'canta con un matiz distinto a' | 'late igual que' | 'se distingue de' | 'resuena igual que' | 'vibra al mismo ritmo que' | 'es idéntico a' | 'se diferencia de' | 'no coincide con' | 'es distinto a')
 		public Assignment getOpAssignment_1_1() { return cOpAssignment_1_1; }
 		
-		//('late al unísono con' | 'canta con un matiz distinto a')
+		//('late al unísono con' | 'canta con un matiz distinto a' | 'late igual que' | 'se distingue de' | 'resuena igual que' | 'vibra al mismo ritmo que' | 'es idéntico a' | 'se diferencia de' | 'no coincide con' | 'es distinto a')
 		public Alternatives getOpAlternatives_1_1_0() { return cOpAlternatives_1_1_0; }
 		
 		//'late al unísono con'
@@ -974,6 +1501,30 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		
 		//'canta con un matiz distinto a'
 		public Keyword getOpCantaConUnMatizDistintoAKeyword_1_1_0_1() { return cOpCantaConUnMatizDistintoAKeyword_1_1_0_1; }
+		
+		//'late igual que'
+		public Keyword getOpLateIgualQueKeyword_1_1_0_2() { return cOpLateIgualQueKeyword_1_1_0_2; }
+		
+		//'se distingue de'
+		public Keyword getOpSeDistingueDeKeyword_1_1_0_3() { return cOpSeDistingueDeKeyword_1_1_0_3; }
+		
+		//'resuena igual que'
+		public Keyword getOpResuenaIgualQueKeyword_1_1_0_4() { return cOpResuenaIgualQueKeyword_1_1_0_4; }
+		
+		//'vibra al mismo ritmo que'
+		public Keyword getOpVibraAlMismoRitmoQueKeyword_1_1_0_5() { return cOpVibraAlMismoRitmoQueKeyword_1_1_0_5; }
+		
+		//'es idéntico a'
+		public Keyword getOpEsIdNticoAKeyword_1_1_0_6() { return cOpEsIdNticoAKeyword_1_1_0_6; }
+		
+		//'se diferencia de'
+		public Keyword getOpSeDiferenciaDeKeyword_1_1_0_7() { return cOpSeDiferenciaDeKeyword_1_1_0_7; }
+		
+		//'no coincide con'
+		public Keyword getOpNoCoincideConKeyword_1_1_0_8() { return cOpNoCoincideConKeyword_1_1_0_8; }
+		
+		//'es distinto a'
+		public Keyword getOpEsDistintoAKeyword_1_1_0_9() { return cOpEsDistintoAKeyword_1_1_0_9; }
 		
 		//right=RelationalExpression
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
@@ -993,41 +1544,41 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Keyword cOpCasiSuspiraAlMismoNivelQueKeyword_1_1_0_1 = (Keyword)cOpAlternatives_1_1_0.eContents().get(1);
 		private final Keyword cOpArdeConMSPasiNQueKeyword_1_1_0_2 = (Keyword)cOpAlternatives_1_1_0.eContents().get(2);
 		private final Keyword cOpRodeaConTantaFuerzaComoKeyword_1_1_0_3 = (Keyword)cOpAlternatives_1_1_0.eContents().get(3);
+		private final Keyword cOpSusurraMenosQueKeyword_1_1_0_4 = (Keyword)cOpAlternatives_1_1_0.eContents().get(4);
+		private final Keyword cOpCasiIgualQueKeyword_1_1_0_5 = (Keyword)cOpAlternatives_1_1_0.eContents().get(5);
+		private final Keyword cOpArdeMasQueKeyword_1_1_0_6 = (Keyword)cOpAlternatives_1_1_0.eContents().get(6);
+		private final Keyword cOpAbrazaComoKeyword_1_1_0_7 = (Keyword)cOpAlternatives_1_1_0.eContents().get(7);
+		private final Keyword cOpSusurraMSSuavementeQueKeyword_1_1_0_8 = (Keyword)cOpAlternatives_1_1_0.eContents().get(8);
+		private final Keyword cOpTieneMenosLatidosQueKeyword_1_1_0_9 = (Keyword)cOpAlternatives_1_1_0.eContents().get(9);
+		private final Keyword cOpSusurraTanSuavementeComoKeyword_1_1_0_10 = (Keyword)cOpAlternatives_1_1_0.eContents().get(10);
+		private final Keyword cOpNoSuperaAKeyword_1_1_0_11 = (Keyword)cOpAlternatives_1_1_0.eContents().get(11);
+		private final Keyword cOpSusurraConMSFuerzaQueKeyword_1_1_0_12 = (Keyword)cOpAlternatives_1_1_0.eContents().get(12);
+		private final Keyword cOpTieneMSLatidosQueKeyword_1_1_0_13 = (Keyword)cOpAlternatives_1_1_0.eContents().get(13);
+		private final Keyword cOpSusurraAlMenosConLaMismaFuerzaQueKeyword_1_1_0_14 = (Keyword)cOpAlternatives_1_1_0.eContents().get(14);
+		private final Keyword cOpAlMenosIgualaAKeyword_1_1_0_15 = (Keyword)cOpAlternatives_1_1_0.eContents().get(15);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightAdditiveExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//RelationalExpression returns Expression:
-		//    AdditiveExpression ({RelationalExpression.left=current}
-		//        op=('susurra con menos fuerza que' | 'casi suspira al mismo nivel que' |
-		//            'arde con más pasión que' | 'rodea con tanta fuerza como')
-		//        right=AdditiveExpression)*
-		//;
+		//    AdditiveExpression ({RelationalExpression.left=current} op=('susurra con menos fuerza que' | 'casi suspira al mismo nivel que' | 'arde con más pasión que' | 'rodea con tanta fuerza como' | 'susurra menos que' | 'casi igual que' | 'arde mas que' | 'abraza como' | 'susurra más suavemente que' | 'tiene menos latidos que' | 'susurra tan suavemente como' | 'no supera a' | 'susurra con más fuerza que' | 'tiene más latidos que' | 'susurra al menos con la misma fuerza que' | 'al menos iguala a') right=AdditiveExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//AdditiveExpression ({RelationalExpression.left=current}
-		//    op=('susurra con menos fuerza que' | 'casi suspira al mismo nivel que' |
-		//        'arde con más pasión que' | 'rodea con tanta fuerza como')
-		//    right=AdditiveExpression)*
+		//AdditiveExpression ({RelationalExpression.left=current} op=('susurra con menos fuerza que' | 'casi suspira al mismo nivel que' | 'arde con más pasión que' | 'rodea con tanta fuerza como' | 'susurra menos que' | 'casi igual que' | 'arde mas que' | 'abraza como' | 'susurra más suavemente que' | 'tiene menos latidos que' | 'susurra tan suavemente como' | 'no supera a' | 'susurra con más fuerza que' | 'tiene más latidos que' | 'susurra al menos con la misma fuerza que' | 'al menos iguala a') right=AdditiveExpression)*
 		public Group getGroup() { return cGroup; }
 		
 		//AdditiveExpression
 		public RuleCall getAdditiveExpressionParserRuleCall_0() { return cAdditiveExpressionParserRuleCall_0; }
 		
-		//({RelationalExpression.left=current}
-		//       op=('susurra con menos fuerza que' | 'casi suspira al mismo nivel que' |
-		//           'arde con más pasión que' | 'rodea con tanta fuerza como')
-		//       right=AdditiveExpression)*
+		//({RelationalExpression.left=current} op=('susurra con menos fuerza que' | 'casi suspira al mismo nivel que' | 'arde con más pasión que' | 'rodea con tanta fuerza como' | 'susurra menos que' | 'casi igual que' | 'arde mas que' | 'abraza como' | 'susurra más suavemente que' | 'tiene menos latidos que' | 'susurra tan suavemente como' | 'no supera a' | 'susurra con más fuerza que' | 'tiene más latidos que' | 'susurra al menos con la misma fuerza que' | 'al menos iguala a') right=AdditiveExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//{RelationalExpression.left=current}
 		public Action getRelationalExpressionLeftAction_1_0() { return cRelationalExpressionLeftAction_1_0; }
 		
-		//op=('susurra con menos fuerza que' | 'casi suspira al mismo nivel que' |
-		//    'arde con más pasión que' | 'rodea con tanta fuerza como')
+		//op=('susurra con menos fuerza que' | 'casi suspira al mismo nivel que' | 'arde con más pasión que' | 'rodea con tanta fuerza como' | 'susurra menos que' | 'casi igual que' | 'arde mas que' | 'abraza como' | 'susurra más suavemente que' | 'tiene menos latidos que' | 'susurra tan suavemente como' | 'no supera a' | 'susurra con más fuerza que' | 'tiene más latidos que' | 'susurra al menos con la misma fuerza que' | 'al menos iguala a')
 		public Assignment getOpAssignment_1_1() { return cOpAssignment_1_1; }
 		
-		//('susurra con menos fuerza que' | 'casi suspira al mismo nivel que' |
-		//            'arde con más pasión que' | 'rodea con tanta fuerza como')
+		//('susurra con menos fuerza que' | 'casi suspira al mismo nivel que' | 'arde con más pasión que' | 'rodea con tanta fuerza como' | 'susurra menos que' | 'casi igual que' | 'arde mas que' | 'abraza como' | 'susurra más suavemente que' | 'tiene menos latidos que' | 'susurra tan suavemente como' | 'no supera a' | 'susurra con más fuerza que' | 'tiene más latidos que' | 'susurra al menos con la misma fuerza que' | 'al menos iguala a')
 		public Alternatives getOpAlternatives_1_1_0() { return cOpAlternatives_1_1_0; }
 		
 		//'susurra con menos fuerza que'
@@ -1041,6 +1592,42 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		
 		//'rodea con tanta fuerza como'
 		public Keyword getOpRodeaConTantaFuerzaComoKeyword_1_1_0_3() { return cOpRodeaConTantaFuerzaComoKeyword_1_1_0_3; }
+		
+		//'susurra menos que'
+		public Keyword getOpSusurraMenosQueKeyword_1_1_0_4() { return cOpSusurraMenosQueKeyword_1_1_0_4; }
+		
+		//'casi igual que'
+		public Keyword getOpCasiIgualQueKeyword_1_1_0_5() { return cOpCasiIgualQueKeyword_1_1_0_5; }
+		
+		//'arde mas que'
+		public Keyword getOpArdeMasQueKeyword_1_1_0_6() { return cOpArdeMasQueKeyword_1_1_0_6; }
+		
+		//'abraza como'
+		public Keyword getOpAbrazaComoKeyword_1_1_0_7() { return cOpAbrazaComoKeyword_1_1_0_7; }
+		
+		//'susurra más suavemente que'
+		public Keyword getOpSusurraMSSuavementeQueKeyword_1_1_0_8() { return cOpSusurraMSSuavementeQueKeyword_1_1_0_8; }
+		
+		//'tiene menos latidos que'
+		public Keyword getOpTieneMenosLatidosQueKeyword_1_1_0_9() { return cOpTieneMenosLatidosQueKeyword_1_1_0_9; }
+		
+		//'susurra tan suavemente como'
+		public Keyword getOpSusurraTanSuavementeComoKeyword_1_1_0_10() { return cOpSusurraTanSuavementeComoKeyword_1_1_0_10; }
+		
+		//'no supera a'
+		public Keyword getOpNoSuperaAKeyword_1_1_0_11() { return cOpNoSuperaAKeyword_1_1_0_11; }
+		
+		//'susurra con más fuerza que'
+		public Keyword getOpSusurraConMSFuerzaQueKeyword_1_1_0_12() { return cOpSusurraConMSFuerzaQueKeyword_1_1_0_12; }
+		
+		//'tiene más latidos que'
+		public Keyword getOpTieneMSLatidosQueKeyword_1_1_0_13() { return cOpTieneMSLatidosQueKeyword_1_1_0_13; }
+		
+		//'susurra al menos con la misma fuerza que'
+		public Keyword getOpSusurraAlMenosConLaMismaFuerzaQueKeyword_1_1_0_14() { return cOpSusurraAlMenosConLaMismaFuerzaQueKeyword_1_1_0_14; }
+		
+		//'al menos iguala a'
+		public Keyword getOpAlMenosIgualaAKeyword_1_1_0_15() { return cOpAlMenosIgualaAKeyword_1_1_0_15; }
 		
 		//right=AdditiveExpression
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
@@ -1058,36 +1645,35 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Alternatives cOpAlternatives_1_1_0 = (Alternatives)cOpAssignment_1_1.eContents().get(0);
 		private final Keyword cOpUnidosEnUnSoloSuspiroConKeyword_1_1_0_0 = (Keyword)cOpAlternatives_1_1_0.eContents().get(0);
 		private final Keyword cOpFundidosEnLaLlamaDeKeyword_1_1_0_1 = (Keyword)cOpAlternatives_1_1_0.eContents().get(1);
+		private final Keyword cOpSeUneAKeyword_1_1_0_2 = (Keyword)cOpAlternatives_1_1_0.eContents().get(2);
+		private final Keyword cOpSeFundeConKeyword_1_1_0_3 = (Keyword)cOpAlternatives_1_1_0.eContents().get(3);
+		private final Keyword cOpSumadoAlLatidoDeKeyword_1_1_0_4 = (Keyword)cOpAlternatives_1_1_0.eContents().get(4);
+		private final Keyword cOpCombinadoConLaPasiNDeKeyword_1_1_0_5 = (Keyword)cOpAlternatives_1_1_0.eContents().get(5);
+		private final Keyword cOpEntrelazadoConKeyword_1_1_0_6 = (Keyword)cOpAlternatives_1_1_0.eContents().get(6);
+		private final Keyword cOpAAdidoAlSuspiroDeKeyword_1_1_0_7 = (Keyword)cOpAlternatives_1_1_0.eContents().get(7);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightMultiplicativeExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//AdditiveExpression returns Expression:
-		//    MultiplicativeExpression ({AdditiveExpression.left=current}
-		//        op=('unidos en un solo suspiro con' | 'fundidos en la llama de')
-		//        right=MultiplicativeExpression)*
-		//;
+		//    MultiplicativeExpression ({AdditiveExpression.left=current} op=('unidos en un solo suspiro con' | 'fundidos en la llama de' | 'se une a' | 'se funde con' | 'sumado al latido de' | 'combinado con la pasión de' | 'entrelazado con' | 'añadido al suspiro de') right=MultiplicativeExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//MultiplicativeExpression ({AdditiveExpression.left=current}
-		//    op=('unidos en un solo suspiro con' | 'fundidos en la llama de')
-		//    right=MultiplicativeExpression)*
+		//MultiplicativeExpression ({AdditiveExpression.left=current} op=('unidos en un solo suspiro con' | 'fundidos en la llama de' | 'se une a' | 'se funde con' | 'sumado al latido de' | 'combinado con la pasión de' | 'entrelazado con' | 'añadido al suspiro de') right=MultiplicativeExpression)*
 		public Group getGroup() { return cGroup; }
 		
 		//MultiplicativeExpression
 		public RuleCall getMultiplicativeExpressionParserRuleCall_0() { return cMultiplicativeExpressionParserRuleCall_0; }
 		
-		//({AdditiveExpression.left=current}
-		//       op=('unidos en un solo suspiro con' | 'fundidos en la llama de')
-		//       right=MultiplicativeExpression)*
+		//({AdditiveExpression.left=current} op=('unidos en un solo suspiro con' | 'fundidos en la llama de' | 'se une a' | 'se funde con' | 'sumado al latido de' | 'combinado con la pasión de' | 'entrelazado con' | 'añadido al suspiro de') right=MultiplicativeExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//{AdditiveExpression.left=current}
 		public Action getAdditiveExpressionLeftAction_1_0() { return cAdditiveExpressionLeftAction_1_0; }
 		
-		//op=('unidos en un solo suspiro con' | 'fundidos en la llama de')
+		//op=('unidos en un solo suspiro con' | 'fundidos en la llama de' | 'se une a' | 'se funde con' | 'sumado al latido de' | 'combinado con la pasión de' | 'entrelazado con' | 'añadido al suspiro de')
 		public Assignment getOpAssignment_1_1() { return cOpAssignment_1_1; }
 		
-		//('unidos en un solo suspiro con' | 'fundidos en la llama de')
+		//('unidos en un solo suspiro con' | 'fundidos en la llama de' | 'se une a' | 'se funde con' | 'sumado al latido de' | 'combinado con la pasión de' | 'entrelazado con' | 'añadido al suspiro de')
 		public Alternatives getOpAlternatives_1_1_0() { return cOpAlternatives_1_1_0; }
 		
 		//'unidos en un solo suspiro con'
@@ -1095,6 +1681,24 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		
 		//'fundidos en la llama de'
 		public Keyword getOpFundidosEnLaLlamaDeKeyword_1_1_0_1() { return cOpFundidosEnLaLlamaDeKeyword_1_1_0_1; }
+		
+		//'se une a'
+		public Keyword getOpSeUneAKeyword_1_1_0_2() { return cOpSeUneAKeyword_1_1_0_2; }
+		
+		//'se funde con'
+		public Keyword getOpSeFundeConKeyword_1_1_0_3() { return cOpSeFundeConKeyword_1_1_0_3; }
+		
+		//'sumado al latido de'
+		public Keyword getOpSumadoAlLatidoDeKeyword_1_1_0_4() { return cOpSumadoAlLatidoDeKeyword_1_1_0_4; }
+		
+		//'combinado con la pasión de'
+		public Keyword getOpCombinadoConLaPasiNDeKeyword_1_1_0_5() { return cOpCombinadoConLaPasiNDeKeyword_1_1_0_5; }
+		
+		//'entrelazado con'
+		public Keyword getOpEntrelazadoConKeyword_1_1_0_6() { return cOpEntrelazadoConKeyword_1_1_0_6; }
+		
+		//'añadido al suspiro de'
+		public Keyword getOpAAdidoAlSuspiroDeKeyword_1_1_0_7() { return cOpAAdidoAlSuspiroDeKeyword_1_1_0_7; }
 		
 		//right=MultiplicativeExpression
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
@@ -1113,36 +1717,32 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Keyword cOpFortalecidosPorElFuegoDeKeyword_1_1_0_0 = (Keyword)cOpAlternatives_1_1_0.eContents().get(0);
 		private final Keyword cOpSeparadosEntreLosEcosDeKeyword_1_1_0_1 = (Keyword)cOpAlternatives_1_1_0.eContents().get(1);
 		private final Keyword cOpResuenaConElEcoDeKeyword_1_1_0_2 = (Keyword)cOpAlternatives_1_1_0.eContents().get(2);
+		private final Keyword cOpCreceConKeyword_1_1_0_3 = (Keyword)cOpAlternatives_1_1_0.eContents().get(3);
+		private final Keyword cOpResuenaEnKeyword_1_1_0_4 = (Keyword)cOpAlternatives_1_1_0.eContents().get(4);
+		private final Keyword cOpSeDivideEntreKeyword_1_1_0_5 = (Keyword)cOpAlternatives_1_1_0.eContents().get(5);
 		private final Assignment cRightAssignment_1_2 = (Assignment)cGroup_1.eContents().get(2);
 		private final RuleCall cRightUnaryExpressionParserRuleCall_1_2_0 = (RuleCall)cRightAssignment_1_2.eContents().get(0);
 		
 		//MultiplicativeExpression returns Expression:
-		//    UnaryExpression ({MultiplicativeExpression.left=current}
-		//        op=('fortalecidos por el fuego de' | 'separados entre los ecos de' | 'resuena con el eco de')
-		//        right=UnaryExpression)*
-		//;
+		//    UnaryExpression ({MultiplicativeExpression.left=current} op=('fortalecidos por el fuego de' | 'separados entre los ecos de' | 'resuena con el eco de' | 'crece con' | 'resuena en' | 'se divide entre') right=UnaryExpression)*;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//UnaryExpression ({MultiplicativeExpression.left=current}
-		//    op=('fortalecidos por el fuego de' | 'separados entre los ecos de' | 'resuena con el eco de')
-		//    right=UnaryExpression)*
+		//UnaryExpression ({MultiplicativeExpression.left=current} op=('fortalecidos por el fuego de' | 'separados entre los ecos de' | 'resuena con el eco de' | 'crece con' | 'resuena en' | 'se divide entre') right=UnaryExpression)*
 		public Group getGroup() { return cGroup; }
 		
 		//UnaryExpression
 		public RuleCall getUnaryExpressionParserRuleCall_0() { return cUnaryExpressionParserRuleCall_0; }
 		
-		//({MultiplicativeExpression.left=current}
-		//       op=('fortalecidos por el fuego de' | 'separados entre los ecos de' | 'resuena con el eco de')
-		//       right=UnaryExpression)*
+		//({MultiplicativeExpression.left=current} op=('fortalecidos por el fuego de' | 'separados entre los ecos de' | 'resuena con el eco de' | 'crece con' | 'resuena en' | 'se divide entre') right=UnaryExpression)*
 		public Group getGroup_1() { return cGroup_1; }
 		
 		//{MultiplicativeExpression.left=current}
 		public Action getMultiplicativeExpressionLeftAction_1_0() { return cMultiplicativeExpressionLeftAction_1_0; }
 		
-		//op=('fortalecidos por el fuego de' | 'separados entre los ecos de' | 'resuena con el eco de')
+		//op=('fortalecidos por el fuego de' | 'separados entre los ecos de' | 'resuena con el eco de' | 'crece con' | 'resuena en' | 'se divide entre')
 		public Assignment getOpAssignment_1_1() { return cOpAssignment_1_1; }
 		
-		//('fortalecidos por el fuego de' | 'separados entre los ecos de' | 'resuena con el eco de')
+		//('fortalecidos por el fuego de' | 'separados entre los ecos de' | 'resuena con el eco de' | 'crece con' | 'resuena en' | 'se divide entre')
 		public Alternatives getOpAlternatives_1_1_0() { return cOpAlternatives_1_1_0; }
 		
 		//'fortalecidos por el fuego de'
@@ -1153,6 +1753,15 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		
 		//'resuena con el eco de'
 		public Keyword getOpResuenaConElEcoDeKeyword_1_1_0_2() { return cOpResuenaConElEcoDeKeyword_1_1_0_2; }
+		
+		//'crece con'
+		public Keyword getOpCreceConKeyword_1_1_0_3() { return cOpCreceConKeyword_1_1_0_3; }
+		
+		//'resuena en'
+		public Keyword getOpResuenaEnKeyword_1_1_0_4() { return cOpResuenaEnKeyword_1_1_0_4; }
+		
+		//'se divide entre'
+		public Keyword getOpSeDivideEntreKeyword_1_1_0_5() { return cOpSeDivideEntreKeyword_1_1_0_5; }
 		
 		//right=UnaryExpression
 		public Assignment getRightAssignment_1_2() { return cRightAssignment_1_2; }
@@ -1166,32 +1775,51 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Group cGroup_0 = (Group)cAlternatives.eContents().get(0);
 		private final Action cUnaryExpressionAction_0_0 = (Action)cGroup_0.eContents().get(0);
 		private final Assignment cOpAssignment_0_1 = (Assignment)cGroup_0.eContents().get(1);
-		private final Keyword cOpNoCreoQueKeyword_0_1_0 = (Keyword)cOpAssignment_0_1.eContents().get(0);
+		private final Alternatives cOpAlternatives_0_1_0 = (Alternatives)cOpAssignment_0_1.eContents().get(0);
+		private final Keyword cOpNoCreoQueKeyword_0_1_0_0 = (Keyword)cOpAlternatives_0_1_0.eContents().get(0);
+		private final Keyword cOpNoSientoQueKeyword_0_1_0_1 = (Keyword)cOpAlternatives_0_1_0.eContents().get(1);
+		private final Keyword cOpNoMePareceQueKeyword_0_1_0_2 = (Keyword)cOpAlternatives_0_1_0.eContents().get(2);
+		private final Keyword cOpNoPerciboQueKeyword_0_1_0_3 = (Keyword)cOpAlternatives_0_1_0.eContents().get(3);
+		private final Keyword cOpDudoQueKeyword_0_1_0_4 = (Keyword)cOpAlternatives_0_1_0.eContents().get(4);
 		private final Assignment cExpressionAssignment_0_2 = (Assignment)cGroup_0.eContents().get(2);
 		private final RuleCall cExpressionUnaryExpressionParserRuleCall_0_2_0 = (RuleCall)cExpressionAssignment_0_2.eContents().get(0);
 		private final RuleCall cPrimaryExpressionParserRuleCall_1 = (RuleCall)cAlternatives.eContents().get(1);
 		
 		//UnaryExpression returns Expression:
-		//    {UnaryExpression} op=('no creo que') expression=UnaryExpression
-		//    | PrimaryExpression
-		//;
+		//    {UnaryExpression} op=('no creo que' | 'no siento que' | 'no me parece que' | 'no percibo que' | 'dudo que') expression=UnaryExpression |
+		//    PrimaryExpression;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{UnaryExpression} op=('no creo que') expression=UnaryExpression
-		//| PrimaryExpression
+		//{UnaryExpression} op=('no creo que' | 'no siento que' | 'no me parece que' | 'no percibo que' | 'dudo que') expression=UnaryExpression |
+		//PrimaryExpression
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
-		//{UnaryExpression} op=('no creo que') expression=UnaryExpression
+		//{UnaryExpression} op=('no creo que' | 'no siento que' | 'no me parece que' | 'no percibo que' | 'dudo que') expression=UnaryExpression
 		public Group getGroup_0() { return cGroup_0; }
 		
 		//{UnaryExpression}
 		public Action getUnaryExpressionAction_0_0() { return cUnaryExpressionAction_0_0; }
 		
-		//op=('no creo que')
+		//op=('no creo que' | 'no siento que' | 'no me parece que' | 'no percibo que' | 'dudo que')
 		public Assignment getOpAssignment_0_1() { return cOpAssignment_0_1; }
 		
-		//('no creo que')
-		public Keyword getOpNoCreoQueKeyword_0_1_0() { return cOpNoCreoQueKeyword_0_1_0; }
+		//('no creo que' | 'no siento que' | 'no me parece que' | 'no percibo que' | 'dudo que')
+		public Alternatives getOpAlternatives_0_1_0() { return cOpAlternatives_0_1_0; }
+		
+		//'no creo que'
+		public Keyword getOpNoCreoQueKeyword_0_1_0_0() { return cOpNoCreoQueKeyword_0_1_0_0; }
+		
+		//'no siento que'
+		public Keyword getOpNoSientoQueKeyword_0_1_0_1() { return cOpNoSientoQueKeyword_0_1_0_1; }
+		
+		//'no me parece que'
+		public Keyword getOpNoMePareceQueKeyword_0_1_0_2() { return cOpNoMePareceQueKeyword_0_1_0_2; }
+		
+		//'no percibo que'
+		public Keyword getOpNoPerciboQueKeyword_0_1_0_3() { return cOpNoPerciboQueKeyword_0_1_0_3; }
+		
+		//'dudo que'
+		public Keyword getOpDudoQueKeyword_0_1_0_4() { return cOpDudoQueKeyword_0_1_0_4; }
 		
 		//expression=UnaryExpression
 		public Assignment getExpressionAssignment_0_2() { return cExpressionAssignment_0_2; }
@@ -1230,21 +1858,20 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final RuleCall cFunctionCallParserRuleCall_5 = (RuleCall)cAlternatives.eContents().get(5);
 		
 		//PrimaryExpression returns Expression:
-		//    '(' Expression ')'
-		//    | {NumberLiteral} valueInt=INT
-		//    | {StringLiteral} valueString=STRING
-		//    | {BooleanLiteral} valueBoolean=('siempre' | 'jamás')
-		//    | {VariableReference} name=ID
-		//    | FunctionCall
-		//;
+		//    '(' Expression ')' |
+		//    {NumberLiteral} valueInt=INT |
+		//    {StringLiteral} valueString=STRING |
+		//    {BooleanLiteral} valueBoolean=('siempre' | 'jamás') |
+		//    {VariableReference} name=ID |
+		//    FunctionCall;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'(' Expression ')'
-		//| {NumberLiteral} valueInt=INT
-		//| {StringLiteral} valueString=STRING
-		//| {BooleanLiteral} valueBoolean=('siempre' | 'jamás')
-		//| {VariableReference} name=ID
-		//| FunctionCall
+		//'(' Expression ')' |
+		//{NumberLiteral} valueInt=INT |
+		//{StringLiteral} valueString=STRING |
+		//{BooleanLiteral} valueBoolean=('siempre' | 'jamás') |
+		//{VariableReference} name=ID |
+		//FunctionCall
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//'(' Expression ')'
@@ -1320,45 +1947,58 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.DearCode.FunctionCall");
 		private final Group cGroup = (Group)rule.eContents().get(1);
 		private final Action cFunctionCallAction_0 = (Action)cGroup.eContents().get(0);
-		private final Keyword cInvocoAKeyword_1 = (Keyword)cGroup.eContents().get(1);
+		private final Alternatives cAlternatives_1 = (Alternatives)cGroup.eContents().get(1);
+		private final Keyword cInvocoAKeyword_1_0 = (Keyword)cAlternatives_1.eContents().get(0);
+		private final Keyword cSusurroAKeyword_1_1 = (Keyword)cAlternatives_1.eContents().get(1);
+		private final Keyword cMurmuroAKeyword_1_2 = (Keyword)cAlternatives_1.eContents().get(2);
+		private final Keyword cConjuroAKeyword_1_3 = (Keyword)cAlternatives_1.eContents().get(3);
 		private final Assignment cNameFuncionAssignment_2 = (Assignment)cGroup.eContents().get(2);
 		private final CrossReference cNameFuncionMI_IDCrossReference_2_0 = (CrossReference)cNameFuncionAssignment_2.eContents().get(0);
 		private final RuleCall cNameFuncionMI_IDIDTerminalRuleCall_2_0_1 = (RuleCall)cNameFuncionMI_IDCrossReference_2_0.eContents().get(1);
-		private final Assignment cComentarioAssignment_3 = (Assignment)cGroup.eContents().get(3);
-		private final RuleCall cComentarioCommentParserRuleCall_3_0 = (RuleCall)cComentarioAssignment_3.eContents().get(0);
-		private final Group cGroup_4 = (Group)cGroup.eContents().get(4);
-		private final Keyword cConLosRegalosKeyword_4_0 = (Keyword)cGroup_4.eContents().get(0);
-		private final Group cGroup_4_1 = (Group)cGroup_4.eContents().get(1);
-		private final Assignment cArgsAssignment_4_1_0 = (Assignment)cGroup_4_1.eContents().get(0);
-		private final RuleCall cArgsExpressionParserRuleCall_4_1_0_0 = (RuleCall)cArgsAssignment_4_1_0.eContents().get(0);
-		private final Group cGroup_4_1_1 = (Group)cGroup_4_1.eContents().get(1);
-		private final Keyword cYKeyword_4_1_1_0 = (Keyword)cGroup_4_1_1.eContents().get(0);
-		private final Assignment cArgsAssignment_4_1_1_1 = (Assignment)cGroup_4_1_1.eContents().get(1);
-		private final RuleCall cArgsExpressionParserRuleCall_4_1_1_1_0 = (RuleCall)cArgsAssignment_4_1_1_1.eContents().get(0);
-		private final Keyword cEnMiCorazNKeyword_4_2 = (Keyword)cGroup_4.eContents().get(2);
+		private final Group cGroup_3 = (Group)cGroup.eContents().get(3);
+		private final Alternatives cAlternatives_3_0 = (Alternatives)cGroup_3.eContents().get(0);
+		private final Keyword cConLosRegalosKeyword_3_0_0 = (Keyword)cAlternatives_3_0.eContents().get(0);
+		private final Keyword cOfreciendoKeyword_3_0_1 = (Keyword)cAlternatives_3_0.eContents().get(1);
+		private final Keyword cConLosDonesKeyword_3_0_2 = (Keyword)cAlternatives_3_0.eContents().get(2);
+		private final Keyword cPresentandoKeyword_3_0_3 = (Keyword)cAlternatives_3_0.eContents().get(3);
+		private final Keyword cOfreciendoMisTesorosKeyword_3_0_4 = (Keyword)cAlternatives_3_0.eContents().get(4);
+		private final Group cGroup_3_1 = (Group)cGroup_3.eContents().get(1);
+		private final Assignment cArgsAssignment_3_1_0 = (Assignment)cGroup_3_1.eContents().get(0);
+		private final RuleCall cArgsExpressionParserRuleCall_3_1_0_0 = (RuleCall)cArgsAssignment_3_1_0.eContents().get(0);
+		private final Group cGroup_3_1_1 = (Group)cGroup_3_1.eContents().get(1);
+		private final Keyword cYKeyword_3_1_1_0 = (Keyword)cGroup_3_1_1.eContents().get(0);
+		private final Assignment cArgsAssignment_3_1_1_1 = (Assignment)cGroup_3_1_1.eContents().get(1);
+		private final RuleCall cArgsExpressionParserRuleCall_3_1_1_1_0 = (RuleCall)cArgsAssignment_3_1_1_1.eContents().get(0);
+		private final Alternatives cAlternatives_3_2 = (Alternatives)cGroup_3.eContents().get(2);
+		private final Keyword cEnMiCorazNKeyword_3_2_0 = (Keyword)cAlternatives_3_2.eContents().get(0);
+		private final Keyword cEnMiAlmaKeyword_3_2_1 = (Keyword)cAlternatives_3_2.eContents().get(1);
 		
 		//FunctionCall returns Expression:
-		//    {FunctionCall}  // Esto fuerza a crear una clase concreta
-		//    'invoco a' (nameFuncion=[MI_ID])
-		//    comentario=Comment?
-		//    ('con los regalos' (args+=Expression ('y' args+=Expression)*)?
-		//    'en mi corazón')
-		//;
+		//    {FunctionCall} ('invoco a' | 'susurro a' | 'murmuro a' | 'conjuro a') (nameFuncion=[MI_ID])
+		//    (('con los regalos' | 'ofreciendo' | 'con los dones' | 'presentando' | 'ofreciendo mis tesoros') (args+=Expression ('y' args+=Expression)*)? ('en mi corazón' | 'en mi alma'))?;
 		@Override public ParserRule getRule() { return rule; }
 		
-		//{FunctionCall}  // Esto fuerza a crear una clase concreta
-		//'invoco a' (nameFuncion=[MI_ID])
-		//comentario=Comment?
-		//('con los regalos' (args+=Expression ('y' args+=Expression)*)?
-		//'en mi corazón')
+		//{FunctionCall} ('invoco a' | 'susurro a' | 'murmuro a' | 'conjuro a') (nameFuncion=[MI_ID])
+		//(('con los regalos' | 'ofreciendo' | 'con los dones' | 'presentando' | 'ofreciendo mis tesoros') (args+=Expression ('y' args+=Expression)*)? ('en mi corazón' | 'en mi alma'))?
 		public Group getGroup() { return cGroup; }
 		
 		//{FunctionCall}
 		public Action getFunctionCallAction_0() { return cFunctionCallAction_0; }
 		
-		//// Esto fuerza a crear una clase concreta
-		//  'invoco a'
-		public Keyword getInvocoAKeyword_1() { return cInvocoAKeyword_1; }
+		//('invoco a' | 'susurro a' | 'murmuro a' | 'conjuro a')
+		public Alternatives getAlternatives_1() { return cAlternatives_1; }
+		
+		//'invoco a'
+		public Keyword getInvocoAKeyword_1_0() { return cInvocoAKeyword_1_0; }
+		
+		//'susurro a'
+		public Keyword getSusurroAKeyword_1_1() { return cSusurroAKeyword_1_1; }
+		
+		//'murmuro a'
+		public Keyword getMurmuroAKeyword_1_2() { return cMurmuroAKeyword_1_2; }
+		
+		//'conjuro a'
+		public Keyword getConjuroAKeyword_1_3() { return cConjuroAKeyword_1_3; }
 		
 		//(nameFuncion=[MI_ID])
 		public Assignment getNameFuncionAssignment_2() { return cNameFuncionAssignment_2; }
@@ -1369,69 +2009,56 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		//ID
 		public RuleCall getNameFuncionMI_IDIDTerminalRuleCall_2_0_1() { return cNameFuncionMI_IDIDTerminalRuleCall_2_0_1; }
 		
-		//comentario=Comment?
-		public Assignment getComentarioAssignment_3() { return cComentarioAssignment_3; }
+		//(('con los regalos' | 'ofreciendo' | 'con los dones' | 'presentando' | 'ofreciendo mis tesoros') (args+=Expression ('y' args+=Expression)*)? ('en mi corazón' | 'en mi alma'))?
+		public Group getGroup_3() { return cGroup_3; }
 		
-		//Comment
-		public RuleCall getComentarioCommentParserRuleCall_3_0() { return cComentarioCommentParserRuleCall_3_0; }
-		
-		//('con los regalos' (args+=Expression ('y' args+=Expression)*)?
-		//'en mi corazón')
-		public Group getGroup_4() { return cGroup_4; }
+		//('con los regalos' | 'ofreciendo' | 'con los dones' | 'presentando' | 'ofreciendo mis tesoros')
+		public Alternatives getAlternatives_3_0() { return cAlternatives_3_0; }
 		
 		//'con los regalos'
-		public Keyword getConLosRegalosKeyword_4_0() { return cConLosRegalosKeyword_4_0; }
+		public Keyword getConLosRegalosKeyword_3_0_0() { return cConLosRegalosKeyword_3_0_0; }
+		
+		//'ofreciendo'
+		public Keyword getOfreciendoKeyword_3_0_1() { return cOfreciendoKeyword_3_0_1; }
+		
+		//'con los dones'
+		public Keyword getConLosDonesKeyword_3_0_2() { return cConLosDonesKeyword_3_0_2; }
+		
+		//'presentando'
+		public Keyword getPresentandoKeyword_3_0_3() { return cPresentandoKeyword_3_0_3; }
+		
+		//'ofreciendo mis tesoros'
+		public Keyword getOfreciendoMisTesorosKeyword_3_0_4() { return cOfreciendoMisTesorosKeyword_3_0_4; }
 		
 		//(args+=Expression ('y' args+=Expression)*)?
-		public Group getGroup_4_1() { return cGroup_4_1; }
+		public Group getGroup_3_1() { return cGroup_3_1; }
 		
 		//args+=Expression
-		public Assignment getArgsAssignment_4_1_0() { return cArgsAssignment_4_1_0; }
+		public Assignment getArgsAssignment_3_1_0() { return cArgsAssignment_3_1_0; }
 		
 		//Expression
-		public RuleCall getArgsExpressionParserRuleCall_4_1_0_0() { return cArgsExpressionParserRuleCall_4_1_0_0; }
+		public RuleCall getArgsExpressionParserRuleCall_3_1_0_0() { return cArgsExpressionParserRuleCall_3_1_0_0; }
 		
 		//('y' args+=Expression)*
-		public Group getGroup_4_1_1() { return cGroup_4_1_1; }
+		public Group getGroup_3_1_1() { return cGroup_3_1_1; }
 		
 		//'y'
-		public Keyword getYKeyword_4_1_1_0() { return cYKeyword_4_1_1_0; }
+		public Keyword getYKeyword_3_1_1_0() { return cYKeyword_3_1_1_0; }
 		
 		//args+=Expression
-		public Assignment getArgsAssignment_4_1_1_1() { return cArgsAssignment_4_1_1_1; }
+		public Assignment getArgsAssignment_3_1_1_1() { return cArgsAssignment_3_1_1_1; }
 		
 		//Expression
-		public RuleCall getArgsExpressionParserRuleCall_4_1_1_1_0() { return cArgsExpressionParserRuleCall_4_1_1_1_0; }
+		public RuleCall getArgsExpressionParserRuleCall_3_1_1_1_0() { return cArgsExpressionParserRuleCall_3_1_1_1_0; }
+		
+		//('en mi corazón' | 'en mi alma')
+		public Alternatives getAlternatives_3_2() { return cAlternatives_3_2; }
 		
 		//'en mi corazón'
-		public Keyword getEnMiCorazNKeyword_4_2() { return cEnMiCorazNKeyword_4_2; }
-	}
-	public class TypeElements extends AbstractParserRuleElementFinder {
-		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.DearCode.Type");
-		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
-		private final Keyword cNMeroKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cTextoKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
-		private final Keyword cBooleanoKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
-		private final Keyword cNadaKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		public Keyword getEnMiCorazNKeyword_3_2_0() { return cEnMiCorazNKeyword_3_2_0; }
 		
-		//// Sistema de tipos
-		//Type: 'número' | 'texto' | 'booleano' | 'nada';
-		@Override public ParserRule getRule() { return rule; }
-		
-		//'número' | 'texto' | 'booleano' | 'nada'
-		public Alternatives getAlternatives() { return cAlternatives; }
-		
-		//'número'
-		public Keyword getNMeroKeyword_0() { return cNMeroKeyword_0; }
-		
-		//'texto'
-		public Keyword getTextoKeyword_1() { return cTextoKeyword_1; }
-		
-		//'booleano'
-		public Keyword getBooleanoKeyword_2() { return cBooleanoKeyword_2; }
-		
-		//'nada'
-		public Keyword getNadaKeyword_3() { return cNadaKeyword_3; }
+		//'en mi alma'
+		public Keyword getEnMiAlmaKeyword_3_2_1() { return cEnMiAlmaKeyword_3_2_1; }
 	}
 	public class CommentElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.DearCode.Comment");
@@ -1440,8 +2067,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		
 		//// Comentarios ultra-flexibles
 		//Comment:
-		//    value=ANYTEXT
-		//;
+		//    value=ANYTEXT;
 		@Override public ParserRule getRule() { return rule; }
 		
 		//value=ANYTEXT
@@ -1469,27 +2095,51 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.DearCode.VerboDeclaracion");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Keyword cTeRegaloKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
-		private final Keyword cOfrezcoKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cTeOfrezcoKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		private final Keyword cObsequioKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
 		private final Keyword cDepositoEnTuJardNKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		private final Keyword cTeReveloKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
+		private final Keyword cTeSusurroKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
+		private final Keyword cTeConfOKeyword_6 = (Keyword)cAlternatives.eContents().get(6);
+		private final Keyword cTeEntregoKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
+		private final Keyword cTeDedicoKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
+		private final Keyword cTeBrindoKeyword_9 = (Keyword)cAlternatives.eContents().get(9);
 		
-		//VerboDeclaracion: 'Te regalo' | 'Ofrezco' | 'Obsequio' | 'Deposito en tu jardín';
+		//VerboDeclaracion: 'Te regalo' | 'Te Ofrezco' | 'Obsequio' | 'Deposito en tu jardín' | 'Te revelo' | 'Te susurro' | 'Te confío' | 'Te entrego' | 'Te dedico' | 'Te brindo';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Te regalo' | 'Ofrezco' | 'Obsequio' | 'Deposito en tu jardín'
+		//'Te regalo' | 'Te Ofrezco' | 'Obsequio' | 'Deposito en tu jardín' | 'Te revelo' | 'Te susurro' | 'Te confío' | 'Te entrego' | 'Te dedico' | 'Te brindo'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//'Te regalo'
 		public Keyword getTeRegaloKeyword_0() { return cTeRegaloKeyword_0; }
 		
-		//'Ofrezco'
-		public Keyword getOfrezcoKeyword_1() { return cOfrezcoKeyword_1; }
+		//'Te Ofrezco'
+		public Keyword getTeOfrezcoKeyword_1() { return cTeOfrezcoKeyword_1; }
 		
 		//'Obsequio'
 		public Keyword getObsequioKeyword_2() { return cObsequioKeyword_2; }
 		
 		//'Deposito en tu jardín'
 		public Keyword getDepositoEnTuJardNKeyword_3() { return cDepositoEnTuJardNKeyword_3; }
+		
+		//'Te revelo'
+		public Keyword getTeReveloKeyword_4() { return cTeReveloKeyword_4; }
+		
+		//'Te susurro'
+		public Keyword getTeSusurroKeyword_5() { return cTeSusurroKeyword_5; }
+		
+		//'Te confío'
+		public Keyword getTeConfOKeyword_6() { return cTeConfOKeyword_6; }
+		
+		//'Te entrego'
+		public Keyword getTeEntregoKeyword_7() { return cTeEntregoKeyword_7; }
+		
+		//'Te dedico'
+		public Keyword getTeDedicoKeyword_8() { return cTeDedicoKeyword_8; }
+		
+		//'Te brindo'
+		public Keyword getTeBrindoKeyword_9() { return cTeBrindoKeyword_9; }
 	}
 	public class VerboReasignacionElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.DearCode.VerboReasignacion");
@@ -1497,11 +2147,17 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		private final Keyword cPermTemeAlimentarKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
 		private final Keyword cPermTemeRegarKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
 		private final Keyword cPermTemeAjustarKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final Keyword cReavivoKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
+		private final Keyword cRenuevoKeyword_4 = (Keyword)cAlternatives.eContents().get(4);
+		private final Keyword cReafirmoKeyword_5 = (Keyword)cAlternatives.eContents().get(5);
+		private final Keyword cPermTemeTransformarKeyword_6 = (Keyword)cAlternatives.eContents().get(6);
+		private final Keyword cRenuevoConPasiNKeyword_7 = (Keyword)cAlternatives.eContents().get(7);
+		private final Keyword cModificoConAmorKeyword_8 = (Keyword)cAlternatives.eContents().get(8);
 		
-		//VerboReasignacion: 'Permíteme alimentar' | 'Permíteme regar' | 'Permíteme ajustar';
+		//VerboReasignacion: 'Permíteme alimentar' | 'Permíteme regar' | 'Permíteme ajustar' | 'Reavivo' | 'Renuevo' | 'Reafirmo' | 'Permíteme transformar' | 'Renuevo con pasión' | 'Modifico con amor';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'Permíteme alimentar' | 'Permíteme regar' | 'Permíteme ajustar'
+		//'Permíteme alimentar' | 'Permíteme regar' | 'Permíteme ajustar' | 'Reavivo' | 'Renuevo' | 'Reafirmo' | 'Permíteme transformar' | 'Renuevo con pasión' | 'Modifico con amor'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//'Permíteme alimentar'
@@ -1512,17 +2168,37 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		
 		//'Permíteme ajustar'
 		public Keyword getPermTemeAjustarKeyword_2() { return cPermTemeAjustarKeyword_2; }
+		
+		//'Reavivo'
+		public Keyword getReavivoKeyword_3() { return cReavivoKeyword_3; }
+		
+		//'Renuevo'
+		public Keyword getRenuevoKeyword_4() { return cRenuevoKeyword_4; }
+		
+		//'Reafirmo'
+		public Keyword getReafirmoKeyword_5() { return cReafirmoKeyword_5; }
+		
+		//'Permíteme transformar'
+		public Keyword getPermTemeTransformarKeyword_6() { return cPermTemeTransformarKeyword_6; }
+		
+		//'Renuevo con pasión'
+		public Keyword getRenuevoConPasiNKeyword_7() { return cRenuevoConPasiNKeyword_7; }
+		
+		//'Modifico con amor'
+		public Keyword getModificoConAmorKeyword_8() { return cModificoConAmorKeyword_8; }
 	}
 	public class ArticuloElements extends AbstractParserRuleElementFinder {
 		private final ParserRule rule = (ParserRule) GrammarUtil.findRuleForName(getGrammar(), "edu.upb.lp.DearCode.Articulo");
 		private final Alternatives cAlternatives = (Alternatives)rule.eContents().get(1);
 		private final Keyword cUnKeyword_0 = (Keyword)cAlternatives.eContents().get(0);
 		private final Keyword cUnaKeyword_1 = (Keyword)cAlternatives.eContents().get(1);
+		private final Keyword cUnosKeyword_2 = (Keyword)cAlternatives.eContents().get(2);
+		private final Keyword cUnasKeyword_3 = (Keyword)cAlternatives.eContents().get(3);
 		
-		//Articulo: 'un' | 'una';
+		//Articulo: 'un'|'una'|'unos'|'unas';
 		@Override public ParserRule getRule() { return rule; }
 		
-		//'un' | 'una'
+		//'un'|'una'|'unos'|'unas'
 		public Alternatives getAlternatives() { return cAlternatives; }
 		
 		//'un'
@@ -1530,6 +2206,12 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		
 		//'una'
 		public Keyword getUnaKeyword_1() { return cUnaKeyword_1; }
+		
+		//'unos'
+		public Keyword getUnosKeyword_2() { return cUnosKeyword_2; }
+		
+		//'unas'
+		public Keyword getUnasKeyword_3() { return cUnasKeyword_3; }
 	}
 	
 	
@@ -1539,6 +2221,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	private final DespedidaElements pDespedida;
 	private final CuerpoElements pCuerpo;
 	private final InstruccionElements pInstruccion;
+	private final TypeElements pType;
 	private final DeclararElements pDeclarar;
 	private final ReasignarElements pReasignar;
 	private final EntradaElements pEntrada;
@@ -1548,6 +2231,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	private final BucleWhileElements pBucleWhile;
 	private final BucleForElements pBucleFor;
 	private final FuncionElements pFuncion;
+	private final ParametroDeclElements pParametroDecl;
 	private final ReturnElements pReturn;
 	private final ExpressionElements pExpression;
 	private final OrExpressionElements pOrExpression;
@@ -1559,7 +2243,6 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	private final UnaryExpressionElements pUnaryExpression;
 	private final PrimaryExpressionElements pPrimaryExpression;
 	private final FunctionCallElements pFunctionCall;
-	private final TypeElements pType;
 	private final CommentElements pComment;
 	private final MI_IDElements pMI_ID;
 	private final VerboDeclaracionElements pVerboDeclaracion;
@@ -1582,6 +2265,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		this.pDespedida = new DespedidaElements();
 		this.pCuerpo = new CuerpoElements();
 		this.pInstruccion = new InstruccionElements();
+		this.pType = new TypeElements();
 		this.pDeclarar = new DeclararElements();
 		this.pReasignar = new ReasignarElements();
 		this.pEntrada = new EntradaElements();
@@ -1591,6 +2275,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		this.pBucleWhile = new BucleWhileElements();
 		this.pBucleFor = new BucleForElements();
 		this.pFuncion = new FuncionElements();
+		this.pParametroDecl = new ParametroDeclElements();
 		this.pReturn = new ReturnElements();
 		this.pExpression = new ExpressionElements();
 		this.pOrExpression = new OrExpressionElements();
@@ -1602,7 +2287,6 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		this.pUnaryExpression = new UnaryExpressionElements();
 		this.pPrimaryExpression = new PrimaryExpressionElements();
 		this.pFunctionCall = new FunctionCallElements();
-		this.pType = new TypeElements();
 		this.pComment = new CommentElements();
 		this.pMI_ID = new MI_IDElements();
 		this.pVerboDeclaracion = new VerboDeclaracionElements();
@@ -1639,8 +2323,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 
 	
 	//Program:
-	//    carta=Carta
-	//;
+	//    carta=Carta;
 	public ProgramElements getProgramAccess() {
 		return pProgram;
 	}
@@ -1652,8 +2335,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	//Carta:
 	//    saludo=Saludo
 	//    cuerpo=Cuerpo
-	//    despedida=Despedida
-	//;
+	//    despedida=Despedida;
 	public CartaElements getCartaAccess() {
 		return pCarta;
 	}
@@ -1662,7 +2344,8 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		return getCartaAccess().getRule();
 	}
 	
-	//Saludo: ('Querido'|'Querida') name=ID '.';
+	//Saludo:
+	//    ('Querido' | 'Querida' | 'Inspiras un amor dentro de mí' | 'Eres la chispa de mi alma' | 'Tu luz despierta mi ser') name=ID '.';
 	public SaludoElements getSaludoAccess() {
 		return pSaludo;
 	}
@@ -1671,7 +2354,8 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		return getSaludoAccess().getRule();
 	}
 	
-	//Despedida: 'Con cariño, Tu programador' name=ID '.';
+	//Despedida:
+	//    ('Con cariño, Tu programador' | 'Espero la noche para tenerte conmigo' | 'Tengo la suerte de tenerte siempre' | 'Haces que mi corazón se acelere') name=ID '.';
 	public DespedidaElements getDespedidaAccess() {
 		return pDespedida;
 	}
@@ -1680,7 +2364,8 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		return getDespedidaAccess().getRule();
 	}
 	
-	//Cuerpo: instrucciones+=Instruccion+;
+	//Cuerpo:
+	//    instrucciones+=Instruccion+;
 	public CuerpoElements getCuerpoAccess() {
 		return pCuerpo;
 	}
@@ -1690,9 +2375,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//Instruccion:
-	//    Declarar | Reasignar | Condicional
-	//    | BucleWhile | BucleFor | Entrada | Salida | Funcion | FunctionCall
-	//;
+	//    Declarar | Reasignar | Condicional | BucleWhile | BucleFor | Entrada | Salida | Funcion | FunctionCall;
 	public InstruccionElements getInstruccionAccess() {
 		return pInstruccion;
 	}
@@ -1701,15 +2384,18 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		return getInstruccionAccess().getRule();
 	}
 	
+	//// Tipos básicos
+	//Type: 'número' | 'texto' | 'booleano';
+	public TypeElements getTypeAccess() {
+		return pType;
+	}
+	
+	public ParserRule getTypeRule() {
+		return getTypeAccess().getRule();
+	}
+	
 	//Declarar:
-	//    verboDecl=VerboDeclaracion
-	//    articulo=Articulo
-	//    sustantivo=MI_ID
-	//    preComentario=Comment?
-	//    valor=Expression
-	//    postComentario=Comment?
-	//    '.'
-	//;
+	//    verboDecl=VerboDeclaracion articulo=Articulo (tipo=Type)? sustantivo=MI_ID preComentario=Comment? valor=Expression postComentario=Comment? '.';
 	public DeclararElements getDeclararAccess() {
 		return pDeclarar;
 	}
@@ -1719,14 +2405,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//Reasignar:
-	//    verboReas=VerboReasignacion
-	//    preComentario=Comment?
-	//    sustantivo=MI_ID
-	//    postComentario=Comment?
-	//    valor=Expression
-	//    comentario=Comment?
-	//    '.'
-	//;
+	//    verboReas=VerboReasignacion preComentario=Comment? sustantivo=MI_ID postComentario=Comment? valor=Expression comentario=Comment? '.';
 	public ReasignarElements getReasignarAccess() {
 		return pReasignar;
 	}
@@ -1736,10 +2415,12 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//Entrada:
-	//    'Le pedí al lector que me dijera' variable=MI_ID
-	//    ("en un susurro numérico" | "con palabras de terciopelo")?
-	//    '.'
-	//;
+	//    ('Le pedí al lector que me dijera' | 'Le' | 'Escucho tu voz en el viento' | 'Atrapo un suspiro tuyo' | 'Recojo tus palabras como pétalos al alba' |
+	//     'Tu aliento me habla en silencio' | 'Acaricio el eco de tu voz' | 'Guardo tus secretos en mi pecho' | 'Espero tu susurro como un amanecer')
+	//    variable=MI_ID
+	//    ("en un susurro numérico" | "con palabras de terciopelo" | 'con un eco numérico' | 'en un latido suave' | 'como un verso escrito en el cielo' |
+	//     'envuelto en la luz de tus ojos' | 'con el perfume de tu esencia' | 'danzando en el compás de mi corazón' | 'tejiendo sueños con tus letras')?
+	//    '.';
 	public EntradaElements getEntradaAccess() {
 		return pEntrada;
 	}
@@ -1749,8 +2430,9 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//Salida:
-	//    'Hoy le quise contar al mundo sobre:' expresion=Expression '.'
-	//;
+	//    ('Hoy le quise contar al mundo sobre:' | 'Dejo que el mundo sienta sobre:' | 'Susurro al universo el secreto sobre:' |
+	//     'Grabo en el firmamento mi verdad acerca de:' | 'Canto al viento mi anhelo de:' | 'Envío al horizonte mi pasión sobre:' |
+	//     'Dejo que las nubes abracen mi voz en:') expresion=Expression '.';
 	public SalidaElements getSalidaAccess() {
 		return pSalida;
 	}
@@ -1760,8 +2442,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//ElementoBloque:
-	//    Instruccion | Return
-	//;
+	//    Instruccion | Return;
 	public ElementoBloqueElements getElementoBloqueAccess() {
 		return pElementoBloque;
 	}
@@ -1771,14 +2452,13 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//Condicional:
-	//    'Si en tu corazon sientes que' condicion=Expression ','
-	//        'entonces deja que estas palabras florezcan:'
-	//        instruccionesThen+=ElementoBloque+
-	//    ( 'Pero si el destino dijera lo contrario,'
-	//        'que broten estas verdades:'
-	//        instruccionesElse+=ElementoBloque+ )?
-	//    'Y así el universo sigue su curso.'
-	//;
+	//    ('Si en tu corazon sientes que' | 'Si tu alma susurra que' | 'Si el latido de mi alma dice que' | 'Si el destino nos susurra que' | 'Si la luna refleja que')
+	//    condicion=Expression ','
+	//    comment+=Comment?
+	//    ('entonces deja que estas palabras florezcan:' | 'entonces que brote este amor:' | 'entonces que nazca este sueño:' | 'entonces que el universo conspire:' | 'entonces que mi voz te abrace:')
+	//    instruccionesThen+=ElementoBloque+
+	//    (('Pero si la noche calla otra verdad,' 'que surja este suspiro:' | 'Pero si el viento trae otro mensaje,' 'que despierte esta pasión:' | 'Pero si el corazón duda,' 'que renazca esta esperanza:') instruccionesElse+=ElementoBloque+)?
+	//    ('Y así el universo sigue su curso.' | 'Así sigue el canto del corazón.' | 'Y así la melodía continúa.' | 'Y el eco de nuestro amor perdura.' | 'Y la danza de las estrellas sigue.');
 	public CondicionalElements getCondicionalAccess() {
 		return pCondicional;
 	}
@@ -1788,12 +2468,11 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//BucleWhile:
-	//    ('Mientras aun me piensas' | 'Mientras aún sueñes con este momento')
+	//    ('Mientras aun me piensas' | 'Mientras aún sueñes con este momento' | 'Mientras mi corazón te anhele' | 'Mientras tu luz me guíe' | 'Mientras el fuego de mi amor arda' | 'Mientras la luna nos ilumine' | 'Mientras tus ojos me miren')
 	//    condicion=Expression ','
-	//    'haz que suceda:'
+	//    ('haz que suceda:' | 'tejiendo este amor:' | 'deja que el tiempo se detenga:' | 'haz que el universo conspire:' | 'permite que el destino nos una:')
 	//    loopBody+=ElementoBloque+
-	//    'Y así el susurro descansa.'
-	//;
+	//    ('Y así el susurro descansa.' | 'hasta que el anhelo repose' | 'Y el silencio envuelve nuestro amor.' | 'Hasta que la eternidad nos encuentre.' | 'Y la pasión se convierte en recuerdo.');
 	public BucleWhileElements getBucleWhileAccess() {
 		return pBucleWhile;
 	}
@@ -1803,13 +2482,13 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//BucleFor:
-	//    'En cada suspiro' variable=MI_ID 'desde' inicio=Expression
+	//    ('En cada suspiro' | 'Por cada latido' | 'Por cada estrella que nos mira' | 'En cada pétalo de rosa' | 'Por cada ola que besa la orilla')
+	//    variable=MI_ID 'desde' inicio=Expression
 	//    'hasta' fin=Expression
 	//    ('con paso' paso=Expression)?
-	//    'deja que el universo cante:'
+	//    ('deja que el universo cante:' | 'resuena este amor' | 'que el viento susurre nuestro nombre:' | 'que el cielo pinte nuestro amor:' | 'que la tierra tiemble con nuestra pasión:')
 	//    loopBody+=ElementoBloque+
-	//    'Cuando el último eco se calle.'
-	//;
+	//    ('Cuando el último eco se calle.' | 'Y el eco se desvanece.' | 'Y la última estrella se apague.' | 'Hasta que el último pétalo caiga.' | 'Cuando el mar se quede en silencio.');
 	public BucleForElements getBucleForAccess() {
 		return pBucleFor;
 	}
@@ -1819,15 +2498,13 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//Funcion:
-	//    ('Dejo en estas líneas una promesa llamada' |
-	//     'Escribo en estas líneas una intención llamada' |
-	//     'En la brisa escondo un deseo llamado') name=MI_ID
-	//    ('que guarda en su esencia' parametros+=MI_ID (',' parametros+=MI_ID)*)?
-	//    ('prometiendo devolver' tipo=Type)?
-	//    'Cuando la promesa se cumple:'
-	//        instrucciones+=ElementoBloque+
-	//    'Así se sella la promesa.'
-	//;
+	//    ('Dejo en estas líneas una promesa llamada' | 'Escribo en estas líneas una intención llamada' | 'En la brisa escondo un deseo llamado' | 'Grabo en las estrellas una promesa llamada' |
+	//     'Susurro al universo un deseo llamado' | 'Tejo en el destino un juramento llamado' | 'Esculpo en el tiempo un anhelo llamado' | 'Susurro a la eternidad un sueño llamado')
+	//    name=MI_ID
+	//    (('que guarda en su esencia' | 'tejiendo' | 'que abraza en su ser' | 'que lleva en su alma' | 'que susurra en su corazón') parametros+=ParametroDecl (('y' | 'junto a' | 'tambien' | 'llevando consigo') parametros+=ParametroDecl)*)?
+	//    ('prometiendo devolver' | 'jurando devolver')? tipo=Type?
+	//    ('Cuando la promesa se cumple:' | 'Cuando el amor se cumpla') instrucciones+=ElementoBloque+
+	//    ('Así se sella la promesa.' | 'Así se eterniza.' | 'Y así nuestro amor se inmortaliza.' | 'Y el universo guarda nuestro secreto.' | 'Y la eternidad nos abraza.');
 	public FuncionElements getFuncionAccess() {
 		return pFuncion;
 	}
@@ -1836,9 +2513,19 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		return getFuncionAccess().getRule();
 	}
 	
+	//ParametroDecl:
+	//    (tipo=Type)? comment+=Comment? name=MI_ID;
+	public ParametroDeclElements getParametroDeclAccess() {
+		return pParametroDecl;
+	}
+	
+	public ParserRule getParametroDeclRule() {
+		return getParametroDeclAccess().getRule();
+	}
+	
 	//Return:
-	//    'Y entrego al viento' expresion=Expression 'como promesa cumplida.'
-	//;
+	//    ('Y entrego al viento' | 'Te entrego' | 'Te ofrezco con el alma' | 'Dejo en tus manos' | 'Susurro a tu corazón')
+	//    expresion=Expression ('como promesa cumplida.' | 'con un suspiro.' | 'como un regalo eterno.' | 'envuelto en mi amor.' | 'con la esperanza de tu sonrisa.');
 	public ReturnElements getReturnAccess() {
 		return pReturn;
 	}
@@ -1849,8 +2536,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	
 	//// Sistema de expresiones
 	//Expression:
-	//    OrExpression
-	//;
+	//    OrExpression;
 	public ExpressionElements getExpressionAccess() {
 		return pExpression;
 	}
@@ -1860,9 +2546,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//OrExpression returns Expression:
-	//    AndExpression ({OrExpression.left=current}
-	//        (' o quizás ' | ' o quizás') right=AndExpression)*
-	//;
+	//    AndExpression ({OrExpression.left=current} ('o tal vez' | 'o quizás' | 'o acaso el amor permita' | 'o si la luna lo desea') right=AndExpression)*;
 	public OrExpressionElements getOrExpressionAccess() {
 		return pOrExpression;
 	}
@@ -1872,9 +2556,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//AndExpression returns Expression:
-	//    EqualityExpression ({AndExpression.left=current}
-	//        (' y también ' | ' y también') right=EqualityExpression)*
-	//;
+	//    EqualityExpression ({AndExpression.left=current} ('y también' | 'junto a' | 'y además' | 'y al mismo tiempo que' | 'y junto con' | 'y en unión con') right=EqualityExpression)*;
 	public AndExpressionElements getAndExpressionAccess() {
 		return pAndExpression;
 	}
@@ -1884,10 +2566,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//EqualityExpression returns Expression:
-	//    RelationalExpression ({EqualityExpression.left=current}
-	//        op=('late al unísono con' | 'canta con un matiz distinto a')
-	//        right=RelationalExpression)*
-	//;
+	//    RelationalExpression ({EqualityExpression.left=current} op=('late al unísono con' | 'canta con un matiz distinto a' | 'late igual que' | 'se distingue de' | 'resuena igual que' | 'vibra al mismo ritmo que' | 'es idéntico a' | 'se diferencia de' | 'no coincide con' | 'es distinto a') right=RelationalExpression)*;
 	public EqualityExpressionElements getEqualityExpressionAccess() {
 		return pEqualityExpression;
 	}
@@ -1897,11 +2576,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//RelationalExpression returns Expression:
-	//    AdditiveExpression ({RelationalExpression.left=current}
-	//        op=('susurra con menos fuerza que' | 'casi suspira al mismo nivel que' |
-	//            'arde con más pasión que' | 'rodea con tanta fuerza como')
-	//        right=AdditiveExpression)*
-	//;
+	//    AdditiveExpression ({RelationalExpression.left=current} op=('susurra con menos fuerza que' | 'casi suspira al mismo nivel que' | 'arde con más pasión que' | 'rodea con tanta fuerza como' | 'susurra menos que' | 'casi igual que' | 'arde mas que' | 'abraza como' | 'susurra más suavemente que' | 'tiene menos latidos que' | 'susurra tan suavemente como' | 'no supera a' | 'susurra con más fuerza que' | 'tiene más latidos que' | 'susurra al menos con la misma fuerza que' | 'al menos iguala a') right=AdditiveExpression)*;
 	public RelationalExpressionElements getRelationalExpressionAccess() {
 		return pRelationalExpression;
 	}
@@ -1911,10 +2586,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//AdditiveExpression returns Expression:
-	//    MultiplicativeExpression ({AdditiveExpression.left=current}
-	//        op=('unidos en un solo suspiro con' | 'fundidos en la llama de')
-	//        right=MultiplicativeExpression)*
-	//;
+	//    MultiplicativeExpression ({AdditiveExpression.left=current} op=('unidos en un solo suspiro con' | 'fundidos en la llama de' | 'se une a' | 'se funde con' | 'sumado al latido de' | 'combinado con la pasión de' | 'entrelazado con' | 'añadido al suspiro de') right=MultiplicativeExpression)*;
 	public AdditiveExpressionElements getAdditiveExpressionAccess() {
 		return pAdditiveExpression;
 	}
@@ -1924,10 +2596,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//MultiplicativeExpression returns Expression:
-	//    UnaryExpression ({MultiplicativeExpression.left=current}
-	//        op=('fortalecidos por el fuego de' | 'separados entre los ecos de' | 'resuena con el eco de')
-	//        right=UnaryExpression)*
-	//;
+	//    UnaryExpression ({MultiplicativeExpression.left=current} op=('fortalecidos por el fuego de' | 'separados entre los ecos de' | 'resuena con el eco de' | 'crece con' | 'resuena en' | 'se divide entre') right=UnaryExpression)*;
 	public MultiplicativeExpressionElements getMultiplicativeExpressionAccess() {
 		return pMultiplicativeExpression;
 	}
@@ -1937,9 +2606,8 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//UnaryExpression returns Expression:
-	//    {UnaryExpression} op=('no creo que') expression=UnaryExpression
-	//    | PrimaryExpression
-	//;
+	//    {UnaryExpression} op=('no creo que' | 'no siento que' | 'no me parece que' | 'no percibo que' | 'dudo que') expression=UnaryExpression |
+	//    PrimaryExpression;
 	public UnaryExpressionElements getUnaryExpressionAccess() {
 		return pUnaryExpression;
 	}
@@ -1949,13 +2617,12 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//PrimaryExpression returns Expression:
-	//    '(' Expression ')'
-	//    | {NumberLiteral} valueInt=INT
-	//    | {StringLiteral} valueString=STRING
-	//    | {BooleanLiteral} valueBoolean=('siempre' | 'jamás')
-	//    | {VariableReference} name=ID
-	//    | FunctionCall
-	//;
+	//    '(' Expression ')' |
+	//    {NumberLiteral} valueInt=INT |
+	//    {StringLiteral} valueString=STRING |
+	//    {BooleanLiteral} valueBoolean=('siempre' | 'jamás') |
+	//    {VariableReference} name=ID |
+	//    FunctionCall;
 	public PrimaryExpressionElements getPrimaryExpressionAccess() {
 		return pPrimaryExpression;
 	}
@@ -1965,12 +2632,8 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 	}
 	
 	//FunctionCall returns Expression:
-	//    {FunctionCall}  // Esto fuerza a crear una clase concreta
-	//    'invoco a' (nameFuncion=[MI_ID])
-	//    comentario=Comment?
-	//    ('con los regalos' (args+=Expression ('y' args+=Expression)*)?
-	//    'en mi corazón')
-	//;
+	//    {FunctionCall} ('invoco a' | 'susurro a' | 'murmuro a' | 'conjuro a') (nameFuncion=[MI_ID])
+	//    (('con los regalos' | 'ofreciendo' | 'con los dones' | 'presentando' | 'ofreciendo mis tesoros') (args+=Expression ('y' args+=Expression)*)? ('en mi corazón' | 'en mi alma'))?;
 	public FunctionCallElements getFunctionCallAccess() {
 		return pFunctionCall;
 	}
@@ -1979,20 +2642,9 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		return getFunctionCallAccess().getRule();
 	}
 	
-	//// Sistema de tipos
-	//Type: 'número' | 'texto' | 'booleano' | 'nada';
-	public TypeElements getTypeAccess() {
-		return pType;
-	}
-	
-	public ParserRule getTypeRule() {
-		return getTypeAccess().getRule();
-	}
-	
 	//// Comentarios ultra-flexibles
 	//Comment:
-	//    value=ANYTEXT
-	//;
+	//    value=ANYTEXT;
 	public CommentElements getCommentAccess() {
 		return pComment;
 	}
@@ -2011,7 +2663,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		return getMI_IDAccess().getRule();
 	}
 	
-	//VerboDeclaracion: 'Te regalo' | 'Ofrezco' | 'Obsequio' | 'Deposito en tu jardín';
+	//VerboDeclaracion: 'Te regalo' | 'Te Ofrezco' | 'Obsequio' | 'Deposito en tu jardín' | 'Te revelo' | 'Te susurro' | 'Te confío' | 'Te entrego' | 'Te dedico' | 'Te brindo';
 	public VerboDeclaracionElements getVerboDeclaracionAccess() {
 		return pVerboDeclaracion;
 	}
@@ -2020,7 +2672,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		return getVerboDeclaracionAccess().getRule();
 	}
 	
-	//VerboReasignacion: 'Permíteme alimentar' | 'Permíteme regar' | 'Permíteme ajustar';
+	//VerboReasignacion: 'Permíteme alimentar' | 'Permíteme regar' | 'Permíteme ajustar' | 'Reavivo' | 'Renuevo' | 'Reafirmo' | 'Permíteme transformar' | 'Renuevo con pasión' | 'Modifico con amor';
 	public VerboReasignacionElements getVerboReasignacionAccess() {
 		return pVerboReasignacion;
 	}
@@ -2029,7 +2681,7 @@ public class DearCodeGrammarAccess extends AbstractElementFinder.AbstractGrammar
 		return getVerboReasignacionAccess().getRule();
 	}
 	
-	//Articulo: 'un' | 'una';
+	//Articulo: 'un'|'una'|'unos'|'unas';
 	public ArticuloElements getArticuloAccess() {
 		return pArticulo;
 	}

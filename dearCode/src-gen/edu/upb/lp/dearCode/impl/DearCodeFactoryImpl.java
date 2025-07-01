@@ -80,6 +80,7 @@ public class DearCodeFactoryImpl extends EFactoryImpl implements DearCodeFactory
       case DearCodePackage.BUCLE_WHILE: return createBucleWhile();
       case DearCodePackage.BUCLE_FOR: return createBucleFor();
       case DearCodePackage.FUNCION: return createFuncion();
+      case DearCodePackage.PARAMETRO_DECL: return createParametroDecl();
       case DearCodePackage.RETURN: return createReturn();
       case DearCodePackage.EXPRESSION: return createExpression();
       case DearCodePackage.COMMENT: return createComment();
@@ -279,6 +280,18 @@ public class DearCodeFactoryImpl extends EFactoryImpl implements DearCodeFactory
   {
     FuncionImpl funcion = new FuncionImpl();
     return funcion;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public ParametroDecl createParametroDecl()
+  {
+    ParametroDeclImpl parametroDecl = new ParametroDeclImpl();
+    return parametroDecl;
   }
 
   /**

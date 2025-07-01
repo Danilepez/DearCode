@@ -10,6 +10,7 @@ import org.eclipse.xtext.generator.IGeneratorContext
 import org.eclipse.xtext.nodemodel.util.NodeModelUtils
 import edu.upb.lp.dearCode.*
 import org.eclipse.emf.ecore.EObject
+import java.util.HashMap
 
 /**
  * Generates code from your model files on save.
@@ -20,24 +21,40 @@ import org.eclipse.emf.ecore.EObject
 class DearCodeGenerator extends AbstractGenerator {
 
     override void doGenerate(Resource resource, IFileSystemAccess2 fsa, IGeneratorContext context) {
+    	variableTypes.clear() 
         val program = resource.contents.head as Program
         val code = generateProgram(program)
         fsa.generateFile(program.carta.saludo.name +'.py', code)
     }
     
-     def generateProgram(Program p) '''
-		# -*- coding: utf-8 -*-
+    val variableTypes = new HashMap<String, String>
+    
+    def generateProgram(Program p) '''
 		# Carta para «p.carta.saludo.name»
 		«FOR instr : p.carta.cuerpo.instrucciones»
 		«generateInstruccion(instr)»
 		«ENDFOR»
 		# Con cariño, Tu programador «p.carta.despedida.name»
 		'''
+	// Mapeo de tipos a Python
+    def mapType(String type) {
+        switch type {
+            case 'número': 'int'
+            case 'texto': 'str'
+            case 'booleano': 'bool'
+            default: ''
+        }
+    }
 		
-    def dispatch CharSequence generateInstruccion(Declarar d) '''
-	    «IF d.preComentario !== null»# «d.preComentario.value»«ENDIF»
-	    «d.sustantivo.name» = «IF d.valor !== null»«generateExpression(d.valor)»«ELSE»None«ENDIF»«IF d.postComentario !== null»  # «d.postComentario.value»«ENDIF»
-	'''
+    def dispatch CharSequence generateInstruccion(Declarar d) {
+        if(d.tipo !== null) {
+            variableTypes.put(d.sustantivo.name, d.tipo)
+        }
+        '''
+        «IF d.preComentario !== null»# «d.preComentario.value»«ENDIF»
+        «d.sustantivo.name» = «generateExpression(d.valor)»«IF d.postComentario !== null»  # «d.postComentario.value»«ENDIF»
+        '''
+    }
 
 	
 	def dispatch CharSequence generateInstruccion(Reasignar r) '''
@@ -45,9 +62,115 @@ class DearCodeGenerator extends AbstractGenerator {
 	    «ENDIF»
 	    «r.sustantivo.name» = «IF r.valor !== null»«generateExpression(r.valor)»«ELSE»None«ENDIF»«IF r.comentario !== null»  # «r.comentario.value»«ENDIF»
 	'''
+	
+
+    def dispatch CharSequence generateInstruccion(Funcion func) {
+        for(param : func.parametros) {
+            if(param.tipo !== null) {
+                variableTypes.put(param.name.name, param.tipo)
+            }
+        }
+        
+        '''
+        def «func.name.name»(«FOR param : func.parametros SEPARATOR ', '»«param.name.name»«ENDFOR»):
+            «generateFuncionBody(func)»
+        '''
+    }
+    
+    def generateFuncionBody(Funcion func) {
+        // Convertir cada elemento del bloque en código Python
+        val bodyContent = func.instrucciones.map[generateElementoBloque(it)].join("\n")
+        
+        // Añadir indentación a cada línea
+        bodyContent.split("\n").map['''    «it»'''].join("\n")
+    }
+    
+    def dispatch CharSequence generateElementoBloque(Return ret) '''
+        return «generateExpression(ret.expresion)»
+    '''
+    
+    def dispatch CharSequence generateElementoBloque(Condicional cond) '''
+        if «generateExpression(cond.condicion)»:
+            «FOR instr : cond.instruccionesThen»
+                «generateElementoBloque(instr)»
+            «ENDFOR»
+        «IF cond.instruccionesElse !== null && !cond.instruccionesElse.empty»
+        else:
+            «FOR instr : cond.instruccionesElse»
+                «generateElementoBloque(instr)»
+            «ENDFOR»
+        «ENDIF»
+    '''
+    
+    def dispatch CharSequence generateElementoBloque(BucleFor forLoop) '''
+		«IF forLoop.inicio !== null && forLoop.paso !== null»
+		    // Caso 3 parámetros: rango con inicio, fin y paso
+		    for «forLoop.variable.name» in range(
+		        «generateExpression(forLoop.inicio)»,
+		        «generateExpression(forLoop.fin)» + 1,
+		        «generateExpression(forLoop.paso)»
+		    ):
+		«ELSEIF forLoop.inicio !== null»
+		    // Caso 2 parámetros: rango con inicio y fin
+		    for «forLoop.variable.name» in range(
+		        «generateExpression(forLoop.inicio)»,
+		        «generateExpression(forLoop.fin)» + 1
+		    ):
+		«ELSE»
+		    // Caso 1 parámetro: solo fin
+		    for «forLoop.variable.name» in range(
+		        «generateExpression(forLoop.fin)» + 1
+		    ):
+		«ENDIF»
+		    «FOR instr : forLoop.loopBody»
+		        «generateElementoBloque(instr)»
+		    «ENDFOR»
+		'''
+    
+    def dispatch CharSequence generateElementoBloque(BucleWhile whileLoop) '''
+        while «generateExpression(whileLoop.condicion)»:
+            «FOR instr : whileLoop.loopBody»
+                «generateElementoBloque(instr)»
+            «ENDFOR»
+    '''
+    
+    def dispatch CharSequence generateElementoBloque(Instruccion instr) '''
+        «generateInstruccion(instr)»
+    '''
+    def dispatch CharSequence generateInstruccion(Condicional cond) {
+    	return generateElementoBloque(cond)
+    }
+	
+	def dispatch CharSequence generateInstruccion(BucleFor forLoop) {
+	    return generateElementoBloque(forLoop)
+	}
+	
+	def dispatch CharSequence generateInstruccion(BucleWhile whileLoop){
+		return generateElementoBloque(whileLoop)
+	}
+    
+	
 	def dispatch CharSequence generateInstruccion(Salida s) '''
         print(«generateExpression(s.expresion)»)
     '''
+    
+    def dispatch CharSequence generateInstruccion(Entrada e)'''
+    	«val varName = e.variable.name»
+    	«val tipo = variableTypes.getOrDefault(varName, "str")»
+    	# Entrada para variable: «varName», tipo detectado: «tipo»
+	    «IF tipo == "int"»
+	    «varName» = int(input())
+	    «ELSEIF tipo == "bool"»
+	    «varName» = input().lower() in ["true", "1", "sí", "si"]
+	    «ELSE»
+	    «varName» = input()
+	    «ENDIF»
+    '''
+    
+    def dispatch CharSequence generateInstruccion(FunctionCall call) '''
+        «generateExpression(call)»
+    '''
+    
 	
 	def dispatch CharSequence generateInstruccion(Instruccion i) '''
 		# instrucción no soportada: «i.toString»
@@ -67,9 +190,9 @@ class DearCodeGenerator extends AbstractGenerator {
             case "MultiplicativeExpression": generateMultiplicativeExpression(expr as MultiplicativeExpression)
             case "UnaryExpression": generateUnaryExpression(expr as UnaryExpression)
             case "NumberLiteral": '''«(expr as NumberLiteral).valueInt»'''
-            case "StringLiteral": '''«(expr as StringLiteral).valueString»'''
+            case "StringLiteral": '''"«(expr as StringLiteral).valueString»"'''
             case "BooleanLiteral": generateBooleanLiteral(expr as BooleanLiteral)
-            case "VariableReference": '''«(expr as VariableReference).name»'''
+            case "VariableReference": generateVariableRef(expr as VariableReference)
             case "FunctionCall": generateFunctionCall(expr as FunctionCall)
             default: '''#EXPRESION:«expr.eClass.name»#'''
         }
@@ -85,31 +208,31 @@ class DearCodeGenerator extends AbstractGenerator {
     }
     
     def CharSequence generateEqualityExpression(EqualityExpression expr) {
-        val op = if(expr.op.contains("unísono")) "==" else "!="
+        val op = if(expr.op.contains("late al unísono con")) "==" else "!="
         '''(«generateExpression(expr.left)» «op» «generateExpression(expr.right)»)'''
     }
     
     def CharSequence generateRelationalExpression(RelationalExpression expr) {
         val op = switch expr.op {
-            case expr.op.contains("menos fuerza"): "<"
-            case expr.op.contains("mismo nivel"): "<="
-            case expr.op.contains("más pasión"): ">"
-            case expr.op.contains("tanta fuerza"): ">="
+            case expr.op.contains("susurra con menos fuerza que"): "<"
+            case expr.op.contains("casi suspira al mismo nivel que"): "<="
+            case expr.op.contains("arde con más pasión que"): ">"
+            case expr.op.contains("rodea con tanta fuerza como"): ">="
             default: "??"
         }
         '''(«generateExpression(expr.left)» «op» «generateExpression(expr.right)»)'''
     }
     
     def CharSequence generateAdditiveExpression(AdditiveExpression expr) {
-        val op = if(expr.op.contains("suspiro")) "+" else "-"
+        val op = if(expr.op.contains("unidos en un solo suspiro con")) "+" else "-"
         '''(«generateExpression(expr.left)» «op» «generateExpression(expr.right)»)'''
     }
     
     def CharSequence generateMultiplicativeExpression(MultiplicativeExpression expr) {
         val op = switch expr.op {
-            case expr.op.contains("fuego"): "*"
-            case expr.op.contains("ecos"): "/"
-            case expr.op.contains("resuena"): "%"
+            case expr.op.contains("fortalecidos por el fuego de"): "*"
+            case expr.op.contains("separados entre los ecos de"): "/"
+            case expr.op.contains("resuena con el eco de"): "%"
             default: "??"
         }
         '''(«generateExpression(expr.left)» «op» «generateExpression(expr.right)»)'''
@@ -118,17 +241,25 @@ class DearCodeGenerator extends AbstractGenerator {
     def CharSequence generateUnaryExpression(UnaryExpression expr) {
         '''(not «generateExpression(expr.expression)»)'''
     }
+    def CharSequence generateVariableRef (VariableReference expr) {
+        val varName = expr.name
+        if(variableTypes.containsKey(varName) && variableTypes.get(varName) == 'texto') {
+            '''"«varName»"'''
+        } else {
+            '''«varName»'''
+        }
+    }
     
     def CharSequence generateBooleanLiteral(BooleanLiteral b) {
         if (b.valueBoolean == 'siempre') 'True' else 'False'
     }
     
+    
+    
     def CharSequence generateFunctionCall(FunctionCall call) {
-        val name = if(call.nameFuncion instanceof Funcion) 
-                   (call.nameFuncion as Funcion).name 
-                   else (call.nameFuncion as MI_ID).name
-        val args = call.args.map[generateExpression(it)].join(", ")
-        '''«name»(«args»)'''
-    }
+	    val name = call.nameFuncion.name
+	    val args = call.args.map[generateExpression(it)].join(", ")
+	    '''«name»(«args»)'''
+	}
 	
 }

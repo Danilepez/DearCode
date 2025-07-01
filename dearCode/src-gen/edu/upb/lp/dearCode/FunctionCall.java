@@ -15,7 +15,6 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link edu.upb.lp.dearCode.FunctionCall#getNameFuncion <em>Name Funcion</em>}</li>
- *   <li>{@link edu.upb.lp.dearCode.FunctionCall#getComentario <em>Comentario</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.FunctionCall#getArgs <em>Args</em>}</li>
  * </ul>
  *
@@ -46,28 +45,6 @@ public interface FunctionCall extends Expression
    * @generated
    */
   void setNameFuncion(MI_ID value);
-
-  /**
-   * Returns the value of the '<em><b>Comentario</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the value of the '<em>Comentario</em>' containment reference.
-   * @see #setComentario(Comment)
-   * @see edu.upb.lp.dearCode.DearCodePackage#getFunctionCall_Comentario()
-   * @model containment="true"
-   * @generated
-   */
-  Comment getComentario();
-
-  /**
-   * Sets the value of the '{@link edu.upb.lp.dearCode.FunctionCall#getComentario <em>Comentario</em>}' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @param value the new value of the '<em>Comentario</em>' containment reference.
-   * @see #getComentario()
-   * @generated
-   */
-  void setComentario(Comment value);
 
   /**
    * Returns the value of the '<em><b>Args</b></em>' containment reference list.

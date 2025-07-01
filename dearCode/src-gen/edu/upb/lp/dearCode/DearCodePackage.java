@@ -282,13 +282,22 @@ public interface DearCodePackage extends EPackage
   int DECLARAR__ARTICULO = INSTRUCCION_FEATURE_COUNT + 1;
 
   /**
+   * The feature id for the '<em><b>Tipo</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int DECLARAR__TIPO = INSTRUCCION_FEATURE_COUNT + 2;
+
+  /**
    * The feature id for the '<em><b>Sustantivo</b></em>' containment reference.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int DECLARAR__SUSTANTIVO = INSTRUCCION_FEATURE_COUNT + 2;
+  int DECLARAR__SUSTANTIVO = INSTRUCCION_FEATURE_COUNT + 3;
 
   /**
    * The feature id for the '<em><b>Pre Comentario</b></em>' containment reference.
@@ -297,7 +306,7 @@ public interface DearCodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int DECLARAR__PRE_COMENTARIO = INSTRUCCION_FEATURE_COUNT + 3;
+  int DECLARAR__PRE_COMENTARIO = INSTRUCCION_FEATURE_COUNT + 4;
 
   /**
    * The feature id for the '<em><b>Valor</b></em>' containment reference.
@@ -306,7 +315,7 @@ public interface DearCodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int DECLARAR__VALOR = INSTRUCCION_FEATURE_COUNT + 4;
+  int DECLARAR__VALOR = INSTRUCCION_FEATURE_COUNT + 5;
 
   /**
    * The feature id for the '<em><b>Post Comentario</b></em>' containment reference.
@@ -315,7 +324,7 @@ public interface DearCodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int DECLARAR__POST_COMENTARIO = INSTRUCCION_FEATURE_COUNT + 5;
+  int DECLARAR__POST_COMENTARIO = INSTRUCCION_FEATURE_COUNT + 6;
 
   /**
    * The number of structural features of the '<em>Declarar</em>' class.
@@ -324,7 +333,7 @@ public interface DearCodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int DECLARAR_FEATURE_COUNT = INSTRUCCION_FEATURE_COUNT + 6;
+  int DECLARAR_FEATURE_COUNT = INSTRUCCION_FEATURE_COUNT + 7;
 
   /**
    * The meta object id for the '{@link edu.upb.lp.dearCode.impl.ReasignarImpl <em>Reasignar</em>}' class.
@@ -475,13 +484,22 @@ public interface DearCodePackage extends EPackage
   int CONDICIONAL__CONDICION = INSTRUCCION_FEATURE_COUNT + 0;
 
   /**
+   * The feature id for the '<em><b>Comment</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int CONDICIONAL__COMMENT = INSTRUCCION_FEATURE_COUNT + 1;
+
+  /**
    * The feature id for the '<em><b>Instrucciones Then</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int CONDICIONAL__INSTRUCCIONES_THEN = INSTRUCCION_FEATURE_COUNT + 1;
+  int CONDICIONAL__INSTRUCCIONES_THEN = INSTRUCCION_FEATURE_COUNT + 2;
 
   /**
    * The feature id for the '<em><b>Instrucciones Else</b></em>' containment reference list.
@@ -490,7 +508,7 @@ public interface DearCodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDICIONAL__INSTRUCCIONES_ELSE = INSTRUCCION_FEATURE_COUNT + 2;
+  int CONDICIONAL__INSTRUCCIONES_ELSE = INSTRUCCION_FEATURE_COUNT + 3;
 
   /**
    * The number of structural features of the '<em>Condicional</em>' class.
@@ -499,7 +517,7 @@ public interface DearCodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int CONDICIONAL_FEATURE_COUNT = INSTRUCCION_FEATURE_COUNT + 3;
+  int CONDICIONAL_FEATURE_COUNT = INSTRUCCION_FEATURE_COUNT + 4;
 
   /**
    * The meta object id for the '{@link edu.upb.lp.dearCode.impl.BucleWhileImpl <em>Bucle While</em>}' class.
@@ -658,6 +676,52 @@ public interface DearCodePackage extends EPackage
   int FUNCION_FEATURE_COUNT = INSTRUCCION_FEATURE_COUNT + 4;
 
   /**
+   * The meta object id for the '{@link edu.upb.lp.dearCode.impl.ParametroDeclImpl <em>Parametro Decl</em>}' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see edu.upb.lp.dearCode.impl.ParametroDeclImpl
+   * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getParametroDecl()
+   * @generated
+   */
+  int PARAMETRO_DECL = 15;
+
+  /**
+   * The feature id for the '<em><b>Tipo</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETRO_DECL__TIPO = 0;
+
+  /**
+   * The feature id for the '<em><b>Comment</b></em>' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETRO_DECL__COMMENT = 1;
+
+  /**
+   * The feature id for the '<em><b>Name</b></em>' containment reference.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETRO_DECL__NAME = 2;
+
+  /**
+   * The number of structural features of the '<em>Parametro Decl</em>' class.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   * @ordered
+   */
+  int PARAMETRO_DECL_FEATURE_COUNT = 3;
+
+  /**
    * The meta object id for the '{@link edu.upb.lp.dearCode.impl.ReturnImpl <em>Return</em>}' class.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -665,7 +729,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getReturn()
    * @generated
    */
-  int RETURN = 15;
+  int RETURN = 16;
 
   /**
    * The feature id for the '<em><b>Expresion</b></em>' containment reference.
@@ -693,7 +757,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getExpression()
    * @generated
    */
-  int EXPRESSION = 16;
+  int EXPRESSION = 17;
 
   /**
    * The number of structural features of the '<em>Expression</em>' class.
@@ -712,7 +776,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getComment()
    * @generated
    */
-  int COMMENT = 17;
+  int COMMENT = 18;
 
   /**
    * The feature id for the '<em><b>Value</b></em>' attribute.
@@ -740,7 +804,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getMI_ID()
    * @generated
    */
-  int MI_ID = 18;
+  int MI_ID = 19;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -768,7 +832,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getOrExpression()
    * @generated
    */
-  int OR_EXPRESSION = 19;
+  int OR_EXPRESSION = 20;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -805,7 +869,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getAndExpression()
    * @generated
    */
-  int AND_EXPRESSION = 20;
+  int AND_EXPRESSION = 21;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -842,7 +906,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getEqualityExpression()
    * @generated
    */
-  int EQUALITY_EXPRESSION = 21;
+  int EQUALITY_EXPRESSION = 22;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -888,7 +952,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getRelationalExpression()
    * @generated
    */
-  int RELATIONAL_EXPRESSION = 22;
+  int RELATIONAL_EXPRESSION = 23;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -934,7 +998,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getAdditiveExpression()
    * @generated
    */
-  int ADDITIVE_EXPRESSION = 23;
+  int ADDITIVE_EXPRESSION = 24;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -980,7 +1044,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getMultiplicativeExpression()
    * @generated
    */
-  int MULTIPLICATIVE_EXPRESSION = 24;
+  int MULTIPLICATIVE_EXPRESSION = 25;
 
   /**
    * The feature id for the '<em><b>Left</b></em>' containment reference.
@@ -1026,7 +1090,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getUnaryExpression()
    * @generated
    */
-  int UNARY_EXPRESSION = 25;
+  int UNARY_EXPRESSION = 26;
 
   /**
    * The feature id for the '<em><b>Op</b></em>' attribute.
@@ -1063,7 +1127,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getNumberLiteral()
    * @generated
    */
-  int NUMBER_LITERAL = 26;
+  int NUMBER_LITERAL = 27;
 
   /**
    * The feature id for the '<em><b>Value Int</b></em>' attribute.
@@ -1091,7 +1155,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getStringLiteral()
    * @generated
    */
-  int STRING_LITERAL = 27;
+  int STRING_LITERAL = 28;
 
   /**
    * The feature id for the '<em><b>Value String</b></em>' attribute.
@@ -1119,7 +1183,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getBooleanLiteral()
    * @generated
    */
-  int BOOLEAN_LITERAL = 28;
+  int BOOLEAN_LITERAL = 29;
 
   /**
    * The feature id for the '<em><b>Value Boolean</b></em>' attribute.
@@ -1147,7 +1211,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getVariableReference()
    * @generated
    */
-  int VARIABLE_REFERENCE = 29;
+  int VARIABLE_REFERENCE = 30;
 
   /**
    * The feature id for the '<em><b>Name</b></em>' attribute.
@@ -1175,7 +1239,7 @@ public interface DearCodePackage extends EPackage
    * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getFunctionCall()
    * @generated
    */
-  int FUNCTION_CALL = 30;
+  int FUNCTION_CALL = 31;
 
   /**
    * The feature id for the '<em><b>Name Funcion</b></em>' reference.
@@ -1187,22 +1251,13 @@ public interface DearCodePackage extends EPackage
   int FUNCTION_CALL__NAME_FUNCION = EXPRESSION_FEATURE_COUNT + 0;
 
   /**
-   * The feature id for the '<em><b>Comentario</b></em>' containment reference.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   * @ordered
-   */
-  int FUNCTION_CALL__COMENTARIO = EXPRESSION_FEATURE_COUNT + 1;
-
-  /**
    * The feature id for the '<em><b>Args</b></em>' containment reference list.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @generated
    * @ordered
    */
-  int FUNCTION_CALL__ARGS = EXPRESSION_FEATURE_COUNT + 2;
+  int FUNCTION_CALL__ARGS = EXPRESSION_FEATURE_COUNT + 1;
 
   /**
    * The number of structural features of the '<em>Function Call</em>' class.
@@ -1211,7 +1266,7 @@ public interface DearCodePackage extends EPackage
    * @generated
    * @ordered
    */
-  int FUNCTION_CALL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 3;
+  int FUNCTION_CALL_FEATURE_COUNT = EXPRESSION_FEATURE_COUNT + 2;
 
 
   /**
@@ -1382,6 +1437,17 @@ public interface DearCodePackage extends EPackage
    * @generated
    */
   EAttribute getDeclarar_Articulo();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.dearCode.Declarar#getTipo <em>Tipo</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Tipo</em>'.
+   * @see edu.upb.lp.dearCode.Declarar#getTipo()
+   * @see #getDeclarar()
+   * @generated
+   */
+  EAttribute getDeclarar_Tipo();
 
   /**
    * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.Declarar#getSustantivo <em>Sustantivo</em>}'.
@@ -1577,6 +1643,17 @@ public interface DearCodePackage extends EPackage
   EReference getCondicional_Condicion();
 
   /**
+   * Returns the meta object for the containment reference list '{@link edu.upb.lp.dearCode.Condicional#getComment <em>Comment</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Comment</em>'.
+   * @see edu.upb.lp.dearCode.Condicional#getComment()
+   * @see #getCondicional()
+   * @generated
+   */
+  EReference getCondicional_Comment();
+
+  /**
    * Returns the meta object for the containment reference list '{@link edu.upb.lp.dearCode.Condicional#getInstruccionesThen <em>Instrucciones Then</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -1748,6 +1825,49 @@ public interface DearCodePackage extends EPackage
    * @generated
    */
   EReference getFuncion_Instrucciones();
+
+  /**
+   * Returns the meta object for class '{@link edu.upb.lp.dearCode.ParametroDecl <em>Parametro Decl</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for class '<em>Parametro Decl</em>'.
+   * @see edu.upb.lp.dearCode.ParametroDecl
+   * @generated
+   */
+  EClass getParametroDecl();
+
+  /**
+   * Returns the meta object for the attribute '{@link edu.upb.lp.dearCode.ParametroDecl#getTipo <em>Tipo</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the attribute '<em>Tipo</em>'.
+   * @see edu.upb.lp.dearCode.ParametroDecl#getTipo()
+   * @see #getParametroDecl()
+   * @generated
+   */
+  EAttribute getParametroDecl_Tipo();
+
+  /**
+   * Returns the meta object for the containment reference list '{@link edu.upb.lp.dearCode.ParametroDecl#getComment <em>Comment</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference list '<em>Comment</em>'.
+   * @see edu.upb.lp.dearCode.ParametroDecl#getComment()
+   * @see #getParametroDecl()
+   * @generated
+   */
+  EReference getParametroDecl_Comment();
+
+  /**
+   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.ParametroDecl#getName <em>Name</em>}'.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the meta object for the containment reference '<em>Name</em>'.
+   * @see edu.upb.lp.dearCode.ParametroDecl#getName()
+   * @see #getParametroDecl()
+   * @generated
+   */
+  EReference getParametroDecl_Name();
 
   /**
    * Returns the meta object for class '{@link edu.upb.lp.dearCode.Return <em>Return</em>}'.
@@ -2196,17 +2316,6 @@ public interface DearCodePackage extends EPackage
   EReference getFunctionCall_NameFuncion();
 
   /**
-   * Returns the meta object for the containment reference '{@link edu.upb.lp.dearCode.FunctionCall#getComentario <em>Comentario</em>}'.
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @return the meta object for the containment reference '<em>Comentario</em>'.
-   * @see edu.upb.lp.dearCode.FunctionCall#getComentario()
-   * @see #getFunctionCall()
-   * @generated
-   */
-  EReference getFunctionCall_Comentario();
-
-  /**
    * Returns the meta object for the containment reference list '{@link edu.upb.lp.dearCode.FunctionCall#getArgs <em>Args</em>}'.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
@@ -2383,6 +2492,14 @@ public interface DearCodePackage extends EPackage
     EAttribute DECLARAR__ARTICULO = eINSTANCE.getDeclarar_Articulo();
 
     /**
+     * The meta object literal for the '<em><b>Tipo</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute DECLARAR__TIPO = eINSTANCE.getDeclarar_Tipo();
+
+    /**
      * The meta object literal for the '<em><b>Sustantivo</b></em>' containment reference feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2537,6 +2654,14 @@ public interface DearCodePackage extends EPackage
     EReference CONDICIONAL__CONDICION = eINSTANCE.getCondicional_Condicion();
 
     /**
+     * The meta object literal for the '<em><b>Comment</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference CONDICIONAL__COMMENT = eINSTANCE.getCondicional_Comment();
+
+    /**
      * The meta object literal for the '<em><b>Instrucciones Then</b></em>' containment reference list feature.
      * <!-- begin-user-doc -->
      * <!-- end-user-doc -->
@@ -2669,6 +2794,40 @@ public interface DearCodePackage extends EPackage
      * @generated
      */
     EReference FUNCION__INSTRUCCIONES = eINSTANCE.getFuncion_Instrucciones();
+
+    /**
+     * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.ParametroDeclImpl <em>Parametro Decl</em>}' class.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @see edu.upb.lp.dearCode.impl.ParametroDeclImpl
+     * @see edu.upb.lp.dearCode.impl.DearCodePackageImpl#getParametroDecl()
+     * @generated
+     */
+    EClass PARAMETRO_DECL = eINSTANCE.getParametroDecl();
+
+    /**
+     * The meta object literal for the '<em><b>Tipo</b></em>' attribute feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EAttribute PARAMETRO_DECL__TIPO = eINSTANCE.getParametroDecl_Tipo();
+
+    /**
+     * The meta object literal for the '<em><b>Comment</b></em>' containment reference list feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PARAMETRO_DECL__COMMENT = eINSTANCE.getParametroDecl_Comment();
+
+    /**
+     * The meta object literal for the '<em><b>Name</b></em>' containment reference feature.
+     * <!-- begin-user-doc -->
+     * <!-- end-user-doc -->
+     * @generated
+     */
+    EReference PARAMETRO_DECL__NAME = eINSTANCE.getParametroDecl_Name();
 
     /**
      * The meta object literal for the '{@link edu.upb.lp.dearCode.impl.ReturnImpl <em>Return</em>}' class.
@@ -3037,14 +3196,6 @@ public interface DearCodePackage extends EPackage
      * @generated
      */
     EReference FUNCTION_CALL__NAME_FUNCION = eINSTANCE.getFunctionCall_NameFuncion();
-
-    /**
-     * The meta object literal for the '<em><b>Comentario</b></em>' containment reference feature.
-     * <!-- begin-user-doc -->
-     * <!-- end-user-doc -->
-     * @generated
-     */
-    EReference FUNCTION_CALL__COMENTARIO = eINSTANCE.getFunctionCall_Comentario();
 
     /**
      * The meta object literal for the '<em><b>Args</b></em>' containment reference list feature.

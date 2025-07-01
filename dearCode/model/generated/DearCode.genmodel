@@ -27,6 +27,7 @@
     <genClasses ecoreClass="DearCode.ecore#//Declarar">
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DearCode.ecore#//Declarar/verboDecl"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DearCode.ecore#//Declarar/articulo"/>
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DearCode.ecore#//Declarar/tipo"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Declarar/sustantivo"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Declarar/preComentario"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Declarar/valor"/>
@@ -49,6 +50,7 @@
     <genClasses ecoreClass="DearCode.ecore#//ElementoBloque"/>
     <genClasses ecoreClass="DearCode.ecore#//Condicional">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Condicional/condicion"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Condicional/comment"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Condicional/instruccionesThen"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Condicional/instruccionesElse"/>
     </genClasses>
@@ -68,6 +70,11 @@
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Funcion/parametros"/>
       <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DearCode.ecore#//Funcion/tipo"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Funcion/instrucciones"/>
+    </genClasses>
+    <genClasses ecoreClass="DearCode.ecore#//ParametroDecl">
+      <genFeatures createChild="false" ecoreFeature="ecore:EAttribute DearCode.ecore#//ParametroDecl/tipo"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//ParametroDecl/comment"/>
+      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//ParametroDecl/name"/>
     </genClasses>
     <genClasses ecoreClass="DearCode.ecore#//Return">
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//Return/expresion"/>
@@ -125,7 +132,6 @@
     </genClasses>
     <genClasses ecoreClass="DearCode.ecore#//FunctionCall">
       <genFeatures notify="false" createChild="false" propertySortChoices="true" ecoreFeature="ecore:EReference DearCode.ecore#//FunctionCall/nameFuncion"/>
-      <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//FunctionCall/comentario"/>
       <genFeatures property="None" children="true" createChild="true" ecoreFeature="ecore:EReference DearCode.ecore#//FunctionCall/args"/>
     </genClasses>
   </genPackages>

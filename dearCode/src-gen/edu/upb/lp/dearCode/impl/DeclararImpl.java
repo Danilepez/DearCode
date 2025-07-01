@@ -27,6 +27,7 @@ import org.eclipse.emf.ecore.impl.ENotificationImpl;
  * <ul>
  *   <li>{@link edu.upb.lp.dearCode.impl.DeclararImpl#getVerboDecl <em>Verbo Decl</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.impl.DeclararImpl#getArticulo <em>Articulo</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.impl.DeclararImpl#getTipo <em>Tipo</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.impl.DeclararImpl#getSustantivo <em>Sustantivo</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.impl.DeclararImpl#getPreComentario <em>Pre Comentario</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.impl.DeclararImpl#getValor <em>Valor</em>}</li>
@@ -76,6 +77,26 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
    * @ordered
    */
   protected String articulo = ARTICULO_EDEFAULT;
+
+  /**
+   * The default value of the '{@link #getTipo() <em>Tipo</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTipo()
+   * @generated
+   * @ordered
+   */
+  protected static final String TIPO_EDEFAULT = null;
+
+  /**
+   * The cached value of the '{@link #getTipo() <em>Tipo</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getTipo()
+   * @generated
+   * @ordered
+   */
+  protected String tipo = TIPO_EDEFAULT;
 
   /**
    * The cached value of the '{@link #getSustantivo() <em>Sustantivo</em>}' containment reference.
@@ -186,6 +207,31 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
     articulo = newArticulo;
     if (eNotificationRequired())
       eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.DECLARAR__ARTICULO, oldArticulo, articulo));
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public String getTipo()
+  {
+    return tipo;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public void setTipo(String newTipo)
+  {
+    String oldTipo = tipo;
+    tipo = newTipo;
+    if (eNotificationRequired())
+      eNotify(new ENotificationImpl(this, Notification.SET, DearCodePackage.DECLARAR__TIPO, oldTipo, tipo));
   }
 
   /**
@@ -424,6 +470,8 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
         return getVerboDecl();
       case DearCodePackage.DECLARAR__ARTICULO:
         return getArticulo();
+      case DearCodePackage.DECLARAR__TIPO:
+        return getTipo();
       case DearCodePackage.DECLARAR__SUSTANTIVO:
         return getSustantivo();
       case DearCodePackage.DECLARAR__PRE_COMENTARIO:
@@ -451,6 +499,9 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
         return;
       case DearCodePackage.DECLARAR__ARTICULO:
         setArticulo((String)newValue);
+        return;
+      case DearCodePackage.DECLARAR__TIPO:
+        setTipo((String)newValue);
         return;
       case DearCodePackage.DECLARAR__SUSTANTIVO:
         setSustantivo((MI_ID)newValue);
@@ -484,6 +535,9 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
       case DearCodePackage.DECLARAR__ARTICULO:
         setArticulo(ARTICULO_EDEFAULT);
         return;
+      case DearCodePackage.DECLARAR__TIPO:
+        setTipo(TIPO_EDEFAULT);
+        return;
       case DearCodePackage.DECLARAR__SUSTANTIVO:
         setSustantivo((MI_ID)null);
         return;
@@ -514,6 +568,8 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
         return VERBO_DECL_EDEFAULT == null ? verboDecl != null : !VERBO_DECL_EDEFAULT.equals(verboDecl);
       case DearCodePackage.DECLARAR__ARTICULO:
         return ARTICULO_EDEFAULT == null ? articulo != null : !ARTICULO_EDEFAULT.equals(articulo);
+      case DearCodePackage.DECLARAR__TIPO:
+        return TIPO_EDEFAULT == null ? tipo != null : !TIPO_EDEFAULT.equals(tipo);
       case DearCodePackage.DECLARAR__SUSTANTIVO:
         return sustantivo != null;
       case DearCodePackage.DECLARAR__PRE_COMENTARIO:
@@ -541,6 +597,8 @@ public class DeclararImpl extends InstruccionImpl implements Declarar
     result.append(verboDecl);
     result.append(", articulo: ");
     result.append(articulo);
+    result.append(", tipo: ");
+    result.append(tipo);
     result.append(')');
     return result.toString();
   }

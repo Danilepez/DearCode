@@ -151,6 +151,11 @@ public class DearCodeAdapterFactory extends AdapterFactoryImpl
         return createFuncionAdapter();
       }
       @Override
+      public Adapter caseParametroDecl(ParametroDecl object)
+      {
+        return createParametroDeclAdapter();
+      }
+      @Override
       public Adapter caseReturn(Return object)
       {
         return createReturnAdapter();
@@ -473,6 +478,21 @@ public class DearCodeAdapterFactory extends AdapterFactoryImpl
    * @generated
    */
   public Adapter createFuncionAdapter()
+  {
+    return null;
+  }
+
+  /**
+   * Creates a new adapter for an object of class '{@link edu.upb.lp.dearCode.ParametroDecl <em>Parametro Decl</em>}'.
+   * <!-- begin-user-doc -->
+   * This default implementation returns null so that we can easily ignore cases;
+   * it's useful to ignore a case when inheritance will catch all the cases anyway.
+   * <!-- end-user-doc -->
+   * @return the new adapter.
+   * @see edu.upb.lp.dearCode.ParametroDecl
+   * @generated
+   */
+  public Adapter createParametroDeclAdapter()
   {
     return null;
   }

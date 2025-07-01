@@ -3,6 +3,7 @@
  */
 package edu.upb.lp.dearCode.impl;
 
+import edu.upb.lp.dearCode.Comment;
 import edu.upb.lp.dearCode.Condicional;
 import edu.upb.lp.dearCode.DearCodePackage;
 import edu.upb.lp.dearCode.ElementoBloque;
@@ -32,6 +33,7 @@ import org.eclipse.emf.ecore.util.InternalEList;
  * </p>
  * <ul>
  *   <li>{@link edu.upb.lp.dearCode.impl.CondicionalImpl#getCondicion <em>Condicion</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.impl.CondicionalImpl#getComment <em>Comment</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.impl.CondicionalImpl#getInstruccionesThen <em>Instrucciones Then</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.impl.CondicionalImpl#getInstruccionesElse <em>Instrucciones Else</em>}</li>
  * </ul>
@@ -49,6 +51,16 @@ public class CondicionalImpl extends InstruccionImpl implements Condicional
    * @ordered
    */
   protected Expression condicion;
+
+  /**
+   * The cached value of the '{@link #getComment() <em>Comment</em>}' containment reference list.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @see #getComment()
+   * @generated
+   * @ordered
+   */
+  protected EList<Comment> comment;
 
   /**
    * The cached value of the '{@link #getInstruccionesThen() <em>Instrucciones Then</em>}' containment reference list.
@@ -147,6 +159,21 @@ public class CondicionalImpl extends InstruccionImpl implements Condicional
    * @generated
    */
   @Override
+  public EList<Comment> getComment()
+  {
+    if (comment == null)
+    {
+      comment = new EObjectContainmentEList<Comment>(Comment.class, this, DearCodePackage.CONDICIONAL__COMMENT);
+    }
+    return comment;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
   public EList<ElementoBloque> getInstruccionesThen()
   {
     if (instruccionesThen == null)
@@ -183,6 +210,8 @@ public class CondicionalImpl extends InstruccionImpl implements Condicional
     {
       case DearCodePackage.CONDICIONAL__CONDICION:
         return basicSetCondicion(null, msgs);
+      case DearCodePackage.CONDICIONAL__COMMENT:
+        return ((InternalEList<?>)getComment()).basicRemove(otherEnd, msgs);
       case DearCodePackage.CONDICIONAL__INSTRUCCIONES_THEN:
         return ((InternalEList<?>)getInstruccionesThen()).basicRemove(otherEnd, msgs);
       case DearCodePackage.CONDICIONAL__INSTRUCCIONES_ELSE:
@@ -203,6 +232,8 @@ public class CondicionalImpl extends InstruccionImpl implements Condicional
     {
       case DearCodePackage.CONDICIONAL__CONDICION:
         return getCondicion();
+      case DearCodePackage.CONDICIONAL__COMMENT:
+        return getComment();
       case DearCodePackage.CONDICIONAL__INSTRUCCIONES_THEN:
         return getInstruccionesThen();
       case DearCodePackage.CONDICIONAL__INSTRUCCIONES_ELSE:
@@ -224,6 +255,10 @@ public class CondicionalImpl extends InstruccionImpl implements Condicional
     {
       case DearCodePackage.CONDICIONAL__CONDICION:
         setCondicion((Expression)newValue);
+        return;
+      case DearCodePackage.CONDICIONAL__COMMENT:
+        getComment().clear();
+        getComment().addAll((Collection<? extends Comment>)newValue);
         return;
       case DearCodePackage.CONDICIONAL__INSTRUCCIONES_THEN:
         getInstruccionesThen().clear();
@@ -250,6 +285,9 @@ public class CondicionalImpl extends InstruccionImpl implements Condicional
       case DearCodePackage.CONDICIONAL__CONDICION:
         setCondicion((Expression)null);
         return;
+      case DearCodePackage.CONDICIONAL__COMMENT:
+        getComment().clear();
+        return;
       case DearCodePackage.CONDICIONAL__INSTRUCCIONES_THEN:
         getInstruccionesThen().clear();
         return;
@@ -272,6 +310,8 @@ public class CondicionalImpl extends InstruccionImpl implements Condicional
     {
       case DearCodePackage.CONDICIONAL__CONDICION:
         return condicion != null;
+      case DearCodePackage.CONDICIONAL__COMMENT:
+        return comment != null && !comment.isEmpty();
       case DearCodePackage.CONDICIONAL__INSTRUCCIONES_THEN:
         return instruccionesThen != null && !instruccionesThen.isEmpty();
       case DearCodePackage.CONDICIONAL__INSTRUCCIONES_ELSE:

@@ -15,6 +15,7 @@ import org.eclipse.emf.common.util.EList;
  * </p>
  * <ul>
  *   <li>{@link edu.upb.lp.dearCode.Condicional#getCondicion <em>Condicion</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.Condicional#getComment <em>Comment</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.Condicional#getInstruccionesThen <em>Instrucciones Then</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.Condicional#getInstruccionesElse <em>Instrucciones Else</em>}</li>
  * </ul>
@@ -46,6 +47,18 @@ public interface Condicional extends Instruccion
    * @generated
    */
   void setCondicion(Expression value);
+
+  /**
+   * Returns the value of the '<em><b>Comment</b></em>' containment reference list.
+   * The list contents are of type {@link edu.upb.lp.dearCode.Comment}.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Comment</em>' containment reference list.
+   * @see edu.upb.lp.dearCode.DearCodePackage#getCondicional_Comment()
+   * @model containment="true"
+   * @generated
+   */
+  EList<Comment> getComment();
 
   /**
    * Returns the value of the '<em><b>Instrucciones Then</b></em>' containment reference list.

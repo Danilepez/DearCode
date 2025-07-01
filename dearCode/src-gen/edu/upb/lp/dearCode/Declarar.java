@@ -15,6 +15,7 @@ package edu.upb.lp.dearCode;
  * <ul>
  *   <li>{@link edu.upb.lp.dearCode.Declarar#getVerboDecl <em>Verbo Decl</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.Declarar#getArticulo <em>Articulo</em>}</li>
+ *   <li>{@link edu.upb.lp.dearCode.Declarar#getTipo <em>Tipo</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.Declarar#getSustantivo <em>Sustantivo</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.Declarar#getPreComentario <em>Pre Comentario</em>}</li>
  *   <li>{@link edu.upb.lp.dearCode.Declarar#getValor <em>Valor</em>}</li>
@@ -70,6 +71,28 @@ public interface Declarar extends Instruccion
    * @generated
    */
   void setArticulo(String value);
+
+  /**
+   * Returns the value of the '<em><b>Tipo</b></em>' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @return the value of the '<em>Tipo</em>' attribute.
+   * @see #setTipo(String)
+   * @see edu.upb.lp.dearCode.DearCodePackage#getDeclarar_Tipo()
+   * @model
+   * @generated
+   */
+  String getTipo();
+
+  /**
+   * Sets the value of the '{@link edu.upb.lp.dearCode.Declarar#getTipo <em>Tipo</em>}' attribute.
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @param value the new value of the '<em>Tipo</em>' attribute.
+   * @see #getTipo()
+   * @generated
+   */
+  void setTipo(String value);
 
   /**
    * Returns the value of the '<em><b>Sustantivo</b></em>' containment reference.

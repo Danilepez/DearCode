@@ -27,6 +27,7 @@
   <eClassifiers xsi:type="ecore:EClass" name="Declarar" eSuperTypes="#//Instruccion">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="verboDecl" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="articulo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tipo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="sustantivo" eType="#//MI_ID"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="preComentario" eType="#//Comment"
@@ -61,6 +62,8 @@
   <eClassifiers xsi:type="ecore:EClass" name="Condicional" eSuperTypes="#//Instruccion">
     <eStructuralFeatures xsi:type="ecore:EReference" name="condicion" eType="#//Expression"
         containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="comment" upperBound="-1"
+        eType="#//Comment" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="instruccionesThen" upperBound="-1"
         eType="#//ElementoBloque" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="instruccionesElse" upperBound="-1"
@@ -88,10 +91,17 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//MI_ID"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="parametros" upperBound="-1"
-        eType="#//MI_ID" containment="true"/>
+        eType="#//ParametroDecl" containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="tipo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="instrucciones" upperBound="-1"
         eType="#//ElementoBloque" containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="ParametroDecl">
+    <eStructuralFeatures xsi:type="ecore:EAttribute" name="tipo" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="comment" upperBound="-1"
+        eType="#//Comment" containment="true"/>
+    <eStructuralFeatures xsi:type="ecore:EReference" name="name" eType="#//MI_ID"
+        containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="Return" eSuperTypes="#//ElementoBloque">
     <eStructuralFeatures xsi:type="ecore:EReference" name="expresion" eType="#//Expression"
@@ -163,8 +173,6 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="FunctionCall" eSuperTypes="#//Expression">
     <eStructuralFeatures xsi:type="ecore:EReference" name="nameFuncion" eType="#//MI_ID"/>
-    <eStructuralFeatures xsi:type="ecore:EReference" name="comentario" eType="#//Comment"
-        containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="args" upperBound="-1" eType="#//Expression"
         containment="true"/>
   </eClassifiers>

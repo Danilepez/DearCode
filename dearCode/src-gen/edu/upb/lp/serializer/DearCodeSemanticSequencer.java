@@ -24,6 +24,7 @@ import edu.upb.lp.dearCode.MI_ID;
 import edu.upb.lp.dearCode.MultiplicativeExpression;
 import edu.upb.lp.dearCode.NumberLiteral;
 import edu.upb.lp.dearCode.OrExpression;
+import edu.upb.lp.dearCode.ParametroDecl;
 import edu.upb.lp.dearCode.Program;
 import edu.upb.lp.dearCode.Reasignar;
 import edu.upb.lp.dearCode.RelationalExpression;
@@ -116,6 +117,9 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 			case DearCodePackage.OR_EXPRESSION:
 				sequence_OrExpression(context, (OrExpression) semanticObject); 
 				return; 
+			case DearCodePackage.PARAMETRO_DECL:
+				sequence_ParametroDecl(context, (ParametroDecl) semanticObject); 
+				return; 
 			case DearCodePackage.PROGRAM:
 				sequence_Program(context, (Program) semanticObject); 
 				return; 
@@ -170,7 +174,16 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 * Constraint:
 	 *     (
 	 *         left=AdditiveExpression_AdditiveExpression_1_0 
-	 *         (op='unidos en un solo suspiro con' | op='fundidos en la llama de') 
+	 *         (
+	 *             op='unidos en un solo suspiro con' | 
+	 *             op='fundidos en la llama de' | 
+	 *             op='se une a' | 
+	 *             op='se funde con' | 
+	 *             op='sumado al latido de' | 
+	 *             op='combinado con la pasión de' | 
+	 *             op='entrelazado con' | 
+	 *             op='añadido al suspiro de'
+	 *         ) 
 	 *         right=MultiplicativeExpression
 	 *     )
 	 * </pre>
@@ -303,7 +316,7 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Condicional returns Condicional
 	 *
 	 * Constraint:
-	 *     (condicion=Expression instruccionesThen+=ElementoBloque+ instruccionesElse+=ElementoBloque*)
+	 *     (condicion=Expression comment+=Comment? instruccionesThen+=ElementoBloque+ instruccionesElse+=ElementoBloque*)
 	 * </pre>
 	 */
 	protected void sequence_Condicional(ISerializationContext context, Condicional semanticObject) {
@@ -336,6 +349,7 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     (
 	 *         verboDecl=VerboDeclaracion 
 	 *         articulo=Articulo 
+	 *         tipo=Type? 
 	 *         sustantivo=MI_ID 
 	 *         preComentario=Comment? 
 	 *         valor=Expression 
@@ -410,7 +424,22 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     PrimaryExpression returns EqualityExpression
 	 *
 	 * Constraint:
-	 *     (left=EqualityExpression_EqualityExpression_1_0 (op='late al unísono con' | op='canta con un matiz distinto a') right=RelationalExpression)
+	 *     (
+	 *         left=EqualityExpression_EqualityExpression_1_0 
+	 *         (
+	 *             op='late al unísono con' | 
+	 *             op='canta con un matiz distinto a' | 
+	 *             op='late igual que' | 
+	 *             op='se distingue de' | 
+	 *             op='resuena igual que' | 
+	 *             op='vibra al mismo ritmo que' | 
+	 *             op='es idéntico a' | 
+	 *             op='se diferencia de' | 
+	 *             op='no coincide con' | 
+	 *             op='es distinto a'
+	 *         ) 
+	 *         right=RelationalExpression
+	 *     )
 	 * </pre>
 	 */
 	protected void sequence_EqualityExpression(ISerializationContext context, EqualityExpression semanticObject) {
@@ -426,7 +455,7 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     Funcion returns Funcion
 	 *
 	 * Constraint:
-	 *     (name=MI_ID (parametros+=MI_ID parametros+=MI_ID*)? tipo=Type? instrucciones+=ElementoBloque+)
+	 *     (name=MI_ID (parametros+=ParametroDecl parametros+=ParametroDecl*)? tipo=Type? instrucciones+=ElementoBloque+)
 	 * </pre>
 	 */
 	protected void sequence_Funcion(ISerializationContext context, Funcion semanticObject) {
@@ -457,7 +486,7 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     FunctionCall returns FunctionCall
 	 *
 	 * Constraint:
-	 *     (nameFuncion=[MI_ID|ID] comentario=Comment? (args+=Expression args+=Expression*)?)
+	 *     (nameFuncion=[MI_ID|ID] (args+=Expression args+=Expression*)?)
 	 * </pre>
 	 */
 	protected void sequence_FunctionCall(ISerializationContext context, FunctionCall semanticObject) {
@@ -507,7 +536,14 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 * Constraint:
 	 *     (
 	 *         left=MultiplicativeExpression_MultiplicativeExpression_1_0 
-	 *         (op='fortalecidos por el fuego de' | op='separados entre los ecos de' | op='resuena con el eco de') 
+	 *         (
+	 *             op='fortalecidos por el fuego de' | 
+	 *             op='separados entre los ecos de' | 
+	 *             op='resuena con el eco de' | 
+	 *             op='crece con' | 
+	 *             op='resuena en' | 
+	 *             op='se divide entre'
+	 *         ) 
 	 *         right=UnaryExpression
 	 *     )
 	 * </pre>
@@ -551,6 +587,20 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 		feeder.accept(grammarAccess.getOrExpressionAccess().getOrExpressionLeftAction_1_0(), semanticObject.getLeft());
 		feeder.accept(grammarAccess.getOrExpressionAccess().getRightAndExpressionParserRuleCall_1_2_0(), semanticObject.getRight());
 		feeder.finish();
+	}
+	
+	
+	/**
+	 * <pre>
+	 * Contexts:
+	 *     ParametroDecl returns ParametroDecl
+	 *
+	 * Constraint:
+	 *     (tipo=Type? comment+=Comment? name=MI_ID)
+	 * </pre>
+	 */
+	protected void sequence_ParametroDecl(ISerializationContext context, ParametroDecl semanticObject) {
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	
@@ -749,7 +799,24 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 * Constraint:
 	 *     (
 	 *         left=RelationalExpression_RelationalExpression_1_0 
-	 *         (op='susurra con menos fuerza que' | op='casi suspira al mismo nivel que' | op='arde con más pasión que' | op='rodea con tanta fuerza como') 
+	 *         (
+	 *             op='susurra con menos fuerza que' | 
+	 *             op='casi suspira al mismo nivel que' | 
+	 *             op='arde con más pasión que' | 
+	 *             op='rodea con tanta fuerza como' | 
+	 *             op='susurra menos que' | 
+	 *             op='casi igual que' | 
+	 *             op='arde mas que' | 
+	 *             op='abraza como' | 
+	 *             op='susurra más suavemente que' | 
+	 *             op='tiene menos latidos que' | 
+	 *             op='susurra tan suavemente como' | 
+	 *             op='no supera a' | 
+	 *             op='susurra con más fuerza que' | 
+	 *             op='tiene más latidos que' | 
+	 *             op='susurra al menos con la misma fuerza que' | 
+	 *             op='al menos iguala a'
+	 *         ) 
 	 *         right=AdditiveExpression
 	 *     )
 	 * </pre>
@@ -842,20 +909,11 @@ public class DearCodeSemanticSequencer extends AbstractDelegatingSemanticSequenc
 	 *     PrimaryExpression returns UnaryExpression
 	 *
 	 * Constraint:
-	 *     (op='no creo que' expression=UnaryExpression)
+	 *     ((op='no creo que' | op='no siento que' | op='no me parece que' | op='no percibo que' | op='dudo que') expression=UnaryExpression)
 	 * </pre>
 	 */
 	protected void sequence_UnaryExpression(ISerializationContext context, UnaryExpression semanticObject) {
-		if (errorAcceptor != null) {
-			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.UNARY_EXPRESSION__OP) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.UNARY_EXPRESSION__OP));
-			if (transientValues.isValueTransient(semanticObject, DearCodePackage.Literals.UNARY_EXPRESSION__EXPRESSION) == ValueTransient.YES)
-				errorAcceptor.accept(diagnosticProvider.createFeatureValueMissing(semanticObject, DearCodePackage.Literals.UNARY_EXPRESSION__EXPRESSION));
-		}
-		SequenceFeeder feeder = createSequencerFeeder(context, semanticObject);
-		feeder.accept(grammarAccess.getUnaryExpressionAccess().getOpNoCreoQueKeyword_0_1_0(), semanticObject.getOp());
-		feeder.accept(grammarAccess.getUnaryExpressionAccess().getExpressionUnaryExpressionParserRuleCall_0_2_0(), semanticObject.getExpression());
-		feeder.finish();
+		genericSequencer.createSequence(context, semanticObject);
 	}
 	
 	

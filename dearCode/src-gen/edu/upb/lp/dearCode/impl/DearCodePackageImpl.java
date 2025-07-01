@@ -26,6 +26,7 @@ import edu.upb.lp.dearCode.Instruccion;
 import edu.upb.lp.dearCode.MultiplicativeExpression;
 import edu.upb.lp.dearCode.NumberLiteral;
 import edu.upb.lp.dearCode.OrExpression;
+import edu.upb.lp.dearCode.ParametroDecl;
 import edu.upb.lp.dearCode.Program;
 import edu.upb.lp.dearCode.Reasignar;
 import edu.upb.lp.dearCode.RelationalExpression;
@@ -155,6 +156,13 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
    * @generated
    */
   private EClass funcionEClass = null;
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  private EClass parametroDeclEClass = null;
 
   /**
    * <!-- begin-user-doc -->
@@ -512,9 +520,9 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
    * @generated
    */
   @Override
-  public EReference getDeclarar_Sustantivo()
+  public EAttribute getDeclarar_Tipo()
   {
-    return (EReference)declararEClass.getEStructuralFeatures().get(2);
+    return (EAttribute)declararEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -523,7 +531,7 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
    * @generated
    */
   @Override
-  public EReference getDeclarar_PreComentario()
+  public EReference getDeclarar_Sustantivo()
   {
     return (EReference)declararEClass.getEStructuralFeatures().get(3);
   }
@@ -534,7 +542,7 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
    * @generated
    */
   @Override
-  public EReference getDeclarar_Valor()
+  public EReference getDeclarar_PreComentario()
   {
     return (EReference)declararEClass.getEStructuralFeatures().get(4);
   }
@@ -545,9 +553,20 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
    * @generated
    */
   @Override
-  public EReference getDeclarar_PostComentario()
+  public EReference getDeclarar_Valor()
   {
     return (EReference)declararEClass.getEStructuralFeatures().get(5);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getDeclarar_PostComentario()
+  {
+    return (EReference)declararEClass.getEStructuralFeatures().get(6);
   }
 
   /**
@@ -710,7 +729,7 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
    * @generated
    */
   @Override
-  public EReference getCondicional_InstruccionesThen()
+  public EReference getCondicional_Comment()
   {
     return (EReference)condicionalEClass.getEStructuralFeatures().get(1);
   }
@@ -721,9 +740,20 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
    * @generated
    */
   @Override
-  public EReference getCondicional_InstruccionesElse()
+  public EReference getCondicional_InstruccionesThen()
   {
     return (EReference)condicionalEClass.getEStructuralFeatures().get(2);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getCondicional_InstruccionesElse()
+  {
+    return (EReference)condicionalEClass.getEStructuralFeatures().get(3);
   }
 
   /**
@@ -878,6 +908,50 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
   public EReference getFuncion_Instrucciones()
   {
     return (EReference)funcionEClass.getEStructuralFeatures().get(3);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EClass getParametroDecl()
+  {
+    return parametroDeclEClass;
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EAttribute getParametroDecl_Tipo()
+  {
+    return (EAttribute)parametroDeclEClass.getEStructuralFeatures().get(0);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getParametroDecl_Comment()
+  {
+    return (EReference)parametroDeclEClass.getEStructuralFeatures().get(1);
+  }
+
+  /**
+   * <!-- begin-user-doc -->
+   * <!-- end-user-doc -->
+   * @generated
+   */
+  @Override
+  public EReference getParametroDecl_Name()
+  {
+    return (EReference)parametroDeclEClass.getEStructuralFeatures().get(2);
   }
 
   /**
@@ -1348,20 +1422,9 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
    * @generated
    */
   @Override
-  public EReference getFunctionCall_Comentario()
-  {
-    return (EReference)functionCallEClass.getEStructuralFeatures().get(1);
-  }
-
-  /**
-   * <!-- begin-user-doc -->
-   * <!-- end-user-doc -->
-   * @generated
-   */
-  @Override
   public EReference getFunctionCall_Args()
   {
-    return (EReference)functionCallEClass.getEStructuralFeatures().get(2);
+    return (EReference)functionCallEClass.getEStructuralFeatures().get(1);
   }
 
   /**
@@ -1417,6 +1480,7 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
     declararEClass = createEClass(DECLARAR);
     createEAttribute(declararEClass, DECLARAR__VERBO_DECL);
     createEAttribute(declararEClass, DECLARAR__ARTICULO);
+    createEAttribute(declararEClass, DECLARAR__TIPO);
     createEReference(declararEClass, DECLARAR__SUSTANTIVO);
     createEReference(declararEClass, DECLARAR__PRE_COMENTARIO);
     createEReference(declararEClass, DECLARAR__VALOR);
@@ -1440,6 +1504,7 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
 
     condicionalEClass = createEClass(CONDICIONAL);
     createEReference(condicionalEClass, CONDICIONAL__CONDICION);
+    createEReference(condicionalEClass, CONDICIONAL__COMMENT);
     createEReference(condicionalEClass, CONDICIONAL__INSTRUCCIONES_THEN);
     createEReference(condicionalEClass, CONDICIONAL__INSTRUCCIONES_ELSE);
 
@@ -1459,6 +1524,11 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
     createEReference(funcionEClass, FUNCION__PARAMETROS);
     createEAttribute(funcionEClass, FUNCION__TIPO);
     createEReference(funcionEClass, FUNCION__INSTRUCCIONES);
+
+    parametroDeclEClass = createEClass(PARAMETRO_DECL);
+    createEAttribute(parametroDeclEClass, PARAMETRO_DECL__TIPO);
+    createEReference(parametroDeclEClass, PARAMETRO_DECL__COMMENT);
+    createEReference(parametroDeclEClass, PARAMETRO_DECL__NAME);
 
     returnEClass = createEClass(RETURN);
     createEReference(returnEClass, RETURN__EXPRESION);
@@ -1517,7 +1587,6 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
 
     functionCallEClass = createEClass(FUNCTION_CALL);
     createEReference(functionCallEClass, FUNCTION_CALL__NAME_FUNCION);
-    createEReference(functionCallEClass, FUNCTION_CALL__COMENTARIO);
     createEReference(functionCallEClass, FUNCTION_CALL__ARGS);
   }
 
@@ -1597,6 +1666,7 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
     initEClass(declararEClass, Declarar.class, "Declarar", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEAttribute(getDeclarar_VerboDecl(), ecorePackage.getEString(), "verboDecl", null, 0, 1, Declarar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getDeclarar_Articulo(), ecorePackage.getEString(), "articulo", null, 0, 1, Declarar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEAttribute(getDeclarar_Tipo(), ecorePackage.getEString(), "tipo", null, 0, 1, Declarar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDeclarar_Sustantivo(), this.getMI_ID(), null, "sustantivo", null, 0, 1, Declarar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDeclarar_PreComentario(), this.getComment(), null, "preComentario", null, 0, 1, Declarar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getDeclarar_Valor(), this.getExpression(), null, "valor", null, 0, 1, Declarar.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1620,6 +1690,7 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
 
     initEClass(condicionalEClass, Condicional.class, "Condicional", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getCondicional_Condicion(), this.getExpression(), null, "condicion", null, 0, 1, Condicional.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getCondicional_Comment(), this.getComment(), null, "comment", null, 0, -1, Condicional.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCondicional_InstruccionesThen(), this.getElementoBloque(), null, "instruccionesThen", null, 0, -1, Condicional.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getCondicional_InstruccionesElse(), this.getElementoBloque(), null, "instruccionesElse", null, 0, -1, Condicional.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
@@ -1636,9 +1707,14 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
 
     initEClass(funcionEClass, Funcion.class, "Funcion", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFuncion_Name(), this.getMI_ID(), null, "name", null, 0, 1, Funcion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFuncion_Parametros(), this.getMI_ID(), null, "parametros", null, 0, -1, Funcion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getFuncion_Parametros(), this.getParametroDecl(), null, "parametros", null, 0, -1, Funcion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEAttribute(getFuncion_Tipo(), ecorePackage.getEString(), "tipo", null, 0, 1, Funcion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFuncion_Instrucciones(), this.getElementoBloque(), null, "instrucciones", null, 0, -1, Funcion.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+
+    initEClass(parametroDeclEClass, ParametroDecl.class, "ParametroDecl", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
+    initEAttribute(getParametroDecl_Tipo(), ecorePackage.getEString(), "tipo", null, 0, 1, ParametroDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_UNSETTABLE, !IS_ID, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getParametroDecl_Comment(), this.getComment(), null, "comment", null, 0, -1, ParametroDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
+    initEReference(getParametroDecl_Name(), this.getMI_ID(), null, "name", null, 0, 1, ParametroDecl.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     initEClass(returnEClass, Return.class, "Return", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getReturn_Expresion(), this.getExpression(), null, "expresion", null, 0, 1, Return.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
@@ -1697,7 +1773,6 @@ public class DearCodePackageImpl extends EPackageImpl implements DearCodePackage
 
     initEClass(functionCallEClass, FunctionCall.class, "FunctionCall", !IS_ABSTRACT, !IS_INTERFACE, IS_GENERATED_INSTANCE_CLASS);
     initEReference(getFunctionCall_NameFuncion(), this.getMI_ID(), null, "nameFuncion", null, 0, 1, FunctionCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, !IS_COMPOSITE, IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
-    initEReference(getFunctionCall_Comentario(), this.getComment(), null, "comentario", null, 0, 1, FunctionCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
     initEReference(getFunctionCall_Args(), this.getExpression(), null, "args", null, 0, -1, FunctionCall.class, !IS_TRANSIENT, !IS_VOLATILE, IS_CHANGEABLE, IS_COMPOSITE, !IS_RESOLVE_PROXIES, !IS_UNSETTABLE, IS_UNIQUE, !IS_DERIVED, IS_ORDERED);
 
     // Create resource

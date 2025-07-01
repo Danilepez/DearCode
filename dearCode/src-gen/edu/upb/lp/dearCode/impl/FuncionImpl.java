@@ -7,6 +7,7 @@ import edu.upb.lp.dearCode.DearCodePackage;
 import edu.upb.lp.dearCode.ElementoBloque;
 import edu.upb.lp.dearCode.Funcion;
 import edu.upb.lp.dearCode.MI_ID;
+import edu.upb.lp.dearCode.ParametroDecl;
 
 import java.util.Collection;
 
@@ -59,7 +60,7 @@ public class FuncionImpl extends InstruccionImpl implements Funcion
    * @generated
    * @ordered
    */
-  protected EList<MI_ID> parametros;
+  protected EList<ParametroDecl> parametros;
 
   /**
    * The default value of the '{@link #getTipo() <em>Tipo</em>}' attribute.
@@ -168,11 +169,11 @@ public class FuncionImpl extends InstruccionImpl implements Funcion
    * @generated
    */
   @Override
-  public EList<MI_ID> getParametros()
+  public EList<ParametroDecl> getParametros()
   {
     if (parametros == null)
     {
-      parametros = new EObjectContainmentEList<MI_ID>(MI_ID.class, this, DearCodePackage.FUNCION__PARAMETROS);
+      parametros = new EObjectContainmentEList<ParametroDecl>(ParametroDecl.class, this, DearCodePackage.FUNCION__PARAMETROS);
     }
     return parametros;
   }
@@ -275,7 +276,7 @@ public class FuncionImpl extends InstruccionImpl implements Funcion
         return;
       case DearCodePackage.FUNCION__PARAMETROS:
         getParametros().clear();
-        getParametros().addAll((Collection<? extends MI_ID>)newValue);
+        getParametros().addAll((Collection<? extends ParametroDecl>)newValue);
         return;
       case DearCodePackage.FUNCION__TIPO:
         setTipo((String)newValue);

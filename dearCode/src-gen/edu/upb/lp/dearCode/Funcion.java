@@ -50,7 +50,7 @@ public interface Funcion extends Instruccion
 
   /**
    * Returns the value of the '<em><b>Parametros</b></em>' containment reference list.
-   * The list contents are of type {@link edu.upb.lp.dearCode.MI_ID}.
+   * The list contents are of type {@link edu.upb.lp.dearCode.ParametroDecl}.
    * <!-- begin-user-doc -->
    * <!-- end-user-doc -->
    * @return the value of the '<em>Parametros</em>' containment reference list.
@@ -58,7 +58,7 @@ public interface Funcion extends Instruccion
    * @model containment="true"
    * @generated
    */
-  EList<MI_ID> getParametros();
+  EList<ParametroDecl> getParametros();
 
   /**
    * Returns the value of the '<em><b>Tipo</b></em>' attribute.

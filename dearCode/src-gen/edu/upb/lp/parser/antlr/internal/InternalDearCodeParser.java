@@ -21,87 +21,239 @@ import java.util.ArrayList;
 @SuppressWarnings("all")
 public class InternalDearCodeParser extends AbstractInternalAntlrParser {
     public static final String[] tokenNames = new String[] {
-        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ANYTEXT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Querido'", "'Querida'", "'.'", "'Con cari\\u00F1o, Tu programador'", "'Le ped\\u00ED al lector que me dijera'", "'en un susurro num\\u00E9rico'", "'con palabras de terciopelo'", "'Hoy le quise contar al mundo sobre:'", "'Si en tu corazon sientes que'", "','", "'entonces deja que estas palabras florezcan:'", "'Pero si el destino dijera lo contrario,'", "'que broten estas verdades:'", "'Y as\\u00ED el universo sigue su curso.'", "'Mientras aun me piensas'", "'Mientras a\\u00FAn sue\\u00F1es con este momento'", "'haz que suceda:'", "'Y as\\u00ED el susurro descansa.'", "'En cada suspiro'", "'desde'", "'hasta'", "'con paso'", "'deja que el universo cante:'", "'Cuando el \\u00FAltimo eco se calle.'", "'Dejo en estas l\\u00EDneas una promesa llamada'", "'Escribo en estas l\\u00EDneas una intenci\\u00F3n llamada'", "'En la brisa escondo un deseo llamado'", "'que guarda en su esencia'", "'prometiendo devolver'", "'Cuando la promesa se cumple:'", "'As\\u00ED se sella la promesa.'", "'Y entrego al viento'", "'como promesa cumplida.'", "' o quiz\\u00E1s '", "' o quiz\\u00E1s'", "' y tambi\\u00E9n '", "' y tambi\\u00E9n'", "'late al un\\u00EDsono con'", "'canta con un matiz distinto a'", "'susurra con menos fuerza que'", "'casi suspira al mismo nivel que'", "'arde con m\\u00E1s pasi\\u00F3n que'", "'rodea con tanta fuerza como'", "'unidos en un solo suspiro con'", "'fundidos en la llama de'", "'fortalecidos por el fuego de'", "'separados entre los ecos de'", "'resuena con el eco de'", "'no creo que'", "'('", "')'", "'siempre'", "'jam\\u00E1s'", "'invoco a'", "'con los regalos'", "'y'", "'en mi coraz\\u00F3n'", "'n\\u00FAmero'", "'texto'", "'booleano'", "'nada'", "'Te regalo'", "'Ofrezco'", "'Obsequio'", "'Deposito en tu jard\\u00EDn'", "'Perm\\u00EDteme alimentar'", "'Perm\\u00EDteme regar'", "'Perm\\u00EDteme ajustar'", "'un'", "'una'"
+        "<invalid>", "<EOR>", "<DOWN>", "<UP>", "RULE_ID", "RULE_INT", "RULE_STRING", "RULE_ANYTEXT", "RULE_ML_COMMENT", "RULE_SL_COMMENT", "RULE_WS", "RULE_ANY_OTHER", "'Querido'", "'Querida'", "'Inspiras un amor dentro de m\\u00ED'", "'Eres la chispa de mi alma'", "'Tu luz despierta mi ser'", "'.'", "'Con cari\\u00F1o, Tu programador'", "'Espero la noche para tenerte conmigo'", "'Tengo la suerte de tenerte siempre'", "'Haces que mi coraz\\u00F3n se acelere'", "'n\\u00FAmero'", "'texto'", "'booleano'", "'Le ped\\u00ED al lector que me dijera'", "'Le'", "'Escucho tu voz en el viento'", "'Atrapo un suspiro tuyo'", "'Recojo tus palabras como p\\u00E9talos al alba'", "'Tu aliento me habla en silencio'", "'Acaricio el eco de tu voz'", "'Guardo tus secretos en mi pecho'", "'Espero tu susurro como un amanecer'", "'en un susurro num\\u00E9rico'", "'con palabras de terciopelo'", "'con un eco num\\u00E9rico'", "'en un latido suave'", "'como un verso escrito en el cielo'", "'envuelto en la luz de tus ojos'", "'con el perfume de tu esencia'", "'danzando en el comp\\u00E1s de mi coraz\\u00F3n'", "'tejiendo sue\\u00F1os con tus letras'", "'Hoy le quise contar al mundo sobre:'", "'Dejo que el mundo sienta sobre:'", "'Susurro al universo el secreto sobre:'", "'Grabo en el firmamento mi verdad acerca de:'", "'Canto al viento mi anhelo de:'", "'Env\\u00EDo al horizonte mi pasi\\u00F3n sobre:'", "'Dejo que las nubes abracen mi voz en:'", "'Si en tu corazon sientes que'", "'Si tu alma susurra que'", "'Si el latido de mi alma dice que'", "'Si el destino nos susurra que'", "'Si la luna refleja que'", "','", "'entonces deja que estas palabras florezcan:'", "'entonces que brote este amor:'", "'entonces que nazca este sue\\u00F1o:'", "'entonces que el universo conspire:'", "'entonces que mi voz te abrace:'", "'Pero si la noche calla otra verdad,'", "'que surja este suspiro:'", "'Pero si el viento trae otro mensaje,'", "'que despierte esta pasi\\u00F3n:'", "'Pero si el coraz\\u00F3n duda,'", "'que renazca esta esperanza:'", "'Y as\\u00ED el universo sigue su curso.'", "'As\\u00ED sigue el canto del coraz\\u00F3n.'", "'Y as\\u00ED la melod\\u00EDa contin\\u00FAa.'", "'Y el eco de nuestro amor perdura.'", "'Y la danza de las estrellas sigue.'", "'Mientras aun me piensas'", "'Mientras a\\u00FAn sue\\u00F1es con este momento'", "'Mientras mi coraz\\u00F3n te anhele'", "'Mientras tu luz me gu\\u00EDe'", "'Mientras el fuego de mi amor arda'", "'Mientras la luna nos ilumine'", "'Mientras tus ojos me miren'", "'haz que suceda:'", "'tejiendo este amor:'", "'deja que el tiempo se detenga:'", "'haz que el universo conspire:'", "'permite que el destino nos una:'", "'Y as\\u00ED el susurro descansa.'", "'hasta que el anhelo repose'", "'Y el silencio envuelve nuestro amor.'", "'Hasta que la eternidad nos encuentre.'", "'Y la pasi\\u00F3n se convierte en recuerdo.'", "'En cada suspiro'", "'Por cada latido'", "'Por cada estrella que nos mira'", "'En cada p\\u00E9talo de rosa'", "'Por cada ola que besa la orilla'", "'desde'", "'hasta'", "'con paso'", "'deja que el universo cante:'", "'resuena este amor'", "'que el viento susurre nuestro nombre:'", "'que el cielo pinte nuestro amor:'", "'que la tierra tiemble con nuestra pasi\\u00F3n:'", "'Cuando el \\u00FAltimo eco se calle.'", "'Y el eco se desvanece.'", "'Y la \\u00FAltima estrella se apague.'", "'Hasta que el \\u00FAltimo p\\u00E9talo caiga.'", "'Cuando el mar se quede en silencio.'", "'Dejo en estas l\\u00EDneas una promesa llamada'", "'Escribo en estas l\\u00EDneas una intenci\\u00F3n llamada'", "'En la brisa escondo un deseo llamado'", "'Grabo en las estrellas una promesa llamada'", "'Susurro al universo un deseo llamado'", "'Tejo en el destino un juramento llamado'", "'Esculpo en el tiempo un anhelo llamado'", "'Susurro a la eternidad un sue\\u00F1o llamado'", "'que guarda en su esencia'", "'tejiendo'", "'que abraza en su ser'", "'que lleva en su alma'", "'que susurra en su coraz\\u00F3n'", "'y'", "'junto a'", "'tambien'", "'llevando consigo'", "'prometiendo devolver'", "'jurando devolver'", "'Cuando la promesa se cumple:'", "'Cuando el amor se cumpla'", "'As\\u00ED se sella la promesa.'", "'As\\u00ED se eterniza.'", "'Y as\\u00ED nuestro amor se inmortaliza.'", "'Y el universo guarda nuestro secreto.'", "'Y la eternidad nos abraza.'", "'Y entrego al viento'", "'Te entrego'", "'Te ofrezco con el alma'", "'Dejo en tus manos'", "'Susurro a tu coraz\\u00F3n'", "'como promesa cumplida.'", "'con un suspiro.'", "'como un regalo eterno.'", "'envuelto en mi amor.'", "'con la esperanza de tu sonrisa.'", "'o tal vez'", "'o quiz\\u00E1s'", "'o acaso el amor permita'", "'o si la luna lo desea'", "'y tambi\\u00E9n'", "'y adem\\u00E1s'", "'y al mismo tiempo que'", "'y junto con'", "'y en uni\\u00F3n con'", "'late al un\\u00EDsono con'", "'canta con un matiz distinto a'", "'late igual que'", "'se distingue de'", "'resuena igual que'", "'vibra al mismo ritmo que'", "'es id\\u00E9ntico a'", "'se diferencia de'", "'no coincide con'", "'es distinto a'", "'susurra con menos fuerza que'", "'casi suspira al mismo nivel que'", "'arde con m\\u00E1s pasi\\u00F3n que'", "'rodea con tanta fuerza como'", "'susurra menos que'", "'casi igual que'", "'arde mas que'", "'abraza como'", "'susurra m\\u00E1s suavemente que'", "'tiene menos latidos que'", "'susurra tan suavemente como'", "'no supera a'", "'susurra con m\\u00E1s fuerza que'", "'tiene m\\u00E1s latidos que'", "'susurra al menos con la misma fuerza que'", "'al menos iguala a'", "'unidos en un solo suspiro con'", "'fundidos en la llama de'", "'se une a'", "'se funde con'", "'sumado al latido de'", "'combinado con la pasi\\u00F3n de'", "'entrelazado con'", "'a\\u00F1adido al suspiro de'", "'fortalecidos por el fuego de'", "'separados entre los ecos de'", "'resuena con el eco de'", "'crece con'", "'resuena en'", "'se divide entre'", "'no creo que'", "'no siento que'", "'no me parece que'", "'no percibo que'", "'dudo que'", "'('", "')'", "'siempre'", "'jam\\u00E1s'", "'invoco a'", "'susurro a'", "'murmuro a'", "'conjuro a'", "'con los regalos'", "'ofreciendo'", "'con los dones'", "'presentando'", "'ofreciendo mis tesoros'", "'en mi coraz\\u00F3n'", "'en mi alma'", "'Te regalo'", "'Te Ofrezco'", "'Obsequio'", "'Deposito en tu jard\\u00EDn'", "'Te revelo'", "'Te susurro'", "'Te conf\\u00EDo'", "'Te dedico'", "'Te brindo'", "'Perm\\u00EDteme alimentar'", "'Perm\\u00EDteme regar'", "'Perm\\u00EDteme ajustar'", "'Reavivo'", "'Renuevo'", "'Reafirmo'", "'Perm\\u00EDteme transformar'", "'Renuevo con pasi\\u00F3n'", "'Modifico con amor'", "'un'", "'una'", "'unos'", "'unas'"
     };
+    public static final int T__144=144;
+    public static final int T__143=143;
+    public static final int T__146=146;
     public static final int T__50=50;
-    public static final int T__19=19;
-    public static final int T__15=15;
+    public static final int T__145=145;
+    public static final int T__140=140;
+    public static final int T__142=142;
+    public static final int T__141=141;
     public static final int T__59=59;
-    public static final int T__16=16;
-    public static final int T__17=17;
-    public static final int T__18=18;
     public static final int T__55=55;
-    public static final int T__12=12;
     public static final int T__56=56;
-    public static final int T__13=13;
     public static final int T__57=57;
-    public static final int T__14=14;
     public static final int T__58=58;
     public static final int T__51=51;
+    public static final int T__137=137;
     public static final int T__52=52;
+    public static final int T__136=136;
     public static final int T__53=53;
+    public static final int T__139=139;
     public static final int T__54=54;
+    public static final int T__138=138;
+    public static final int T__133=133;
+    public static final int T__132=132;
     public static final int T__60=60;
+    public static final int T__135=135;
     public static final int T__61=61;
+    public static final int T__134=134;
     public static final int RULE_ID=4;
-    public static final int T__26=26;
-    public static final int T__27=27;
-    public static final int T__28=28;
+    public static final int T__131=131;
+    public static final int T__130=130;
     public static final int RULE_INT=5;
-    public static final int T__29=29;
-    public static final int T__22=22;
     public static final int T__66=66;
-    public static final int RULE_ML_COMMENT=8;
-    public static final int T__23=23;
     public static final int T__67=67;
-    public static final int T__24=24;
+    public static final int T__129=129;
     public static final int T__68=68;
-    public static final int T__25=25;
     public static final int T__69=69;
     public static final int T__62=62;
+    public static final int T__126=126;
     public static final int T__63=63;
-    public static final int T__20=20;
+    public static final int T__125=125;
     public static final int T__64=64;
-    public static final int T__21=21;
+    public static final int T__128=128;
     public static final int T__65=65;
-    public static final int T__70=70;
-    public static final int T__71=71;
-    public static final int T__72=72;
-    public static final int RULE_STRING=6;
-    public static final int RULE_SL_COMMENT=9;
+    public static final int T__127=127;
+    public static final int T__166=166;
+    public static final int T__165=165;
+    public static final int T__168=168;
+    public static final int T__167=167;
+    public static final int T__162=162;
+    public static final int T__161=161;
+    public static final int T__164=164;
+    public static final int T__163=163;
+    public static final int T__160=160;
     public static final int T__37=37;
     public static final int T__38=38;
     public static final int T__39=39;
     public static final int T__33=33;
-    public static final int T__77=77;
     public static final int T__34=34;
-    public static final int T__78=78;
     public static final int T__35=35;
-    public static final int T__79=79;
     public static final int T__36=36;
-    public static final int T__73=73;
-    public static final int EOF=-1;
+    public static final int T__159=159;
     public static final int T__30=30;
-    public static final int T__74=74;
+    public static final int T__158=158;
     public static final int T__31=31;
-    public static final int T__75=75;
     public static final int T__32=32;
-    public static final int T__76=76;
-    public static final int T__80=80;
-    public static final int T__81=81;
-    public static final int RULE_WS=10;
-    public static final int RULE_ANY_OTHER=11;
+    public static final int T__155=155;
+    public static final int T__154=154;
+    public static final int T__157=157;
+    public static final int T__156=156;
+    public static final int T__151=151;
+    public static final int T__150=150;
+    public static final int T__153=153;
+    public static final int T__152=152;
     public static final int T__48=48;
     public static final int T__49=49;
-    public static final int RULE_ANYTEXT=7;
     public static final int T__44=44;
     public static final int T__45=45;
     public static final int T__46=46;
     public static final int T__47=47;
     public static final int T__40=40;
+    public static final int T__148=148;
     public static final int T__41=41;
+    public static final int T__147=147;
     public static final int T__42=42;
     public static final int T__43=43;
+    public static final int T__149=149;
+    public static final int T__100=100;
+    public static final int T__221=221;
+    public static final int T__220=220;
+    public static final int T__102=102;
+    public static final int T__223=223;
+    public static final int T__101=101;
+    public static final int T__222=222;
+    public static final int T__19=19;
+    public static final int T__15=15;
+    public static final int T__16=16;
+    public static final int T__17=17;
+    public static final int T__18=18;
+    public static final int T__218=218;
+    public static final int T__12=12;
+    public static final int T__217=217;
+    public static final int T__13=13;
+    public static final int T__14=14;
+    public static final int T__219=219;
+    public static final int T__214=214;
+    public static final int T__213=213;
+    public static final int T__216=216;
+    public static final int T__215=215;
+    public static final int T__210=210;
+    public static final int T__212=212;
+    public static final int T__211=211;
+    public static final int T__26=26;
+    public static final int T__27=27;
+    public static final int T__28=28;
+    public static final int T__29=29;
+    public static final int T__22=22;
+    public static final int T__207=207;
+    public static final int T__23=23;
+    public static final int T__206=206;
+    public static final int T__24=24;
+    public static final int T__209=209;
+    public static final int T__25=25;
+    public static final int T__208=208;
+    public static final int T__203=203;
+    public static final int T__202=202;
+    public static final int T__20=20;
+    public static final int T__205=205;
+    public static final int T__21=21;
+    public static final int T__204=204;
+    public static final int T__122=122;
+    public static final int T__121=121;
+    public static final int T__124=124;
+    public static final int T__123=123;
+    public static final int T__120=120;
+    public static final int RULE_SL_COMMENT=9;
+    public static final int T__119=119;
+    public static final int T__118=118;
+    public static final int T__115=115;
+    public static final int EOF=-1;
+    public static final int T__114=114;
+    public static final int T__117=117;
+    public static final int T__116=116;
+    public static final int T__111=111;
+    public static final int T__232=232;
+    public static final int T__110=110;
+    public static final int T__231=231;
+    public static final int T__113=113;
+    public static final int T__112=112;
+    public static final int T__233=233;
+    public static final int T__230=230;
+    public static final int RULE_ANYTEXT=7;
+    public static final int T__108=108;
+    public static final int T__229=229;
+    public static final int T__107=107;
+    public static final int T__228=228;
+    public static final int T__109=109;
+    public static final int T__104=104;
+    public static final int T__225=225;
+    public static final int T__103=103;
+    public static final int T__224=224;
+    public static final int T__106=106;
+    public static final int T__227=227;
+    public static final int T__105=105;
+    public static final int T__226=226;
+    public static final int RULE_ML_COMMENT=8;
+    public static final int T__201=201;
+    public static final int T__200=200;
+    public static final int T__91=91;
+    public static final int T__188=188;
+    public static final int T__92=92;
+    public static final int T__187=187;
+    public static final int T__93=93;
+    public static final int T__94=94;
+    public static final int T__189=189;
+    public static final int T__184=184;
+    public static final int T__183=183;
+    public static final int T__186=186;
+    public static final int T__90=90;
+    public static final int T__185=185;
+    public static final int T__180=180;
+    public static final int T__182=182;
+    public static final int T__181=181;
+    public static final int T__99=99;
+    public static final int T__95=95;
+    public static final int T__96=96;
+    public static final int T__97=97;
+    public static final int T__98=98;
+    public static final int T__177=177;
+    public static final int T__176=176;
+    public static final int T__179=179;
+    public static final int T__178=178;
+    public static final int T__173=173;
+    public static final int T__172=172;
+    public static final int T__175=175;
+    public static final int T__174=174;
+    public static final int T__171=171;
+    public static final int T__170=170;
+    public static final int T__169=169;
+    public static final int T__70=70;
+    public static final int T__71=71;
+    public static final int T__72=72;
+    public static final int RULE_STRING=6;
+    public static final int T__77=77;
+    public static final int T__78=78;
+    public static final int T__79=79;
+    public static final int T__73=73;
+    public static final int T__74=74;
+    public static final int T__75=75;
+    public static final int T__76=76;
+    public static final int T__80=80;
+    public static final int T__199=199;
+    public static final int T__81=81;
+    public static final int T__198=198;
+    public static final int T__82=82;
+    public static final int T__83=83;
+    public static final int T__195=195;
+    public static final int T__194=194;
+    public static final int RULE_WS=10;
+    public static final int T__197=197;
+    public static final int T__196=196;
+    public static final int T__191=191;
+    public static final int T__190=190;
+    public static final int T__193=193;
+    public static final int T__192=192;
+    public static final int RULE_ANY_OTHER=11;
+    public static final int T__88=88;
+    public static final int T__89=89;
+    public static final int T__84=84;
+    public static final int T__85=85;
+    public static final int T__86=86;
+    public static final int T__87=87;
 
     // delegates
     // delegators
@@ -453,41 +605,63 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSaludo"
-    // InternalDearCode.g:183:1: ruleSaludo returns [EObject current=null] : ( (otherlv_0= 'Querido' | otherlv_1= 'Querida' ) ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '.' ) ;
+    // InternalDearCode.g:183:1: ruleSaludo returns [EObject current=null] : ( (otherlv_0= 'Querido' | otherlv_1= 'Querida' | otherlv_2= 'Inspiras un amor dentro de m\\u00ED' | otherlv_3= 'Eres la chispa de mi alma' | otherlv_4= 'Tu luz despierta mi ser' ) ( (lv_name_5_0= RULE_ID ) ) otherlv_6= '.' ) ;
     public final EObject ruleSaludo() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token otherlv_1=null;
-        Token lv_name_2_0=null;
+        Token otherlv_2=null;
         Token otherlv_3=null;
+        Token otherlv_4=null;
+        Token lv_name_5_0=null;
+        Token otherlv_6=null;
 
 
         	enterRule();
 
         try {
-            // InternalDearCode.g:189:2: ( ( (otherlv_0= 'Querido' | otherlv_1= 'Querida' ) ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '.' ) )
-            // InternalDearCode.g:190:2: ( (otherlv_0= 'Querido' | otherlv_1= 'Querida' ) ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '.' )
+            // InternalDearCode.g:189:2: ( ( (otherlv_0= 'Querido' | otherlv_1= 'Querida' | otherlv_2= 'Inspiras un amor dentro de m\\u00ED' | otherlv_3= 'Eres la chispa de mi alma' | otherlv_4= 'Tu luz despierta mi ser' ) ( (lv_name_5_0= RULE_ID ) ) otherlv_6= '.' ) )
+            // InternalDearCode.g:190:2: ( (otherlv_0= 'Querido' | otherlv_1= 'Querida' | otherlv_2= 'Inspiras un amor dentro de m\\u00ED' | otherlv_3= 'Eres la chispa de mi alma' | otherlv_4= 'Tu luz despierta mi ser' ) ( (lv_name_5_0= RULE_ID ) ) otherlv_6= '.' )
             {
-            // InternalDearCode.g:190:2: ( (otherlv_0= 'Querido' | otherlv_1= 'Querida' ) ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '.' )
-            // InternalDearCode.g:191:3: (otherlv_0= 'Querido' | otherlv_1= 'Querida' ) ( (lv_name_2_0= RULE_ID ) ) otherlv_3= '.'
+            // InternalDearCode.g:190:2: ( (otherlv_0= 'Querido' | otherlv_1= 'Querida' | otherlv_2= 'Inspiras un amor dentro de m\\u00ED' | otherlv_3= 'Eres la chispa de mi alma' | otherlv_4= 'Tu luz despierta mi ser' ) ( (lv_name_5_0= RULE_ID ) ) otherlv_6= '.' )
+            // InternalDearCode.g:191:3: (otherlv_0= 'Querido' | otherlv_1= 'Querida' | otherlv_2= 'Inspiras un amor dentro de m\\u00ED' | otherlv_3= 'Eres la chispa de mi alma' | otherlv_4= 'Tu luz despierta mi ser' ) ( (lv_name_5_0= RULE_ID ) ) otherlv_6= '.'
             {
-            // InternalDearCode.g:191:3: (otherlv_0= 'Querido' | otherlv_1= 'Querida' )
-            int alt1=2;
-            int LA1_0 = input.LA(1);
-
-            if ( (LA1_0==12) ) {
+            // InternalDearCode.g:191:3: (otherlv_0= 'Querido' | otherlv_1= 'Querida' | otherlv_2= 'Inspiras un amor dentro de m\\u00ED' | otherlv_3= 'Eres la chispa de mi alma' | otherlv_4= 'Tu luz despierta mi ser' )
+            int alt1=5;
+            switch ( input.LA(1) ) {
+            case 12:
+                {
                 alt1=1;
-            }
-            else if ( (LA1_0==13) ) {
+                }
+                break;
+            case 13:
+                {
                 alt1=2;
-            }
-            else {
+                }
+                break;
+            case 14:
+                {
+                alt1=3;
+                }
+                break;
+            case 15:
+                {
+                alt1=4;
+                }
+                break;
+            case 16:
+                {
+                alt1=5;
+                }
+                break;
+            default:
                 NoViableAltException nvae =
                     new NoViableAltException("", 1, 0, input);
 
                 throw nvae;
             }
+
             switch (alt1) {
                 case 1 :
                     // InternalDearCode.g:192:4: otherlv_0= 'Querido'
@@ -509,18 +683,48 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
                     }
                     break;
+                case 3 :
+                    // InternalDearCode.g:202:4: otherlv_2= 'Inspiras un amor dentro de m\\u00ED'
+                    {
+                    otherlv_2=(Token)match(input,14,FOLLOW_5); 
+
+                    				newLeafNode(otherlv_2, grammarAccess.getSaludoAccess().getInspirasUnAmorDentroDeMKeyword_0_2());
+                    			
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:207:4: otherlv_3= 'Eres la chispa de mi alma'
+                    {
+                    otherlv_3=(Token)match(input,15,FOLLOW_5); 
+
+                    				newLeafNode(otherlv_3, grammarAccess.getSaludoAccess().getEresLaChispaDeMiAlmaKeyword_0_3());
+                    			
+
+                    }
+                    break;
+                case 5 :
+                    // InternalDearCode.g:212:4: otherlv_4= 'Tu luz despierta mi ser'
+                    {
+                    otherlv_4=(Token)match(input,16,FOLLOW_5); 
+
+                    				newLeafNode(otherlv_4, grammarAccess.getSaludoAccess().getTuLuzDespiertaMiSerKeyword_0_4());
+                    			
+
+                    }
+                    break;
 
             }
 
-            // InternalDearCode.g:202:3: ( (lv_name_2_0= RULE_ID ) )
-            // InternalDearCode.g:203:4: (lv_name_2_0= RULE_ID )
+            // InternalDearCode.g:217:3: ( (lv_name_5_0= RULE_ID ) )
+            // InternalDearCode.g:218:4: (lv_name_5_0= RULE_ID )
             {
-            // InternalDearCode.g:203:4: (lv_name_2_0= RULE_ID )
-            // InternalDearCode.g:204:5: lv_name_2_0= RULE_ID
+            // InternalDearCode.g:218:4: (lv_name_5_0= RULE_ID )
+            // InternalDearCode.g:219:5: lv_name_5_0= RULE_ID
             {
-            lv_name_2_0=(Token)match(input,RULE_ID,FOLLOW_6); 
+            lv_name_5_0=(Token)match(input,RULE_ID,FOLLOW_6); 
 
-            					newLeafNode(lv_name_2_0, grammarAccess.getSaludoAccess().getNameIDTerminalRuleCall_1_0());
+            					newLeafNode(lv_name_5_0, grammarAccess.getSaludoAccess().getNameIDTerminalRuleCall_1_0());
             				
 
             					if (current==null) {
@@ -529,7 +733,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             					setWithLastConsumed(
             						current,
             						"name",
-            						lv_name_2_0,
+            						lv_name_5_0,
             						"org.eclipse.xtext.common.Terminals.ID");
             				
 
@@ -538,9 +742,9 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,14,FOLLOW_2); 
+            otherlv_6=(Token)match(input,17,FOLLOW_2); 
 
-            			newLeafNode(otherlv_3, grammarAccess.getSaludoAccess().getFullStopKeyword_2());
+            			newLeafNode(otherlv_6, grammarAccess.getSaludoAccess().getFullStopKeyword_2());
             		
 
             }
@@ -565,7 +769,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleDespedida"
-    // InternalDearCode.g:228:1: entryRuleDespedida returns [EObject current=null] : iv_ruleDespedida= ruleDespedida EOF ;
+    // InternalDearCode.g:243:1: entryRuleDespedida returns [EObject current=null] : iv_ruleDespedida= ruleDespedida EOF ;
     public final EObject entryRuleDespedida() throws RecognitionException {
         EObject current = null;
 
@@ -573,8 +777,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:228:50: (iv_ruleDespedida= ruleDespedida EOF )
-            // InternalDearCode.g:229:2: iv_ruleDespedida= ruleDespedida EOF
+            // InternalDearCode.g:243:50: (iv_ruleDespedida= ruleDespedida EOF )
+            // InternalDearCode.g:244:2: iv_ruleDespedida= ruleDespedida EOF
             {
              newCompositeNode(grammarAccess.getDespedidaRule()); 
             pushFollow(FOLLOW_1);
@@ -601,37 +805,110 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDespedida"
-    // InternalDearCode.g:235:1: ruleDespedida returns [EObject current=null] : (otherlv_0= 'Con cari\\u00F1o, Tu programador' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '.' ) ;
+    // InternalDearCode.g:250:1: ruleDespedida returns [EObject current=null] : ( (otherlv_0= 'Con cari\\u00F1o, Tu programador' | otherlv_1= 'Espero la noche para tenerte conmigo' | otherlv_2= 'Tengo la suerte de tenerte siempre' | otherlv_3= 'Haces que mi coraz\\u00F3n se acelere' ) ( (lv_name_4_0= RULE_ID ) ) otherlv_5= '.' ) ;
     public final EObject ruleDespedida() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
-        Token lv_name_1_0=null;
+        Token otherlv_1=null;
         Token otherlv_2=null;
+        Token otherlv_3=null;
+        Token lv_name_4_0=null;
+        Token otherlv_5=null;
 
 
         	enterRule();
 
         try {
-            // InternalDearCode.g:241:2: ( (otherlv_0= 'Con cari\\u00F1o, Tu programador' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '.' ) )
-            // InternalDearCode.g:242:2: (otherlv_0= 'Con cari\\u00F1o, Tu programador' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '.' )
+            // InternalDearCode.g:256:2: ( ( (otherlv_0= 'Con cari\\u00F1o, Tu programador' | otherlv_1= 'Espero la noche para tenerte conmigo' | otherlv_2= 'Tengo la suerte de tenerte siempre' | otherlv_3= 'Haces que mi coraz\\u00F3n se acelere' ) ( (lv_name_4_0= RULE_ID ) ) otherlv_5= '.' ) )
+            // InternalDearCode.g:257:2: ( (otherlv_0= 'Con cari\\u00F1o, Tu programador' | otherlv_1= 'Espero la noche para tenerte conmigo' | otherlv_2= 'Tengo la suerte de tenerte siempre' | otherlv_3= 'Haces que mi coraz\\u00F3n se acelere' ) ( (lv_name_4_0= RULE_ID ) ) otherlv_5= '.' )
             {
-            // InternalDearCode.g:242:2: (otherlv_0= 'Con cari\\u00F1o, Tu programador' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '.' )
-            // InternalDearCode.g:243:3: otherlv_0= 'Con cari\\u00F1o, Tu programador' ( (lv_name_1_0= RULE_ID ) ) otherlv_2= '.'
+            // InternalDearCode.g:257:2: ( (otherlv_0= 'Con cari\\u00F1o, Tu programador' | otherlv_1= 'Espero la noche para tenerte conmigo' | otherlv_2= 'Tengo la suerte de tenerte siempre' | otherlv_3= 'Haces que mi coraz\\u00F3n se acelere' ) ( (lv_name_4_0= RULE_ID ) ) otherlv_5= '.' )
+            // InternalDearCode.g:258:3: (otherlv_0= 'Con cari\\u00F1o, Tu programador' | otherlv_1= 'Espero la noche para tenerte conmigo' | otherlv_2= 'Tengo la suerte de tenerte siempre' | otherlv_3= 'Haces que mi coraz\\u00F3n se acelere' ) ( (lv_name_4_0= RULE_ID ) ) otherlv_5= '.'
             {
-            otherlv_0=(Token)match(input,15,FOLLOW_5); 
+            // InternalDearCode.g:258:3: (otherlv_0= 'Con cari\\u00F1o, Tu programador' | otherlv_1= 'Espero la noche para tenerte conmigo' | otherlv_2= 'Tengo la suerte de tenerte siempre' | otherlv_3= 'Haces que mi coraz\\u00F3n se acelere' )
+            int alt2=4;
+            switch ( input.LA(1) ) {
+            case 18:
+                {
+                alt2=1;
+                }
+                break;
+            case 19:
+                {
+                alt2=2;
+                }
+                break;
+            case 20:
+                {
+                alt2=3;
+                }
+                break;
+            case 21:
+                {
+                alt2=4;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 2, 0, input);
 
-            			newLeafNode(otherlv_0, grammarAccess.getDespedidaAccess().getConCariOTuProgramadorKeyword_0());
-            		
-            // InternalDearCode.g:247:3: ( (lv_name_1_0= RULE_ID ) )
-            // InternalDearCode.g:248:4: (lv_name_1_0= RULE_ID )
-            {
-            // InternalDearCode.g:248:4: (lv_name_1_0= RULE_ID )
-            // InternalDearCode.g:249:5: lv_name_1_0= RULE_ID
-            {
-            lv_name_1_0=(Token)match(input,RULE_ID,FOLLOW_6); 
+                throw nvae;
+            }
 
-            					newLeafNode(lv_name_1_0, grammarAccess.getDespedidaAccess().getNameIDTerminalRuleCall_1_0());
+            switch (alt2) {
+                case 1 :
+                    // InternalDearCode.g:259:4: otherlv_0= 'Con cari\\u00F1o, Tu programador'
+                    {
+                    otherlv_0=(Token)match(input,18,FOLLOW_5); 
+
+                    				newLeafNode(otherlv_0, grammarAccess.getDespedidaAccess().getConCariOTuProgramadorKeyword_0_0());
+                    			
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDearCode.g:264:4: otherlv_1= 'Espero la noche para tenerte conmigo'
+                    {
+                    otherlv_1=(Token)match(input,19,FOLLOW_5); 
+
+                    				newLeafNode(otherlv_1, grammarAccess.getDespedidaAccess().getEsperoLaNocheParaTenerteConmigoKeyword_0_1());
+                    			
+
+                    }
+                    break;
+                case 3 :
+                    // InternalDearCode.g:269:4: otherlv_2= 'Tengo la suerte de tenerte siempre'
+                    {
+                    otherlv_2=(Token)match(input,20,FOLLOW_5); 
+
+                    				newLeafNode(otherlv_2, grammarAccess.getDespedidaAccess().getTengoLaSuerteDeTenerteSiempreKeyword_0_2());
+                    			
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:274:4: otherlv_3= 'Haces que mi coraz\\u00F3n se acelere'
+                    {
+                    otherlv_3=(Token)match(input,21,FOLLOW_5); 
+
+                    				newLeafNode(otherlv_3, grammarAccess.getDespedidaAccess().getHacesQueMiCorazNSeAcelereKeyword_0_3());
+                    			
+
+                    }
+                    break;
+
+            }
+
+            // InternalDearCode.g:279:3: ( (lv_name_4_0= RULE_ID ) )
+            // InternalDearCode.g:280:4: (lv_name_4_0= RULE_ID )
+            {
+            // InternalDearCode.g:280:4: (lv_name_4_0= RULE_ID )
+            // InternalDearCode.g:281:5: lv_name_4_0= RULE_ID
+            {
+            lv_name_4_0=(Token)match(input,RULE_ID,FOLLOW_6); 
+
+            					newLeafNode(lv_name_4_0, grammarAccess.getDespedidaAccess().getNameIDTerminalRuleCall_1_0());
             				
 
             					if (current==null) {
@@ -640,7 +917,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             					setWithLastConsumed(
             						current,
             						"name",
-            						lv_name_1_0,
+            						lv_name_4_0,
             						"org.eclipse.xtext.common.Terminals.ID");
             				
 
@@ -649,9 +926,9 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,14,FOLLOW_2); 
+            otherlv_5=(Token)match(input,17,FOLLOW_2); 
 
-            			newLeafNode(otherlv_2, grammarAccess.getDespedidaAccess().getFullStopKeyword_2());
+            			newLeafNode(otherlv_5, grammarAccess.getDespedidaAccess().getFullStopKeyword_2());
             		
 
             }
@@ -676,7 +953,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCuerpo"
-    // InternalDearCode.g:273:1: entryRuleCuerpo returns [EObject current=null] : iv_ruleCuerpo= ruleCuerpo EOF ;
+    // InternalDearCode.g:305:1: entryRuleCuerpo returns [EObject current=null] : iv_ruleCuerpo= ruleCuerpo EOF ;
     public final EObject entryRuleCuerpo() throws RecognitionException {
         EObject current = null;
 
@@ -684,8 +961,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:273:47: (iv_ruleCuerpo= ruleCuerpo EOF )
-            // InternalDearCode.g:274:2: iv_ruleCuerpo= ruleCuerpo EOF
+            // InternalDearCode.g:305:47: (iv_ruleCuerpo= ruleCuerpo EOF )
+            // InternalDearCode.g:306:2: iv_ruleCuerpo= ruleCuerpo EOF
             {
              newCompositeNode(grammarAccess.getCuerpoRule()); 
             pushFollow(FOLLOW_1);
@@ -712,7 +989,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCuerpo"
-    // InternalDearCode.g:280:1: ruleCuerpo returns [EObject current=null] : ( (lv_instrucciones_0_0= ruleInstruccion ) )+ ;
+    // InternalDearCode.g:312:1: ruleCuerpo returns [EObject current=null] : ( (lv_instrucciones_0_0= ruleInstruccion ) )+ ;
     public final EObject ruleCuerpo() throws RecognitionException {
         EObject current = null;
 
@@ -723,27 +1000,27 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDearCode.g:286:2: ( ( (lv_instrucciones_0_0= ruleInstruccion ) )+ )
-            // InternalDearCode.g:287:2: ( (lv_instrucciones_0_0= ruleInstruccion ) )+
+            // InternalDearCode.g:318:2: ( ( (lv_instrucciones_0_0= ruleInstruccion ) )+ )
+            // InternalDearCode.g:319:2: ( (lv_instrucciones_0_0= ruleInstruccion ) )+
             {
-            // InternalDearCode.g:287:2: ( (lv_instrucciones_0_0= ruleInstruccion ) )+
-            int cnt2=0;
-            loop2:
+            // InternalDearCode.g:319:2: ( (lv_instrucciones_0_0= ruleInstruccion ) )+
+            int cnt3=0;
+            loop3:
             do {
-                int alt2=2;
-                int LA2_0 = input.LA(1);
+                int alt3=2;
+                int LA3_0 = input.LA(1);
 
-                if ( (LA2_0==16||(LA2_0>=19 && LA2_0<=20)||(LA2_0>=26 && LA2_0<=27)||LA2_0==30||(LA2_0>=36 && LA2_0<=38)||LA2_0==65||(LA2_0>=73 && LA2_0<=79)) ) {
-                    alt2=1;
+                if ( ((LA3_0>=25 && LA3_0<=33)||(LA3_0>=43 && LA3_0<=54)||(LA3_0>=72 && LA3_0<=78)||(LA3_0>=89 && LA3_0<=93)||(LA3_0>=107 && LA3_0<=114)||LA3_0==134||(LA3_0>=201 && LA3_0<=204)||(LA3_0>=212 && LA3_0<=229)) ) {
+                    alt3=1;
                 }
 
 
-                switch (alt2) {
+                switch (alt3) {
             	case 1 :
-            	    // InternalDearCode.g:288:3: (lv_instrucciones_0_0= ruleInstruccion )
+            	    // InternalDearCode.g:320:3: (lv_instrucciones_0_0= ruleInstruccion )
             	    {
-            	    // InternalDearCode.g:288:3: (lv_instrucciones_0_0= ruleInstruccion )
-            	    // InternalDearCode.g:289:4: lv_instrucciones_0_0= ruleInstruccion
+            	    // InternalDearCode.g:320:3: (lv_instrucciones_0_0= ruleInstruccion )
+            	    // InternalDearCode.g:321:4: lv_instrucciones_0_0= ruleInstruccion
             	    {
 
             	    				newCompositeNode(grammarAccess.getCuerpoAccess().getInstruccionesInstruccionParserRuleCall_0());
@@ -772,12 +1049,12 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    if ( cnt2 >= 1 ) break loop2;
+            	    if ( cnt3 >= 1 ) break loop3;
                         EarlyExitException eee =
-                            new EarlyExitException(2, input);
+                            new EarlyExitException(3, input);
                         throw eee;
                 }
-                cnt2++;
+                cnt3++;
             } while (true);
 
 
@@ -800,7 +1077,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleInstruccion"
-    // InternalDearCode.g:309:1: entryRuleInstruccion returns [EObject current=null] : iv_ruleInstruccion= ruleInstruccion EOF ;
+    // InternalDearCode.g:341:1: entryRuleInstruccion returns [EObject current=null] : iv_ruleInstruccion= ruleInstruccion EOF ;
     public final EObject entryRuleInstruccion() throws RecognitionException {
         EObject current = null;
 
@@ -808,8 +1085,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:309:52: (iv_ruleInstruccion= ruleInstruccion EOF )
-            // InternalDearCode.g:310:2: iv_ruleInstruccion= ruleInstruccion EOF
+            // InternalDearCode.g:341:52: (iv_ruleInstruccion= ruleInstruccion EOF )
+            // InternalDearCode.g:342:2: iv_ruleInstruccion= ruleInstruccion EOF
             {
              newCompositeNode(grammarAccess.getInstruccionRule()); 
             pushFollow(FOLLOW_1);
@@ -836,7 +1113,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleInstruccion"
-    // InternalDearCode.g:316:1: ruleInstruccion returns [EObject current=null] : (this_Declarar_0= ruleDeclarar | this_Reasignar_1= ruleReasignar | this_Condicional_2= ruleCondicional | this_BucleWhile_3= ruleBucleWhile | this_BucleFor_4= ruleBucleFor | this_Entrada_5= ruleEntrada | this_Salida_6= ruleSalida | this_Funcion_7= ruleFuncion | this_FunctionCall_8= ruleFunctionCall ) ;
+    // InternalDearCode.g:348:1: ruleInstruccion returns [EObject current=null] : (this_Declarar_0= ruleDeclarar | this_Reasignar_1= ruleReasignar | this_Condicional_2= ruleCondicional | this_BucleWhile_3= ruleBucleWhile | this_BucleFor_4= ruleBucleFor | this_Entrada_5= ruleEntrada | this_Salida_6= ruleSalida | this_Funcion_7= ruleFuncion | this_FunctionCall_8= ruleFunctionCall ) ;
     public final EObject ruleInstruccion() throws RecognitionException {
         EObject current = null;
 
@@ -863,75 +1140,122 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDearCode.g:322:2: ( (this_Declarar_0= ruleDeclarar | this_Reasignar_1= ruleReasignar | this_Condicional_2= ruleCondicional | this_BucleWhile_3= ruleBucleWhile | this_BucleFor_4= ruleBucleFor | this_Entrada_5= ruleEntrada | this_Salida_6= ruleSalida | this_Funcion_7= ruleFuncion | this_FunctionCall_8= ruleFunctionCall ) )
-            // InternalDearCode.g:323:2: (this_Declarar_0= ruleDeclarar | this_Reasignar_1= ruleReasignar | this_Condicional_2= ruleCondicional | this_BucleWhile_3= ruleBucleWhile | this_BucleFor_4= ruleBucleFor | this_Entrada_5= ruleEntrada | this_Salida_6= ruleSalida | this_Funcion_7= ruleFuncion | this_FunctionCall_8= ruleFunctionCall )
+            // InternalDearCode.g:354:2: ( (this_Declarar_0= ruleDeclarar | this_Reasignar_1= ruleReasignar | this_Condicional_2= ruleCondicional | this_BucleWhile_3= ruleBucleWhile | this_BucleFor_4= ruleBucleFor | this_Entrada_5= ruleEntrada | this_Salida_6= ruleSalida | this_Funcion_7= ruleFuncion | this_FunctionCall_8= ruleFunctionCall ) )
+            // InternalDearCode.g:355:2: (this_Declarar_0= ruleDeclarar | this_Reasignar_1= ruleReasignar | this_Condicional_2= ruleCondicional | this_BucleWhile_3= ruleBucleWhile | this_BucleFor_4= ruleBucleFor | this_Entrada_5= ruleEntrada | this_Salida_6= ruleSalida | this_Funcion_7= ruleFuncion | this_FunctionCall_8= ruleFunctionCall )
             {
-            // InternalDearCode.g:323:2: (this_Declarar_0= ruleDeclarar | this_Reasignar_1= ruleReasignar | this_Condicional_2= ruleCondicional | this_BucleWhile_3= ruleBucleWhile | this_BucleFor_4= ruleBucleFor | this_Entrada_5= ruleEntrada | this_Salida_6= ruleSalida | this_Funcion_7= ruleFuncion | this_FunctionCall_8= ruleFunctionCall )
-            int alt3=9;
+            // InternalDearCode.g:355:2: (this_Declarar_0= ruleDeclarar | this_Reasignar_1= ruleReasignar | this_Condicional_2= ruleCondicional | this_BucleWhile_3= ruleBucleWhile | this_BucleFor_4= ruleBucleFor | this_Entrada_5= ruleEntrada | this_Salida_6= ruleSalida | this_Funcion_7= ruleFuncion | this_FunctionCall_8= ruleFunctionCall )
+            int alt4=9;
             switch ( input.LA(1) ) {
+            case 134:
+            case 212:
+            case 213:
+            case 214:
+            case 215:
+            case 216:
+            case 217:
+            case 218:
+            case 219:
+            case 220:
+                {
+                alt4=1;
+                }
+                break;
+            case 221:
+            case 222:
+            case 223:
+            case 224:
+            case 225:
+            case 226:
+            case 227:
+            case 228:
+            case 229:
+                {
+                alt4=2;
+                }
+                break;
+            case 50:
+            case 51:
+            case 52:
+            case 53:
+            case 54:
+                {
+                alt4=3;
+                }
+                break;
+            case 72:
             case 73:
             case 74:
             case 75:
             case 76:
-                {
-                alt3=1;
-                }
-                break;
             case 77:
             case 78:
-            case 79:
                 {
-                alt3=2;
+                alt4=4;
                 }
                 break;
-            case 20:
+            case 89:
+            case 90:
+            case 91:
+            case 92:
+            case 93:
                 {
-                alt3=3;
+                alt4=5;
                 }
                 break;
+            case 25:
             case 26:
             case 27:
-                {
-                alt3=4;
-                }
-                break;
+            case 28:
+            case 29:
             case 30:
+            case 31:
+            case 32:
+            case 33:
                 {
-                alt3=5;
+                alt4=6;
                 }
                 break;
-            case 16:
+            case 43:
+            case 44:
+            case 45:
+            case 46:
+            case 47:
+            case 48:
+            case 49:
                 {
-                alt3=6;
+                alt4=7;
                 }
                 break;
-            case 19:
+            case 107:
+            case 108:
+            case 109:
+            case 110:
+            case 111:
+            case 112:
+            case 113:
+            case 114:
                 {
-                alt3=7;
+                alt4=8;
                 }
                 break;
-            case 36:
-            case 37:
-            case 38:
+            case 201:
+            case 202:
+            case 203:
+            case 204:
                 {
-                alt3=8;
-                }
-                break;
-            case 65:
-                {
-                alt3=9;
+                alt4=9;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 3, 0, input);
+                    new NoViableAltException("", 4, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt3) {
+            switch (alt4) {
                 case 1 :
-                    // InternalDearCode.g:324:3: this_Declarar_0= ruleDeclarar
+                    // InternalDearCode.g:356:3: this_Declarar_0= ruleDeclarar
                     {
 
                     			newCompositeNode(grammarAccess.getInstruccionAccess().getDeclararParserRuleCall_0());
@@ -949,7 +1273,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalDearCode.g:333:3: this_Reasignar_1= ruleReasignar
+                    // InternalDearCode.g:365:3: this_Reasignar_1= ruleReasignar
                     {
 
                     			newCompositeNode(grammarAccess.getInstruccionAccess().getReasignarParserRuleCall_1());
@@ -967,7 +1291,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalDearCode.g:342:3: this_Condicional_2= ruleCondicional
+                    // InternalDearCode.g:374:3: this_Condicional_2= ruleCondicional
                     {
 
                     			newCompositeNode(grammarAccess.getInstruccionAccess().getCondicionalParserRuleCall_2());
@@ -985,7 +1309,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalDearCode.g:351:3: this_BucleWhile_3= ruleBucleWhile
+                    // InternalDearCode.g:383:3: this_BucleWhile_3= ruleBucleWhile
                     {
 
                     			newCompositeNode(grammarAccess.getInstruccionAccess().getBucleWhileParserRuleCall_3());
@@ -1003,7 +1327,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalDearCode.g:360:3: this_BucleFor_4= ruleBucleFor
+                    // InternalDearCode.g:392:3: this_BucleFor_4= ruleBucleFor
                     {
 
                     			newCompositeNode(grammarAccess.getInstruccionAccess().getBucleForParserRuleCall_4());
@@ -1021,7 +1345,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalDearCode.g:369:3: this_Entrada_5= ruleEntrada
+                    // InternalDearCode.g:401:3: this_Entrada_5= ruleEntrada
                     {
 
                     			newCompositeNode(grammarAccess.getInstruccionAccess().getEntradaParserRuleCall_5());
@@ -1039,7 +1363,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 7 :
-                    // InternalDearCode.g:378:3: this_Salida_6= ruleSalida
+                    // InternalDearCode.g:410:3: this_Salida_6= ruleSalida
                     {
 
                     			newCompositeNode(grammarAccess.getInstruccionAccess().getSalidaParserRuleCall_6());
@@ -1057,7 +1381,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 8 :
-                    // InternalDearCode.g:387:3: this_Funcion_7= ruleFuncion
+                    // InternalDearCode.g:419:3: this_Funcion_7= ruleFuncion
                     {
 
                     			newCompositeNode(grammarAccess.getInstruccionAccess().getFuncionParserRuleCall_7());
@@ -1075,7 +1399,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 9 :
-                    // InternalDearCode.g:396:3: this_FunctionCall_8= ruleFunctionCall
+                    // InternalDearCode.g:428:3: this_FunctionCall_8= ruleFunctionCall
                     {
 
                     			newCompositeNode(grammarAccess.getInstruccionAccess().getFunctionCallParserRuleCall_8());
@@ -1114,8 +1438,139 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleInstruccion"
 
 
+    // $ANTLR start "entryRuleType"
+    // InternalDearCode.g:440:1: entryRuleType returns [String current=null] : iv_ruleType= ruleType EOF ;
+    public final String entryRuleType() throws RecognitionException {
+        String current = null;
+
+        AntlrDatatypeRuleToken iv_ruleType = null;
+
+
+        try {
+            // InternalDearCode.g:440:44: (iv_ruleType= ruleType EOF )
+            // InternalDearCode.g:441:2: iv_ruleType= ruleType EOF
+            {
+             newCompositeNode(grammarAccess.getTypeRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleType=ruleType();
+
+            state._fsp--;
+
+             current =iv_ruleType.getText(); 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleType"
+
+
+    // $ANTLR start "ruleType"
+    // InternalDearCode.g:447:1: ruleType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'n\\u00FAmero' | kw= 'texto' | kw= 'booleano' ) ;
+    public final AntlrDatatypeRuleToken ruleType() throws RecognitionException {
+        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
+
+        Token kw=null;
+
+
+        	enterRule();
+
+        try {
+            // InternalDearCode.g:453:2: ( (kw= 'n\\u00FAmero' | kw= 'texto' | kw= 'booleano' ) )
+            // InternalDearCode.g:454:2: (kw= 'n\\u00FAmero' | kw= 'texto' | kw= 'booleano' )
+            {
+            // InternalDearCode.g:454:2: (kw= 'n\\u00FAmero' | kw= 'texto' | kw= 'booleano' )
+            int alt5=3;
+            switch ( input.LA(1) ) {
+            case 22:
+                {
+                alt5=1;
+                }
+                break;
+            case 23:
+                {
+                alt5=2;
+                }
+                break;
+            case 24:
+                {
+                alt5=3;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 5, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt5) {
+                case 1 :
+                    // InternalDearCode.g:455:3: kw= 'n\\u00FAmero'
+                    {
+                    kw=(Token)match(input,22,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getTypeAccess().getNMeroKeyword_0());
+                    		
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDearCode.g:461:3: kw= 'texto'
+                    {
+                    kw=(Token)match(input,23,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getTypeAccess().getTextoKeyword_1());
+                    		
+
+                    }
+                    break;
+                case 3 :
+                    // InternalDearCode.g:467:3: kw= 'booleano'
+                    {
+                    kw=(Token)match(input,24,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getTypeAccess().getBooleanoKeyword_2());
+                    		
+
+                    }
+                    break;
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleType"
+
+
     // $ANTLR start "entryRuleDeclarar"
-    // InternalDearCode.g:408:1: entryRuleDeclarar returns [EObject current=null] : iv_ruleDeclarar= ruleDeclarar EOF ;
+    // InternalDearCode.g:476:1: entryRuleDeclarar returns [EObject current=null] : iv_ruleDeclarar= ruleDeclarar EOF ;
     public final EObject entryRuleDeclarar() throws RecognitionException {
         EObject current = null;
 
@@ -1123,8 +1578,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:408:49: (iv_ruleDeclarar= ruleDeclarar EOF )
-            // InternalDearCode.g:409:2: iv_ruleDeclarar= ruleDeclarar EOF
+            // InternalDearCode.g:476:49: (iv_ruleDeclarar= ruleDeclarar EOF )
+            // InternalDearCode.g:477:2: iv_ruleDeclarar= ruleDeclarar EOF
             {
              newCompositeNode(grammarAccess.getDeclararRule()); 
             pushFollow(FOLLOW_1);
@@ -1151,39 +1606,41 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleDeclarar"
-    // InternalDearCode.g:415:1: ruleDeclarar returns [EObject current=null] : ( ( (lv_verboDecl_0_0= ruleVerboDeclaracion ) ) ( (lv_articulo_1_0= ruleArticulo ) ) ( (lv_sustantivo_2_0= ruleMI_ID ) ) ( (lv_preComentario_3_0= ruleComment ) )? ( (lv_valor_4_0= ruleExpression ) ) ( (lv_postComentario_5_0= ruleComment ) )? otherlv_6= '.' ) ;
+    // InternalDearCode.g:483:1: ruleDeclarar returns [EObject current=null] : ( ( (lv_verboDecl_0_0= ruleVerboDeclaracion ) ) ( (lv_articulo_1_0= ruleArticulo ) ) ( (lv_tipo_2_0= ruleType ) )? ( (lv_sustantivo_3_0= ruleMI_ID ) ) ( (lv_preComentario_4_0= ruleComment ) )? ( (lv_valor_5_0= ruleExpression ) ) ( (lv_postComentario_6_0= ruleComment ) )? otherlv_7= '.' ) ;
     public final EObject ruleDeclarar() throws RecognitionException {
         EObject current = null;
 
-        Token otherlv_6=null;
+        Token otherlv_7=null;
         AntlrDatatypeRuleToken lv_verboDecl_0_0 = null;
 
         AntlrDatatypeRuleToken lv_articulo_1_0 = null;
 
-        EObject lv_sustantivo_2_0 = null;
+        AntlrDatatypeRuleToken lv_tipo_2_0 = null;
 
-        EObject lv_preComentario_3_0 = null;
+        EObject lv_sustantivo_3_0 = null;
 
-        EObject lv_valor_4_0 = null;
+        EObject lv_preComentario_4_0 = null;
 
-        EObject lv_postComentario_5_0 = null;
+        EObject lv_valor_5_0 = null;
+
+        EObject lv_postComentario_6_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalDearCode.g:421:2: ( ( ( (lv_verboDecl_0_0= ruleVerboDeclaracion ) ) ( (lv_articulo_1_0= ruleArticulo ) ) ( (lv_sustantivo_2_0= ruleMI_ID ) ) ( (lv_preComentario_3_0= ruleComment ) )? ( (lv_valor_4_0= ruleExpression ) ) ( (lv_postComentario_5_0= ruleComment ) )? otherlv_6= '.' ) )
-            // InternalDearCode.g:422:2: ( ( (lv_verboDecl_0_0= ruleVerboDeclaracion ) ) ( (lv_articulo_1_0= ruleArticulo ) ) ( (lv_sustantivo_2_0= ruleMI_ID ) ) ( (lv_preComentario_3_0= ruleComment ) )? ( (lv_valor_4_0= ruleExpression ) ) ( (lv_postComentario_5_0= ruleComment ) )? otherlv_6= '.' )
+            // InternalDearCode.g:489:2: ( ( ( (lv_verboDecl_0_0= ruleVerboDeclaracion ) ) ( (lv_articulo_1_0= ruleArticulo ) ) ( (lv_tipo_2_0= ruleType ) )? ( (lv_sustantivo_3_0= ruleMI_ID ) ) ( (lv_preComentario_4_0= ruleComment ) )? ( (lv_valor_5_0= ruleExpression ) ) ( (lv_postComentario_6_0= ruleComment ) )? otherlv_7= '.' ) )
+            // InternalDearCode.g:490:2: ( ( (lv_verboDecl_0_0= ruleVerboDeclaracion ) ) ( (lv_articulo_1_0= ruleArticulo ) ) ( (lv_tipo_2_0= ruleType ) )? ( (lv_sustantivo_3_0= ruleMI_ID ) ) ( (lv_preComentario_4_0= ruleComment ) )? ( (lv_valor_5_0= ruleExpression ) ) ( (lv_postComentario_6_0= ruleComment ) )? otherlv_7= '.' )
             {
-            // InternalDearCode.g:422:2: ( ( (lv_verboDecl_0_0= ruleVerboDeclaracion ) ) ( (lv_articulo_1_0= ruleArticulo ) ) ( (lv_sustantivo_2_0= ruleMI_ID ) ) ( (lv_preComentario_3_0= ruleComment ) )? ( (lv_valor_4_0= ruleExpression ) ) ( (lv_postComentario_5_0= ruleComment ) )? otherlv_6= '.' )
-            // InternalDearCode.g:423:3: ( (lv_verboDecl_0_0= ruleVerboDeclaracion ) ) ( (lv_articulo_1_0= ruleArticulo ) ) ( (lv_sustantivo_2_0= ruleMI_ID ) ) ( (lv_preComentario_3_0= ruleComment ) )? ( (lv_valor_4_0= ruleExpression ) ) ( (lv_postComentario_5_0= ruleComment ) )? otherlv_6= '.'
+            // InternalDearCode.g:490:2: ( ( (lv_verboDecl_0_0= ruleVerboDeclaracion ) ) ( (lv_articulo_1_0= ruleArticulo ) ) ( (lv_tipo_2_0= ruleType ) )? ( (lv_sustantivo_3_0= ruleMI_ID ) ) ( (lv_preComentario_4_0= ruleComment ) )? ( (lv_valor_5_0= ruleExpression ) ) ( (lv_postComentario_6_0= ruleComment ) )? otherlv_7= '.' )
+            // InternalDearCode.g:491:3: ( (lv_verboDecl_0_0= ruleVerboDeclaracion ) ) ( (lv_articulo_1_0= ruleArticulo ) ) ( (lv_tipo_2_0= ruleType ) )? ( (lv_sustantivo_3_0= ruleMI_ID ) ) ( (lv_preComentario_4_0= ruleComment ) )? ( (lv_valor_5_0= ruleExpression ) ) ( (lv_postComentario_6_0= ruleComment ) )? otherlv_7= '.'
             {
-            // InternalDearCode.g:423:3: ( (lv_verboDecl_0_0= ruleVerboDeclaracion ) )
-            // InternalDearCode.g:424:4: (lv_verboDecl_0_0= ruleVerboDeclaracion )
+            // InternalDearCode.g:491:3: ( (lv_verboDecl_0_0= ruleVerboDeclaracion ) )
+            // InternalDearCode.g:492:4: (lv_verboDecl_0_0= ruleVerboDeclaracion )
             {
-            // InternalDearCode.g:424:4: (lv_verboDecl_0_0= ruleVerboDeclaracion )
-            // InternalDearCode.g:425:5: lv_verboDecl_0_0= ruleVerboDeclaracion
+            // InternalDearCode.g:492:4: (lv_verboDecl_0_0= ruleVerboDeclaracion )
+            // InternalDearCode.g:493:5: lv_verboDecl_0_0= ruleVerboDeclaracion
             {
 
             					newCompositeNode(grammarAccess.getDeclararAccess().getVerboDeclVerboDeclaracionParserRuleCall_0_0());
@@ -1210,16 +1667,16 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDearCode.g:442:3: ( (lv_articulo_1_0= ruleArticulo ) )
-            // InternalDearCode.g:443:4: (lv_articulo_1_0= ruleArticulo )
+            // InternalDearCode.g:510:3: ( (lv_articulo_1_0= ruleArticulo ) )
+            // InternalDearCode.g:511:4: (lv_articulo_1_0= ruleArticulo )
             {
-            // InternalDearCode.g:443:4: (lv_articulo_1_0= ruleArticulo )
-            // InternalDearCode.g:444:5: lv_articulo_1_0= ruleArticulo
+            // InternalDearCode.g:511:4: (lv_articulo_1_0= ruleArticulo )
+            // InternalDearCode.g:512:5: lv_articulo_1_0= ruleArticulo
             {
 
             					newCompositeNode(grammarAccess.getDeclararAccess().getArticuloArticuloParserRuleCall_1_0());
             				
-            pushFollow(FOLLOW_5);
+            pushFollow(FOLLOW_9);
             lv_articulo_1_0=ruleArticulo();
 
             state._fsp--;
@@ -1241,17 +1698,59 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDearCode.g:461:3: ( (lv_sustantivo_2_0= ruleMI_ID ) )
-            // InternalDearCode.g:462:4: (lv_sustantivo_2_0= ruleMI_ID )
+            // InternalDearCode.g:529:3: ( (lv_tipo_2_0= ruleType ) )?
+            int alt6=2;
+            int LA6_0 = input.LA(1);
+
+            if ( ((LA6_0>=22 && LA6_0<=24)) ) {
+                alt6=1;
+            }
+            switch (alt6) {
+                case 1 :
+                    // InternalDearCode.g:530:4: (lv_tipo_2_0= ruleType )
+                    {
+                    // InternalDearCode.g:530:4: (lv_tipo_2_0= ruleType )
+                    // InternalDearCode.g:531:5: lv_tipo_2_0= ruleType
+                    {
+
+                    					newCompositeNode(grammarAccess.getDeclararAccess().getTipoTypeParserRuleCall_2_0());
+                    				
+                    pushFollow(FOLLOW_9);
+                    lv_tipo_2_0=ruleType();
+
+                    state._fsp--;
+
+
+                    					if (current==null) {
+                    						current = createModelElementForParent(grammarAccess.getDeclararRule());
+                    					}
+                    					set(
+                    						current,
+                    						"tipo",
+                    						lv_tipo_2_0,
+                    						"edu.upb.lp.DearCode.Type");
+                    					afterParserOrEnumRuleCall();
+                    				
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            // InternalDearCode.g:548:3: ( (lv_sustantivo_3_0= ruleMI_ID ) )
+            // InternalDearCode.g:549:4: (lv_sustantivo_3_0= ruleMI_ID )
             {
-            // InternalDearCode.g:462:4: (lv_sustantivo_2_0= ruleMI_ID )
-            // InternalDearCode.g:463:5: lv_sustantivo_2_0= ruleMI_ID
+            // InternalDearCode.g:549:4: (lv_sustantivo_3_0= ruleMI_ID )
+            // InternalDearCode.g:550:5: lv_sustantivo_3_0= ruleMI_ID
             {
 
-            					newCompositeNode(grammarAccess.getDeclararAccess().getSustantivoMI_IDParserRuleCall_2_0());
+            					newCompositeNode(grammarAccess.getDeclararAccess().getSustantivoMI_IDParserRuleCall_3_0());
             				
-            pushFollow(FOLLOW_9);
-            lv_sustantivo_2_0=ruleMI_ID();
+            pushFollow(FOLLOW_10);
+            lv_sustantivo_3_0=ruleMI_ID();
 
             state._fsp--;
 
@@ -1262,7 +1761,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             					set(
             						current,
             						"sustantivo",
-            						lv_sustantivo_2_0,
+            						lv_sustantivo_3_0,
             						"edu.upb.lp.DearCode.MI_ID");
             					afterParserOrEnumRuleCall();
             				
@@ -1272,25 +1771,25 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDearCode.g:480:3: ( (lv_preComentario_3_0= ruleComment ) )?
-            int alt4=2;
-            int LA4_0 = input.LA(1);
+            // InternalDearCode.g:567:3: ( (lv_preComentario_4_0= ruleComment ) )?
+            int alt7=2;
+            int LA7_0 = input.LA(1);
 
-            if ( (LA4_0==RULE_ANYTEXT) ) {
-                alt4=1;
+            if ( (LA7_0==RULE_ANYTEXT) ) {
+                alt7=1;
             }
-            switch (alt4) {
+            switch (alt7) {
                 case 1 :
-                    // InternalDearCode.g:481:4: (lv_preComentario_3_0= ruleComment )
+                    // InternalDearCode.g:568:4: (lv_preComentario_4_0= ruleComment )
                     {
-                    // InternalDearCode.g:481:4: (lv_preComentario_3_0= ruleComment )
-                    // InternalDearCode.g:482:5: lv_preComentario_3_0= ruleComment
+                    // InternalDearCode.g:568:4: (lv_preComentario_4_0= ruleComment )
+                    // InternalDearCode.g:569:5: lv_preComentario_4_0= ruleComment
                     {
 
-                    					newCompositeNode(grammarAccess.getDeclararAccess().getPreComentarioCommentParserRuleCall_3_0());
+                    					newCompositeNode(grammarAccess.getDeclararAccess().getPreComentarioCommentParserRuleCall_4_0());
                     				
-                    pushFollow(FOLLOW_9);
-                    lv_preComentario_3_0=ruleComment();
+                    pushFollow(FOLLOW_10);
+                    lv_preComentario_4_0=ruleComment();
 
                     state._fsp--;
 
@@ -1301,7 +1800,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     					set(
                     						current,
                     						"preComentario",
-                    						lv_preComentario_3_0,
+                    						lv_preComentario_4_0,
                     						"edu.upb.lp.DearCode.Comment");
                     					afterParserOrEnumRuleCall();
                     				
@@ -1314,17 +1813,17 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDearCode.g:499:3: ( (lv_valor_4_0= ruleExpression ) )
-            // InternalDearCode.g:500:4: (lv_valor_4_0= ruleExpression )
+            // InternalDearCode.g:586:3: ( (lv_valor_5_0= ruleExpression ) )
+            // InternalDearCode.g:587:4: (lv_valor_5_0= ruleExpression )
             {
-            // InternalDearCode.g:500:4: (lv_valor_4_0= ruleExpression )
-            // InternalDearCode.g:501:5: lv_valor_4_0= ruleExpression
+            // InternalDearCode.g:587:4: (lv_valor_5_0= ruleExpression )
+            // InternalDearCode.g:588:5: lv_valor_5_0= ruleExpression
             {
 
-            					newCompositeNode(grammarAccess.getDeclararAccess().getValorExpressionParserRuleCall_4_0());
+            					newCompositeNode(grammarAccess.getDeclararAccess().getValorExpressionParserRuleCall_5_0());
             				
-            pushFollow(FOLLOW_10);
-            lv_valor_4_0=ruleExpression();
+            pushFollow(FOLLOW_11);
+            lv_valor_5_0=ruleExpression();
 
             state._fsp--;
 
@@ -1335,7 +1834,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             					set(
             						current,
             						"valor",
-            						lv_valor_4_0,
+            						lv_valor_5_0,
             						"edu.upb.lp.DearCode.Expression");
             					afterParserOrEnumRuleCall();
             				
@@ -1345,25 +1844,25 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDearCode.g:518:3: ( (lv_postComentario_5_0= ruleComment ) )?
-            int alt5=2;
-            int LA5_0 = input.LA(1);
+            // InternalDearCode.g:605:3: ( (lv_postComentario_6_0= ruleComment ) )?
+            int alt8=2;
+            int LA8_0 = input.LA(1);
 
-            if ( (LA5_0==RULE_ANYTEXT) ) {
-                alt5=1;
+            if ( (LA8_0==RULE_ANYTEXT) ) {
+                alt8=1;
             }
-            switch (alt5) {
+            switch (alt8) {
                 case 1 :
-                    // InternalDearCode.g:519:4: (lv_postComentario_5_0= ruleComment )
+                    // InternalDearCode.g:606:4: (lv_postComentario_6_0= ruleComment )
                     {
-                    // InternalDearCode.g:519:4: (lv_postComentario_5_0= ruleComment )
-                    // InternalDearCode.g:520:5: lv_postComentario_5_0= ruleComment
+                    // InternalDearCode.g:606:4: (lv_postComentario_6_0= ruleComment )
+                    // InternalDearCode.g:607:5: lv_postComentario_6_0= ruleComment
                     {
 
-                    					newCompositeNode(grammarAccess.getDeclararAccess().getPostComentarioCommentParserRuleCall_5_0());
+                    					newCompositeNode(grammarAccess.getDeclararAccess().getPostComentarioCommentParserRuleCall_6_0());
                     				
                     pushFollow(FOLLOW_6);
-                    lv_postComentario_5_0=ruleComment();
+                    lv_postComentario_6_0=ruleComment();
 
                     state._fsp--;
 
@@ -1374,7 +1873,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     					set(
                     						current,
                     						"postComentario",
-                    						lv_postComentario_5_0,
+                    						lv_postComentario_6_0,
                     						"edu.upb.lp.DearCode.Comment");
                     					afterParserOrEnumRuleCall();
                     				
@@ -1387,9 +1886,9 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,14,FOLLOW_2); 
+            otherlv_7=(Token)match(input,17,FOLLOW_2); 
 
-            			newLeafNode(otherlv_6, grammarAccess.getDeclararAccess().getFullStopKeyword_6());
+            			newLeafNode(otherlv_7, grammarAccess.getDeclararAccess().getFullStopKeyword_7());
             		
 
             }
@@ -1414,7 +1913,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleReasignar"
-    // InternalDearCode.g:545:1: entryRuleReasignar returns [EObject current=null] : iv_ruleReasignar= ruleReasignar EOF ;
+    // InternalDearCode.g:632:1: entryRuleReasignar returns [EObject current=null] : iv_ruleReasignar= ruleReasignar EOF ;
     public final EObject entryRuleReasignar() throws RecognitionException {
         EObject current = null;
 
@@ -1422,8 +1921,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:545:50: (iv_ruleReasignar= ruleReasignar EOF )
-            // InternalDearCode.g:546:2: iv_ruleReasignar= ruleReasignar EOF
+            // InternalDearCode.g:632:50: (iv_ruleReasignar= ruleReasignar EOF )
+            // InternalDearCode.g:633:2: iv_ruleReasignar= ruleReasignar EOF
             {
              newCompositeNode(grammarAccess.getReasignarRule()); 
             pushFollow(FOLLOW_1);
@@ -1450,7 +1949,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleReasignar"
-    // InternalDearCode.g:552:1: ruleReasignar returns [EObject current=null] : ( ( (lv_verboReas_0_0= ruleVerboReasignacion ) ) ( (lv_preComentario_1_0= ruleComment ) )? ( (lv_sustantivo_2_0= ruleMI_ID ) ) ( (lv_postComentario_3_0= ruleComment ) )? ( (lv_valor_4_0= ruleExpression ) ) ( (lv_comentario_5_0= ruleComment ) )? otherlv_6= '.' ) ;
+    // InternalDearCode.g:639:1: ruleReasignar returns [EObject current=null] : ( ( (lv_verboReas_0_0= ruleVerboReasignacion ) ) ( (lv_preComentario_1_0= ruleComment ) )? ( (lv_sustantivo_2_0= ruleMI_ID ) ) ( (lv_postComentario_3_0= ruleComment ) )? ( (lv_valor_4_0= ruleExpression ) ) ( (lv_comentario_5_0= ruleComment ) )? otherlv_6= '.' ) ;
     public final EObject ruleReasignar() throws RecognitionException {
         EObject current = null;
 
@@ -1472,22 +1971,22 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDearCode.g:558:2: ( ( ( (lv_verboReas_0_0= ruleVerboReasignacion ) ) ( (lv_preComentario_1_0= ruleComment ) )? ( (lv_sustantivo_2_0= ruleMI_ID ) ) ( (lv_postComentario_3_0= ruleComment ) )? ( (lv_valor_4_0= ruleExpression ) ) ( (lv_comentario_5_0= ruleComment ) )? otherlv_6= '.' ) )
-            // InternalDearCode.g:559:2: ( ( (lv_verboReas_0_0= ruleVerboReasignacion ) ) ( (lv_preComentario_1_0= ruleComment ) )? ( (lv_sustantivo_2_0= ruleMI_ID ) ) ( (lv_postComentario_3_0= ruleComment ) )? ( (lv_valor_4_0= ruleExpression ) ) ( (lv_comentario_5_0= ruleComment ) )? otherlv_6= '.' )
+            // InternalDearCode.g:645:2: ( ( ( (lv_verboReas_0_0= ruleVerboReasignacion ) ) ( (lv_preComentario_1_0= ruleComment ) )? ( (lv_sustantivo_2_0= ruleMI_ID ) ) ( (lv_postComentario_3_0= ruleComment ) )? ( (lv_valor_4_0= ruleExpression ) ) ( (lv_comentario_5_0= ruleComment ) )? otherlv_6= '.' ) )
+            // InternalDearCode.g:646:2: ( ( (lv_verboReas_0_0= ruleVerboReasignacion ) ) ( (lv_preComentario_1_0= ruleComment ) )? ( (lv_sustantivo_2_0= ruleMI_ID ) ) ( (lv_postComentario_3_0= ruleComment ) )? ( (lv_valor_4_0= ruleExpression ) ) ( (lv_comentario_5_0= ruleComment ) )? otherlv_6= '.' )
             {
-            // InternalDearCode.g:559:2: ( ( (lv_verboReas_0_0= ruleVerboReasignacion ) ) ( (lv_preComentario_1_0= ruleComment ) )? ( (lv_sustantivo_2_0= ruleMI_ID ) ) ( (lv_postComentario_3_0= ruleComment ) )? ( (lv_valor_4_0= ruleExpression ) ) ( (lv_comentario_5_0= ruleComment ) )? otherlv_6= '.' )
-            // InternalDearCode.g:560:3: ( (lv_verboReas_0_0= ruleVerboReasignacion ) ) ( (lv_preComentario_1_0= ruleComment ) )? ( (lv_sustantivo_2_0= ruleMI_ID ) ) ( (lv_postComentario_3_0= ruleComment ) )? ( (lv_valor_4_0= ruleExpression ) ) ( (lv_comentario_5_0= ruleComment ) )? otherlv_6= '.'
+            // InternalDearCode.g:646:2: ( ( (lv_verboReas_0_0= ruleVerboReasignacion ) ) ( (lv_preComentario_1_0= ruleComment ) )? ( (lv_sustantivo_2_0= ruleMI_ID ) ) ( (lv_postComentario_3_0= ruleComment ) )? ( (lv_valor_4_0= ruleExpression ) ) ( (lv_comentario_5_0= ruleComment ) )? otherlv_6= '.' )
+            // InternalDearCode.g:647:3: ( (lv_verboReas_0_0= ruleVerboReasignacion ) ) ( (lv_preComentario_1_0= ruleComment ) )? ( (lv_sustantivo_2_0= ruleMI_ID ) ) ( (lv_postComentario_3_0= ruleComment ) )? ( (lv_valor_4_0= ruleExpression ) ) ( (lv_comentario_5_0= ruleComment ) )? otherlv_6= '.'
             {
-            // InternalDearCode.g:560:3: ( (lv_verboReas_0_0= ruleVerboReasignacion ) )
-            // InternalDearCode.g:561:4: (lv_verboReas_0_0= ruleVerboReasignacion )
+            // InternalDearCode.g:647:3: ( (lv_verboReas_0_0= ruleVerboReasignacion ) )
+            // InternalDearCode.g:648:4: (lv_verboReas_0_0= ruleVerboReasignacion )
             {
-            // InternalDearCode.g:561:4: (lv_verboReas_0_0= ruleVerboReasignacion )
-            // InternalDearCode.g:562:5: lv_verboReas_0_0= ruleVerboReasignacion
+            // InternalDearCode.g:648:4: (lv_verboReas_0_0= ruleVerboReasignacion )
+            // InternalDearCode.g:649:5: lv_verboReas_0_0= ruleVerboReasignacion
             {
 
             					newCompositeNode(grammarAccess.getReasignarAccess().getVerboReasVerboReasignacionParserRuleCall_0_0());
             				
-            pushFollow(FOLLOW_11);
+            pushFollow(FOLLOW_12);
             lv_verboReas_0_0=ruleVerboReasignacion();
 
             state._fsp--;
@@ -1509,24 +2008,24 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDearCode.g:579:3: ( (lv_preComentario_1_0= ruleComment ) )?
-            int alt6=2;
-            int LA6_0 = input.LA(1);
+            // InternalDearCode.g:666:3: ( (lv_preComentario_1_0= ruleComment ) )?
+            int alt9=2;
+            int LA9_0 = input.LA(1);
 
-            if ( (LA6_0==RULE_ANYTEXT) ) {
-                alt6=1;
+            if ( (LA9_0==RULE_ANYTEXT) ) {
+                alt9=1;
             }
-            switch (alt6) {
+            switch (alt9) {
                 case 1 :
-                    // InternalDearCode.g:580:4: (lv_preComentario_1_0= ruleComment )
+                    // InternalDearCode.g:667:4: (lv_preComentario_1_0= ruleComment )
                     {
-                    // InternalDearCode.g:580:4: (lv_preComentario_1_0= ruleComment )
-                    // InternalDearCode.g:581:5: lv_preComentario_1_0= ruleComment
+                    // InternalDearCode.g:667:4: (lv_preComentario_1_0= ruleComment )
+                    // InternalDearCode.g:668:5: lv_preComentario_1_0= ruleComment
                     {
 
                     					newCompositeNode(grammarAccess.getReasignarAccess().getPreComentarioCommentParserRuleCall_1_0());
                     				
-                    pushFollow(FOLLOW_5);
+                    pushFollow(FOLLOW_9);
                     lv_preComentario_1_0=ruleComment();
 
                     state._fsp--;
@@ -1551,16 +2050,16 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDearCode.g:598:3: ( (lv_sustantivo_2_0= ruleMI_ID ) )
-            // InternalDearCode.g:599:4: (lv_sustantivo_2_0= ruleMI_ID )
+            // InternalDearCode.g:685:3: ( (lv_sustantivo_2_0= ruleMI_ID ) )
+            // InternalDearCode.g:686:4: (lv_sustantivo_2_0= ruleMI_ID )
             {
-            // InternalDearCode.g:599:4: (lv_sustantivo_2_0= ruleMI_ID )
-            // InternalDearCode.g:600:5: lv_sustantivo_2_0= ruleMI_ID
+            // InternalDearCode.g:686:4: (lv_sustantivo_2_0= ruleMI_ID )
+            // InternalDearCode.g:687:5: lv_sustantivo_2_0= ruleMI_ID
             {
 
             					newCompositeNode(grammarAccess.getReasignarAccess().getSustantivoMI_IDParserRuleCall_2_0());
             				
-            pushFollow(FOLLOW_9);
+            pushFollow(FOLLOW_10);
             lv_sustantivo_2_0=ruleMI_ID();
 
             state._fsp--;
@@ -1582,24 +2081,24 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDearCode.g:617:3: ( (lv_postComentario_3_0= ruleComment ) )?
-            int alt7=2;
-            int LA7_0 = input.LA(1);
+            // InternalDearCode.g:704:3: ( (lv_postComentario_3_0= ruleComment ) )?
+            int alt10=2;
+            int LA10_0 = input.LA(1);
 
-            if ( (LA7_0==RULE_ANYTEXT) ) {
-                alt7=1;
+            if ( (LA10_0==RULE_ANYTEXT) ) {
+                alt10=1;
             }
-            switch (alt7) {
+            switch (alt10) {
                 case 1 :
-                    // InternalDearCode.g:618:4: (lv_postComentario_3_0= ruleComment )
+                    // InternalDearCode.g:705:4: (lv_postComentario_3_0= ruleComment )
                     {
-                    // InternalDearCode.g:618:4: (lv_postComentario_3_0= ruleComment )
-                    // InternalDearCode.g:619:5: lv_postComentario_3_0= ruleComment
+                    // InternalDearCode.g:705:4: (lv_postComentario_3_0= ruleComment )
+                    // InternalDearCode.g:706:5: lv_postComentario_3_0= ruleComment
                     {
 
                     					newCompositeNode(grammarAccess.getReasignarAccess().getPostComentarioCommentParserRuleCall_3_0());
                     				
-                    pushFollow(FOLLOW_9);
+                    pushFollow(FOLLOW_10);
                     lv_postComentario_3_0=ruleComment();
 
                     state._fsp--;
@@ -1624,16 +2123,16 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDearCode.g:636:3: ( (lv_valor_4_0= ruleExpression ) )
-            // InternalDearCode.g:637:4: (lv_valor_4_0= ruleExpression )
+            // InternalDearCode.g:723:3: ( (lv_valor_4_0= ruleExpression ) )
+            // InternalDearCode.g:724:4: (lv_valor_4_0= ruleExpression )
             {
-            // InternalDearCode.g:637:4: (lv_valor_4_0= ruleExpression )
-            // InternalDearCode.g:638:5: lv_valor_4_0= ruleExpression
+            // InternalDearCode.g:724:4: (lv_valor_4_0= ruleExpression )
+            // InternalDearCode.g:725:5: lv_valor_4_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getReasignarAccess().getValorExpressionParserRuleCall_4_0());
             				
-            pushFollow(FOLLOW_10);
+            pushFollow(FOLLOW_11);
             lv_valor_4_0=ruleExpression();
 
             state._fsp--;
@@ -1655,19 +2154,19 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDearCode.g:655:3: ( (lv_comentario_5_0= ruleComment ) )?
-            int alt8=2;
-            int LA8_0 = input.LA(1);
+            // InternalDearCode.g:742:3: ( (lv_comentario_5_0= ruleComment ) )?
+            int alt11=2;
+            int LA11_0 = input.LA(1);
 
-            if ( (LA8_0==RULE_ANYTEXT) ) {
-                alt8=1;
+            if ( (LA11_0==RULE_ANYTEXT) ) {
+                alt11=1;
             }
-            switch (alt8) {
+            switch (alt11) {
                 case 1 :
-                    // InternalDearCode.g:656:4: (lv_comentario_5_0= ruleComment )
+                    // InternalDearCode.g:743:4: (lv_comentario_5_0= ruleComment )
                     {
-                    // InternalDearCode.g:656:4: (lv_comentario_5_0= ruleComment )
-                    // InternalDearCode.g:657:5: lv_comentario_5_0= ruleComment
+                    // InternalDearCode.g:743:4: (lv_comentario_5_0= ruleComment )
+                    // InternalDearCode.g:744:5: lv_comentario_5_0= ruleComment
                     {
 
                     					newCompositeNode(grammarAccess.getReasignarAccess().getComentarioCommentParserRuleCall_5_0());
@@ -1697,7 +2196,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_6=(Token)match(input,14,FOLLOW_2); 
+            otherlv_6=(Token)match(input,17,FOLLOW_2); 
 
             			newLeafNode(otherlv_6, grammarAccess.getReasignarAccess().getFullStopKeyword_6());
             		
@@ -1724,7 +2223,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEntrada"
-    // InternalDearCode.g:682:1: entryRuleEntrada returns [EObject current=null] : iv_ruleEntrada= ruleEntrada EOF ;
+    // InternalDearCode.g:769:1: entryRuleEntrada returns [EObject current=null] : iv_ruleEntrada= ruleEntrada EOF ;
     public final EObject entryRuleEntrada() throws RecognitionException {
         EObject current = null;
 
@@ -1732,8 +2231,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:682:48: (iv_ruleEntrada= ruleEntrada EOF )
-            // InternalDearCode.g:683:2: iv_ruleEntrada= ruleEntrada EOF
+            // InternalDearCode.g:769:48: (iv_ruleEntrada= ruleEntrada EOF )
+            // InternalDearCode.g:770:2: iv_ruleEntrada= ruleEntrada EOF
             {
              newCompositeNode(grammarAccess.getEntradaRule()); 
             pushFollow(FOLLOW_1);
@@ -1760,42 +2259,202 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEntrada"
-    // InternalDearCode.g:689:1: ruleEntrada returns [EObject current=null] : (otherlv_0= 'Le ped\\u00ED al lector que me dijera' ( (lv_variable_1_0= ruleMI_ID ) ) (otherlv_2= 'en un susurro num\\u00E9rico' | otherlv_3= 'con palabras de terciopelo' )? otherlv_4= '.' ) ;
+    // InternalDearCode.g:776:1: ruleEntrada returns [EObject current=null] : ( (otherlv_0= 'Le ped\\u00ED al lector que me dijera' | otherlv_1= 'Le' | otherlv_2= 'Escucho tu voz en el viento' | otherlv_3= 'Atrapo un suspiro tuyo' | otherlv_4= 'Recojo tus palabras como p\\u00E9talos al alba' | otherlv_5= 'Tu aliento me habla en silencio' | otherlv_6= 'Acaricio el eco de tu voz' | otherlv_7= 'Guardo tus secretos en mi pecho' | otherlv_8= 'Espero tu susurro como un amanecer' ) ( (lv_variable_9_0= ruleMI_ID ) ) (otherlv_10= 'en un susurro num\\u00E9rico' | otherlv_11= 'con palabras de terciopelo' | otherlv_12= 'con un eco num\\u00E9rico' | otherlv_13= 'en un latido suave' | otherlv_14= 'como un verso escrito en el cielo' | otherlv_15= 'envuelto en la luz de tus ojos' | otherlv_16= 'con el perfume de tu esencia' | otherlv_17= 'danzando en el comp\\u00E1s de mi coraz\\u00F3n' | otherlv_18= 'tejiendo sue\\u00F1os con tus letras' )? otherlv_19= '.' ) ;
     public final EObject ruleEntrada() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
+        Token otherlv_1=null;
         Token otherlv_2=null;
         Token otherlv_3=null;
         Token otherlv_4=null;
-        EObject lv_variable_1_0 = null;
+        Token otherlv_5=null;
+        Token otherlv_6=null;
+        Token otherlv_7=null;
+        Token otherlv_8=null;
+        Token otherlv_10=null;
+        Token otherlv_11=null;
+        Token otherlv_12=null;
+        Token otherlv_13=null;
+        Token otherlv_14=null;
+        Token otherlv_15=null;
+        Token otherlv_16=null;
+        Token otherlv_17=null;
+        Token otherlv_18=null;
+        Token otherlv_19=null;
+        EObject lv_variable_9_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalDearCode.g:695:2: ( (otherlv_0= 'Le ped\\u00ED al lector que me dijera' ( (lv_variable_1_0= ruleMI_ID ) ) (otherlv_2= 'en un susurro num\\u00E9rico' | otherlv_3= 'con palabras de terciopelo' )? otherlv_4= '.' ) )
-            // InternalDearCode.g:696:2: (otherlv_0= 'Le ped\\u00ED al lector que me dijera' ( (lv_variable_1_0= ruleMI_ID ) ) (otherlv_2= 'en un susurro num\\u00E9rico' | otherlv_3= 'con palabras de terciopelo' )? otherlv_4= '.' )
+            // InternalDearCode.g:782:2: ( ( (otherlv_0= 'Le ped\\u00ED al lector que me dijera' | otherlv_1= 'Le' | otherlv_2= 'Escucho tu voz en el viento' | otherlv_3= 'Atrapo un suspiro tuyo' | otherlv_4= 'Recojo tus palabras como p\\u00E9talos al alba' | otherlv_5= 'Tu aliento me habla en silencio' | otherlv_6= 'Acaricio el eco de tu voz' | otherlv_7= 'Guardo tus secretos en mi pecho' | otherlv_8= 'Espero tu susurro como un amanecer' ) ( (lv_variable_9_0= ruleMI_ID ) ) (otherlv_10= 'en un susurro num\\u00E9rico' | otherlv_11= 'con palabras de terciopelo' | otherlv_12= 'con un eco num\\u00E9rico' | otherlv_13= 'en un latido suave' | otherlv_14= 'como un verso escrito en el cielo' | otherlv_15= 'envuelto en la luz de tus ojos' | otherlv_16= 'con el perfume de tu esencia' | otherlv_17= 'danzando en el comp\\u00E1s de mi coraz\\u00F3n' | otherlv_18= 'tejiendo sue\\u00F1os con tus letras' )? otherlv_19= '.' ) )
+            // InternalDearCode.g:783:2: ( (otherlv_0= 'Le ped\\u00ED al lector que me dijera' | otherlv_1= 'Le' | otherlv_2= 'Escucho tu voz en el viento' | otherlv_3= 'Atrapo un suspiro tuyo' | otherlv_4= 'Recojo tus palabras como p\\u00E9talos al alba' | otherlv_5= 'Tu aliento me habla en silencio' | otherlv_6= 'Acaricio el eco de tu voz' | otherlv_7= 'Guardo tus secretos en mi pecho' | otherlv_8= 'Espero tu susurro como un amanecer' ) ( (lv_variable_9_0= ruleMI_ID ) ) (otherlv_10= 'en un susurro num\\u00E9rico' | otherlv_11= 'con palabras de terciopelo' | otherlv_12= 'con un eco num\\u00E9rico' | otherlv_13= 'en un latido suave' | otherlv_14= 'como un verso escrito en el cielo' | otherlv_15= 'envuelto en la luz de tus ojos' | otherlv_16= 'con el perfume de tu esencia' | otherlv_17= 'danzando en el comp\\u00E1s de mi coraz\\u00F3n' | otherlv_18= 'tejiendo sue\\u00F1os con tus letras' )? otherlv_19= '.' )
             {
-            // InternalDearCode.g:696:2: (otherlv_0= 'Le ped\\u00ED al lector que me dijera' ( (lv_variable_1_0= ruleMI_ID ) ) (otherlv_2= 'en un susurro num\\u00E9rico' | otherlv_3= 'con palabras de terciopelo' )? otherlv_4= '.' )
-            // InternalDearCode.g:697:3: otherlv_0= 'Le ped\\u00ED al lector que me dijera' ( (lv_variable_1_0= ruleMI_ID ) ) (otherlv_2= 'en un susurro num\\u00E9rico' | otherlv_3= 'con palabras de terciopelo' )? otherlv_4= '.'
+            // InternalDearCode.g:783:2: ( (otherlv_0= 'Le ped\\u00ED al lector que me dijera' | otherlv_1= 'Le' | otherlv_2= 'Escucho tu voz en el viento' | otherlv_3= 'Atrapo un suspiro tuyo' | otherlv_4= 'Recojo tus palabras como p\\u00E9talos al alba' | otherlv_5= 'Tu aliento me habla en silencio' | otherlv_6= 'Acaricio el eco de tu voz' | otherlv_7= 'Guardo tus secretos en mi pecho' | otherlv_8= 'Espero tu susurro como un amanecer' ) ( (lv_variable_9_0= ruleMI_ID ) ) (otherlv_10= 'en un susurro num\\u00E9rico' | otherlv_11= 'con palabras de terciopelo' | otherlv_12= 'con un eco num\\u00E9rico' | otherlv_13= 'en un latido suave' | otherlv_14= 'como un verso escrito en el cielo' | otherlv_15= 'envuelto en la luz de tus ojos' | otherlv_16= 'con el perfume de tu esencia' | otherlv_17= 'danzando en el comp\\u00E1s de mi coraz\\u00F3n' | otherlv_18= 'tejiendo sue\\u00F1os con tus letras' )? otherlv_19= '.' )
+            // InternalDearCode.g:784:3: (otherlv_0= 'Le ped\\u00ED al lector que me dijera' | otherlv_1= 'Le' | otherlv_2= 'Escucho tu voz en el viento' | otherlv_3= 'Atrapo un suspiro tuyo' | otherlv_4= 'Recojo tus palabras como p\\u00E9talos al alba' | otherlv_5= 'Tu aliento me habla en silencio' | otherlv_6= 'Acaricio el eco de tu voz' | otherlv_7= 'Guardo tus secretos en mi pecho' | otherlv_8= 'Espero tu susurro como un amanecer' ) ( (lv_variable_9_0= ruleMI_ID ) ) (otherlv_10= 'en un susurro num\\u00E9rico' | otherlv_11= 'con palabras de terciopelo' | otherlv_12= 'con un eco num\\u00E9rico' | otherlv_13= 'en un latido suave' | otherlv_14= 'como un verso escrito en el cielo' | otherlv_15= 'envuelto en la luz de tus ojos' | otherlv_16= 'con el perfume de tu esencia' | otherlv_17= 'danzando en el comp\\u00E1s de mi coraz\\u00F3n' | otherlv_18= 'tejiendo sue\\u00F1os con tus letras' )? otherlv_19= '.'
             {
-            otherlv_0=(Token)match(input,16,FOLLOW_5); 
+            // InternalDearCode.g:784:3: (otherlv_0= 'Le ped\\u00ED al lector que me dijera' | otherlv_1= 'Le' | otherlv_2= 'Escucho tu voz en el viento' | otherlv_3= 'Atrapo un suspiro tuyo' | otherlv_4= 'Recojo tus palabras como p\\u00E9talos al alba' | otherlv_5= 'Tu aliento me habla en silencio' | otherlv_6= 'Acaricio el eco de tu voz' | otherlv_7= 'Guardo tus secretos en mi pecho' | otherlv_8= 'Espero tu susurro como un amanecer' )
+            int alt12=9;
+            switch ( input.LA(1) ) {
+            case 25:
+                {
+                alt12=1;
+                }
+                break;
+            case 26:
+                {
+                alt12=2;
+                }
+                break;
+            case 27:
+                {
+                alt12=3;
+                }
+                break;
+            case 28:
+                {
+                alt12=4;
+                }
+                break;
+            case 29:
+                {
+                alt12=5;
+                }
+                break;
+            case 30:
+                {
+                alt12=6;
+                }
+                break;
+            case 31:
+                {
+                alt12=7;
+                }
+                break;
+            case 32:
+                {
+                alt12=8;
+                }
+                break;
+            case 33:
+                {
+                alt12=9;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 12, 0, input);
 
-            			newLeafNode(otherlv_0, grammarAccess.getEntradaAccess().getLePedAlLectorQueMeDijeraKeyword_0());
-            		
-            // InternalDearCode.g:701:3: ( (lv_variable_1_0= ruleMI_ID ) )
-            // InternalDearCode.g:702:4: (lv_variable_1_0= ruleMI_ID )
+                throw nvae;
+            }
+
+            switch (alt12) {
+                case 1 :
+                    // InternalDearCode.g:785:4: otherlv_0= 'Le ped\\u00ED al lector que me dijera'
+                    {
+                    otherlv_0=(Token)match(input,25,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_0, grammarAccess.getEntradaAccess().getLePedAlLectorQueMeDijeraKeyword_0_0());
+                    			
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDearCode.g:790:4: otherlv_1= 'Le'
+                    {
+                    otherlv_1=(Token)match(input,26,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_1, grammarAccess.getEntradaAccess().getLeKeyword_0_1());
+                    			
+
+                    }
+                    break;
+                case 3 :
+                    // InternalDearCode.g:795:4: otherlv_2= 'Escucho tu voz en el viento'
+                    {
+                    otherlv_2=(Token)match(input,27,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_2, grammarAccess.getEntradaAccess().getEscuchoTuVozEnElVientoKeyword_0_2());
+                    			
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:800:4: otherlv_3= 'Atrapo un suspiro tuyo'
+                    {
+                    otherlv_3=(Token)match(input,28,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_3, grammarAccess.getEntradaAccess().getAtrapoUnSuspiroTuyoKeyword_0_3());
+                    			
+
+                    }
+                    break;
+                case 5 :
+                    // InternalDearCode.g:805:4: otherlv_4= 'Recojo tus palabras como p\\u00E9talos al alba'
+                    {
+                    otherlv_4=(Token)match(input,29,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_4, grammarAccess.getEntradaAccess().getRecojoTusPalabrasComoPTalosAlAlbaKeyword_0_4());
+                    			
+
+                    }
+                    break;
+                case 6 :
+                    // InternalDearCode.g:810:4: otherlv_5= 'Tu aliento me habla en silencio'
+                    {
+                    otherlv_5=(Token)match(input,30,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_5, grammarAccess.getEntradaAccess().getTuAlientoMeHablaEnSilencioKeyword_0_5());
+                    			
+
+                    }
+                    break;
+                case 7 :
+                    // InternalDearCode.g:815:4: otherlv_6= 'Acaricio el eco de tu voz'
+                    {
+                    otherlv_6=(Token)match(input,31,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_6, grammarAccess.getEntradaAccess().getAcaricioElEcoDeTuVozKeyword_0_6());
+                    			
+
+                    }
+                    break;
+                case 8 :
+                    // InternalDearCode.g:820:4: otherlv_7= 'Guardo tus secretos en mi pecho'
+                    {
+                    otherlv_7=(Token)match(input,32,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_7, grammarAccess.getEntradaAccess().getGuardoTusSecretosEnMiPechoKeyword_0_7());
+                    			
+
+                    }
+                    break;
+                case 9 :
+                    // InternalDearCode.g:825:4: otherlv_8= 'Espero tu susurro como un amanecer'
+                    {
+                    otherlv_8=(Token)match(input,33,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_8, grammarAccess.getEntradaAccess().getEsperoTuSusurroComoUnAmanecerKeyword_0_8());
+                    			
+
+                    }
+                    break;
+
+            }
+
+            // InternalDearCode.g:830:3: ( (lv_variable_9_0= ruleMI_ID ) )
+            // InternalDearCode.g:831:4: (lv_variable_9_0= ruleMI_ID )
             {
-            // InternalDearCode.g:702:4: (lv_variable_1_0= ruleMI_ID )
-            // InternalDearCode.g:703:5: lv_variable_1_0= ruleMI_ID
+            // InternalDearCode.g:831:4: (lv_variable_9_0= ruleMI_ID )
+            // InternalDearCode.g:832:5: lv_variable_9_0= ruleMI_ID
             {
 
             					newCompositeNode(grammarAccess.getEntradaAccess().getVariableMI_IDParserRuleCall_1_0());
             				
-            pushFollow(FOLLOW_12);
-            lv_variable_1_0=ruleMI_ID();
+            pushFollow(FOLLOW_13);
+            lv_variable_9_0=ruleMI_ID();
 
             state._fsp--;
 
@@ -1806,7 +2465,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             					set(
             						current,
             						"variable",
-            						lv_variable_1_0,
+            						lv_variable_9_0,
             						"edu.upb.lp.DearCode.MI_ID");
             					afterParserOrEnumRuleCall();
             				
@@ -1816,33 +2475,143 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDearCode.g:720:3: (otherlv_2= 'en un susurro num\\u00E9rico' | otherlv_3= 'con palabras de terciopelo' )?
-            int alt9=3;
-            int LA9_0 = input.LA(1);
-
-            if ( (LA9_0==17) ) {
-                alt9=1;
-            }
-            else if ( (LA9_0==18) ) {
-                alt9=2;
-            }
-            switch (alt9) {
-                case 1 :
-                    // InternalDearCode.g:721:4: otherlv_2= 'en un susurro num\\u00E9rico'
+            // InternalDearCode.g:849:3: (otherlv_10= 'en un susurro num\\u00E9rico' | otherlv_11= 'con palabras de terciopelo' | otherlv_12= 'con un eco num\\u00E9rico' | otherlv_13= 'en un latido suave' | otherlv_14= 'como un verso escrito en el cielo' | otherlv_15= 'envuelto en la luz de tus ojos' | otherlv_16= 'con el perfume de tu esencia' | otherlv_17= 'danzando en el comp\\u00E1s de mi coraz\\u00F3n' | otherlv_18= 'tejiendo sue\\u00F1os con tus letras' )?
+            int alt13=10;
+            switch ( input.LA(1) ) {
+                case 34:
                     {
-                    otherlv_2=(Token)match(input,17,FOLLOW_6); 
+                    alt13=1;
+                    }
+                    break;
+                case 35:
+                    {
+                    alt13=2;
+                    }
+                    break;
+                case 36:
+                    {
+                    alt13=3;
+                    }
+                    break;
+                case 37:
+                    {
+                    alt13=4;
+                    }
+                    break;
+                case 38:
+                    {
+                    alt13=5;
+                    }
+                    break;
+                case 39:
+                    {
+                    alt13=6;
+                    }
+                    break;
+                case 40:
+                    {
+                    alt13=7;
+                    }
+                    break;
+                case 41:
+                    {
+                    alt13=8;
+                    }
+                    break;
+                case 42:
+                    {
+                    alt13=9;
+                    }
+                    break;
+            }
 
-                    				newLeafNode(otherlv_2, grammarAccess.getEntradaAccess().getEnUnSusurroNumRicoKeyword_2_0());
+            switch (alt13) {
+                case 1 :
+                    // InternalDearCode.g:850:4: otherlv_10= 'en un susurro num\\u00E9rico'
+                    {
+                    otherlv_10=(Token)match(input,34,FOLLOW_6); 
+
+                    				newLeafNode(otherlv_10, grammarAccess.getEntradaAccess().getEnUnSusurroNumRicoKeyword_2_0());
                     			
 
                     }
                     break;
                 case 2 :
-                    // InternalDearCode.g:726:4: otherlv_3= 'con palabras de terciopelo'
+                    // InternalDearCode.g:855:4: otherlv_11= 'con palabras de terciopelo'
                     {
-                    otherlv_3=(Token)match(input,18,FOLLOW_6); 
+                    otherlv_11=(Token)match(input,35,FOLLOW_6); 
 
-                    				newLeafNode(otherlv_3, grammarAccess.getEntradaAccess().getConPalabrasDeTerciopeloKeyword_2_1());
+                    				newLeafNode(otherlv_11, grammarAccess.getEntradaAccess().getConPalabrasDeTerciopeloKeyword_2_1());
+                    			
+
+                    }
+                    break;
+                case 3 :
+                    // InternalDearCode.g:860:4: otherlv_12= 'con un eco num\\u00E9rico'
+                    {
+                    otherlv_12=(Token)match(input,36,FOLLOW_6); 
+
+                    				newLeafNode(otherlv_12, grammarAccess.getEntradaAccess().getConUnEcoNumRicoKeyword_2_2());
+                    			
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:865:4: otherlv_13= 'en un latido suave'
+                    {
+                    otherlv_13=(Token)match(input,37,FOLLOW_6); 
+
+                    				newLeafNode(otherlv_13, grammarAccess.getEntradaAccess().getEnUnLatidoSuaveKeyword_2_3());
+                    			
+
+                    }
+                    break;
+                case 5 :
+                    // InternalDearCode.g:870:4: otherlv_14= 'como un verso escrito en el cielo'
+                    {
+                    otherlv_14=(Token)match(input,38,FOLLOW_6); 
+
+                    				newLeafNode(otherlv_14, grammarAccess.getEntradaAccess().getComoUnVersoEscritoEnElCieloKeyword_2_4());
+                    			
+
+                    }
+                    break;
+                case 6 :
+                    // InternalDearCode.g:875:4: otherlv_15= 'envuelto en la luz de tus ojos'
+                    {
+                    otherlv_15=(Token)match(input,39,FOLLOW_6); 
+
+                    				newLeafNode(otherlv_15, grammarAccess.getEntradaAccess().getEnvueltoEnLaLuzDeTusOjosKeyword_2_5());
+                    			
+
+                    }
+                    break;
+                case 7 :
+                    // InternalDearCode.g:880:4: otherlv_16= 'con el perfume de tu esencia'
+                    {
+                    otherlv_16=(Token)match(input,40,FOLLOW_6); 
+
+                    				newLeafNode(otherlv_16, grammarAccess.getEntradaAccess().getConElPerfumeDeTuEsenciaKeyword_2_6());
+                    			
+
+                    }
+                    break;
+                case 8 :
+                    // InternalDearCode.g:885:4: otherlv_17= 'danzando en el comp\\u00E1s de mi coraz\\u00F3n'
+                    {
+                    otherlv_17=(Token)match(input,41,FOLLOW_6); 
+
+                    				newLeafNode(otherlv_17, grammarAccess.getEntradaAccess().getDanzandoEnElCompSDeMiCorazNKeyword_2_7());
+                    			
+
+                    }
+                    break;
+                case 9 :
+                    // InternalDearCode.g:890:4: otherlv_18= 'tejiendo sue\\u00F1os con tus letras'
+                    {
+                    otherlv_18=(Token)match(input,42,FOLLOW_6); 
+
+                    				newLeafNode(otherlv_18, grammarAccess.getEntradaAccess().getTejiendoSueOsConTusLetrasKeyword_2_8());
                     			
 
                     }
@@ -1850,9 +2619,9 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,14,FOLLOW_2); 
+            otherlv_19=(Token)match(input,17,FOLLOW_2); 
 
-            			newLeafNode(otherlv_4, grammarAccess.getEntradaAccess().getFullStopKeyword_3());
+            			newLeafNode(otherlv_19, grammarAccess.getEntradaAccess().getFullStopKeyword_3());
             		
 
             }
@@ -1877,7 +2646,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleSalida"
-    // InternalDearCode.g:739:1: entryRuleSalida returns [EObject current=null] : iv_ruleSalida= ruleSalida EOF ;
+    // InternalDearCode.g:903:1: entryRuleSalida returns [EObject current=null] : iv_ruleSalida= ruleSalida EOF ;
     public final EObject entryRuleSalida() throws RecognitionException {
         EObject current = null;
 
@@ -1885,8 +2654,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:739:47: (iv_ruleSalida= ruleSalida EOF )
-            // InternalDearCode.g:740:2: iv_ruleSalida= ruleSalida EOF
+            // InternalDearCode.g:903:47: (iv_ruleSalida= ruleSalida EOF )
+            // InternalDearCode.g:904:2: iv_ruleSalida= ruleSalida EOF
             {
              newCompositeNode(grammarAccess.getSalidaRule()); 
             pushFollow(FOLLOW_1);
@@ -1913,40 +2682,161 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleSalida"
-    // InternalDearCode.g:746:1: ruleSalida returns [EObject current=null] : (otherlv_0= 'Hoy le quise contar al mundo sobre:' ( (lv_expresion_1_0= ruleExpression ) ) otherlv_2= '.' ) ;
+    // InternalDearCode.g:910:1: ruleSalida returns [EObject current=null] : ( (otherlv_0= 'Hoy le quise contar al mundo sobre:' | otherlv_1= 'Dejo que el mundo sienta sobre:' | otherlv_2= 'Susurro al universo el secreto sobre:' | otherlv_3= 'Grabo en el firmamento mi verdad acerca de:' | otherlv_4= 'Canto al viento mi anhelo de:' | otherlv_5= 'Env\\u00EDo al horizonte mi pasi\\u00F3n sobre:' | otherlv_6= 'Dejo que las nubes abracen mi voz en:' ) ( (lv_expresion_7_0= ruleExpression ) ) otherlv_8= '.' ) ;
     public final EObject ruleSalida() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
+        Token otherlv_1=null;
         Token otherlv_2=null;
-        EObject lv_expresion_1_0 = null;
+        Token otherlv_3=null;
+        Token otherlv_4=null;
+        Token otherlv_5=null;
+        Token otherlv_6=null;
+        Token otherlv_8=null;
+        EObject lv_expresion_7_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalDearCode.g:752:2: ( (otherlv_0= 'Hoy le quise contar al mundo sobre:' ( (lv_expresion_1_0= ruleExpression ) ) otherlv_2= '.' ) )
-            // InternalDearCode.g:753:2: (otherlv_0= 'Hoy le quise contar al mundo sobre:' ( (lv_expresion_1_0= ruleExpression ) ) otherlv_2= '.' )
+            // InternalDearCode.g:916:2: ( ( (otherlv_0= 'Hoy le quise contar al mundo sobre:' | otherlv_1= 'Dejo que el mundo sienta sobre:' | otherlv_2= 'Susurro al universo el secreto sobre:' | otherlv_3= 'Grabo en el firmamento mi verdad acerca de:' | otherlv_4= 'Canto al viento mi anhelo de:' | otherlv_5= 'Env\\u00EDo al horizonte mi pasi\\u00F3n sobre:' | otherlv_6= 'Dejo que las nubes abracen mi voz en:' ) ( (lv_expresion_7_0= ruleExpression ) ) otherlv_8= '.' ) )
+            // InternalDearCode.g:917:2: ( (otherlv_0= 'Hoy le quise contar al mundo sobre:' | otherlv_1= 'Dejo que el mundo sienta sobre:' | otherlv_2= 'Susurro al universo el secreto sobre:' | otherlv_3= 'Grabo en el firmamento mi verdad acerca de:' | otherlv_4= 'Canto al viento mi anhelo de:' | otherlv_5= 'Env\\u00EDo al horizonte mi pasi\\u00F3n sobre:' | otherlv_6= 'Dejo que las nubes abracen mi voz en:' ) ( (lv_expresion_7_0= ruleExpression ) ) otherlv_8= '.' )
             {
-            // InternalDearCode.g:753:2: (otherlv_0= 'Hoy le quise contar al mundo sobre:' ( (lv_expresion_1_0= ruleExpression ) ) otherlv_2= '.' )
-            // InternalDearCode.g:754:3: otherlv_0= 'Hoy le quise contar al mundo sobre:' ( (lv_expresion_1_0= ruleExpression ) ) otherlv_2= '.'
+            // InternalDearCode.g:917:2: ( (otherlv_0= 'Hoy le quise contar al mundo sobre:' | otherlv_1= 'Dejo que el mundo sienta sobre:' | otherlv_2= 'Susurro al universo el secreto sobre:' | otherlv_3= 'Grabo en el firmamento mi verdad acerca de:' | otherlv_4= 'Canto al viento mi anhelo de:' | otherlv_5= 'Env\\u00EDo al horizonte mi pasi\\u00F3n sobre:' | otherlv_6= 'Dejo que las nubes abracen mi voz en:' ) ( (lv_expresion_7_0= ruleExpression ) ) otherlv_8= '.' )
+            // InternalDearCode.g:918:3: (otherlv_0= 'Hoy le quise contar al mundo sobre:' | otherlv_1= 'Dejo que el mundo sienta sobre:' | otherlv_2= 'Susurro al universo el secreto sobre:' | otherlv_3= 'Grabo en el firmamento mi verdad acerca de:' | otherlv_4= 'Canto al viento mi anhelo de:' | otherlv_5= 'Env\\u00EDo al horizonte mi pasi\\u00F3n sobre:' | otherlv_6= 'Dejo que las nubes abracen mi voz en:' ) ( (lv_expresion_7_0= ruleExpression ) ) otherlv_8= '.'
             {
-            otherlv_0=(Token)match(input,19,FOLLOW_9); 
+            // InternalDearCode.g:918:3: (otherlv_0= 'Hoy le quise contar al mundo sobre:' | otherlv_1= 'Dejo que el mundo sienta sobre:' | otherlv_2= 'Susurro al universo el secreto sobre:' | otherlv_3= 'Grabo en el firmamento mi verdad acerca de:' | otherlv_4= 'Canto al viento mi anhelo de:' | otherlv_5= 'Env\\u00EDo al horizonte mi pasi\\u00F3n sobre:' | otherlv_6= 'Dejo que las nubes abracen mi voz en:' )
+            int alt14=7;
+            switch ( input.LA(1) ) {
+            case 43:
+                {
+                alt14=1;
+                }
+                break;
+            case 44:
+                {
+                alt14=2;
+                }
+                break;
+            case 45:
+                {
+                alt14=3;
+                }
+                break;
+            case 46:
+                {
+                alt14=4;
+                }
+                break;
+            case 47:
+                {
+                alt14=5;
+                }
+                break;
+            case 48:
+                {
+                alt14=6;
+                }
+                break;
+            case 49:
+                {
+                alt14=7;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 14, 0, input);
 
-            			newLeafNode(otherlv_0, grammarAccess.getSalidaAccess().getHoyLeQuiseContarAlMundoSobreKeyword_0());
-            		
-            // InternalDearCode.g:758:3: ( (lv_expresion_1_0= ruleExpression ) )
-            // InternalDearCode.g:759:4: (lv_expresion_1_0= ruleExpression )
+                throw nvae;
+            }
+
+            switch (alt14) {
+                case 1 :
+                    // InternalDearCode.g:919:4: otherlv_0= 'Hoy le quise contar al mundo sobre:'
+                    {
+                    otherlv_0=(Token)match(input,43,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_0, grammarAccess.getSalidaAccess().getHoyLeQuiseContarAlMundoSobreKeyword_0_0());
+                    			
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDearCode.g:924:4: otherlv_1= 'Dejo que el mundo sienta sobre:'
+                    {
+                    otherlv_1=(Token)match(input,44,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_1, grammarAccess.getSalidaAccess().getDejoQueElMundoSientaSobreKeyword_0_1());
+                    			
+
+                    }
+                    break;
+                case 3 :
+                    // InternalDearCode.g:929:4: otherlv_2= 'Susurro al universo el secreto sobre:'
+                    {
+                    otherlv_2=(Token)match(input,45,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_2, grammarAccess.getSalidaAccess().getSusurroAlUniversoElSecretoSobreKeyword_0_2());
+                    			
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:934:4: otherlv_3= 'Grabo en el firmamento mi verdad acerca de:'
+                    {
+                    otherlv_3=(Token)match(input,46,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_3, grammarAccess.getSalidaAccess().getGraboEnElFirmamentoMiVerdadAcercaDeKeyword_0_3());
+                    			
+
+                    }
+                    break;
+                case 5 :
+                    // InternalDearCode.g:939:4: otherlv_4= 'Canto al viento mi anhelo de:'
+                    {
+                    otherlv_4=(Token)match(input,47,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_4, grammarAccess.getSalidaAccess().getCantoAlVientoMiAnheloDeKeyword_0_4());
+                    			
+
+                    }
+                    break;
+                case 6 :
+                    // InternalDearCode.g:944:4: otherlv_5= 'Env\\u00EDo al horizonte mi pasi\\u00F3n sobre:'
+                    {
+                    otherlv_5=(Token)match(input,48,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_5, grammarAccess.getSalidaAccess().getEnvOAlHorizonteMiPasiNSobreKeyword_0_5());
+                    			
+
+                    }
+                    break;
+                case 7 :
+                    // InternalDearCode.g:949:4: otherlv_6= 'Dejo que las nubes abracen mi voz en:'
+                    {
+                    otherlv_6=(Token)match(input,49,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_6, grammarAccess.getSalidaAccess().getDejoQueLasNubesAbracenMiVozEnKeyword_0_6());
+                    			
+
+                    }
+                    break;
+
+            }
+
+            // InternalDearCode.g:954:3: ( (lv_expresion_7_0= ruleExpression ) )
+            // InternalDearCode.g:955:4: (lv_expresion_7_0= ruleExpression )
             {
-            // InternalDearCode.g:759:4: (lv_expresion_1_0= ruleExpression )
-            // InternalDearCode.g:760:5: lv_expresion_1_0= ruleExpression
+            // InternalDearCode.g:955:4: (lv_expresion_7_0= ruleExpression )
+            // InternalDearCode.g:956:5: lv_expresion_7_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getSalidaAccess().getExpresionExpressionParserRuleCall_1_0());
             				
             pushFollow(FOLLOW_6);
-            lv_expresion_1_0=ruleExpression();
+            lv_expresion_7_0=ruleExpression();
 
             state._fsp--;
 
@@ -1957,7 +2847,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             					set(
             						current,
             						"expresion",
-            						lv_expresion_1_0,
+            						lv_expresion_7_0,
             						"edu.upb.lp.DearCode.Expression");
             					afterParserOrEnumRuleCall();
             				
@@ -1967,9 +2857,9 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,14,FOLLOW_2); 
+            otherlv_8=(Token)match(input,17,FOLLOW_2); 
 
-            			newLeafNode(otherlv_2, grammarAccess.getSalidaAccess().getFullStopKeyword_2());
+            			newLeafNode(otherlv_8, grammarAccess.getSalidaAccess().getFullStopKeyword_2());
             		
 
             }
@@ -1994,7 +2884,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleElementoBloque"
-    // InternalDearCode.g:785:1: entryRuleElementoBloque returns [EObject current=null] : iv_ruleElementoBloque= ruleElementoBloque EOF ;
+    // InternalDearCode.g:981:1: entryRuleElementoBloque returns [EObject current=null] : iv_ruleElementoBloque= ruleElementoBloque EOF ;
     public final EObject entryRuleElementoBloque() throws RecognitionException {
         EObject current = null;
 
@@ -2002,8 +2892,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:785:55: (iv_ruleElementoBloque= ruleElementoBloque EOF )
-            // InternalDearCode.g:786:2: iv_ruleElementoBloque= ruleElementoBloque EOF
+            // InternalDearCode.g:981:55: (iv_ruleElementoBloque= ruleElementoBloque EOF )
+            // InternalDearCode.g:982:2: iv_ruleElementoBloque= ruleElementoBloque EOF
             {
              newCompositeNode(grammarAccess.getElementoBloqueRule()); 
             pushFollow(FOLLOW_1);
@@ -2030,7 +2920,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleElementoBloque"
-    // InternalDearCode.g:792:1: ruleElementoBloque returns [EObject current=null] : (this_Instruccion_0= ruleInstruccion | this_Return_1= ruleReturn ) ;
+    // InternalDearCode.g:988:1: ruleElementoBloque returns [EObject current=null] : (this_Instruccion_0= ruleInstruccion | this_Return_1= ruleReturn ) ;
     public final EObject ruleElementoBloque() throws RecognitionException {
         EObject current = null;
 
@@ -2043,28 +2933,115 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDearCode.g:798:2: ( (this_Instruccion_0= ruleInstruccion | this_Return_1= ruleReturn ) )
-            // InternalDearCode.g:799:2: (this_Instruccion_0= ruleInstruccion | this_Return_1= ruleReturn )
+            // InternalDearCode.g:994:2: ( (this_Instruccion_0= ruleInstruccion | this_Return_1= ruleReturn ) )
+            // InternalDearCode.g:995:2: (this_Instruccion_0= ruleInstruccion | this_Return_1= ruleReturn )
             {
-            // InternalDearCode.g:799:2: (this_Instruccion_0= ruleInstruccion | this_Return_1= ruleReturn )
-            int alt10=2;
-            int LA10_0 = input.LA(1);
+            // InternalDearCode.g:995:2: (this_Instruccion_0= ruleInstruccion | this_Return_1= ruleReturn )
+            int alt15=2;
+            switch ( input.LA(1) ) {
+            case 25:
+            case 26:
+            case 27:
+            case 28:
+            case 29:
+            case 30:
+            case 31:
+            case 32:
+            case 33:
+            case 43:
+            case 44:
+            case 45:
+            case 46:
+            case 47:
+            case 48:
+            case 49:
+            case 50:
+            case 51:
+            case 52:
+            case 53:
+            case 54:
+            case 72:
+            case 73:
+            case 74:
+            case 75:
+            case 76:
+            case 77:
+            case 78:
+            case 89:
+            case 90:
+            case 91:
+            case 92:
+            case 93:
+            case 107:
+            case 108:
+            case 109:
+            case 110:
+            case 111:
+            case 112:
+            case 113:
+            case 114:
+            case 201:
+            case 202:
+            case 203:
+            case 204:
+            case 212:
+            case 213:
+            case 214:
+            case 215:
+            case 216:
+            case 217:
+            case 218:
+            case 219:
+            case 220:
+            case 221:
+            case 222:
+            case 223:
+            case 224:
+            case 225:
+            case 226:
+            case 227:
+            case 228:
+            case 229:
+                {
+                alt15=1;
+                }
+                break;
+            case 134:
+                {
+                int LA15_2 = input.LA(2);
 
-            if ( (LA10_0==16||(LA10_0>=19 && LA10_0<=20)||(LA10_0>=26 && LA10_0<=27)||LA10_0==30||(LA10_0>=36 && LA10_0<=38)||LA10_0==65||(LA10_0>=73 && LA10_0<=79)) ) {
-                alt10=1;
-            }
-            else if ( (LA10_0==43) ) {
-                alt10=2;
-            }
-            else {
+                if ( ((LA15_2>=RULE_ID && LA15_2<=RULE_STRING)||(LA15_2>=192 && LA15_2<=197)||(LA15_2>=199 && LA15_2<=204)) ) {
+                    alt15=2;
+                }
+                else if ( ((LA15_2>=230 && LA15_2<=233)) ) {
+                    alt15=1;
+                }
+                else {
+                    NoViableAltException nvae =
+                        new NoViableAltException("", 15, 2, input);
+
+                    throw nvae;
+                }
+                }
+                break;
+            case 133:
+            case 135:
+            case 136:
+            case 137:
+                {
+                alt15=2;
+                }
+                break;
+            default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 10, 0, input);
+                    new NoViableAltException("", 15, 0, input);
 
                 throw nvae;
             }
-            switch (alt10) {
+
+            switch (alt15) {
                 case 1 :
-                    // InternalDearCode.g:800:3: this_Instruccion_0= ruleInstruccion
+                    // InternalDearCode.g:996:3: this_Instruccion_0= ruleInstruccion
                     {
 
                     			newCompositeNode(grammarAccess.getElementoBloqueAccess().getInstruccionParserRuleCall_0());
@@ -2082,7 +3059,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalDearCode.g:809:3: this_Return_1= ruleReturn
+                    // InternalDearCode.g:1005:3: this_Return_1= ruleReturn
                     {
 
                     			newCompositeNode(grammarAccess.getElementoBloqueAccess().getReturnParserRuleCall_1());
@@ -2122,7 +3099,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleCondicional"
-    // InternalDearCode.g:821:1: entryRuleCondicional returns [EObject current=null] : iv_ruleCondicional= ruleCondicional EOF ;
+    // InternalDearCode.g:1017:1: entryRuleCondicional returns [EObject current=null] : iv_ruleCondicional= ruleCondicional EOF ;
     public final EObject entryRuleCondicional() throws RecognitionException {
         EObject current = null;
 
@@ -2130,8 +3107,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:821:52: (iv_ruleCondicional= ruleCondicional EOF )
-            // InternalDearCode.g:822:2: iv_ruleCondicional= ruleCondicional EOF
+            // InternalDearCode.g:1017:52: (iv_ruleCondicional= ruleCondicional EOF )
+            // InternalDearCode.g:1018:2: iv_ruleCondicional= ruleCondicional EOF
             {
              newCompositeNode(grammarAccess.getCondicionalRule()); 
             pushFollow(FOLLOW_1);
@@ -2158,48 +3135,151 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleCondicional"
-    // InternalDearCode.g:828:1: ruleCondicional returns [EObject current=null] : (otherlv_0= 'Si en tu corazon sientes que' ( (lv_condicion_1_0= ruleExpression ) ) otherlv_2= ',' otherlv_3= 'entonces deja que estas palabras florezcan:' ( (lv_instruccionesThen_4_0= ruleElementoBloque ) )+ (otherlv_5= 'Pero si el destino dijera lo contrario,' otherlv_6= 'que broten estas verdades:' ( (lv_instruccionesElse_7_0= ruleElementoBloque ) )+ )? otherlv_8= 'Y as\\u00ED el universo sigue su curso.' ) ;
+    // InternalDearCode.g:1024:1: ruleCondicional returns [EObject current=null] : ( (otherlv_0= 'Si en tu corazon sientes que' | otherlv_1= 'Si tu alma susurra que' | otherlv_2= 'Si el latido de mi alma dice que' | otherlv_3= 'Si el destino nos susurra que' | otherlv_4= 'Si la luna refleja que' ) ( (lv_condicion_5_0= ruleExpression ) ) otherlv_6= ',' ( (lv_comment_7_0= ruleComment ) )? (otherlv_8= 'entonces deja que estas palabras florezcan:' | otherlv_9= 'entonces que brote este amor:' | otherlv_10= 'entonces que nazca este sue\\u00F1o:' | otherlv_11= 'entonces que el universo conspire:' | otherlv_12= 'entonces que mi voz te abrace:' ) ( (lv_instruccionesThen_13_0= ruleElementoBloque ) )+ ( ( (otherlv_14= 'Pero si la noche calla otra verdad,' otherlv_15= 'que surja este suspiro:' ) | (otherlv_16= 'Pero si el viento trae otro mensaje,' otherlv_17= 'que despierte esta pasi\\u00F3n:' ) | (otherlv_18= 'Pero si el coraz\\u00F3n duda,' otherlv_19= 'que renazca esta esperanza:' ) ) ( (lv_instruccionesElse_20_0= ruleElementoBloque ) )+ )? (otherlv_21= 'Y as\\u00ED el universo sigue su curso.' | otherlv_22= 'As\\u00ED sigue el canto del coraz\\u00F3n.' | otherlv_23= 'Y as\\u00ED la melod\\u00EDa contin\\u00FAa.' | otherlv_24= 'Y el eco de nuestro amor perdura.' | otherlv_25= 'Y la danza de las estrellas sigue.' ) ) ;
     public final EObject ruleCondicional() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
+        Token otherlv_1=null;
         Token otherlv_2=null;
         Token otherlv_3=null;
-        Token otherlv_5=null;
+        Token otherlv_4=null;
         Token otherlv_6=null;
         Token otherlv_8=null;
-        EObject lv_condicion_1_0 = null;
+        Token otherlv_9=null;
+        Token otherlv_10=null;
+        Token otherlv_11=null;
+        Token otherlv_12=null;
+        Token otherlv_14=null;
+        Token otherlv_15=null;
+        Token otherlv_16=null;
+        Token otherlv_17=null;
+        Token otherlv_18=null;
+        Token otherlv_19=null;
+        Token otherlv_21=null;
+        Token otherlv_22=null;
+        Token otherlv_23=null;
+        Token otherlv_24=null;
+        Token otherlv_25=null;
+        EObject lv_condicion_5_0 = null;
 
-        EObject lv_instruccionesThen_4_0 = null;
+        EObject lv_comment_7_0 = null;
 
-        EObject lv_instruccionesElse_7_0 = null;
+        EObject lv_instruccionesThen_13_0 = null;
+
+        EObject lv_instruccionesElse_20_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalDearCode.g:834:2: ( (otherlv_0= 'Si en tu corazon sientes que' ( (lv_condicion_1_0= ruleExpression ) ) otherlv_2= ',' otherlv_3= 'entonces deja que estas palabras florezcan:' ( (lv_instruccionesThen_4_0= ruleElementoBloque ) )+ (otherlv_5= 'Pero si el destino dijera lo contrario,' otherlv_6= 'que broten estas verdades:' ( (lv_instruccionesElse_7_0= ruleElementoBloque ) )+ )? otherlv_8= 'Y as\\u00ED el universo sigue su curso.' ) )
-            // InternalDearCode.g:835:2: (otherlv_0= 'Si en tu corazon sientes que' ( (lv_condicion_1_0= ruleExpression ) ) otherlv_2= ',' otherlv_3= 'entonces deja que estas palabras florezcan:' ( (lv_instruccionesThen_4_0= ruleElementoBloque ) )+ (otherlv_5= 'Pero si el destino dijera lo contrario,' otherlv_6= 'que broten estas verdades:' ( (lv_instruccionesElse_7_0= ruleElementoBloque ) )+ )? otherlv_8= 'Y as\\u00ED el universo sigue su curso.' )
+            // InternalDearCode.g:1030:2: ( ( (otherlv_0= 'Si en tu corazon sientes que' | otherlv_1= 'Si tu alma susurra que' | otherlv_2= 'Si el latido de mi alma dice que' | otherlv_3= 'Si el destino nos susurra que' | otherlv_4= 'Si la luna refleja que' ) ( (lv_condicion_5_0= ruleExpression ) ) otherlv_6= ',' ( (lv_comment_7_0= ruleComment ) )? (otherlv_8= 'entonces deja que estas palabras florezcan:' | otherlv_9= 'entonces que brote este amor:' | otherlv_10= 'entonces que nazca este sue\\u00F1o:' | otherlv_11= 'entonces que el universo conspire:' | otherlv_12= 'entonces que mi voz te abrace:' ) ( (lv_instruccionesThen_13_0= ruleElementoBloque ) )+ ( ( (otherlv_14= 'Pero si la noche calla otra verdad,' otherlv_15= 'que surja este suspiro:' ) | (otherlv_16= 'Pero si el viento trae otro mensaje,' otherlv_17= 'que despierte esta pasi\\u00F3n:' ) | (otherlv_18= 'Pero si el coraz\\u00F3n duda,' otherlv_19= 'que renazca esta esperanza:' ) ) ( (lv_instruccionesElse_20_0= ruleElementoBloque ) )+ )? (otherlv_21= 'Y as\\u00ED el universo sigue su curso.' | otherlv_22= 'As\\u00ED sigue el canto del coraz\\u00F3n.' | otherlv_23= 'Y as\\u00ED la melod\\u00EDa contin\\u00FAa.' | otherlv_24= 'Y el eco de nuestro amor perdura.' | otherlv_25= 'Y la danza de las estrellas sigue.' ) ) )
+            // InternalDearCode.g:1031:2: ( (otherlv_0= 'Si en tu corazon sientes que' | otherlv_1= 'Si tu alma susurra que' | otherlv_2= 'Si el latido de mi alma dice que' | otherlv_3= 'Si el destino nos susurra que' | otherlv_4= 'Si la luna refleja que' ) ( (lv_condicion_5_0= ruleExpression ) ) otherlv_6= ',' ( (lv_comment_7_0= ruleComment ) )? (otherlv_8= 'entonces deja que estas palabras florezcan:' | otherlv_9= 'entonces que brote este amor:' | otherlv_10= 'entonces que nazca este sue\\u00F1o:' | otherlv_11= 'entonces que el universo conspire:' | otherlv_12= 'entonces que mi voz te abrace:' ) ( (lv_instruccionesThen_13_0= ruleElementoBloque ) )+ ( ( (otherlv_14= 'Pero si la noche calla otra verdad,' otherlv_15= 'que surja este suspiro:' ) | (otherlv_16= 'Pero si el viento trae otro mensaje,' otherlv_17= 'que despierte esta pasi\\u00F3n:' ) | (otherlv_18= 'Pero si el coraz\\u00F3n duda,' otherlv_19= 'que renazca esta esperanza:' ) ) ( (lv_instruccionesElse_20_0= ruleElementoBloque ) )+ )? (otherlv_21= 'Y as\\u00ED el universo sigue su curso.' | otherlv_22= 'As\\u00ED sigue el canto del coraz\\u00F3n.' | otherlv_23= 'Y as\\u00ED la melod\\u00EDa contin\\u00FAa.' | otherlv_24= 'Y el eco de nuestro amor perdura.' | otherlv_25= 'Y la danza de las estrellas sigue.' ) )
             {
-            // InternalDearCode.g:835:2: (otherlv_0= 'Si en tu corazon sientes que' ( (lv_condicion_1_0= ruleExpression ) ) otherlv_2= ',' otherlv_3= 'entonces deja que estas palabras florezcan:' ( (lv_instruccionesThen_4_0= ruleElementoBloque ) )+ (otherlv_5= 'Pero si el destino dijera lo contrario,' otherlv_6= 'que broten estas verdades:' ( (lv_instruccionesElse_7_0= ruleElementoBloque ) )+ )? otherlv_8= 'Y as\\u00ED el universo sigue su curso.' )
-            // InternalDearCode.g:836:3: otherlv_0= 'Si en tu corazon sientes que' ( (lv_condicion_1_0= ruleExpression ) ) otherlv_2= ',' otherlv_3= 'entonces deja que estas palabras florezcan:' ( (lv_instruccionesThen_4_0= ruleElementoBloque ) )+ (otherlv_5= 'Pero si el destino dijera lo contrario,' otherlv_6= 'que broten estas verdades:' ( (lv_instruccionesElse_7_0= ruleElementoBloque ) )+ )? otherlv_8= 'Y as\\u00ED el universo sigue su curso.'
+            // InternalDearCode.g:1031:2: ( (otherlv_0= 'Si en tu corazon sientes que' | otherlv_1= 'Si tu alma susurra que' | otherlv_2= 'Si el latido de mi alma dice que' | otherlv_3= 'Si el destino nos susurra que' | otherlv_4= 'Si la luna refleja que' ) ( (lv_condicion_5_0= ruleExpression ) ) otherlv_6= ',' ( (lv_comment_7_0= ruleComment ) )? (otherlv_8= 'entonces deja que estas palabras florezcan:' | otherlv_9= 'entonces que brote este amor:' | otherlv_10= 'entonces que nazca este sue\\u00F1o:' | otherlv_11= 'entonces que el universo conspire:' | otherlv_12= 'entonces que mi voz te abrace:' ) ( (lv_instruccionesThen_13_0= ruleElementoBloque ) )+ ( ( (otherlv_14= 'Pero si la noche calla otra verdad,' otherlv_15= 'que surja este suspiro:' ) | (otherlv_16= 'Pero si el viento trae otro mensaje,' otherlv_17= 'que despierte esta pasi\\u00F3n:' ) | (otherlv_18= 'Pero si el coraz\\u00F3n duda,' otherlv_19= 'que renazca esta esperanza:' ) ) ( (lv_instruccionesElse_20_0= ruleElementoBloque ) )+ )? (otherlv_21= 'Y as\\u00ED el universo sigue su curso.' | otherlv_22= 'As\\u00ED sigue el canto del coraz\\u00F3n.' | otherlv_23= 'Y as\\u00ED la melod\\u00EDa contin\\u00FAa.' | otherlv_24= 'Y el eco de nuestro amor perdura.' | otherlv_25= 'Y la danza de las estrellas sigue.' ) )
+            // InternalDearCode.g:1032:3: (otherlv_0= 'Si en tu corazon sientes que' | otherlv_1= 'Si tu alma susurra que' | otherlv_2= 'Si el latido de mi alma dice que' | otherlv_3= 'Si el destino nos susurra que' | otherlv_4= 'Si la luna refleja que' ) ( (lv_condicion_5_0= ruleExpression ) ) otherlv_6= ',' ( (lv_comment_7_0= ruleComment ) )? (otherlv_8= 'entonces deja que estas palabras florezcan:' | otherlv_9= 'entonces que brote este amor:' | otherlv_10= 'entonces que nazca este sue\\u00F1o:' | otherlv_11= 'entonces que el universo conspire:' | otherlv_12= 'entonces que mi voz te abrace:' ) ( (lv_instruccionesThen_13_0= ruleElementoBloque ) )+ ( ( (otherlv_14= 'Pero si la noche calla otra verdad,' otherlv_15= 'que surja este suspiro:' ) | (otherlv_16= 'Pero si el viento trae otro mensaje,' otherlv_17= 'que despierte esta pasi\\u00F3n:' ) | (otherlv_18= 'Pero si el coraz\\u00F3n duda,' otherlv_19= 'que renazca esta esperanza:' ) ) ( (lv_instruccionesElse_20_0= ruleElementoBloque ) )+ )? (otherlv_21= 'Y as\\u00ED el universo sigue su curso.' | otherlv_22= 'As\\u00ED sigue el canto del coraz\\u00F3n.' | otherlv_23= 'Y as\\u00ED la melod\\u00EDa contin\\u00FAa.' | otherlv_24= 'Y el eco de nuestro amor perdura.' | otherlv_25= 'Y la danza de las estrellas sigue.' )
             {
-            otherlv_0=(Token)match(input,20,FOLLOW_9); 
+            // InternalDearCode.g:1032:3: (otherlv_0= 'Si en tu corazon sientes que' | otherlv_1= 'Si tu alma susurra que' | otherlv_2= 'Si el latido de mi alma dice que' | otherlv_3= 'Si el destino nos susurra que' | otherlv_4= 'Si la luna refleja que' )
+            int alt16=5;
+            switch ( input.LA(1) ) {
+            case 50:
+                {
+                alt16=1;
+                }
+                break;
+            case 51:
+                {
+                alt16=2;
+                }
+                break;
+            case 52:
+                {
+                alt16=3;
+                }
+                break;
+            case 53:
+                {
+                alt16=4;
+                }
+                break;
+            case 54:
+                {
+                alt16=5;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 16, 0, input);
 
-            			newLeafNode(otherlv_0, grammarAccess.getCondicionalAccess().getSiEnTuCorazonSientesQueKeyword_0());
-            		
-            // InternalDearCode.g:840:3: ( (lv_condicion_1_0= ruleExpression ) )
-            // InternalDearCode.g:841:4: (lv_condicion_1_0= ruleExpression )
+                throw nvae;
+            }
+
+            switch (alt16) {
+                case 1 :
+                    // InternalDearCode.g:1033:4: otherlv_0= 'Si en tu corazon sientes que'
+                    {
+                    otherlv_0=(Token)match(input,50,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_0, grammarAccess.getCondicionalAccess().getSiEnTuCorazonSientesQueKeyword_0_0());
+                    			
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDearCode.g:1038:4: otherlv_1= 'Si tu alma susurra que'
+                    {
+                    otherlv_1=(Token)match(input,51,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_1, grammarAccess.getCondicionalAccess().getSiTuAlmaSusurraQueKeyword_0_1());
+                    			
+
+                    }
+                    break;
+                case 3 :
+                    // InternalDearCode.g:1043:4: otherlv_2= 'Si el latido de mi alma dice que'
+                    {
+                    otherlv_2=(Token)match(input,52,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_2, grammarAccess.getCondicionalAccess().getSiElLatidoDeMiAlmaDiceQueKeyword_0_2());
+                    			
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:1048:4: otherlv_3= 'Si el destino nos susurra que'
+                    {
+                    otherlv_3=(Token)match(input,53,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_3, grammarAccess.getCondicionalAccess().getSiElDestinoNosSusurraQueKeyword_0_3());
+                    			
+
+                    }
+                    break;
+                case 5 :
+                    // InternalDearCode.g:1053:4: otherlv_4= 'Si la luna refleja que'
+                    {
+                    otherlv_4=(Token)match(input,54,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_4, grammarAccess.getCondicionalAccess().getSiLaLunaReflejaQueKeyword_0_4());
+                    			
+
+                    }
+                    break;
+
+            }
+
+            // InternalDearCode.g:1058:3: ( (lv_condicion_5_0= ruleExpression ) )
+            // InternalDearCode.g:1059:4: (lv_condicion_5_0= ruleExpression )
             {
-            // InternalDearCode.g:841:4: (lv_condicion_1_0= ruleExpression )
-            // InternalDearCode.g:842:5: lv_condicion_1_0= ruleExpression
+            // InternalDearCode.g:1059:4: (lv_condicion_5_0= ruleExpression )
+            // InternalDearCode.g:1060:5: lv_condicion_5_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getCondicionalAccess().getCondicionExpressionParserRuleCall_1_0());
             				
-            pushFollow(FOLLOW_13);
-            lv_condicion_1_0=ruleExpression();
+            pushFollow(FOLLOW_14);
+            lv_condicion_5_0=ruleExpression();
 
             state._fsp--;
 
@@ -2210,7 +3290,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             					set(
             						current,
             						"condicion",
-            						lv_condicion_1_0,
+            						lv_condicion_5_0,
             						"edu.upb.lp.DearCode.Expression");
             					afterParserOrEnumRuleCall();
             				
@@ -2220,38 +3300,165 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,21,FOLLOW_14); 
+            otherlv_6=(Token)match(input,55,FOLLOW_15); 
 
-            			newLeafNode(otherlv_2, grammarAccess.getCondicionalAccess().getCommaKeyword_2());
+            			newLeafNode(otherlv_6, grammarAccess.getCondicionalAccess().getCommaKeyword_2());
             		
-            otherlv_3=(Token)match(input,22,FOLLOW_15); 
+            // InternalDearCode.g:1081:3: ( (lv_comment_7_0= ruleComment ) )?
+            int alt17=2;
+            int LA17_0 = input.LA(1);
 
-            			newLeafNode(otherlv_3, grammarAccess.getCondicionalAccess().getEntoncesDejaQueEstasPalabrasFlorezcanKeyword_3());
-            		
-            // InternalDearCode.g:867:3: ( (lv_instruccionesThen_4_0= ruleElementoBloque ) )+
-            int cnt11=0;
-            loop11:
+            if ( (LA17_0==RULE_ANYTEXT) ) {
+                alt17=1;
+            }
+            switch (alt17) {
+                case 1 :
+                    // InternalDearCode.g:1082:4: (lv_comment_7_0= ruleComment )
+                    {
+                    // InternalDearCode.g:1082:4: (lv_comment_7_0= ruleComment )
+                    // InternalDearCode.g:1083:5: lv_comment_7_0= ruleComment
+                    {
+
+                    					newCompositeNode(grammarAccess.getCondicionalAccess().getCommentCommentParserRuleCall_3_0());
+                    				
+                    pushFollow(FOLLOW_16);
+                    lv_comment_7_0=ruleComment();
+
+                    state._fsp--;
+
+
+                    					if (current==null) {
+                    						current = createModelElementForParent(grammarAccess.getCondicionalRule());
+                    					}
+                    					add(
+                    						current,
+                    						"comment",
+                    						lv_comment_7_0,
+                    						"edu.upb.lp.DearCode.Comment");
+                    					afterParserOrEnumRuleCall();
+                    				
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            // InternalDearCode.g:1100:3: (otherlv_8= 'entonces deja que estas palabras florezcan:' | otherlv_9= 'entonces que brote este amor:' | otherlv_10= 'entonces que nazca este sue\\u00F1o:' | otherlv_11= 'entonces que el universo conspire:' | otherlv_12= 'entonces que mi voz te abrace:' )
+            int alt18=5;
+            switch ( input.LA(1) ) {
+            case 56:
+                {
+                alt18=1;
+                }
+                break;
+            case 57:
+                {
+                alt18=2;
+                }
+                break;
+            case 58:
+                {
+                alt18=3;
+                }
+                break;
+            case 59:
+                {
+                alt18=4;
+                }
+                break;
+            case 60:
+                {
+                alt18=5;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 18, 0, input);
+
+                throw nvae;
+            }
+
+            switch (alt18) {
+                case 1 :
+                    // InternalDearCode.g:1101:4: otherlv_8= 'entonces deja que estas palabras florezcan:'
+                    {
+                    otherlv_8=(Token)match(input,56,FOLLOW_17); 
+
+                    				newLeafNode(otherlv_8, grammarAccess.getCondicionalAccess().getEntoncesDejaQueEstasPalabrasFlorezcanKeyword_4_0());
+                    			
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDearCode.g:1106:4: otherlv_9= 'entonces que brote este amor:'
+                    {
+                    otherlv_9=(Token)match(input,57,FOLLOW_17); 
+
+                    				newLeafNode(otherlv_9, grammarAccess.getCondicionalAccess().getEntoncesQueBroteEsteAmorKeyword_4_1());
+                    			
+
+                    }
+                    break;
+                case 3 :
+                    // InternalDearCode.g:1111:4: otherlv_10= 'entonces que nazca este sue\\u00F1o:'
+                    {
+                    otherlv_10=(Token)match(input,58,FOLLOW_17); 
+
+                    				newLeafNode(otherlv_10, grammarAccess.getCondicionalAccess().getEntoncesQueNazcaEsteSueOKeyword_4_2());
+                    			
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:1116:4: otherlv_11= 'entonces que el universo conspire:'
+                    {
+                    otherlv_11=(Token)match(input,59,FOLLOW_17); 
+
+                    				newLeafNode(otherlv_11, grammarAccess.getCondicionalAccess().getEntoncesQueElUniversoConspireKeyword_4_3());
+                    			
+
+                    }
+                    break;
+                case 5 :
+                    // InternalDearCode.g:1121:4: otherlv_12= 'entonces que mi voz te abrace:'
+                    {
+                    otherlv_12=(Token)match(input,60,FOLLOW_17); 
+
+                    				newLeafNode(otherlv_12, grammarAccess.getCondicionalAccess().getEntoncesQueMiVozTeAbraceKeyword_4_4());
+                    			
+
+                    }
+                    break;
+
+            }
+
+            // InternalDearCode.g:1126:3: ( (lv_instruccionesThen_13_0= ruleElementoBloque ) )+
+            int cnt19=0;
+            loop19:
             do {
-                int alt11=2;
-                int LA11_0 = input.LA(1);
+                int alt19=2;
+                int LA19_0 = input.LA(1);
 
-                if ( (LA11_0==16||(LA11_0>=19 && LA11_0<=20)||(LA11_0>=26 && LA11_0<=27)||LA11_0==30||(LA11_0>=36 && LA11_0<=38)||LA11_0==43||LA11_0==65||(LA11_0>=73 && LA11_0<=79)) ) {
-                    alt11=1;
+                if ( ((LA19_0>=25 && LA19_0<=33)||(LA19_0>=43 && LA19_0<=54)||(LA19_0>=72 && LA19_0<=78)||(LA19_0>=89 && LA19_0<=93)||(LA19_0>=107 && LA19_0<=114)||(LA19_0>=133 && LA19_0<=137)||(LA19_0>=201 && LA19_0<=204)||(LA19_0>=212 && LA19_0<=229)) ) {
+                    alt19=1;
                 }
 
 
-                switch (alt11) {
+                switch (alt19) {
             	case 1 :
-            	    // InternalDearCode.g:868:4: (lv_instruccionesThen_4_0= ruleElementoBloque )
+            	    // InternalDearCode.g:1127:4: (lv_instruccionesThen_13_0= ruleElementoBloque )
             	    {
-            	    // InternalDearCode.g:868:4: (lv_instruccionesThen_4_0= ruleElementoBloque )
-            	    // InternalDearCode.g:869:5: lv_instruccionesThen_4_0= ruleElementoBloque
+            	    // InternalDearCode.g:1127:4: (lv_instruccionesThen_13_0= ruleElementoBloque )
+            	    // InternalDearCode.g:1128:5: lv_instruccionesThen_13_0= ruleElementoBloque
             	    {
 
-            	    					newCompositeNode(grammarAccess.getCondicionalAccess().getInstruccionesThenElementoBloqueParserRuleCall_4_0());
+            	    					newCompositeNode(grammarAccess.getCondicionalAccess().getInstruccionesThenElementoBloqueParserRuleCall_5_0());
             	    				
-            	    pushFollow(FOLLOW_16);
-            	    lv_instruccionesThen_4_0=ruleElementoBloque();
+            	    pushFollow(FOLLOW_18);
+            	    lv_instruccionesThen_13_0=ruleElementoBloque();
 
             	    state._fsp--;
 
@@ -2262,7 +3469,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	    					add(
             	    						current,
             	    						"instruccionesThen",
-            	    						lv_instruccionesThen_4_0,
+            	    						lv_instruccionesThen_13_0,
             	    						"edu.upb.lp.DearCode.ElementoBloque");
             	    					afterParserOrEnumRuleCall();
             	    				
@@ -2274,57 +3481,138 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    if ( cnt11 >= 1 ) break loop11;
+            	    if ( cnt19 >= 1 ) break loop19;
                         EarlyExitException eee =
-                            new EarlyExitException(11, input);
+                            new EarlyExitException(19, input);
                         throw eee;
                 }
-                cnt11++;
+                cnt19++;
             } while (true);
 
-            // InternalDearCode.g:886:3: (otherlv_5= 'Pero si el destino dijera lo contrario,' otherlv_6= 'que broten estas verdades:' ( (lv_instruccionesElse_7_0= ruleElementoBloque ) )+ )?
-            int alt13=2;
-            int LA13_0 = input.LA(1);
+            // InternalDearCode.g:1145:3: ( ( (otherlv_14= 'Pero si la noche calla otra verdad,' otherlv_15= 'que surja este suspiro:' ) | (otherlv_16= 'Pero si el viento trae otro mensaje,' otherlv_17= 'que despierte esta pasi\\u00F3n:' ) | (otherlv_18= 'Pero si el coraz\\u00F3n duda,' otherlv_19= 'que renazca esta esperanza:' ) ) ( (lv_instruccionesElse_20_0= ruleElementoBloque ) )+ )?
+            int alt22=2;
+            int LA22_0 = input.LA(1);
 
-            if ( (LA13_0==23) ) {
-                alt13=1;
+            if ( (LA22_0==61||LA22_0==63||LA22_0==65) ) {
+                alt22=1;
             }
-            switch (alt13) {
+            switch (alt22) {
                 case 1 :
-                    // InternalDearCode.g:887:4: otherlv_5= 'Pero si el destino dijera lo contrario,' otherlv_6= 'que broten estas verdades:' ( (lv_instruccionesElse_7_0= ruleElementoBloque ) )+
+                    // InternalDearCode.g:1146:4: ( (otherlv_14= 'Pero si la noche calla otra verdad,' otherlv_15= 'que surja este suspiro:' ) | (otherlv_16= 'Pero si el viento trae otro mensaje,' otherlv_17= 'que despierte esta pasi\\u00F3n:' ) | (otherlv_18= 'Pero si el coraz\\u00F3n duda,' otherlv_19= 'que renazca esta esperanza:' ) ) ( (lv_instruccionesElse_20_0= ruleElementoBloque ) )+
                     {
-                    otherlv_5=(Token)match(input,23,FOLLOW_17); 
+                    // InternalDearCode.g:1146:4: ( (otherlv_14= 'Pero si la noche calla otra verdad,' otherlv_15= 'que surja este suspiro:' ) | (otherlv_16= 'Pero si el viento trae otro mensaje,' otherlv_17= 'que despierte esta pasi\\u00F3n:' ) | (otherlv_18= 'Pero si el coraz\\u00F3n duda,' otherlv_19= 'que renazca esta esperanza:' ) )
+                    int alt20=3;
+                    switch ( input.LA(1) ) {
+                    case 61:
+                        {
+                        alt20=1;
+                        }
+                        break;
+                    case 63:
+                        {
+                        alt20=2;
+                        }
+                        break;
+                    case 65:
+                        {
+                        alt20=3;
+                        }
+                        break;
+                    default:
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 20, 0, input);
 
-                    				newLeafNode(otherlv_5, grammarAccess.getCondicionalAccess().getPeroSiElDestinoDijeraLoContrarioKeyword_5_0());
-                    			
-                    otherlv_6=(Token)match(input,24,FOLLOW_15); 
+                        throw nvae;
+                    }
 
-                    				newLeafNode(otherlv_6, grammarAccess.getCondicionalAccess().getQueBrotenEstasVerdadesKeyword_5_1());
-                    			
-                    // InternalDearCode.g:895:4: ( (lv_instruccionesElse_7_0= ruleElementoBloque ) )+
-                    int cnt12=0;
-                    loop12:
+                    switch (alt20) {
+                        case 1 :
+                            // InternalDearCode.g:1147:5: (otherlv_14= 'Pero si la noche calla otra verdad,' otherlv_15= 'que surja este suspiro:' )
+                            {
+                            // InternalDearCode.g:1147:5: (otherlv_14= 'Pero si la noche calla otra verdad,' otherlv_15= 'que surja este suspiro:' )
+                            // InternalDearCode.g:1148:6: otherlv_14= 'Pero si la noche calla otra verdad,' otherlv_15= 'que surja este suspiro:'
+                            {
+                            otherlv_14=(Token)match(input,61,FOLLOW_19); 
+
+                            						newLeafNode(otherlv_14, grammarAccess.getCondicionalAccess().getPeroSiLaNocheCallaOtraVerdadKeyword_6_0_0_0());
+                            					
+                            otherlv_15=(Token)match(input,62,FOLLOW_17); 
+
+                            						newLeafNode(otherlv_15, grammarAccess.getCondicionalAccess().getQueSurjaEsteSuspiroKeyword_6_0_0_1());
+                            					
+
+                            }
+
+
+                            }
+                            break;
+                        case 2 :
+                            // InternalDearCode.g:1158:5: (otherlv_16= 'Pero si el viento trae otro mensaje,' otherlv_17= 'que despierte esta pasi\\u00F3n:' )
+                            {
+                            // InternalDearCode.g:1158:5: (otherlv_16= 'Pero si el viento trae otro mensaje,' otherlv_17= 'que despierte esta pasi\\u00F3n:' )
+                            // InternalDearCode.g:1159:6: otherlv_16= 'Pero si el viento trae otro mensaje,' otherlv_17= 'que despierte esta pasi\\u00F3n:'
+                            {
+                            otherlv_16=(Token)match(input,63,FOLLOW_20); 
+
+                            						newLeafNode(otherlv_16, grammarAccess.getCondicionalAccess().getPeroSiElVientoTraeOtroMensajeKeyword_6_0_1_0());
+                            					
+                            otherlv_17=(Token)match(input,64,FOLLOW_17); 
+
+                            						newLeafNode(otherlv_17, grammarAccess.getCondicionalAccess().getQueDespierteEstaPasiNKeyword_6_0_1_1());
+                            					
+
+                            }
+
+
+                            }
+                            break;
+                        case 3 :
+                            // InternalDearCode.g:1169:5: (otherlv_18= 'Pero si el coraz\\u00F3n duda,' otherlv_19= 'que renazca esta esperanza:' )
+                            {
+                            // InternalDearCode.g:1169:5: (otherlv_18= 'Pero si el coraz\\u00F3n duda,' otherlv_19= 'que renazca esta esperanza:' )
+                            // InternalDearCode.g:1170:6: otherlv_18= 'Pero si el coraz\\u00F3n duda,' otherlv_19= 'que renazca esta esperanza:'
+                            {
+                            otherlv_18=(Token)match(input,65,FOLLOW_21); 
+
+                            						newLeafNode(otherlv_18, grammarAccess.getCondicionalAccess().getPeroSiElCorazNDudaKeyword_6_0_2_0());
+                            					
+                            otherlv_19=(Token)match(input,66,FOLLOW_17); 
+
+                            						newLeafNode(otherlv_19, grammarAccess.getCondicionalAccess().getQueRenazcaEstaEsperanzaKeyword_6_0_2_1());
+                            					
+
+                            }
+
+
+                            }
+                            break;
+
+                    }
+
+                    // InternalDearCode.g:1180:4: ( (lv_instruccionesElse_20_0= ruleElementoBloque ) )+
+                    int cnt21=0;
+                    loop21:
                     do {
-                        int alt12=2;
-                        int LA12_0 = input.LA(1);
+                        int alt21=2;
+                        int LA21_0 = input.LA(1);
 
-                        if ( (LA12_0==16||(LA12_0>=19 && LA12_0<=20)||(LA12_0>=26 && LA12_0<=27)||LA12_0==30||(LA12_0>=36 && LA12_0<=38)||LA12_0==43||LA12_0==65||(LA12_0>=73 && LA12_0<=79)) ) {
-                            alt12=1;
+                        if ( ((LA21_0>=25 && LA21_0<=33)||(LA21_0>=43 && LA21_0<=54)||(LA21_0>=72 && LA21_0<=78)||(LA21_0>=89 && LA21_0<=93)||(LA21_0>=107 && LA21_0<=114)||(LA21_0>=133 && LA21_0<=137)||(LA21_0>=201 && LA21_0<=204)||(LA21_0>=212 && LA21_0<=229)) ) {
+                            alt21=1;
                         }
 
 
-                        switch (alt12) {
+                        switch (alt21) {
                     	case 1 :
-                    	    // InternalDearCode.g:896:5: (lv_instruccionesElse_7_0= ruleElementoBloque )
+                    	    // InternalDearCode.g:1181:5: (lv_instruccionesElse_20_0= ruleElementoBloque )
                     	    {
-                    	    // InternalDearCode.g:896:5: (lv_instruccionesElse_7_0= ruleElementoBloque )
-                    	    // InternalDearCode.g:897:6: lv_instruccionesElse_7_0= ruleElementoBloque
+                    	    // InternalDearCode.g:1181:5: (lv_instruccionesElse_20_0= ruleElementoBloque )
+                    	    // InternalDearCode.g:1182:6: lv_instruccionesElse_20_0= ruleElementoBloque
                     	    {
 
-                    	    						newCompositeNode(grammarAccess.getCondicionalAccess().getInstruccionesElseElementoBloqueParserRuleCall_5_2_0());
+                    	    						newCompositeNode(grammarAccess.getCondicionalAccess().getInstruccionesElseElementoBloqueParserRuleCall_6_1_0());
                     	    					
-                    	    pushFollow(FOLLOW_18);
-                    	    lv_instruccionesElse_7_0=ruleElementoBloque();
+                    	    pushFollow(FOLLOW_22);
+                    	    lv_instruccionesElse_20_0=ruleElementoBloque();
 
                     	    state._fsp--;
 
@@ -2335,7 +3623,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     	    						add(
                     	    							current,
                     	    							"instruccionesElse",
-                    	    							lv_instruccionesElse_7_0,
+                    	    							lv_instruccionesElse_20_0,
                     	    							"edu.upb.lp.DearCode.ElementoBloque");
                     	    						afterParserOrEnumRuleCall();
                     	    					
@@ -2347,12 +3635,12 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    if ( cnt12 >= 1 ) break loop12;
+                    	    if ( cnt21 >= 1 ) break loop21;
                                 EarlyExitException eee =
-                                    new EarlyExitException(12, input);
+                                    new EarlyExitException(21, input);
                                 throw eee;
                         }
-                        cnt12++;
+                        cnt21++;
                     } while (true);
 
 
@@ -2361,10 +3649,95 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_8=(Token)match(input,25,FOLLOW_2); 
+            // InternalDearCode.g:1200:3: (otherlv_21= 'Y as\\u00ED el universo sigue su curso.' | otherlv_22= 'As\\u00ED sigue el canto del coraz\\u00F3n.' | otherlv_23= 'Y as\\u00ED la melod\\u00EDa contin\\u00FAa.' | otherlv_24= 'Y el eco de nuestro amor perdura.' | otherlv_25= 'Y la danza de las estrellas sigue.' )
+            int alt23=5;
+            switch ( input.LA(1) ) {
+            case 67:
+                {
+                alt23=1;
+                }
+                break;
+            case 68:
+                {
+                alt23=2;
+                }
+                break;
+            case 69:
+                {
+                alt23=3;
+                }
+                break;
+            case 70:
+                {
+                alt23=4;
+                }
+                break;
+            case 71:
+                {
+                alt23=5;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 23, 0, input);
 
-            			newLeafNode(otherlv_8, grammarAccess.getCondicionalAccess().getYAsElUniversoSigueSuCursoKeyword_6());
-            		
+                throw nvae;
+            }
+
+            switch (alt23) {
+                case 1 :
+                    // InternalDearCode.g:1201:4: otherlv_21= 'Y as\\u00ED el universo sigue su curso.'
+                    {
+                    otherlv_21=(Token)match(input,67,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_21, grammarAccess.getCondicionalAccess().getYAsElUniversoSigueSuCursoKeyword_7_0());
+                    			
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDearCode.g:1206:4: otherlv_22= 'As\\u00ED sigue el canto del coraz\\u00F3n.'
+                    {
+                    otherlv_22=(Token)match(input,68,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_22, grammarAccess.getCondicionalAccess().getAsSigueElCantoDelCorazNKeyword_7_1());
+                    			
+
+                    }
+                    break;
+                case 3 :
+                    // InternalDearCode.g:1211:4: otherlv_23= 'Y as\\u00ED la melod\\u00EDa contin\\u00FAa.'
+                    {
+                    otherlv_23=(Token)match(input,69,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_23, grammarAccess.getCondicionalAccess().getYAsLaMelodAContinAKeyword_7_2());
+                    			
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:1216:4: otherlv_24= 'Y el eco de nuestro amor perdura.'
+                    {
+                    otherlv_24=(Token)match(input,70,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_24, grammarAccess.getCondicionalAccess().getYElEcoDeNuestroAmorPerduraKeyword_7_3());
+                    			
+
+                    }
+                    break;
+                case 5 :
+                    // InternalDearCode.g:1221:4: otherlv_25= 'Y la danza de las estrellas sigue.'
+                    {
+                    otherlv_25=(Token)match(input,71,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_25, grammarAccess.getCondicionalAccess().getYLaDanzaDeLasEstrellasSigueKeyword_7_4());
+                    			
+
+                    }
+                    break;
+
+            }
+
 
             }
 
@@ -2388,7 +3761,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBucleWhile"
-    // InternalDearCode.g:923:1: entryRuleBucleWhile returns [EObject current=null] : iv_ruleBucleWhile= ruleBucleWhile EOF ;
+    // InternalDearCode.g:1230:1: entryRuleBucleWhile returns [EObject current=null] : iv_ruleBucleWhile= ruleBucleWhile EOF ;
     public final EObject entryRuleBucleWhile() throws RecognitionException {
         EObject current = null;
 
@@ -2396,8 +3769,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:923:51: (iv_ruleBucleWhile= ruleBucleWhile EOF )
-            // InternalDearCode.g:924:2: iv_ruleBucleWhile= ruleBucleWhile EOF
+            // InternalDearCode.g:1230:51: (iv_ruleBucleWhile= ruleBucleWhile EOF )
+            // InternalDearCode.g:1231:2: iv_ruleBucleWhile= ruleBucleWhile EOF
             {
              newCompositeNode(grammarAccess.getBucleWhileRule()); 
             pushFollow(FOLLOW_1);
@@ -2424,51 +3797,93 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBucleWhile"
-    // InternalDearCode.g:930:1: ruleBucleWhile returns [EObject current=null] : ( (otherlv_0= 'Mientras aun me piensas' | otherlv_1= 'Mientras a\\u00FAn sue\\u00F1es con este momento' ) ( (lv_condicion_2_0= ruleExpression ) ) otherlv_3= ',' otherlv_4= 'haz que suceda:' ( (lv_loopBody_5_0= ruleElementoBloque ) )+ otherlv_6= 'Y as\\u00ED el susurro descansa.' ) ;
+    // InternalDearCode.g:1237:1: ruleBucleWhile returns [EObject current=null] : ( (otherlv_0= 'Mientras aun me piensas' | otherlv_1= 'Mientras a\\u00FAn sue\\u00F1es con este momento' | otherlv_2= 'Mientras mi coraz\\u00F3n te anhele' | otherlv_3= 'Mientras tu luz me gu\\u00EDe' | otherlv_4= 'Mientras el fuego de mi amor arda' | otherlv_5= 'Mientras la luna nos ilumine' | otherlv_6= 'Mientras tus ojos me miren' ) ( (lv_condicion_7_0= ruleExpression ) ) otherlv_8= ',' (otherlv_9= 'haz que suceda:' | otherlv_10= 'tejiendo este amor:' | otherlv_11= 'deja que el tiempo se detenga:' | otherlv_12= 'haz que el universo conspire:' | otherlv_13= 'permite que el destino nos una:' ) ( (lv_loopBody_14_0= ruleElementoBloque ) )+ (otherlv_15= 'Y as\\u00ED el susurro descansa.' | otherlv_16= 'hasta que el anhelo repose' | otherlv_17= 'Y el silencio envuelve nuestro amor.' | otherlv_18= 'Hasta que la eternidad nos encuentre.' | otherlv_19= 'Y la pasi\\u00F3n se convierte en recuerdo.' ) ) ;
     public final EObject ruleBucleWhile() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token otherlv_1=null;
+        Token otherlv_2=null;
         Token otherlv_3=null;
         Token otherlv_4=null;
+        Token otherlv_5=null;
         Token otherlv_6=null;
-        EObject lv_condicion_2_0 = null;
+        Token otherlv_8=null;
+        Token otherlv_9=null;
+        Token otherlv_10=null;
+        Token otherlv_11=null;
+        Token otherlv_12=null;
+        Token otherlv_13=null;
+        Token otherlv_15=null;
+        Token otherlv_16=null;
+        Token otherlv_17=null;
+        Token otherlv_18=null;
+        Token otherlv_19=null;
+        EObject lv_condicion_7_0 = null;
 
-        EObject lv_loopBody_5_0 = null;
+        EObject lv_loopBody_14_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalDearCode.g:936:2: ( ( (otherlv_0= 'Mientras aun me piensas' | otherlv_1= 'Mientras a\\u00FAn sue\\u00F1es con este momento' ) ( (lv_condicion_2_0= ruleExpression ) ) otherlv_3= ',' otherlv_4= 'haz que suceda:' ( (lv_loopBody_5_0= ruleElementoBloque ) )+ otherlv_6= 'Y as\\u00ED el susurro descansa.' ) )
-            // InternalDearCode.g:937:2: ( (otherlv_0= 'Mientras aun me piensas' | otherlv_1= 'Mientras a\\u00FAn sue\\u00F1es con este momento' ) ( (lv_condicion_2_0= ruleExpression ) ) otherlv_3= ',' otherlv_4= 'haz que suceda:' ( (lv_loopBody_5_0= ruleElementoBloque ) )+ otherlv_6= 'Y as\\u00ED el susurro descansa.' )
+            // InternalDearCode.g:1243:2: ( ( (otherlv_0= 'Mientras aun me piensas' | otherlv_1= 'Mientras a\\u00FAn sue\\u00F1es con este momento' | otherlv_2= 'Mientras mi coraz\\u00F3n te anhele' | otherlv_3= 'Mientras tu luz me gu\\u00EDe' | otherlv_4= 'Mientras el fuego de mi amor arda' | otherlv_5= 'Mientras la luna nos ilumine' | otherlv_6= 'Mientras tus ojos me miren' ) ( (lv_condicion_7_0= ruleExpression ) ) otherlv_8= ',' (otherlv_9= 'haz que suceda:' | otherlv_10= 'tejiendo este amor:' | otherlv_11= 'deja que el tiempo se detenga:' | otherlv_12= 'haz que el universo conspire:' | otherlv_13= 'permite que el destino nos una:' ) ( (lv_loopBody_14_0= ruleElementoBloque ) )+ (otherlv_15= 'Y as\\u00ED el susurro descansa.' | otherlv_16= 'hasta que el anhelo repose' | otherlv_17= 'Y el silencio envuelve nuestro amor.' | otherlv_18= 'Hasta que la eternidad nos encuentre.' | otherlv_19= 'Y la pasi\\u00F3n se convierte en recuerdo.' ) ) )
+            // InternalDearCode.g:1244:2: ( (otherlv_0= 'Mientras aun me piensas' | otherlv_1= 'Mientras a\\u00FAn sue\\u00F1es con este momento' | otherlv_2= 'Mientras mi coraz\\u00F3n te anhele' | otherlv_3= 'Mientras tu luz me gu\\u00EDe' | otherlv_4= 'Mientras el fuego de mi amor arda' | otherlv_5= 'Mientras la luna nos ilumine' | otherlv_6= 'Mientras tus ojos me miren' ) ( (lv_condicion_7_0= ruleExpression ) ) otherlv_8= ',' (otherlv_9= 'haz que suceda:' | otherlv_10= 'tejiendo este amor:' | otherlv_11= 'deja que el tiempo se detenga:' | otherlv_12= 'haz que el universo conspire:' | otherlv_13= 'permite que el destino nos una:' ) ( (lv_loopBody_14_0= ruleElementoBloque ) )+ (otherlv_15= 'Y as\\u00ED el susurro descansa.' | otherlv_16= 'hasta que el anhelo repose' | otherlv_17= 'Y el silencio envuelve nuestro amor.' | otherlv_18= 'Hasta que la eternidad nos encuentre.' | otherlv_19= 'Y la pasi\\u00F3n se convierte en recuerdo.' ) )
             {
-            // InternalDearCode.g:937:2: ( (otherlv_0= 'Mientras aun me piensas' | otherlv_1= 'Mientras a\\u00FAn sue\\u00F1es con este momento' ) ( (lv_condicion_2_0= ruleExpression ) ) otherlv_3= ',' otherlv_4= 'haz que suceda:' ( (lv_loopBody_5_0= ruleElementoBloque ) )+ otherlv_6= 'Y as\\u00ED el susurro descansa.' )
-            // InternalDearCode.g:938:3: (otherlv_0= 'Mientras aun me piensas' | otherlv_1= 'Mientras a\\u00FAn sue\\u00F1es con este momento' ) ( (lv_condicion_2_0= ruleExpression ) ) otherlv_3= ',' otherlv_4= 'haz que suceda:' ( (lv_loopBody_5_0= ruleElementoBloque ) )+ otherlv_6= 'Y as\\u00ED el susurro descansa.'
+            // InternalDearCode.g:1244:2: ( (otherlv_0= 'Mientras aun me piensas' | otherlv_1= 'Mientras a\\u00FAn sue\\u00F1es con este momento' | otherlv_2= 'Mientras mi coraz\\u00F3n te anhele' | otherlv_3= 'Mientras tu luz me gu\\u00EDe' | otherlv_4= 'Mientras el fuego de mi amor arda' | otherlv_5= 'Mientras la luna nos ilumine' | otherlv_6= 'Mientras tus ojos me miren' ) ( (lv_condicion_7_0= ruleExpression ) ) otherlv_8= ',' (otherlv_9= 'haz que suceda:' | otherlv_10= 'tejiendo este amor:' | otherlv_11= 'deja que el tiempo se detenga:' | otherlv_12= 'haz que el universo conspire:' | otherlv_13= 'permite que el destino nos una:' ) ( (lv_loopBody_14_0= ruleElementoBloque ) )+ (otherlv_15= 'Y as\\u00ED el susurro descansa.' | otherlv_16= 'hasta que el anhelo repose' | otherlv_17= 'Y el silencio envuelve nuestro amor.' | otherlv_18= 'Hasta que la eternidad nos encuentre.' | otherlv_19= 'Y la pasi\\u00F3n se convierte en recuerdo.' ) )
+            // InternalDearCode.g:1245:3: (otherlv_0= 'Mientras aun me piensas' | otherlv_1= 'Mientras a\\u00FAn sue\\u00F1es con este momento' | otherlv_2= 'Mientras mi coraz\\u00F3n te anhele' | otherlv_3= 'Mientras tu luz me gu\\u00EDe' | otherlv_4= 'Mientras el fuego de mi amor arda' | otherlv_5= 'Mientras la luna nos ilumine' | otherlv_6= 'Mientras tus ojos me miren' ) ( (lv_condicion_7_0= ruleExpression ) ) otherlv_8= ',' (otherlv_9= 'haz que suceda:' | otherlv_10= 'tejiendo este amor:' | otherlv_11= 'deja que el tiempo se detenga:' | otherlv_12= 'haz que el universo conspire:' | otherlv_13= 'permite que el destino nos una:' ) ( (lv_loopBody_14_0= ruleElementoBloque ) )+ (otherlv_15= 'Y as\\u00ED el susurro descansa.' | otherlv_16= 'hasta que el anhelo repose' | otherlv_17= 'Y el silencio envuelve nuestro amor.' | otherlv_18= 'Hasta que la eternidad nos encuentre.' | otherlv_19= 'Y la pasi\\u00F3n se convierte en recuerdo.' )
             {
-            // InternalDearCode.g:938:3: (otherlv_0= 'Mientras aun me piensas' | otherlv_1= 'Mientras a\\u00FAn sue\\u00F1es con este momento' )
-            int alt14=2;
-            int LA14_0 = input.LA(1);
-
-            if ( (LA14_0==26) ) {
-                alt14=1;
-            }
-            else if ( (LA14_0==27) ) {
-                alt14=2;
-            }
-            else {
+            // InternalDearCode.g:1245:3: (otherlv_0= 'Mientras aun me piensas' | otherlv_1= 'Mientras a\\u00FAn sue\\u00F1es con este momento' | otherlv_2= 'Mientras mi coraz\\u00F3n te anhele' | otherlv_3= 'Mientras tu luz me gu\\u00EDe' | otherlv_4= 'Mientras el fuego de mi amor arda' | otherlv_5= 'Mientras la luna nos ilumine' | otherlv_6= 'Mientras tus ojos me miren' )
+            int alt24=7;
+            switch ( input.LA(1) ) {
+            case 72:
+                {
+                alt24=1;
+                }
+                break;
+            case 73:
+                {
+                alt24=2;
+                }
+                break;
+            case 74:
+                {
+                alt24=3;
+                }
+                break;
+            case 75:
+                {
+                alt24=4;
+                }
+                break;
+            case 76:
+                {
+                alt24=5;
+                }
+                break;
+            case 77:
+                {
+                alt24=6;
+                }
+                break;
+            case 78:
+                {
+                alt24=7;
+                }
+                break;
+            default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 14, 0, input);
+                    new NoViableAltException("", 24, 0, input);
 
                 throw nvae;
             }
-            switch (alt14) {
+
+            switch (alt24) {
                 case 1 :
-                    // InternalDearCode.g:939:4: otherlv_0= 'Mientras aun me piensas'
+                    // InternalDearCode.g:1246:4: otherlv_0= 'Mientras aun me piensas'
                     {
-                    otherlv_0=(Token)match(input,26,FOLLOW_9); 
+                    otherlv_0=(Token)match(input,72,FOLLOW_10); 
 
                     				newLeafNode(otherlv_0, grammarAccess.getBucleWhileAccess().getMientrasAunMePiensasKeyword_0_0());
                     			
@@ -2476,11 +3891,61 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalDearCode.g:944:4: otherlv_1= 'Mientras a\\u00FAn sue\\u00F1es con este momento'
+                    // InternalDearCode.g:1251:4: otherlv_1= 'Mientras a\\u00FAn sue\\u00F1es con este momento'
                     {
-                    otherlv_1=(Token)match(input,27,FOLLOW_9); 
+                    otherlv_1=(Token)match(input,73,FOLLOW_10); 
 
                     				newLeafNode(otherlv_1, grammarAccess.getBucleWhileAccess().getMientrasANSueEsConEsteMomentoKeyword_0_1());
+                    			
+
+                    }
+                    break;
+                case 3 :
+                    // InternalDearCode.g:1256:4: otherlv_2= 'Mientras mi coraz\\u00F3n te anhele'
+                    {
+                    otherlv_2=(Token)match(input,74,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_2, grammarAccess.getBucleWhileAccess().getMientrasMiCorazNTeAnheleKeyword_0_2());
+                    			
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:1261:4: otherlv_3= 'Mientras tu luz me gu\\u00EDe'
+                    {
+                    otherlv_3=(Token)match(input,75,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_3, grammarAccess.getBucleWhileAccess().getMientrasTuLuzMeGuEKeyword_0_3());
+                    			
+
+                    }
+                    break;
+                case 5 :
+                    // InternalDearCode.g:1266:4: otherlv_4= 'Mientras el fuego de mi amor arda'
+                    {
+                    otherlv_4=(Token)match(input,76,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_4, grammarAccess.getBucleWhileAccess().getMientrasElFuegoDeMiAmorArdaKeyword_0_4());
+                    			
+
+                    }
+                    break;
+                case 6 :
+                    // InternalDearCode.g:1271:4: otherlv_5= 'Mientras la luna nos ilumine'
+                    {
+                    otherlv_5=(Token)match(input,77,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_5, grammarAccess.getBucleWhileAccess().getMientrasLaLunaNosIlumineKeyword_0_5());
+                    			
+
+                    }
+                    break;
+                case 7 :
+                    // InternalDearCode.g:1276:4: otherlv_6= 'Mientras tus ojos me miren'
+                    {
+                    otherlv_6=(Token)match(input,78,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_6, grammarAccess.getBucleWhileAccess().getMientrasTusOjosMeMirenKeyword_0_6());
                     			
 
                     }
@@ -2488,17 +3953,17 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDearCode.g:949:3: ( (lv_condicion_2_0= ruleExpression ) )
-            // InternalDearCode.g:950:4: (lv_condicion_2_0= ruleExpression )
+            // InternalDearCode.g:1281:3: ( (lv_condicion_7_0= ruleExpression ) )
+            // InternalDearCode.g:1282:4: (lv_condicion_7_0= ruleExpression )
             {
-            // InternalDearCode.g:950:4: (lv_condicion_2_0= ruleExpression )
-            // InternalDearCode.g:951:5: lv_condicion_2_0= ruleExpression
+            // InternalDearCode.g:1282:4: (lv_condicion_7_0= ruleExpression )
+            // InternalDearCode.g:1283:5: lv_condicion_7_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getBucleWhileAccess().getCondicionExpressionParserRuleCall_1_0());
             				
-            pushFollow(FOLLOW_13);
-            lv_condicion_2_0=ruleExpression();
+            pushFollow(FOLLOW_14);
+            lv_condicion_7_0=ruleExpression();
 
             state._fsp--;
 
@@ -2509,7 +3974,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             					set(
             						current,
             						"condicion",
-            						lv_condicion_2_0,
+            						lv_condicion_7_0,
             						"edu.upb.lp.DearCode.Expression");
             					afterParserOrEnumRuleCall();
             				
@@ -2519,38 +3984,123 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_3=(Token)match(input,21,FOLLOW_19); 
+            otherlv_8=(Token)match(input,55,FOLLOW_23); 
 
-            			newLeafNode(otherlv_3, grammarAccess.getBucleWhileAccess().getCommaKeyword_2());
+            			newLeafNode(otherlv_8, grammarAccess.getBucleWhileAccess().getCommaKeyword_2());
             		
-            otherlv_4=(Token)match(input,28,FOLLOW_15); 
+            // InternalDearCode.g:1304:3: (otherlv_9= 'haz que suceda:' | otherlv_10= 'tejiendo este amor:' | otherlv_11= 'deja que el tiempo se detenga:' | otherlv_12= 'haz que el universo conspire:' | otherlv_13= 'permite que el destino nos una:' )
+            int alt25=5;
+            switch ( input.LA(1) ) {
+            case 79:
+                {
+                alt25=1;
+                }
+                break;
+            case 80:
+                {
+                alt25=2;
+                }
+                break;
+            case 81:
+                {
+                alt25=3;
+                }
+                break;
+            case 82:
+                {
+                alt25=4;
+                }
+                break;
+            case 83:
+                {
+                alt25=5;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 25, 0, input);
 
-            			newLeafNode(otherlv_4, grammarAccess.getBucleWhileAccess().getHazQueSucedaKeyword_3());
-            		
-            // InternalDearCode.g:976:3: ( (lv_loopBody_5_0= ruleElementoBloque ) )+
-            int cnt15=0;
-            loop15:
+                throw nvae;
+            }
+
+            switch (alt25) {
+                case 1 :
+                    // InternalDearCode.g:1305:4: otherlv_9= 'haz que suceda:'
+                    {
+                    otherlv_9=(Token)match(input,79,FOLLOW_17); 
+
+                    				newLeafNode(otherlv_9, grammarAccess.getBucleWhileAccess().getHazQueSucedaKeyword_3_0());
+                    			
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDearCode.g:1310:4: otherlv_10= 'tejiendo este amor:'
+                    {
+                    otherlv_10=(Token)match(input,80,FOLLOW_17); 
+
+                    				newLeafNode(otherlv_10, grammarAccess.getBucleWhileAccess().getTejiendoEsteAmorKeyword_3_1());
+                    			
+
+                    }
+                    break;
+                case 3 :
+                    // InternalDearCode.g:1315:4: otherlv_11= 'deja que el tiempo se detenga:'
+                    {
+                    otherlv_11=(Token)match(input,81,FOLLOW_17); 
+
+                    				newLeafNode(otherlv_11, grammarAccess.getBucleWhileAccess().getDejaQueElTiempoSeDetengaKeyword_3_2());
+                    			
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:1320:4: otherlv_12= 'haz que el universo conspire:'
+                    {
+                    otherlv_12=(Token)match(input,82,FOLLOW_17); 
+
+                    				newLeafNode(otherlv_12, grammarAccess.getBucleWhileAccess().getHazQueElUniversoConspireKeyword_3_3());
+                    			
+
+                    }
+                    break;
+                case 5 :
+                    // InternalDearCode.g:1325:4: otherlv_13= 'permite que el destino nos una:'
+                    {
+                    otherlv_13=(Token)match(input,83,FOLLOW_17); 
+
+                    				newLeafNode(otherlv_13, grammarAccess.getBucleWhileAccess().getPermiteQueElDestinoNosUnaKeyword_3_4());
+                    			
+
+                    }
+                    break;
+
+            }
+
+            // InternalDearCode.g:1330:3: ( (lv_loopBody_14_0= ruleElementoBloque ) )+
+            int cnt26=0;
+            loop26:
             do {
-                int alt15=2;
-                int LA15_0 = input.LA(1);
+                int alt26=2;
+                int LA26_0 = input.LA(1);
 
-                if ( (LA15_0==16||(LA15_0>=19 && LA15_0<=20)||(LA15_0>=26 && LA15_0<=27)||LA15_0==30||(LA15_0>=36 && LA15_0<=38)||LA15_0==43||LA15_0==65||(LA15_0>=73 && LA15_0<=79)) ) {
-                    alt15=1;
+                if ( ((LA26_0>=25 && LA26_0<=33)||(LA26_0>=43 && LA26_0<=54)||(LA26_0>=72 && LA26_0<=78)||(LA26_0>=89 && LA26_0<=93)||(LA26_0>=107 && LA26_0<=114)||(LA26_0>=133 && LA26_0<=137)||(LA26_0>=201 && LA26_0<=204)||(LA26_0>=212 && LA26_0<=229)) ) {
+                    alt26=1;
                 }
 
 
-                switch (alt15) {
+                switch (alt26) {
             	case 1 :
-            	    // InternalDearCode.g:977:4: (lv_loopBody_5_0= ruleElementoBloque )
+            	    // InternalDearCode.g:1331:4: (lv_loopBody_14_0= ruleElementoBloque )
             	    {
-            	    // InternalDearCode.g:977:4: (lv_loopBody_5_0= ruleElementoBloque )
-            	    // InternalDearCode.g:978:5: lv_loopBody_5_0= ruleElementoBloque
+            	    // InternalDearCode.g:1331:4: (lv_loopBody_14_0= ruleElementoBloque )
+            	    // InternalDearCode.g:1332:5: lv_loopBody_14_0= ruleElementoBloque
             	    {
 
             	    					newCompositeNode(grammarAccess.getBucleWhileAccess().getLoopBodyElementoBloqueParserRuleCall_4_0());
             	    				
-            	    pushFollow(FOLLOW_20);
-            	    lv_loopBody_5_0=ruleElementoBloque();
+            	    pushFollow(FOLLOW_24);
+            	    lv_loopBody_14_0=ruleElementoBloque();
 
             	    state._fsp--;
 
@@ -2561,7 +4111,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	    					add(
             	    						current,
             	    						"loopBody",
-            	    						lv_loopBody_5_0,
+            	    						lv_loopBody_14_0,
             	    						"edu.upb.lp.DearCode.ElementoBloque");
             	    					afterParserOrEnumRuleCall();
             	    				
@@ -2573,18 +4123,103 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    if ( cnt15 >= 1 ) break loop15;
+            	    if ( cnt26 >= 1 ) break loop26;
                         EarlyExitException eee =
-                            new EarlyExitException(15, input);
+                            new EarlyExitException(26, input);
                         throw eee;
                 }
-                cnt15++;
+                cnt26++;
             } while (true);
 
-            otherlv_6=(Token)match(input,29,FOLLOW_2); 
+            // InternalDearCode.g:1349:3: (otherlv_15= 'Y as\\u00ED el susurro descansa.' | otherlv_16= 'hasta que el anhelo repose' | otherlv_17= 'Y el silencio envuelve nuestro amor.' | otherlv_18= 'Hasta que la eternidad nos encuentre.' | otherlv_19= 'Y la pasi\\u00F3n se convierte en recuerdo.' )
+            int alt27=5;
+            switch ( input.LA(1) ) {
+            case 84:
+                {
+                alt27=1;
+                }
+                break;
+            case 85:
+                {
+                alt27=2;
+                }
+                break;
+            case 86:
+                {
+                alt27=3;
+                }
+                break;
+            case 87:
+                {
+                alt27=4;
+                }
+                break;
+            case 88:
+                {
+                alt27=5;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 27, 0, input);
 
-            			newLeafNode(otherlv_6, grammarAccess.getBucleWhileAccess().getYAsElSusurroDescansaKeyword_5());
-            		
+                throw nvae;
+            }
+
+            switch (alt27) {
+                case 1 :
+                    // InternalDearCode.g:1350:4: otherlv_15= 'Y as\\u00ED el susurro descansa.'
+                    {
+                    otherlv_15=(Token)match(input,84,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_15, grammarAccess.getBucleWhileAccess().getYAsElSusurroDescansaKeyword_5_0());
+                    			
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDearCode.g:1355:4: otherlv_16= 'hasta que el anhelo repose'
+                    {
+                    otherlv_16=(Token)match(input,85,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_16, grammarAccess.getBucleWhileAccess().getHastaQueElAnheloReposeKeyword_5_1());
+                    			
+
+                    }
+                    break;
+                case 3 :
+                    // InternalDearCode.g:1360:4: otherlv_17= 'Y el silencio envuelve nuestro amor.'
+                    {
+                    otherlv_17=(Token)match(input,86,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_17, grammarAccess.getBucleWhileAccess().getYElSilencioEnvuelveNuestroAmorKeyword_5_2());
+                    			
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:1365:4: otherlv_18= 'Hasta que la eternidad nos encuentre.'
+                    {
+                    otherlv_18=(Token)match(input,87,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_18, grammarAccess.getBucleWhileAccess().getHastaQueLaEternidadNosEncuentreKeyword_5_3());
+                    			
+
+                    }
+                    break;
+                case 5 :
+                    // InternalDearCode.g:1370:4: otherlv_19= 'Y la pasi\\u00F3n se convierte en recuerdo.'
+                    {
+                    otherlv_19=(Token)match(input,88,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_19, grammarAccess.getBucleWhileAccess().getYLaPasiNSeConvierteEnRecuerdoKeyword_5_4());
+                    			
+
+                    }
+                    break;
+
+            }
+
 
             }
 
@@ -2608,7 +4243,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleBucleFor"
-    // InternalDearCode.g:1003:1: entryRuleBucleFor returns [EObject current=null] : iv_ruleBucleFor= ruleBucleFor EOF ;
+    // InternalDearCode.g:1379:1: entryRuleBucleFor returns [EObject current=null] : iv_ruleBucleFor= ruleBucleFor EOF ;
     public final EObject entryRuleBucleFor() throws RecognitionException {
         EObject current = null;
 
@@ -2616,8 +4251,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:1003:49: (iv_ruleBucleFor= ruleBucleFor EOF )
-            // InternalDearCode.g:1004:2: iv_ruleBucleFor= ruleBucleFor EOF
+            // InternalDearCode.g:1379:49: (iv_ruleBucleFor= ruleBucleFor EOF )
+            // InternalDearCode.g:1380:2: iv_ruleBucleFor= ruleBucleFor EOF
             {
              newCompositeNode(grammarAccess.getBucleForRule()); 
             pushFollow(FOLLOW_1);
@@ -2644,52 +4279,149 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleBucleFor"
-    // InternalDearCode.g:1010:1: ruleBucleFor returns [EObject current=null] : (otherlv_0= 'En cada suspiro' ( (lv_variable_1_0= ruleMI_ID ) ) otherlv_2= 'desde' ( (lv_inicio_3_0= ruleExpression ) ) otherlv_4= 'hasta' ( (lv_fin_5_0= ruleExpression ) ) (otherlv_6= 'con paso' ( (lv_paso_7_0= ruleExpression ) ) )? otherlv_8= 'deja que el universo cante:' ( (lv_loopBody_9_0= ruleElementoBloque ) )+ otherlv_10= 'Cuando el \\u00FAltimo eco se calle.' ) ;
+    // InternalDearCode.g:1386:1: ruleBucleFor returns [EObject current=null] : ( (otherlv_0= 'En cada suspiro' | otherlv_1= 'Por cada latido' | otherlv_2= 'Por cada estrella que nos mira' | otherlv_3= 'En cada p\\u00E9talo de rosa' | otherlv_4= 'Por cada ola que besa la orilla' ) ( (lv_variable_5_0= ruleMI_ID ) ) otherlv_6= 'desde' ( (lv_inicio_7_0= ruleExpression ) ) otherlv_8= 'hasta' ( (lv_fin_9_0= ruleExpression ) ) (otherlv_10= 'con paso' ( (lv_paso_11_0= ruleExpression ) ) )? (otherlv_12= 'deja que el universo cante:' | otherlv_13= 'resuena este amor' | otherlv_14= 'que el viento susurre nuestro nombre:' | otherlv_15= 'que el cielo pinte nuestro amor:' | otherlv_16= 'que la tierra tiemble con nuestra pasi\\u00F3n:' ) ( (lv_loopBody_17_0= ruleElementoBloque ) )+ (otherlv_18= 'Cuando el \\u00FAltimo eco se calle.' | otherlv_19= 'Y el eco se desvanece.' | otherlv_20= 'Y la \\u00FAltima estrella se apague.' | otherlv_21= 'Hasta que el \\u00FAltimo p\\u00E9talo caiga.' | otherlv_22= 'Cuando el mar se quede en silencio.' ) ) ;
     public final EObject ruleBucleFor() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
+        Token otherlv_1=null;
         Token otherlv_2=null;
+        Token otherlv_3=null;
         Token otherlv_4=null;
         Token otherlv_6=null;
         Token otherlv_8=null;
         Token otherlv_10=null;
-        EObject lv_variable_1_0 = null;
+        Token otherlv_12=null;
+        Token otherlv_13=null;
+        Token otherlv_14=null;
+        Token otherlv_15=null;
+        Token otherlv_16=null;
+        Token otherlv_18=null;
+        Token otherlv_19=null;
+        Token otherlv_20=null;
+        Token otherlv_21=null;
+        Token otherlv_22=null;
+        EObject lv_variable_5_0 = null;
 
-        EObject lv_inicio_3_0 = null;
+        EObject lv_inicio_7_0 = null;
 
-        EObject lv_fin_5_0 = null;
+        EObject lv_fin_9_0 = null;
 
-        EObject lv_paso_7_0 = null;
+        EObject lv_paso_11_0 = null;
 
-        EObject lv_loopBody_9_0 = null;
+        EObject lv_loopBody_17_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalDearCode.g:1016:2: ( (otherlv_0= 'En cada suspiro' ( (lv_variable_1_0= ruleMI_ID ) ) otherlv_2= 'desde' ( (lv_inicio_3_0= ruleExpression ) ) otherlv_4= 'hasta' ( (lv_fin_5_0= ruleExpression ) ) (otherlv_6= 'con paso' ( (lv_paso_7_0= ruleExpression ) ) )? otherlv_8= 'deja que el universo cante:' ( (lv_loopBody_9_0= ruleElementoBloque ) )+ otherlv_10= 'Cuando el \\u00FAltimo eco se calle.' ) )
-            // InternalDearCode.g:1017:2: (otherlv_0= 'En cada suspiro' ( (lv_variable_1_0= ruleMI_ID ) ) otherlv_2= 'desde' ( (lv_inicio_3_0= ruleExpression ) ) otherlv_4= 'hasta' ( (lv_fin_5_0= ruleExpression ) ) (otherlv_6= 'con paso' ( (lv_paso_7_0= ruleExpression ) ) )? otherlv_8= 'deja que el universo cante:' ( (lv_loopBody_9_0= ruleElementoBloque ) )+ otherlv_10= 'Cuando el \\u00FAltimo eco se calle.' )
+            // InternalDearCode.g:1392:2: ( ( (otherlv_0= 'En cada suspiro' | otherlv_1= 'Por cada latido' | otherlv_2= 'Por cada estrella que nos mira' | otherlv_3= 'En cada p\\u00E9talo de rosa' | otherlv_4= 'Por cada ola que besa la orilla' ) ( (lv_variable_5_0= ruleMI_ID ) ) otherlv_6= 'desde' ( (lv_inicio_7_0= ruleExpression ) ) otherlv_8= 'hasta' ( (lv_fin_9_0= ruleExpression ) ) (otherlv_10= 'con paso' ( (lv_paso_11_0= ruleExpression ) ) )? (otherlv_12= 'deja que el universo cante:' | otherlv_13= 'resuena este amor' | otherlv_14= 'que el viento susurre nuestro nombre:' | otherlv_15= 'que el cielo pinte nuestro amor:' | otherlv_16= 'que la tierra tiemble con nuestra pasi\\u00F3n:' ) ( (lv_loopBody_17_0= ruleElementoBloque ) )+ (otherlv_18= 'Cuando el \\u00FAltimo eco se calle.' | otherlv_19= 'Y el eco se desvanece.' | otherlv_20= 'Y la \\u00FAltima estrella se apague.' | otherlv_21= 'Hasta que el \\u00FAltimo p\\u00E9talo caiga.' | otherlv_22= 'Cuando el mar se quede en silencio.' ) ) )
+            // InternalDearCode.g:1393:2: ( (otherlv_0= 'En cada suspiro' | otherlv_1= 'Por cada latido' | otherlv_2= 'Por cada estrella que nos mira' | otherlv_3= 'En cada p\\u00E9talo de rosa' | otherlv_4= 'Por cada ola que besa la orilla' ) ( (lv_variable_5_0= ruleMI_ID ) ) otherlv_6= 'desde' ( (lv_inicio_7_0= ruleExpression ) ) otherlv_8= 'hasta' ( (lv_fin_9_0= ruleExpression ) ) (otherlv_10= 'con paso' ( (lv_paso_11_0= ruleExpression ) ) )? (otherlv_12= 'deja que el universo cante:' | otherlv_13= 'resuena este amor' | otherlv_14= 'que el viento susurre nuestro nombre:' | otherlv_15= 'que el cielo pinte nuestro amor:' | otherlv_16= 'que la tierra tiemble con nuestra pasi\\u00F3n:' ) ( (lv_loopBody_17_0= ruleElementoBloque ) )+ (otherlv_18= 'Cuando el \\u00FAltimo eco se calle.' | otherlv_19= 'Y el eco se desvanece.' | otherlv_20= 'Y la \\u00FAltima estrella se apague.' | otherlv_21= 'Hasta que el \\u00FAltimo p\\u00E9talo caiga.' | otherlv_22= 'Cuando el mar se quede en silencio.' ) )
             {
-            // InternalDearCode.g:1017:2: (otherlv_0= 'En cada suspiro' ( (lv_variable_1_0= ruleMI_ID ) ) otherlv_2= 'desde' ( (lv_inicio_3_0= ruleExpression ) ) otherlv_4= 'hasta' ( (lv_fin_5_0= ruleExpression ) ) (otherlv_6= 'con paso' ( (lv_paso_7_0= ruleExpression ) ) )? otherlv_8= 'deja que el universo cante:' ( (lv_loopBody_9_0= ruleElementoBloque ) )+ otherlv_10= 'Cuando el \\u00FAltimo eco se calle.' )
-            // InternalDearCode.g:1018:3: otherlv_0= 'En cada suspiro' ( (lv_variable_1_0= ruleMI_ID ) ) otherlv_2= 'desde' ( (lv_inicio_3_0= ruleExpression ) ) otherlv_4= 'hasta' ( (lv_fin_5_0= ruleExpression ) ) (otherlv_6= 'con paso' ( (lv_paso_7_0= ruleExpression ) ) )? otherlv_8= 'deja que el universo cante:' ( (lv_loopBody_9_0= ruleElementoBloque ) )+ otherlv_10= 'Cuando el \\u00FAltimo eco se calle.'
+            // InternalDearCode.g:1393:2: ( (otherlv_0= 'En cada suspiro' | otherlv_1= 'Por cada latido' | otherlv_2= 'Por cada estrella que nos mira' | otherlv_3= 'En cada p\\u00E9talo de rosa' | otherlv_4= 'Por cada ola que besa la orilla' ) ( (lv_variable_5_0= ruleMI_ID ) ) otherlv_6= 'desde' ( (lv_inicio_7_0= ruleExpression ) ) otherlv_8= 'hasta' ( (lv_fin_9_0= ruleExpression ) ) (otherlv_10= 'con paso' ( (lv_paso_11_0= ruleExpression ) ) )? (otherlv_12= 'deja que el universo cante:' | otherlv_13= 'resuena este amor' | otherlv_14= 'que el viento susurre nuestro nombre:' | otherlv_15= 'que el cielo pinte nuestro amor:' | otherlv_16= 'que la tierra tiemble con nuestra pasi\\u00F3n:' ) ( (lv_loopBody_17_0= ruleElementoBloque ) )+ (otherlv_18= 'Cuando el \\u00FAltimo eco se calle.' | otherlv_19= 'Y el eco se desvanece.' | otherlv_20= 'Y la \\u00FAltima estrella se apague.' | otherlv_21= 'Hasta que el \\u00FAltimo p\\u00E9talo caiga.' | otherlv_22= 'Cuando el mar se quede en silencio.' ) )
+            // InternalDearCode.g:1394:3: (otherlv_0= 'En cada suspiro' | otherlv_1= 'Por cada latido' | otherlv_2= 'Por cada estrella que nos mira' | otherlv_3= 'En cada p\\u00E9talo de rosa' | otherlv_4= 'Por cada ola que besa la orilla' ) ( (lv_variable_5_0= ruleMI_ID ) ) otherlv_6= 'desde' ( (lv_inicio_7_0= ruleExpression ) ) otherlv_8= 'hasta' ( (lv_fin_9_0= ruleExpression ) ) (otherlv_10= 'con paso' ( (lv_paso_11_0= ruleExpression ) ) )? (otherlv_12= 'deja que el universo cante:' | otherlv_13= 'resuena este amor' | otherlv_14= 'que el viento susurre nuestro nombre:' | otherlv_15= 'que el cielo pinte nuestro amor:' | otherlv_16= 'que la tierra tiemble con nuestra pasi\\u00F3n:' ) ( (lv_loopBody_17_0= ruleElementoBloque ) )+ (otherlv_18= 'Cuando el \\u00FAltimo eco se calle.' | otherlv_19= 'Y el eco se desvanece.' | otherlv_20= 'Y la \\u00FAltima estrella se apague.' | otherlv_21= 'Hasta que el \\u00FAltimo p\\u00E9talo caiga.' | otherlv_22= 'Cuando el mar se quede en silencio.' )
             {
-            otherlv_0=(Token)match(input,30,FOLLOW_5); 
+            // InternalDearCode.g:1394:3: (otherlv_0= 'En cada suspiro' | otherlv_1= 'Por cada latido' | otherlv_2= 'Por cada estrella que nos mira' | otherlv_3= 'En cada p\\u00E9talo de rosa' | otherlv_4= 'Por cada ola que besa la orilla' )
+            int alt28=5;
+            switch ( input.LA(1) ) {
+            case 89:
+                {
+                alt28=1;
+                }
+                break;
+            case 90:
+                {
+                alt28=2;
+                }
+                break;
+            case 91:
+                {
+                alt28=3;
+                }
+                break;
+            case 92:
+                {
+                alt28=4;
+                }
+                break;
+            case 93:
+                {
+                alt28=5;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 28, 0, input);
 
-            			newLeafNode(otherlv_0, grammarAccess.getBucleForAccess().getEnCadaSuspiroKeyword_0());
-            		
-            // InternalDearCode.g:1022:3: ( (lv_variable_1_0= ruleMI_ID ) )
-            // InternalDearCode.g:1023:4: (lv_variable_1_0= ruleMI_ID )
+                throw nvae;
+            }
+
+            switch (alt28) {
+                case 1 :
+                    // InternalDearCode.g:1395:4: otherlv_0= 'En cada suspiro'
+                    {
+                    otherlv_0=(Token)match(input,89,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_0, grammarAccess.getBucleForAccess().getEnCadaSuspiroKeyword_0_0());
+                    			
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDearCode.g:1400:4: otherlv_1= 'Por cada latido'
+                    {
+                    otherlv_1=(Token)match(input,90,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_1, grammarAccess.getBucleForAccess().getPorCadaLatidoKeyword_0_1());
+                    			
+
+                    }
+                    break;
+                case 3 :
+                    // InternalDearCode.g:1405:4: otherlv_2= 'Por cada estrella que nos mira'
+                    {
+                    otherlv_2=(Token)match(input,91,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_2, grammarAccess.getBucleForAccess().getPorCadaEstrellaQueNosMiraKeyword_0_2());
+                    			
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:1410:4: otherlv_3= 'En cada p\\u00E9talo de rosa'
+                    {
+                    otherlv_3=(Token)match(input,92,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_3, grammarAccess.getBucleForAccess().getEnCadaPTaloDeRosaKeyword_0_3());
+                    			
+
+                    }
+                    break;
+                case 5 :
+                    // InternalDearCode.g:1415:4: otherlv_4= 'Por cada ola que besa la orilla'
+                    {
+                    otherlv_4=(Token)match(input,93,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_4, grammarAccess.getBucleForAccess().getPorCadaOlaQueBesaLaOrillaKeyword_0_4());
+                    			
+
+                    }
+                    break;
+
+            }
+
+            // InternalDearCode.g:1420:3: ( (lv_variable_5_0= ruleMI_ID ) )
+            // InternalDearCode.g:1421:4: (lv_variable_5_0= ruleMI_ID )
             {
-            // InternalDearCode.g:1023:4: (lv_variable_1_0= ruleMI_ID )
-            // InternalDearCode.g:1024:5: lv_variable_1_0= ruleMI_ID
+            // InternalDearCode.g:1421:4: (lv_variable_5_0= ruleMI_ID )
+            // InternalDearCode.g:1422:5: lv_variable_5_0= ruleMI_ID
             {
 
             					newCompositeNode(grammarAccess.getBucleForAccess().getVariableMI_IDParserRuleCall_1_0());
             				
-            pushFollow(FOLLOW_21);
-            lv_variable_1_0=ruleMI_ID();
+            pushFollow(FOLLOW_25);
+            lv_variable_5_0=ruleMI_ID();
 
             state._fsp--;
 
@@ -2700,7 +4432,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             					set(
             						current,
             						"variable",
-            						lv_variable_1_0,
+            						lv_variable_5_0,
             						"edu.upb.lp.DearCode.MI_ID");
             					afterParserOrEnumRuleCall();
             				
@@ -2710,21 +4442,21 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,31,FOLLOW_9); 
+            otherlv_6=(Token)match(input,94,FOLLOW_10); 
 
-            			newLeafNode(otherlv_2, grammarAccess.getBucleForAccess().getDesdeKeyword_2());
+            			newLeafNode(otherlv_6, grammarAccess.getBucleForAccess().getDesdeKeyword_2());
             		
-            // InternalDearCode.g:1045:3: ( (lv_inicio_3_0= ruleExpression ) )
-            // InternalDearCode.g:1046:4: (lv_inicio_3_0= ruleExpression )
+            // InternalDearCode.g:1443:3: ( (lv_inicio_7_0= ruleExpression ) )
+            // InternalDearCode.g:1444:4: (lv_inicio_7_0= ruleExpression )
             {
-            // InternalDearCode.g:1046:4: (lv_inicio_3_0= ruleExpression )
-            // InternalDearCode.g:1047:5: lv_inicio_3_0= ruleExpression
+            // InternalDearCode.g:1444:4: (lv_inicio_7_0= ruleExpression )
+            // InternalDearCode.g:1445:5: lv_inicio_7_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getBucleForAccess().getInicioExpressionParserRuleCall_3_0());
             				
-            pushFollow(FOLLOW_22);
-            lv_inicio_3_0=ruleExpression();
+            pushFollow(FOLLOW_26);
+            lv_inicio_7_0=ruleExpression();
 
             state._fsp--;
 
@@ -2735,7 +4467,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             					set(
             						current,
             						"inicio",
-            						lv_inicio_3_0,
+            						lv_inicio_7_0,
             						"edu.upb.lp.DearCode.Expression");
             					afterParserOrEnumRuleCall();
             				
@@ -2745,21 +4477,21 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_4=(Token)match(input,32,FOLLOW_9); 
+            otherlv_8=(Token)match(input,95,FOLLOW_10); 
 
-            			newLeafNode(otherlv_4, grammarAccess.getBucleForAccess().getHastaKeyword_4());
+            			newLeafNode(otherlv_8, grammarAccess.getBucleForAccess().getHastaKeyword_4());
             		
-            // InternalDearCode.g:1068:3: ( (lv_fin_5_0= ruleExpression ) )
-            // InternalDearCode.g:1069:4: (lv_fin_5_0= ruleExpression )
+            // InternalDearCode.g:1466:3: ( (lv_fin_9_0= ruleExpression ) )
+            // InternalDearCode.g:1467:4: (lv_fin_9_0= ruleExpression )
             {
-            // InternalDearCode.g:1069:4: (lv_fin_5_0= ruleExpression )
-            // InternalDearCode.g:1070:5: lv_fin_5_0= ruleExpression
+            // InternalDearCode.g:1467:4: (lv_fin_9_0= ruleExpression )
+            // InternalDearCode.g:1468:5: lv_fin_9_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getBucleForAccess().getFinExpressionParserRuleCall_5_0());
             				
-            pushFollow(FOLLOW_23);
-            lv_fin_5_0=ruleExpression();
+            pushFollow(FOLLOW_27);
+            lv_fin_9_0=ruleExpression();
 
             state._fsp--;
 
@@ -2770,7 +4502,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             					set(
             						current,
             						"fin",
-            						lv_fin_5_0,
+            						lv_fin_9_0,
             						"edu.upb.lp.DearCode.Expression");
             					afterParserOrEnumRuleCall();
             				
@@ -2780,32 +4512,32 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDearCode.g:1087:3: (otherlv_6= 'con paso' ( (lv_paso_7_0= ruleExpression ) ) )?
-            int alt16=2;
-            int LA16_0 = input.LA(1);
+            // InternalDearCode.g:1485:3: (otherlv_10= 'con paso' ( (lv_paso_11_0= ruleExpression ) ) )?
+            int alt29=2;
+            int LA29_0 = input.LA(1);
 
-            if ( (LA16_0==33) ) {
-                alt16=1;
+            if ( (LA29_0==96) ) {
+                alt29=1;
             }
-            switch (alt16) {
+            switch (alt29) {
                 case 1 :
-                    // InternalDearCode.g:1088:4: otherlv_6= 'con paso' ( (lv_paso_7_0= ruleExpression ) )
+                    // InternalDearCode.g:1486:4: otherlv_10= 'con paso' ( (lv_paso_11_0= ruleExpression ) )
                     {
-                    otherlv_6=(Token)match(input,33,FOLLOW_9); 
+                    otherlv_10=(Token)match(input,96,FOLLOW_10); 
 
-                    				newLeafNode(otherlv_6, grammarAccess.getBucleForAccess().getConPasoKeyword_6_0());
+                    				newLeafNode(otherlv_10, grammarAccess.getBucleForAccess().getConPasoKeyword_6_0());
                     			
-                    // InternalDearCode.g:1092:4: ( (lv_paso_7_0= ruleExpression ) )
-                    // InternalDearCode.g:1093:5: (lv_paso_7_0= ruleExpression )
+                    // InternalDearCode.g:1490:4: ( (lv_paso_11_0= ruleExpression ) )
+                    // InternalDearCode.g:1491:5: (lv_paso_11_0= ruleExpression )
                     {
-                    // InternalDearCode.g:1093:5: (lv_paso_7_0= ruleExpression )
-                    // InternalDearCode.g:1094:6: lv_paso_7_0= ruleExpression
+                    // InternalDearCode.g:1491:5: (lv_paso_11_0= ruleExpression )
+                    // InternalDearCode.g:1492:6: lv_paso_11_0= ruleExpression
                     {
 
                     						newCompositeNode(grammarAccess.getBucleForAccess().getPasoExpressionParserRuleCall_6_1_0());
                     					
-                    pushFollow(FOLLOW_24);
-                    lv_paso_7_0=ruleExpression();
+                    pushFollow(FOLLOW_28);
+                    lv_paso_11_0=ruleExpression();
 
                     state._fsp--;
 
@@ -2816,7 +4548,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     						set(
                     							current,
                     							"paso",
-                    							lv_paso_7_0,
+                    							lv_paso_11_0,
                     							"edu.upb.lp.DearCode.Expression");
                     						afterParserOrEnumRuleCall();
                     					
@@ -2832,34 +4564,119 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_8=(Token)match(input,34,FOLLOW_15); 
+            // InternalDearCode.g:1510:3: (otherlv_12= 'deja que el universo cante:' | otherlv_13= 'resuena este amor' | otherlv_14= 'que el viento susurre nuestro nombre:' | otherlv_15= 'que el cielo pinte nuestro amor:' | otherlv_16= 'que la tierra tiemble con nuestra pasi\\u00F3n:' )
+            int alt30=5;
+            switch ( input.LA(1) ) {
+            case 97:
+                {
+                alt30=1;
+                }
+                break;
+            case 98:
+                {
+                alt30=2;
+                }
+                break;
+            case 99:
+                {
+                alt30=3;
+                }
+                break;
+            case 100:
+                {
+                alt30=4;
+                }
+                break;
+            case 101:
+                {
+                alt30=5;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 30, 0, input);
 
-            			newLeafNode(otherlv_8, grammarAccess.getBucleForAccess().getDejaQueElUniversoCanteKeyword_7());
-            		
-            // InternalDearCode.g:1116:3: ( (lv_loopBody_9_0= ruleElementoBloque ) )+
-            int cnt17=0;
-            loop17:
+                throw nvae;
+            }
+
+            switch (alt30) {
+                case 1 :
+                    // InternalDearCode.g:1511:4: otherlv_12= 'deja que el universo cante:'
+                    {
+                    otherlv_12=(Token)match(input,97,FOLLOW_17); 
+
+                    				newLeafNode(otherlv_12, grammarAccess.getBucleForAccess().getDejaQueElUniversoCanteKeyword_7_0());
+                    			
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDearCode.g:1516:4: otherlv_13= 'resuena este amor'
+                    {
+                    otherlv_13=(Token)match(input,98,FOLLOW_17); 
+
+                    				newLeafNode(otherlv_13, grammarAccess.getBucleForAccess().getResuenaEsteAmorKeyword_7_1());
+                    			
+
+                    }
+                    break;
+                case 3 :
+                    // InternalDearCode.g:1521:4: otherlv_14= 'que el viento susurre nuestro nombre:'
+                    {
+                    otherlv_14=(Token)match(input,99,FOLLOW_17); 
+
+                    				newLeafNode(otherlv_14, grammarAccess.getBucleForAccess().getQueElVientoSusurreNuestroNombreKeyword_7_2());
+                    			
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:1526:4: otherlv_15= 'que el cielo pinte nuestro amor:'
+                    {
+                    otherlv_15=(Token)match(input,100,FOLLOW_17); 
+
+                    				newLeafNode(otherlv_15, grammarAccess.getBucleForAccess().getQueElCieloPinteNuestroAmorKeyword_7_3());
+                    			
+
+                    }
+                    break;
+                case 5 :
+                    // InternalDearCode.g:1531:4: otherlv_16= 'que la tierra tiemble con nuestra pasi\\u00F3n:'
+                    {
+                    otherlv_16=(Token)match(input,101,FOLLOW_17); 
+
+                    				newLeafNode(otherlv_16, grammarAccess.getBucleForAccess().getQueLaTierraTiembleConNuestraPasiNKeyword_7_4());
+                    			
+
+                    }
+                    break;
+
+            }
+
+            // InternalDearCode.g:1536:3: ( (lv_loopBody_17_0= ruleElementoBloque ) )+
+            int cnt31=0;
+            loop31:
             do {
-                int alt17=2;
-                int LA17_0 = input.LA(1);
+                int alt31=2;
+                int LA31_0 = input.LA(1);
 
-                if ( (LA17_0==16||(LA17_0>=19 && LA17_0<=20)||(LA17_0>=26 && LA17_0<=27)||LA17_0==30||(LA17_0>=36 && LA17_0<=38)||LA17_0==43||LA17_0==65||(LA17_0>=73 && LA17_0<=79)) ) {
-                    alt17=1;
+                if ( ((LA31_0>=25 && LA31_0<=33)||(LA31_0>=43 && LA31_0<=54)||(LA31_0>=72 && LA31_0<=78)||(LA31_0>=89 && LA31_0<=93)||(LA31_0>=107 && LA31_0<=114)||(LA31_0>=133 && LA31_0<=137)||(LA31_0>=201 && LA31_0<=204)||(LA31_0>=212 && LA31_0<=229)) ) {
+                    alt31=1;
                 }
 
 
-                switch (alt17) {
+                switch (alt31) {
             	case 1 :
-            	    // InternalDearCode.g:1117:4: (lv_loopBody_9_0= ruleElementoBloque )
+            	    // InternalDearCode.g:1537:4: (lv_loopBody_17_0= ruleElementoBloque )
             	    {
-            	    // InternalDearCode.g:1117:4: (lv_loopBody_9_0= ruleElementoBloque )
-            	    // InternalDearCode.g:1118:5: lv_loopBody_9_0= ruleElementoBloque
+            	    // InternalDearCode.g:1537:4: (lv_loopBody_17_0= ruleElementoBloque )
+            	    // InternalDearCode.g:1538:5: lv_loopBody_17_0= ruleElementoBloque
             	    {
 
             	    					newCompositeNode(grammarAccess.getBucleForAccess().getLoopBodyElementoBloqueParserRuleCall_8_0());
             	    				
-            	    pushFollow(FOLLOW_25);
-            	    lv_loopBody_9_0=ruleElementoBloque();
+            	    pushFollow(FOLLOW_29);
+            	    lv_loopBody_17_0=ruleElementoBloque();
 
             	    state._fsp--;
 
@@ -2870,7 +4687,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	    					add(
             	    						current,
             	    						"loopBody",
-            	    						lv_loopBody_9_0,
+            	    						lv_loopBody_17_0,
             	    						"edu.upb.lp.DearCode.ElementoBloque");
             	    					afterParserOrEnumRuleCall();
             	    				
@@ -2882,18 +4699,103 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    if ( cnt17 >= 1 ) break loop17;
+            	    if ( cnt31 >= 1 ) break loop31;
                         EarlyExitException eee =
-                            new EarlyExitException(17, input);
+                            new EarlyExitException(31, input);
                         throw eee;
                 }
-                cnt17++;
+                cnt31++;
             } while (true);
 
-            otherlv_10=(Token)match(input,35,FOLLOW_2); 
+            // InternalDearCode.g:1555:3: (otherlv_18= 'Cuando el \\u00FAltimo eco se calle.' | otherlv_19= 'Y el eco se desvanece.' | otherlv_20= 'Y la \\u00FAltima estrella se apague.' | otherlv_21= 'Hasta que el \\u00FAltimo p\\u00E9talo caiga.' | otherlv_22= 'Cuando el mar se quede en silencio.' )
+            int alt32=5;
+            switch ( input.LA(1) ) {
+            case 102:
+                {
+                alt32=1;
+                }
+                break;
+            case 103:
+                {
+                alt32=2;
+                }
+                break;
+            case 104:
+                {
+                alt32=3;
+                }
+                break;
+            case 105:
+                {
+                alt32=4;
+                }
+                break;
+            case 106:
+                {
+                alt32=5;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 32, 0, input);
 
-            			newLeafNode(otherlv_10, grammarAccess.getBucleForAccess().getCuandoElLtimoEcoSeCalleKeyword_9());
-            		
+                throw nvae;
+            }
+
+            switch (alt32) {
+                case 1 :
+                    // InternalDearCode.g:1556:4: otherlv_18= 'Cuando el \\u00FAltimo eco se calle.'
+                    {
+                    otherlv_18=(Token)match(input,102,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_18, grammarAccess.getBucleForAccess().getCuandoElLtimoEcoSeCalleKeyword_9_0());
+                    			
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDearCode.g:1561:4: otherlv_19= 'Y el eco se desvanece.'
+                    {
+                    otherlv_19=(Token)match(input,103,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_19, grammarAccess.getBucleForAccess().getYElEcoSeDesvaneceKeyword_9_1());
+                    			
+
+                    }
+                    break;
+                case 3 :
+                    // InternalDearCode.g:1566:4: otherlv_20= 'Y la \\u00FAltima estrella se apague.'
+                    {
+                    otherlv_20=(Token)match(input,104,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_20, grammarAccess.getBucleForAccess().getYLaLtimaEstrellaSeApagueKeyword_9_2());
+                    			
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:1571:4: otherlv_21= 'Hasta que el \\u00FAltimo p\\u00E9talo caiga.'
+                    {
+                    otherlv_21=(Token)match(input,105,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_21, grammarAccess.getBucleForAccess().getHastaQueElLtimoPTaloCaigaKeyword_9_3());
+                    			
+
+                    }
+                    break;
+                case 5 :
+                    // InternalDearCode.g:1576:4: otherlv_22= 'Cuando el mar se quede en silencio.'
+                    {
+                    otherlv_22=(Token)match(input,106,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_22, grammarAccess.getBucleForAccess().getCuandoElMarSeQuedeEnSilencioKeyword_9_4());
+                    			
+
+                    }
+                    break;
+
+            }
+
 
             }
 
@@ -2917,7 +4819,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFuncion"
-    // InternalDearCode.g:1143:1: entryRuleFuncion returns [EObject current=null] : iv_ruleFuncion= ruleFuncion EOF ;
+    // InternalDearCode.g:1585:1: entryRuleFuncion returns [EObject current=null] : iv_ruleFuncion= ruleFuncion EOF ;
     public final EObject entryRuleFuncion() throws RecognitionException {
         EObject current = null;
 
@@ -2925,8 +4827,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:1143:48: (iv_ruleFuncion= ruleFuncion EOF )
-            // InternalDearCode.g:1144:2: iv_ruleFuncion= ruleFuncion EOF
+            // InternalDearCode.g:1585:48: (iv_ruleFuncion= ruleFuncion EOF )
+            // InternalDearCode.g:1586:2: iv_ruleFuncion= ruleFuncion EOF
             {
              newCompositeNode(grammarAccess.getFuncionRule()); 
             pushFollow(FOLLOW_1);
@@ -2953,69 +4855,112 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFuncion"
-    // InternalDearCode.g:1150:1: ruleFuncion returns [EObject current=null] : ( (otherlv_0= 'Dejo en estas l\\u00EDneas una promesa llamada' | otherlv_1= 'Escribo en estas l\\u00EDneas una intenci\\u00F3n llamada' | otherlv_2= 'En la brisa escondo un deseo llamado' ) ( (lv_name_3_0= ruleMI_ID ) ) (otherlv_4= 'que guarda en su esencia' ( (lv_parametros_5_0= ruleMI_ID ) ) (otherlv_6= ',' ( (lv_parametros_7_0= ruleMI_ID ) ) )* )? (otherlv_8= 'prometiendo devolver' ( (lv_tipo_9_0= ruleType ) ) )? otherlv_10= 'Cuando la promesa se cumple:' ( (lv_instrucciones_11_0= ruleElementoBloque ) )+ otherlv_12= 'As\\u00ED se sella la promesa.' ) ;
+    // InternalDearCode.g:1592:1: ruleFuncion returns [EObject current=null] : ( (otherlv_0= 'Dejo en estas l\\u00EDneas una promesa llamada' | otherlv_1= 'Escribo en estas l\\u00EDneas una intenci\\u00F3n llamada' | otherlv_2= 'En la brisa escondo un deseo llamado' | otherlv_3= 'Grabo en las estrellas una promesa llamada' | otherlv_4= 'Susurro al universo un deseo llamado' | otherlv_5= 'Tejo en el destino un juramento llamado' | otherlv_6= 'Esculpo en el tiempo un anhelo llamado' | otherlv_7= 'Susurro a la eternidad un sue\\u00F1o llamado' ) ( (lv_name_8_0= ruleMI_ID ) ) ( (otherlv_9= 'que guarda en su esencia' | otherlv_10= 'tejiendo' | otherlv_11= 'que abraza en su ser' | otherlv_12= 'que lleva en su alma' | otherlv_13= 'que susurra en su coraz\\u00F3n' ) ( (lv_parametros_14_0= ruleParametroDecl ) ) ( (otherlv_15= 'y' | otherlv_16= 'junto a' | otherlv_17= 'tambien' | otherlv_18= 'llevando consigo' ) ( (lv_parametros_19_0= ruleParametroDecl ) ) )* )? (otherlv_20= 'prometiendo devolver' | otherlv_21= 'jurando devolver' )? ( (lv_tipo_22_0= ruleType ) )? (otherlv_23= 'Cuando la promesa se cumple:' | otherlv_24= 'Cuando el amor se cumpla' ) ( (lv_instrucciones_25_0= ruleElementoBloque ) )+ (otherlv_26= 'As\\u00ED se sella la promesa.' | otherlv_27= 'As\\u00ED se eterniza.' | otherlv_28= 'Y as\\u00ED nuestro amor se inmortaliza.' | otherlv_29= 'Y el universo guarda nuestro secreto.' | otherlv_30= 'Y la eternidad nos abraza.' ) ) ;
     public final EObject ruleFuncion() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
         Token otherlv_1=null;
         Token otherlv_2=null;
+        Token otherlv_3=null;
         Token otherlv_4=null;
+        Token otherlv_5=null;
         Token otherlv_6=null;
-        Token otherlv_8=null;
+        Token otherlv_7=null;
+        Token otherlv_9=null;
         Token otherlv_10=null;
+        Token otherlv_11=null;
         Token otherlv_12=null;
-        EObject lv_name_3_0 = null;
+        Token otherlv_13=null;
+        Token otherlv_15=null;
+        Token otherlv_16=null;
+        Token otherlv_17=null;
+        Token otherlv_18=null;
+        Token otherlv_20=null;
+        Token otherlv_21=null;
+        Token otherlv_23=null;
+        Token otherlv_24=null;
+        Token otherlv_26=null;
+        Token otherlv_27=null;
+        Token otherlv_28=null;
+        Token otherlv_29=null;
+        Token otherlv_30=null;
+        EObject lv_name_8_0 = null;
 
-        EObject lv_parametros_5_0 = null;
+        EObject lv_parametros_14_0 = null;
 
-        EObject lv_parametros_7_0 = null;
+        EObject lv_parametros_19_0 = null;
 
-        AntlrDatatypeRuleToken lv_tipo_9_0 = null;
+        AntlrDatatypeRuleToken lv_tipo_22_0 = null;
 
-        EObject lv_instrucciones_11_0 = null;
+        EObject lv_instrucciones_25_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalDearCode.g:1156:2: ( ( (otherlv_0= 'Dejo en estas l\\u00EDneas una promesa llamada' | otherlv_1= 'Escribo en estas l\\u00EDneas una intenci\\u00F3n llamada' | otherlv_2= 'En la brisa escondo un deseo llamado' ) ( (lv_name_3_0= ruleMI_ID ) ) (otherlv_4= 'que guarda en su esencia' ( (lv_parametros_5_0= ruleMI_ID ) ) (otherlv_6= ',' ( (lv_parametros_7_0= ruleMI_ID ) ) )* )? (otherlv_8= 'prometiendo devolver' ( (lv_tipo_9_0= ruleType ) ) )? otherlv_10= 'Cuando la promesa se cumple:' ( (lv_instrucciones_11_0= ruleElementoBloque ) )+ otherlv_12= 'As\\u00ED se sella la promesa.' ) )
-            // InternalDearCode.g:1157:2: ( (otherlv_0= 'Dejo en estas l\\u00EDneas una promesa llamada' | otherlv_1= 'Escribo en estas l\\u00EDneas una intenci\\u00F3n llamada' | otherlv_2= 'En la brisa escondo un deseo llamado' ) ( (lv_name_3_0= ruleMI_ID ) ) (otherlv_4= 'que guarda en su esencia' ( (lv_parametros_5_0= ruleMI_ID ) ) (otherlv_6= ',' ( (lv_parametros_7_0= ruleMI_ID ) ) )* )? (otherlv_8= 'prometiendo devolver' ( (lv_tipo_9_0= ruleType ) ) )? otherlv_10= 'Cuando la promesa se cumple:' ( (lv_instrucciones_11_0= ruleElementoBloque ) )+ otherlv_12= 'As\\u00ED se sella la promesa.' )
+            // InternalDearCode.g:1598:2: ( ( (otherlv_0= 'Dejo en estas l\\u00EDneas una promesa llamada' | otherlv_1= 'Escribo en estas l\\u00EDneas una intenci\\u00F3n llamada' | otherlv_2= 'En la brisa escondo un deseo llamado' | otherlv_3= 'Grabo en las estrellas una promesa llamada' | otherlv_4= 'Susurro al universo un deseo llamado' | otherlv_5= 'Tejo en el destino un juramento llamado' | otherlv_6= 'Esculpo en el tiempo un anhelo llamado' | otherlv_7= 'Susurro a la eternidad un sue\\u00F1o llamado' ) ( (lv_name_8_0= ruleMI_ID ) ) ( (otherlv_9= 'que guarda en su esencia' | otherlv_10= 'tejiendo' | otherlv_11= 'que abraza en su ser' | otherlv_12= 'que lleva en su alma' | otherlv_13= 'que susurra en su coraz\\u00F3n' ) ( (lv_parametros_14_0= ruleParametroDecl ) ) ( (otherlv_15= 'y' | otherlv_16= 'junto a' | otherlv_17= 'tambien' | otherlv_18= 'llevando consigo' ) ( (lv_parametros_19_0= ruleParametroDecl ) ) )* )? (otherlv_20= 'prometiendo devolver' | otherlv_21= 'jurando devolver' )? ( (lv_tipo_22_0= ruleType ) )? (otherlv_23= 'Cuando la promesa se cumple:' | otherlv_24= 'Cuando el amor se cumpla' ) ( (lv_instrucciones_25_0= ruleElementoBloque ) )+ (otherlv_26= 'As\\u00ED se sella la promesa.' | otherlv_27= 'As\\u00ED se eterniza.' | otherlv_28= 'Y as\\u00ED nuestro amor se inmortaliza.' | otherlv_29= 'Y el universo guarda nuestro secreto.' | otherlv_30= 'Y la eternidad nos abraza.' ) ) )
+            // InternalDearCode.g:1599:2: ( (otherlv_0= 'Dejo en estas l\\u00EDneas una promesa llamada' | otherlv_1= 'Escribo en estas l\\u00EDneas una intenci\\u00F3n llamada' | otherlv_2= 'En la brisa escondo un deseo llamado' | otherlv_3= 'Grabo en las estrellas una promesa llamada' | otherlv_4= 'Susurro al universo un deseo llamado' | otherlv_5= 'Tejo en el destino un juramento llamado' | otherlv_6= 'Esculpo en el tiempo un anhelo llamado' | otherlv_7= 'Susurro a la eternidad un sue\\u00F1o llamado' ) ( (lv_name_8_0= ruleMI_ID ) ) ( (otherlv_9= 'que guarda en su esencia' | otherlv_10= 'tejiendo' | otherlv_11= 'que abraza en su ser' | otherlv_12= 'que lleva en su alma' | otherlv_13= 'que susurra en su coraz\\u00F3n' ) ( (lv_parametros_14_0= ruleParametroDecl ) ) ( (otherlv_15= 'y' | otherlv_16= 'junto a' | otherlv_17= 'tambien' | otherlv_18= 'llevando consigo' ) ( (lv_parametros_19_0= ruleParametroDecl ) ) )* )? (otherlv_20= 'prometiendo devolver' | otherlv_21= 'jurando devolver' )? ( (lv_tipo_22_0= ruleType ) )? (otherlv_23= 'Cuando la promesa se cumple:' | otherlv_24= 'Cuando el amor se cumpla' ) ( (lv_instrucciones_25_0= ruleElementoBloque ) )+ (otherlv_26= 'As\\u00ED se sella la promesa.' | otherlv_27= 'As\\u00ED se eterniza.' | otherlv_28= 'Y as\\u00ED nuestro amor se inmortaliza.' | otherlv_29= 'Y el universo guarda nuestro secreto.' | otherlv_30= 'Y la eternidad nos abraza.' ) )
             {
-            // InternalDearCode.g:1157:2: ( (otherlv_0= 'Dejo en estas l\\u00EDneas una promesa llamada' | otherlv_1= 'Escribo en estas l\\u00EDneas una intenci\\u00F3n llamada' | otherlv_2= 'En la brisa escondo un deseo llamado' ) ( (lv_name_3_0= ruleMI_ID ) ) (otherlv_4= 'que guarda en su esencia' ( (lv_parametros_5_0= ruleMI_ID ) ) (otherlv_6= ',' ( (lv_parametros_7_0= ruleMI_ID ) ) )* )? (otherlv_8= 'prometiendo devolver' ( (lv_tipo_9_0= ruleType ) ) )? otherlv_10= 'Cuando la promesa se cumple:' ( (lv_instrucciones_11_0= ruleElementoBloque ) )+ otherlv_12= 'As\\u00ED se sella la promesa.' )
-            // InternalDearCode.g:1158:3: (otherlv_0= 'Dejo en estas l\\u00EDneas una promesa llamada' | otherlv_1= 'Escribo en estas l\\u00EDneas una intenci\\u00F3n llamada' | otherlv_2= 'En la brisa escondo un deseo llamado' ) ( (lv_name_3_0= ruleMI_ID ) ) (otherlv_4= 'que guarda en su esencia' ( (lv_parametros_5_0= ruleMI_ID ) ) (otherlv_6= ',' ( (lv_parametros_7_0= ruleMI_ID ) ) )* )? (otherlv_8= 'prometiendo devolver' ( (lv_tipo_9_0= ruleType ) ) )? otherlv_10= 'Cuando la promesa se cumple:' ( (lv_instrucciones_11_0= ruleElementoBloque ) )+ otherlv_12= 'As\\u00ED se sella la promesa.'
+            // InternalDearCode.g:1599:2: ( (otherlv_0= 'Dejo en estas l\\u00EDneas una promesa llamada' | otherlv_1= 'Escribo en estas l\\u00EDneas una intenci\\u00F3n llamada' | otherlv_2= 'En la brisa escondo un deseo llamado' | otherlv_3= 'Grabo en las estrellas una promesa llamada' | otherlv_4= 'Susurro al universo un deseo llamado' | otherlv_5= 'Tejo en el destino un juramento llamado' | otherlv_6= 'Esculpo en el tiempo un anhelo llamado' | otherlv_7= 'Susurro a la eternidad un sue\\u00F1o llamado' ) ( (lv_name_8_0= ruleMI_ID ) ) ( (otherlv_9= 'que guarda en su esencia' | otherlv_10= 'tejiendo' | otherlv_11= 'que abraza en su ser' | otherlv_12= 'que lleva en su alma' | otherlv_13= 'que susurra en su coraz\\u00F3n' ) ( (lv_parametros_14_0= ruleParametroDecl ) ) ( (otherlv_15= 'y' | otherlv_16= 'junto a' | otherlv_17= 'tambien' | otherlv_18= 'llevando consigo' ) ( (lv_parametros_19_0= ruleParametroDecl ) ) )* )? (otherlv_20= 'prometiendo devolver' | otherlv_21= 'jurando devolver' )? ( (lv_tipo_22_0= ruleType ) )? (otherlv_23= 'Cuando la promesa se cumple:' | otherlv_24= 'Cuando el amor se cumpla' ) ( (lv_instrucciones_25_0= ruleElementoBloque ) )+ (otherlv_26= 'As\\u00ED se sella la promesa.' | otherlv_27= 'As\\u00ED se eterniza.' | otherlv_28= 'Y as\\u00ED nuestro amor se inmortaliza.' | otherlv_29= 'Y el universo guarda nuestro secreto.' | otherlv_30= 'Y la eternidad nos abraza.' ) )
+            // InternalDearCode.g:1600:3: (otherlv_0= 'Dejo en estas l\\u00EDneas una promesa llamada' | otherlv_1= 'Escribo en estas l\\u00EDneas una intenci\\u00F3n llamada' | otherlv_2= 'En la brisa escondo un deseo llamado' | otherlv_3= 'Grabo en las estrellas una promesa llamada' | otherlv_4= 'Susurro al universo un deseo llamado' | otherlv_5= 'Tejo en el destino un juramento llamado' | otherlv_6= 'Esculpo en el tiempo un anhelo llamado' | otherlv_7= 'Susurro a la eternidad un sue\\u00F1o llamado' ) ( (lv_name_8_0= ruleMI_ID ) ) ( (otherlv_9= 'que guarda en su esencia' | otherlv_10= 'tejiendo' | otherlv_11= 'que abraza en su ser' | otherlv_12= 'que lleva en su alma' | otherlv_13= 'que susurra en su coraz\\u00F3n' ) ( (lv_parametros_14_0= ruleParametroDecl ) ) ( (otherlv_15= 'y' | otherlv_16= 'junto a' | otherlv_17= 'tambien' | otherlv_18= 'llevando consigo' ) ( (lv_parametros_19_0= ruleParametroDecl ) ) )* )? (otherlv_20= 'prometiendo devolver' | otherlv_21= 'jurando devolver' )? ( (lv_tipo_22_0= ruleType ) )? (otherlv_23= 'Cuando la promesa se cumple:' | otherlv_24= 'Cuando el amor se cumpla' ) ( (lv_instrucciones_25_0= ruleElementoBloque ) )+ (otherlv_26= 'As\\u00ED se sella la promesa.' | otherlv_27= 'As\\u00ED se eterniza.' | otherlv_28= 'Y as\\u00ED nuestro amor se inmortaliza.' | otherlv_29= 'Y el universo guarda nuestro secreto.' | otherlv_30= 'Y la eternidad nos abraza.' )
             {
-            // InternalDearCode.g:1158:3: (otherlv_0= 'Dejo en estas l\\u00EDneas una promesa llamada' | otherlv_1= 'Escribo en estas l\\u00EDneas una intenci\\u00F3n llamada' | otherlv_2= 'En la brisa escondo un deseo llamado' )
-            int alt18=3;
+            // InternalDearCode.g:1600:3: (otherlv_0= 'Dejo en estas l\\u00EDneas una promesa llamada' | otherlv_1= 'Escribo en estas l\\u00EDneas una intenci\\u00F3n llamada' | otherlv_2= 'En la brisa escondo un deseo llamado' | otherlv_3= 'Grabo en las estrellas una promesa llamada' | otherlv_4= 'Susurro al universo un deseo llamado' | otherlv_5= 'Tejo en el destino un juramento llamado' | otherlv_6= 'Esculpo en el tiempo un anhelo llamado' | otherlv_7= 'Susurro a la eternidad un sue\\u00F1o llamado' )
+            int alt33=8;
             switch ( input.LA(1) ) {
-            case 36:
+            case 107:
                 {
-                alt18=1;
+                alt33=1;
                 }
                 break;
-            case 37:
+            case 108:
                 {
-                alt18=2;
+                alt33=2;
                 }
                 break;
-            case 38:
+            case 109:
                 {
-                alt18=3;
+                alt33=3;
+                }
+                break;
+            case 110:
+                {
+                alt33=4;
+                }
+                break;
+            case 111:
+                {
+                alt33=5;
+                }
+                break;
+            case 112:
+                {
+                alt33=6;
+                }
+                break;
+            case 113:
+                {
+                alt33=7;
+                }
+                break;
+            case 114:
+                {
+                alt33=8;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 18, 0, input);
+                    new NoViableAltException("", 33, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt18) {
+            switch (alt33) {
                 case 1 :
-                    // InternalDearCode.g:1159:4: otherlv_0= 'Dejo en estas l\\u00EDneas una promesa llamada'
+                    // InternalDearCode.g:1601:4: otherlv_0= 'Dejo en estas l\\u00EDneas una promesa llamada'
                     {
-                    otherlv_0=(Token)match(input,36,FOLLOW_5); 
+                    otherlv_0=(Token)match(input,107,FOLLOW_9); 
 
                     				newLeafNode(otherlv_0, grammarAccess.getFuncionAccess().getDejoEnEstasLNeasUnaPromesaLlamadaKeyword_0_0());
                     			
@@ -3023,9 +4968,9 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalDearCode.g:1164:4: otherlv_1= 'Escribo en estas l\\u00EDneas una intenci\\u00F3n llamada'
+                    // InternalDearCode.g:1606:4: otherlv_1= 'Escribo en estas l\\u00EDneas una intenci\\u00F3n llamada'
                     {
-                    otherlv_1=(Token)match(input,37,FOLLOW_5); 
+                    otherlv_1=(Token)match(input,108,FOLLOW_9); 
 
                     				newLeafNode(otherlv_1, grammarAccess.getFuncionAccess().getEscriboEnEstasLNeasUnaIntenciNLlamadaKeyword_0_1());
                     			
@@ -3033,11 +4978,61 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalDearCode.g:1169:4: otherlv_2= 'En la brisa escondo un deseo llamado'
+                    // InternalDearCode.g:1611:4: otherlv_2= 'En la brisa escondo un deseo llamado'
                     {
-                    otherlv_2=(Token)match(input,38,FOLLOW_5); 
+                    otherlv_2=(Token)match(input,109,FOLLOW_9); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getFuncionAccess().getEnLaBrisaEscondoUnDeseoLlamadoKeyword_0_2());
+                    			
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:1616:4: otherlv_3= 'Grabo en las estrellas una promesa llamada'
+                    {
+                    otherlv_3=(Token)match(input,110,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_3, grammarAccess.getFuncionAccess().getGraboEnLasEstrellasUnaPromesaLlamadaKeyword_0_3());
+                    			
+
+                    }
+                    break;
+                case 5 :
+                    // InternalDearCode.g:1621:4: otherlv_4= 'Susurro al universo un deseo llamado'
+                    {
+                    otherlv_4=(Token)match(input,111,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_4, grammarAccess.getFuncionAccess().getSusurroAlUniversoUnDeseoLlamadoKeyword_0_4());
+                    			
+
+                    }
+                    break;
+                case 6 :
+                    // InternalDearCode.g:1626:4: otherlv_5= 'Tejo en el destino un juramento llamado'
+                    {
+                    otherlv_5=(Token)match(input,112,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_5, grammarAccess.getFuncionAccess().getTejoEnElDestinoUnJuramentoLlamadoKeyword_0_5());
+                    			
+
+                    }
+                    break;
+                case 7 :
+                    // InternalDearCode.g:1631:4: otherlv_6= 'Esculpo en el tiempo un anhelo llamado'
+                    {
+                    otherlv_6=(Token)match(input,113,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_6, grammarAccess.getFuncionAccess().getEsculpoEnElTiempoUnAnheloLlamadoKeyword_0_6());
+                    			
+
+                    }
+                    break;
+                case 8 :
+                    // InternalDearCode.g:1636:4: otherlv_7= 'Susurro a la eternidad un sue\\u00F1o llamado'
+                    {
+                    otherlv_7=(Token)match(input,114,FOLLOW_9); 
+
+                    				newLeafNode(otherlv_7, grammarAccess.getFuncionAccess().getSusurroALaEternidadUnSueOLlamadoKeyword_0_7());
                     			
 
                     }
@@ -3045,17 +5040,17 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDearCode.g:1174:3: ( (lv_name_3_0= ruleMI_ID ) )
-            // InternalDearCode.g:1175:4: (lv_name_3_0= ruleMI_ID )
+            // InternalDearCode.g:1641:3: ( (lv_name_8_0= ruleMI_ID ) )
+            // InternalDearCode.g:1642:4: (lv_name_8_0= ruleMI_ID )
             {
-            // InternalDearCode.g:1175:4: (lv_name_3_0= ruleMI_ID )
-            // InternalDearCode.g:1176:5: lv_name_3_0= ruleMI_ID
+            // InternalDearCode.g:1642:4: (lv_name_8_0= ruleMI_ID )
+            // InternalDearCode.g:1643:5: lv_name_8_0= ruleMI_ID
             {
 
             					newCompositeNode(grammarAccess.getFuncionAccess().getNameMI_IDParserRuleCall_1_0());
             				
-            pushFollow(FOLLOW_26);
-            lv_name_3_0=ruleMI_ID();
+            pushFollow(FOLLOW_30);
+            lv_name_8_0=ruleMI_ID();
 
             state._fsp--;
 
@@ -3066,7 +5061,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             					set(
             						current,
             						"name",
-            						lv_name_3_0,
+            						lv_name_8_0,
             						"edu.upb.lp.DearCode.MI_ID");
             					afterParserOrEnumRuleCall();
             				
@@ -3076,32 +5071,117 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDearCode.g:1193:3: (otherlv_4= 'que guarda en su esencia' ( (lv_parametros_5_0= ruleMI_ID ) ) (otherlv_6= ',' ( (lv_parametros_7_0= ruleMI_ID ) ) )* )?
-            int alt20=2;
-            int LA20_0 = input.LA(1);
+            // InternalDearCode.g:1660:3: ( (otherlv_9= 'que guarda en su esencia' | otherlv_10= 'tejiendo' | otherlv_11= 'que abraza en su ser' | otherlv_12= 'que lleva en su alma' | otherlv_13= 'que susurra en su coraz\\u00F3n' ) ( (lv_parametros_14_0= ruleParametroDecl ) ) ( (otherlv_15= 'y' | otherlv_16= 'junto a' | otherlv_17= 'tambien' | otherlv_18= 'llevando consigo' ) ( (lv_parametros_19_0= ruleParametroDecl ) ) )* )?
+            int alt37=2;
+            int LA37_0 = input.LA(1);
 
-            if ( (LA20_0==39) ) {
-                alt20=1;
+            if ( ((LA37_0>=115 && LA37_0<=119)) ) {
+                alt37=1;
             }
-            switch (alt20) {
+            switch (alt37) {
                 case 1 :
-                    // InternalDearCode.g:1194:4: otherlv_4= 'que guarda en su esencia' ( (lv_parametros_5_0= ruleMI_ID ) ) (otherlv_6= ',' ( (lv_parametros_7_0= ruleMI_ID ) ) )*
+                    // InternalDearCode.g:1661:4: (otherlv_9= 'que guarda en su esencia' | otherlv_10= 'tejiendo' | otherlv_11= 'que abraza en su ser' | otherlv_12= 'que lleva en su alma' | otherlv_13= 'que susurra en su coraz\\u00F3n' ) ( (lv_parametros_14_0= ruleParametroDecl ) ) ( (otherlv_15= 'y' | otherlv_16= 'junto a' | otherlv_17= 'tambien' | otherlv_18= 'llevando consigo' ) ( (lv_parametros_19_0= ruleParametroDecl ) ) )*
                     {
-                    otherlv_4=(Token)match(input,39,FOLLOW_5); 
+                    // InternalDearCode.g:1661:4: (otherlv_9= 'que guarda en su esencia' | otherlv_10= 'tejiendo' | otherlv_11= 'que abraza en su ser' | otherlv_12= 'que lleva en su alma' | otherlv_13= 'que susurra en su coraz\\u00F3n' )
+                    int alt34=5;
+                    switch ( input.LA(1) ) {
+                    case 115:
+                        {
+                        alt34=1;
+                        }
+                        break;
+                    case 116:
+                        {
+                        alt34=2;
+                        }
+                        break;
+                    case 117:
+                        {
+                        alt34=3;
+                        }
+                        break;
+                    case 118:
+                        {
+                        alt34=4;
+                        }
+                        break;
+                    case 119:
+                        {
+                        alt34=5;
+                        }
+                        break;
+                    default:
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 34, 0, input);
 
-                    				newLeafNode(otherlv_4, grammarAccess.getFuncionAccess().getQueGuardaEnSuEsenciaKeyword_2_0());
-                    			
-                    // InternalDearCode.g:1198:4: ( (lv_parametros_5_0= ruleMI_ID ) )
-                    // InternalDearCode.g:1199:5: (lv_parametros_5_0= ruleMI_ID )
+                        throw nvae;
+                    }
+
+                    switch (alt34) {
+                        case 1 :
+                            // InternalDearCode.g:1662:5: otherlv_9= 'que guarda en su esencia'
+                            {
+                            otherlv_9=(Token)match(input,115,FOLLOW_12); 
+
+                            					newLeafNode(otherlv_9, grammarAccess.getFuncionAccess().getQueGuardaEnSuEsenciaKeyword_2_0_0());
+                            				
+
+                            }
+                            break;
+                        case 2 :
+                            // InternalDearCode.g:1667:5: otherlv_10= 'tejiendo'
+                            {
+                            otherlv_10=(Token)match(input,116,FOLLOW_12); 
+
+                            					newLeafNode(otherlv_10, grammarAccess.getFuncionAccess().getTejiendoKeyword_2_0_1());
+                            				
+
+                            }
+                            break;
+                        case 3 :
+                            // InternalDearCode.g:1672:5: otherlv_11= 'que abraza en su ser'
+                            {
+                            otherlv_11=(Token)match(input,117,FOLLOW_12); 
+
+                            					newLeafNode(otherlv_11, grammarAccess.getFuncionAccess().getQueAbrazaEnSuSerKeyword_2_0_2());
+                            				
+
+                            }
+                            break;
+                        case 4 :
+                            // InternalDearCode.g:1677:5: otherlv_12= 'que lleva en su alma'
+                            {
+                            otherlv_12=(Token)match(input,118,FOLLOW_12); 
+
+                            					newLeafNode(otherlv_12, grammarAccess.getFuncionAccess().getQueLlevaEnSuAlmaKeyword_2_0_3());
+                            				
+
+                            }
+                            break;
+                        case 5 :
+                            // InternalDearCode.g:1682:5: otherlv_13= 'que susurra en su coraz\\u00F3n'
+                            {
+                            otherlv_13=(Token)match(input,119,FOLLOW_12); 
+
+                            					newLeafNode(otherlv_13, grammarAccess.getFuncionAccess().getQueSusurraEnSuCorazNKeyword_2_0_4());
+                            				
+
+                            }
+                            break;
+
+                    }
+
+                    // InternalDearCode.g:1687:4: ( (lv_parametros_14_0= ruleParametroDecl ) )
+                    // InternalDearCode.g:1688:5: (lv_parametros_14_0= ruleParametroDecl )
                     {
-                    // InternalDearCode.g:1199:5: (lv_parametros_5_0= ruleMI_ID )
-                    // InternalDearCode.g:1200:6: lv_parametros_5_0= ruleMI_ID
+                    // InternalDearCode.g:1688:5: (lv_parametros_14_0= ruleParametroDecl )
+                    // InternalDearCode.g:1689:6: lv_parametros_14_0= ruleParametroDecl
                     {
 
-                    						newCompositeNode(grammarAccess.getFuncionAccess().getParametrosMI_IDParserRuleCall_2_1_0());
+                    						newCompositeNode(grammarAccess.getFuncionAccess().getParametrosParametroDeclParserRuleCall_2_1_0());
                     					
-                    pushFollow(FOLLOW_27);
-                    lv_parametros_5_0=ruleMI_ID();
+                    pushFollow(FOLLOW_31);
+                    lv_parametros_14_0=ruleParametroDecl();
 
                     state._fsp--;
 
@@ -3112,8 +5192,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     						add(
                     							current,
                     							"parametros",
-                    							lv_parametros_5_0,
-                    							"edu.upb.lp.DearCode.MI_ID");
+                    							lv_parametros_14_0,
+                    							"edu.upb.lp.DearCode.ParametroDecl");
                     						afterParserOrEnumRuleCall();
                     					
 
@@ -3122,36 +5202,106 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalDearCode.g:1217:4: (otherlv_6= ',' ( (lv_parametros_7_0= ruleMI_ID ) ) )*
-                    loop19:
+                    // InternalDearCode.g:1706:4: ( (otherlv_15= 'y' | otherlv_16= 'junto a' | otherlv_17= 'tambien' | otherlv_18= 'llevando consigo' ) ( (lv_parametros_19_0= ruleParametroDecl ) ) )*
+                    loop36:
                     do {
-                        int alt19=2;
-                        int LA19_0 = input.LA(1);
+                        int alt36=2;
+                        int LA36_0 = input.LA(1);
 
-                        if ( (LA19_0==21) ) {
-                            alt19=1;
+                        if ( ((LA36_0>=120 && LA36_0<=123)) ) {
+                            alt36=1;
                         }
 
 
-                        switch (alt19) {
+                        switch (alt36) {
                     	case 1 :
-                    	    // InternalDearCode.g:1218:5: otherlv_6= ',' ( (lv_parametros_7_0= ruleMI_ID ) )
+                    	    // InternalDearCode.g:1707:5: (otherlv_15= 'y' | otherlv_16= 'junto a' | otherlv_17= 'tambien' | otherlv_18= 'llevando consigo' ) ( (lv_parametros_19_0= ruleParametroDecl ) )
                     	    {
-                    	    otherlv_6=(Token)match(input,21,FOLLOW_5); 
+                    	    // InternalDearCode.g:1707:5: (otherlv_15= 'y' | otherlv_16= 'junto a' | otherlv_17= 'tambien' | otherlv_18= 'llevando consigo' )
+                    	    int alt35=4;
+                    	    switch ( input.LA(1) ) {
+                    	    case 120:
+                    	        {
+                    	        alt35=1;
+                    	        }
+                    	        break;
+                    	    case 121:
+                    	        {
+                    	        alt35=2;
+                    	        }
+                    	        break;
+                    	    case 122:
+                    	        {
+                    	        alt35=3;
+                    	        }
+                    	        break;
+                    	    case 123:
+                    	        {
+                    	        alt35=4;
+                    	        }
+                    	        break;
+                    	    default:
+                    	        NoViableAltException nvae =
+                    	            new NoViableAltException("", 35, 0, input);
 
-                    	    					newLeafNode(otherlv_6, grammarAccess.getFuncionAccess().getCommaKeyword_2_2_0());
-                    	    				
-                    	    // InternalDearCode.g:1222:5: ( (lv_parametros_7_0= ruleMI_ID ) )
-                    	    // InternalDearCode.g:1223:6: (lv_parametros_7_0= ruleMI_ID )
+                    	        throw nvae;
+                    	    }
+
+                    	    switch (alt35) {
+                    	        case 1 :
+                    	            // InternalDearCode.g:1708:6: otherlv_15= 'y'
+                    	            {
+                    	            otherlv_15=(Token)match(input,120,FOLLOW_12); 
+
+                    	            						newLeafNode(otherlv_15, grammarAccess.getFuncionAccess().getYKeyword_2_2_0_0());
+                    	            					
+
+                    	            }
+                    	            break;
+                    	        case 2 :
+                    	            // InternalDearCode.g:1713:6: otherlv_16= 'junto a'
+                    	            {
+                    	            otherlv_16=(Token)match(input,121,FOLLOW_12); 
+
+                    	            						newLeafNode(otherlv_16, grammarAccess.getFuncionAccess().getJuntoAKeyword_2_2_0_1());
+                    	            					
+
+                    	            }
+                    	            break;
+                    	        case 3 :
+                    	            // InternalDearCode.g:1718:6: otherlv_17= 'tambien'
+                    	            {
+                    	            otherlv_17=(Token)match(input,122,FOLLOW_12); 
+
+                    	            						newLeafNode(otherlv_17, grammarAccess.getFuncionAccess().getTambienKeyword_2_2_0_2());
+                    	            					
+
+                    	            }
+                    	            break;
+                    	        case 4 :
+                    	            // InternalDearCode.g:1723:6: otherlv_18= 'llevando consigo'
+                    	            {
+                    	            otherlv_18=(Token)match(input,123,FOLLOW_12); 
+
+                    	            						newLeafNode(otherlv_18, grammarAccess.getFuncionAccess().getLlevandoConsigoKeyword_2_2_0_3());
+                    	            					
+
+                    	            }
+                    	            break;
+
+                    	    }
+
+                    	    // InternalDearCode.g:1728:5: ( (lv_parametros_19_0= ruleParametroDecl ) )
+                    	    // InternalDearCode.g:1729:6: (lv_parametros_19_0= ruleParametroDecl )
                     	    {
-                    	    // InternalDearCode.g:1223:6: (lv_parametros_7_0= ruleMI_ID )
-                    	    // InternalDearCode.g:1224:7: lv_parametros_7_0= ruleMI_ID
+                    	    // InternalDearCode.g:1729:6: (lv_parametros_19_0= ruleParametroDecl )
+                    	    // InternalDearCode.g:1730:7: lv_parametros_19_0= ruleParametroDecl
                     	    {
 
-                    	    							newCompositeNode(grammarAccess.getFuncionAccess().getParametrosMI_IDParserRuleCall_2_2_1_0());
+                    	    							newCompositeNode(grammarAccess.getFuncionAccess().getParametrosParametroDeclParserRuleCall_2_2_1_0());
                     	    						
-                    	    pushFollow(FOLLOW_27);
-                    	    lv_parametros_7_0=ruleMI_ID();
+                    	    pushFollow(FOLLOW_31);
+                    	    lv_parametros_19_0=ruleParametroDecl();
 
                     	    state._fsp--;
 
@@ -3162,8 +5312,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     	    							add(
                     	    								current,
                     	    								"parametros",
-                    	    								lv_parametros_7_0,
-                    	    								"edu.upb.lp.DearCode.MI_ID");
+                    	    								lv_parametros_19_0,
+                    	    								"edu.upb.lp.DearCode.ParametroDecl");
                     	    							afterParserOrEnumRuleCall();
                     	    						
 
@@ -3177,7 +5327,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     	    break;
 
                     	default :
-                    	    break loop19;
+                    	    break loop36;
                         }
                     } while (true);
 
@@ -3187,49 +5337,73 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDearCode.g:1243:3: (otherlv_8= 'prometiendo devolver' ( (lv_tipo_9_0= ruleType ) ) )?
-            int alt21=2;
-            int LA21_0 = input.LA(1);
+            // InternalDearCode.g:1749:3: (otherlv_20= 'prometiendo devolver' | otherlv_21= 'jurando devolver' )?
+            int alt38=3;
+            int LA38_0 = input.LA(1);
 
-            if ( (LA21_0==40) ) {
-                alt21=1;
+            if ( (LA38_0==124) ) {
+                alt38=1;
             }
-            switch (alt21) {
+            else if ( (LA38_0==125) ) {
+                alt38=2;
+            }
+            switch (alt38) {
                 case 1 :
-                    // InternalDearCode.g:1244:4: otherlv_8= 'prometiendo devolver' ( (lv_tipo_9_0= ruleType ) )
+                    // InternalDearCode.g:1750:4: otherlv_20= 'prometiendo devolver'
                     {
-                    otherlv_8=(Token)match(input,40,FOLLOW_28); 
+                    otherlv_20=(Token)match(input,124,FOLLOW_32); 
 
-                    				newLeafNode(otherlv_8, grammarAccess.getFuncionAccess().getPrometiendoDevolverKeyword_3_0());
+                    				newLeafNode(otherlv_20, grammarAccess.getFuncionAccess().getPrometiendoDevolverKeyword_3_0());
                     			
-                    // InternalDearCode.g:1248:4: ( (lv_tipo_9_0= ruleType ) )
-                    // InternalDearCode.g:1249:5: (lv_tipo_9_0= ruleType )
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDearCode.g:1755:4: otherlv_21= 'jurando devolver'
                     {
-                    // InternalDearCode.g:1249:5: (lv_tipo_9_0= ruleType )
-                    // InternalDearCode.g:1250:6: lv_tipo_9_0= ruleType
+                    otherlv_21=(Token)match(input,125,FOLLOW_32); 
+
+                    				newLeafNode(otherlv_21, grammarAccess.getFuncionAccess().getJurandoDevolverKeyword_3_1());
+                    			
+
+                    }
+                    break;
+
+            }
+
+            // InternalDearCode.g:1760:3: ( (lv_tipo_22_0= ruleType ) )?
+            int alt39=2;
+            int LA39_0 = input.LA(1);
+
+            if ( ((LA39_0>=22 && LA39_0<=24)) ) {
+                alt39=1;
+            }
+            switch (alt39) {
+                case 1 :
+                    // InternalDearCode.g:1761:4: (lv_tipo_22_0= ruleType )
+                    {
+                    // InternalDearCode.g:1761:4: (lv_tipo_22_0= ruleType )
+                    // InternalDearCode.g:1762:5: lv_tipo_22_0= ruleType
                     {
 
-                    						newCompositeNode(grammarAccess.getFuncionAccess().getTipoTypeParserRuleCall_3_1_0());
-                    					
-                    pushFollow(FOLLOW_29);
-                    lv_tipo_9_0=ruleType();
+                    					newCompositeNode(grammarAccess.getFuncionAccess().getTipoTypeParserRuleCall_4_0());
+                    				
+                    pushFollow(FOLLOW_33);
+                    lv_tipo_22_0=ruleType();
 
                     state._fsp--;
 
 
-                    						if (current==null) {
-                    							current = createModelElementForParent(grammarAccess.getFuncionRule());
-                    						}
-                    						set(
-                    							current,
-                    							"tipo",
-                    							lv_tipo_9_0,
-                    							"edu.upb.lp.DearCode.Type");
-                    						afterParserOrEnumRuleCall();
-                    					
-
-                    }
-
+                    					if (current==null) {
+                    						current = createModelElementForParent(grammarAccess.getFuncionRule());
+                    					}
+                    					set(
+                    						current,
+                    						"tipo",
+                    						lv_tipo_22_0,
+                    						"edu.upb.lp.DearCode.Type");
+                    					afterParserOrEnumRuleCall();
+                    				
 
                     }
 
@@ -3239,34 +5413,70 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_10=(Token)match(input,41,FOLLOW_15); 
+            // InternalDearCode.g:1779:3: (otherlv_23= 'Cuando la promesa se cumple:' | otherlv_24= 'Cuando el amor se cumpla' )
+            int alt40=2;
+            int LA40_0 = input.LA(1);
 
-            			newLeafNode(otherlv_10, grammarAccess.getFuncionAccess().getCuandoLaPromesaSeCumpleKeyword_4());
-            		
-            // InternalDearCode.g:1272:3: ( (lv_instrucciones_11_0= ruleElementoBloque ) )+
-            int cnt22=0;
-            loop22:
+            if ( (LA40_0==126) ) {
+                alt40=1;
+            }
+            else if ( (LA40_0==127) ) {
+                alt40=2;
+            }
+            else {
+                NoViableAltException nvae =
+                    new NoViableAltException("", 40, 0, input);
+
+                throw nvae;
+            }
+            switch (alt40) {
+                case 1 :
+                    // InternalDearCode.g:1780:4: otherlv_23= 'Cuando la promesa se cumple:'
+                    {
+                    otherlv_23=(Token)match(input,126,FOLLOW_17); 
+
+                    				newLeafNode(otherlv_23, grammarAccess.getFuncionAccess().getCuandoLaPromesaSeCumpleKeyword_5_0());
+                    			
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDearCode.g:1785:4: otherlv_24= 'Cuando el amor se cumpla'
+                    {
+                    otherlv_24=(Token)match(input,127,FOLLOW_17); 
+
+                    				newLeafNode(otherlv_24, grammarAccess.getFuncionAccess().getCuandoElAmorSeCumplaKeyword_5_1());
+                    			
+
+                    }
+                    break;
+
+            }
+
+            // InternalDearCode.g:1790:3: ( (lv_instrucciones_25_0= ruleElementoBloque ) )+
+            int cnt41=0;
+            loop41:
             do {
-                int alt22=2;
-                int LA22_0 = input.LA(1);
+                int alt41=2;
+                int LA41_0 = input.LA(1);
 
-                if ( (LA22_0==16||(LA22_0>=19 && LA22_0<=20)||(LA22_0>=26 && LA22_0<=27)||LA22_0==30||(LA22_0>=36 && LA22_0<=38)||LA22_0==43||LA22_0==65||(LA22_0>=73 && LA22_0<=79)) ) {
-                    alt22=1;
+                if ( ((LA41_0>=25 && LA41_0<=33)||(LA41_0>=43 && LA41_0<=54)||(LA41_0>=72 && LA41_0<=78)||(LA41_0>=89 && LA41_0<=93)||(LA41_0>=107 && LA41_0<=114)||(LA41_0>=133 && LA41_0<=137)||(LA41_0>=201 && LA41_0<=204)||(LA41_0>=212 && LA41_0<=229)) ) {
+                    alt41=1;
                 }
 
 
-                switch (alt22) {
+                switch (alt41) {
             	case 1 :
-            	    // InternalDearCode.g:1273:4: (lv_instrucciones_11_0= ruleElementoBloque )
+            	    // InternalDearCode.g:1791:4: (lv_instrucciones_25_0= ruleElementoBloque )
             	    {
-            	    // InternalDearCode.g:1273:4: (lv_instrucciones_11_0= ruleElementoBloque )
-            	    // InternalDearCode.g:1274:5: lv_instrucciones_11_0= ruleElementoBloque
+            	    // InternalDearCode.g:1791:4: (lv_instrucciones_25_0= ruleElementoBloque )
+            	    // InternalDearCode.g:1792:5: lv_instrucciones_25_0= ruleElementoBloque
             	    {
 
-            	    					newCompositeNode(grammarAccess.getFuncionAccess().getInstruccionesElementoBloqueParserRuleCall_5_0());
+            	    					newCompositeNode(grammarAccess.getFuncionAccess().getInstruccionesElementoBloqueParserRuleCall_6_0());
             	    				
-            	    pushFollow(FOLLOW_30);
-            	    lv_instrucciones_11_0=ruleElementoBloque();
+            	    pushFollow(FOLLOW_34);
+            	    lv_instrucciones_25_0=ruleElementoBloque();
 
             	    state._fsp--;
 
@@ -3277,7 +5487,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	    					add(
             	    						current,
             	    						"instrucciones",
-            	    						lv_instrucciones_11_0,
+            	    						lv_instrucciones_25_0,
             	    						"edu.upb.lp.DearCode.ElementoBloque");
             	    					afterParserOrEnumRuleCall();
             	    				
@@ -3289,18 +5499,103 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    if ( cnt22 >= 1 ) break loop22;
+            	    if ( cnt41 >= 1 ) break loop41;
                         EarlyExitException eee =
-                            new EarlyExitException(22, input);
+                            new EarlyExitException(41, input);
                         throw eee;
                 }
-                cnt22++;
+                cnt41++;
             } while (true);
 
-            otherlv_12=(Token)match(input,42,FOLLOW_2); 
+            // InternalDearCode.g:1809:3: (otherlv_26= 'As\\u00ED se sella la promesa.' | otherlv_27= 'As\\u00ED se eterniza.' | otherlv_28= 'Y as\\u00ED nuestro amor se inmortaliza.' | otherlv_29= 'Y el universo guarda nuestro secreto.' | otherlv_30= 'Y la eternidad nos abraza.' )
+            int alt42=5;
+            switch ( input.LA(1) ) {
+            case 128:
+                {
+                alt42=1;
+                }
+                break;
+            case 129:
+                {
+                alt42=2;
+                }
+                break;
+            case 130:
+                {
+                alt42=3;
+                }
+                break;
+            case 131:
+                {
+                alt42=4;
+                }
+                break;
+            case 132:
+                {
+                alt42=5;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 42, 0, input);
 
-            			newLeafNode(otherlv_12, grammarAccess.getFuncionAccess().getAsSeSellaLaPromesaKeyword_6());
-            		
+                throw nvae;
+            }
+
+            switch (alt42) {
+                case 1 :
+                    // InternalDearCode.g:1810:4: otherlv_26= 'As\\u00ED se sella la promesa.'
+                    {
+                    otherlv_26=(Token)match(input,128,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_26, grammarAccess.getFuncionAccess().getAsSeSellaLaPromesaKeyword_7_0());
+                    			
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDearCode.g:1815:4: otherlv_27= 'As\\u00ED se eterniza.'
+                    {
+                    otherlv_27=(Token)match(input,129,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_27, grammarAccess.getFuncionAccess().getAsSeEternizaKeyword_7_1());
+                    			
+
+                    }
+                    break;
+                case 3 :
+                    // InternalDearCode.g:1820:4: otherlv_28= 'Y as\\u00ED nuestro amor se inmortaliza.'
+                    {
+                    otherlv_28=(Token)match(input,130,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_28, grammarAccess.getFuncionAccess().getYAsNuestroAmorSeInmortalizaKeyword_7_2());
+                    			
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:1825:4: otherlv_29= 'Y el universo guarda nuestro secreto.'
+                    {
+                    otherlv_29=(Token)match(input,131,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_29, grammarAccess.getFuncionAccess().getYElUniversoGuardaNuestroSecretoKeyword_7_3());
+                    			
+
+                    }
+                    break;
+                case 5 :
+                    // InternalDearCode.g:1830:4: otherlv_30= 'Y la eternidad nos abraza.'
+                    {
+                    otherlv_30=(Token)match(input,132,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_30, grammarAccess.getFuncionAccess().getYLaEternidadNosAbrazaKeyword_7_4());
+                    			
+
+                    }
+                    break;
+
+            }
+
 
             }
 
@@ -3323,8 +5618,203 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleFuncion"
 
 
+    // $ANTLR start "entryRuleParametroDecl"
+    // InternalDearCode.g:1839:1: entryRuleParametroDecl returns [EObject current=null] : iv_ruleParametroDecl= ruleParametroDecl EOF ;
+    public final EObject entryRuleParametroDecl() throws RecognitionException {
+        EObject current = null;
+
+        EObject iv_ruleParametroDecl = null;
+
+
+        try {
+            // InternalDearCode.g:1839:54: (iv_ruleParametroDecl= ruleParametroDecl EOF )
+            // InternalDearCode.g:1840:2: iv_ruleParametroDecl= ruleParametroDecl EOF
+            {
+             newCompositeNode(grammarAccess.getParametroDeclRule()); 
+            pushFollow(FOLLOW_1);
+            iv_ruleParametroDecl=ruleParametroDecl();
+
+            state._fsp--;
+
+             current =iv_ruleParametroDecl; 
+            match(input,EOF,FOLLOW_2); 
+
+            }
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "entryRuleParametroDecl"
+
+
+    // $ANTLR start "ruleParametroDecl"
+    // InternalDearCode.g:1846:1: ruleParametroDecl returns [EObject current=null] : ( ( (lv_tipo_0_0= ruleType ) )? ( (lv_comment_1_0= ruleComment ) )? ( (lv_name_2_0= ruleMI_ID ) ) ) ;
+    public final EObject ruleParametroDecl() throws RecognitionException {
+        EObject current = null;
+
+        AntlrDatatypeRuleToken lv_tipo_0_0 = null;
+
+        EObject lv_comment_1_0 = null;
+
+        EObject lv_name_2_0 = null;
+
+
+
+        	enterRule();
+
+        try {
+            // InternalDearCode.g:1852:2: ( ( ( (lv_tipo_0_0= ruleType ) )? ( (lv_comment_1_0= ruleComment ) )? ( (lv_name_2_0= ruleMI_ID ) ) ) )
+            // InternalDearCode.g:1853:2: ( ( (lv_tipo_0_0= ruleType ) )? ( (lv_comment_1_0= ruleComment ) )? ( (lv_name_2_0= ruleMI_ID ) ) )
+            {
+            // InternalDearCode.g:1853:2: ( ( (lv_tipo_0_0= ruleType ) )? ( (lv_comment_1_0= ruleComment ) )? ( (lv_name_2_0= ruleMI_ID ) ) )
+            // InternalDearCode.g:1854:3: ( (lv_tipo_0_0= ruleType ) )? ( (lv_comment_1_0= ruleComment ) )? ( (lv_name_2_0= ruleMI_ID ) )
+            {
+            // InternalDearCode.g:1854:3: ( (lv_tipo_0_0= ruleType ) )?
+            int alt43=2;
+            int LA43_0 = input.LA(1);
+
+            if ( ((LA43_0>=22 && LA43_0<=24)) ) {
+                alt43=1;
+            }
+            switch (alt43) {
+                case 1 :
+                    // InternalDearCode.g:1855:4: (lv_tipo_0_0= ruleType )
+                    {
+                    // InternalDearCode.g:1855:4: (lv_tipo_0_0= ruleType )
+                    // InternalDearCode.g:1856:5: lv_tipo_0_0= ruleType
+                    {
+
+                    					newCompositeNode(grammarAccess.getParametroDeclAccess().getTipoTypeParserRuleCall_0_0());
+                    				
+                    pushFollow(FOLLOW_12);
+                    lv_tipo_0_0=ruleType();
+
+                    state._fsp--;
+
+
+                    					if (current==null) {
+                    						current = createModelElementForParent(grammarAccess.getParametroDeclRule());
+                    					}
+                    					set(
+                    						current,
+                    						"tipo",
+                    						lv_tipo_0_0,
+                    						"edu.upb.lp.DearCode.Type");
+                    					afterParserOrEnumRuleCall();
+                    				
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            // InternalDearCode.g:1873:3: ( (lv_comment_1_0= ruleComment ) )?
+            int alt44=2;
+            int LA44_0 = input.LA(1);
+
+            if ( (LA44_0==RULE_ANYTEXT) ) {
+                alt44=1;
+            }
+            switch (alt44) {
+                case 1 :
+                    // InternalDearCode.g:1874:4: (lv_comment_1_0= ruleComment )
+                    {
+                    // InternalDearCode.g:1874:4: (lv_comment_1_0= ruleComment )
+                    // InternalDearCode.g:1875:5: lv_comment_1_0= ruleComment
+                    {
+
+                    					newCompositeNode(grammarAccess.getParametroDeclAccess().getCommentCommentParserRuleCall_1_0());
+                    				
+                    pushFollow(FOLLOW_9);
+                    lv_comment_1_0=ruleComment();
+
+                    state._fsp--;
+
+
+                    					if (current==null) {
+                    						current = createModelElementForParent(grammarAccess.getParametroDeclRule());
+                    					}
+                    					add(
+                    						current,
+                    						"comment",
+                    						lv_comment_1_0,
+                    						"edu.upb.lp.DearCode.Comment");
+                    					afterParserOrEnumRuleCall();
+                    				
+
+                    }
+
+
+                    }
+                    break;
+
+            }
+
+            // InternalDearCode.g:1892:3: ( (lv_name_2_0= ruleMI_ID ) )
+            // InternalDearCode.g:1893:4: (lv_name_2_0= ruleMI_ID )
+            {
+            // InternalDearCode.g:1893:4: (lv_name_2_0= ruleMI_ID )
+            // InternalDearCode.g:1894:5: lv_name_2_0= ruleMI_ID
+            {
+
+            					newCompositeNode(grammarAccess.getParametroDeclAccess().getNameMI_IDParserRuleCall_2_0());
+            				
+            pushFollow(FOLLOW_2);
+            lv_name_2_0=ruleMI_ID();
+
+            state._fsp--;
+
+
+            					if (current==null) {
+            						current = createModelElementForParent(grammarAccess.getParametroDeclRule());
+            					}
+            					set(
+            						current,
+            						"name",
+            						lv_name_2_0,
+            						"edu.upb.lp.DearCode.MI_ID");
+            					afterParserOrEnumRuleCall();
+            				
+
+            }
+
+
+            }
+
+
+            }
+
+
+            }
+
+
+            	leaveRule();
+
+        }
+
+            catch (RecognitionException re) {
+                recover(input,re);
+                appendSkippedTokens();
+            }
+        finally {
+        }
+        return current;
+    }
+    // $ANTLR end "ruleParametroDecl"
+
+
     // $ANTLR start "entryRuleReturn"
-    // InternalDearCode.g:1299:1: entryRuleReturn returns [EObject current=null] : iv_ruleReturn= ruleReturn EOF ;
+    // InternalDearCode.g:1915:1: entryRuleReturn returns [EObject current=null] : iv_ruleReturn= ruleReturn EOF ;
     public final EObject entryRuleReturn() throws RecognitionException {
         EObject current = null;
 
@@ -3332,8 +5822,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:1299:47: (iv_ruleReturn= ruleReturn EOF )
-            // InternalDearCode.g:1300:2: iv_ruleReturn= ruleReturn EOF
+            // InternalDearCode.g:1915:47: (iv_ruleReturn= ruleReturn EOF )
+            // InternalDearCode.g:1916:2: iv_ruleReturn= ruleReturn EOF
             {
              newCompositeNode(grammarAccess.getReturnRule()); 
             pushFollow(FOLLOW_1);
@@ -3360,40 +5850,133 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleReturn"
-    // InternalDearCode.g:1306:1: ruleReturn returns [EObject current=null] : (otherlv_0= 'Y entrego al viento' ( (lv_expresion_1_0= ruleExpression ) ) otherlv_2= 'como promesa cumplida.' ) ;
+    // InternalDearCode.g:1922:1: ruleReturn returns [EObject current=null] : ( (otherlv_0= 'Y entrego al viento' | otherlv_1= 'Te entrego' | otherlv_2= 'Te ofrezco con el alma' | otherlv_3= 'Dejo en tus manos' | otherlv_4= 'Susurro a tu coraz\\u00F3n' ) ( (lv_expresion_5_0= ruleExpression ) ) (otherlv_6= 'como promesa cumplida.' | otherlv_7= 'con un suspiro.' | otherlv_8= 'como un regalo eterno.' | otherlv_9= 'envuelto en mi amor.' | otherlv_10= 'con la esperanza de tu sonrisa.' ) ) ;
     public final EObject ruleReturn() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_0=null;
+        Token otherlv_1=null;
         Token otherlv_2=null;
-        EObject lv_expresion_1_0 = null;
+        Token otherlv_3=null;
+        Token otherlv_4=null;
+        Token otherlv_6=null;
+        Token otherlv_7=null;
+        Token otherlv_8=null;
+        Token otherlv_9=null;
+        Token otherlv_10=null;
+        EObject lv_expresion_5_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalDearCode.g:1312:2: ( (otherlv_0= 'Y entrego al viento' ( (lv_expresion_1_0= ruleExpression ) ) otherlv_2= 'como promesa cumplida.' ) )
-            // InternalDearCode.g:1313:2: (otherlv_0= 'Y entrego al viento' ( (lv_expresion_1_0= ruleExpression ) ) otherlv_2= 'como promesa cumplida.' )
+            // InternalDearCode.g:1928:2: ( ( (otherlv_0= 'Y entrego al viento' | otherlv_1= 'Te entrego' | otherlv_2= 'Te ofrezco con el alma' | otherlv_3= 'Dejo en tus manos' | otherlv_4= 'Susurro a tu coraz\\u00F3n' ) ( (lv_expresion_5_0= ruleExpression ) ) (otherlv_6= 'como promesa cumplida.' | otherlv_7= 'con un suspiro.' | otherlv_8= 'como un regalo eterno.' | otherlv_9= 'envuelto en mi amor.' | otherlv_10= 'con la esperanza de tu sonrisa.' ) ) )
+            // InternalDearCode.g:1929:2: ( (otherlv_0= 'Y entrego al viento' | otherlv_1= 'Te entrego' | otherlv_2= 'Te ofrezco con el alma' | otherlv_3= 'Dejo en tus manos' | otherlv_4= 'Susurro a tu coraz\\u00F3n' ) ( (lv_expresion_5_0= ruleExpression ) ) (otherlv_6= 'como promesa cumplida.' | otherlv_7= 'con un suspiro.' | otherlv_8= 'como un regalo eterno.' | otherlv_9= 'envuelto en mi amor.' | otherlv_10= 'con la esperanza de tu sonrisa.' ) )
             {
-            // InternalDearCode.g:1313:2: (otherlv_0= 'Y entrego al viento' ( (lv_expresion_1_0= ruleExpression ) ) otherlv_2= 'como promesa cumplida.' )
-            // InternalDearCode.g:1314:3: otherlv_0= 'Y entrego al viento' ( (lv_expresion_1_0= ruleExpression ) ) otherlv_2= 'como promesa cumplida.'
+            // InternalDearCode.g:1929:2: ( (otherlv_0= 'Y entrego al viento' | otherlv_1= 'Te entrego' | otherlv_2= 'Te ofrezco con el alma' | otherlv_3= 'Dejo en tus manos' | otherlv_4= 'Susurro a tu coraz\\u00F3n' ) ( (lv_expresion_5_0= ruleExpression ) ) (otherlv_6= 'como promesa cumplida.' | otherlv_7= 'con un suspiro.' | otherlv_8= 'como un regalo eterno.' | otherlv_9= 'envuelto en mi amor.' | otherlv_10= 'con la esperanza de tu sonrisa.' ) )
+            // InternalDearCode.g:1930:3: (otherlv_0= 'Y entrego al viento' | otherlv_1= 'Te entrego' | otherlv_2= 'Te ofrezco con el alma' | otherlv_3= 'Dejo en tus manos' | otherlv_4= 'Susurro a tu coraz\\u00F3n' ) ( (lv_expresion_5_0= ruleExpression ) ) (otherlv_6= 'como promesa cumplida.' | otherlv_7= 'con un suspiro.' | otherlv_8= 'como un regalo eterno.' | otherlv_9= 'envuelto en mi amor.' | otherlv_10= 'con la esperanza de tu sonrisa.' )
             {
-            otherlv_0=(Token)match(input,43,FOLLOW_9); 
+            // InternalDearCode.g:1930:3: (otherlv_0= 'Y entrego al viento' | otherlv_1= 'Te entrego' | otherlv_2= 'Te ofrezco con el alma' | otherlv_3= 'Dejo en tus manos' | otherlv_4= 'Susurro a tu coraz\\u00F3n' )
+            int alt45=5;
+            switch ( input.LA(1) ) {
+            case 133:
+                {
+                alt45=1;
+                }
+                break;
+            case 134:
+                {
+                alt45=2;
+                }
+                break;
+            case 135:
+                {
+                alt45=3;
+                }
+                break;
+            case 136:
+                {
+                alt45=4;
+                }
+                break;
+            case 137:
+                {
+                alt45=5;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 45, 0, input);
 
-            			newLeafNode(otherlv_0, grammarAccess.getReturnAccess().getYEntregoAlVientoKeyword_0());
-            		
-            // InternalDearCode.g:1318:3: ( (lv_expresion_1_0= ruleExpression ) )
-            // InternalDearCode.g:1319:4: (lv_expresion_1_0= ruleExpression )
+                throw nvae;
+            }
+
+            switch (alt45) {
+                case 1 :
+                    // InternalDearCode.g:1931:4: otherlv_0= 'Y entrego al viento'
+                    {
+                    otherlv_0=(Token)match(input,133,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_0, grammarAccess.getReturnAccess().getYEntregoAlVientoKeyword_0_0());
+                    			
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDearCode.g:1936:4: otherlv_1= 'Te entrego'
+                    {
+                    otherlv_1=(Token)match(input,134,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_1, grammarAccess.getReturnAccess().getTeEntregoKeyword_0_1());
+                    			
+
+                    }
+                    break;
+                case 3 :
+                    // InternalDearCode.g:1941:4: otherlv_2= 'Te ofrezco con el alma'
+                    {
+                    otherlv_2=(Token)match(input,135,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_2, grammarAccess.getReturnAccess().getTeOfrezcoConElAlmaKeyword_0_2());
+                    			
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:1946:4: otherlv_3= 'Dejo en tus manos'
+                    {
+                    otherlv_3=(Token)match(input,136,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_3, grammarAccess.getReturnAccess().getDejoEnTusManosKeyword_0_3());
+                    			
+
+                    }
+                    break;
+                case 5 :
+                    // InternalDearCode.g:1951:4: otherlv_4= 'Susurro a tu coraz\\u00F3n'
+                    {
+                    otherlv_4=(Token)match(input,137,FOLLOW_10); 
+
+                    				newLeafNode(otherlv_4, grammarAccess.getReturnAccess().getSusurroATuCorazNKeyword_0_4());
+                    			
+
+                    }
+                    break;
+
+            }
+
+            // InternalDearCode.g:1956:3: ( (lv_expresion_5_0= ruleExpression ) )
+            // InternalDearCode.g:1957:4: (lv_expresion_5_0= ruleExpression )
             {
-            // InternalDearCode.g:1319:4: (lv_expresion_1_0= ruleExpression )
-            // InternalDearCode.g:1320:5: lv_expresion_1_0= ruleExpression
+            // InternalDearCode.g:1957:4: (lv_expresion_5_0= ruleExpression )
+            // InternalDearCode.g:1958:5: lv_expresion_5_0= ruleExpression
             {
 
             					newCompositeNode(grammarAccess.getReturnAccess().getExpresionExpressionParserRuleCall_1_0());
             				
-            pushFollow(FOLLOW_31);
-            lv_expresion_1_0=ruleExpression();
+            pushFollow(FOLLOW_35);
+            lv_expresion_5_0=ruleExpression();
 
             state._fsp--;
 
@@ -3404,7 +5987,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             					set(
             						current,
             						"expresion",
-            						lv_expresion_1_0,
+            						lv_expresion_5_0,
             						"edu.upb.lp.DearCode.Expression");
             					afterParserOrEnumRuleCall();
             				
@@ -3414,10 +5997,95 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_2=(Token)match(input,44,FOLLOW_2); 
+            // InternalDearCode.g:1975:3: (otherlv_6= 'como promesa cumplida.' | otherlv_7= 'con un suspiro.' | otherlv_8= 'como un regalo eterno.' | otherlv_9= 'envuelto en mi amor.' | otherlv_10= 'con la esperanza de tu sonrisa.' )
+            int alt46=5;
+            switch ( input.LA(1) ) {
+            case 138:
+                {
+                alt46=1;
+                }
+                break;
+            case 139:
+                {
+                alt46=2;
+                }
+                break;
+            case 140:
+                {
+                alt46=3;
+                }
+                break;
+            case 141:
+                {
+                alt46=4;
+                }
+                break;
+            case 142:
+                {
+                alt46=5;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 46, 0, input);
 
-            			newLeafNode(otherlv_2, grammarAccess.getReturnAccess().getComoPromesaCumplidaKeyword_2());
-            		
+                throw nvae;
+            }
+
+            switch (alt46) {
+                case 1 :
+                    // InternalDearCode.g:1976:4: otherlv_6= 'como promesa cumplida.'
+                    {
+                    otherlv_6=(Token)match(input,138,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_6, grammarAccess.getReturnAccess().getComoPromesaCumplidaKeyword_2_0());
+                    			
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDearCode.g:1981:4: otherlv_7= 'con un suspiro.'
+                    {
+                    otherlv_7=(Token)match(input,139,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_7, grammarAccess.getReturnAccess().getConUnSuspiroKeyword_2_1());
+                    			
+
+                    }
+                    break;
+                case 3 :
+                    // InternalDearCode.g:1986:4: otherlv_8= 'como un regalo eterno.'
+                    {
+                    otherlv_8=(Token)match(input,140,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_8, grammarAccess.getReturnAccess().getComoUnRegaloEternoKeyword_2_2());
+                    			
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:1991:4: otherlv_9= 'envuelto en mi amor.'
+                    {
+                    otherlv_9=(Token)match(input,141,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_9, grammarAccess.getReturnAccess().getEnvueltoEnMiAmorKeyword_2_3());
+                    			
+
+                    }
+                    break;
+                case 5 :
+                    // InternalDearCode.g:1996:4: otherlv_10= 'con la esperanza de tu sonrisa.'
+                    {
+                    otherlv_10=(Token)match(input,142,FOLLOW_2); 
+
+                    				newLeafNode(otherlv_10, grammarAccess.getReturnAccess().getConLaEsperanzaDeTuSonrisaKeyword_2_4());
+                    			
+
+                    }
+                    break;
+
+            }
+
 
             }
 
@@ -3441,7 +6109,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleExpression"
-    // InternalDearCode.g:1345:1: entryRuleExpression returns [EObject current=null] : iv_ruleExpression= ruleExpression EOF ;
+    // InternalDearCode.g:2005:1: entryRuleExpression returns [EObject current=null] : iv_ruleExpression= ruleExpression EOF ;
     public final EObject entryRuleExpression() throws RecognitionException {
         EObject current = null;
 
@@ -3449,8 +6117,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:1345:51: (iv_ruleExpression= ruleExpression EOF )
-            // InternalDearCode.g:1346:2: iv_ruleExpression= ruleExpression EOF
+            // InternalDearCode.g:2005:51: (iv_ruleExpression= ruleExpression EOF )
+            // InternalDearCode.g:2006:2: iv_ruleExpression= ruleExpression EOF
             {
              newCompositeNode(grammarAccess.getExpressionRule()); 
             pushFollow(FOLLOW_1);
@@ -3477,7 +6145,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleExpression"
-    // InternalDearCode.g:1352:1: ruleExpression returns [EObject current=null] : this_OrExpression_0= ruleOrExpression ;
+    // InternalDearCode.g:2012:1: ruleExpression returns [EObject current=null] : this_OrExpression_0= ruleOrExpression ;
     public final EObject ruleExpression() throws RecognitionException {
         EObject current = null;
 
@@ -3488,8 +6156,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDearCode.g:1358:2: (this_OrExpression_0= ruleOrExpression )
-            // InternalDearCode.g:1359:2: this_OrExpression_0= ruleOrExpression
+            // InternalDearCode.g:2018:2: (this_OrExpression_0= ruleOrExpression )
+            // InternalDearCode.g:2019:2: this_OrExpression_0= ruleOrExpression
             {
 
             		newCompositeNode(grammarAccess.getExpressionAccess().getOrExpressionParserRuleCall());
@@ -3523,7 +6191,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleOrExpression"
-    // InternalDearCode.g:1370:1: entryRuleOrExpression returns [EObject current=null] : iv_ruleOrExpression= ruleOrExpression EOF ;
+    // InternalDearCode.g:2030:1: entryRuleOrExpression returns [EObject current=null] : iv_ruleOrExpression= ruleOrExpression EOF ;
     public final EObject entryRuleOrExpression() throws RecognitionException {
         EObject current = null;
 
@@ -3531,8 +6199,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:1370:53: (iv_ruleOrExpression= ruleOrExpression EOF )
-            // InternalDearCode.g:1371:2: iv_ruleOrExpression= ruleOrExpression EOF
+            // InternalDearCode.g:2030:53: (iv_ruleOrExpression= ruleOrExpression EOF )
+            // InternalDearCode.g:2031:2: iv_ruleOrExpression= ruleOrExpression EOF
             {
              newCompositeNode(grammarAccess.getOrExpressionRule()); 
             pushFollow(FOLLOW_1);
@@ -3559,31 +6227,33 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleOrExpression"
-    // InternalDearCode.g:1377:1: ruleOrExpression returns [EObject current=null] : (this_AndExpression_0= ruleAndExpression ( () (otherlv_2= ' o quiz\\u00E1s ' | otherlv_3= ' o quiz\\u00E1s' ) ( (lv_right_4_0= ruleAndExpression ) ) )* ) ;
+    // InternalDearCode.g:2037:1: ruleOrExpression returns [EObject current=null] : (this_AndExpression_0= ruleAndExpression ( () (otherlv_2= 'o tal vez' | otherlv_3= 'o quiz\\u00E1s' | otherlv_4= 'o acaso el amor permita' | otherlv_5= 'o si la luna lo desea' ) ( (lv_right_6_0= ruleAndExpression ) ) )* ) ;
     public final EObject ruleOrExpression() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_2=null;
         Token otherlv_3=null;
+        Token otherlv_4=null;
+        Token otherlv_5=null;
         EObject this_AndExpression_0 = null;
 
-        EObject lv_right_4_0 = null;
+        EObject lv_right_6_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalDearCode.g:1383:2: ( (this_AndExpression_0= ruleAndExpression ( () (otherlv_2= ' o quiz\\u00E1s ' | otherlv_3= ' o quiz\\u00E1s' ) ( (lv_right_4_0= ruleAndExpression ) ) )* ) )
-            // InternalDearCode.g:1384:2: (this_AndExpression_0= ruleAndExpression ( () (otherlv_2= ' o quiz\\u00E1s ' | otherlv_3= ' o quiz\\u00E1s' ) ( (lv_right_4_0= ruleAndExpression ) ) )* )
+            // InternalDearCode.g:2043:2: ( (this_AndExpression_0= ruleAndExpression ( () (otherlv_2= 'o tal vez' | otherlv_3= 'o quiz\\u00E1s' | otherlv_4= 'o acaso el amor permita' | otherlv_5= 'o si la luna lo desea' ) ( (lv_right_6_0= ruleAndExpression ) ) )* ) )
+            // InternalDearCode.g:2044:2: (this_AndExpression_0= ruleAndExpression ( () (otherlv_2= 'o tal vez' | otherlv_3= 'o quiz\\u00E1s' | otherlv_4= 'o acaso el amor permita' | otherlv_5= 'o si la luna lo desea' ) ( (lv_right_6_0= ruleAndExpression ) ) )* )
             {
-            // InternalDearCode.g:1384:2: (this_AndExpression_0= ruleAndExpression ( () (otherlv_2= ' o quiz\\u00E1s ' | otherlv_3= ' o quiz\\u00E1s' ) ( (lv_right_4_0= ruleAndExpression ) ) )* )
-            // InternalDearCode.g:1385:3: this_AndExpression_0= ruleAndExpression ( () (otherlv_2= ' o quiz\\u00E1s ' | otherlv_3= ' o quiz\\u00E1s' ) ( (lv_right_4_0= ruleAndExpression ) ) )*
+            // InternalDearCode.g:2044:2: (this_AndExpression_0= ruleAndExpression ( () (otherlv_2= 'o tal vez' | otherlv_3= 'o quiz\\u00E1s' | otherlv_4= 'o acaso el amor permita' | otherlv_5= 'o si la luna lo desea' ) ( (lv_right_6_0= ruleAndExpression ) ) )* )
+            // InternalDearCode.g:2045:3: this_AndExpression_0= ruleAndExpression ( () (otherlv_2= 'o tal vez' | otherlv_3= 'o quiz\\u00E1s' | otherlv_4= 'o acaso el amor permita' | otherlv_5= 'o si la luna lo desea' ) ( (lv_right_6_0= ruleAndExpression ) ) )*
             {
 
             			newCompositeNode(grammarAccess.getOrExpressionAccess().getAndExpressionParserRuleCall_0());
             		
-            pushFollow(FOLLOW_32);
+            pushFollow(FOLLOW_36);
             this_AndExpression_0=ruleAndExpression();
 
             state._fsp--;
@@ -3592,23 +6262,23 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             			current = this_AndExpression_0;
             			afterParserOrEnumRuleCall();
             		
-            // InternalDearCode.g:1393:3: ( () (otherlv_2= ' o quiz\\u00E1s ' | otherlv_3= ' o quiz\\u00E1s' ) ( (lv_right_4_0= ruleAndExpression ) ) )*
-            loop24:
+            // InternalDearCode.g:2053:3: ( () (otherlv_2= 'o tal vez' | otherlv_3= 'o quiz\\u00E1s' | otherlv_4= 'o acaso el amor permita' | otherlv_5= 'o si la luna lo desea' ) ( (lv_right_6_0= ruleAndExpression ) ) )*
+            loop48:
             do {
-                int alt24=2;
-                int LA24_0 = input.LA(1);
+                int alt48=2;
+                int LA48_0 = input.LA(1);
 
-                if ( ((LA24_0>=45 && LA24_0<=46)) ) {
-                    alt24=1;
+                if ( ((LA48_0>=143 && LA48_0<=146)) ) {
+                    alt48=1;
                 }
 
 
-                switch (alt24) {
+                switch (alt48) {
             	case 1 :
-            	    // InternalDearCode.g:1394:4: () (otherlv_2= ' o quiz\\u00E1s ' | otherlv_3= ' o quiz\\u00E1s' ) ( (lv_right_4_0= ruleAndExpression ) )
+            	    // InternalDearCode.g:2054:4: () (otherlv_2= 'o tal vez' | otherlv_3= 'o quiz\\u00E1s' | otherlv_4= 'o acaso el amor permita' | otherlv_5= 'o si la luna lo desea' ) ( (lv_right_6_0= ruleAndExpression ) )
             	    {
-            	    // InternalDearCode.g:1394:4: ()
-            	    // InternalDearCode.g:1395:5: 
+            	    // InternalDearCode.g:2054:4: ()
+            	    // InternalDearCode.g:2055:5: 
             	    {
 
             	    					current = forceCreateModelElementAndSet(
@@ -3618,57 +6288,91 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalDearCode.g:1401:4: (otherlv_2= ' o quiz\\u00E1s ' | otherlv_3= ' o quiz\\u00E1s' )
-            	    int alt23=2;
-            	    int LA23_0 = input.LA(1);
-
-            	    if ( (LA23_0==45) ) {
-            	        alt23=1;
-            	    }
-            	    else if ( (LA23_0==46) ) {
-            	        alt23=2;
-            	    }
-            	    else {
+            	    // InternalDearCode.g:2061:4: (otherlv_2= 'o tal vez' | otherlv_3= 'o quiz\\u00E1s' | otherlv_4= 'o acaso el amor permita' | otherlv_5= 'o si la luna lo desea' )
+            	    int alt47=4;
+            	    switch ( input.LA(1) ) {
+            	    case 143:
+            	        {
+            	        alt47=1;
+            	        }
+            	        break;
+            	    case 144:
+            	        {
+            	        alt47=2;
+            	        }
+            	        break;
+            	    case 145:
+            	        {
+            	        alt47=3;
+            	        }
+            	        break;
+            	    case 146:
+            	        {
+            	        alt47=4;
+            	        }
+            	        break;
+            	    default:
             	        NoViableAltException nvae =
-            	            new NoViableAltException("", 23, 0, input);
+            	            new NoViableAltException("", 47, 0, input);
 
             	        throw nvae;
             	    }
-            	    switch (alt23) {
-            	        case 1 :
-            	            // InternalDearCode.g:1402:5: otherlv_2= ' o quiz\\u00E1s '
-            	            {
-            	            otherlv_2=(Token)match(input,45,FOLLOW_9); 
 
-            	            					newLeafNode(otherlv_2, grammarAccess.getOrExpressionAccess().getOQuizSKeyword_1_1_0());
+            	    switch (alt47) {
+            	        case 1 :
+            	            // InternalDearCode.g:2062:5: otherlv_2= 'o tal vez'
+            	            {
+            	            otherlv_2=(Token)match(input,143,FOLLOW_10); 
+
+            	            					newLeafNode(otherlv_2, grammarAccess.getOrExpressionAccess().getOTalVezKeyword_1_1_0());
             	            				
 
             	            }
             	            break;
             	        case 2 :
-            	            // InternalDearCode.g:1407:5: otherlv_3= ' o quiz\\u00E1s'
+            	            // InternalDearCode.g:2067:5: otherlv_3= 'o quiz\\u00E1s'
             	            {
-            	            otherlv_3=(Token)match(input,46,FOLLOW_9); 
+            	            otherlv_3=(Token)match(input,144,FOLLOW_10); 
 
             	            					newLeafNode(otherlv_3, grammarAccess.getOrExpressionAccess().getOQuizSKeyword_1_1_1());
             	            				
 
             	            }
             	            break;
+            	        case 3 :
+            	            // InternalDearCode.g:2072:5: otherlv_4= 'o acaso el amor permita'
+            	            {
+            	            otherlv_4=(Token)match(input,145,FOLLOW_10); 
+
+            	            					newLeafNode(otherlv_4, grammarAccess.getOrExpressionAccess().getOAcasoElAmorPermitaKeyword_1_1_2());
+            	            				
+
+            	            }
+            	            break;
+            	        case 4 :
+            	            // InternalDearCode.g:2077:5: otherlv_5= 'o si la luna lo desea'
+            	            {
+            	            otherlv_5=(Token)match(input,146,FOLLOW_10); 
+
+            	            					newLeafNode(otherlv_5, grammarAccess.getOrExpressionAccess().getOSiLaLunaLoDeseaKeyword_1_1_3());
+            	            				
+
+            	            }
+            	            break;
 
             	    }
 
-            	    // InternalDearCode.g:1412:4: ( (lv_right_4_0= ruleAndExpression ) )
-            	    // InternalDearCode.g:1413:5: (lv_right_4_0= ruleAndExpression )
+            	    // InternalDearCode.g:2082:4: ( (lv_right_6_0= ruleAndExpression ) )
+            	    // InternalDearCode.g:2083:5: (lv_right_6_0= ruleAndExpression )
             	    {
-            	    // InternalDearCode.g:1413:5: (lv_right_4_0= ruleAndExpression )
-            	    // InternalDearCode.g:1414:6: lv_right_4_0= ruleAndExpression
+            	    // InternalDearCode.g:2083:5: (lv_right_6_0= ruleAndExpression )
+            	    // InternalDearCode.g:2084:6: lv_right_6_0= ruleAndExpression
             	    {
 
             	    						newCompositeNode(grammarAccess.getOrExpressionAccess().getRightAndExpressionParserRuleCall_1_2_0());
             	    					
-            	    pushFollow(FOLLOW_32);
-            	    lv_right_4_0=ruleAndExpression();
+            	    pushFollow(FOLLOW_36);
+            	    lv_right_6_0=ruleAndExpression();
 
             	    state._fsp--;
 
@@ -3679,7 +6383,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	    						set(
             	    							current,
             	    							"right",
-            	    							lv_right_4_0,
+            	    							lv_right_6_0,
             	    							"edu.upb.lp.DearCode.AndExpression");
             	    						afterParserOrEnumRuleCall();
             	    					
@@ -3694,7 +6398,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop24;
+            	    break loop48;
                 }
             } while (true);
 
@@ -3721,7 +6425,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAndExpression"
-    // InternalDearCode.g:1436:1: entryRuleAndExpression returns [EObject current=null] : iv_ruleAndExpression= ruleAndExpression EOF ;
+    // InternalDearCode.g:2106:1: entryRuleAndExpression returns [EObject current=null] : iv_ruleAndExpression= ruleAndExpression EOF ;
     public final EObject entryRuleAndExpression() throws RecognitionException {
         EObject current = null;
 
@@ -3729,8 +6433,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:1436:54: (iv_ruleAndExpression= ruleAndExpression EOF )
-            // InternalDearCode.g:1437:2: iv_ruleAndExpression= ruleAndExpression EOF
+            // InternalDearCode.g:2106:54: (iv_ruleAndExpression= ruleAndExpression EOF )
+            // InternalDearCode.g:2107:2: iv_ruleAndExpression= ruleAndExpression EOF
             {
              newCompositeNode(grammarAccess.getAndExpressionRule()); 
             pushFollow(FOLLOW_1);
@@ -3757,31 +6461,35 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAndExpression"
-    // InternalDearCode.g:1443:1: ruleAndExpression returns [EObject current=null] : (this_EqualityExpression_0= ruleEqualityExpression ( () (otherlv_2= ' y tambi\\u00E9n ' | otherlv_3= ' y tambi\\u00E9n' ) ( (lv_right_4_0= ruleEqualityExpression ) ) )* ) ;
+    // InternalDearCode.g:2113:1: ruleAndExpression returns [EObject current=null] : (this_EqualityExpression_0= ruleEqualityExpression ( () (otherlv_2= 'y tambi\\u00E9n' | otherlv_3= 'junto a' | otherlv_4= 'y adem\\u00E1s' | otherlv_5= 'y al mismo tiempo que' | otherlv_6= 'y junto con' | otherlv_7= 'y en uni\\u00F3n con' ) ( (lv_right_8_0= ruleEqualityExpression ) ) )* ) ;
     public final EObject ruleAndExpression() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_2=null;
         Token otherlv_3=null;
+        Token otherlv_4=null;
+        Token otherlv_5=null;
+        Token otherlv_6=null;
+        Token otherlv_7=null;
         EObject this_EqualityExpression_0 = null;
 
-        EObject lv_right_4_0 = null;
+        EObject lv_right_8_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalDearCode.g:1449:2: ( (this_EqualityExpression_0= ruleEqualityExpression ( () (otherlv_2= ' y tambi\\u00E9n ' | otherlv_3= ' y tambi\\u00E9n' ) ( (lv_right_4_0= ruleEqualityExpression ) ) )* ) )
-            // InternalDearCode.g:1450:2: (this_EqualityExpression_0= ruleEqualityExpression ( () (otherlv_2= ' y tambi\\u00E9n ' | otherlv_3= ' y tambi\\u00E9n' ) ( (lv_right_4_0= ruleEqualityExpression ) ) )* )
+            // InternalDearCode.g:2119:2: ( (this_EqualityExpression_0= ruleEqualityExpression ( () (otherlv_2= 'y tambi\\u00E9n' | otherlv_3= 'junto a' | otherlv_4= 'y adem\\u00E1s' | otherlv_5= 'y al mismo tiempo que' | otherlv_6= 'y junto con' | otherlv_7= 'y en uni\\u00F3n con' ) ( (lv_right_8_0= ruleEqualityExpression ) ) )* ) )
+            // InternalDearCode.g:2120:2: (this_EqualityExpression_0= ruleEqualityExpression ( () (otherlv_2= 'y tambi\\u00E9n' | otherlv_3= 'junto a' | otherlv_4= 'y adem\\u00E1s' | otherlv_5= 'y al mismo tiempo que' | otherlv_6= 'y junto con' | otherlv_7= 'y en uni\\u00F3n con' ) ( (lv_right_8_0= ruleEqualityExpression ) ) )* )
             {
-            // InternalDearCode.g:1450:2: (this_EqualityExpression_0= ruleEqualityExpression ( () (otherlv_2= ' y tambi\\u00E9n ' | otherlv_3= ' y tambi\\u00E9n' ) ( (lv_right_4_0= ruleEqualityExpression ) ) )* )
-            // InternalDearCode.g:1451:3: this_EqualityExpression_0= ruleEqualityExpression ( () (otherlv_2= ' y tambi\\u00E9n ' | otherlv_3= ' y tambi\\u00E9n' ) ( (lv_right_4_0= ruleEqualityExpression ) ) )*
+            // InternalDearCode.g:2120:2: (this_EqualityExpression_0= ruleEqualityExpression ( () (otherlv_2= 'y tambi\\u00E9n' | otherlv_3= 'junto a' | otherlv_4= 'y adem\\u00E1s' | otherlv_5= 'y al mismo tiempo que' | otherlv_6= 'y junto con' | otherlv_7= 'y en uni\\u00F3n con' ) ( (lv_right_8_0= ruleEqualityExpression ) ) )* )
+            // InternalDearCode.g:2121:3: this_EqualityExpression_0= ruleEqualityExpression ( () (otherlv_2= 'y tambi\\u00E9n' | otherlv_3= 'junto a' | otherlv_4= 'y adem\\u00E1s' | otherlv_5= 'y al mismo tiempo que' | otherlv_6= 'y junto con' | otherlv_7= 'y en uni\\u00F3n con' ) ( (lv_right_8_0= ruleEqualityExpression ) ) )*
             {
 
             			newCompositeNode(grammarAccess.getAndExpressionAccess().getEqualityExpressionParserRuleCall_0());
             		
-            pushFollow(FOLLOW_33);
+            pushFollow(FOLLOW_37);
             this_EqualityExpression_0=ruleEqualityExpression();
 
             state._fsp--;
@@ -3790,23 +6498,23 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             			current = this_EqualityExpression_0;
             			afterParserOrEnumRuleCall();
             		
-            // InternalDearCode.g:1459:3: ( () (otherlv_2= ' y tambi\\u00E9n ' | otherlv_3= ' y tambi\\u00E9n' ) ( (lv_right_4_0= ruleEqualityExpression ) ) )*
-            loop26:
+            // InternalDearCode.g:2129:3: ( () (otherlv_2= 'y tambi\\u00E9n' | otherlv_3= 'junto a' | otherlv_4= 'y adem\\u00E1s' | otherlv_5= 'y al mismo tiempo que' | otherlv_6= 'y junto con' | otherlv_7= 'y en uni\\u00F3n con' ) ( (lv_right_8_0= ruleEqualityExpression ) ) )*
+            loop50:
             do {
-                int alt26=2;
-                int LA26_0 = input.LA(1);
+                int alt50=2;
+                int LA50_0 = input.LA(1);
 
-                if ( ((LA26_0>=47 && LA26_0<=48)) ) {
-                    alt26=1;
+                if ( (LA50_0==121||(LA50_0>=147 && LA50_0<=151)) ) {
+                    alt50=1;
                 }
 
 
-                switch (alt26) {
+                switch (alt50) {
             	case 1 :
-            	    // InternalDearCode.g:1460:4: () (otherlv_2= ' y tambi\\u00E9n ' | otherlv_3= ' y tambi\\u00E9n' ) ( (lv_right_4_0= ruleEqualityExpression ) )
+            	    // InternalDearCode.g:2130:4: () (otherlv_2= 'y tambi\\u00E9n' | otherlv_3= 'junto a' | otherlv_4= 'y adem\\u00E1s' | otherlv_5= 'y al mismo tiempo que' | otherlv_6= 'y junto con' | otherlv_7= 'y en uni\\u00F3n con' ) ( (lv_right_8_0= ruleEqualityExpression ) )
             	    {
-            	    // InternalDearCode.g:1460:4: ()
-            	    // InternalDearCode.g:1461:5: 
+            	    // InternalDearCode.g:2130:4: ()
+            	    // InternalDearCode.g:2131:5: 
             	    {
 
             	    					current = forceCreateModelElementAndSet(
@@ -3816,27 +6524,51 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalDearCode.g:1467:4: (otherlv_2= ' y tambi\\u00E9n ' | otherlv_3= ' y tambi\\u00E9n' )
-            	    int alt25=2;
-            	    int LA25_0 = input.LA(1);
-
-            	    if ( (LA25_0==47) ) {
-            	        alt25=1;
-            	    }
-            	    else if ( (LA25_0==48) ) {
-            	        alt25=2;
-            	    }
-            	    else {
+            	    // InternalDearCode.g:2137:4: (otherlv_2= 'y tambi\\u00E9n' | otherlv_3= 'junto a' | otherlv_4= 'y adem\\u00E1s' | otherlv_5= 'y al mismo tiempo que' | otherlv_6= 'y junto con' | otherlv_7= 'y en uni\\u00F3n con' )
+            	    int alt49=6;
+            	    switch ( input.LA(1) ) {
+            	    case 147:
+            	        {
+            	        alt49=1;
+            	        }
+            	        break;
+            	    case 121:
+            	        {
+            	        alt49=2;
+            	        }
+            	        break;
+            	    case 148:
+            	        {
+            	        alt49=3;
+            	        }
+            	        break;
+            	    case 149:
+            	        {
+            	        alt49=4;
+            	        }
+            	        break;
+            	    case 150:
+            	        {
+            	        alt49=5;
+            	        }
+            	        break;
+            	    case 151:
+            	        {
+            	        alt49=6;
+            	        }
+            	        break;
+            	    default:
             	        NoViableAltException nvae =
-            	            new NoViableAltException("", 25, 0, input);
+            	            new NoViableAltException("", 49, 0, input);
 
             	        throw nvae;
             	    }
-            	    switch (alt25) {
+
+            	    switch (alt49) {
             	        case 1 :
-            	            // InternalDearCode.g:1468:5: otherlv_2= ' y tambi\\u00E9n '
+            	            // InternalDearCode.g:2138:5: otherlv_2= 'y tambi\\u00E9n'
             	            {
-            	            otherlv_2=(Token)match(input,47,FOLLOW_9); 
+            	            otherlv_2=(Token)match(input,147,FOLLOW_10); 
 
             	            					newLeafNode(otherlv_2, grammarAccess.getAndExpressionAccess().getYTambiNKeyword_1_1_0());
             	            				
@@ -3844,11 +6576,51 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // InternalDearCode.g:1473:5: otherlv_3= ' y tambi\\u00E9n'
+            	            // InternalDearCode.g:2143:5: otherlv_3= 'junto a'
             	            {
-            	            otherlv_3=(Token)match(input,48,FOLLOW_9); 
+            	            otherlv_3=(Token)match(input,121,FOLLOW_10); 
 
-            	            					newLeafNode(otherlv_3, grammarAccess.getAndExpressionAccess().getYTambiNKeyword_1_1_1());
+            	            					newLeafNode(otherlv_3, grammarAccess.getAndExpressionAccess().getJuntoAKeyword_1_1_1());
+            	            				
+
+            	            }
+            	            break;
+            	        case 3 :
+            	            // InternalDearCode.g:2148:5: otherlv_4= 'y adem\\u00E1s'
+            	            {
+            	            otherlv_4=(Token)match(input,148,FOLLOW_10); 
+
+            	            					newLeafNode(otherlv_4, grammarAccess.getAndExpressionAccess().getYAdemSKeyword_1_1_2());
+            	            				
+
+            	            }
+            	            break;
+            	        case 4 :
+            	            // InternalDearCode.g:2153:5: otherlv_5= 'y al mismo tiempo que'
+            	            {
+            	            otherlv_5=(Token)match(input,149,FOLLOW_10); 
+
+            	            					newLeafNode(otherlv_5, grammarAccess.getAndExpressionAccess().getYAlMismoTiempoQueKeyword_1_1_3());
+            	            				
+
+            	            }
+            	            break;
+            	        case 5 :
+            	            // InternalDearCode.g:2158:5: otherlv_6= 'y junto con'
+            	            {
+            	            otherlv_6=(Token)match(input,150,FOLLOW_10); 
+
+            	            					newLeafNode(otherlv_6, grammarAccess.getAndExpressionAccess().getYJuntoConKeyword_1_1_4());
+            	            				
+
+            	            }
+            	            break;
+            	        case 6 :
+            	            // InternalDearCode.g:2163:5: otherlv_7= 'y en uni\\u00F3n con'
+            	            {
+            	            otherlv_7=(Token)match(input,151,FOLLOW_10); 
+
+            	            					newLeafNode(otherlv_7, grammarAccess.getAndExpressionAccess().getYEnUniNConKeyword_1_1_5());
             	            				
 
             	            }
@@ -3856,17 +6628,17 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalDearCode.g:1478:4: ( (lv_right_4_0= ruleEqualityExpression ) )
-            	    // InternalDearCode.g:1479:5: (lv_right_4_0= ruleEqualityExpression )
+            	    // InternalDearCode.g:2168:4: ( (lv_right_8_0= ruleEqualityExpression ) )
+            	    // InternalDearCode.g:2169:5: (lv_right_8_0= ruleEqualityExpression )
             	    {
-            	    // InternalDearCode.g:1479:5: (lv_right_4_0= ruleEqualityExpression )
-            	    // InternalDearCode.g:1480:6: lv_right_4_0= ruleEqualityExpression
+            	    // InternalDearCode.g:2169:5: (lv_right_8_0= ruleEqualityExpression )
+            	    // InternalDearCode.g:2170:6: lv_right_8_0= ruleEqualityExpression
             	    {
 
             	    						newCompositeNode(grammarAccess.getAndExpressionAccess().getRightEqualityExpressionParserRuleCall_1_2_0());
             	    					
-            	    pushFollow(FOLLOW_33);
-            	    lv_right_4_0=ruleEqualityExpression();
+            	    pushFollow(FOLLOW_37);
+            	    lv_right_8_0=ruleEqualityExpression();
 
             	    state._fsp--;
 
@@ -3877,7 +6649,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	    						set(
             	    							current,
             	    							"right",
-            	    							lv_right_4_0,
+            	    							lv_right_8_0,
             	    							"edu.upb.lp.DearCode.EqualityExpression");
             	    						afterParserOrEnumRuleCall();
             	    					
@@ -3892,7 +6664,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop26;
+            	    break loop50;
                 }
             } while (true);
 
@@ -3919,7 +6691,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleEqualityExpression"
-    // InternalDearCode.g:1502:1: entryRuleEqualityExpression returns [EObject current=null] : iv_ruleEqualityExpression= ruleEqualityExpression EOF ;
+    // InternalDearCode.g:2192:1: entryRuleEqualityExpression returns [EObject current=null] : iv_ruleEqualityExpression= ruleEqualityExpression EOF ;
     public final EObject entryRuleEqualityExpression() throws RecognitionException {
         EObject current = null;
 
@@ -3927,8 +6699,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:1502:59: (iv_ruleEqualityExpression= ruleEqualityExpression EOF )
-            // InternalDearCode.g:1503:2: iv_ruleEqualityExpression= ruleEqualityExpression EOF
+            // InternalDearCode.g:2192:59: (iv_ruleEqualityExpression= ruleEqualityExpression EOF )
+            // InternalDearCode.g:2193:2: iv_ruleEqualityExpression= ruleEqualityExpression EOF
             {
              newCompositeNode(grammarAccess.getEqualityExpressionRule()); 
             pushFollow(FOLLOW_1);
@@ -3955,12 +6727,20 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleEqualityExpression"
-    // InternalDearCode.g:1509:1: ruleEqualityExpression returns [EObject current=null] : (this_RelationalExpression_0= ruleRelationalExpression ( () ( ( (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' ) ) ) ( (lv_right_3_0= ruleRelationalExpression ) ) )* ) ;
+    // InternalDearCode.g:2199:1: ruleEqualityExpression returns [EObject current=null] : (this_RelationalExpression_0= ruleRelationalExpression ( () ( ( (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' | lv_op_2_3= 'late igual que' | lv_op_2_4= 'se distingue de' | lv_op_2_5= 'resuena igual que' | lv_op_2_6= 'vibra al mismo ritmo que' | lv_op_2_7= 'es id\\u00E9ntico a' | lv_op_2_8= 'se diferencia de' | lv_op_2_9= 'no coincide con' | lv_op_2_10= 'es distinto a' ) ) ) ( (lv_right_3_0= ruleRelationalExpression ) ) )* ) ;
     public final EObject ruleEqualityExpression() throws RecognitionException {
         EObject current = null;
 
         Token lv_op_2_1=null;
         Token lv_op_2_2=null;
+        Token lv_op_2_3=null;
+        Token lv_op_2_4=null;
+        Token lv_op_2_5=null;
+        Token lv_op_2_6=null;
+        Token lv_op_2_7=null;
+        Token lv_op_2_8=null;
+        Token lv_op_2_9=null;
+        Token lv_op_2_10=null;
         EObject this_RelationalExpression_0 = null;
 
         EObject lv_right_3_0 = null;
@@ -3970,16 +6750,16 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDearCode.g:1515:2: ( (this_RelationalExpression_0= ruleRelationalExpression ( () ( ( (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' ) ) ) ( (lv_right_3_0= ruleRelationalExpression ) ) )* ) )
-            // InternalDearCode.g:1516:2: (this_RelationalExpression_0= ruleRelationalExpression ( () ( ( (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' ) ) ) ( (lv_right_3_0= ruleRelationalExpression ) ) )* )
+            // InternalDearCode.g:2205:2: ( (this_RelationalExpression_0= ruleRelationalExpression ( () ( ( (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' | lv_op_2_3= 'late igual que' | lv_op_2_4= 'se distingue de' | lv_op_2_5= 'resuena igual que' | lv_op_2_6= 'vibra al mismo ritmo que' | lv_op_2_7= 'es id\\u00E9ntico a' | lv_op_2_8= 'se diferencia de' | lv_op_2_9= 'no coincide con' | lv_op_2_10= 'es distinto a' ) ) ) ( (lv_right_3_0= ruleRelationalExpression ) ) )* ) )
+            // InternalDearCode.g:2206:2: (this_RelationalExpression_0= ruleRelationalExpression ( () ( ( (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' | lv_op_2_3= 'late igual que' | lv_op_2_4= 'se distingue de' | lv_op_2_5= 'resuena igual que' | lv_op_2_6= 'vibra al mismo ritmo que' | lv_op_2_7= 'es id\\u00E9ntico a' | lv_op_2_8= 'se diferencia de' | lv_op_2_9= 'no coincide con' | lv_op_2_10= 'es distinto a' ) ) ) ( (lv_right_3_0= ruleRelationalExpression ) ) )* )
             {
-            // InternalDearCode.g:1516:2: (this_RelationalExpression_0= ruleRelationalExpression ( () ( ( (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' ) ) ) ( (lv_right_3_0= ruleRelationalExpression ) ) )* )
-            // InternalDearCode.g:1517:3: this_RelationalExpression_0= ruleRelationalExpression ( () ( ( (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' ) ) ) ( (lv_right_3_0= ruleRelationalExpression ) ) )*
+            // InternalDearCode.g:2206:2: (this_RelationalExpression_0= ruleRelationalExpression ( () ( ( (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' | lv_op_2_3= 'late igual que' | lv_op_2_4= 'se distingue de' | lv_op_2_5= 'resuena igual que' | lv_op_2_6= 'vibra al mismo ritmo que' | lv_op_2_7= 'es id\\u00E9ntico a' | lv_op_2_8= 'se diferencia de' | lv_op_2_9= 'no coincide con' | lv_op_2_10= 'es distinto a' ) ) ) ( (lv_right_3_0= ruleRelationalExpression ) ) )* )
+            // InternalDearCode.g:2207:3: this_RelationalExpression_0= ruleRelationalExpression ( () ( ( (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' | lv_op_2_3= 'late igual que' | lv_op_2_4= 'se distingue de' | lv_op_2_5= 'resuena igual que' | lv_op_2_6= 'vibra al mismo ritmo que' | lv_op_2_7= 'es id\\u00E9ntico a' | lv_op_2_8= 'se diferencia de' | lv_op_2_9= 'no coincide con' | lv_op_2_10= 'es distinto a' ) ) ) ( (lv_right_3_0= ruleRelationalExpression ) ) )*
             {
 
             			newCompositeNode(grammarAccess.getEqualityExpressionAccess().getRelationalExpressionParserRuleCall_0());
             		
-            pushFollow(FOLLOW_34);
+            pushFollow(FOLLOW_38);
             this_RelationalExpression_0=ruleRelationalExpression();
 
             state._fsp--;
@@ -3988,23 +6768,23 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             			current = this_RelationalExpression_0;
             			afterParserOrEnumRuleCall();
             		
-            // InternalDearCode.g:1525:3: ( () ( ( (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' ) ) ) ( (lv_right_3_0= ruleRelationalExpression ) ) )*
-            loop28:
+            // InternalDearCode.g:2215:3: ( () ( ( (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' | lv_op_2_3= 'late igual que' | lv_op_2_4= 'se distingue de' | lv_op_2_5= 'resuena igual que' | lv_op_2_6= 'vibra al mismo ritmo que' | lv_op_2_7= 'es id\\u00E9ntico a' | lv_op_2_8= 'se diferencia de' | lv_op_2_9= 'no coincide con' | lv_op_2_10= 'es distinto a' ) ) ) ( (lv_right_3_0= ruleRelationalExpression ) ) )*
+            loop52:
             do {
-                int alt28=2;
-                int LA28_0 = input.LA(1);
+                int alt52=2;
+                int LA52_0 = input.LA(1);
 
-                if ( ((LA28_0>=49 && LA28_0<=50)) ) {
-                    alt28=1;
+                if ( ((LA52_0>=152 && LA52_0<=161)) ) {
+                    alt52=1;
                 }
 
 
-                switch (alt28) {
+                switch (alt52) {
             	case 1 :
-            	    // InternalDearCode.g:1526:4: () ( ( (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' ) ) ) ( (lv_right_3_0= ruleRelationalExpression ) )
+            	    // InternalDearCode.g:2216:4: () ( ( (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' | lv_op_2_3= 'late igual que' | lv_op_2_4= 'se distingue de' | lv_op_2_5= 'resuena igual que' | lv_op_2_6= 'vibra al mismo ritmo que' | lv_op_2_7= 'es id\\u00E9ntico a' | lv_op_2_8= 'se diferencia de' | lv_op_2_9= 'no coincide con' | lv_op_2_10= 'es distinto a' ) ) ) ( (lv_right_3_0= ruleRelationalExpression ) )
             	    {
-            	    // InternalDearCode.g:1526:4: ()
-            	    // InternalDearCode.g:1527:5: 
+            	    // InternalDearCode.g:2216:4: ()
+            	    // InternalDearCode.g:2217:5: 
             	    {
 
             	    					current = forceCreateModelElementAndSet(
@@ -4014,33 +6794,77 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalDearCode.g:1533:4: ( ( (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' ) ) )
-            	    // InternalDearCode.g:1534:5: ( (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' ) )
+            	    // InternalDearCode.g:2223:4: ( ( (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' | lv_op_2_3= 'late igual que' | lv_op_2_4= 'se distingue de' | lv_op_2_5= 'resuena igual que' | lv_op_2_6= 'vibra al mismo ritmo que' | lv_op_2_7= 'es id\\u00E9ntico a' | lv_op_2_8= 'se diferencia de' | lv_op_2_9= 'no coincide con' | lv_op_2_10= 'es distinto a' ) ) )
+            	    // InternalDearCode.g:2224:5: ( (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' | lv_op_2_3= 'late igual que' | lv_op_2_4= 'se distingue de' | lv_op_2_5= 'resuena igual que' | lv_op_2_6= 'vibra al mismo ritmo que' | lv_op_2_7= 'es id\\u00E9ntico a' | lv_op_2_8= 'se diferencia de' | lv_op_2_9= 'no coincide con' | lv_op_2_10= 'es distinto a' ) )
             	    {
-            	    // InternalDearCode.g:1534:5: ( (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' ) )
-            	    // InternalDearCode.g:1535:6: (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' )
+            	    // InternalDearCode.g:2224:5: ( (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' | lv_op_2_3= 'late igual que' | lv_op_2_4= 'se distingue de' | lv_op_2_5= 'resuena igual que' | lv_op_2_6= 'vibra al mismo ritmo que' | lv_op_2_7= 'es id\\u00E9ntico a' | lv_op_2_8= 'se diferencia de' | lv_op_2_9= 'no coincide con' | lv_op_2_10= 'es distinto a' ) )
+            	    // InternalDearCode.g:2225:6: (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' | lv_op_2_3= 'late igual que' | lv_op_2_4= 'se distingue de' | lv_op_2_5= 'resuena igual que' | lv_op_2_6= 'vibra al mismo ritmo que' | lv_op_2_7= 'es id\\u00E9ntico a' | lv_op_2_8= 'se diferencia de' | lv_op_2_9= 'no coincide con' | lv_op_2_10= 'es distinto a' )
             	    {
-            	    // InternalDearCode.g:1535:6: (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' )
-            	    int alt27=2;
-            	    int LA27_0 = input.LA(1);
-
-            	    if ( (LA27_0==49) ) {
-            	        alt27=1;
-            	    }
-            	    else if ( (LA27_0==50) ) {
-            	        alt27=2;
-            	    }
-            	    else {
+            	    // InternalDearCode.g:2225:6: (lv_op_2_1= 'late al un\\u00EDsono con' | lv_op_2_2= 'canta con un matiz distinto a' | lv_op_2_3= 'late igual que' | lv_op_2_4= 'se distingue de' | lv_op_2_5= 'resuena igual que' | lv_op_2_6= 'vibra al mismo ritmo que' | lv_op_2_7= 'es id\\u00E9ntico a' | lv_op_2_8= 'se diferencia de' | lv_op_2_9= 'no coincide con' | lv_op_2_10= 'es distinto a' )
+            	    int alt51=10;
+            	    switch ( input.LA(1) ) {
+            	    case 152:
+            	        {
+            	        alt51=1;
+            	        }
+            	        break;
+            	    case 153:
+            	        {
+            	        alt51=2;
+            	        }
+            	        break;
+            	    case 154:
+            	        {
+            	        alt51=3;
+            	        }
+            	        break;
+            	    case 155:
+            	        {
+            	        alt51=4;
+            	        }
+            	        break;
+            	    case 156:
+            	        {
+            	        alt51=5;
+            	        }
+            	        break;
+            	    case 157:
+            	        {
+            	        alt51=6;
+            	        }
+            	        break;
+            	    case 158:
+            	        {
+            	        alt51=7;
+            	        }
+            	        break;
+            	    case 159:
+            	        {
+            	        alt51=8;
+            	        }
+            	        break;
+            	    case 160:
+            	        {
+            	        alt51=9;
+            	        }
+            	        break;
+            	    case 161:
+            	        {
+            	        alt51=10;
+            	        }
+            	        break;
+            	    default:
             	        NoViableAltException nvae =
-            	            new NoViableAltException("", 27, 0, input);
+            	            new NoViableAltException("", 51, 0, input);
 
             	        throw nvae;
             	    }
-            	    switch (alt27) {
+
+            	    switch (alt51) {
             	        case 1 :
-            	            // InternalDearCode.g:1536:7: lv_op_2_1= 'late al un\\u00EDsono con'
+            	            // InternalDearCode.g:2226:7: lv_op_2_1= 'late al un\\u00EDsono con'
             	            {
-            	            lv_op_2_1=(Token)match(input,49,FOLLOW_9); 
+            	            lv_op_2_1=(Token)match(input,152,FOLLOW_10); 
 
             	            							newLeafNode(lv_op_2_1, grammarAccess.getEqualityExpressionAccess().getOpLateAlUnSonoConKeyword_1_1_0_0());
             	            						
@@ -4054,9 +6878,9 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // InternalDearCode.g:1547:7: lv_op_2_2= 'canta con un matiz distinto a'
+            	            // InternalDearCode.g:2237:7: lv_op_2_2= 'canta con un matiz distinto a'
             	            {
-            	            lv_op_2_2=(Token)match(input,50,FOLLOW_9); 
+            	            lv_op_2_2=(Token)match(input,153,FOLLOW_10); 
 
             	            							newLeafNode(lv_op_2_2, grammarAccess.getEqualityExpressionAccess().getOpCantaConUnMatizDistintoAKeyword_1_1_0_1());
             	            						
@@ -4065,6 +6889,134 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	            								current = createModelElement(grammarAccess.getEqualityExpressionRule());
             	            							}
             	            							setWithLastConsumed(current, "op", lv_op_2_2, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 3 :
+            	            // InternalDearCode.g:2248:7: lv_op_2_3= 'late igual que'
+            	            {
+            	            lv_op_2_3=(Token)match(input,154,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_3, grammarAccess.getEqualityExpressionAccess().getOpLateIgualQueKeyword_1_1_0_2());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getEqualityExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_3, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 4 :
+            	            // InternalDearCode.g:2259:7: lv_op_2_4= 'se distingue de'
+            	            {
+            	            lv_op_2_4=(Token)match(input,155,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_4, grammarAccess.getEqualityExpressionAccess().getOpSeDistingueDeKeyword_1_1_0_3());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getEqualityExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_4, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 5 :
+            	            // InternalDearCode.g:2270:7: lv_op_2_5= 'resuena igual que'
+            	            {
+            	            lv_op_2_5=(Token)match(input,156,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_5, grammarAccess.getEqualityExpressionAccess().getOpResuenaIgualQueKeyword_1_1_0_4());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getEqualityExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_5, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 6 :
+            	            // InternalDearCode.g:2281:7: lv_op_2_6= 'vibra al mismo ritmo que'
+            	            {
+            	            lv_op_2_6=(Token)match(input,157,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_6, grammarAccess.getEqualityExpressionAccess().getOpVibraAlMismoRitmoQueKeyword_1_1_0_5());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getEqualityExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_6, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 7 :
+            	            // InternalDearCode.g:2292:7: lv_op_2_7= 'es id\\u00E9ntico a'
+            	            {
+            	            lv_op_2_7=(Token)match(input,158,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_7, grammarAccess.getEqualityExpressionAccess().getOpEsIdNticoAKeyword_1_1_0_6());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getEqualityExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_7, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 8 :
+            	            // InternalDearCode.g:2303:7: lv_op_2_8= 'se diferencia de'
+            	            {
+            	            lv_op_2_8=(Token)match(input,159,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_8, grammarAccess.getEqualityExpressionAccess().getOpSeDiferenciaDeKeyword_1_1_0_7());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getEqualityExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_8, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 9 :
+            	            // InternalDearCode.g:2314:7: lv_op_2_9= 'no coincide con'
+            	            {
+            	            lv_op_2_9=(Token)match(input,160,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_9, grammarAccess.getEqualityExpressionAccess().getOpNoCoincideConKeyword_1_1_0_8());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getEqualityExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_9, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 10 :
+            	            // InternalDearCode.g:2325:7: lv_op_2_10= 'es distinto a'
+            	            {
+            	            lv_op_2_10=(Token)match(input,161,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_10, grammarAccess.getEqualityExpressionAccess().getOpEsDistintoAKeyword_1_1_0_9());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getEqualityExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_10, null);
             	            						
 
             	            }
@@ -4078,16 +7030,16 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalDearCode.g:1560:4: ( (lv_right_3_0= ruleRelationalExpression ) )
-            	    // InternalDearCode.g:1561:5: (lv_right_3_0= ruleRelationalExpression )
+            	    // InternalDearCode.g:2338:4: ( (lv_right_3_0= ruleRelationalExpression ) )
+            	    // InternalDearCode.g:2339:5: (lv_right_3_0= ruleRelationalExpression )
             	    {
-            	    // InternalDearCode.g:1561:5: (lv_right_3_0= ruleRelationalExpression )
-            	    // InternalDearCode.g:1562:6: lv_right_3_0= ruleRelationalExpression
+            	    // InternalDearCode.g:2339:5: (lv_right_3_0= ruleRelationalExpression )
+            	    // InternalDearCode.g:2340:6: lv_right_3_0= ruleRelationalExpression
             	    {
 
             	    						newCompositeNode(grammarAccess.getEqualityExpressionAccess().getRightRelationalExpressionParserRuleCall_1_2_0());
             	    					
-            	    pushFollow(FOLLOW_34);
+            	    pushFollow(FOLLOW_38);
             	    lv_right_3_0=ruleRelationalExpression();
 
             	    state._fsp--;
@@ -4114,7 +7066,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop28;
+            	    break loop52;
                 }
             } while (true);
 
@@ -4141,7 +7093,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleRelationalExpression"
-    // InternalDearCode.g:1584:1: entryRuleRelationalExpression returns [EObject current=null] : iv_ruleRelationalExpression= ruleRelationalExpression EOF ;
+    // InternalDearCode.g:2362:1: entryRuleRelationalExpression returns [EObject current=null] : iv_ruleRelationalExpression= ruleRelationalExpression EOF ;
     public final EObject entryRuleRelationalExpression() throws RecognitionException {
         EObject current = null;
 
@@ -4149,8 +7101,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:1584:61: (iv_ruleRelationalExpression= ruleRelationalExpression EOF )
-            // InternalDearCode.g:1585:2: iv_ruleRelationalExpression= ruleRelationalExpression EOF
+            // InternalDearCode.g:2362:61: (iv_ruleRelationalExpression= ruleRelationalExpression EOF )
+            // InternalDearCode.g:2363:2: iv_ruleRelationalExpression= ruleRelationalExpression EOF
             {
              newCompositeNode(grammarAccess.getRelationalExpressionRule()); 
             pushFollow(FOLLOW_1);
@@ -4177,7 +7129,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleRelationalExpression"
-    // InternalDearCode.g:1591:1: ruleRelationalExpression returns [EObject current=null] : (this_AdditiveExpression_0= ruleAdditiveExpression ( () ( ( (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' ) ) ) ( (lv_right_3_0= ruleAdditiveExpression ) ) )* ) ;
+    // InternalDearCode.g:2369:1: ruleRelationalExpression returns [EObject current=null] : (this_AdditiveExpression_0= ruleAdditiveExpression ( () ( ( (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' | lv_op_2_5= 'susurra menos que' | lv_op_2_6= 'casi igual que' | lv_op_2_7= 'arde mas que' | lv_op_2_8= 'abraza como' | lv_op_2_9= 'susurra m\\u00E1s suavemente que' | lv_op_2_10= 'tiene menos latidos que' | lv_op_2_11= 'susurra tan suavemente como' | lv_op_2_12= 'no supera a' | lv_op_2_13= 'susurra con m\\u00E1s fuerza que' | lv_op_2_14= 'tiene m\\u00E1s latidos que' | lv_op_2_15= 'susurra al menos con la misma fuerza que' | lv_op_2_16= 'al menos iguala a' ) ) ) ( (lv_right_3_0= ruleAdditiveExpression ) ) )* ) ;
     public final EObject ruleRelationalExpression() throws RecognitionException {
         EObject current = null;
 
@@ -4185,6 +7137,18 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
         Token lv_op_2_2=null;
         Token lv_op_2_3=null;
         Token lv_op_2_4=null;
+        Token lv_op_2_5=null;
+        Token lv_op_2_6=null;
+        Token lv_op_2_7=null;
+        Token lv_op_2_8=null;
+        Token lv_op_2_9=null;
+        Token lv_op_2_10=null;
+        Token lv_op_2_11=null;
+        Token lv_op_2_12=null;
+        Token lv_op_2_13=null;
+        Token lv_op_2_14=null;
+        Token lv_op_2_15=null;
+        Token lv_op_2_16=null;
         EObject this_AdditiveExpression_0 = null;
 
         EObject lv_right_3_0 = null;
@@ -4194,16 +7158,16 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDearCode.g:1597:2: ( (this_AdditiveExpression_0= ruleAdditiveExpression ( () ( ( (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' ) ) ) ( (lv_right_3_0= ruleAdditiveExpression ) ) )* ) )
-            // InternalDearCode.g:1598:2: (this_AdditiveExpression_0= ruleAdditiveExpression ( () ( ( (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' ) ) ) ( (lv_right_3_0= ruleAdditiveExpression ) ) )* )
+            // InternalDearCode.g:2375:2: ( (this_AdditiveExpression_0= ruleAdditiveExpression ( () ( ( (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' | lv_op_2_5= 'susurra menos que' | lv_op_2_6= 'casi igual que' | lv_op_2_7= 'arde mas que' | lv_op_2_8= 'abraza como' | lv_op_2_9= 'susurra m\\u00E1s suavemente que' | lv_op_2_10= 'tiene menos latidos que' | lv_op_2_11= 'susurra tan suavemente como' | lv_op_2_12= 'no supera a' | lv_op_2_13= 'susurra con m\\u00E1s fuerza que' | lv_op_2_14= 'tiene m\\u00E1s latidos que' | lv_op_2_15= 'susurra al menos con la misma fuerza que' | lv_op_2_16= 'al menos iguala a' ) ) ) ( (lv_right_3_0= ruleAdditiveExpression ) ) )* ) )
+            // InternalDearCode.g:2376:2: (this_AdditiveExpression_0= ruleAdditiveExpression ( () ( ( (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' | lv_op_2_5= 'susurra menos que' | lv_op_2_6= 'casi igual que' | lv_op_2_7= 'arde mas que' | lv_op_2_8= 'abraza como' | lv_op_2_9= 'susurra m\\u00E1s suavemente que' | lv_op_2_10= 'tiene menos latidos que' | lv_op_2_11= 'susurra tan suavemente como' | lv_op_2_12= 'no supera a' | lv_op_2_13= 'susurra con m\\u00E1s fuerza que' | lv_op_2_14= 'tiene m\\u00E1s latidos que' | lv_op_2_15= 'susurra al menos con la misma fuerza que' | lv_op_2_16= 'al menos iguala a' ) ) ) ( (lv_right_3_0= ruleAdditiveExpression ) ) )* )
             {
-            // InternalDearCode.g:1598:2: (this_AdditiveExpression_0= ruleAdditiveExpression ( () ( ( (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' ) ) ) ( (lv_right_3_0= ruleAdditiveExpression ) ) )* )
-            // InternalDearCode.g:1599:3: this_AdditiveExpression_0= ruleAdditiveExpression ( () ( ( (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' ) ) ) ( (lv_right_3_0= ruleAdditiveExpression ) ) )*
+            // InternalDearCode.g:2376:2: (this_AdditiveExpression_0= ruleAdditiveExpression ( () ( ( (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' | lv_op_2_5= 'susurra menos que' | lv_op_2_6= 'casi igual que' | lv_op_2_7= 'arde mas que' | lv_op_2_8= 'abraza como' | lv_op_2_9= 'susurra m\\u00E1s suavemente que' | lv_op_2_10= 'tiene menos latidos que' | lv_op_2_11= 'susurra tan suavemente como' | lv_op_2_12= 'no supera a' | lv_op_2_13= 'susurra con m\\u00E1s fuerza que' | lv_op_2_14= 'tiene m\\u00E1s latidos que' | lv_op_2_15= 'susurra al menos con la misma fuerza que' | lv_op_2_16= 'al menos iguala a' ) ) ) ( (lv_right_3_0= ruleAdditiveExpression ) ) )* )
+            // InternalDearCode.g:2377:3: this_AdditiveExpression_0= ruleAdditiveExpression ( () ( ( (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' | lv_op_2_5= 'susurra menos que' | lv_op_2_6= 'casi igual que' | lv_op_2_7= 'arde mas que' | lv_op_2_8= 'abraza como' | lv_op_2_9= 'susurra m\\u00E1s suavemente que' | lv_op_2_10= 'tiene menos latidos que' | lv_op_2_11= 'susurra tan suavemente como' | lv_op_2_12= 'no supera a' | lv_op_2_13= 'susurra con m\\u00E1s fuerza que' | lv_op_2_14= 'tiene m\\u00E1s latidos que' | lv_op_2_15= 'susurra al menos con la misma fuerza que' | lv_op_2_16= 'al menos iguala a' ) ) ) ( (lv_right_3_0= ruleAdditiveExpression ) ) )*
             {
 
             			newCompositeNode(grammarAccess.getRelationalExpressionAccess().getAdditiveExpressionParserRuleCall_0());
             		
-            pushFollow(FOLLOW_35);
+            pushFollow(FOLLOW_39);
             this_AdditiveExpression_0=ruleAdditiveExpression();
 
             state._fsp--;
@@ -4212,23 +7176,23 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             			current = this_AdditiveExpression_0;
             			afterParserOrEnumRuleCall();
             		
-            // InternalDearCode.g:1607:3: ( () ( ( (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' ) ) ) ( (lv_right_3_0= ruleAdditiveExpression ) ) )*
-            loop30:
+            // InternalDearCode.g:2385:3: ( () ( ( (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' | lv_op_2_5= 'susurra menos que' | lv_op_2_6= 'casi igual que' | lv_op_2_7= 'arde mas que' | lv_op_2_8= 'abraza como' | lv_op_2_9= 'susurra m\\u00E1s suavemente que' | lv_op_2_10= 'tiene menos latidos que' | lv_op_2_11= 'susurra tan suavemente como' | lv_op_2_12= 'no supera a' | lv_op_2_13= 'susurra con m\\u00E1s fuerza que' | lv_op_2_14= 'tiene m\\u00E1s latidos que' | lv_op_2_15= 'susurra al menos con la misma fuerza que' | lv_op_2_16= 'al menos iguala a' ) ) ) ( (lv_right_3_0= ruleAdditiveExpression ) ) )*
+            loop54:
             do {
-                int alt30=2;
-                int LA30_0 = input.LA(1);
+                int alt54=2;
+                int LA54_0 = input.LA(1);
 
-                if ( ((LA30_0>=51 && LA30_0<=54)) ) {
-                    alt30=1;
+                if ( ((LA54_0>=162 && LA54_0<=177)) ) {
+                    alt54=1;
                 }
 
 
-                switch (alt30) {
+                switch (alt54) {
             	case 1 :
-            	    // InternalDearCode.g:1608:4: () ( ( (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' ) ) ) ( (lv_right_3_0= ruleAdditiveExpression ) )
+            	    // InternalDearCode.g:2386:4: () ( ( (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' | lv_op_2_5= 'susurra menos que' | lv_op_2_6= 'casi igual que' | lv_op_2_7= 'arde mas que' | lv_op_2_8= 'abraza como' | lv_op_2_9= 'susurra m\\u00E1s suavemente que' | lv_op_2_10= 'tiene menos latidos que' | lv_op_2_11= 'susurra tan suavemente como' | lv_op_2_12= 'no supera a' | lv_op_2_13= 'susurra con m\\u00E1s fuerza que' | lv_op_2_14= 'tiene m\\u00E1s latidos que' | lv_op_2_15= 'susurra al menos con la misma fuerza que' | lv_op_2_16= 'al menos iguala a' ) ) ) ( (lv_right_3_0= ruleAdditiveExpression ) )
             	    {
-            	    // InternalDearCode.g:1608:4: ()
-            	    // InternalDearCode.g:1609:5: 
+            	    // InternalDearCode.g:2386:4: ()
+            	    // InternalDearCode.g:2387:5: 
             	    {
 
             	    					current = forceCreateModelElementAndSet(
@@ -4238,47 +7202,107 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalDearCode.g:1615:4: ( ( (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' ) ) )
-            	    // InternalDearCode.g:1616:5: ( (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' ) )
+            	    // InternalDearCode.g:2393:4: ( ( (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' | lv_op_2_5= 'susurra menos que' | lv_op_2_6= 'casi igual que' | lv_op_2_7= 'arde mas que' | lv_op_2_8= 'abraza como' | lv_op_2_9= 'susurra m\\u00E1s suavemente que' | lv_op_2_10= 'tiene menos latidos que' | lv_op_2_11= 'susurra tan suavemente como' | lv_op_2_12= 'no supera a' | lv_op_2_13= 'susurra con m\\u00E1s fuerza que' | lv_op_2_14= 'tiene m\\u00E1s latidos que' | lv_op_2_15= 'susurra al menos con la misma fuerza que' | lv_op_2_16= 'al menos iguala a' ) ) )
+            	    // InternalDearCode.g:2394:5: ( (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' | lv_op_2_5= 'susurra menos que' | lv_op_2_6= 'casi igual que' | lv_op_2_7= 'arde mas que' | lv_op_2_8= 'abraza como' | lv_op_2_9= 'susurra m\\u00E1s suavemente que' | lv_op_2_10= 'tiene menos latidos que' | lv_op_2_11= 'susurra tan suavemente como' | lv_op_2_12= 'no supera a' | lv_op_2_13= 'susurra con m\\u00E1s fuerza que' | lv_op_2_14= 'tiene m\\u00E1s latidos que' | lv_op_2_15= 'susurra al menos con la misma fuerza que' | lv_op_2_16= 'al menos iguala a' ) )
             	    {
-            	    // InternalDearCode.g:1616:5: ( (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' ) )
-            	    // InternalDearCode.g:1617:6: (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' )
+            	    // InternalDearCode.g:2394:5: ( (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' | lv_op_2_5= 'susurra menos que' | lv_op_2_6= 'casi igual que' | lv_op_2_7= 'arde mas que' | lv_op_2_8= 'abraza como' | lv_op_2_9= 'susurra m\\u00E1s suavemente que' | lv_op_2_10= 'tiene menos latidos que' | lv_op_2_11= 'susurra tan suavemente como' | lv_op_2_12= 'no supera a' | lv_op_2_13= 'susurra con m\\u00E1s fuerza que' | lv_op_2_14= 'tiene m\\u00E1s latidos que' | lv_op_2_15= 'susurra al menos con la misma fuerza que' | lv_op_2_16= 'al menos iguala a' ) )
+            	    // InternalDearCode.g:2395:6: (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' | lv_op_2_5= 'susurra menos que' | lv_op_2_6= 'casi igual que' | lv_op_2_7= 'arde mas que' | lv_op_2_8= 'abraza como' | lv_op_2_9= 'susurra m\\u00E1s suavemente que' | lv_op_2_10= 'tiene menos latidos que' | lv_op_2_11= 'susurra tan suavemente como' | lv_op_2_12= 'no supera a' | lv_op_2_13= 'susurra con m\\u00E1s fuerza que' | lv_op_2_14= 'tiene m\\u00E1s latidos que' | lv_op_2_15= 'susurra al menos con la misma fuerza que' | lv_op_2_16= 'al menos iguala a' )
             	    {
-            	    // InternalDearCode.g:1617:6: (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' )
-            	    int alt29=4;
+            	    // InternalDearCode.g:2395:6: (lv_op_2_1= 'susurra con menos fuerza que' | lv_op_2_2= 'casi suspira al mismo nivel que' | lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que' | lv_op_2_4= 'rodea con tanta fuerza como' | lv_op_2_5= 'susurra menos que' | lv_op_2_6= 'casi igual que' | lv_op_2_7= 'arde mas que' | lv_op_2_8= 'abraza como' | lv_op_2_9= 'susurra m\\u00E1s suavemente que' | lv_op_2_10= 'tiene menos latidos que' | lv_op_2_11= 'susurra tan suavemente como' | lv_op_2_12= 'no supera a' | lv_op_2_13= 'susurra con m\\u00E1s fuerza que' | lv_op_2_14= 'tiene m\\u00E1s latidos que' | lv_op_2_15= 'susurra al menos con la misma fuerza que' | lv_op_2_16= 'al menos iguala a' )
+            	    int alt53=16;
             	    switch ( input.LA(1) ) {
-            	    case 51:
+            	    case 162:
             	        {
-            	        alt29=1;
+            	        alt53=1;
             	        }
             	        break;
-            	    case 52:
+            	    case 163:
             	        {
-            	        alt29=2;
+            	        alt53=2;
             	        }
             	        break;
-            	    case 53:
+            	    case 164:
             	        {
-            	        alt29=3;
+            	        alt53=3;
             	        }
             	        break;
-            	    case 54:
+            	    case 165:
             	        {
-            	        alt29=4;
+            	        alt53=4;
+            	        }
+            	        break;
+            	    case 166:
+            	        {
+            	        alt53=5;
+            	        }
+            	        break;
+            	    case 167:
+            	        {
+            	        alt53=6;
+            	        }
+            	        break;
+            	    case 168:
+            	        {
+            	        alt53=7;
+            	        }
+            	        break;
+            	    case 169:
+            	        {
+            	        alt53=8;
+            	        }
+            	        break;
+            	    case 170:
+            	        {
+            	        alt53=9;
+            	        }
+            	        break;
+            	    case 171:
+            	        {
+            	        alt53=10;
+            	        }
+            	        break;
+            	    case 172:
+            	        {
+            	        alt53=11;
+            	        }
+            	        break;
+            	    case 173:
+            	        {
+            	        alt53=12;
+            	        }
+            	        break;
+            	    case 174:
+            	        {
+            	        alt53=13;
+            	        }
+            	        break;
+            	    case 175:
+            	        {
+            	        alt53=14;
+            	        }
+            	        break;
+            	    case 176:
+            	        {
+            	        alt53=15;
+            	        }
+            	        break;
+            	    case 177:
+            	        {
+            	        alt53=16;
             	        }
             	        break;
             	    default:
             	        NoViableAltException nvae =
-            	            new NoViableAltException("", 29, 0, input);
+            	            new NoViableAltException("", 53, 0, input);
 
             	        throw nvae;
             	    }
 
-            	    switch (alt29) {
+            	    switch (alt53) {
             	        case 1 :
-            	            // InternalDearCode.g:1618:7: lv_op_2_1= 'susurra con menos fuerza que'
+            	            // InternalDearCode.g:2396:7: lv_op_2_1= 'susurra con menos fuerza que'
             	            {
-            	            lv_op_2_1=(Token)match(input,51,FOLLOW_9); 
+            	            lv_op_2_1=(Token)match(input,162,FOLLOW_10); 
 
             	            							newLeafNode(lv_op_2_1, grammarAccess.getRelationalExpressionAccess().getOpSusurraConMenosFuerzaQueKeyword_1_1_0_0());
             	            						
@@ -4292,9 +7316,9 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // InternalDearCode.g:1629:7: lv_op_2_2= 'casi suspira al mismo nivel que'
+            	            // InternalDearCode.g:2407:7: lv_op_2_2= 'casi suspira al mismo nivel que'
             	            {
-            	            lv_op_2_2=(Token)match(input,52,FOLLOW_9); 
+            	            lv_op_2_2=(Token)match(input,163,FOLLOW_10); 
 
             	            							newLeafNode(lv_op_2_2, grammarAccess.getRelationalExpressionAccess().getOpCasiSuspiraAlMismoNivelQueKeyword_1_1_0_1());
             	            						
@@ -4308,9 +7332,9 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 3 :
-            	            // InternalDearCode.g:1640:7: lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que'
+            	            // InternalDearCode.g:2418:7: lv_op_2_3= 'arde con m\\u00E1s pasi\\u00F3n que'
             	            {
-            	            lv_op_2_3=(Token)match(input,53,FOLLOW_9); 
+            	            lv_op_2_3=(Token)match(input,164,FOLLOW_10); 
 
             	            							newLeafNode(lv_op_2_3, grammarAccess.getRelationalExpressionAccess().getOpArdeConMSPasiNQueKeyword_1_1_0_2());
             	            						
@@ -4324,9 +7348,9 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 4 :
-            	            // InternalDearCode.g:1651:7: lv_op_2_4= 'rodea con tanta fuerza como'
+            	            // InternalDearCode.g:2429:7: lv_op_2_4= 'rodea con tanta fuerza como'
             	            {
-            	            lv_op_2_4=(Token)match(input,54,FOLLOW_9); 
+            	            lv_op_2_4=(Token)match(input,165,FOLLOW_10); 
 
             	            							newLeafNode(lv_op_2_4, grammarAccess.getRelationalExpressionAccess().getOpRodeaConTantaFuerzaComoKeyword_1_1_0_3());
             	            						
@@ -4335,6 +7359,198 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	            								current = createModelElement(grammarAccess.getRelationalExpressionRule());
             	            							}
             	            							setWithLastConsumed(current, "op", lv_op_2_4, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 5 :
+            	            // InternalDearCode.g:2440:7: lv_op_2_5= 'susurra menos que'
+            	            {
+            	            lv_op_2_5=(Token)match(input,166,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_5, grammarAccess.getRelationalExpressionAccess().getOpSusurraMenosQueKeyword_1_1_0_4());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getRelationalExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_5, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 6 :
+            	            // InternalDearCode.g:2451:7: lv_op_2_6= 'casi igual que'
+            	            {
+            	            lv_op_2_6=(Token)match(input,167,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_6, grammarAccess.getRelationalExpressionAccess().getOpCasiIgualQueKeyword_1_1_0_5());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getRelationalExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_6, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 7 :
+            	            // InternalDearCode.g:2462:7: lv_op_2_7= 'arde mas que'
+            	            {
+            	            lv_op_2_7=(Token)match(input,168,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_7, grammarAccess.getRelationalExpressionAccess().getOpArdeMasQueKeyword_1_1_0_6());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getRelationalExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_7, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 8 :
+            	            // InternalDearCode.g:2473:7: lv_op_2_8= 'abraza como'
+            	            {
+            	            lv_op_2_8=(Token)match(input,169,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_8, grammarAccess.getRelationalExpressionAccess().getOpAbrazaComoKeyword_1_1_0_7());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getRelationalExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_8, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 9 :
+            	            // InternalDearCode.g:2484:7: lv_op_2_9= 'susurra m\\u00E1s suavemente que'
+            	            {
+            	            lv_op_2_9=(Token)match(input,170,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_9, grammarAccess.getRelationalExpressionAccess().getOpSusurraMSSuavementeQueKeyword_1_1_0_8());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getRelationalExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_9, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 10 :
+            	            // InternalDearCode.g:2495:7: lv_op_2_10= 'tiene menos latidos que'
+            	            {
+            	            lv_op_2_10=(Token)match(input,171,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_10, grammarAccess.getRelationalExpressionAccess().getOpTieneMenosLatidosQueKeyword_1_1_0_9());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getRelationalExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_10, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 11 :
+            	            // InternalDearCode.g:2506:7: lv_op_2_11= 'susurra tan suavemente como'
+            	            {
+            	            lv_op_2_11=(Token)match(input,172,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_11, grammarAccess.getRelationalExpressionAccess().getOpSusurraTanSuavementeComoKeyword_1_1_0_10());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getRelationalExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_11, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 12 :
+            	            // InternalDearCode.g:2517:7: lv_op_2_12= 'no supera a'
+            	            {
+            	            lv_op_2_12=(Token)match(input,173,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_12, grammarAccess.getRelationalExpressionAccess().getOpNoSuperaAKeyword_1_1_0_11());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getRelationalExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_12, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 13 :
+            	            // InternalDearCode.g:2528:7: lv_op_2_13= 'susurra con m\\u00E1s fuerza que'
+            	            {
+            	            lv_op_2_13=(Token)match(input,174,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_13, grammarAccess.getRelationalExpressionAccess().getOpSusurraConMSFuerzaQueKeyword_1_1_0_12());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getRelationalExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_13, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 14 :
+            	            // InternalDearCode.g:2539:7: lv_op_2_14= 'tiene m\\u00E1s latidos que'
+            	            {
+            	            lv_op_2_14=(Token)match(input,175,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_14, grammarAccess.getRelationalExpressionAccess().getOpTieneMSLatidosQueKeyword_1_1_0_13());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getRelationalExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_14, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 15 :
+            	            // InternalDearCode.g:2550:7: lv_op_2_15= 'susurra al menos con la misma fuerza que'
+            	            {
+            	            lv_op_2_15=(Token)match(input,176,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_15, grammarAccess.getRelationalExpressionAccess().getOpSusurraAlMenosConLaMismaFuerzaQueKeyword_1_1_0_14());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getRelationalExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_15, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 16 :
+            	            // InternalDearCode.g:2561:7: lv_op_2_16= 'al menos iguala a'
+            	            {
+            	            lv_op_2_16=(Token)match(input,177,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_16, grammarAccess.getRelationalExpressionAccess().getOpAlMenosIgualaAKeyword_1_1_0_15());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getRelationalExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_16, null);
             	            						
 
             	            }
@@ -4348,16 +7564,16 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalDearCode.g:1664:4: ( (lv_right_3_0= ruleAdditiveExpression ) )
-            	    // InternalDearCode.g:1665:5: (lv_right_3_0= ruleAdditiveExpression )
+            	    // InternalDearCode.g:2574:4: ( (lv_right_3_0= ruleAdditiveExpression ) )
+            	    // InternalDearCode.g:2575:5: (lv_right_3_0= ruleAdditiveExpression )
             	    {
-            	    // InternalDearCode.g:1665:5: (lv_right_3_0= ruleAdditiveExpression )
-            	    // InternalDearCode.g:1666:6: lv_right_3_0= ruleAdditiveExpression
+            	    // InternalDearCode.g:2575:5: (lv_right_3_0= ruleAdditiveExpression )
+            	    // InternalDearCode.g:2576:6: lv_right_3_0= ruleAdditiveExpression
             	    {
 
             	    						newCompositeNode(grammarAccess.getRelationalExpressionAccess().getRightAdditiveExpressionParserRuleCall_1_2_0());
             	    					
-            	    pushFollow(FOLLOW_35);
+            	    pushFollow(FOLLOW_39);
             	    lv_right_3_0=ruleAdditiveExpression();
 
             	    state._fsp--;
@@ -4384,7 +7600,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop30;
+            	    break loop54;
                 }
             } while (true);
 
@@ -4411,7 +7627,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleAdditiveExpression"
-    // InternalDearCode.g:1688:1: entryRuleAdditiveExpression returns [EObject current=null] : iv_ruleAdditiveExpression= ruleAdditiveExpression EOF ;
+    // InternalDearCode.g:2598:1: entryRuleAdditiveExpression returns [EObject current=null] : iv_ruleAdditiveExpression= ruleAdditiveExpression EOF ;
     public final EObject entryRuleAdditiveExpression() throws RecognitionException {
         EObject current = null;
 
@@ -4419,8 +7635,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:1688:59: (iv_ruleAdditiveExpression= ruleAdditiveExpression EOF )
-            // InternalDearCode.g:1689:2: iv_ruleAdditiveExpression= ruleAdditiveExpression EOF
+            // InternalDearCode.g:2598:59: (iv_ruleAdditiveExpression= ruleAdditiveExpression EOF )
+            // InternalDearCode.g:2599:2: iv_ruleAdditiveExpression= ruleAdditiveExpression EOF
             {
              newCompositeNode(grammarAccess.getAdditiveExpressionRule()); 
             pushFollow(FOLLOW_1);
@@ -4447,12 +7663,18 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleAdditiveExpression"
-    // InternalDearCode.g:1695:1: ruleAdditiveExpression returns [EObject current=null] : (this_MultiplicativeExpression_0= ruleMultiplicativeExpression ( () ( ( (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' ) ) ) ( (lv_right_3_0= ruleMultiplicativeExpression ) ) )* ) ;
+    // InternalDearCode.g:2605:1: ruleAdditiveExpression returns [EObject current=null] : (this_MultiplicativeExpression_0= ruleMultiplicativeExpression ( () ( ( (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' | lv_op_2_3= 'se une a' | lv_op_2_4= 'se funde con' | lv_op_2_5= 'sumado al latido de' | lv_op_2_6= 'combinado con la pasi\\u00F3n de' | lv_op_2_7= 'entrelazado con' | lv_op_2_8= 'a\\u00F1adido al suspiro de' ) ) ) ( (lv_right_3_0= ruleMultiplicativeExpression ) ) )* ) ;
     public final EObject ruleAdditiveExpression() throws RecognitionException {
         EObject current = null;
 
         Token lv_op_2_1=null;
         Token lv_op_2_2=null;
+        Token lv_op_2_3=null;
+        Token lv_op_2_4=null;
+        Token lv_op_2_5=null;
+        Token lv_op_2_6=null;
+        Token lv_op_2_7=null;
+        Token lv_op_2_8=null;
         EObject this_MultiplicativeExpression_0 = null;
 
         EObject lv_right_3_0 = null;
@@ -4462,16 +7684,16 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDearCode.g:1701:2: ( (this_MultiplicativeExpression_0= ruleMultiplicativeExpression ( () ( ( (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' ) ) ) ( (lv_right_3_0= ruleMultiplicativeExpression ) ) )* ) )
-            // InternalDearCode.g:1702:2: (this_MultiplicativeExpression_0= ruleMultiplicativeExpression ( () ( ( (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' ) ) ) ( (lv_right_3_0= ruleMultiplicativeExpression ) ) )* )
+            // InternalDearCode.g:2611:2: ( (this_MultiplicativeExpression_0= ruleMultiplicativeExpression ( () ( ( (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' | lv_op_2_3= 'se une a' | lv_op_2_4= 'se funde con' | lv_op_2_5= 'sumado al latido de' | lv_op_2_6= 'combinado con la pasi\\u00F3n de' | lv_op_2_7= 'entrelazado con' | lv_op_2_8= 'a\\u00F1adido al suspiro de' ) ) ) ( (lv_right_3_0= ruleMultiplicativeExpression ) ) )* ) )
+            // InternalDearCode.g:2612:2: (this_MultiplicativeExpression_0= ruleMultiplicativeExpression ( () ( ( (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' | lv_op_2_3= 'se une a' | lv_op_2_4= 'se funde con' | lv_op_2_5= 'sumado al latido de' | lv_op_2_6= 'combinado con la pasi\\u00F3n de' | lv_op_2_7= 'entrelazado con' | lv_op_2_8= 'a\\u00F1adido al suspiro de' ) ) ) ( (lv_right_3_0= ruleMultiplicativeExpression ) ) )* )
             {
-            // InternalDearCode.g:1702:2: (this_MultiplicativeExpression_0= ruleMultiplicativeExpression ( () ( ( (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' ) ) ) ( (lv_right_3_0= ruleMultiplicativeExpression ) ) )* )
-            // InternalDearCode.g:1703:3: this_MultiplicativeExpression_0= ruleMultiplicativeExpression ( () ( ( (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' ) ) ) ( (lv_right_3_0= ruleMultiplicativeExpression ) ) )*
+            // InternalDearCode.g:2612:2: (this_MultiplicativeExpression_0= ruleMultiplicativeExpression ( () ( ( (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' | lv_op_2_3= 'se une a' | lv_op_2_4= 'se funde con' | lv_op_2_5= 'sumado al latido de' | lv_op_2_6= 'combinado con la pasi\\u00F3n de' | lv_op_2_7= 'entrelazado con' | lv_op_2_8= 'a\\u00F1adido al suspiro de' ) ) ) ( (lv_right_3_0= ruleMultiplicativeExpression ) ) )* )
+            // InternalDearCode.g:2613:3: this_MultiplicativeExpression_0= ruleMultiplicativeExpression ( () ( ( (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' | lv_op_2_3= 'se une a' | lv_op_2_4= 'se funde con' | lv_op_2_5= 'sumado al latido de' | lv_op_2_6= 'combinado con la pasi\\u00F3n de' | lv_op_2_7= 'entrelazado con' | lv_op_2_8= 'a\\u00F1adido al suspiro de' ) ) ) ( (lv_right_3_0= ruleMultiplicativeExpression ) ) )*
             {
 
             			newCompositeNode(grammarAccess.getAdditiveExpressionAccess().getMultiplicativeExpressionParserRuleCall_0());
             		
-            pushFollow(FOLLOW_36);
+            pushFollow(FOLLOW_40);
             this_MultiplicativeExpression_0=ruleMultiplicativeExpression();
 
             state._fsp--;
@@ -4480,23 +7702,23 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             			current = this_MultiplicativeExpression_0;
             			afterParserOrEnumRuleCall();
             		
-            // InternalDearCode.g:1711:3: ( () ( ( (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' ) ) ) ( (lv_right_3_0= ruleMultiplicativeExpression ) ) )*
-            loop32:
+            // InternalDearCode.g:2621:3: ( () ( ( (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' | lv_op_2_3= 'se une a' | lv_op_2_4= 'se funde con' | lv_op_2_5= 'sumado al latido de' | lv_op_2_6= 'combinado con la pasi\\u00F3n de' | lv_op_2_7= 'entrelazado con' | lv_op_2_8= 'a\\u00F1adido al suspiro de' ) ) ) ( (lv_right_3_0= ruleMultiplicativeExpression ) ) )*
+            loop56:
             do {
-                int alt32=2;
-                int LA32_0 = input.LA(1);
+                int alt56=2;
+                int LA56_0 = input.LA(1);
 
-                if ( ((LA32_0>=55 && LA32_0<=56)) ) {
-                    alt32=1;
+                if ( ((LA56_0>=178 && LA56_0<=185)) ) {
+                    alt56=1;
                 }
 
 
-                switch (alt32) {
+                switch (alt56) {
             	case 1 :
-            	    // InternalDearCode.g:1712:4: () ( ( (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' ) ) ) ( (lv_right_3_0= ruleMultiplicativeExpression ) )
+            	    // InternalDearCode.g:2622:4: () ( ( (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' | lv_op_2_3= 'se une a' | lv_op_2_4= 'se funde con' | lv_op_2_5= 'sumado al latido de' | lv_op_2_6= 'combinado con la pasi\\u00F3n de' | lv_op_2_7= 'entrelazado con' | lv_op_2_8= 'a\\u00F1adido al suspiro de' ) ) ) ( (lv_right_3_0= ruleMultiplicativeExpression ) )
             	    {
-            	    // InternalDearCode.g:1712:4: ()
-            	    // InternalDearCode.g:1713:5: 
+            	    // InternalDearCode.g:2622:4: ()
+            	    // InternalDearCode.g:2623:5: 
             	    {
 
             	    					current = forceCreateModelElementAndSet(
@@ -4506,33 +7728,67 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalDearCode.g:1719:4: ( ( (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' ) ) )
-            	    // InternalDearCode.g:1720:5: ( (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' ) )
+            	    // InternalDearCode.g:2629:4: ( ( (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' | lv_op_2_3= 'se une a' | lv_op_2_4= 'se funde con' | lv_op_2_5= 'sumado al latido de' | lv_op_2_6= 'combinado con la pasi\\u00F3n de' | lv_op_2_7= 'entrelazado con' | lv_op_2_8= 'a\\u00F1adido al suspiro de' ) ) )
+            	    // InternalDearCode.g:2630:5: ( (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' | lv_op_2_3= 'se une a' | lv_op_2_4= 'se funde con' | lv_op_2_5= 'sumado al latido de' | lv_op_2_6= 'combinado con la pasi\\u00F3n de' | lv_op_2_7= 'entrelazado con' | lv_op_2_8= 'a\\u00F1adido al suspiro de' ) )
             	    {
-            	    // InternalDearCode.g:1720:5: ( (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' ) )
-            	    // InternalDearCode.g:1721:6: (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' )
+            	    // InternalDearCode.g:2630:5: ( (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' | lv_op_2_3= 'se une a' | lv_op_2_4= 'se funde con' | lv_op_2_5= 'sumado al latido de' | lv_op_2_6= 'combinado con la pasi\\u00F3n de' | lv_op_2_7= 'entrelazado con' | lv_op_2_8= 'a\\u00F1adido al suspiro de' ) )
+            	    // InternalDearCode.g:2631:6: (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' | lv_op_2_3= 'se une a' | lv_op_2_4= 'se funde con' | lv_op_2_5= 'sumado al latido de' | lv_op_2_6= 'combinado con la pasi\\u00F3n de' | lv_op_2_7= 'entrelazado con' | lv_op_2_8= 'a\\u00F1adido al suspiro de' )
             	    {
-            	    // InternalDearCode.g:1721:6: (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' )
-            	    int alt31=2;
-            	    int LA31_0 = input.LA(1);
-
-            	    if ( (LA31_0==55) ) {
-            	        alt31=1;
-            	    }
-            	    else if ( (LA31_0==56) ) {
-            	        alt31=2;
-            	    }
-            	    else {
+            	    // InternalDearCode.g:2631:6: (lv_op_2_1= 'unidos en un solo suspiro con' | lv_op_2_2= 'fundidos en la llama de' | lv_op_2_3= 'se une a' | lv_op_2_4= 'se funde con' | lv_op_2_5= 'sumado al latido de' | lv_op_2_6= 'combinado con la pasi\\u00F3n de' | lv_op_2_7= 'entrelazado con' | lv_op_2_8= 'a\\u00F1adido al suspiro de' )
+            	    int alt55=8;
+            	    switch ( input.LA(1) ) {
+            	    case 178:
+            	        {
+            	        alt55=1;
+            	        }
+            	        break;
+            	    case 179:
+            	        {
+            	        alt55=2;
+            	        }
+            	        break;
+            	    case 180:
+            	        {
+            	        alt55=3;
+            	        }
+            	        break;
+            	    case 181:
+            	        {
+            	        alt55=4;
+            	        }
+            	        break;
+            	    case 182:
+            	        {
+            	        alt55=5;
+            	        }
+            	        break;
+            	    case 183:
+            	        {
+            	        alt55=6;
+            	        }
+            	        break;
+            	    case 184:
+            	        {
+            	        alt55=7;
+            	        }
+            	        break;
+            	    case 185:
+            	        {
+            	        alt55=8;
+            	        }
+            	        break;
+            	    default:
             	        NoViableAltException nvae =
-            	            new NoViableAltException("", 31, 0, input);
+            	            new NoViableAltException("", 55, 0, input);
 
             	        throw nvae;
             	    }
-            	    switch (alt31) {
+
+            	    switch (alt55) {
             	        case 1 :
-            	            // InternalDearCode.g:1722:7: lv_op_2_1= 'unidos en un solo suspiro con'
+            	            // InternalDearCode.g:2632:7: lv_op_2_1= 'unidos en un solo suspiro con'
             	            {
-            	            lv_op_2_1=(Token)match(input,55,FOLLOW_9); 
+            	            lv_op_2_1=(Token)match(input,178,FOLLOW_10); 
 
             	            							newLeafNode(lv_op_2_1, grammarAccess.getAdditiveExpressionAccess().getOpUnidosEnUnSoloSuspiroConKeyword_1_1_0_0());
             	            						
@@ -4546,9 +7802,9 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // InternalDearCode.g:1733:7: lv_op_2_2= 'fundidos en la llama de'
+            	            // InternalDearCode.g:2643:7: lv_op_2_2= 'fundidos en la llama de'
             	            {
-            	            lv_op_2_2=(Token)match(input,56,FOLLOW_9); 
+            	            lv_op_2_2=(Token)match(input,179,FOLLOW_10); 
 
             	            							newLeafNode(lv_op_2_2, grammarAccess.getAdditiveExpressionAccess().getOpFundidosEnLaLlamaDeKeyword_1_1_0_1());
             	            						
@@ -4557,6 +7813,102 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	            								current = createModelElement(grammarAccess.getAdditiveExpressionRule());
             	            							}
             	            							setWithLastConsumed(current, "op", lv_op_2_2, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 3 :
+            	            // InternalDearCode.g:2654:7: lv_op_2_3= 'se une a'
+            	            {
+            	            lv_op_2_3=(Token)match(input,180,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_3, grammarAccess.getAdditiveExpressionAccess().getOpSeUneAKeyword_1_1_0_2());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getAdditiveExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_3, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 4 :
+            	            // InternalDearCode.g:2665:7: lv_op_2_4= 'se funde con'
+            	            {
+            	            lv_op_2_4=(Token)match(input,181,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_4, grammarAccess.getAdditiveExpressionAccess().getOpSeFundeConKeyword_1_1_0_3());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getAdditiveExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_4, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 5 :
+            	            // InternalDearCode.g:2676:7: lv_op_2_5= 'sumado al latido de'
+            	            {
+            	            lv_op_2_5=(Token)match(input,182,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_5, grammarAccess.getAdditiveExpressionAccess().getOpSumadoAlLatidoDeKeyword_1_1_0_4());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getAdditiveExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_5, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 6 :
+            	            // InternalDearCode.g:2687:7: lv_op_2_6= 'combinado con la pasi\\u00F3n de'
+            	            {
+            	            lv_op_2_6=(Token)match(input,183,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_6, grammarAccess.getAdditiveExpressionAccess().getOpCombinadoConLaPasiNDeKeyword_1_1_0_5());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getAdditiveExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_6, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 7 :
+            	            // InternalDearCode.g:2698:7: lv_op_2_7= 'entrelazado con'
+            	            {
+            	            lv_op_2_7=(Token)match(input,184,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_7, grammarAccess.getAdditiveExpressionAccess().getOpEntrelazadoConKeyword_1_1_0_6());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getAdditiveExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_7, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 8 :
+            	            // InternalDearCode.g:2709:7: lv_op_2_8= 'a\\u00F1adido al suspiro de'
+            	            {
+            	            lv_op_2_8=(Token)match(input,185,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_8, grammarAccess.getAdditiveExpressionAccess().getOpAAdidoAlSuspiroDeKeyword_1_1_0_7());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getAdditiveExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_8, null);
             	            						
 
             	            }
@@ -4570,16 +7922,16 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalDearCode.g:1746:4: ( (lv_right_3_0= ruleMultiplicativeExpression ) )
-            	    // InternalDearCode.g:1747:5: (lv_right_3_0= ruleMultiplicativeExpression )
+            	    // InternalDearCode.g:2722:4: ( (lv_right_3_0= ruleMultiplicativeExpression ) )
+            	    // InternalDearCode.g:2723:5: (lv_right_3_0= ruleMultiplicativeExpression )
             	    {
-            	    // InternalDearCode.g:1747:5: (lv_right_3_0= ruleMultiplicativeExpression )
-            	    // InternalDearCode.g:1748:6: lv_right_3_0= ruleMultiplicativeExpression
+            	    // InternalDearCode.g:2723:5: (lv_right_3_0= ruleMultiplicativeExpression )
+            	    // InternalDearCode.g:2724:6: lv_right_3_0= ruleMultiplicativeExpression
             	    {
 
             	    						newCompositeNode(grammarAccess.getAdditiveExpressionAccess().getRightMultiplicativeExpressionParserRuleCall_1_2_0());
             	    					
-            	    pushFollow(FOLLOW_36);
+            	    pushFollow(FOLLOW_40);
             	    lv_right_3_0=ruleMultiplicativeExpression();
 
             	    state._fsp--;
@@ -4606,7 +7958,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop32;
+            	    break loop56;
                 }
             } while (true);
 
@@ -4633,7 +7985,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMultiplicativeExpression"
-    // InternalDearCode.g:1770:1: entryRuleMultiplicativeExpression returns [EObject current=null] : iv_ruleMultiplicativeExpression= ruleMultiplicativeExpression EOF ;
+    // InternalDearCode.g:2746:1: entryRuleMultiplicativeExpression returns [EObject current=null] : iv_ruleMultiplicativeExpression= ruleMultiplicativeExpression EOF ;
     public final EObject entryRuleMultiplicativeExpression() throws RecognitionException {
         EObject current = null;
 
@@ -4641,8 +7993,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:1770:65: (iv_ruleMultiplicativeExpression= ruleMultiplicativeExpression EOF )
-            // InternalDearCode.g:1771:2: iv_ruleMultiplicativeExpression= ruleMultiplicativeExpression EOF
+            // InternalDearCode.g:2746:65: (iv_ruleMultiplicativeExpression= ruleMultiplicativeExpression EOF )
+            // InternalDearCode.g:2747:2: iv_ruleMultiplicativeExpression= ruleMultiplicativeExpression EOF
             {
              newCompositeNode(grammarAccess.getMultiplicativeExpressionRule()); 
             pushFollow(FOLLOW_1);
@@ -4669,13 +8021,16 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMultiplicativeExpression"
-    // InternalDearCode.g:1777:1: ruleMultiplicativeExpression returns [EObject current=null] : (this_UnaryExpression_0= ruleUnaryExpression ( () ( ( (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' ) ) ) ( (lv_right_3_0= ruleUnaryExpression ) ) )* ) ;
+    // InternalDearCode.g:2753:1: ruleMultiplicativeExpression returns [EObject current=null] : (this_UnaryExpression_0= ruleUnaryExpression ( () ( ( (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' | lv_op_2_4= 'crece con' | lv_op_2_5= 'resuena en' | lv_op_2_6= 'se divide entre' ) ) ) ( (lv_right_3_0= ruleUnaryExpression ) ) )* ) ;
     public final EObject ruleMultiplicativeExpression() throws RecognitionException {
         EObject current = null;
 
         Token lv_op_2_1=null;
         Token lv_op_2_2=null;
         Token lv_op_2_3=null;
+        Token lv_op_2_4=null;
+        Token lv_op_2_5=null;
+        Token lv_op_2_6=null;
         EObject this_UnaryExpression_0 = null;
 
         EObject lv_right_3_0 = null;
@@ -4685,16 +8040,16 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDearCode.g:1783:2: ( (this_UnaryExpression_0= ruleUnaryExpression ( () ( ( (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' ) ) ) ( (lv_right_3_0= ruleUnaryExpression ) ) )* ) )
-            // InternalDearCode.g:1784:2: (this_UnaryExpression_0= ruleUnaryExpression ( () ( ( (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' ) ) ) ( (lv_right_3_0= ruleUnaryExpression ) ) )* )
+            // InternalDearCode.g:2759:2: ( (this_UnaryExpression_0= ruleUnaryExpression ( () ( ( (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' | lv_op_2_4= 'crece con' | lv_op_2_5= 'resuena en' | lv_op_2_6= 'se divide entre' ) ) ) ( (lv_right_3_0= ruleUnaryExpression ) ) )* ) )
+            // InternalDearCode.g:2760:2: (this_UnaryExpression_0= ruleUnaryExpression ( () ( ( (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' | lv_op_2_4= 'crece con' | lv_op_2_5= 'resuena en' | lv_op_2_6= 'se divide entre' ) ) ) ( (lv_right_3_0= ruleUnaryExpression ) ) )* )
             {
-            // InternalDearCode.g:1784:2: (this_UnaryExpression_0= ruleUnaryExpression ( () ( ( (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' ) ) ) ( (lv_right_3_0= ruleUnaryExpression ) ) )* )
-            // InternalDearCode.g:1785:3: this_UnaryExpression_0= ruleUnaryExpression ( () ( ( (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' ) ) ) ( (lv_right_3_0= ruleUnaryExpression ) ) )*
+            // InternalDearCode.g:2760:2: (this_UnaryExpression_0= ruleUnaryExpression ( () ( ( (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' | lv_op_2_4= 'crece con' | lv_op_2_5= 'resuena en' | lv_op_2_6= 'se divide entre' ) ) ) ( (lv_right_3_0= ruleUnaryExpression ) ) )* )
+            // InternalDearCode.g:2761:3: this_UnaryExpression_0= ruleUnaryExpression ( () ( ( (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' | lv_op_2_4= 'crece con' | lv_op_2_5= 'resuena en' | lv_op_2_6= 'se divide entre' ) ) ) ( (lv_right_3_0= ruleUnaryExpression ) ) )*
             {
 
             			newCompositeNode(grammarAccess.getMultiplicativeExpressionAccess().getUnaryExpressionParserRuleCall_0());
             		
-            pushFollow(FOLLOW_37);
+            pushFollow(FOLLOW_41);
             this_UnaryExpression_0=ruleUnaryExpression();
 
             state._fsp--;
@@ -4703,23 +8058,23 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             			current = this_UnaryExpression_0;
             			afterParserOrEnumRuleCall();
             		
-            // InternalDearCode.g:1793:3: ( () ( ( (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' ) ) ) ( (lv_right_3_0= ruleUnaryExpression ) ) )*
-            loop34:
+            // InternalDearCode.g:2769:3: ( () ( ( (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' | lv_op_2_4= 'crece con' | lv_op_2_5= 'resuena en' | lv_op_2_6= 'se divide entre' ) ) ) ( (lv_right_3_0= ruleUnaryExpression ) ) )*
+            loop58:
             do {
-                int alt34=2;
-                int LA34_0 = input.LA(1);
+                int alt58=2;
+                int LA58_0 = input.LA(1);
 
-                if ( ((LA34_0>=57 && LA34_0<=59)) ) {
-                    alt34=1;
+                if ( ((LA58_0>=186 && LA58_0<=191)) ) {
+                    alt58=1;
                 }
 
 
-                switch (alt34) {
+                switch (alt58) {
             	case 1 :
-            	    // InternalDearCode.g:1794:4: () ( ( (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' ) ) ) ( (lv_right_3_0= ruleUnaryExpression ) )
+            	    // InternalDearCode.g:2770:4: () ( ( (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' | lv_op_2_4= 'crece con' | lv_op_2_5= 'resuena en' | lv_op_2_6= 'se divide entre' ) ) ) ( (lv_right_3_0= ruleUnaryExpression ) )
             	    {
-            	    // InternalDearCode.g:1794:4: ()
-            	    // InternalDearCode.g:1795:5: 
+            	    // InternalDearCode.g:2770:4: ()
+            	    // InternalDearCode.g:2771:5: 
             	    {
 
             	    					current = forceCreateModelElementAndSet(
@@ -4729,42 +8084,57 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalDearCode.g:1801:4: ( ( (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' ) ) )
-            	    // InternalDearCode.g:1802:5: ( (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' ) )
+            	    // InternalDearCode.g:2777:4: ( ( (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' | lv_op_2_4= 'crece con' | lv_op_2_5= 'resuena en' | lv_op_2_6= 'se divide entre' ) ) )
+            	    // InternalDearCode.g:2778:5: ( (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' | lv_op_2_4= 'crece con' | lv_op_2_5= 'resuena en' | lv_op_2_6= 'se divide entre' ) )
             	    {
-            	    // InternalDearCode.g:1802:5: ( (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' ) )
-            	    // InternalDearCode.g:1803:6: (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' )
+            	    // InternalDearCode.g:2778:5: ( (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' | lv_op_2_4= 'crece con' | lv_op_2_5= 'resuena en' | lv_op_2_6= 'se divide entre' ) )
+            	    // InternalDearCode.g:2779:6: (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' | lv_op_2_4= 'crece con' | lv_op_2_5= 'resuena en' | lv_op_2_6= 'se divide entre' )
             	    {
-            	    // InternalDearCode.g:1803:6: (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' )
-            	    int alt33=3;
+            	    // InternalDearCode.g:2779:6: (lv_op_2_1= 'fortalecidos por el fuego de' | lv_op_2_2= 'separados entre los ecos de' | lv_op_2_3= 'resuena con el eco de' | lv_op_2_4= 'crece con' | lv_op_2_5= 'resuena en' | lv_op_2_6= 'se divide entre' )
+            	    int alt57=6;
             	    switch ( input.LA(1) ) {
-            	    case 57:
+            	    case 186:
             	        {
-            	        alt33=1;
+            	        alt57=1;
             	        }
             	        break;
-            	    case 58:
+            	    case 187:
             	        {
-            	        alt33=2;
+            	        alt57=2;
             	        }
             	        break;
-            	    case 59:
+            	    case 188:
             	        {
-            	        alt33=3;
+            	        alt57=3;
+            	        }
+            	        break;
+            	    case 189:
+            	        {
+            	        alt57=4;
+            	        }
+            	        break;
+            	    case 190:
+            	        {
+            	        alt57=5;
+            	        }
+            	        break;
+            	    case 191:
+            	        {
+            	        alt57=6;
             	        }
             	        break;
             	    default:
             	        NoViableAltException nvae =
-            	            new NoViableAltException("", 33, 0, input);
+            	            new NoViableAltException("", 57, 0, input);
 
             	        throw nvae;
             	    }
 
-            	    switch (alt33) {
+            	    switch (alt57) {
             	        case 1 :
-            	            // InternalDearCode.g:1804:7: lv_op_2_1= 'fortalecidos por el fuego de'
+            	            // InternalDearCode.g:2780:7: lv_op_2_1= 'fortalecidos por el fuego de'
             	            {
-            	            lv_op_2_1=(Token)match(input,57,FOLLOW_9); 
+            	            lv_op_2_1=(Token)match(input,186,FOLLOW_10); 
 
             	            							newLeafNode(lv_op_2_1, grammarAccess.getMultiplicativeExpressionAccess().getOpFortalecidosPorElFuegoDeKeyword_1_1_0_0());
             	            						
@@ -4778,9 +8148,9 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 2 :
-            	            // InternalDearCode.g:1815:7: lv_op_2_2= 'separados entre los ecos de'
+            	            // InternalDearCode.g:2791:7: lv_op_2_2= 'separados entre los ecos de'
             	            {
-            	            lv_op_2_2=(Token)match(input,58,FOLLOW_9); 
+            	            lv_op_2_2=(Token)match(input,187,FOLLOW_10); 
 
             	            							newLeafNode(lv_op_2_2, grammarAccess.getMultiplicativeExpressionAccess().getOpSeparadosEntreLosEcosDeKeyword_1_1_0_1());
             	            						
@@ -4794,9 +8164,9 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	            }
             	            break;
             	        case 3 :
-            	            // InternalDearCode.g:1826:7: lv_op_2_3= 'resuena con el eco de'
+            	            // InternalDearCode.g:2802:7: lv_op_2_3= 'resuena con el eco de'
             	            {
-            	            lv_op_2_3=(Token)match(input,59,FOLLOW_9); 
+            	            lv_op_2_3=(Token)match(input,188,FOLLOW_10); 
 
             	            							newLeafNode(lv_op_2_3, grammarAccess.getMultiplicativeExpressionAccess().getOpResuenaConElEcoDeKeyword_1_1_0_2());
             	            						
@@ -4805,6 +8175,54 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	            								current = createModelElement(grammarAccess.getMultiplicativeExpressionRule());
             	            							}
             	            							setWithLastConsumed(current, "op", lv_op_2_3, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 4 :
+            	            // InternalDearCode.g:2813:7: lv_op_2_4= 'crece con'
+            	            {
+            	            lv_op_2_4=(Token)match(input,189,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_4, grammarAccess.getMultiplicativeExpressionAccess().getOpCreceConKeyword_1_1_0_3());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getMultiplicativeExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_4, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 5 :
+            	            // InternalDearCode.g:2824:7: lv_op_2_5= 'resuena en'
+            	            {
+            	            lv_op_2_5=(Token)match(input,190,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_5, grammarAccess.getMultiplicativeExpressionAccess().getOpResuenaEnKeyword_1_1_0_4());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getMultiplicativeExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_5, null);
+            	            						
+
+            	            }
+            	            break;
+            	        case 6 :
+            	            // InternalDearCode.g:2835:7: lv_op_2_6= 'se divide entre'
+            	            {
+            	            lv_op_2_6=(Token)match(input,191,FOLLOW_10); 
+
+            	            							newLeafNode(lv_op_2_6, grammarAccess.getMultiplicativeExpressionAccess().getOpSeDivideEntreKeyword_1_1_0_5());
+            	            						
+
+            	            							if (current==null) {
+            	            								current = createModelElement(grammarAccess.getMultiplicativeExpressionRule());
+            	            							}
+            	            							setWithLastConsumed(current, "op", lv_op_2_6, null);
             	            						
 
             	            }
@@ -4818,16 +8236,16 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             	    }
 
-            	    // InternalDearCode.g:1839:4: ( (lv_right_3_0= ruleUnaryExpression ) )
-            	    // InternalDearCode.g:1840:5: (lv_right_3_0= ruleUnaryExpression )
+            	    // InternalDearCode.g:2848:4: ( (lv_right_3_0= ruleUnaryExpression ) )
+            	    // InternalDearCode.g:2849:5: (lv_right_3_0= ruleUnaryExpression )
             	    {
-            	    // InternalDearCode.g:1840:5: (lv_right_3_0= ruleUnaryExpression )
-            	    // InternalDearCode.g:1841:6: lv_right_3_0= ruleUnaryExpression
+            	    // InternalDearCode.g:2849:5: (lv_right_3_0= ruleUnaryExpression )
+            	    // InternalDearCode.g:2850:6: lv_right_3_0= ruleUnaryExpression
             	    {
 
             	    						newCompositeNode(grammarAccess.getMultiplicativeExpressionAccess().getRightUnaryExpressionParserRuleCall_1_2_0());
             	    					
-            	    pushFollow(FOLLOW_37);
+            	    pushFollow(FOLLOW_41);
             	    lv_right_3_0=ruleUnaryExpression();
 
             	    state._fsp--;
@@ -4854,7 +8272,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
             	    break;
 
             	default :
-            	    break loop34;
+            	    break loop58;
                 }
             } while (true);
 
@@ -4881,7 +8299,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleUnaryExpression"
-    // InternalDearCode.g:1863:1: entryRuleUnaryExpression returns [EObject current=null] : iv_ruleUnaryExpression= ruleUnaryExpression EOF ;
+    // InternalDearCode.g:2872:1: entryRuleUnaryExpression returns [EObject current=null] : iv_ruleUnaryExpression= ruleUnaryExpression EOF ;
     public final EObject entryRuleUnaryExpression() throws RecognitionException {
         EObject current = null;
 
@@ -4889,8 +8307,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:1863:56: (iv_ruleUnaryExpression= ruleUnaryExpression EOF )
-            // InternalDearCode.g:1864:2: iv_ruleUnaryExpression= ruleUnaryExpression EOF
+            // InternalDearCode.g:2872:56: (iv_ruleUnaryExpression= ruleUnaryExpression EOF )
+            // InternalDearCode.g:2873:2: iv_ruleUnaryExpression= ruleUnaryExpression EOF
             {
              newCompositeNode(grammarAccess.getUnaryExpressionRule()); 
             pushFollow(FOLLOW_1);
@@ -4917,11 +8335,15 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleUnaryExpression"
-    // InternalDearCode.g:1870:1: ruleUnaryExpression returns [EObject current=null] : ( ( () ( (lv_op_1_0= 'no creo que' ) ) ( (lv_expression_2_0= ruleUnaryExpression ) ) ) | this_PrimaryExpression_3= rulePrimaryExpression ) ;
+    // InternalDearCode.g:2879:1: ruleUnaryExpression returns [EObject current=null] : ( ( () ( ( (lv_op_1_1= 'no creo que' | lv_op_1_2= 'no siento que' | lv_op_1_3= 'no me parece que' | lv_op_1_4= 'no percibo que' | lv_op_1_5= 'dudo que' ) ) ) ( (lv_expression_2_0= ruleUnaryExpression ) ) ) | this_PrimaryExpression_3= rulePrimaryExpression ) ;
     public final EObject ruleUnaryExpression() throws RecognitionException {
         EObject current = null;
 
-        Token lv_op_1_0=null;
+        Token lv_op_1_1=null;
+        Token lv_op_1_2=null;
+        Token lv_op_1_3=null;
+        Token lv_op_1_4=null;
+        Token lv_op_1_5=null;
         EObject lv_expression_2_0 = null;
 
         EObject this_PrimaryExpression_3 = null;
@@ -4931,34 +8353,34 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDearCode.g:1876:2: ( ( ( () ( (lv_op_1_0= 'no creo que' ) ) ( (lv_expression_2_0= ruleUnaryExpression ) ) ) | this_PrimaryExpression_3= rulePrimaryExpression ) )
-            // InternalDearCode.g:1877:2: ( ( () ( (lv_op_1_0= 'no creo que' ) ) ( (lv_expression_2_0= ruleUnaryExpression ) ) ) | this_PrimaryExpression_3= rulePrimaryExpression )
+            // InternalDearCode.g:2885:2: ( ( ( () ( ( (lv_op_1_1= 'no creo que' | lv_op_1_2= 'no siento que' | lv_op_1_3= 'no me parece que' | lv_op_1_4= 'no percibo que' | lv_op_1_5= 'dudo que' ) ) ) ( (lv_expression_2_0= ruleUnaryExpression ) ) ) | this_PrimaryExpression_3= rulePrimaryExpression ) )
+            // InternalDearCode.g:2886:2: ( ( () ( ( (lv_op_1_1= 'no creo que' | lv_op_1_2= 'no siento que' | lv_op_1_3= 'no me parece que' | lv_op_1_4= 'no percibo que' | lv_op_1_5= 'dudo que' ) ) ) ( (lv_expression_2_0= ruleUnaryExpression ) ) ) | this_PrimaryExpression_3= rulePrimaryExpression )
             {
-            // InternalDearCode.g:1877:2: ( ( () ( (lv_op_1_0= 'no creo que' ) ) ( (lv_expression_2_0= ruleUnaryExpression ) ) ) | this_PrimaryExpression_3= rulePrimaryExpression )
-            int alt35=2;
-            int LA35_0 = input.LA(1);
+            // InternalDearCode.g:2886:2: ( ( () ( ( (lv_op_1_1= 'no creo que' | lv_op_1_2= 'no siento que' | lv_op_1_3= 'no me parece que' | lv_op_1_4= 'no percibo que' | lv_op_1_5= 'dudo que' ) ) ) ( (lv_expression_2_0= ruleUnaryExpression ) ) ) | this_PrimaryExpression_3= rulePrimaryExpression )
+            int alt60=2;
+            int LA60_0 = input.LA(1);
 
-            if ( (LA35_0==60) ) {
-                alt35=1;
+            if ( ((LA60_0>=192 && LA60_0<=196)) ) {
+                alt60=1;
             }
-            else if ( ((LA35_0>=RULE_ID && LA35_0<=RULE_STRING)||LA35_0==61||(LA35_0>=63 && LA35_0<=65)) ) {
-                alt35=2;
+            else if ( ((LA60_0>=RULE_ID && LA60_0<=RULE_STRING)||LA60_0==197||(LA60_0>=199 && LA60_0<=204)) ) {
+                alt60=2;
             }
             else {
                 NoViableAltException nvae =
-                    new NoViableAltException("", 35, 0, input);
+                    new NoViableAltException("", 60, 0, input);
 
                 throw nvae;
             }
-            switch (alt35) {
+            switch (alt60) {
                 case 1 :
-                    // InternalDearCode.g:1878:3: ( () ( (lv_op_1_0= 'no creo que' ) ) ( (lv_expression_2_0= ruleUnaryExpression ) ) )
+                    // InternalDearCode.g:2887:3: ( () ( ( (lv_op_1_1= 'no creo que' | lv_op_1_2= 'no siento que' | lv_op_1_3= 'no me parece que' | lv_op_1_4= 'no percibo que' | lv_op_1_5= 'dudo que' ) ) ) ( (lv_expression_2_0= ruleUnaryExpression ) ) )
                     {
-                    // InternalDearCode.g:1878:3: ( () ( (lv_op_1_0= 'no creo que' ) ) ( (lv_expression_2_0= ruleUnaryExpression ) ) )
-                    // InternalDearCode.g:1879:4: () ( (lv_op_1_0= 'no creo que' ) ) ( (lv_expression_2_0= ruleUnaryExpression ) )
+                    // InternalDearCode.g:2887:3: ( () ( ( (lv_op_1_1= 'no creo que' | lv_op_1_2= 'no siento que' | lv_op_1_3= 'no me parece que' | lv_op_1_4= 'no percibo que' | lv_op_1_5= 'dudo que' ) ) ) ( (lv_expression_2_0= ruleUnaryExpression ) ) )
+                    // InternalDearCode.g:2888:4: () ( ( (lv_op_1_1= 'no creo que' | lv_op_1_2= 'no siento que' | lv_op_1_3= 'no me parece que' | lv_op_1_4= 'no percibo que' | lv_op_1_5= 'dudo que' ) ) ) ( (lv_expression_2_0= ruleUnaryExpression ) )
                     {
-                    // InternalDearCode.g:1879:4: ()
-                    // InternalDearCode.g:1880:5: 
+                    // InternalDearCode.g:2888:4: ()
+                    // InternalDearCode.g:2889:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -4968,33 +8390,142 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalDearCode.g:1886:4: ( (lv_op_1_0= 'no creo que' ) )
-                    // InternalDearCode.g:1887:5: (lv_op_1_0= 'no creo que' )
+                    // InternalDearCode.g:2895:4: ( ( (lv_op_1_1= 'no creo que' | lv_op_1_2= 'no siento que' | lv_op_1_3= 'no me parece que' | lv_op_1_4= 'no percibo que' | lv_op_1_5= 'dudo que' ) ) )
+                    // InternalDearCode.g:2896:5: ( (lv_op_1_1= 'no creo que' | lv_op_1_2= 'no siento que' | lv_op_1_3= 'no me parece que' | lv_op_1_4= 'no percibo que' | lv_op_1_5= 'dudo que' ) )
                     {
-                    // InternalDearCode.g:1887:5: (lv_op_1_0= 'no creo que' )
-                    // InternalDearCode.g:1888:6: lv_op_1_0= 'no creo que'
+                    // InternalDearCode.g:2896:5: ( (lv_op_1_1= 'no creo que' | lv_op_1_2= 'no siento que' | lv_op_1_3= 'no me parece que' | lv_op_1_4= 'no percibo que' | lv_op_1_5= 'dudo que' ) )
+                    // InternalDearCode.g:2897:6: (lv_op_1_1= 'no creo que' | lv_op_1_2= 'no siento que' | lv_op_1_3= 'no me parece que' | lv_op_1_4= 'no percibo que' | lv_op_1_5= 'dudo que' )
                     {
-                    lv_op_1_0=(Token)match(input,60,FOLLOW_9); 
+                    // InternalDearCode.g:2897:6: (lv_op_1_1= 'no creo que' | lv_op_1_2= 'no siento que' | lv_op_1_3= 'no me parece que' | lv_op_1_4= 'no percibo que' | lv_op_1_5= 'dudo que' )
+                    int alt59=5;
+                    switch ( input.LA(1) ) {
+                    case 192:
+                        {
+                        alt59=1;
+                        }
+                        break;
+                    case 193:
+                        {
+                        alt59=2;
+                        }
+                        break;
+                    case 194:
+                        {
+                        alt59=3;
+                        }
+                        break;
+                    case 195:
+                        {
+                        alt59=4;
+                        }
+                        break;
+                    case 196:
+                        {
+                        alt59=5;
+                        }
+                        break;
+                    default:
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 59, 0, input);
 
-                    						newLeafNode(lv_op_1_0, grammarAccess.getUnaryExpressionAccess().getOpNoCreoQueKeyword_0_1_0());
-                    					
+                        throw nvae;
+                    }
 
-                    						if (current==null) {
-                    							current = createModelElement(grammarAccess.getUnaryExpressionRule());
-                    						}
-                    						setWithLastConsumed(current, "op", lv_op_1_0, "no creo que");
-                    					
+                    switch (alt59) {
+                        case 1 :
+                            // InternalDearCode.g:2898:7: lv_op_1_1= 'no creo que'
+                            {
+                            lv_op_1_1=(Token)match(input,192,FOLLOW_10); 
+
+                            							newLeafNode(lv_op_1_1, grammarAccess.getUnaryExpressionAccess().getOpNoCreoQueKeyword_0_1_0_0());
+                            						
+
+                            							if (current==null) {
+                            								current = createModelElement(grammarAccess.getUnaryExpressionRule());
+                            							}
+                            							setWithLastConsumed(current, "op", lv_op_1_1, null);
+                            						
+
+                            }
+                            break;
+                        case 2 :
+                            // InternalDearCode.g:2909:7: lv_op_1_2= 'no siento que'
+                            {
+                            lv_op_1_2=(Token)match(input,193,FOLLOW_10); 
+
+                            							newLeafNode(lv_op_1_2, grammarAccess.getUnaryExpressionAccess().getOpNoSientoQueKeyword_0_1_0_1());
+                            						
+
+                            							if (current==null) {
+                            								current = createModelElement(grammarAccess.getUnaryExpressionRule());
+                            							}
+                            							setWithLastConsumed(current, "op", lv_op_1_2, null);
+                            						
+
+                            }
+                            break;
+                        case 3 :
+                            // InternalDearCode.g:2920:7: lv_op_1_3= 'no me parece que'
+                            {
+                            lv_op_1_3=(Token)match(input,194,FOLLOW_10); 
+
+                            							newLeafNode(lv_op_1_3, grammarAccess.getUnaryExpressionAccess().getOpNoMePareceQueKeyword_0_1_0_2());
+                            						
+
+                            							if (current==null) {
+                            								current = createModelElement(grammarAccess.getUnaryExpressionRule());
+                            							}
+                            							setWithLastConsumed(current, "op", lv_op_1_3, null);
+                            						
+
+                            }
+                            break;
+                        case 4 :
+                            // InternalDearCode.g:2931:7: lv_op_1_4= 'no percibo que'
+                            {
+                            lv_op_1_4=(Token)match(input,195,FOLLOW_10); 
+
+                            							newLeafNode(lv_op_1_4, grammarAccess.getUnaryExpressionAccess().getOpNoPerciboQueKeyword_0_1_0_3());
+                            						
+
+                            							if (current==null) {
+                            								current = createModelElement(grammarAccess.getUnaryExpressionRule());
+                            							}
+                            							setWithLastConsumed(current, "op", lv_op_1_4, null);
+                            						
+
+                            }
+                            break;
+                        case 5 :
+                            // InternalDearCode.g:2942:7: lv_op_1_5= 'dudo que'
+                            {
+                            lv_op_1_5=(Token)match(input,196,FOLLOW_10); 
+
+                            							newLeafNode(lv_op_1_5, grammarAccess.getUnaryExpressionAccess().getOpDudoQueKeyword_0_1_0_4());
+                            						
+
+                            							if (current==null) {
+                            								current = createModelElement(grammarAccess.getUnaryExpressionRule());
+                            							}
+                            							setWithLastConsumed(current, "op", lv_op_1_5, null);
+                            						
+
+                            }
+                            break;
 
                     }
 
 
                     }
 
-                    // InternalDearCode.g:1900:4: ( (lv_expression_2_0= ruleUnaryExpression ) )
-                    // InternalDearCode.g:1901:5: (lv_expression_2_0= ruleUnaryExpression )
+
+                    }
+
+                    // InternalDearCode.g:2955:4: ( (lv_expression_2_0= ruleUnaryExpression ) )
+                    // InternalDearCode.g:2956:5: (lv_expression_2_0= ruleUnaryExpression )
                     {
-                    // InternalDearCode.g:1901:5: (lv_expression_2_0= ruleUnaryExpression )
-                    // InternalDearCode.g:1902:6: lv_expression_2_0= ruleUnaryExpression
+                    // InternalDearCode.g:2956:5: (lv_expression_2_0= ruleUnaryExpression )
+                    // InternalDearCode.g:2957:6: lv_expression_2_0= ruleUnaryExpression
                     {
 
                     						newCompositeNode(grammarAccess.getUnaryExpressionAccess().getExpressionUnaryExpressionParserRuleCall_0_2_0());
@@ -5028,7 +8559,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalDearCode.g:1921:3: this_PrimaryExpression_3= rulePrimaryExpression
+                    // InternalDearCode.g:2976:3: this_PrimaryExpression_3= rulePrimaryExpression
                     {
 
                     			newCompositeNode(grammarAccess.getUnaryExpressionAccess().getPrimaryExpressionParserRuleCall_1());
@@ -5068,7 +8599,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRulePrimaryExpression"
-    // InternalDearCode.g:1933:1: entryRulePrimaryExpression returns [EObject current=null] : iv_rulePrimaryExpression= rulePrimaryExpression EOF ;
+    // InternalDearCode.g:2988:1: entryRulePrimaryExpression returns [EObject current=null] : iv_rulePrimaryExpression= rulePrimaryExpression EOF ;
     public final EObject entryRulePrimaryExpression() throws RecognitionException {
         EObject current = null;
 
@@ -5076,8 +8607,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:1933:58: (iv_rulePrimaryExpression= rulePrimaryExpression EOF )
-            // InternalDearCode.g:1934:2: iv_rulePrimaryExpression= rulePrimaryExpression EOF
+            // InternalDearCode.g:2988:58: (iv_rulePrimaryExpression= rulePrimaryExpression EOF )
+            // InternalDearCode.g:2989:2: iv_rulePrimaryExpression= rulePrimaryExpression EOF
             {
              newCompositeNode(grammarAccess.getPrimaryExpressionRule()); 
             pushFollow(FOLLOW_1);
@@ -5104,7 +8635,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "rulePrimaryExpression"
-    // InternalDearCode.g:1940:1: rulePrimaryExpression returns [EObject current=null] : ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | ( () ( (lv_valueInt_4_0= RULE_INT ) ) ) | ( () ( (lv_valueString_6_0= RULE_STRING ) ) ) | ( () ( ( (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' ) ) ) ) | ( () ( (lv_name_10_0= RULE_ID ) ) ) | this_FunctionCall_11= ruleFunctionCall ) ;
+    // InternalDearCode.g:2995:1: rulePrimaryExpression returns [EObject current=null] : ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | ( () ( (lv_valueInt_4_0= RULE_INT ) ) ) | ( () ( (lv_valueString_6_0= RULE_STRING ) ) ) | ( () ( ( (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' ) ) ) ) | ( () ( (lv_name_10_0= RULE_ID ) ) ) | this_FunctionCall_11= ruleFunctionCall ) ;
     public final EObject rulePrimaryExpression() throws RecognitionException {
         EObject current = null;
 
@@ -5124,65 +8655,68 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDearCode.g:1946:2: ( ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | ( () ( (lv_valueInt_4_0= RULE_INT ) ) ) | ( () ( (lv_valueString_6_0= RULE_STRING ) ) ) | ( () ( ( (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' ) ) ) ) | ( () ( (lv_name_10_0= RULE_ID ) ) ) | this_FunctionCall_11= ruleFunctionCall ) )
-            // InternalDearCode.g:1947:2: ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | ( () ( (lv_valueInt_4_0= RULE_INT ) ) ) | ( () ( (lv_valueString_6_0= RULE_STRING ) ) ) | ( () ( ( (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' ) ) ) ) | ( () ( (lv_name_10_0= RULE_ID ) ) ) | this_FunctionCall_11= ruleFunctionCall )
+            // InternalDearCode.g:3001:2: ( ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | ( () ( (lv_valueInt_4_0= RULE_INT ) ) ) | ( () ( (lv_valueString_6_0= RULE_STRING ) ) ) | ( () ( ( (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' ) ) ) ) | ( () ( (lv_name_10_0= RULE_ID ) ) ) | this_FunctionCall_11= ruleFunctionCall ) )
+            // InternalDearCode.g:3002:2: ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | ( () ( (lv_valueInt_4_0= RULE_INT ) ) ) | ( () ( (lv_valueString_6_0= RULE_STRING ) ) ) | ( () ( ( (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' ) ) ) ) | ( () ( (lv_name_10_0= RULE_ID ) ) ) | this_FunctionCall_11= ruleFunctionCall )
             {
-            // InternalDearCode.g:1947:2: ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | ( () ( (lv_valueInt_4_0= RULE_INT ) ) ) | ( () ( (lv_valueString_6_0= RULE_STRING ) ) ) | ( () ( ( (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' ) ) ) ) | ( () ( (lv_name_10_0= RULE_ID ) ) ) | this_FunctionCall_11= ruleFunctionCall )
-            int alt37=6;
+            // InternalDearCode.g:3002:2: ( (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' ) | ( () ( (lv_valueInt_4_0= RULE_INT ) ) ) | ( () ( (lv_valueString_6_0= RULE_STRING ) ) ) | ( () ( ( (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' ) ) ) ) | ( () ( (lv_name_10_0= RULE_ID ) ) ) | this_FunctionCall_11= ruleFunctionCall )
+            int alt62=6;
             switch ( input.LA(1) ) {
-            case 61:
+            case 197:
                 {
-                alt37=1;
+                alt62=1;
                 }
                 break;
             case RULE_INT:
                 {
-                alt37=2;
+                alt62=2;
                 }
                 break;
             case RULE_STRING:
                 {
-                alt37=3;
+                alt62=3;
                 }
                 break;
-            case 63:
-            case 64:
+            case 199:
+            case 200:
                 {
-                alt37=4;
+                alt62=4;
                 }
                 break;
             case RULE_ID:
                 {
-                alt37=5;
+                alt62=5;
                 }
                 break;
-            case 65:
+            case 201:
+            case 202:
+            case 203:
+            case 204:
                 {
-                alt37=6;
+                alt62=6;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 37, 0, input);
+                    new NoViableAltException("", 62, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt37) {
+            switch (alt62) {
                 case 1 :
-                    // InternalDearCode.g:1948:3: (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' )
+                    // InternalDearCode.g:3003:3: (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' )
                     {
-                    // InternalDearCode.g:1948:3: (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' )
-                    // InternalDearCode.g:1949:4: otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')'
+                    // InternalDearCode.g:3003:3: (otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')' )
+                    // InternalDearCode.g:3004:4: otherlv_0= '(' this_Expression_1= ruleExpression otherlv_2= ')'
                     {
-                    otherlv_0=(Token)match(input,61,FOLLOW_9); 
+                    otherlv_0=(Token)match(input,197,FOLLOW_10); 
 
                     				newLeafNode(otherlv_0, grammarAccess.getPrimaryExpressionAccess().getLeftParenthesisKeyword_0_0());
                     			
 
                     				newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getExpressionParserRuleCall_0_1());
                     			
-                    pushFollow(FOLLOW_38);
+                    pushFollow(FOLLOW_42);
                     this_Expression_1=ruleExpression();
 
                     state._fsp--;
@@ -5191,7 +8725,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     				current = this_Expression_1;
                     				afterParserOrEnumRuleCall();
                     			
-                    otherlv_2=(Token)match(input,62,FOLLOW_2); 
+                    otherlv_2=(Token)match(input,198,FOLLOW_2); 
 
                     				newLeafNode(otherlv_2, grammarAccess.getPrimaryExpressionAccess().getRightParenthesisKeyword_0_2());
                     			
@@ -5202,13 +8736,13 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalDearCode.g:1967:3: ( () ( (lv_valueInt_4_0= RULE_INT ) ) )
+                    // InternalDearCode.g:3022:3: ( () ( (lv_valueInt_4_0= RULE_INT ) ) )
                     {
-                    // InternalDearCode.g:1967:3: ( () ( (lv_valueInt_4_0= RULE_INT ) ) )
-                    // InternalDearCode.g:1968:4: () ( (lv_valueInt_4_0= RULE_INT ) )
+                    // InternalDearCode.g:3022:3: ( () ( (lv_valueInt_4_0= RULE_INT ) ) )
+                    // InternalDearCode.g:3023:4: () ( (lv_valueInt_4_0= RULE_INT ) )
                     {
-                    // InternalDearCode.g:1968:4: ()
-                    // InternalDearCode.g:1969:5: 
+                    // InternalDearCode.g:3023:4: ()
+                    // InternalDearCode.g:3024:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -5218,11 +8752,11 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalDearCode.g:1975:4: ( (lv_valueInt_4_0= RULE_INT ) )
-                    // InternalDearCode.g:1976:5: (lv_valueInt_4_0= RULE_INT )
+                    // InternalDearCode.g:3030:4: ( (lv_valueInt_4_0= RULE_INT ) )
+                    // InternalDearCode.g:3031:5: (lv_valueInt_4_0= RULE_INT )
                     {
-                    // InternalDearCode.g:1976:5: (lv_valueInt_4_0= RULE_INT )
-                    // InternalDearCode.g:1977:6: lv_valueInt_4_0= RULE_INT
+                    // InternalDearCode.g:3031:5: (lv_valueInt_4_0= RULE_INT )
+                    // InternalDearCode.g:3032:6: lv_valueInt_4_0= RULE_INT
                     {
                     lv_valueInt_4_0=(Token)match(input,RULE_INT,FOLLOW_2); 
 
@@ -5251,13 +8785,13 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalDearCode.g:1995:3: ( () ( (lv_valueString_6_0= RULE_STRING ) ) )
+                    // InternalDearCode.g:3050:3: ( () ( (lv_valueString_6_0= RULE_STRING ) ) )
                     {
-                    // InternalDearCode.g:1995:3: ( () ( (lv_valueString_6_0= RULE_STRING ) ) )
-                    // InternalDearCode.g:1996:4: () ( (lv_valueString_6_0= RULE_STRING ) )
+                    // InternalDearCode.g:3050:3: ( () ( (lv_valueString_6_0= RULE_STRING ) ) )
+                    // InternalDearCode.g:3051:4: () ( (lv_valueString_6_0= RULE_STRING ) )
                     {
-                    // InternalDearCode.g:1996:4: ()
-                    // InternalDearCode.g:1997:5: 
+                    // InternalDearCode.g:3051:4: ()
+                    // InternalDearCode.g:3052:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -5267,11 +8801,11 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalDearCode.g:2003:4: ( (lv_valueString_6_0= RULE_STRING ) )
-                    // InternalDearCode.g:2004:5: (lv_valueString_6_0= RULE_STRING )
+                    // InternalDearCode.g:3058:4: ( (lv_valueString_6_0= RULE_STRING ) )
+                    // InternalDearCode.g:3059:5: (lv_valueString_6_0= RULE_STRING )
                     {
-                    // InternalDearCode.g:2004:5: (lv_valueString_6_0= RULE_STRING )
-                    // InternalDearCode.g:2005:6: lv_valueString_6_0= RULE_STRING
+                    // InternalDearCode.g:3059:5: (lv_valueString_6_0= RULE_STRING )
+                    // InternalDearCode.g:3060:6: lv_valueString_6_0= RULE_STRING
                     {
                     lv_valueString_6_0=(Token)match(input,RULE_STRING,FOLLOW_2); 
 
@@ -5300,13 +8834,13 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalDearCode.g:2023:3: ( () ( ( (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' ) ) ) )
+                    // InternalDearCode.g:3078:3: ( () ( ( (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' ) ) ) )
                     {
-                    // InternalDearCode.g:2023:3: ( () ( ( (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' ) ) ) )
-                    // InternalDearCode.g:2024:4: () ( ( (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' ) ) )
+                    // InternalDearCode.g:3078:3: ( () ( ( (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' ) ) ) )
+                    // InternalDearCode.g:3079:4: () ( ( (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' ) ) )
                     {
-                    // InternalDearCode.g:2024:4: ()
-                    // InternalDearCode.g:2025:5: 
+                    // InternalDearCode.g:3079:4: ()
+                    // InternalDearCode.g:3080:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -5316,33 +8850,33 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalDearCode.g:2031:4: ( ( (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' ) ) )
-                    // InternalDearCode.g:2032:5: ( (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' ) )
+                    // InternalDearCode.g:3086:4: ( ( (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' ) ) )
+                    // InternalDearCode.g:3087:5: ( (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' ) )
                     {
-                    // InternalDearCode.g:2032:5: ( (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' ) )
-                    // InternalDearCode.g:2033:6: (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' )
+                    // InternalDearCode.g:3087:5: ( (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' ) )
+                    // InternalDearCode.g:3088:6: (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' )
                     {
-                    // InternalDearCode.g:2033:6: (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' )
-                    int alt36=2;
-                    int LA36_0 = input.LA(1);
+                    // InternalDearCode.g:3088:6: (lv_valueBoolean_8_1= 'siempre' | lv_valueBoolean_8_2= 'jam\\u00E1s' )
+                    int alt61=2;
+                    int LA61_0 = input.LA(1);
 
-                    if ( (LA36_0==63) ) {
-                        alt36=1;
+                    if ( (LA61_0==199) ) {
+                        alt61=1;
                     }
-                    else if ( (LA36_0==64) ) {
-                        alt36=2;
+                    else if ( (LA61_0==200) ) {
+                        alt61=2;
                     }
                     else {
                         NoViableAltException nvae =
-                            new NoViableAltException("", 36, 0, input);
+                            new NoViableAltException("", 61, 0, input);
 
                         throw nvae;
                     }
-                    switch (alt36) {
+                    switch (alt61) {
                         case 1 :
-                            // InternalDearCode.g:2034:7: lv_valueBoolean_8_1= 'siempre'
+                            // InternalDearCode.g:3089:7: lv_valueBoolean_8_1= 'siempre'
                             {
-                            lv_valueBoolean_8_1=(Token)match(input,63,FOLLOW_2); 
+                            lv_valueBoolean_8_1=(Token)match(input,199,FOLLOW_2); 
 
                             							newLeafNode(lv_valueBoolean_8_1, grammarAccess.getPrimaryExpressionAccess().getValueBooleanSiempreKeyword_3_1_0_0());
                             						
@@ -5356,9 +8890,9 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                             }
                             break;
                         case 2 :
-                            // InternalDearCode.g:2045:7: lv_valueBoolean_8_2= 'jam\\u00E1s'
+                            // InternalDearCode.g:3100:7: lv_valueBoolean_8_2= 'jam\\u00E1s'
                             {
-                            lv_valueBoolean_8_2=(Token)match(input,64,FOLLOW_2); 
+                            lv_valueBoolean_8_2=(Token)match(input,200,FOLLOW_2); 
 
                             							newLeafNode(lv_valueBoolean_8_2, grammarAccess.getPrimaryExpressionAccess().getValueBooleanJamSKeyword_3_1_0_1());
                             						
@@ -5387,13 +8921,13 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 5 :
-                    // InternalDearCode.g:2060:3: ( () ( (lv_name_10_0= RULE_ID ) ) )
+                    // InternalDearCode.g:3115:3: ( () ( (lv_name_10_0= RULE_ID ) ) )
                     {
-                    // InternalDearCode.g:2060:3: ( () ( (lv_name_10_0= RULE_ID ) ) )
-                    // InternalDearCode.g:2061:4: () ( (lv_name_10_0= RULE_ID ) )
+                    // InternalDearCode.g:3115:3: ( () ( (lv_name_10_0= RULE_ID ) ) )
+                    // InternalDearCode.g:3116:4: () ( (lv_name_10_0= RULE_ID ) )
                     {
-                    // InternalDearCode.g:2061:4: ()
-                    // InternalDearCode.g:2062:5: 
+                    // InternalDearCode.g:3116:4: ()
+                    // InternalDearCode.g:3117:5: 
                     {
 
                     					current = forceCreateModelElement(
@@ -5403,11 +8937,11 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
                     }
 
-                    // InternalDearCode.g:2068:4: ( (lv_name_10_0= RULE_ID ) )
-                    // InternalDearCode.g:2069:5: (lv_name_10_0= RULE_ID )
+                    // InternalDearCode.g:3123:4: ( (lv_name_10_0= RULE_ID ) )
+                    // InternalDearCode.g:3124:5: (lv_name_10_0= RULE_ID )
                     {
-                    // InternalDearCode.g:2069:5: (lv_name_10_0= RULE_ID )
-                    // InternalDearCode.g:2070:6: lv_name_10_0= RULE_ID
+                    // InternalDearCode.g:3124:5: (lv_name_10_0= RULE_ID )
+                    // InternalDearCode.g:3125:6: lv_name_10_0= RULE_ID
                     {
                     lv_name_10_0=(Token)match(input,RULE_ID,FOLLOW_2); 
 
@@ -5436,7 +8970,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 6 :
-                    // InternalDearCode.g:2088:3: this_FunctionCall_11= ruleFunctionCall
+                    // InternalDearCode.g:3143:3: this_FunctionCall_11= ruleFunctionCall
                     {
 
                     			newCompositeNode(grammarAccess.getPrimaryExpressionAccess().getFunctionCallParserRuleCall_5());
@@ -5476,7 +9010,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleFunctionCall"
-    // InternalDearCode.g:2100:1: entryRuleFunctionCall returns [EObject current=null] : iv_ruleFunctionCall= ruleFunctionCall EOF ;
+    // InternalDearCode.g:3155:1: entryRuleFunctionCall returns [EObject current=null] : iv_ruleFunctionCall= ruleFunctionCall EOF ;
     public final EObject entryRuleFunctionCall() throws RecognitionException {
         EObject current = null;
 
@@ -5484,8 +9018,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:2100:53: (iv_ruleFunctionCall= ruleFunctionCall EOF )
-            // InternalDearCode.g:2101:2: iv_ruleFunctionCall= ruleFunctionCall EOF
+            // InternalDearCode.g:3155:53: (iv_ruleFunctionCall= ruleFunctionCall EOF )
+            // InternalDearCode.g:3156:2: iv_ruleFunctionCall= ruleFunctionCall EOF
             {
              newCompositeNode(grammarAccess.getFunctionCallRule()); 
             pushFollow(FOLLOW_1);
@@ -5512,34 +9046,40 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleFunctionCall"
-    // InternalDearCode.g:2107:1: ruleFunctionCall returns [EObject current=null] : ( () otherlv_1= 'invoco a' ( (otherlv_2= RULE_ID ) ) ( (lv_comentario_3_0= ruleComment ) )? (otherlv_4= 'con los regalos' ( ( (lv_args_5_0= ruleExpression ) ) (otherlv_6= 'y' ( (lv_args_7_0= ruleExpression ) ) )* )? otherlv_8= 'en mi coraz\\u00F3n' ) ) ;
+    // InternalDearCode.g:3162:1: ruleFunctionCall returns [EObject current=null] : ( () (otherlv_1= 'invoco a' | otherlv_2= 'susurro a' | otherlv_3= 'murmuro a' | otherlv_4= 'conjuro a' ) ( (otherlv_5= RULE_ID ) ) ( (otherlv_6= 'con los regalos' | otherlv_7= 'ofreciendo' | otherlv_8= 'con los dones' | otherlv_9= 'presentando' | otherlv_10= 'ofreciendo mis tesoros' ) ( ( (lv_args_11_0= ruleExpression ) ) (otherlv_12= 'y' ( (lv_args_13_0= ruleExpression ) ) )* )? (otherlv_14= 'en mi coraz\\u00F3n' | otherlv_15= 'en mi alma' ) )? ) ;
     public final EObject ruleFunctionCall() throws RecognitionException {
         EObject current = null;
 
         Token otherlv_1=null;
         Token otherlv_2=null;
+        Token otherlv_3=null;
         Token otherlv_4=null;
+        Token otherlv_5=null;
         Token otherlv_6=null;
+        Token otherlv_7=null;
         Token otherlv_8=null;
-        EObject lv_comentario_3_0 = null;
+        Token otherlv_9=null;
+        Token otherlv_10=null;
+        Token otherlv_12=null;
+        Token otherlv_14=null;
+        Token otherlv_15=null;
+        EObject lv_args_11_0 = null;
 
-        EObject lv_args_5_0 = null;
-
-        EObject lv_args_7_0 = null;
+        EObject lv_args_13_0 = null;
 
 
 
         	enterRule();
 
         try {
-            // InternalDearCode.g:2113:2: ( ( () otherlv_1= 'invoco a' ( (otherlv_2= RULE_ID ) ) ( (lv_comentario_3_0= ruleComment ) )? (otherlv_4= 'con los regalos' ( ( (lv_args_5_0= ruleExpression ) ) (otherlv_6= 'y' ( (lv_args_7_0= ruleExpression ) ) )* )? otherlv_8= 'en mi coraz\\u00F3n' ) ) )
-            // InternalDearCode.g:2114:2: ( () otherlv_1= 'invoco a' ( (otherlv_2= RULE_ID ) ) ( (lv_comentario_3_0= ruleComment ) )? (otherlv_4= 'con los regalos' ( ( (lv_args_5_0= ruleExpression ) ) (otherlv_6= 'y' ( (lv_args_7_0= ruleExpression ) ) )* )? otherlv_8= 'en mi coraz\\u00F3n' ) )
+            // InternalDearCode.g:3168:2: ( ( () (otherlv_1= 'invoco a' | otherlv_2= 'susurro a' | otherlv_3= 'murmuro a' | otherlv_4= 'conjuro a' ) ( (otherlv_5= RULE_ID ) ) ( (otherlv_6= 'con los regalos' | otherlv_7= 'ofreciendo' | otherlv_8= 'con los dones' | otherlv_9= 'presentando' | otherlv_10= 'ofreciendo mis tesoros' ) ( ( (lv_args_11_0= ruleExpression ) ) (otherlv_12= 'y' ( (lv_args_13_0= ruleExpression ) ) )* )? (otherlv_14= 'en mi coraz\\u00F3n' | otherlv_15= 'en mi alma' ) )? ) )
+            // InternalDearCode.g:3169:2: ( () (otherlv_1= 'invoco a' | otherlv_2= 'susurro a' | otherlv_3= 'murmuro a' | otherlv_4= 'conjuro a' ) ( (otherlv_5= RULE_ID ) ) ( (otherlv_6= 'con los regalos' | otherlv_7= 'ofreciendo' | otherlv_8= 'con los dones' | otherlv_9= 'presentando' | otherlv_10= 'ofreciendo mis tesoros' ) ( ( (lv_args_11_0= ruleExpression ) ) (otherlv_12= 'y' ( (lv_args_13_0= ruleExpression ) ) )* )? (otherlv_14= 'en mi coraz\\u00F3n' | otherlv_15= 'en mi alma' ) )? )
             {
-            // InternalDearCode.g:2114:2: ( () otherlv_1= 'invoco a' ( (otherlv_2= RULE_ID ) ) ( (lv_comentario_3_0= ruleComment ) )? (otherlv_4= 'con los regalos' ( ( (lv_args_5_0= ruleExpression ) ) (otherlv_6= 'y' ( (lv_args_7_0= ruleExpression ) ) )* )? otherlv_8= 'en mi coraz\\u00F3n' ) )
-            // InternalDearCode.g:2115:3: () otherlv_1= 'invoco a' ( (otherlv_2= RULE_ID ) ) ( (lv_comentario_3_0= ruleComment ) )? (otherlv_4= 'con los regalos' ( ( (lv_args_5_0= ruleExpression ) ) (otherlv_6= 'y' ( (lv_args_7_0= ruleExpression ) ) )* )? otherlv_8= 'en mi coraz\\u00F3n' )
+            // InternalDearCode.g:3169:2: ( () (otherlv_1= 'invoco a' | otherlv_2= 'susurro a' | otherlv_3= 'murmuro a' | otherlv_4= 'conjuro a' ) ( (otherlv_5= RULE_ID ) ) ( (otherlv_6= 'con los regalos' | otherlv_7= 'ofreciendo' | otherlv_8= 'con los dones' | otherlv_9= 'presentando' | otherlv_10= 'ofreciendo mis tesoros' ) ( ( (lv_args_11_0= ruleExpression ) ) (otherlv_12= 'y' ( (lv_args_13_0= ruleExpression ) ) )* )? (otherlv_14= 'en mi coraz\\u00F3n' | otherlv_15= 'en mi alma' ) )? )
+            // InternalDearCode.g:3170:3: () (otherlv_1= 'invoco a' | otherlv_2= 'susurro a' | otherlv_3= 'murmuro a' | otherlv_4= 'conjuro a' ) ( (otherlv_5= RULE_ID ) ) ( (otherlv_6= 'con los regalos' | otherlv_7= 'ofreciendo' | otherlv_8= 'con los dones' | otherlv_9= 'presentando' | otherlv_10= 'ofreciendo mis tesoros' ) ( ( (lv_args_11_0= ruleExpression ) ) (otherlv_12= 'y' ( (lv_args_13_0= ruleExpression ) ) )* )? (otherlv_14= 'en mi coraz\\u00F3n' | otherlv_15= 'en mi alma' ) )?
             {
-            // InternalDearCode.g:2115:3: ()
-            // InternalDearCode.g:2116:4: 
+            // InternalDearCode.g:3170:3: ()
+            // InternalDearCode.g:3171:4: 
             {
 
             				current = forceCreateModelElement(
@@ -5549,24 +9089,94 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            otherlv_1=(Token)match(input,65,FOLLOW_5); 
+            // InternalDearCode.g:3177:3: (otherlv_1= 'invoco a' | otherlv_2= 'susurro a' | otherlv_3= 'murmuro a' | otherlv_4= 'conjuro a' )
+            int alt63=4;
+            switch ( input.LA(1) ) {
+            case 201:
+                {
+                alt63=1;
+                }
+                break;
+            case 202:
+                {
+                alt63=2;
+                }
+                break;
+            case 203:
+                {
+                alt63=3;
+                }
+                break;
+            case 204:
+                {
+                alt63=4;
+                }
+                break;
+            default:
+                NoViableAltException nvae =
+                    new NoViableAltException("", 63, 0, input);
 
-            			newLeafNode(otherlv_1, grammarAccess.getFunctionCallAccess().getInvocoAKeyword_1());
-            		
-            // InternalDearCode.g:2126:3: ( (otherlv_2= RULE_ID ) )
-            // InternalDearCode.g:2127:4: (otherlv_2= RULE_ID )
+                throw nvae;
+            }
+
+            switch (alt63) {
+                case 1 :
+                    // InternalDearCode.g:3178:4: otherlv_1= 'invoco a'
+                    {
+                    otherlv_1=(Token)match(input,201,FOLLOW_5); 
+
+                    				newLeafNode(otherlv_1, grammarAccess.getFunctionCallAccess().getInvocoAKeyword_1_0());
+                    			
+
+                    }
+                    break;
+                case 2 :
+                    // InternalDearCode.g:3183:4: otherlv_2= 'susurro a'
+                    {
+                    otherlv_2=(Token)match(input,202,FOLLOW_5); 
+
+                    				newLeafNode(otherlv_2, grammarAccess.getFunctionCallAccess().getSusurroAKeyword_1_1());
+                    			
+
+                    }
+                    break;
+                case 3 :
+                    // InternalDearCode.g:3188:4: otherlv_3= 'murmuro a'
+                    {
+                    otherlv_3=(Token)match(input,203,FOLLOW_5); 
+
+                    				newLeafNode(otherlv_3, grammarAccess.getFunctionCallAccess().getMurmuroAKeyword_1_2());
+                    			
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:3193:4: otherlv_4= 'conjuro a'
+                    {
+                    otherlv_4=(Token)match(input,204,FOLLOW_5); 
+
+                    				newLeafNode(otherlv_4, grammarAccess.getFunctionCallAccess().getConjuroAKeyword_1_3());
+                    			
+
+                    }
+                    break;
+
+            }
+
+            // InternalDearCode.g:3198:3: ( (otherlv_5= RULE_ID ) )
+            // InternalDearCode.g:3199:4: (otherlv_5= RULE_ID )
             {
-            // InternalDearCode.g:2127:4: (otherlv_2= RULE_ID )
-            // InternalDearCode.g:2128:5: otherlv_2= RULE_ID
+            // InternalDearCode.g:3199:4: (otherlv_5= RULE_ID )
+            // InternalDearCode.g:3200:5: otherlv_5= RULE_ID
             {
 
             					if (current==null) {
             						current = createModelElement(grammarAccess.getFunctionCallRule());
             					}
             				
-            otherlv_2=(Token)match(input,RULE_ID,FOLLOW_39); 
+            otherlv_5=(Token)match(input,RULE_ID,FOLLOW_43); 
 
-            					newLeafNode(otherlv_2, grammarAccess.getFunctionCallAccess().getNameFuncionMI_IDCrossReference_2_0());
+            					newLeafNode(otherlv_5, grammarAccess.getFunctionCallAccess().getNameFuncionMI_IDCrossReference_2_0());
             				
 
             }
@@ -5574,166 +9184,256 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
             }
 
-            // InternalDearCode.g:2139:3: ( (lv_comentario_3_0= ruleComment ) )?
-            int alt38=2;
-            int LA38_0 = input.LA(1);
+            // InternalDearCode.g:3211:3: ( (otherlv_6= 'con los regalos' | otherlv_7= 'ofreciendo' | otherlv_8= 'con los dones' | otherlv_9= 'presentando' | otherlv_10= 'ofreciendo mis tesoros' ) ( ( (lv_args_11_0= ruleExpression ) ) (otherlv_12= 'y' ( (lv_args_13_0= ruleExpression ) ) )* )? (otherlv_14= 'en mi coraz\\u00F3n' | otherlv_15= 'en mi alma' ) )?
+            int alt68=2;
+            int LA68_0 = input.LA(1);
 
-            if ( (LA38_0==RULE_ANYTEXT) ) {
-                alt38=1;
+            if ( ((LA68_0>=205 && LA68_0<=209)) ) {
+                alt68=1;
             }
-            switch (alt38) {
+            switch (alt68) {
                 case 1 :
-                    // InternalDearCode.g:2140:4: (lv_comentario_3_0= ruleComment )
+                    // InternalDearCode.g:3212:4: (otherlv_6= 'con los regalos' | otherlv_7= 'ofreciendo' | otherlv_8= 'con los dones' | otherlv_9= 'presentando' | otherlv_10= 'ofreciendo mis tesoros' ) ( ( (lv_args_11_0= ruleExpression ) ) (otherlv_12= 'y' ( (lv_args_13_0= ruleExpression ) ) )* )? (otherlv_14= 'en mi coraz\\u00F3n' | otherlv_15= 'en mi alma' )
                     {
-                    // InternalDearCode.g:2140:4: (lv_comentario_3_0= ruleComment )
-                    // InternalDearCode.g:2141:5: lv_comentario_3_0= ruleComment
-                    {
+                    // InternalDearCode.g:3212:4: (otherlv_6= 'con los regalos' | otherlv_7= 'ofreciendo' | otherlv_8= 'con los dones' | otherlv_9= 'presentando' | otherlv_10= 'ofreciendo mis tesoros' )
+                    int alt64=5;
+                    switch ( input.LA(1) ) {
+                    case 205:
+                        {
+                        alt64=1;
+                        }
+                        break;
+                    case 206:
+                        {
+                        alt64=2;
+                        }
+                        break;
+                    case 207:
+                        {
+                        alt64=3;
+                        }
+                        break;
+                    case 208:
+                        {
+                        alt64=4;
+                        }
+                        break;
+                    case 209:
+                        {
+                        alt64=5;
+                        }
+                        break;
+                    default:
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 64, 0, input);
 
-                    					newCompositeNode(grammarAccess.getFunctionCallAccess().getComentarioCommentParserRuleCall_3_0());
-                    				
-                    pushFollow(FOLLOW_40);
-                    lv_comentario_3_0=ruleComment();
+                        throw nvae;
+                    }
 
-                    state._fsp--;
+                    switch (alt64) {
+                        case 1 :
+                            // InternalDearCode.g:3213:5: otherlv_6= 'con los regalos'
+                            {
+                            otherlv_6=(Token)match(input,205,FOLLOW_44); 
+
+                            					newLeafNode(otherlv_6, grammarAccess.getFunctionCallAccess().getConLosRegalosKeyword_3_0_0());
+                            				
+
+                            }
+                            break;
+                        case 2 :
+                            // InternalDearCode.g:3218:5: otherlv_7= 'ofreciendo'
+                            {
+                            otherlv_7=(Token)match(input,206,FOLLOW_44); 
+
+                            					newLeafNode(otherlv_7, grammarAccess.getFunctionCallAccess().getOfreciendoKeyword_3_0_1());
+                            				
+
+                            }
+                            break;
+                        case 3 :
+                            // InternalDearCode.g:3223:5: otherlv_8= 'con los dones'
+                            {
+                            otherlv_8=(Token)match(input,207,FOLLOW_44); 
+
+                            					newLeafNode(otherlv_8, grammarAccess.getFunctionCallAccess().getConLosDonesKeyword_3_0_2());
+                            				
+
+                            }
+                            break;
+                        case 4 :
+                            // InternalDearCode.g:3228:5: otherlv_9= 'presentando'
+                            {
+                            otherlv_9=(Token)match(input,208,FOLLOW_44); 
+
+                            					newLeafNode(otherlv_9, grammarAccess.getFunctionCallAccess().getPresentandoKeyword_3_0_3());
+                            				
+
+                            }
+                            break;
+                        case 5 :
+                            // InternalDearCode.g:3233:5: otherlv_10= 'ofreciendo mis tesoros'
+                            {
+                            otherlv_10=(Token)match(input,209,FOLLOW_44); 
+
+                            					newLeafNode(otherlv_10, grammarAccess.getFunctionCallAccess().getOfreciendoMisTesorosKeyword_3_0_4());
+                            				
+
+                            }
+                            break;
+
+                    }
+
+                    // InternalDearCode.g:3238:4: ( ( (lv_args_11_0= ruleExpression ) ) (otherlv_12= 'y' ( (lv_args_13_0= ruleExpression ) ) )* )?
+                    int alt66=2;
+                    int LA66_0 = input.LA(1);
+
+                    if ( ((LA66_0>=RULE_ID && LA66_0<=RULE_STRING)||(LA66_0>=192 && LA66_0<=197)||(LA66_0>=199 && LA66_0<=204)) ) {
+                        alt66=1;
+                    }
+                    switch (alt66) {
+                        case 1 :
+                            // InternalDearCode.g:3239:5: ( (lv_args_11_0= ruleExpression ) ) (otherlv_12= 'y' ( (lv_args_13_0= ruleExpression ) ) )*
+                            {
+                            // InternalDearCode.g:3239:5: ( (lv_args_11_0= ruleExpression ) )
+                            // InternalDearCode.g:3240:6: (lv_args_11_0= ruleExpression )
+                            {
+                            // InternalDearCode.g:3240:6: (lv_args_11_0= ruleExpression )
+                            // InternalDearCode.g:3241:7: lv_args_11_0= ruleExpression
+                            {
+
+                            							newCompositeNode(grammarAccess.getFunctionCallAccess().getArgsExpressionParserRuleCall_3_1_0_0());
+                            						
+                            pushFollow(FOLLOW_45);
+                            lv_args_11_0=ruleExpression();
+
+                            state._fsp--;
 
 
-                    					if (current==null) {
-                    						current = createModelElementForParent(grammarAccess.getFunctionCallRule());
-                    					}
-                    					set(
-                    						current,
-                    						"comentario",
-                    						lv_comentario_3_0,
-                    						"edu.upb.lp.DearCode.Comment");
-                    					afterParserOrEnumRuleCall();
-                    				
+                            							if (current==null) {
+                            								current = createModelElementForParent(grammarAccess.getFunctionCallRule());
+                            							}
+                            							add(
+                            								current,
+                            								"args",
+                            								lv_args_11_0,
+                            								"edu.upb.lp.DearCode.Expression");
+                            							afterParserOrEnumRuleCall();
+                            						
+
+                            }
+
+
+                            }
+
+                            // InternalDearCode.g:3258:5: (otherlv_12= 'y' ( (lv_args_13_0= ruleExpression ) ) )*
+                            loop65:
+                            do {
+                                int alt65=2;
+                                int LA65_0 = input.LA(1);
+
+                                if ( (LA65_0==120) ) {
+                                    alt65=1;
+                                }
+
+
+                                switch (alt65) {
+                            	case 1 :
+                            	    // InternalDearCode.g:3259:6: otherlv_12= 'y' ( (lv_args_13_0= ruleExpression ) )
+                            	    {
+                            	    otherlv_12=(Token)match(input,120,FOLLOW_10); 
+
+                            	    						newLeafNode(otherlv_12, grammarAccess.getFunctionCallAccess().getYKeyword_3_1_1_0());
+                            	    					
+                            	    // InternalDearCode.g:3263:6: ( (lv_args_13_0= ruleExpression ) )
+                            	    // InternalDearCode.g:3264:7: (lv_args_13_0= ruleExpression )
+                            	    {
+                            	    // InternalDearCode.g:3264:7: (lv_args_13_0= ruleExpression )
+                            	    // InternalDearCode.g:3265:8: lv_args_13_0= ruleExpression
+                            	    {
+
+                            	    								newCompositeNode(grammarAccess.getFunctionCallAccess().getArgsExpressionParserRuleCall_3_1_1_1_0());
+                            	    							
+                            	    pushFollow(FOLLOW_45);
+                            	    lv_args_13_0=ruleExpression();
+
+                            	    state._fsp--;
+
+
+                            	    								if (current==null) {
+                            	    									current = createModelElementForParent(grammarAccess.getFunctionCallRule());
+                            	    								}
+                            	    								add(
+                            	    									current,
+                            	    									"args",
+                            	    									lv_args_13_0,
+                            	    									"edu.upb.lp.DearCode.Expression");
+                            	    								afterParserOrEnumRuleCall();
+                            	    							
+
+                            	    }
+
+
+                            	    }
+
+
+                            	    }
+                            	    break;
+
+                            	default :
+                            	    break loop65;
+                                }
+                            } while (true);
+
+
+                            }
+                            break;
+
+                    }
+
+                    // InternalDearCode.g:3284:4: (otherlv_14= 'en mi coraz\\u00F3n' | otherlv_15= 'en mi alma' )
+                    int alt67=2;
+                    int LA67_0 = input.LA(1);
+
+                    if ( (LA67_0==210) ) {
+                        alt67=1;
+                    }
+                    else if ( (LA67_0==211) ) {
+                        alt67=2;
+                    }
+                    else {
+                        NoViableAltException nvae =
+                            new NoViableAltException("", 67, 0, input);
+
+                        throw nvae;
+                    }
+                    switch (alt67) {
+                        case 1 :
+                            // InternalDearCode.g:3285:5: otherlv_14= 'en mi coraz\\u00F3n'
+                            {
+                            otherlv_14=(Token)match(input,210,FOLLOW_2); 
+
+                            					newLeafNode(otherlv_14, grammarAccess.getFunctionCallAccess().getEnMiCorazNKeyword_3_2_0());
+                            				
+
+                            }
+                            break;
+                        case 2 :
+                            // InternalDearCode.g:3290:5: otherlv_15= 'en mi alma'
+                            {
+                            otherlv_15=(Token)match(input,211,FOLLOW_2); 
+
+                            					newLeafNode(otherlv_15, grammarAccess.getFunctionCallAccess().getEnMiAlmaKeyword_3_2_1());
+                            				
+
+                            }
+                            break;
 
                     }
 
 
                     }
                     break;
-
-            }
-
-            // InternalDearCode.g:2158:3: (otherlv_4= 'con los regalos' ( ( (lv_args_5_0= ruleExpression ) ) (otherlv_6= 'y' ( (lv_args_7_0= ruleExpression ) ) )* )? otherlv_8= 'en mi coraz\\u00F3n' )
-            // InternalDearCode.g:2159:4: otherlv_4= 'con los regalos' ( ( (lv_args_5_0= ruleExpression ) ) (otherlv_6= 'y' ( (lv_args_7_0= ruleExpression ) ) )* )? otherlv_8= 'en mi coraz\\u00F3n'
-            {
-            otherlv_4=(Token)match(input,66,FOLLOW_41); 
-
-            				newLeafNode(otherlv_4, grammarAccess.getFunctionCallAccess().getConLosRegalosKeyword_4_0());
-            			
-            // InternalDearCode.g:2163:4: ( ( (lv_args_5_0= ruleExpression ) ) (otherlv_6= 'y' ( (lv_args_7_0= ruleExpression ) ) )* )?
-            int alt40=2;
-            int LA40_0 = input.LA(1);
-
-            if ( ((LA40_0>=RULE_ID && LA40_0<=RULE_STRING)||(LA40_0>=60 && LA40_0<=61)||(LA40_0>=63 && LA40_0<=65)) ) {
-                alt40=1;
-            }
-            switch (alt40) {
-                case 1 :
-                    // InternalDearCode.g:2164:5: ( (lv_args_5_0= ruleExpression ) ) (otherlv_6= 'y' ( (lv_args_7_0= ruleExpression ) ) )*
-                    {
-                    // InternalDearCode.g:2164:5: ( (lv_args_5_0= ruleExpression ) )
-                    // InternalDearCode.g:2165:6: (lv_args_5_0= ruleExpression )
-                    {
-                    // InternalDearCode.g:2165:6: (lv_args_5_0= ruleExpression )
-                    // InternalDearCode.g:2166:7: lv_args_5_0= ruleExpression
-                    {
-
-                    							newCompositeNode(grammarAccess.getFunctionCallAccess().getArgsExpressionParserRuleCall_4_1_0_0());
-                    						
-                    pushFollow(FOLLOW_42);
-                    lv_args_5_0=ruleExpression();
-
-                    state._fsp--;
-
-
-                    							if (current==null) {
-                    								current = createModelElementForParent(grammarAccess.getFunctionCallRule());
-                    							}
-                    							add(
-                    								current,
-                    								"args",
-                    								lv_args_5_0,
-                    								"edu.upb.lp.DearCode.Expression");
-                    							afterParserOrEnumRuleCall();
-                    						
-
-                    }
-
-
-                    }
-
-                    // InternalDearCode.g:2183:5: (otherlv_6= 'y' ( (lv_args_7_0= ruleExpression ) ) )*
-                    loop39:
-                    do {
-                        int alt39=2;
-                        int LA39_0 = input.LA(1);
-
-                        if ( (LA39_0==67) ) {
-                            alt39=1;
-                        }
-
-
-                        switch (alt39) {
-                    	case 1 :
-                    	    // InternalDearCode.g:2184:6: otherlv_6= 'y' ( (lv_args_7_0= ruleExpression ) )
-                    	    {
-                    	    otherlv_6=(Token)match(input,67,FOLLOW_9); 
-
-                    	    						newLeafNode(otherlv_6, grammarAccess.getFunctionCallAccess().getYKeyword_4_1_1_0());
-                    	    					
-                    	    // InternalDearCode.g:2188:6: ( (lv_args_7_0= ruleExpression ) )
-                    	    // InternalDearCode.g:2189:7: (lv_args_7_0= ruleExpression )
-                    	    {
-                    	    // InternalDearCode.g:2189:7: (lv_args_7_0= ruleExpression )
-                    	    // InternalDearCode.g:2190:8: lv_args_7_0= ruleExpression
-                    	    {
-
-                    	    								newCompositeNode(grammarAccess.getFunctionCallAccess().getArgsExpressionParserRuleCall_4_1_1_1_0());
-                    	    							
-                    	    pushFollow(FOLLOW_42);
-                    	    lv_args_7_0=ruleExpression();
-
-                    	    state._fsp--;
-
-
-                    	    								if (current==null) {
-                    	    									current = createModelElementForParent(grammarAccess.getFunctionCallRule());
-                    	    								}
-                    	    								add(
-                    	    									current,
-                    	    									"args",
-                    	    									lv_args_7_0,
-                    	    									"edu.upb.lp.DearCode.Expression");
-                    	    								afterParserOrEnumRuleCall();
-                    	    							
-
-                    	    }
-
-
-                    	    }
-
-
-                    	    }
-                    	    break;
-
-                    	default :
-                    	    break loop39;
-                        }
-                    } while (true);
-
-
-                    }
-                    break;
-
-            }
-
-            otherlv_8=(Token)match(input,68,FOLLOW_2); 
-
-            				newLeafNode(otherlv_8, grammarAccess.getFunctionCallAccess().getEnMiCorazNKeyword_4_2());
-            			
 
             }
 
@@ -5759,155 +9459,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
     // $ANTLR end "ruleFunctionCall"
 
 
-    // $ANTLR start "entryRuleType"
-    // InternalDearCode.g:2218:1: entryRuleType returns [String current=null] : iv_ruleType= ruleType EOF ;
-    public final String entryRuleType() throws RecognitionException {
-        String current = null;
-
-        AntlrDatatypeRuleToken iv_ruleType = null;
-
-
-        try {
-            // InternalDearCode.g:2218:44: (iv_ruleType= ruleType EOF )
-            // InternalDearCode.g:2219:2: iv_ruleType= ruleType EOF
-            {
-             newCompositeNode(grammarAccess.getTypeRule()); 
-            pushFollow(FOLLOW_1);
-            iv_ruleType=ruleType();
-
-            state._fsp--;
-
-             current =iv_ruleType.getText(); 
-            match(input,EOF,FOLLOW_2); 
-
-            }
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "entryRuleType"
-
-
-    // $ANTLR start "ruleType"
-    // InternalDearCode.g:2225:1: ruleType returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'n\\u00FAmero' | kw= 'texto' | kw= 'booleano' | kw= 'nada' ) ;
-    public final AntlrDatatypeRuleToken ruleType() throws RecognitionException {
-        AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
-
-        Token kw=null;
-
-
-        	enterRule();
-
-        try {
-            // InternalDearCode.g:2231:2: ( (kw= 'n\\u00FAmero' | kw= 'texto' | kw= 'booleano' | kw= 'nada' ) )
-            // InternalDearCode.g:2232:2: (kw= 'n\\u00FAmero' | kw= 'texto' | kw= 'booleano' | kw= 'nada' )
-            {
-            // InternalDearCode.g:2232:2: (kw= 'n\\u00FAmero' | kw= 'texto' | kw= 'booleano' | kw= 'nada' )
-            int alt41=4;
-            switch ( input.LA(1) ) {
-            case 69:
-                {
-                alt41=1;
-                }
-                break;
-            case 70:
-                {
-                alt41=2;
-                }
-                break;
-            case 71:
-                {
-                alt41=3;
-                }
-                break;
-            case 72:
-                {
-                alt41=4;
-                }
-                break;
-            default:
-                NoViableAltException nvae =
-                    new NoViableAltException("", 41, 0, input);
-
-                throw nvae;
-            }
-
-            switch (alt41) {
-                case 1 :
-                    // InternalDearCode.g:2233:3: kw= 'n\\u00FAmero'
-                    {
-                    kw=(Token)match(input,69,FOLLOW_2); 
-
-                    			current.merge(kw);
-                    			newLeafNode(kw, grammarAccess.getTypeAccess().getNMeroKeyword_0());
-                    		
-
-                    }
-                    break;
-                case 2 :
-                    // InternalDearCode.g:2239:3: kw= 'texto'
-                    {
-                    kw=(Token)match(input,70,FOLLOW_2); 
-
-                    			current.merge(kw);
-                    			newLeafNode(kw, grammarAccess.getTypeAccess().getTextoKeyword_1());
-                    		
-
-                    }
-                    break;
-                case 3 :
-                    // InternalDearCode.g:2245:3: kw= 'booleano'
-                    {
-                    kw=(Token)match(input,71,FOLLOW_2); 
-
-                    			current.merge(kw);
-                    			newLeafNode(kw, grammarAccess.getTypeAccess().getBooleanoKeyword_2());
-                    		
-
-                    }
-                    break;
-                case 4 :
-                    // InternalDearCode.g:2251:3: kw= 'nada'
-                    {
-                    kw=(Token)match(input,72,FOLLOW_2); 
-
-                    			current.merge(kw);
-                    			newLeafNode(kw, grammarAccess.getTypeAccess().getNadaKeyword_3());
-                    		
-
-                    }
-                    break;
-
-            }
-
-
-            }
-
-
-            	leaveRule();
-
-        }
-
-            catch (RecognitionException re) {
-                recover(input,re);
-                appendSkippedTokens();
-            }
-        finally {
-        }
-        return current;
-    }
-    // $ANTLR end "ruleType"
-
-
     // $ANTLR start "entryRuleComment"
-    // InternalDearCode.g:2260:1: entryRuleComment returns [EObject current=null] : iv_ruleComment= ruleComment EOF ;
+    // InternalDearCode.g:3300:1: entryRuleComment returns [EObject current=null] : iv_ruleComment= ruleComment EOF ;
     public final EObject entryRuleComment() throws RecognitionException {
         EObject current = null;
 
@@ -5915,8 +9468,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:2260:48: (iv_ruleComment= ruleComment EOF )
-            // InternalDearCode.g:2261:2: iv_ruleComment= ruleComment EOF
+            // InternalDearCode.g:3300:48: (iv_ruleComment= ruleComment EOF )
+            // InternalDearCode.g:3301:2: iv_ruleComment= ruleComment EOF
             {
              newCompositeNode(grammarAccess.getCommentRule()); 
             pushFollow(FOLLOW_1);
@@ -5943,7 +9496,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleComment"
-    // InternalDearCode.g:2267:1: ruleComment returns [EObject current=null] : ( (lv_value_0_0= RULE_ANYTEXT ) ) ;
+    // InternalDearCode.g:3307:1: ruleComment returns [EObject current=null] : ( (lv_value_0_0= RULE_ANYTEXT ) ) ;
     public final EObject ruleComment() throws RecognitionException {
         EObject current = null;
 
@@ -5953,14 +9506,14 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDearCode.g:2273:2: ( ( (lv_value_0_0= RULE_ANYTEXT ) ) )
-            // InternalDearCode.g:2274:2: ( (lv_value_0_0= RULE_ANYTEXT ) )
+            // InternalDearCode.g:3313:2: ( ( (lv_value_0_0= RULE_ANYTEXT ) ) )
+            // InternalDearCode.g:3314:2: ( (lv_value_0_0= RULE_ANYTEXT ) )
             {
-            // InternalDearCode.g:2274:2: ( (lv_value_0_0= RULE_ANYTEXT ) )
-            // InternalDearCode.g:2275:3: (lv_value_0_0= RULE_ANYTEXT )
+            // InternalDearCode.g:3314:2: ( (lv_value_0_0= RULE_ANYTEXT ) )
+            // InternalDearCode.g:3315:3: (lv_value_0_0= RULE_ANYTEXT )
             {
-            // InternalDearCode.g:2275:3: (lv_value_0_0= RULE_ANYTEXT )
-            // InternalDearCode.g:2276:4: lv_value_0_0= RULE_ANYTEXT
+            // InternalDearCode.g:3315:3: (lv_value_0_0= RULE_ANYTEXT )
+            // InternalDearCode.g:3316:4: lv_value_0_0= RULE_ANYTEXT
             {
             lv_value_0_0=(Token)match(input,RULE_ANYTEXT,FOLLOW_2); 
 
@@ -6002,7 +9555,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleMI_ID"
-    // InternalDearCode.g:2295:1: entryRuleMI_ID returns [EObject current=null] : iv_ruleMI_ID= ruleMI_ID EOF ;
+    // InternalDearCode.g:3335:1: entryRuleMI_ID returns [EObject current=null] : iv_ruleMI_ID= ruleMI_ID EOF ;
     public final EObject entryRuleMI_ID() throws RecognitionException {
         EObject current = null;
 
@@ -6010,8 +9563,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:2295:46: (iv_ruleMI_ID= ruleMI_ID EOF )
-            // InternalDearCode.g:2296:2: iv_ruleMI_ID= ruleMI_ID EOF
+            // InternalDearCode.g:3335:46: (iv_ruleMI_ID= ruleMI_ID EOF )
+            // InternalDearCode.g:3336:2: iv_ruleMI_ID= ruleMI_ID EOF
             {
              newCompositeNode(grammarAccess.getMI_IDRule()); 
             pushFollow(FOLLOW_1);
@@ -6038,7 +9591,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleMI_ID"
-    // InternalDearCode.g:2302:1: ruleMI_ID returns [EObject current=null] : ( (lv_name_0_0= RULE_ID ) ) ;
+    // InternalDearCode.g:3342:1: ruleMI_ID returns [EObject current=null] : ( (lv_name_0_0= RULE_ID ) ) ;
     public final EObject ruleMI_ID() throws RecognitionException {
         EObject current = null;
 
@@ -6048,14 +9601,14 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDearCode.g:2308:2: ( ( (lv_name_0_0= RULE_ID ) ) )
-            // InternalDearCode.g:2309:2: ( (lv_name_0_0= RULE_ID ) )
+            // InternalDearCode.g:3348:2: ( ( (lv_name_0_0= RULE_ID ) ) )
+            // InternalDearCode.g:3349:2: ( (lv_name_0_0= RULE_ID ) )
             {
-            // InternalDearCode.g:2309:2: ( (lv_name_0_0= RULE_ID ) )
-            // InternalDearCode.g:2310:3: (lv_name_0_0= RULE_ID )
+            // InternalDearCode.g:3349:2: ( (lv_name_0_0= RULE_ID ) )
+            // InternalDearCode.g:3350:3: (lv_name_0_0= RULE_ID )
             {
-            // InternalDearCode.g:2310:3: (lv_name_0_0= RULE_ID )
-            // InternalDearCode.g:2311:4: lv_name_0_0= RULE_ID
+            // InternalDearCode.g:3350:3: (lv_name_0_0= RULE_ID )
+            // InternalDearCode.g:3351:4: lv_name_0_0= RULE_ID
             {
             lv_name_0_0=(Token)match(input,RULE_ID,FOLLOW_2); 
 
@@ -6097,7 +9650,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleVerboDeclaracion"
-    // InternalDearCode.g:2330:1: entryRuleVerboDeclaracion returns [String current=null] : iv_ruleVerboDeclaracion= ruleVerboDeclaracion EOF ;
+    // InternalDearCode.g:3370:1: entryRuleVerboDeclaracion returns [String current=null] : iv_ruleVerboDeclaracion= ruleVerboDeclaracion EOF ;
     public final String entryRuleVerboDeclaracion() throws RecognitionException {
         String current = null;
 
@@ -6105,8 +9658,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:2330:56: (iv_ruleVerboDeclaracion= ruleVerboDeclaracion EOF )
-            // InternalDearCode.g:2331:2: iv_ruleVerboDeclaracion= ruleVerboDeclaracion EOF
+            // InternalDearCode.g:3370:56: (iv_ruleVerboDeclaracion= ruleVerboDeclaracion EOF )
+            // InternalDearCode.g:3371:2: iv_ruleVerboDeclaracion= ruleVerboDeclaracion EOF
             {
              newCompositeNode(grammarAccess.getVerboDeclaracionRule()); 
             pushFollow(FOLLOW_1);
@@ -6133,7 +9686,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVerboDeclaracion"
-    // InternalDearCode.g:2337:1: ruleVerboDeclaracion returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'Te regalo' | kw= 'Ofrezco' | kw= 'Obsequio' | kw= 'Deposito en tu jard\\u00EDn' ) ;
+    // InternalDearCode.g:3377:1: ruleVerboDeclaracion returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'Te regalo' | kw= 'Te Ofrezco' | kw= 'Obsequio' | kw= 'Deposito en tu jard\\u00EDn' | kw= 'Te revelo' | kw= 'Te susurro' | kw= 'Te conf\\u00EDo' | kw= 'Te entrego' | kw= 'Te dedico' | kw= 'Te brindo' ) ;
     public final AntlrDatatypeRuleToken ruleVerboDeclaracion() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -6143,44 +9696,74 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDearCode.g:2343:2: ( (kw= 'Te regalo' | kw= 'Ofrezco' | kw= 'Obsequio' | kw= 'Deposito en tu jard\\u00EDn' ) )
-            // InternalDearCode.g:2344:2: (kw= 'Te regalo' | kw= 'Ofrezco' | kw= 'Obsequio' | kw= 'Deposito en tu jard\\u00EDn' )
+            // InternalDearCode.g:3383:2: ( (kw= 'Te regalo' | kw= 'Te Ofrezco' | kw= 'Obsequio' | kw= 'Deposito en tu jard\\u00EDn' | kw= 'Te revelo' | kw= 'Te susurro' | kw= 'Te conf\\u00EDo' | kw= 'Te entrego' | kw= 'Te dedico' | kw= 'Te brindo' ) )
+            // InternalDearCode.g:3384:2: (kw= 'Te regalo' | kw= 'Te Ofrezco' | kw= 'Obsequio' | kw= 'Deposito en tu jard\\u00EDn' | kw= 'Te revelo' | kw= 'Te susurro' | kw= 'Te conf\\u00EDo' | kw= 'Te entrego' | kw= 'Te dedico' | kw= 'Te brindo' )
             {
-            // InternalDearCode.g:2344:2: (kw= 'Te regalo' | kw= 'Ofrezco' | kw= 'Obsequio' | kw= 'Deposito en tu jard\\u00EDn' )
-            int alt42=4;
+            // InternalDearCode.g:3384:2: (kw= 'Te regalo' | kw= 'Te Ofrezco' | kw= 'Obsequio' | kw= 'Deposito en tu jard\\u00EDn' | kw= 'Te revelo' | kw= 'Te susurro' | kw= 'Te conf\\u00EDo' | kw= 'Te entrego' | kw= 'Te dedico' | kw= 'Te brindo' )
+            int alt69=10;
             switch ( input.LA(1) ) {
-            case 73:
+            case 212:
                 {
-                alt42=1;
+                alt69=1;
                 }
                 break;
-            case 74:
+            case 213:
                 {
-                alt42=2;
+                alt69=2;
                 }
                 break;
-            case 75:
+            case 214:
                 {
-                alt42=3;
+                alt69=3;
                 }
                 break;
-            case 76:
+            case 215:
                 {
-                alt42=4;
+                alt69=4;
+                }
+                break;
+            case 216:
+                {
+                alt69=5;
+                }
+                break;
+            case 217:
+                {
+                alt69=6;
+                }
+                break;
+            case 218:
+                {
+                alt69=7;
+                }
+                break;
+            case 134:
+                {
+                alt69=8;
+                }
+                break;
+            case 219:
+                {
+                alt69=9;
+                }
+                break;
+            case 220:
+                {
+                alt69=10;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 42, 0, input);
+                    new NoViableAltException("", 69, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt42) {
+            switch (alt69) {
                 case 1 :
-                    // InternalDearCode.g:2345:3: kw= 'Te regalo'
+                    // InternalDearCode.g:3385:3: kw= 'Te regalo'
                     {
-                    kw=(Token)match(input,73,FOLLOW_2); 
+                    kw=(Token)match(input,212,FOLLOW_2); 
 
                     			current.merge(kw);
                     			newLeafNode(kw, grammarAccess.getVerboDeclaracionAccess().getTeRegaloKeyword_0());
@@ -6189,20 +9772,20 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalDearCode.g:2351:3: kw= 'Ofrezco'
+                    // InternalDearCode.g:3391:3: kw= 'Te Ofrezco'
                     {
-                    kw=(Token)match(input,74,FOLLOW_2); 
+                    kw=(Token)match(input,213,FOLLOW_2); 
 
                     			current.merge(kw);
-                    			newLeafNode(kw, grammarAccess.getVerboDeclaracionAccess().getOfrezcoKeyword_1());
+                    			newLeafNode(kw, grammarAccess.getVerboDeclaracionAccess().getTeOfrezcoKeyword_1());
                     		
 
                     }
                     break;
                 case 3 :
-                    // InternalDearCode.g:2357:3: kw= 'Obsequio'
+                    // InternalDearCode.g:3397:3: kw= 'Obsequio'
                     {
-                    kw=(Token)match(input,75,FOLLOW_2); 
+                    kw=(Token)match(input,214,FOLLOW_2); 
 
                     			current.merge(kw);
                     			newLeafNode(kw, grammarAccess.getVerboDeclaracionAccess().getObsequioKeyword_2());
@@ -6211,12 +9794,78 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 4 :
-                    // InternalDearCode.g:2363:3: kw= 'Deposito en tu jard\\u00EDn'
+                    // InternalDearCode.g:3403:3: kw= 'Deposito en tu jard\\u00EDn'
                     {
-                    kw=(Token)match(input,76,FOLLOW_2); 
+                    kw=(Token)match(input,215,FOLLOW_2); 
 
                     			current.merge(kw);
                     			newLeafNode(kw, grammarAccess.getVerboDeclaracionAccess().getDepositoEnTuJardNKeyword_3());
+                    		
+
+                    }
+                    break;
+                case 5 :
+                    // InternalDearCode.g:3409:3: kw= 'Te revelo'
+                    {
+                    kw=(Token)match(input,216,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getVerboDeclaracionAccess().getTeReveloKeyword_4());
+                    		
+
+                    }
+                    break;
+                case 6 :
+                    // InternalDearCode.g:3415:3: kw= 'Te susurro'
+                    {
+                    kw=(Token)match(input,217,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getVerboDeclaracionAccess().getTeSusurroKeyword_5());
+                    		
+
+                    }
+                    break;
+                case 7 :
+                    // InternalDearCode.g:3421:3: kw= 'Te conf\\u00EDo'
+                    {
+                    kw=(Token)match(input,218,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getVerboDeclaracionAccess().getTeConfOKeyword_6());
+                    		
+
+                    }
+                    break;
+                case 8 :
+                    // InternalDearCode.g:3427:3: kw= 'Te entrego'
+                    {
+                    kw=(Token)match(input,134,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getVerboDeclaracionAccess().getTeEntregoKeyword_7());
+                    		
+
+                    }
+                    break;
+                case 9 :
+                    // InternalDearCode.g:3433:3: kw= 'Te dedico'
+                    {
+                    kw=(Token)match(input,219,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getVerboDeclaracionAccess().getTeDedicoKeyword_8());
+                    		
+
+                    }
+                    break;
+                case 10 :
+                    // InternalDearCode.g:3439:3: kw= 'Te brindo'
+                    {
+                    kw=(Token)match(input,220,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getVerboDeclaracionAccess().getTeBrindoKeyword_9());
                     		
 
                     }
@@ -6244,7 +9893,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleVerboReasignacion"
-    // InternalDearCode.g:2372:1: entryRuleVerboReasignacion returns [String current=null] : iv_ruleVerboReasignacion= ruleVerboReasignacion EOF ;
+    // InternalDearCode.g:3448:1: entryRuleVerboReasignacion returns [String current=null] : iv_ruleVerboReasignacion= ruleVerboReasignacion EOF ;
     public final String entryRuleVerboReasignacion() throws RecognitionException {
         String current = null;
 
@@ -6252,8 +9901,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:2372:57: (iv_ruleVerboReasignacion= ruleVerboReasignacion EOF )
-            // InternalDearCode.g:2373:2: iv_ruleVerboReasignacion= ruleVerboReasignacion EOF
+            // InternalDearCode.g:3448:57: (iv_ruleVerboReasignacion= ruleVerboReasignacion EOF )
+            // InternalDearCode.g:3449:2: iv_ruleVerboReasignacion= ruleVerboReasignacion EOF
             {
              newCompositeNode(grammarAccess.getVerboReasignacionRule()); 
             pushFollow(FOLLOW_1);
@@ -6280,7 +9929,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleVerboReasignacion"
-    // InternalDearCode.g:2379:1: ruleVerboReasignacion returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'Perm\\u00EDteme alimentar' | kw= 'Perm\\u00EDteme regar' | kw= 'Perm\\u00EDteme ajustar' ) ;
+    // InternalDearCode.g:3455:1: ruleVerboReasignacion returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'Perm\\u00EDteme alimentar' | kw= 'Perm\\u00EDteme regar' | kw= 'Perm\\u00EDteme ajustar' | kw= 'Reavivo' | kw= 'Renuevo' | kw= 'Reafirmo' | kw= 'Perm\\u00EDteme transformar' | kw= 'Renuevo con pasi\\u00F3n' | kw= 'Modifico con amor' ) ;
     public final AntlrDatatypeRuleToken ruleVerboReasignacion() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -6290,39 +9939,69 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDearCode.g:2385:2: ( (kw= 'Perm\\u00EDteme alimentar' | kw= 'Perm\\u00EDteme regar' | kw= 'Perm\\u00EDteme ajustar' ) )
-            // InternalDearCode.g:2386:2: (kw= 'Perm\\u00EDteme alimentar' | kw= 'Perm\\u00EDteme regar' | kw= 'Perm\\u00EDteme ajustar' )
+            // InternalDearCode.g:3461:2: ( (kw= 'Perm\\u00EDteme alimentar' | kw= 'Perm\\u00EDteme regar' | kw= 'Perm\\u00EDteme ajustar' | kw= 'Reavivo' | kw= 'Renuevo' | kw= 'Reafirmo' | kw= 'Perm\\u00EDteme transformar' | kw= 'Renuevo con pasi\\u00F3n' | kw= 'Modifico con amor' ) )
+            // InternalDearCode.g:3462:2: (kw= 'Perm\\u00EDteme alimentar' | kw= 'Perm\\u00EDteme regar' | kw= 'Perm\\u00EDteme ajustar' | kw= 'Reavivo' | kw= 'Renuevo' | kw= 'Reafirmo' | kw= 'Perm\\u00EDteme transformar' | kw= 'Renuevo con pasi\\u00F3n' | kw= 'Modifico con amor' )
             {
-            // InternalDearCode.g:2386:2: (kw= 'Perm\\u00EDteme alimentar' | kw= 'Perm\\u00EDteme regar' | kw= 'Perm\\u00EDteme ajustar' )
-            int alt43=3;
+            // InternalDearCode.g:3462:2: (kw= 'Perm\\u00EDteme alimentar' | kw= 'Perm\\u00EDteme regar' | kw= 'Perm\\u00EDteme ajustar' | kw= 'Reavivo' | kw= 'Renuevo' | kw= 'Reafirmo' | kw= 'Perm\\u00EDteme transformar' | kw= 'Renuevo con pasi\\u00F3n' | kw= 'Modifico con amor' )
+            int alt70=9;
             switch ( input.LA(1) ) {
-            case 77:
+            case 221:
                 {
-                alt43=1;
+                alt70=1;
                 }
                 break;
-            case 78:
+            case 222:
                 {
-                alt43=2;
+                alt70=2;
                 }
                 break;
-            case 79:
+            case 223:
                 {
-                alt43=3;
+                alt70=3;
+                }
+                break;
+            case 224:
+                {
+                alt70=4;
+                }
+                break;
+            case 225:
+                {
+                alt70=5;
+                }
+                break;
+            case 226:
+                {
+                alt70=6;
+                }
+                break;
+            case 227:
+                {
+                alt70=7;
+                }
+                break;
+            case 228:
+                {
+                alt70=8;
+                }
+                break;
+            case 229:
+                {
+                alt70=9;
                 }
                 break;
             default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 43, 0, input);
+                    new NoViableAltException("", 70, 0, input);
 
                 throw nvae;
             }
 
-            switch (alt43) {
+            switch (alt70) {
                 case 1 :
-                    // InternalDearCode.g:2387:3: kw= 'Perm\\u00EDteme alimentar'
+                    // InternalDearCode.g:3463:3: kw= 'Perm\\u00EDteme alimentar'
                     {
-                    kw=(Token)match(input,77,FOLLOW_2); 
+                    kw=(Token)match(input,221,FOLLOW_2); 
 
                     			current.merge(kw);
                     			newLeafNode(kw, grammarAccess.getVerboReasignacionAccess().getPermTemeAlimentarKeyword_0());
@@ -6331,9 +10010,9 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalDearCode.g:2393:3: kw= 'Perm\\u00EDteme regar'
+                    // InternalDearCode.g:3469:3: kw= 'Perm\\u00EDteme regar'
                     {
-                    kw=(Token)match(input,78,FOLLOW_2); 
+                    kw=(Token)match(input,222,FOLLOW_2); 
 
                     			current.merge(kw);
                     			newLeafNode(kw, grammarAccess.getVerboReasignacionAccess().getPermTemeRegarKeyword_1());
@@ -6342,12 +10021,78 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 3 :
-                    // InternalDearCode.g:2399:3: kw= 'Perm\\u00EDteme ajustar'
+                    // InternalDearCode.g:3475:3: kw= 'Perm\\u00EDteme ajustar'
                     {
-                    kw=(Token)match(input,79,FOLLOW_2); 
+                    kw=(Token)match(input,223,FOLLOW_2); 
 
                     			current.merge(kw);
                     			newLeafNode(kw, grammarAccess.getVerboReasignacionAccess().getPermTemeAjustarKeyword_2());
+                    		
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:3481:3: kw= 'Reavivo'
+                    {
+                    kw=(Token)match(input,224,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getVerboReasignacionAccess().getReavivoKeyword_3());
+                    		
+
+                    }
+                    break;
+                case 5 :
+                    // InternalDearCode.g:3487:3: kw= 'Renuevo'
+                    {
+                    kw=(Token)match(input,225,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getVerboReasignacionAccess().getRenuevoKeyword_4());
+                    		
+
+                    }
+                    break;
+                case 6 :
+                    // InternalDearCode.g:3493:3: kw= 'Reafirmo'
+                    {
+                    kw=(Token)match(input,226,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getVerboReasignacionAccess().getReafirmoKeyword_5());
+                    		
+
+                    }
+                    break;
+                case 7 :
+                    // InternalDearCode.g:3499:3: kw= 'Perm\\u00EDteme transformar'
+                    {
+                    kw=(Token)match(input,227,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getVerboReasignacionAccess().getPermTemeTransformarKeyword_6());
+                    		
+
+                    }
+                    break;
+                case 8 :
+                    // InternalDearCode.g:3505:3: kw= 'Renuevo con pasi\\u00F3n'
+                    {
+                    kw=(Token)match(input,228,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getVerboReasignacionAccess().getRenuevoConPasiNKeyword_7());
+                    		
+
+                    }
+                    break;
+                case 9 :
+                    // InternalDearCode.g:3511:3: kw= 'Modifico con amor'
+                    {
+                    kw=(Token)match(input,229,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getVerboReasignacionAccess().getModificoConAmorKeyword_8());
                     		
 
                     }
@@ -6375,7 +10120,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "entryRuleArticulo"
-    // InternalDearCode.g:2408:1: entryRuleArticulo returns [String current=null] : iv_ruleArticulo= ruleArticulo EOF ;
+    // InternalDearCode.g:3520:1: entryRuleArticulo returns [String current=null] : iv_ruleArticulo= ruleArticulo EOF ;
     public final String entryRuleArticulo() throws RecognitionException {
         String current = null;
 
@@ -6383,8 +10128,8 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
         try {
-            // InternalDearCode.g:2408:48: (iv_ruleArticulo= ruleArticulo EOF )
-            // InternalDearCode.g:2409:2: iv_ruleArticulo= ruleArticulo EOF
+            // InternalDearCode.g:3520:48: (iv_ruleArticulo= ruleArticulo EOF )
+            // InternalDearCode.g:3521:2: iv_ruleArticulo= ruleArticulo EOF
             {
              newCompositeNode(grammarAccess.getArticuloRule()); 
             pushFollow(FOLLOW_1);
@@ -6411,7 +10156,7 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
 
     // $ANTLR start "ruleArticulo"
-    // InternalDearCode.g:2415:1: ruleArticulo returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'un' | kw= 'una' ) ;
+    // InternalDearCode.g:3527:1: ruleArticulo returns [AntlrDatatypeRuleToken current=new AntlrDatatypeRuleToken()] : (kw= 'un' | kw= 'una' | kw= 'unos' | kw= 'unas' ) ;
     public final AntlrDatatypeRuleToken ruleArticulo() throws RecognitionException {
         AntlrDatatypeRuleToken current = new AntlrDatatypeRuleToken();
 
@@ -6421,30 +10166,44 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
         	enterRule();
 
         try {
-            // InternalDearCode.g:2421:2: ( (kw= 'un' | kw= 'una' ) )
-            // InternalDearCode.g:2422:2: (kw= 'un' | kw= 'una' )
+            // InternalDearCode.g:3533:2: ( (kw= 'un' | kw= 'una' | kw= 'unos' | kw= 'unas' ) )
+            // InternalDearCode.g:3534:2: (kw= 'un' | kw= 'una' | kw= 'unos' | kw= 'unas' )
             {
-            // InternalDearCode.g:2422:2: (kw= 'un' | kw= 'una' )
-            int alt44=2;
-            int LA44_0 = input.LA(1);
-
-            if ( (LA44_0==80) ) {
-                alt44=1;
-            }
-            else if ( (LA44_0==81) ) {
-                alt44=2;
-            }
-            else {
+            // InternalDearCode.g:3534:2: (kw= 'un' | kw= 'una' | kw= 'unos' | kw= 'unas' )
+            int alt71=4;
+            switch ( input.LA(1) ) {
+            case 230:
+                {
+                alt71=1;
+                }
+                break;
+            case 231:
+                {
+                alt71=2;
+                }
+                break;
+            case 232:
+                {
+                alt71=3;
+                }
+                break;
+            case 233:
+                {
+                alt71=4;
+                }
+                break;
+            default:
                 NoViableAltException nvae =
-                    new NoViableAltException("", 44, 0, input);
+                    new NoViableAltException("", 71, 0, input);
 
                 throw nvae;
             }
-            switch (alt44) {
+
+            switch (alt71) {
                 case 1 :
-                    // InternalDearCode.g:2423:3: kw= 'un'
+                    // InternalDearCode.g:3535:3: kw= 'un'
                     {
-                    kw=(Token)match(input,80,FOLLOW_2); 
+                    kw=(Token)match(input,230,FOLLOW_2); 
 
                     			current.merge(kw);
                     			newLeafNode(kw, grammarAccess.getArticuloAccess().getUnKeyword_0());
@@ -6453,12 +10212,34 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
                     }
                     break;
                 case 2 :
-                    // InternalDearCode.g:2429:3: kw= 'una'
+                    // InternalDearCode.g:3541:3: kw= 'una'
                     {
-                    kw=(Token)match(input,81,FOLLOW_2); 
+                    kw=(Token)match(input,231,FOLLOW_2); 
 
                     			current.merge(kw);
                     			newLeafNode(kw, grammarAccess.getArticuloAccess().getUnaKeyword_1());
+                    		
+
+                    }
+                    break;
+                case 3 :
+                    // InternalDearCode.g:3547:3: kw= 'unos'
+                    {
+                    kw=(Token)match(input,232,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getArticuloAccess().getUnosKeyword_2());
+                    		
+
+                    }
+                    break;
+                case 4 :
+                    // InternalDearCode.g:3553:3: kw= 'unas'
+                    {
+                    kw=(Token)match(input,233,FOLLOW_2); 
+
+                    			current.merge(kw);
+                    			newLeafNode(kw, grammarAccess.getArticuloAccess().getUnasKeyword_3());
                     		
 
                     }
@@ -6491,45 +10272,48 @@ public class InternalDearCodeParser extends AbstractInternalAntlrParser {
 
     public static final BitSet FOLLOW_1 = new BitSet(new long[]{0x0000000000000000L});
     public static final BitSet FOLLOW_2 = new BitSet(new long[]{0x0000000000000002L});
-    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x000000704C190000L,0x000000000000FE02L});
-    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x0000000000008000L});
+    public static final BitSet FOLLOW_3 = new BitSet(new long[]{0x007FF803FE000000L,0x0007F8003E007F00L,0x0000000000000040L,0x0000003FFFF01E00L});
+    public static final BitSet FOLLOW_4 = new BitSet(new long[]{0x00000000003C0000L});
     public static final BitSet FOLLOW_5 = new BitSet(new long[]{0x0000000000000010L});
-    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000004000L});
-    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x000000704C190002L,0x000000000000FE02L});
-    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000000000L,0x0000000000030000L});
-    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0xB00000704C1900F0L,0x000000000000FE03L});
-    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x0000000000004080L});
-    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000000090L});
-    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000000064000L});
-    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x0000000000200000L});
-    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0000000000400000L});
-    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x000008704C190000L,0x000000000000FE02L});
-    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x000008704E990000L,0x000000000000FE02L});
-    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x0000000001000000L});
-    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0x000008704E190000L,0x000000000000FE02L});
-    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x0000000010000000L});
-    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x000008706C190000L,0x000000000000FE02L});
-    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000080000000L});
-    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x0000000100000000L});
-    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000600000000L});
-    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x0000000400000000L});
-    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x000008784C190000L,0x000000000000FE02L});
-    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000038000000000L});
-    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000030000200000L});
-    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000000000000L,0x00000000000001E0L});
-    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x0000020000000000L});
-    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x00000C704C190000L,0x000000000000FE02L});
-    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000100000000000L});
-    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000600000000002L});
-    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0001800000000002L});
-    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x0006000000000002L});
-    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0078000000000002L});
-    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0180000000000002L});
-    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0E00000000000002L});
-    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x4000000000000000L});
-    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000000000000080L,0x0000000000000004L});
-    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
-    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0xB00000704C1900F0L,0x000000000000FE13L});
-    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000018L});
+    public static final BitSet FOLLOW_6 = new BitSet(new long[]{0x0000000000020000L});
+    public static final BitSet FOLLOW_7 = new BitSet(new long[]{0x007FF803FE000002L,0x0007F8003E007F00L,0x0000000000000040L,0x0000003FFFF01E00L});
+    public static final BitSet FOLLOW_8 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x000003C000000000L});
+    public static final BitSet FOLLOW_9 = new BitSet(new long[]{0x0000000001C00010L});
+    public static final BitSet FOLLOW_10 = new BitSet(new long[]{0x007FF803FE0000F0L,0x0007F8003E007F00L,0x0000000000000040L,0x0000003FFFF01FBFL});
+    public static final BitSet FOLLOW_11 = new BitSet(new long[]{0x0000000000020080L});
+    public static final BitSet FOLLOW_12 = new BitSet(new long[]{0x0000000001C00090L});
+    public static final BitSet FOLLOW_13 = new BitSet(new long[]{0x000007FC00020000L});
+    public static final BitSet FOLLOW_14 = new BitSet(new long[]{0x0080000000000000L});
+    public static final BitSet FOLLOW_15 = new BitSet(new long[]{0x1F00000000000080L});
+    public static final BitSet FOLLOW_16 = new BitSet(new long[]{0x1F00000000000000L});
+    public static final BitSet FOLLOW_17 = new BitSet(new long[]{0x007FF803FE000000L,0x0007F8003E007F00L,0x00000000000003E0L,0x0000003FFFF01E00L});
+    public static final BitSet FOLLOW_18 = new BitSet(new long[]{0xA07FF803FE000000L,0x0007F8003E007FFAL,0x00000000000003E0L,0x0000003FFFF01E00L});
+    public static final BitSet FOLLOW_19 = new BitSet(new long[]{0x4000000000000000L});
+    public static final BitSet FOLLOW_20 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000001L});
+    public static final BitSet FOLLOW_21 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000004L});
+    public static final BitSet FOLLOW_22 = new BitSet(new long[]{0x007FF803FE000000L,0x0007F8003E007FF8L,0x00000000000003E0L,0x0000003FFFF01E00L});
+    public static final BitSet FOLLOW_23 = new BitSet(new long[]{0x0000000000000000L,0x00000000000F8000L});
+    public static final BitSet FOLLOW_24 = new BitSet(new long[]{0x007FF803FE000000L,0x0007F8003FF07F00L,0x00000000000003E0L,0x0000003FFFF01E00L});
+    public static final BitSet FOLLOW_25 = new BitSet(new long[]{0x0000000000000000L,0x0000000040000000L});
+    public static final BitSet FOLLOW_26 = new BitSet(new long[]{0x0000000000000000L,0x0000000080000000L});
+    public static final BitSet FOLLOW_27 = new BitSet(new long[]{0x0000000000000000L,0x0000003F00000000L});
+    public static final BitSet FOLLOW_28 = new BitSet(new long[]{0x0000000000000000L,0x0000003E00000000L});
+    public static final BitSet FOLLOW_29 = new BitSet(new long[]{0x007FF803FE000000L,0x0007FFC03E007F00L,0x00000000000003E0L,0x0000003FFFF01E00L});
+    public static final BitSet FOLLOW_30 = new BitSet(new long[]{0x0000000001C00000L,0xF0F8000000000000L});
+    public static final BitSet FOLLOW_31 = new BitSet(new long[]{0x0000000001C00000L,0xFF00000000000000L});
+    public static final BitSet FOLLOW_32 = new BitSet(new long[]{0x0000000001C00000L,0xC000000000000000L});
+    public static final BitSet FOLLOW_33 = new BitSet(new long[]{0x0000000000000000L,0xC000000000000000L});
+    public static final BitSet FOLLOW_34 = new BitSet(new long[]{0x007FF803FE000000L,0x0007F8003E007F00L,0x00000000000003FFL,0x0000003FFFF01E00L});
+    public static final BitSet FOLLOW_35 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000007C00L});
+    public static final BitSet FOLLOW_36 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000078000L});
+    public static final BitSet FOLLOW_37 = new BitSet(new long[]{0x0000000000000002L,0x0200000000000000L,0x0000000000F80000L});
+    public static final BitSet FOLLOW_38 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x00000003FF000000L});
+    public static final BitSet FOLLOW_39 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0003FFFC00000000L});
+    public static final BitSet FOLLOW_40 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x03FC000000000000L});
+    public static final BitSet FOLLOW_41 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0xFC00000000000000L});
+    public static final BitSet FOLLOW_42 = new BitSet(new long[]{0x0000000000000000L,0x0000000000000000L,0x0000000000000000L,0x0000000000000040L});
+    public static final BitSet FOLLOW_43 = new BitSet(new long[]{0x0000000000000002L,0x0000000000000000L,0x0000000000000000L,0x000000000003E000L});
+    public static final BitSet FOLLOW_44 = new BitSet(new long[]{0x007FF803FE0000F0L,0x0007F8003E007F00L,0x0000000000000040L,0x0000003FFFFC1FBFL});
+    public static final BitSet FOLLOW_45 = new BitSet(new long[]{0x0000000000000000L,0x0100000000000000L,0x0000000000000000L,0x00000000000C0000L});
 
 }
